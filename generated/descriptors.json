@@ -5224,6 +5224,10 @@
                 {
                   "name": "FAN",
                   "number": 38
+                },
+                {
+                  "name": "DSP",
+                  "number": 39
                 }
               ]
             }
@@ -5838,6 +5842,14 @@
               "number": 54,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Pendrive"
+            },
+            {
+              "jsonName": "dspCore",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsp_core",
+              "number": 55,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.DspCore"
             }
           ],
           "name": "HardwareFeatures",
@@ -5885,6 +5897,14 @@
                   "name": "defer_external_display_timeout",
                   "number": 4,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "pdc",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "pdc",
+                  "number": 5,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "UsbC",
@@ -6407,6 +6427,10 @@
                       "number": 15
                     },
                     {
+                      "name": "ALC712",
+                      "number": 16
+                    },
+                    {
                       "name": "AUDIO_CODEC_ALC5650",
                       "number": 17
                     },
@@ -6532,6 +6556,14 @@
                     {
                       "name": "AMPLIFIER_ALC3204",
                       "number": 24
+                    },
+                    {
+                      "name": "ALC1320",
+                      "number": 25
+                    },
+                    {
+                      "name": "RT9123",
+                      "number": 26
                     }
                   ]
                 },
@@ -7881,6 +7913,14 @@
                   "number": 12,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".google.protobuf.UInt32Value"
+                },
+                {
+                  "jsonName": "maxAccelerometerCalibration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "max_accelerometer_calibration",
+                  "number": 13,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
                 }
               ],
               "name": "EmbeddedController",
@@ -8014,6 +8054,14 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "valid_adid",
                   "number": 6,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "ccdTestlabMode",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ccd_testlab_mode",
+                  "number": 7,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
@@ -8710,6 +8758,42 @@
                 }
               ],
               "name": "Pendrive"
+            },
+            {
+              "enumType": [
+                {
+                  "name": "Vendor",
+                  "value": [
+                    {
+                      "name": "VENDOR_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "VENDOR_INTEL",
+                      "number": 1
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "vendor",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "vendor",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.DspCore.Vendor"
+                }
+              ],
+              "name": "DspCore"
             }
           ]
         }
@@ -9017,6 +9101,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "fan",
               "number": 36,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "dsp",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsp",
+              "number": 37,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }
@@ -12108,6 +12200,13 @@
                   "name": "percent_battery_wear_allowed",
                   "number": 1,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "maximumCycleCount",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "maximum_cycle_count",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
                 }
               ],
               "name": "BatteryHealth"
@@ -12127,6 +12226,25 @@
             {
               "field": [
                 {
+                  "jsonName": "highMah",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "high_mah",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "lowMah",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "low_mah",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "BatteryCapacity"
+            },
+            {
+              "field": [
+                {
                   "jsonName": "batteryHealth",
                   "label": "LABEL_OPTIONAL",
                   "name": "battery_health",
@@ -12141,6 +12259,14 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.HealthConfig.NvmeWearLevel"
+                },
+                {
+                  "jsonName": "batteryCapacity",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "battery_capacity",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.HealthConfig.BatteryCapacity"
                 }
               ],
               "name": "Routines"
@@ -18860,6 +18986,10 @@
                     {
                       "name": "SPEAKER",
                       "number": 10
+                    },
+                    {
+                      "name": "IP_POWER",
+                      "number": 11
                     }
                   ]
                 }
@@ -21561,6 +21691,1595 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "ServodStatus",
+          "value": [
+            {
+              "name": "SERVOD_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "SERVOD_RUNNING",
+              "number": 1
+            },
+            {
+              "name": "SERVOD_STOPPED",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "DolosStatus",
+          "value": [
+            {
+              "name": "DOLOS_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "DOLOS_NO_POWER_SUPPLIED",
+              "number": 1
+            },
+            {
+              "name": "DOLOS_OUTPUT_POWER_FAILED",
+              "number": 2
+            },
+            {
+              "name": "DOLOS_BMS_STATE_INVALID",
+              "number": 3
+            },
+            {
+              "name": "DOLOS_SMBUS_COMM_NOT_DETECTED",
+              "number": 4
+            },
+            {
+              "name": "DOLOS_EEPROM_FAILURE",
+              "number": 5
+            },
+            {
+              "name": "DOLOS_OK",
+              "number": 6
+            },
+            {
+              "name": "DOLOS_NO_COMMUNICATION",
+              "number": 7
+            },
+            {
+              "name": "DOLOS_NOT_PRESENT",
+              "number": 8
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "servodPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_port",
+              "number": 1,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "StationIdentifier"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "filepath",
+              "label": "LABEL_OPTIONAL",
+              "name": "filepath",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 3,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "FileData"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "size",
+              "label": "LABEL_OPTIONAL",
+              "name": "size",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "isDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_dir",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "isSymlink",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_symlink",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "FileStat"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fileStats",
+              "label": "LABEL_REPEATED",
+              "name": "file_stats",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.FileStat"
+            }
+          ],
+          "name": "DirectoryInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filepath",
+              "label": "LABEL_OPTIONAL",
+              "name": "filepath",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFileStatRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fileStats",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_stats",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.FileStat"
+            }
+          ],
+          "name": "GetFileStatResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFileRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "GetFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "reqInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "req_info",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.PutFileRequestInitInfo"
+            },
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "PutFileRequest",
+          "oneofDecl": [
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "name": "PutFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PutFileRequestInitInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "url",
+              "label": "LABEL_OPTIONAL",
+              "name": "url",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dest",
+              "label": "LABEL_OPTIONAL",
+              "name": "dest",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "headers",
+              "label": "LABEL_REPEATED",
+              "name": "headers",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.Param"
+            }
+          ],
+          "name": "DownloadFileRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "key",
+              "label": "LABEL_OPTIONAL",
+              "name": "key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Param"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "file",
+              "label": "LABEL_OPTIONAL",
+              "name": "file",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RemoveFileRequest"
+        },
+        {
+          "name": "RemoveFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetDirInfoRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "info",
+              "label": "LABEL_OPTIONAL",
+              "name": "info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.DirectoryInfo"
+            }
+          ],
+          "name": "GetDirInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "MakeDirRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "info",
+              "label": "LABEL_OPTIONAL",
+              "name": "info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.DirectoryInfo"
+            }
+          ],
+          "name": "MakeDirResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "dir",
+              "label": "LABEL_OPTIONAL",
+              "name": "dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pattern",
+              "label": "LABEL_OPTIONAL",
+              "name": "pattern",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "MakeTempDirRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "info",
+              "label": "LABEL_OPTIONAL",
+              "name": "info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.DirectoryInfo"
+            }
+          ],
+          "name": "MakeTempDirResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "removeAll",
+              "label": "LABEL_OPTIONAL",
+              "name": "remove_all",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "RemoveDirRequest"
+        },
+        {
+          "name": "RemoveDirResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            }
+          ],
+          "name": "DMesgRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "DMesgResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "reqInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "req_info",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.WriteFileByBlockInitInfo"
+            },
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "WriteFileByBlockRequest",
+          "oneofDecl": [
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "byteSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "byte_size",
+              "number": 3,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "WriteFileByBlockInitInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "byteSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "byte_size",
+              "number": 3,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "WriteFileByBlockResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "filePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "byteSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "byte_size",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "numberOfBlocks",
+              "label": "LABEL_OPTIONAL",
+              "name": "number_of_blocks",
+              "number": 4,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "ReadFileByBlockRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "ReadFileByBlockResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "src",
+              "label": "LABEL_OPTIONAL",
+              "name": "src",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dest",
+              "label": "LABEL_OPTIONAL",
+              "name": "dest",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunMountRequest"
+        },
+        {
+          "name": "RunMountResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunUMountRequest"
+        },
+        {
+          "name": "RunUMountResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stringValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "string_value",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "intValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "int_value",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "floatValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "float_value",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_FLOAT"
+            }
+          ],
+          "name": "ServodValue",
+          "oneofDecl": [
+            {
+              "name": "value"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "recoveryMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "recovery_mode",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "config",
+              "label": "LABEL_OPTIONAL",
+              "name": "config",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartServodRequest"
+        },
+        {
+          "name": "StartServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            }
+          ],
+          "name": "StopServodRequest"
+        },
+        {
+          "name": "StopServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            }
+          ],
+          "name": "GetServodStatusRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.bols.ServodStatus"
+            }
+          ],
+          "name": "GetServodStatusResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            }
+          ],
+          "name": "HWInitServodRequest"
+        },
+        {
+          "name": "HWInitServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "control",
+              "label": "LABEL_OPTIONAL",
+              "name": "control",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ReadServodRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "control",
+              "label": "LABEL_OPTIONAL",
+              "name": "control",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "description",
+              "label": "LABEL_OPTIONAL",
+              "name": "description",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ReadServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "control",
+              "label": "LABEL_OPTIONAL",
+              "name": "control",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetServodRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "control",
+              "label": "LABEL_OPTIONAL",
+              "name": "control",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValue"
+            }
+          ],
+          "name": "GetServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "control",
+              "label": "LABEL_OPTIONAL",
+              "name": "control",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValue"
+            }
+          ],
+          "name": "SetServodRequest"
+        },
+        {
+          "name": "SetServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            }
+          ],
+          "name": "GetServodVersionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetServodVersionResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "echo",
+              "label": "LABEL_OPTIONAL",
+              "name": "echo",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "EchoServodRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "result",
+              "label": "LABEL_OPTIONAL",
+              "name": "result",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "EchoServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            }
+          ],
+          "name": "GetServoTopologyRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "root",
+              "label": "LABEL_OPTIONAL",
+              "name": "root",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServoTopologyItem"
+            },
+            {
+              "jsonName": "children",
+              "label": "LABEL_REPEATED",
+              "name": "children",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServoTopologyItem"
+            }
+          ],
+          "name": "GetServoTopologyResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "sysfsProduct",
+              "label": "LABEL_OPTIONAL",
+              "name": "sysfs_product",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "serial",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "usbHubPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_hub_port",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "sysfsPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "sysfs_path",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fwVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "fw_version",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ServoTopologyItem"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "targets",
+              "label": "LABEL_REPEATED",
+              "name": "targets",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.UpdateServoFirmwareRequest.Target"
+            },
+            {
+              "jsonName": "force",
+              "label": "LABEL_OPTIONAL",
+              "name": "force",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "UpdateServoFirmwareRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "servoType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo_type",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Target"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServoTopologyItem"
+            }
+          ],
+          "name": "UpdateServoFirmwareResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "OutputStream"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunFutilityRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "RunFutilityResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunFlashECRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "RunFlashECResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dolosUartName",
+              "label": "LABEL_OPTIONAL",
+              "name": "dolos_uart_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DolosIdentifier"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "dolosId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dolos_id",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.DolosIdentifier"
+            }
+          ],
+          "name": "GetDolosVersionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetDolosVersionResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "dolosId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dolos_id",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.DolosIdentifier"
+            },
+            {
+              "jsonName": "expectedVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "expected_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UpdateDolosVersionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UpdateDolosVersionResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "dolosId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dolos_id",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.DolosIdentifier"
+            }
+          ],
+          "name": "GetDolosStatusRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.bols.DolosStatus"
+            }
+          ],
+          "name": "GetDolosStatusResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "dolosCableSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "dolos_cable_serial",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FindDolosUARTRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dolosUartName",
+              "label": "LABEL_OPTIONAL",
+              "name": "dolos_uart_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FindDolosUARTResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/bols/bols_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/bols"
+      },
+      "package": "chromiumos.test.api.bols",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.bols.GetFileStatRequest",
+              "name": "GetFileStat",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.GetFileStatResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetFileRequest",
+              "name": "GetFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.GetFileResponse",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.bols.PutFileRequest",
+              "name": "PutFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.PutFileResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.DownloadFileRequest",
+              "name": "DownloadFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.DownloadFileResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RemoveFileRequest",
+              "name": "RemoveFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RemoveFileResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetDirInfoRequest",
+              "name": "GetDirInfo",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.GetDirInfoResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.MakeDirRequest",
+              "name": "MakeDir",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.MakeDirResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.MakeTempDirRequest",
+              "name": "MakeTempDir",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.MakeTempDirResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RemoveDirRequest",
+              "name": "RemoveDir",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RemoveDirResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.DMesgRequest",
+              "name": "DMesg",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.DMesgResponse",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.bols.WriteFileByBlockRequest",
+              "name": "WriteFileByBlock",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.WriteFileByBlockResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.ReadFileByBlockRequest",
+              "name": "ReadFileByBlock",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.ReadFileByBlockResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunMountRequest",
+              "name": "RunMount",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunMountResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunUMountRequest",
+              "name": "RunUMount",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunUMountResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.StartServodRequest",
+              "name": "StartServod",
+              "outputType": ".chromiumos.test.api.bols.StartServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.StopServodRequest",
+              "name": "StopServod",
+              "outputType": ".chromiumos.test.api.bols.StopServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetServodStatusRequest",
+              "name": "GetServodStatus",
+              "outputType": ".chromiumos.test.api.bols.GetServodStatusResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.HWInitServodRequest",
+              "name": "HWInitServod",
+              "outputType": ".chromiumos.test.api.bols.HWInitServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.ReadServodRequest",
+              "name": "ReadServod",
+              "outputType": ".chromiumos.test.api.bols.ReadServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetServodRequest",
+              "name": "GetServod",
+              "outputType": ".chromiumos.test.api.bols.GetServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.SetServodRequest",
+              "name": "SetServod",
+              "outputType": ".chromiumos.test.api.bols.SetServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetServodVersionRequest",
+              "name": "GetServodVersion",
+              "outputType": ".chromiumos.test.api.bols.GetServodVersionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.EchoServodRequest",
+              "name": "EchoServod",
+              "outputType": ".chromiumos.test.api.bols.EchoServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetServoTopologyRequest",
+              "name": "GetServoTopology",
+              "outputType": ".chromiumos.test.api.bols.GetServoTopologyResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.UpdateServoFirmwareRequest",
+              "name": "UpdateServoFirmware",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.UpdateServoFirmwareResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunFutilityRequest",
+              "name": "RunFutility",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunFutilityResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunFlashECRequest",
+              "name": "RunFlashEC",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunFlashECResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetDolosVersionRequest",
+              "name": "GetDolosVersion",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.GetDolosVersionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.UpdateDolosVersionRequest",
+              "name": "UpdateDolosVersion",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.UpdateDolosVersionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.GetDolosStatusRequest",
+              "name": "GetDolosStatus",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.GetDolosStatusResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.FindDolosUARTRequest",
+              "name": "FindDolosUART",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.FindDolosUARTResponse"
+            }
+          ],
+          "name": "BolsService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "name": "CheckHealthRequest"
@@ -23353,6 +25072,13 @@
                   "name": "message",
                   "number": 1,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "stackTrace",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "stack_trace",
+                  "number": 2,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Error"
@@ -24411,6 +26137,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetServoInfoRequest"
+            },
+            {
+              "jsonName": "getUsbInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_usb_info_request",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetUsbInfoRequest"
             }
           ],
           "name": "Request",
@@ -24564,6 +26299,9 @@
           "name": "GetServoInfoRequest"
         },
         {
+          "name": "GetUsbInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -24618,6 +26356,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetServoInfoResponse"
+            },
+            {
+              "jsonName": "getUsbInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_usb_info_response",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetUsbInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -24850,6 +26597,19 @@
             }
           ],
           "name": "GetServoInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "usbInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "GetUsbInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
@@ -26332,6 +28092,10 @@
                 {
                   "name": "STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE",
                   "number": 21
+                },
+                {
+                  "name": "STATUS_PRE_PROVISION_USB_BOOT_FAILURE",
+                  "number": 22
                 }
               ]
             }
@@ -26466,6 +28230,13 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.StoragePath"
+                },
+                {
+                  "jsonName": "ramdiskName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ramdisk_name",
+                  "number": 3,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "PartitionImage"
@@ -27603,6 +29374,140 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "internalTestplanFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "internal_testplan_fragment",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InternalTestplanFragment"
+            }
+          ],
+          "name": "GenericFilterStreamRequest",
+          "oneofDecl": [
+            {
+              "name": "message"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "internalTestplanFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "internal_testplan_fragment",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InternalTestplanFragment"
+            },
+            {
+              "jsonName": "logFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "log_fragment",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LogFragment"
+            }
+          ],
+          "name": "GenericFilterStreamResponse",
+          "oneofDecl": [
+            {
+              "name": "message"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "totalSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "total_size",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "totalFragments",
+              "label": "LABEL_OPTIONAL",
+              "name": "total_fragments",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "index",
+              "label": "LABEL_OPTIONAL",
+              "name": "index",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "fragmentSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment_size",
+              "number": 4,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "FragmentMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "InternalTestplanFragment"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "LogFragment"
+        }
+      ],
+      "name": "chromiumos/test/api/ctp2_filters.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/provision.proto",
         "chromiumos/test/api/test_suite.proto",
@@ -27612,7 +29517,8 @@
         "google/protobuf/any.proto",
         "google/protobuf/duration.proto",
         "chromiumos/test/api/test_execution_metadata.proto",
-        "chromiumos/test/api/trv2_dynamic_updates.proto"
+        "chromiumos/test/api/trv2_dynamic_updates.proto",
+        "chromiumos/test/api/ctp2_filters.proto"
       ],
       "messageType": [
         {
@@ -27905,6 +29811,14 @@
               "name": "tags",
               "number": 9,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "iterations",
+              "label": "LABEL_OPTIONAL",
+              "name": "iterations",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Iterations"
             }
           ],
           "name": "SuiteRequest",
@@ -28285,18 +30199,6 @@
             }
           ],
           "name": "InternalTestplan"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "fragment",
-              "label": "LABEL_OPTIONAL",
-              "name": "fragment",
-              "number": 1,
-              "type": "TYPE_BYTES"
-            }
-          ],
-          "name": "InternalTestplanFragment"
         },
         {
           "field": [
@@ -28860,6 +30762,18 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "numRetries",
+              "label": "LABEL_OPTIONAL",
+              "name": "num_retries",
+              "number": 1,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "Iterations"
         }
       ],
       "name": "chromiumos/test/api/ctp2.proto",
@@ -28889,7 +30803,17 @@
               "clientStreaming": true,
               "inputType": ".chromiumos.test.api.InternalTestplanFragment",
               "name": "ExecuteStream",
+              "options": {
+                "deprecated": true
+              },
               "outputType": ".chromiumos.test.api.InternalTestplanFragment",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.GenericFilterStreamRequest",
+              "name": "ExecuteWithStream",
+              "outputType": ".chromiumos.test.api.GenericFilterStreamResponse",
               "serverStreaming": true
             }
           ],
@@ -30513,6 +32437,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "error_message",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -31045,6 +32972,1287 @@
     {
       "bufExtension": {
         "isImport": false,
+        "isSyntaxUnspecified": false,
+        "unusedDependency": [
+          1
+        ]
+      },
+      "dependency": [
+        "google/protobuf/any.proto",
+        "chromiumos/test/api/test_case_metadata.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "StartLoggingRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_FAILURE",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.StartLoggingResponse.Status"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartLoggingResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "StopLoggingRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_FAILURE",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.StopLoggingResponse.Status"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StopLoggingResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/logging_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.StartLoggingRequest",
+              "name": "Start",
+              "outputType": ".chromiumos.test.api.StartLoggingResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StopLoggingRequest",
+              "name": "Stop",
+              "outputType": ".chromiumos.test.api.StopLoggingResponse"
+            }
+          ],
+          "name": "LoggingService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/bols/bols_service.proto"
+      ],
+      "enumType": [
+        {
+          "name": "GBBFLAG",
+          "value": [
+            {
+              "name": "GBBFLAG_DEV_SCREEN_SHORT_DELAY",
+              "number": 0
+            },
+            {
+              "name": "GBBFLAG_LOAD_OPTION_ROMS",
+              "number": 1
+            },
+            {
+              "name": "GBBFLAG_ENABLE_ALTERNATE_OS",
+              "number": 2
+            },
+            {
+              "name": "GBBFLAG_FORCE_DEV_SWITCH_ON",
+              "number": 3
+            },
+            {
+              "name": "GBBFLAG_FORCE_DEV_BOOT_USB",
+              "number": 4
+            },
+            {
+              "name": "GBBFLAG_DISABLE_FW_ROLLBACK_CHECK",
+              "number": 5
+            },
+            {
+              "name": "GBBFLAG_ENTER_TRIGGERS_TONORM",
+              "number": 6
+            },
+            {
+              "name": "GBBFLAG_FORCE_DEV_BOOT_LEGACY",
+              "number": 7
+            },
+            {
+              "name": "GBBFLAG_DEPRECATED_RUNNING_FAFT",
+              "number": 8
+            },
+            {
+              "name": "GBBFLAG_DISABLE_EC_SOFTWARE_SYNC",
+              "number": 9
+            },
+            {
+              "name": "GBBFLAG_DEFAULT_DEV_BOOT_ALTFW",
+              "number": 10
+            },
+            {
+              "name": "GBBFLAG_DISABLE_AUXFW_SOFTWARE_SYNC",
+              "number": 11
+            },
+            {
+              "name": "GBBFLAG_DISABLE_LID_SHUTDOWN",
+              "number": 12
+            },
+            {
+              "name": "GBBFLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP",
+              "number": 13
+            },
+            {
+              "name": "GBBFLAG_FORCE_MANUAL_RECOVERY",
+              "number": 14
+            },
+            {
+              "name": "GBBFLAG_DISABLE_FWMP",
+              "number": 15
+            },
+            {
+              "name": "GBBFLAG_ENABLE_UDC",
+              "number": 16
+            },
+            {
+              "name": "GBBFLAG_FORCE_CSE_SYNC",
+              "number": 17
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "name": "StartServodRequest"
+        },
+        {
+          "name": "StartServodResponse"
+        },
+        {
+          "name": "StopServodRequest"
+        },
+        {
+          "name": "StopServodResponse"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Method",
+              "value": [
+                {
+                  "name": "DOC",
+                  "number": 0
+                },
+                {
+                  "name": "GET",
+                  "number": 1
+                },
+                {
+                  "name": "SET",
+                  "number": 2
+                },
+                {
+                  "name": "HWINIT",
+                  "number": 3
+                },
+                {
+                  "name": "ECHO",
+                  "number": 4
+                },
+                {
+                  "name": "GET_SERVO_SERIAL",
+                  "number": 5
+                },
+                {
+                  "name": "GET_SERVO_VERSION",
+                  "number": 6
+                },
+                {
+                  "name": "GET_SERVOD_VERSION",
+                  "number": 7
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "method",
+              "label": "LABEL_OPTIONAL",
+              "name": "method",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.CallServodRequest.Method"
+            },
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValue"
+            }
+          ],
+          "name": "CallServodRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.CallServodResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.CallServodResponse.Failure"
+            }
+          ],
+          "name": "CallServodResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "result",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "result",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.bols.ServodValue"
+                }
+              ],
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "srcFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "src_file_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dstFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "dst_file_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFileRequest"
+        },
+        {
+          "name": "GetFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "srcFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "src_file_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dstFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "dst_file_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PutFileRequest"
+        },
+        {
+          "name": "PutFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "command",
+              "label": "LABEL_OPTIONAL",
+              "name": "command",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "patterns",
+              "label": "LABEL_REPEATED",
+              "name": "patterns",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ECCommandRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_REPEATED",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.StringList"
+            }
+          ],
+          "name": "ECCommandResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StringList"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "msg",
+              "label": "LABEL_OPTIONAL",
+              "name": "msg",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "EchoRequest"
+        },
+        {
+          "name": "EchoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dest",
+              "label": "LABEL_OPTIONAL",
+              "name": "dest",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadSystemLogsRequest"
+        },
+        {
+          "name": "DownloadSystemLogsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dest",
+              "label": "LABEL_OPTIONAL",
+              "name": "dest",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadServoLogsRequest"
+        },
+        {
+          "name": "DownloadServoLogsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fileName",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RemoveFileRequest"
+        },
+        {
+          "name": "RemoveFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "MakeDirRequest"
+        },
+        {
+          "name": "MakeDirResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RemoveDirRequest"
+        },
+        {
+          "name": "RemoveDirResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "parent",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "MakeTempDirRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "MakeTempDirResponse"
+        },
+        {
+          "name": "DMesgRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "DMesgResponse"
+        },
+        {
+          "name": "CorruptUSBKeyRequest"
+        },
+        {
+          "name": "CorruptUSBKeyResponse"
+        },
+        {
+          "name": "UncorruptUSBKeyRequest"
+        },
+        {
+          "name": "UncorruptUSBKeyResponse"
+        },
+        {
+          "enumType": [
+            {
+              "name": "UpdateMode",
+              "value": [
+                {
+                  "name": "UPDATEMODE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "UPDATEMODE_AUTOUPDATE",
+                  "number": 1
+                },
+                {
+                  "name": "UPDATEMODE_RECOVERY",
+                  "number": 2
+                },
+                {
+                  "name": "UPDATEMODE_FACTORY",
+                  "number": 3
+                }
+              ]
+            },
+            {
+              "name": "WPMode",
+              "value": [
+                {
+                  "name": "WPMODE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "WPMODE_ENABLE",
+                  "number": 1
+                },
+                {
+                  "name": "WPMODE_DISABLE",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "imagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ecImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_image_path",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tryAb",
+              "label": "LABEL_OPTIONAL",
+              "name": "try_ab",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fast",
+              "label": "LABEL_OPTIONAL",
+              "name": "fast",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "quirks",
+              "label": "LABEL_OPTIONAL",
+              "name": "quirks",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest.Quirk"
+            },
+            {
+              "jsonName": "updateMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_mode",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest.UpdateMode"
+            },
+            {
+              "jsonName": "wpMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "wp_mode",
+              "number": 8,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest.WPMode"
+            },
+            {
+              "jsonName": "hostOnly",
+              "label": "LABEL_OPTIONAL",
+              "name": "host_only",
+              "number": 9,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "gbbFlags",
+              "label": "LABEL_REPEATED",
+              "name": "gbb_flags",
+              "number": 10,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "force",
+              "label": "LABEL_OPTIONAL",
+              "name": "force",
+              "number": 11,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "UpdateFirmwareRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Quirk"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "UpdateFirmwareResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "enable",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SetWPRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "SetWPResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "debug",
+              "label": "LABEL_OPTIONAL",
+              "name": "debug",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "verbose",
+              "label": "LABEL_OPTIONAL",
+              "name": "verbose",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "region",
+              "label": "LABEL_OPTIONAL",
+              "name": "region",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "ReadAPRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "OutputStream"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "ReadAPResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ecChip",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_chip",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FlashECFirmwareRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "FlashECFirmwareResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "baseUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "base_url",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareFilename",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_filename",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "apTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_target",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ecTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_target",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadFirmwareFilesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ecFirmwareFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_firmware_file",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "apFirmwareFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_firmware_file",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "monitorFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "monitor_file",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadFirmwareFilesResponse"
+        },
+        {
+          "name": "CheckUSBRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "usbDevicePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_device_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CheckUSBResponse"
+        },
+        {
+          "name": "GetGBBFlagsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "clear",
+              "label": "LABEL_REPEATED",
+              "name": "clear",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
+            },
+            {
+              "jsonName": "set",
+              "label": "LABEL_REPEATED",
+              "name": "set",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
+            }
+          ],
+          "name": "GetGBBFlagsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "clear",
+              "label": "LABEL_REPEATED",
+              "name": "clear",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
+            },
+            {
+              "jsonName": "set",
+              "label": "LABEL_REPEATED",
+              "name": "set",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
+            }
+          ],
+          "name": "SetGBBFlagsRequest"
+        },
+        {
+          "name": "SetGBBFlagsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "mountPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "mount_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ValidateUSBImageRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "milestone",
+              "label": "LABEL_OPTIONAL",
+              "name": "milestone",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ValidateUSBImageResponse"
+        },
+        {
+          "name": "DolosVersionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DolosVersionResponse"
+        },
+        {
+          "name": "DolosStatusRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.bols.DolosStatus"
+            }
+          ],
+          "name": "DolosStatusResponse"
+        },
+        {
+          "name": "DolosRepairRequest"
+        },
+        {
+          "name": "DolosRepairResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmwareFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_file_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareFileGcsUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_file_gcs_url",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DolosUpdateFirmwareRequest"
+        },
+        {
+          "name": "DolosUpdateFirmwareResponse"
+        },
+        {
+          "name": "DolosUartSerialRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "uartSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "uart_serial",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DolosUartSerialResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/lsnexus"
+      },
+      "package": "chromiumos.test.api.lsnexus",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.StartServodRequest",
+              "name": "StartServod",
+              "outputType": ".chromiumos.test.api.lsnexus.StartServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.StopServodRequest",
+              "name": "StopServod",
+              "outputType": ".chromiumos.test.api.lsnexus.StopServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.CallServodRequest",
+              "name": "CallServod",
+              "outputType": ".chromiumos.test.api.lsnexus.CallServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.GetFileRequest",
+              "name": "GetFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.GetFileResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.PutFileRequest",
+              "name": "PutFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.PutFileResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.RemoveFileRequest",
+              "name": "RemoveFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.RemoveFileResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.MakeDirRequest",
+              "name": "MakeDir",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.MakeDirResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.RemoveDirRequest",
+              "name": "RemoveDir",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.RemoveDirResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.MakeTempDirRequest",
+              "name": "MakeTempDir",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.MakeTempDirResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DMesgRequest",
+              "name": "DMesg",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DMesgResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.CorruptUSBKeyRequest",
+              "name": "CorruptUSBKey",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.CorruptUSBKeyResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.CorruptUSBKeyRequest",
+              "name": "UncorruptUSBKey",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.UncorruptUSBKeyResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest",
+              "name": "UpdateFirmware",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.UpdateFirmwareResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.SetWPRequest",
+              "name": "SetWP",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.SetWPResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.ReadAPRequest",
+              "name": "ReadAP",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.ReadAPResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.FlashECFirmwareRequest",
+              "name": "FlashECFirmware",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.FlashECFirmwareResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DownloadFirmwareFilesRequest",
+              "name": "DownloadFirmwareFiles",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DownloadFirmwareFilesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.CheckUSBRequest",
+              "name": "CheckUSB",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.CheckUSBResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.GetGBBFlagsRequest",
+              "name": "GetGBBFlags",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.GetGBBFlagsResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.SetGBBFlagsRequest",
+              "name": "SetGBBFlags",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.SetGBBFlagsResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.ValidateUSBImageRequest",
+              "name": "ValidateUSBImage",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.ValidateUSBImageResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.ECCommandRequest",
+              "name": "ECCommand",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.ECCommandResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.EchoRequest",
+              "name": "Echo",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.EchoResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DownloadSystemLogsRequest",
+              "name": "DownloadSystemLogs",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DownloadSystemLogsResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DownloadServoLogsRequest",
+              "name": "DownloadServoLogs",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DownloadServoLogsResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DolosVersionRequest",
+              "name": "DolosVersion",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DolosVersionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DolosRepairRequest",
+              "name": "DolosRepair",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DolosRepairResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DolosUpdateFirmwareRequest",
+              "name": "DolosUpdateFirmware",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DolosUpdateFirmwareResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.DolosUartSerialRequest",
+              "name": "DolosUartSerial",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.DolosUartSerialResponse"
+            }
+          ],
+          "name": "LSNexusService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
         "isSyntaxUnspecified": false
       },
       "dependency": [
@@ -31185,6 +34393,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "eqc_info",
               "number": 13,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.EqcInfo"
             }
@@ -31398,6 +34609,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.TestRun.TagsEntry"
+            },
+            {
+              "jsonName": "eqcInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_info",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo"
             }
           ],
           "name": "TestRun",
@@ -31877,6 +35096,20 @@
                   "name": "ap_rw_version",
                   "number": 4,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "ecRoVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ec_ro_version",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "ecRwVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ec_rw_version",
+                  "number": 6,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Firmware"
@@ -31907,6 +35140,13 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "dlm_sku_id",
                   "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "hwid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hwid",
+                  "number": 3,
                   "type": "TYPE_STRING"
                 }
               ],
@@ -32146,6 +35386,14 @@
               "name": "cbx",
               "number": 4,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "usbInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo.UsbInfo"
             }
           ],
           "name": "DutInfo",
@@ -32171,6 +35419,25 @@
               "options": {
                 "mapEntry": true
               }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "powerDeliveryPortServo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "power_delivery_port_servo",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "powerDeliveryPortCount",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "power_delivery_port_count",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "UsbInfo"
             }
           ]
         },
@@ -37628,6 +40895,51 @@
               "name": "_error_msg"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "edid",
+              "label": "LABEL_OPTIONAL",
+              "name": "edid",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "LoadEdidRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "LoadEdidReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
@@ -37697,9 +41009,264 @@
               "name": "SetActivePort",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.SetActivePortReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.LoadEdidRequest",
+              "name": "LoadEdid",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.LoadEdidReply"
             }
           ],
           "name": "UsbTesterService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "enumType": [
+        {
+          "name": "Role",
+          "value": [
+            {
+              "name": "ROLE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "ROLE_DPSOURCE_USBCSINK",
+              "number": 1
+            },
+            {
+              "name": "ROLE_DPSOURCE_DPSINK",
+              "number": 2
+            },
+            {
+              "name": "ROLE_USBCSOURCE_USBCSINK",
+              "number": 3
+            },
+            {
+              "name": "ROLE_USBCSOURCE_DPSINK",
+              "number": 4
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "VideoTester"
+        },
+        {
+          "name": "GetVideoTestersRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testers",
+              "label": "LABEL_REPEATED",
+              "name": "testers",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoTester"
+            }
+          ],
+          "name": "GetVideoTestersResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OpenVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "OpenVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "CloseVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetRolesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "roles",
+              "label": "LABEL_REPEATED",
+              "name": "roles",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Role"
+            }
+          ],
+          "name": "GetRolesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "role",
+              "label": "LABEL_OPTIONAL",
+              "name": "role",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Role"
+            }
+          ],
+          "name": "SetRoleRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SetRoleResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "edid",
+              "label": "LABEL_OPTIONAL",
+              "name": "edid",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "LoadEdidVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "LoadEdidVideoTesterResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetVideoTestersRequest",
+              "name": "GetVideoTesters",
+              "outputType": ".chromiumos.test.lab.api.passport.GetVideoTestersResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.OpenVideoTesterRequest",
+              "name": "OpenVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.OpenVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CloseVideoTesterRequest",
+              "name": "CloseVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.CloseVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetRolesRequest",
+              "name": "GetRolesVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.GetRolesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetRoleRequest",
+              "name": "SetRoleVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.SetRoleResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest",
+              "name": "LoadEdidVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse"
+            }
+          ],
+          "name": "VideoTesterService"
         }
       ],
       "syntax": "proto3"
@@ -37716,10 +41283,6 @@
             {
               "name": "UNSPECIFIED",
               "number": 0
-            },
-            {
-              "name": "UNRECOGNIZED",
-              "number": 1
             },
             {
               "name": "SSD",
@@ -37740,6 +41303,10 @@
             {
               "name": "UFS",
               "number": 6
+            },
+            {
+              "name": "NOT_RECOGNIZED",
+              "number": 7
             }
           ]
         }

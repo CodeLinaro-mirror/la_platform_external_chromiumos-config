@@ -674,7 +674,8 @@ type SetActiveBluetoothStackAPIResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// True iff the previous active stack API was different than the requested stack API.
+	// True iff the previous active stack API was different than the requested
+	// stack API.
 	StackApiChanged bool `protobuf:"varint,1,opt,name=stack_api_changed,json=stackApiChanged,proto3" json:"stack_api_changed,omitempty"`
 	// The port the service for the stack API is listening on.
 	ServicePort int32 `protobuf:"varint,2,opt,name=service_port,json=servicePort,proto3" json:"service_port,omitempty"`

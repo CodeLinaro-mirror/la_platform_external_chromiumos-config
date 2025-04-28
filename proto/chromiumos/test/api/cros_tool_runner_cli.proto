@@ -36,7 +36,7 @@ message CrosToolRunnerProvisionRequest {
   // The server that can provide inventory service.
   chromiumos.test.lab.api.IpEndpoint inventory_server = 2;
   // The path of directory that will store all the cros-provision artifacts.
-  string artifact_dir = 3 ;
+  string artifact_dir = 3;
 }
 
 // CrosToolRunnerProvisionResponse includes provision result for each DUT.
@@ -69,7 +69,7 @@ message CrosToolRunnerTestRequest {
   // Inventory Server address.
   chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
   // The path of directory that will store all the cros-test artifacts.
-  string artifact_dir = 5 ;
+  string artifact_dir = 5;
   // Test harness specific metadata
   google.protobuf.Any metadata = 6;
   // Supported cros-test container type
@@ -88,7 +88,7 @@ message CrosToolRunnerTestFinderRequest {
   // Test suites to run by tag or explicit list of tests.
   repeated TestSuite test_suites = 1;
   // The path of directory that will store all the cros-test-finder artifacts.
-  string artifact_dir = 2 ;
+  string artifact_dir = 2;
   // ContainerMetadataKey is the key to search in the ContainerMetadata map
   // defined in container_metadata.proto
   string container_metadata_key = 3;
@@ -108,13 +108,12 @@ message CrosToolRunnerTestFinderResponse {
 
 message CrosToolRunnerPreTestRequest {
   // The path of directory that will store all the pre-test-request artifacts.
-  string artifact_dir = 1 ;
+  string artifact_dir = 1;
   // ContainerMetadataKey is the key to search in the ContainerMetadata map
   // defined in container_metadata.proto
   string container_metadata_key = 2;
   // The caller should construct the entire request to go to the service.
   FilterFlakyRequest request = 3;
-
 }
 
 // CrosToolRunnerPreTestResponse return filtered list.
@@ -125,7 +124,7 @@ message CrosToolRunnerPreTestResponse {
 
 message CrosToolRunnerPostTestRequest {
   // The path of directory that will store all the post-test-request artifacts.
-  string artifact_dir = 1 ;
+  string artifact_dir = 1;
   // ContainerMetadataKey is the key to search in the ContainerMetadata map
   // defined in container_metadata.proto
   string container_metadata_key = 2;

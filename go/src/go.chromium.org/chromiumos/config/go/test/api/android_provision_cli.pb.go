@@ -33,7 +33,8 @@ type AndroidProvisionCLIResponse struct {
 
 	// Required. The DUT Id.
 	Id *api.Dut_Id `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Required. Outcome represents the result of performing provisioning on the DUT.
+	// Required. Outcome represents the result of performing provisioning on the
+	// DUT.
 	//
 	// Types that are assignable to Outcome:
 	//	*AndroidProvisionCLIResponse_Success

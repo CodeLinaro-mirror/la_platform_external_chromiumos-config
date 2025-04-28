@@ -1,0 +1,57 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/any.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
+
+service LoggingService {
+    rpc Start(StartLoggingRequest) returns (StartLoggingResponse);
+    rpc Stop(StopLoggingRequest) returns (StopLoggingResponse);
+}
+
+message StartLoggingRequest {
+  google.protobuf.Any metadata = 1;
+}
+
+message StartLoggingResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_FAILURE = 2;
+  }
+
+  Status status = 1;
+
+  // Logging flavor specific metadata
+  google.protobuf.Any metadata = 2;
+
+  // Error/other messages to accompany the status
+  string message = 3;
+}
+
+message StopLoggingRequest {
+  google.protobuf.Any metadata = 1;
+}
+
+message StopLoggingResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_FAILURE = 2;
+  }
+
+  Status status = 1;
+
+  // Logging flavor specific metadata
+  google.protobuf.Any metadata = 2;
+
+  // Error/other messages to accompany the status
+  string message = 3;
+}

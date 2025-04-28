@@ -64,8 +64,8 @@ message Component {
 
   // IDs to map into AVL database
   message AVLId {
-    int32 cid = 1; // component id
-    int32 qid = 2; // qualification id
+    int32 cid = 1;  // component id
+    int32 qid = 2;  // qualification id
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -258,7 +258,9 @@ message Component {
 
       // The radius of each corner of this display (in physical pixels).
       message RoundedCorners {
-        message RoundedCorner { int32 radius_px = 1; }
+        message RoundedCorner {
+          int32 radius_px = 1;
+        }
         RoundedCorner top_left = 1;
         RoundedCorner top_right = 2;
         RoundedCorner bottom_left = 3;
@@ -330,7 +332,9 @@ message Component {
     repeated Feature features = 2;
   }
 
-  message AudioCodec { string name = 1; }
+  message AudioCodec {
+    string name = 1;
+  }
 
   message Battery {
     enum Technology {
@@ -342,9 +346,13 @@ message Component {
     Technology technology = 2;
   }
 
-  message FlashChip { string part_number = 1; }
+  message FlashChip {
+    string part_number = 1;
+  }
 
-  message EmbeddedController { string part_number = 1; }
+  message EmbeddedController {
+    string part_number = 1;
+  }
 
   message Storage {
     enum StorageType {
@@ -386,7 +394,9 @@ message Component {
 
   // Defines a peripheral IC that converts DP signal to another format like
   // HDMI.
-  message DisplayPortConverter { string name = 1; }
+  message DisplayPortConverter {
+    string name = 1;
+  }
 
   message Cellular {
     oneof interface {

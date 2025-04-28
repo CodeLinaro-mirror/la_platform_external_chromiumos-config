@@ -18,7 +18,6 @@ message BuildTarget {
   string root = 1;
 }
 
-
 // Abstracted Result from any test container build.
 message TestContainersBuildResult {
   message Success {
@@ -65,10 +64,8 @@ message BuildTestContainersRequest {
 
 // Interface to build any of the test containers.
 service ContainerService {
-
   rpc BuildTestExecContainer(BuildTestContainersRequest)
-    returns (BuildTestContainersResponse) {
-  }
+      returns (BuildTestContainersResponse) {}
 
   // TODO(dbeckett): migrate BuildTestServiceContainers here as well?
 }

@@ -46,8 +46,9 @@ type OperationsClient interface {
 	// other methods to check whether the cancellation succeeded or whether the
 	// operation completed despite cancellation. On successful cancellation,
 	// the operation is not deleted; instead, it becomes an operation with
-	// an [Operation.error][google.longrunning.Operation.error] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
-	// corresponding to `Code.CANCELLED`.
+	// an [Operation.error][google.longrunning.Operation.error] value with a
+	// [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to
+	// `Code.CANCELLED`.
 	CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Waits for the specified long-running operation until it is done or reaches
 	// at most a specified timeout, returning the latest state.  If the operation
@@ -141,8 +142,9 @@ type OperationsServer interface {
 	// other methods to check whether the cancellation succeeded or whether the
 	// operation completed despite cancellation. On successful cancellation,
 	// the operation is not deleted; instead, it becomes an operation with
-	// an [Operation.error][google.longrunning.Operation.error] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
-	// corresponding to `Code.CANCELLED`.
+	// an [Operation.error][google.longrunning.Operation.error] value with a
+	// [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to
+	// `Code.CANCELLED`.
 	CancelOperation(context.Context, *CancelOperationRequest) (*emptypb.Empty, error)
 	// Waits for the specified long-running operation until it is done or reaches
 	// at most a specified timeout, returning the latest state.  If the operation

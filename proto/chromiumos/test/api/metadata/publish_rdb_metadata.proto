@@ -13,7 +13,6 @@ import "chromiumos/test/api/ctp2.proto";
 import "chromiumos/test/api/firmware_provision.proto";
 import "chromiumos/test/api/post_test_service.proto";
 
-
 // NEXT TAG: 11
 message PublishRdbMetadata {
   // Current invocation id

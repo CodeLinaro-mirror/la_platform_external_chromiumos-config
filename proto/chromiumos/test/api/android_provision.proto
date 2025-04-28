@@ -12,11 +12,12 @@ import "chromiumos/test/api/android_provision_metadata.proto";
 import "chromiumos/test/lab/api/dut.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
-// AndroidProvisionState defines all of the installable (provisionable) elements on an
-// Android test device as part of device setup for test operations.
-// Next Tag: 4
+// AndroidProvisionState defines all of the installable (provisionable) elements
+// on an Android test device as part of device setup for test operations. Next
+// Tag: 4
 message AndroidProvisionState {
-  // Required. String encoded id that uniquely reflects a given AndroidProvisionState.
+  // Required. String encoded id that uniquely reflects a given
+  // AndroidProvisionState.
   message Id {
     string value = 1;
   }
@@ -31,9 +32,9 @@ message AndroidProvisionState {
 message AndroidProvisionRequest {
   // Required. DUT information.
   chromiumos.test.lab.api.Dut dut = 1;
-  // Required. Provision state is a pass through request to the provision service.
+  // Required. Provision state is a pass through request to the provision
+  // service.
   AndroidProvisionState provision_state = 2;
   // Required. Address of the DUT Server.
   chromiumos.test.lab.api.IpEndpoint dut_server = 3;
 }
-

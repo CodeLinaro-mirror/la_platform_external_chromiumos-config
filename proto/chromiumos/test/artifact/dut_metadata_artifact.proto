@@ -14,7 +14,6 @@ import "chromiumos/test/lab/api/dut.proto";
 // Captures artifact for dut metadata.
 // NEXT TAG: 2
 message DutMetadataArtifact {
-
   // All the related protos referred by ids in dut info in test_result
   //  should be included here.
   repeated DutInfoArtifact dut_info_artifacts = 1;
@@ -23,7 +22,6 @@ message DutMetadataArtifact {
 // Captures dut & provision related artifact info.
 // NEXT TAG: 3
 message DutInfoArtifact {
-
   // Dut referred by id in test_result.
   chromiumos.test.lab.api.Dut dut = 1;
 

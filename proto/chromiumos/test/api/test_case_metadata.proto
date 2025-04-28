@@ -67,7 +67,7 @@ message HwAgnostic {
 
 // LifeCycleStage denotes the overall usage of the test.
 message LifeCycleStage {
-  enum LifeCycle{
+  enum LifeCycle {
     LIFE_CYCLE_PRODUCTION_READY = 0;
     LIFE_CYCLE_DISABLED = 1;
     LIFE_CYCLE_IN_DEVELOPMENT = 2;

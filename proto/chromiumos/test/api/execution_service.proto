@@ -15,8 +15,7 @@ import "chromiumos/test/api/cros_test_cli.proto";
 // extracting results.
 service ExecutionService {
   // Provides the ability to run tests as specified per the request.
-  rpc RunTests(CrosTestRequest)
-      returns (longrunning.Operation) {
+  rpc RunTests(CrosTestRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "CrosTestResponse",
       metadata_type: "RunCrosTestMetadata"
@@ -24,5 +23,4 @@ service ExecutionService {
   }
 }
 
-message RunCrosTestMetadata {
-}
+message RunCrosTestMetadata {}

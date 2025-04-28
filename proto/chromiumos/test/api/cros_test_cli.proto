@@ -40,7 +40,8 @@ message CrosTestRequest {
   chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
   // Test harness specific metadata
   google.protobuf.Any metadata = 5;
-  // Generic args which will be directly passed to the harness. The driver is responsible for handling them
+  // Generic args which will be directly passed to the harness. The driver is
+  // responsible for handling them
   repeated Arg args = 6;
 
   // Publish server address.
@@ -55,9 +56,9 @@ message PublishServer {
 message CrosTestResponse {
   repeated TestCaseResult test_case_results = 1;
   google.protobuf.Any metadata = 2;
-  repeated GivenTestResult given_test_results =3;
+  repeated GivenTestResult given_test_results = 3;
 
- // useful when 1 given TC results in many child results
+  // useful when 1 given TC results in many child results
   message GivenTestResult {
     string parent_test = 1;
     repeated TestCaseResult child_test_case_results = 2;

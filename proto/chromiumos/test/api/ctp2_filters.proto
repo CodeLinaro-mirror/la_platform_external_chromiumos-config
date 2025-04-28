@@ -1,0 +1,53 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// GenericFilterStreamRequest holds many streamable message types for
+// sending to the ctpv2 filter.
+message GenericFilterStreamRequest {
+    oneof message {
+        InternalTestplanFragment internal_testplan_fragment = 1;
+    }
+}
+
+// GenericFilterStreamResponse holds many streamable message types for
+// sending back to ctpv2.
+message GenericFilterStreamResponse {
+    oneof message {
+        InternalTestplanFragment internal_testplan_fragment = 1;
+        LogFragment log_fragment = 2;
+    }
+}
+
+// FragmentMetadata should be attached to objects that will be fragmented.
+message FragmentMetadata {
+    // Total size of the unfragmented object.
+    // Used as a final verification on the object streaming.
+    int64 total_size = 1;
+    // Total amount of fragments that the object was split into.
+    // Used to detect end of fragment streaming.
+    int64 total_fragments = 2;
+    // Positional index of the fragment in relation to the whole.
+    // Used to detect data lossed over the wire as gRPC streaming
+    // is supposed to guarantee order of delivery.
+    int64 index = 3;
+    // Size of this fragment being received.
+    // Used as a sort of checksum on the actual fragment payload.
+    int64 fragment_size = 4;
+}
+
+message InternalTestplanFragment {
+    bytes fragment = 1;
+    FragmentMetadata metadata = 2;
+}
+
+message LogFragment {
+    bytes fragment = 1;
+    FragmentMetadata metadata = 2;
+}

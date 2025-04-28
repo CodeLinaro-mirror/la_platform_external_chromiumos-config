@@ -17,8 +17,7 @@ service PublishService {
   // UploadToGS uploads a folder to Google Cloud Storage
   //
   // Effectively this should function as a thin wrapper around the GCS API.
-  rpc UploadToGS(UploadToGSRequest)
-      returns (longrunning.Operation) {
+  rpc UploadToGS(UploadToGSRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "UploadToGSResponse",
       metadata_type: "UploadToGSMetadata"
@@ -39,5 +38,4 @@ message UploadToGSResponse {
   string gs_url = 1;
 }
 
-message UploadToGSMetadata {
-}
+message UploadToGSMetadata {}

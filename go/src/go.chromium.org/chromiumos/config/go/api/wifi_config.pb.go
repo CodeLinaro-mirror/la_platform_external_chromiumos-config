@@ -2483,16 +2483,16 @@ func (x *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_6G_5() uin
 // current regulatory domain is unknown or has yet to be determined, the
 // base transmit power limits are used without any geo offsets applied.
 // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
-// guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
-// ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
-// domains which don't follow FCC or ETSI guidelines.
+// guidelines, 'geo-offsets-eu' is used for regulatory domains which
+// follow ETSI guidelines, and 'geo-offsets-rest-of-world' is used for
+// regulatory domains which don't follow FCC or ETSI guidelines.
 type WifiConfig_IntelConfig_Offsets_GeoOffsets struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Defines the 2.4 GHz upper value for the allowed power to not be crossed
-	// by applying the Geo offset.
+	// Defines the 2.4 GHz upper value for the allowed power to not be
+	// crossed by applying the Geo offset.
 	Max_2G uint32 `protobuf:"varint,1,opt,name=max_2g,json=max2g,proto3" json:"max_2g,omitempty"`
 	// Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm)
 	Offset_2GA uint32 `protobuf:"varint,2,opt,name=offset_2g_a,json=offset2gA,proto3" json:"offset_2g_a,omitempty"`

@@ -223,6 +223,12 @@ _DGPU = hw_topo.create_dgpu(
     dgpu_type = hw_topo.dgpu.DGPU_NV3050,
 )
 
+_DSP_ISH = hw_topo.create_dsp(
+    "ISH",
+    "Intel ISH",
+    dsp_vendor = hw_topo.dsp.DSP_VENDOR_INTEL,
+)
+
 _UWB = hw_topo.create_uwb(
     "UWB",
     "Default UWB",
@@ -507,6 +513,9 @@ _SC_FIRMWARE_INFO = sc.create_fw_info(
 _SC_HEALTH = sc.create_health(
     vpd_has_sku_number = True,
     battery_has_smart_battery_info = True,
+    routines_battery_capacity_high_mah = 10000,
+    routines_battery_capacity_low_mah = 1000,
+    routines_battery_health_maximum_cycle_count = 1000,
     routines_battery_health_percent_battery_wear_allowed = 50,
     routines_nvme_wear_level_wear_level_threshold = 50,
 )
@@ -1095,6 +1104,7 @@ _TWO_FAN = hw_topo.create_fan(
 
 _EC_LIMITED = hw_topo.create_ec(
     max_sensor_odr_mhz = 50000,
+    max_accelerometer_calibration = 100,
 )
 
 def create_hardware_topology(
@@ -1124,7 +1134,8 @@ def create_hardware_topology(
         detachable_base = None,
         soc = None,
         sd_reader = None,
-        fan = None):
+        fan = None,
+        dsp = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -1155,6 +1166,7 @@ def create_hardware_topology(
         power_supply = power_supply if power_supply else _POWER_SUPPLY,
         battery = battery,
         dgpu = dgpu,
+        dsp = dsp,
         uwb = uwb,
         detachable_base = detachable_base,
         soc = soc,
@@ -1186,6 +1198,7 @@ design.append_configs(
         hps = _HPS,
         battery = _BATTERY,
         dgpu = _DGPU,
+        dsp = _DSP_ISH,
         uwb = _UWB,
         sd_reader = _NO_SD_READER,
         fan = _NO_FAN,

@@ -10,13 +10,14 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
 // This proto defines the perhipheral topology in a PASIT testbed.
 
-// PASIT is a connected set of peripheral components used in interop testing. The
-// components connected are controlled via an external host. PasitHost describes the
-// devices in the testbed and their connection topology.
+// PASIT is a connected set of peripheral components used in interop testing.
+// The components connected are controlled via an external host. PasitHost
+// describes the devices in the testbed and their connection topology.
 message PasitHost {
   // The name of the host that controls the devices (e.g. switches)
   string hostname = 1;
-  // The components/devices in the PASIT testbed (e.g. docks, switches, cameras, monitors, etc)
+  // The components/devices in the PASIT testbed (e.g. docks, switches, cameras,
+  // monitors, etc)
   repeated Device devices = 2;
   // The connections between devices/components in the testbed.
   repeated Connection connections = 3;
@@ -62,6 +63,7 @@ message PasitHost {
       NETWORK = 8;
       HEADPHONE = 9;
       SPEAKER = 10;
+      IP_POWER = 11;
     }
 
     // Information on the power capabilities of the device.

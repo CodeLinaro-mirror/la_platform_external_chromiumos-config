@@ -11,17 +11,14 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 // TestLibsService defines interactions with a Test Libs Server.
 service TestLibsService {
   // StartLib starts a new docker container running for the given library.
-  rpc StartLib(GetLibRequest)
-      returns (GetLibResponse);
+  rpc StartLib(GetLibRequest) returns (GetLibResponse);
 
   // FindLib connects to an existing docker container (or starts one if no match
   // is found).
-  rpc FindLib(GetLibRequest)
-      returns (GetLibResponse);
+  rpc FindLib(GetLibRequest) returns (GetLibResponse);
 
   // KillLib closes a running docker container.
-  rpc KillLib(KillLibRequest)
-      returns (KillLibResponse);
+  rpc KillLib(KillLibRequest) returns (KillLibResponse);
 }
 
 // Get Lib messages.
@@ -58,5 +55,4 @@ message KillLibRequest {
   string options = 2;
 }
 
-message KillLibResponse {
-}
+message KillLibResponse {}

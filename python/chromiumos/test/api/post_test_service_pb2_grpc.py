@@ -6,12 +6,13 @@ from chromiumos.test.api import post_test_service_pb2 as chromiumos_dot_test_dot
 
 
 class PostTestServiceStub(object):
-    """PostTestService acts as a post-test landing point for needed services/actions.
-    For example:
+    """PostTestService acts as a post-test landing point for needed
+    services/actions. For example:
     - getting the fw versions for RDB uploading
     - getting crash logs in the event of a harness crash
     - getting specific file from the DUT
-    Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
+    Could be expanded to include harness agnostic post-test cleanups, repairs,
+    etc.
     """
 
     def __init__(self, channel):
@@ -38,12 +39,13 @@ class PostTestServiceStub(object):
 
 
 class PostTestServiceServicer(object):
-    """PostTestService acts as a post-test landing point for needed services/actions.
-    For example:
+    """PostTestService acts as a post-test landing point for needed
+    services/actions. For example:
     - getting the fw versions for RDB uploading
     - getting crash logs in the event of a harness crash
     - getting specific file from the DUT
-    Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
+    Could be expanded to include harness agnostic post-test cleanups, repairs,
+    etc.
     """
 
     def StartUp(self, request, context):
@@ -93,12 +95,13 @@ def add_PostTestServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class PostTestService(object):
-    """PostTestService acts as a post-test landing point for needed services/actions.
-    For example:
+    """PostTestService acts as a post-test landing point for needed
+    services/actions. For example:
     - getting the fw versions for RDB uploading
     - getting crash logs in the event of a harness crash
     - getting specific file from the DUT
-    Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
+    Could be expanded to include harness agnostic post-test cleanups, repairs,
+    etc.
     """
 
     @staticmethod

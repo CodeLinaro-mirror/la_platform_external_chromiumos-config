@@ -19,8 +19,7 @@ service GenericPublishService {
   // Publish publishes test results to a specific endpoint.
   // It is intended to be a generic publish grpc that may be
   // used by all endpoints.
-  rpc Publish(PublishRequest)
-      returns (longrunning.Operation) {
+  rpc Publish(PublishRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "PublishResponse",
       metadata_type: "PublishMetadata"
