@@ -18906,6 +18906,96 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "enumType": [
+        {
+          "name": "RPMType",
+          "value": [
+            {
+              "name": "RPM_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "RPM_TYPE_SENTRY",
+              "number": 1
+            },
+            {
+              "name": "RPM_TYPE_IP9850",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frontendAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "frontend_address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_hostname",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitOutlet",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_outlet",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hydraHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hydra_hostname",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RPMType"
+            }
+          ],
+          "name": "RPM"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/rpm.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/lab/api/rpm.proto"
+      ],
       "messageType": [
         {
           "field": [
@@ -19061,6 +19151,14 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.PasitHost.Device.PowerSupply"
+                },
+                {
+                  "jsonName": "rpm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "rpm",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.RPM"
                 }
               ],
               "name": "Device",
@@ -19097,93 +19195,6 @@
         }
       ],
       "name": "chromiumos/test/lab/api/pasit_host.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/lab/api/ip_endpoint.proto"
-      ],
-      "enumType": [
-        {
-          "name": "RPMType",
-          "value": [
-            {
-              "name": "RPM_TYPE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "RPM_TYPE_SENTRY",
-              "number": 1
-            },
-            {
-              "name": "RPM_TYPE_IP9850",
-              "number": 2
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "frontendAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "frontend_address",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "powerUnitHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_unit_hostname",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "powerUnitOutlet",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_unit_outlet",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "hydraHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "hydra_hostname",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 6,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.RPMType"
-            }
-          ],
-          "name": "RPM"
-        }
-      ],
-      "name": "chromiumos/test/lab/api/rpm.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
