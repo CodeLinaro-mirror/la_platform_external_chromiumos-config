@@ -359,7 +359,8 @@ message ServodValue {
   oneof value {
     string string_value = 1;
     int32 int_value = 2;
-    float float_value = 3;
+    float float_value = 3 [deprecated = true];
+    double double_value = 4;
   }
 }
 

@@ -22587,7 +22587,18 @@
               "name": "float_value",
               "number": 3,
               "oneofIndex": 0,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_FLOAT"
+            },
+            {
+              "jsonName": "doubleValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "double_value",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_DOUBLE"
             }
           ],
           "name": "ServodValue",
