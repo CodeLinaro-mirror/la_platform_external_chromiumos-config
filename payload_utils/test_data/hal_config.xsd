@@ -1,4 +1,5 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- Naming style: the attribute names of elements uses "smallcase-and-dash" style.  -->
 
   <xs:simpleType name="ModemTypeEn">
     <xs:restriction base="xs:string">
@@ -14,20 +15,20 @@
 
   <xs:complexType name="IdentityType">
     <xs:sequence>
-      <xs:element type="xs:string" name="SkuID"/>
-      <xs:element type="xs:string" name="Model"/>
-      <xs:element type="xs:string" name="CustomLabelTag" minOccurs="0"/>
+      <xs:element type="xs:string" name="sku-id"/>
+      <xs:element type="xs:string" name="model"/>
+      <xs:element type="xs:string" name="custom-label-tag" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="CellularConfigurationType">
     <xs:sequence>
-      <xs:element type="xs:string" name="FirmwareVariant" minOccurs="1">
+      <xs:element type="xs:string" name="firmware-variant" minOccurs="1">
         <xs:annotation>
           <xs:documentation>The modem firmware file to flash onto the modem</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModemType" type="ModemTypeEn" minOccurs="1"/>
+      <xs:element name="modem-type" type="ModemTypeEn" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 

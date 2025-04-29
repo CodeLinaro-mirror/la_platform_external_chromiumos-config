@@ -103,9 +103,9 @@ def _add_cellular_entry(
         )
         return
     cell_config_elem = etree.SubElement(hal_config, "CellularConfiguration")
-    fw_variant_elem = etree.SubElement(cell_config_elem, "FirmwareVariant")
+    fw_variant_elem = etree.SubElement(cell_config_elem, "firmware-variant")
     fw_variant_elem.text = cellular_features.model
-    modem_type_elem = etree.SubElement(cell_config_elem, "ModemType")
+    modem_type_elem = etree.SubElement(cell_config_elem, "modem-type")
     modem_type_elem.text = modem_type_xsd_str
 
 
@@ -195,9 +195,9 @@ def _add_hal_config_entry(
 
     identity_elem = etree.SubElement(hal_config_elem, "Identity")
     model, sku = design_config.id.value.split(":")
-    sku_elem = etree.SubElement(identity_elem, "SkuID")
+    sku_elem = etree.SubElement(identity_elem, "sku-id")
     sku_elem.text = sku
-    model_elem = etree.SubElement(identity_elem, "Model")
+    model_elem = etree.SubElement(identity_elem, "model")
     model_elem.text = model
 
     _add_cellular_entry(hal_config_elem, design_config)
