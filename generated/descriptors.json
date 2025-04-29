@@ -29629,6 +29629,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.InternalTestplanFragment"
+            },
+            {
+              "jsonName": "authFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "auth_fragment",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AuthorizationFragment"
             }
           ],
           "name": "GenericFilterStreamRequest",
@@ -29657,6 +29666,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.LogFragment"
+            },
+            {
+              "jsonName": "authFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "auth_fragment",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AuthorizationFragment"
             }
           ],
           "name": "GenericFilterStreamResponse",
@@ -29738,6 +29756,57 @@
             }
           ],
           "name": "LogFragment"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "credentialPaths",
+              "label": "LABEL_REPEATED",
+              "name": "credential_paths",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "scopes",
+              "label": "LABEL_REPEATED",
+              "name": "scopes",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AuthorizationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "token",
+              "label": "LABEL_OPTIONAL",
+              "name": "token",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AuthorizationResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "AuthorizationFragment"
         }
       ],
       "name": "chromiumos/test/api/ctp2_filters.proto",

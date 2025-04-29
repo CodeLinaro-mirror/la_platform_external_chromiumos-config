@@ -13,6 +13,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 message GenericFilterStreamRequest {
     oneof message {
         InternalTestplanFragment internal_testplan_fragment = 1;
+        AuthorizationFragment auth_fragment = 2;
     }
 }
 
@@ -22,6 +23,7 @@ message GenericFilterStreamResponse {
     oneof message {
         InternalTestplanFragment internal_testplan_fragment = 1;
         LogFragment log_fragment = 2;
+        AuthorizationFragment auth_fragment = 3;
     }
 }
 
@@ -48,6 +50,26 @@ message InternalTestplanFragment {
 }
 
 message LogFragment {
+    bytes fragment = 1;
+    FragmentMetadata metadata = 2;
+}
+
+message AuthorizationRequest {
+    // Path to the possible credentials to use. Receiving client
+    // is expected to use the first successful path.
+    // Leave empty to use ADC, or specify "ADC".
+    repeated string credential_paths = 1;
+    // Scopes to limit the access to APIs.
+    // For Google APIs please see
+    // https://developers.google.com/identity/protocols/oauth2/scopes
+    repeated string scopes = 2;
+}
+
+message AuthorizationResponse {
+    string token = 1;
+}
+
+message AuthorizationFragment {
     bytes fragment = 1;
     FragmentMetadata metadata = 2;
 }
