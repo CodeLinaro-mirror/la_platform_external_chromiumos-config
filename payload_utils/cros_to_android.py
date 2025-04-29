@@ -35,8 +35,10 @@ from lxml import etree  # pylint: disable=import-error
 # TODO(b/402027869): Figure out a better way to distribute this proto with the
 # script.
 try:
+    from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
     from chromiumos.config.api import topology_pb2
+    from chromiumos.config.api.software import software_config_pb2
     from chromiumos.config.payload import config_bundle_pb2
 except ImportError:
     sys.exit(
@@ -44,6 +46,49 @@ except ImportError:
         "Make sure the files exist and the directory structure "
         "(e.g., chromiumos/config/api/) is correct relative to the script's"
         " execution directory or in your PYTHONPATH."
+    )
+
+
+def _get_sw_config(
+    sw_configs: list[software_config_pb2.SoftwareConfig],
+    design_config_id: design_config_id_pb2.DesignConfigId.value,
+) -> software_config_pb2.SoftwareConfig:
+    """Returns the correct software config match for `design_config_id`.
+
+    If no such config or multiple such configs are found an exception is raised.
+
+    Args:
+        sw_configs: list of all software configs in a config bundle.
+        design_config_id: unique identifier mapped to a design config
+
+    Returns:
+        A software_config_pb2.SoftwareConfig matching design config ID.
+    """
+    sw_config_matches = [
+        x for x in sw_configs if x.design_config_id.value == design_config_id
+    ]
+    if len(sw_config_matches) == 1:
+        return sw_config_matches[0]
+    if len(sw_config_matches) > 1:
+        raise ValueError(
+            f"Multiple software configs found for: { design_config_id}"
+        )
+    raise ValueError(f"Software config is required for: {design_config_id}")
+
+
+def _get_fw_customization_id(design_config: design_pb2.Design.Config) -> str:
+    """Returns firmware config customization string
+
+    Args:
+        design_config: The Design.Config proto.
+
+    Returns:
+        Firmware config customization string
+    """
+    fw_config = design_config.hardware_features.fw_config
+    return "_".join(
+        f"_{customization}"
+        for customization in sorted(fw_config.coreboot_customizations)
     )
 
 
@@ -165,19 +210,54 @@ def _add_fingerprint_entry(
 
     fp_config_elem = etree.SubElement(hal_config, "FingerprintConfiguration")
     etree.SubElement(fp_config_elem, "board").text = fp_features.board
-    etree.SubElement(fp_config_elem, "fingerprint-sensor-type").text = (
-        sensor_type_xsd_str
-    )
+    etree.SubElement(
+        fp_config_elem, "fingerprint-sensor-type"
+    ).text = sensor_type_xsd_str
     if fp_features.ro_version:
-        etree.SubElement(fp_config_elem, "ro-version").text = (
-            fp_features.ro_version
-        )
+        etree.SubElement(
+            fp_config_elem, "ro-version"
+        ).text = fp_features.ro_version
     etree.SubElement(fp_config_elem, "sensor-location").text = location_enum_str
+
+
+def _add_firmware_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+    sw_config: software_config_pb2.SoftwareConfig,
+) -> None:
+    """Adds FirmwareConfiguration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+        sw_config: software_config_pb2.SoftwareConfig specific to a design
+        config.
+    """
+    fw_main_ro = sw_config.firmware.main_ro_payload
+    if fw_main_ro and fw_main_ro.firmware_image_name:
+        image_name = (
+            fw_main_ro.firmware_image_name.lower()
+            + _get_fw_customization_id(design_config)
+        )
+    else:
+        logging.warning(
+            "Firmware image name not found for Design.Config ID '%s'."
+            "Skipping FirmwareConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    firmware_config_elem = etree.SubElement(hal_config, "FirmwareConfiguration")
+    fw_image_name_elem = etree.SubElement(
+        firmware_config_elem, "firmware-manifest-key"
+    )
+    fw_image_name_elem.text = image_name
 
 
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
+    sw_config: software_config_pb2.SoftwareConfig,
 ) -> None:
     """Adds a HalConfig to the XML tree for a Design.Config.
 
@@ -203,6 +283,7 @@ def _add_hal_config_entry(
 
     _add_cellular_entry(hal_config_elem, design_config)
     _add_fingerprint_entry(hal_config_elem, design_config)
+    _add_firmware_entry(hal_config_elem, design_config, sw_config)
 
 
 def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
@@ -220,7 +301,10 @@ def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
 
     for design in config_bundle.design_list:
         for design_config in design.configs:
-            _add_hal_config_entry(root, design_config)
+            sw_config = _get_sw_config(
+                config_bundle.software_configs, design_config.id.value
+            )
+            _add_hal_config_entry(root, design_config, sw_config)
 
     return etree.tostring(
         root,

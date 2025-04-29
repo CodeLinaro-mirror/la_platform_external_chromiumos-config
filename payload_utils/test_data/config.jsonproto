@@ -100,6 +100,24 @@
       },
       "idScanConfig": {
         "firmwareSku": 123
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "TestDesignNoCell_EC",
+          "type": 2,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "TestDesignNoCell",
+          "type": 1,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        }
       }
     },
     {
@@ -108,6 +126,24 @@
       },
       "idScanConfig": {
         "firmwareSku": 456
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "TestDesignWithCell_EC",
+          "type": 2,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "TestDesignWithCell",
+          "type": 1,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        }
       }
     },
     {
@@ -116,6 +152,76 @@
       },
       "idScanConfig": {
         "firmwareSku": 789
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "TestDesignWithCell_EC",
+          "type": 2,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "TestDesignWithCell",
+          "type": 1,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        }
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "TestDesignWithFingerprint:123"
+      },
+      "idScanConfig": {
+        "firmwareSku": 123
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "TestDesignWithFingerprint_EC",
+          "type": 2,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "TestDesignWithFingerprint",
+          "type": 1,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        }
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "TestDesignWithFingerprint:456"
+      },
+      "idScanConfig": {
+        "firmwareSku": 456
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "TestDesignWithFingerprint_EC",
+          "type": 2,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "TestDesignWithFingerprint",
+          "type": 1,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        }
       }
     }
   ],
