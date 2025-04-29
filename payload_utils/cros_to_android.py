@@ -6,7 +6,8 @@
 """Converts a ConfigBundle JSON file to Android configs.
 
 Reads a single JSON file representing a chromiumos.config.payload.ConfigBundle
-message and generates corresponding Android configs, such as HAL XML files.
+message and generates corresponding Android configs, such as HAL XML files
+and feature XML files.
 """
 
 # [VPYTHON:BEGIN]
@@ -204,14 +205,14 @@ def _add_hal_config_entry(
     _add_fingerprint_entry(hal_config_elem, design_config)
 
 
-def _convert_to_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
-    """Converts a ConfigBundle proto to XML.
+def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
+    """Converts a ConfigBundle proto to HAL XML.
 
     Args:
         config_bundle: The ConfigBundle proto.
 
     Returns:
-        The generated XML content as bytes.
+        The generated HAL XML content as bytes.
     """
     logging.info("Starting XML conversion from ConfigBundle...")
 
@@ -251,7 +252,7 @@ def run_generate_hal_xml(opts: argparse.Namespace) -> None:
     """Handles the 'generate-hal-xml' sub-command logic."""
     logging.info("Running generate-hal-xml command...")
     config_bundle = _load_config_bundle(opts.jsonproto_file)
-    xml_string = _convert_to_xml(config_bundle)
+    xml_string = _convert_to_hal_xml(config_bundle)
     _validate_xml(xml_string, opts.xsd_schema)
 
     opts.output_xml.parent.mkdir(parents=True, exist_ok=True)
@@ -260,9 +261,78 @@ def run_generate_hal_xml(opts: argparse.Namespace) -> None:
     logging.info("XML written to %s.", opts.output_xml)
 
 
+def _generate_fingerprint_feature_xml(
+    design_config: design_pb2.Design.Config, output_dir: pathlib.Path
+) -> None:
+    """Generates the fingerprint feature XML if the feature is present.
+
+    Args:
+        design_config: The Design.Config proto.
+        output_dir: The base directory to write the feature XML into.
+    """
+    if not design_config.id.value:
+        logging.warning(
+            "Skipping Design.config due to missing 'design_config.id': %s",
+            design_config,
+        )
+        return
+
+    if not design_config.hardware_features.fingerprint.present:
+        logging.debug(
+            "Skipping fingerprint feature XML for %s: feature not present.",
+            design_config.id.value,
+        )
+        return
+
+    model, sku = design_config.id.value.split(":")
+
+    config_dir_name = f"{model}_{sku}"
+    config_output_dir = output_dir / config_dir_name
+    output_file = config_output_dir / "android.hardware.fingerprint.xml"
+
+    permissions_elem = etree.Element("permissions")
+    feature_elem = etree.SubElement(permissions_elem, "feature")
+    feature_elem.set("name", "android.hardware.fingerprint")
+
+    xml_bytes = etree.tostring(
+        permissions_elem,
+        pretty_print=True,
+    )
+
+    config_output_dir.mkdir(parents=True, exist_ok=True)
+    with open(output_file, "wb") as f:
+        f.write(xml_bytes)
+    logging.info(
+        "Writing fingerprint feature XML for %s:%s to %s",
+        model,
+        sku,
+        output_file,
+    )
+
+
+def run_generate_feature_xml(opts: argparse.Namespace) -> None:
+    """Handles the 'generate-feature-xml' sub-command logic."""
+    logging.info("Running generate-feature-xml command...")
+    config_bundle = _load_config_bundle(opts.jsonproto_file)
+
+    output_dir = opts.output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    for design in config_bundle.design_list:
+        for design_config in design.configs:
+            _generate_fingerprint_feature_xml(design_config, output_dir)
+
+
 def _get_parser() -> argparse.ArgumentParser:
     """Sets up the main argument parser and sub-parsers."""
     parser = argparse.ArgumentParser(description=__doc__)
+
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Enable verbose debug logging.",
+    )
 
     subparsers = parser.add_subparsers(required=True)
 
@@ -281,7 +351,7 @@ def _get_parser() -> argparse.ArgumentParser:
         "--output-xml",
         required=True,
         type=pathlib.Path,
-        help="Path to write the output XML file.",
+        help="Path to write the output HAL XML file.",
     )
     parser_hal_xml.add_argument(
         "-x",
@@ -294,13 +364,27 @@ def _get_parser() -> argparse.ArgumentParser:
             "device/google/desktop/common/+/main/config/hal_config.xsd."
         ),
     )
-    parser_hal_xml.add_argument(
-        "-v",
-        "--verbose",
-        action="store_true",
-        help="Enable verbose debug logging.",
-    )
     parser_hal_xml.set_defaults(func=run_generate_hal_xml)
+
+    parser_feature_xml = subparsers.add_parser(
+        "generate-feature-xml",
+        help="Generate Android feature XML files based on hardware presence.",
+    )
+    parser_feature_xml.add_argument(
+        "jsonproto_file",
+        metavar="JSONPROTO_FILE",
+        type=pathlib.Path,
+        help="Path to the input JSON file representing a ConfigBundle message.",
+    )
+    parser_feature_xml.add_argument(
+        "-o",
+        "--output-dir",
+        required=True,
+        type=pathlib.Path,
+        help="Path to the base directory where <Model>_<SkuID> subdirectories "
+        "containing feature XML files will be created.",
+    )
+    parser_feature_xml.set_defaults(func=run_generate_feature_xml)
 
     return parser
 
