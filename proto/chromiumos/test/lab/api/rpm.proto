@@ -1,0 +1,36 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+
+
+// Next Tag: 3
+enum RPMType {
+  RPM_TYPE_UNKNOWN = 0;
+  RPM_TYPE_SENTRY = 1;
+  RPM_TYPE_IP9850 = 2;
+}
+
+// Remote power management capability for the device.
+message RPM {
+  bool present = 1;
+  // Address to the frontend service for accessing the RPM.
+  // The frontend service is an HTTP service that supports XMLRPC calls.
+  IpEndpoint frontend_address = 2;
+  // Hostname of a particular PDU that assigned to the DUT.
+  IpEndpoint power_unit_hostname = 3;
+  // Outlet name/number assigned to the DUT
+  string power_unit_outlet = 4;
+  // (Optional) Hydra hostname if the PDU access require a hydra.
+  IpEndpoint hydra_hostname = 5;
+  // RPM type
+  RPMType type = 6;
+}
+
