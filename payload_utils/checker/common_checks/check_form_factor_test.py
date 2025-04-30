@@ -6,6 +6,8 @@
 
 import unittest
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from checker.common_checks.check_form_factor import FormFactorConstraintSuite
 from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.program_pb2 import Program
