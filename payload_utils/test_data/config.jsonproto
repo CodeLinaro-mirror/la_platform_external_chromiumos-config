@@ -55,6 +55,42 @@
           }
         }
       ]
+    },
+    {
+      "id": {
+        "value": "TestDesignWithFingerprint"
+      },
+      "name": "TestDesignWithFingerprint",
+      "programId": {
+        "value": "TestProgram"
+      },
+      "configs": [
+        {
+          "id": {
+            "value": "TestDesignWithFingerprint:123"
+          },
+          "hardwareFeatures": {
+            "fingerprint": {
+              "location": "KEYBOARD_BOTTOM_RIGHT",
+              "board": "testfpboard",
+              "present": true,
+              "roVersion": "123"
+            }
+          }
+        },
+        {
+          "id": {
+            "value": "TestDesignWithFingerprint:456"
+          },
+          "hardwareFeatures": {
+            "fingerprint": {
+              "location": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
+              "board": "testfpboard",
+              "present": true
+            }
+          }
+        }
+      ]
     }
   ],
   "softwareConfigs": [

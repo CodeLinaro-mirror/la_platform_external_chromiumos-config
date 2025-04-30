@@ -9,6 +9,7 @@ load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 proto_library(
     name = "api_proto",
     srcs = [
+        "ash_chrome_config.proto",
         "container_metadata.proto",
         "dlc.proto",
         "factory.proto",

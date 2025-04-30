@@ -6,6 +6,8 @@
 
 import unittest
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from checker.common_checks.check_firmware_configuration import (
     FirmwareConfigurationConstraintSuite,
 )

@@ -1,0 +1,22 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+import "chromiumos/storage_path.proto";
+
+// Configuration for provisioning AshChrome from Browser build artifacts to DUT.
+message AshChromeConfig {
+  // Location of the Chrome builder build artifact (either local or GS path).
+  StoragePath chrome_builder_artifact_path = 1;
+
+  // The build output dir for the Chrome build to deploy.
+  // Should be the same as `gn gen` or `ninja -C` when building Chrome browser.
+  // For example, out/Release.
+  string build_output_dir = 2;
+}
