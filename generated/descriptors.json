@@ -20319,6 +20319,20 @@
                   "number": 6,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.DutModel"
+                },
+                {
+                  "jsonName": "gscSerial",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gsc_serial",
+                  "number": 7,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "debuggerSerial",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "debugger_serial",
+                  "number": 8,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Devboard"
@@ -31048,6 +31062,214 @@
             }
           ],
           "name": "GenericFilterService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "containerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testbedType",
+              "label": "LABEL_OPTIONAL",
+              "name": "testbed_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_serial",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "debuggerSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "debugger_serial",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "servicePort",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_port",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_image",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "debug",
+              "label": "LABEL_OPTIONAL",
+              "name": "debug",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "StartDevboardServiceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StartDevboardServiceResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StartDevboardServiceResponse.Failure"
+            }
+          ],
+          "name": "StartDevboardServiceResponse",
+          "nestedType": [
+            {
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "StartDevboardServiceMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "containerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StopDevboardServiceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StopDevboardServiceResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StopDevboardServiceResponse.Failure"
+            }
+          ],
+          "name": "StopDevboardServiceResponse",
+          "nestedType": [
+            {
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "StopDevboardServiceMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/devboard_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.StartDevboardServiceRequest",
+              "name": "StartDevboardService",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "StartDevboardServiceMetadata",
+                  "responseType": "StartDevboardServiceResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StopDevboardServiceRequest",
+              "name": "StopDevboardService",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "StopDevboardServiceMetadata",
+                  "responseType": "StopDevboardServiceResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "DevboardService"
         }
       ],
       "syntax": "proto3"
