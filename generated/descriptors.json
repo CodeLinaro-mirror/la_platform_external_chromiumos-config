@@ -20270,6 +20270,14 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.DutModel"
+                },
+                {
+                  "jsonName": "servo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Servo"
                 }
               ],
               "name": "Android"

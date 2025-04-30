@@ -80,6 +80,7 @@ message Dut {
     // A string created by adb to uniquely identify the device.
     string serial_number = 3;
     DutModel dut_model = 4;
+    Servo servo = 5;
   }
 
   // Devboard specific DUT details
