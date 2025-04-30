@@ -40422,7 +40422,7 @@
               "number": 0
             },
             {
-              "name": "PIN_ASSIGMENT",
+              "name": "PIN_ASSIGNMENT",
               "number": 1
             },
             {
@@ -40521,10 +40521,10 @@
           ]
         },
         {
-          "name": "PinAassignment",
+          "name": "PinAssignment",
           "value": [
             {
-              "name": "PIN_AASSIGNMENT_NOT_SET",
+              "name": "PIN_ASSIGNMENT_NOT_SET",
               "number": 0
             },
             {
@@ -40920,7 +40920,7 @@
               "number": 4,
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+              "typeName": ".chromiumos.test.lab.api.passport.PinAssignment"
             },
             {
               "jsonName": "powerRole",
@@ -41039,7 +41039,7 @@
               "number": 6,
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+              "typeName": ".chromiumos.test.lab.api.passport.PinAssignment"
             },
             {
               "jsonName": "powerRole",
