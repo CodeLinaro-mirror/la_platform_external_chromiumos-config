@@ -6,6 +6,8 @@
 
 import unittest
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from checker.common_checks.check_topology import TopologyConstraintSuite
 from chromiumos.config.api.component_pb2 import Component
 from chromiumos.config.api.design_pb2 import Design

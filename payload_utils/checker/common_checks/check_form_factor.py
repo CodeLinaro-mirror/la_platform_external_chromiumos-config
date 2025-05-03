@@ -7,6 +7,8 @@
 import pathlib
 from typing import Iterable
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from checker import constraint_suite
 from chromiumos.config.api import design_pb2
 from chromiumos.config.api import program_pb2
