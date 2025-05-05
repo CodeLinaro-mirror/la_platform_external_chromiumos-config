@@ -5,12 +5,19 @@
 
 """Unit tests for the cros_to_android script."""
 
-import logging
 import pathlib
 import tempfile
 import unittest
 
-import cros_to_android  # pylint: disable=import-error
+# pylint: disable=import-error
+from chromiumos.config.api import design_pb2
+from chromiumos.config.api import topology_pb2
+from chromiumos.config.api.software import software_config_pb2
+import cros_to_android
+from lxml import etree
+
+
+# pylint: enable=import-error
 
 
 TEST_DATA_DIR = pathlib.Path(__file__).parent / "test_data"
@@ -29,14 +36,10 @@ class CrosConfigConverterMainTest(unittest.TestCase):
         self.temp_dir = pathlib.Path(self.temp_dir_obj.name)
         self.output_xml_path = self.temp_dir / "hal_config.xml"
         self.output_features_dir = self.temp_dir / "features"
-        # Suppress logging below ERROR during tests
-        logging.disable(logging.CRITICAL)
 
     def tearDown(self):
         """Clean up the temporary directory."""
         self.temp_dir_obj.cleanup()
-        # Re-enable logging
-        logging.disable(logging.NOTSET)
 
     def test_main_generate_hal_xml_success(self):
         """Test main() generate-hal-xml success flow."""
@@ -77,8 +80,8 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 for p in output_files
             ),
             [
-                "TestDesignWithFingerprint_123/android.hardware.fingerprint.xml",
-                "TestDesignWithFingerprint_456/android.hardware.fingerprint.xml",
+                "TestDesign_123/android.hardware.fingerprint.xml",
+                "TestDesign_456/android.hardware.fingerprint.xml",
             ],
         )
 
@@ -89,6 +92,184 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 b'<feature name="android.hardware.fingerprint"/>\n'
                 b"</permissions>\n",
             )
+
+
+class HalEntryHelpersTest(unittest.TestCase):
+    """Tests for the _add_*_entry helper functions."""
+
+    # pylint: disable=protected-access
+
+    def setUp(self):
+        self.root_element = etree.Element("HalConfig")
+        self.design_config = design_pb2.Design.Config()
+        self.design_config.id.value = "TestModel:123"
+        self.sw_config = software_config_pb2.SoftwareConfig()
+
+    def test_add_cellular_entry_present_valid(self):
+        """Test cellular entry with valid present modem."""
+        self.design_config.hardware_features.cellular.present = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self.design_config.hardware_features.cellular.model = "TestFirmware"
+        self.design_config.hardware_features.cellular.modem_type = (
+            topology_pb2.HardwareFeatures.Cellular.MODEM_FM101
+        )
+
+        cros_to_android._add_cellular_entry(
+            self.root_element, self.design_config
+        )
+
+        cc_elem = self.root_element.find("CellularConfiguration")
+        self.assertIsNotNone(cc_elem)
+        self.assertEqual(cc_elem.find("firmware-variant").text, "TestFirmware")
+        self.assertEqual(cc_elem.find("modem-type").text, "FM101")
+
+    def test_add_cellular_entry_not_present(self):
+        """Test cellular entry when feature is not present."""
+        self.design_config.hardware_features.cellular.present = (
+            topology_pb2.HardwareFeatures.NOT_PRESENT
+        )
+        cros_to_android._add_cellular_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("CellularConfiguration"))
+
+    def test_add_cellular_entry_modem_unknown(self):
+        """Test cellular entry with MODEM_UNKNOWN."""
+        self.design_config.hardware_features.cellular.present = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self.design_config.hardware_features.cellular.modem_type = (
+            topology_pb2.HardwareFeatures.Cellular.MODEM_UNKNOWN
+        )
+        cros_to_android._add_cellular_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("CellularConfiguration"))
+
+    def test_add_fingerprint_entry_present_power_button(self):
+        """Test fingerprint entry, present, on power button."""
+        fp_features = self.design_config.hardware_features.fingerprint
+        fp_features.present = True
+        fp_features.board = "TestBoard"
+        fp_features.location = (
+            topology_pb2.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT
+        )
+        fp_features.ro_version = "v1.0"
+
+        cros_to_android._add_fingerprint_entry(
+            self.root_element, self.design_config
+        )
+
+        fp_elem = self.root_element.find("FingerprintConfiguration")
+        self.assertIsNotNone(fp_elem)
+        self.assertEqual(fp_elem.find("board").text, "TestBoard")
+        self.assertEqual(
+            fp_elem.find("fingerprint-sensor-type").text, "POWER_BUTTON"
+        )
+        self.assertEqual(
+            fp_elem.find("sensor-location").text, "POWER_BUTTON_TOP_LEFT"
+        )
+        self.assertEqual(fp_elem.find("ro-version").text, "v1.0")
+
+    def test_add_fingerprint_entry_present_dedicated(self):
+        """Test fingerprint entry, present, dedicated sensor."""
+        fp_features = self.design_config.hardware_features.fingerprint
+        fp_features.present = True
+        fp_features.board = "AnotherBoard"
+        fp_features.location = (
+            topology_pb2.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_RIGHT
+        )
+
+        cros_to_android._add_fingerprint_entry(
+            self.root_element, self.design_config
+        )
+
+        fp_elem = self.root_element.find("FingerprintConfiguration")
+        self.assertIsNotNone(fp_elem)
+        self.assertEqual(fp_elem.find("board").text, "AnotherBoard")
+        self.assertEqual(
+            fp_elem.find("fingerprint-sensor-type").text, "STAND_ALONE"
+        )
+        self.assertEqual(
+            fp_elem.find("sensor-location").text, "KEYBOARD_BOTTOM_RIGHT"
+        )
+
+    def test_add_fingerprint_entry_not_present(self):
+        """Test fingerprint entry when not present."""
+        self.design_config.hardware_features.fingerprint.present = False
+        cros_to_android._add_fingerprint_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
+
+    def test_add_fingerprint_entry_missing_board(self):
+        """Test fingerprint entry present but board missing."""
+        fp_features = self.design_config.hardware_features.fingerprint
+        fp_features.present = True
+        fp_features.location = (
+            topology_pb2.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT
+        )
+        cros_to_android._add_fingerprint_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
+
+    def test_add_fingerprint_entry_location_unknown(self):
+        """Test fingerprint entry present but location unknown."""
+        fp_features = self.design_config.hardware_features.fingerprint
+        fp_features.present = True
+        fp_features.board = "TestBoard"
+        fp_features.location = (
+            topology_pb2.HardwareFeatures.Fingerprint.LOCATION_UNKNOWN
+        )
+        cros_to_android._add_fingerprint_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
+
+    def test_add_firmware_entry_valid(self):
+        """Test firmware entry with valid data."""
+        self.sw_config.firmware.main_ro_payload.firmware_image_name = (
+            "test_image"
+        )
+        self.design_config.hardware_features.fw_config.coreboot_customizations.extend(
+            ["cust1", "cust2"]
+        )
+
+        cros_to_android._add_firmware_entry(
+            self.root_element, self.design_config, self.sw_config
+        )
+        fw_elem = self.root_element.find("FirmwareConfiguration")
+        self.assertIsNotNone(fw_elem)
+        self.assertEqual(
+            fw_elem.find("firmware-manifest-key").text, "test_image_cust1_cust2"
+        )
+
+    def test_add_firmware_entry_no_image_name(self):
+        """Test firmware entry when image name is missing."""
+        # sw_config.firmware.main_ro_payload.firmware_image_name is not set
+        cros_to_android._add_firmware_entry(
+            self.root_element, self.design_config, self.sw_config
+        )
+        self.assertIsNone(self.root_element.find("FirmwareConfiguration"))
+
+    def test_add_audio_entry_valid(self):
+        """Test audio entry with valid data."""
+        audio_features = self.design_config.hardware_features.audio
+        card_config = audio_features.card_configs.add()
+        card_config.card_name = "TestSoundcard"
+
+        cros_to_android._add_audio_entry(self.root_element, self.design_config)
+        audio_elem = self.root_element.find("AudioConfiguration")
+        self.assertIsNotNone(audio_elem)
+        self.assertEqual(audio_elem.find("soundcard").text, "TestSoundcard")
+        self.assertEqual(audio_elem.find("audio-config-dir").text, "TestModel")
+
+    def test_add_audio_entry_no_card_configs(self):
+        """Test audio entry with no card_configs."""
+        cros_to_android._add_audio_entry(self.root_element, self.design_config)
+        self.assertIsNone(self.root_element.find("AudioConfiguration"))
 
 
 if __name__ == "__main__":

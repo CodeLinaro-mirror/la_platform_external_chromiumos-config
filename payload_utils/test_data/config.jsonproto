@@ -2,74 +2,23 @@
   "designList": [
     {
       "id": {
-        "value": "TestDesignNoCell"
+        "value": "TestDesign"
       },
-      "name": "TestDesignNoCell",
+      "name": "TestDesign",
       "programId": {
         "value": "TestProgram"
       },
       "configs": [
         {
           "id": {
-            "value": "TestDesignNoCell:123"
-          },
-          "hardwareFeatures": {
-             "cellular": {
-                "present": "NOT_PRESENT"
-             }
-          }
-        }
-      ]
-    },
-    {
-      "id": {
-        "value": "TestDesignWithCell"
-      },
-      "name": "TestDesignWithCell",
-      "programId": {
-        "value": "TestProgram"
-      },
-      "configs": [
-        {
-          "id": {
-            "value": "TestDesignWithCell:456"
+            "value": "TestDesign:123"
           },
           "hardwareFeatures": {
             "cellular": {
               "present": "PRESENT",
-              "model": "testdesignwithcell_fm101",
+              "model": "testdesign_fm101",
               "modemType": "MODEM_FM101"
-            }
-          }
-        },
-        {
-          "id": {
-            "value": "TestDesignWithCell:789"
-          },
-          "hardwareFeatures": {
-            "cellular": {
-              "present": "PRESENT",
-              "model": "testdesignwithcell_em060",
-              "modemType": "MODEM_EM060"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": {
-        "value": "TestDesignWithFingerprint"
-      },
-      "name": "TestDesignWithFingerprint",
-      "programId": {
-        "value": "TestProgram"
-      },
-      "configs": [
-        {
-          "id": {
-            "value": "TestDesignWithFingerprint:123"
-          },
-          "hardwareFeatures": {
+            },
             "fingerprint": {
               "location": "KEYBOARD_BOTTOM_RIGHT",
               "board": "testfpboard",
@@ -80,38 +29,19 @@
         },
         {
           "id": {
-            "value": "TestDesignWithFingerprint:456"
+            "value": "TestDesign:456"
           },
           "hardwareFeatures": {
+            "cellular": {
+              "present": "PRESENT",
+              "model": "testdesign_em060",
+              "modemType": "MODEM_EM060"
+            },
             "fingerprint": {
-              "location": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
+              "location": "KEYBOARD_BOTTOM_RIGHT",
               "board": "testfpboard",
-              "present": true
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": {
-        "value": "TestDesignWithAudio"
-      },
-      "name": "TestDesignWithAudio",
-      "programId": {
-        "value": "TestProgram"
-      },
-      "configs": [
-        {
-          "id": {
-            "value": "TestDesignWithAudio:123"
-          },
-          "hardwareFeatures": {
-            "audio": {
-              "cardConfigs": [
-                {
-                  "cardName": "test-card"
-                }
-              ]
+              "present": true,
+              "roVersion": "123"
             }
           }
         }
@@ -121,14 +51,14 @@
   "softwareConfigs": [
     {
       "designConfigId": {
-        "value": "TestDesignNoCell:123"
+        "value": "TestDesign:123"
       },
       "idScanConfig": {
         "firmwareSku": 123
       },
       "firmware": {
         "ecRoPayload": {
-          "firmwareImageName": "TestDesignNoCell_EC",
+          "firmwareImageName": "TestDesign_EC",
           "type": 2,
           "version": {
             "major": 15217,
@@ -136,7 +66,7 @@
           }
         },
         "mainRoPayload": {
-          "firmwareImageName": "TestDesignNoCell",
+          "firmwareImageName": "TestDesign",
           "type": 1,
           "version": {
             "major": 15217,
@@ -147,14 +77,14 @@
     },
     {
       "designConfigId": {
-        "value": "TestDesignWithCell:456"
+        "value": "TestDesign:456"
       },
       "idScanConfig": {
         "firmwareSku": 456
       },
       "firmware": {
         "ecRoPayload": {
-          "firmwareImageName": "TestDesignWithCell_EC",
+          "firmwareImageName": "TestDesign_EC",
           "type": 2,
           "version": {
             "major": 15217,
@@ -162,111 +92,7 @@
           }
         },
         "mainRoPayload": {
-          "firmwareImageName": "TestDesignWithCell",
-          "type": 1,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        }
-      }
-    },
-    {
-      "designConfigId": {
-        "value": "TestDesignWithCell:789"
-      },
-      "idScanConfig": {
-        "firmwareSku": 789
-      },
-      "firmware": {
-        "ecRoPayload": {
-          "firmwareImageName": "TestDesignWithCell_EC",
-          "type": 2,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        },
-        "mainRoPayload": {
-          "firmwareImageName": "TestDesignWithCell",
-          "type": 1,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        }
-      }
-    },
-    {
-      "designConfigId": {
-        "value": "TestDesignWithFingerprint:123"
-      },
-      "idScanConfig": {
-        "firmwareSku": 123
-      },
-      "firmware": {
-        "ecRoPayload": {
-          "firmwareImageName": "TestDesignWithFingerprint_EC",
-          "type": 2,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        },
-        "mainRoPayload": {
-          "firmwareImageName": "TestDesignWithFingerprint",
-          "type": 1,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        }
-      }
-    },
-    {
-      "designConfigId": {
-        "value": "TestDesignWithFingerprint:456"
-      },
-      "idScanConfig": {
-        "firmwareSku": 456
-      },
-      "firmware": {
-        "ecRoPayload": {
-          "firmwareImageName": "TestDesignWithFingerprint_EC",
-          "type": 2,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        },
-        "mainRoPayload": {
-          "firmwareImageName": "TestDesignWithFingerprint",
-          "type": 1,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        }
-      }
-    },
-    {
-      "designConfigId": {
-        "value": "TestDesignWithAudio:123"
-      },
-      "idScanConfig": {
-        "firmwareSku": 123
-      },
-      "firmware": {
-        "ecRoPayload": {
-          "firmwareImageName": "TestDesignWithAudio_EC",
-          "type": 2,
-          "version": {
-            "major": 15217,
-            "minor": 531
-          }
-        },
-        "mainRoPayload": {
-          "firmwareImageName": "TestDesignWithAudio",
+          "firmwareImageName": "TestDesign",
           "type": 1,
           "version": {
             "major": 15217,

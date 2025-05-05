@@ -86,10 +86,7 @@ def _get_fw_customization_id(design_config: design_pb2.Design.Config) -> str:
         Firmware config customization string
     """
     fw_config = design_config.hardware_features.fw_config
-    return "_".join(
-        f"_{customization}"
-        for customization in sorted(fw_config.coreboot_customizations)
-    )
+    return "_".join(sorted(fw_config.coreboot_customizations))
 
 
 def _load_config_bundle(
@@ -237,6 +234,7 @@ def _add_firmware_entry(
     if fw_main_ro and fw_main_ro.firmware_image_name:
         image_name = (
             fw_main_ro.firmware_image_name.lower()
+            + "_"
             + _get_fw_customization_id(design_config)
         )
     else:
