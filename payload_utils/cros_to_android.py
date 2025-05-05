@@ -210,13 +210,13 @@ def _add_fingerprint_entry(
 
     fp_config_elem = etree.SubElement(hal_config, "FingerprintConfiguration")
     etree.SubElement(fp_config_elem, "board").text = fp_features.board
-    etree.SubElement(
-        fp_config_elem, "fingerprint-sensor-type"
-    ).text = sensor_type_xsd_str
+    etree.SubElement(fp_config_elem, "fingerprint-sensor-type").text = (
+        sensor_type_xsd_str
+    )
     if fp_features.ro_version:
-        etree.SubElement(
-            fp_config_elem, "ro-version"
-        ).text = fp_features.ro_version
+        etree.SubElement(fp_config_elem, "ro-version").text = (
+            fp_features.ro_version
+        )
     etree.SubElement(fp_config_elem, "sensor-location").text = location_enum_str
 
 
@@ -254,6 +254,46 @@ def _add_firmware_entry(
     fw_image_name_elem.text = image_name
 
 
+def _add_audio_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds AudioConfiguration to the XML tree for a Design.Config.
+
+    Skips if the Design.Config doesn't have sufficient audio card_config data.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    audio_features = design_config.hardware_features.audio
+    if (
+        not audio_features.card_configs
+        or not audio_features.card_configs[0].card_name
+    ):
+        logging.debug(
+            "[%s] No valid audio card_configs found. Skipping AudioConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    soundcard_name = audio_features.card_configs[0].card_name
+
+    if len(audio_features.card_configs) > 1:
+        logging.warning(
+            "[%s] Multiple audio card_configs found (%d). Using the first one ('%s') for HAL XML.",
+            design_config.id.value,
+            len(audio_features.card_configs),
+            soundcard_name,
+        )
+
+    model, _ = design_config.id.value.split(":")
+
+    audio_config_elem = etree.SubElement(hal_config, "AudioConfiguration")
+    etree.SubElement(audio_config_elem, "audio-config-dir").text = model
+    etree.SubElement(audio_config_elem, "soundcard").text = soundcard_name
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -284,6 +324,7 @@ def _add_hal_config_entry(
     _add_cellular_entry(hal_config_elem, design_config)
     _add_fingerprint_entry(hal_config_elem, design_config)
     _add_firmware_entry(hal_config_elem, design_config, sw_config)
+    _add_audio_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:

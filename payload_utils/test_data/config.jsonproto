@@ -91,6 +91,31 @@
           }
         }
       ]
+    },
+    {
+      "id": {
+        "value": "TestDesignWithAudio"
+      },
+      "name": "TestDesignWithAudio",
+      "programId": {
+        "value": "TestProgram"
+      },
+      "configs": [
+        {
+          "id": {
+            "value": "TestDesignWithAudio:123"
+          },
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "test-card"
+                }
+              ]
+            }
+          }
+        }
+      ]
     }
   ],
   "softwareConfigs": [
@@ -216,6 +241,32 @@
         },
         "mainRoPayload": {
           "firmwareImageName": "TestDesignWithFingerprint",
+          "type": 1,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        }
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "TestDesignWithAudio:123"
+      },
+      "idScanConfig": {
+        "firmwareSku": 123
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "TestDesignWithAudio_EC",
+          "type": 2,
+          "version": {
+            "major": 15217,
+            "minor": 531
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "TestDesignWithAudio",
           "type": 1,
           "version": {
             "major": 15217,

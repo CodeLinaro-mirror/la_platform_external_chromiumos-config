@@ -67,13 +67,29 @@
       </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="AudioConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="audio-config-dir" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The model-specific config directory name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="soundcard" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Internal sound card name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
       <xs:element name="CellularConfiguration" type="CellularConfigurationType" minOccurs="0"/>
       <xs:element name="FingerprintConfiguration" type="FingerprintConfigurationType" minOccurs="0"/>
-      <xs:element name="FirmwareConfiguration" type="FirmwareConfigurationType" minOccurs="1"/>
-      </xs:sequence>
+      <xs:element name="FirmwareConfiguration" type="FirmwareConfigurationType" minOccurs="0"/>
+      <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:element name="HalConfigurations">
