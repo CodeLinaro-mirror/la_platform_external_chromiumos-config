@@ -30,11 +30,15 @@ type UsbTesterServiceClient interface {
 	SetTesterCapability(ctx context.Context, in *SetUsbTesterCapabilityRequest, opts ...grpc.CallOption) (*SetUsbTesterCapabilityReply, error)
 	// Get the display port alternate mode information.
 	GetDpInfo(ctx context.Context, in *GetDpInfoRequest, opts ...grpc.CallOption) (*GetDpInfoReply, error)
+	// Get the power delivery objects
+	GetPdos(ctx context.Context, in *GetPdosRequest, opts ...grpc.CallOption) (*GetPdosReply, error)
 	// Simulate the physical disconnect and reconnect of the cable between the
 	// tester and the DUT.
 	ReplugCable(ctx context.Context, in *DoCableReplugRequest, opts ...grpc.CallOption) (*DoCableReplugReply, error)
-	// This method is used to do a hard reset.
+	// This method is used to do a hard reset/power cycle.
 	HardResetTester(ctx context.Context, in *HardResetTesterRequest, opts ...grpc.CallOption) (*HardResetTesterReply, error)
+	// This method is used to issue power delivery resets.
+	ResetPd(ctx context.Context, in *ResetPdRequest, opts ...grpc.CallOption) (*ResetPdReply, error)
 	// This method is used to open the serial of the USB tester being used.
 	OpenTester(ctx context.Context, in *OpenTesterRequest, opts ...grpc.CallOption) (*OpenTesterReply, error)
 	// This method is used to close the serial of the USB tester being used.
@@ -91,6 +95,15 @@ func (c *usbTesterServiceClient) GetDpInfo(ctx context.Context, in *GetDpInfoReq
 	return out, nil
 }
 
+func (c *usbTesterServiceClient) GetPdos(ctx context.Context, in *GetPdosRequest, opts ...grpc.CallOption) (*GetPdosReply, error) {
+	out := new(GetPdosReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/GetPdos", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *usbTesterServiceClient) ReplugCable(ctx context.Context, in *DoCableReplugRequest, opts ...grpc.CallOption) (*DoCableReplugReply, error) {
 	out := new(DoCableReplugReply)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/ReplugCable", in, out, opts...)
@@ -103,6 +116,15 @@ func (c *usbTesterServiceClient) ReplugCable(ctx context.Context, in *DoCableRep
 func (c *usbTesterServiceClient) HardResetTester(ctx context.Context, in *HardResetTesterRequest, opts ...grpc.CallOption) (*HardResetTesterReply, error) {
 	out := new(HardResetTesterReply)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/HardResetTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usbTesterServiceClient) ResetPd(ctx context.Context, in *ResetPdRequest, opts ...grpc.CallOption) (*ResetPdReply, error) {
+	out := new(ResetPdReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/ResetPd", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,11 +188,15 @@ type UsbTesterServiceServer interface {
 	SetTesterCapability(context.Context, *SetUsbTesterCapabilityRequest) (*SetUsbTesterCapabilityReply, error)
 	// Get the display port alternate mode information.
 	GetDpInfo(context.Context, *GetDpInfoRequest) (*GetDpInfoReply, error)
+	// Get the power delivery objects
+	GetPdos(context.Context, *GetPdosRequest) (*GetPdosReply, error)
 	// Simulate the physical disconnect and reconnect of the cable between the
 	// tester and the DUT.
 	ReplugCable(context.Context, *DoCableReplugRequest) (*DoCableReplugReply, error)
-	// This method is used to do a hard reset.
+	// This method is used to do a hard reset/power cycle.
 	HardResetTester(context.Context, *HardResetTesterRequest) (*HardResetTesterReply, error)
+	// This method is used to issue power delivery resets.
+	ResetPd(context.Context, *ResetPdRequest) (*ResetPdReply, error)
 	// This method is used to open the serial of the USB tester being used.
 	OpenTester(context.Context, *OpenTesterRequest) (*OpenTesterReply, error)
 	// This method is used to close the serial of the USB tester being used.
@@ -199,11 +225,17 @@ func (UnimplementedUsbTesterServiceServer) SetTesterCapability(context.Context, 
 func (UnimplementedUsbTesterServiceServer) GetDpInfo(context.Context, *GetDpInfoRequest) (*GetDpInfoReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDpInfo not implemented")
 }
+func (UnimplementedUsbTesterServiceServer) GetPdos(context.Context, *GetPdosRequest) (*GetPdosReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPdos not implemented")
+}
 func (UnimplementedUsbTesterServiceServer) ReplugCable(context.Context, *DoCableReplugRequest) (*DoCableReplugReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReplugCable not implemented")
 }
 func (UnimplementedUsbTesterServiceServer) HardResetTester(context.Context, *HardResetTesterRequest) (*HardResetTesterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HardResetTester not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) ResetPd(context.Context, *ResetPdRequest) (*ResetPdReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetPd not implemented")
 }
 func (UnimplementedUsbTesterServiceServer) OpenTester(context.Context, *OpenTesterRequest) (*OpenTesterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OpenTester not implemented")
@@ -304,6 +336,24 @@ func _UsbTesterService_GetDpInfo_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsbTesterService_GetPdos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPdosRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).GetPdos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/GetPdos",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).GetPdos(ctx, req.(*GetPdosRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UsbTesterService_ReplugCable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DoCableReplugRequest)
 	if err := dec(in); err != nil {
@@ -336,6 +386,24 @@ func _UsbTesterService_HardResetTester_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UsbTesterServiceServer).HardResetTester(ctx, req.(*HardResetTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsbTesterService_ResetPd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetPdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).ResetPd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/ResetPd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).ResetPd(ctx, req.(*ResetPdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -454,12 +522,20 @@ var UsbTesterService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UsbTesterService_GetDpInfo_Handler,
 		},
 		{
+			MethodName: "GetPdos",
+			Handler:    _UsbTesterService_GetPdos_Handler,
+		},
+		{
 			MethodName: "ReplugCable",
 			Handler:    _UsbTesterService_ReplugCable_Handler,
 		},
 		{
 			MethodName: "HardResetTester",
 			Handler:    _UsbTesterService_HardResetTester_Handler,
+		},
+		{
+			MethodName: "ResetPd",
+			Handler:    _UsbTesterService_ResetPd_Handler,
 		},
 		{
 			MethodName: "OpenTester",
