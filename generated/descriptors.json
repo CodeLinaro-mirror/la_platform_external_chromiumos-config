@@ -2614,6 +2614,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.ResourceConfig.PowerSourcePreferences"
+            },
+            {
+              "jsonName": "thermal",
+              "label": "LABEL_OPTIONAL",
+              "name": "thermal",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ResourceConfig.ThermalZone"
             }
           ],
           "name": "ResourceConfig",
@@ -2894,6 +2902,32 @@
                 }
               ],
               "name": "PowerPreferences"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "thermal-type",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thermal_type",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "trip-temp",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "trip_temp",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "hysteresis",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hysteresis",
+                  "number": 3,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "ThermalZone"
             },
             {
               "field": [

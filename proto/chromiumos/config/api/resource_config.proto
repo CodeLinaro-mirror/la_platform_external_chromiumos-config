@@ -12,7 +12,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 // For more details, see:
 // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/resourced/README.md
 //
-// NEXT ID: 7
+// NEXT ID: 8
 message ResourceConfig {
   // See https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html
   message ConservativeGovernor {
@@ -111,6 +111,12 @@ message ResourceConfig {
     bool cpufreq_disable_boost = 4 [json_name = "cpufreq-disable-boost"];
   }
 
+  message ThermalZone {
+    string thermal_type = 1 [json_name = "thermal-type"];
+    int32 trip_temp = 2 [json_name = "trip-temp"];
+    uint32 hysteresis = 3;
+  }
+
   message PowerSourcePreferences {
     // If more then one activity is enabled, the following priority list is used
     // to determine which settings to apply:
@@ -163,4 +169,6 @@ message ResourceConfig {
 
   // Power Preferences to apply when the device is on DC power (Battery).
   PowerSourcePreferences dc = 6;
+
+  ThermalZone thermal = 7;
 }

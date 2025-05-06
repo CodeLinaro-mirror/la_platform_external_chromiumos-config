@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/config/api/resource_config.proto\x12\x15\x63hromiumos.config.api\"\xb4\x19\n\x0eResourceConfig\x12H\n\x02\x61\x63\x18\x05 \x01(\x0b\x32<.chromiumos.config.api.ResourceConfig.PowerSourcePreferences\x12H\n\x02\x64\x63\x18\x06 \x01(\x0b\x32<.chromiumos.config.api.ResourceConfig.PowerSourcePreferences\x1a\x16\n\x14\x43onservativeGovernor\x1a\x66\n\x10OndemandGovernor\x12&\n\x0epowersave_bias\x18\x01 \x01(\rR\x0epowersave-bias\x12*\n\x10sampling_rate_ms\x18\x02 \x01(\rR\x10sampling-rate-ms\x1a\x15\n\x13PerformanceGovernor\x1a\x13\n\x11PowersaveGovernor\x1a\x13\n\x11SchedutilGovernor\x1a\x13\n\x11UserspaceGovernor\x1a\xf2\x03\n\x08Governor\x12R\n\x0c\x63onservative\x18\x02 \x01(\x0b\x32:.chromiumos.config.api.ResourceConfig.ConservativeGovernorH\x00\x12J\n\x08ondemand\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.OndemandGovernorH\x00\x12P\n\x0bperformance\x18\x03 \x01(\x0b\x32\x39.chromiumos.config.api.ResourceConfig.PerformanceGovernorH\x00\x12L\n\tpowersave\x18\x04 \x01(\x0b\x32\x37.chromiumos.config.api.ResourceConfig.PowersaveGovernorH\x00\x12L\n\tschedutil\x18\x05 \x01(\x0b\x32\x37.chromiumos.config.api.ResourceConfig.SchedutilGovernorH\x00\x12L\n\tuserspace\x18\x06 \x01(\x0b\x32\x37.chromiumos.config.api.ResourceConfig.UserspaceGovernorH\x00\x42\n\n\x08governor\x1a\x0c\n\nDefaultEpp\x1a\x10\n\x0ePerformanceEpp\x1a\x17\n\x15\x42\x61lancePerformanceEpp\x1a\x11\n\x0f\x42\x61lancePowerEpp\x1a\n\n\x08PowerEpp\x1a\xc7\x03\n\x1b\x45nergyPerformancePreference\x12\x43\n\x07\x64\x65\x66\x61ult\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.ResourceConfig.DefaultEppH\x00\x12K\n\x0bperformance\x18\x02 \x01(\x0b\x32\x34.chromiumos.config.api.ResourceConfig.PerformanceEppH\x00\x12o\n\x13\x62\x61lance_performance\x18\x03 \x01(\x0b\x32;.chromiumos.config.api.ResourceConfig.BalancePerformanceEppH\x00R\x13\x62\x61lance-performance\x12]\n\rbalance_power\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.ResourceConfig.BalancePowerEppH\x00R\rbalance-power\x12?\n\x05power\x18\x05 \x01(\x0b\x32..chromiumos.config.api.ResourceConfig.PowerEppH\x00\x42\x05\n\x03\x65pp\x1a\x45\n\x13\x43puOfflineSmallCore\x12.\n\x12min_active_threads\x18\x01 \x01(\rR\x12min-active-threads\x1a?\n\rCpuOfflineSMT\x12.\n\x12min_active_threads\x18\x01 \x01(\rR\x12min-active-threads\x1a@\n\x0e\x43puOfflineHalf\x12.\n\x12min_active_threads\x18\x01 \x01(\rR\x12min-active-threads\x1a\x8c\x02\n\x14\x43puOfflinePreference\x12[\n\nsmall_core\x18\x01 \x01(\x0b\x32\x39.chromiumos.config.api.ResourceConfig.CpuOfflineSmallCoreH\x00R\nsmall-core\x12\x42\n\x03smt\x18\x02 \x01(\x0b\x32\x33.chromiumos.config.api.ResourceConfig.CpuOfflineSMTH\x00\x12\x44\n\x04half\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.ResourceConfig.CpuOfflineHalfH\x00\x42\r\n\x0b\x63pu_offline\x1a\xb8\x02\n\x10PowerPreferences\x12@\n\x08governor\x18\x01 \x01(\x0b\x32..chromiumos.config.api.ResourceConfig.Governor\x12N\n\x03\x65pp\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.ResourceConfig.EnergyPerformancePreference\x12\\\n\x0b\x63pu_offline\x18\x03 \x01(\x0b\x32:.chromiumos.config.api.ResourceConfig.CpuOfflinePreferenceR\x0b\x63pu-offline\x12\x34\n\x15\x63pufreq_disable_boost\x18\x04 \x01(\x08R\x15\x63pufreq-disable-boost\x1a\x8c\x08\n\x16PowerSourcePreferences\x12t\n\x19\x64\x65\x66\x61ult_power_preferences\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x19\x64\x65\x66\x61ult-power-preferences\x12t\n\x19web_rtc_power_preferences\x18\x02 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x19web-rtc-power-preferences\x12\x80\x01\n\"fullscreen_video_power_preferences\x18\x03 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x1c\x66ullscreen-power-preferences\x12t\n\x19vm_boot_power_preferences\x18\x04 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x19vm-boot-power-preferences\x12\x84\x01\n!borealis_gaming_power_preferences\x18\x05 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR!borealis-gaming-power-preferences\x12~\n\x1e\x61rcvm_gaming_power_preferences\x18\x06 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x1e\x61rcvm-gaming-power-preferences\x12\x80\x01\n\x1f\x62\x61ttery_saver_power_preferences\x18\x07 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x1f\x62\x61ttery-saver-power-preferences\x12\x82\x01\n thermal_stress_power_preferences\x18\x08 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR thermal-stress-power-preferencesB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n+chromiumos/config/api/resource_config.proto\x12\x15\x63hromiumos.config.api\"\xdd\x1a\n\x0eResourceConfig\x12H\n\x02\x61\x63\x18\x05 \x01(\x0b\x32<.chromiumos.config.api.ResourceConfig.PowerSourcePreferences\x12H\n\x02\x64\x63\x18\x06 \x01(\x0b\x32<.chromiumos.config.api.ResourceConfig.PowerSourcePreferences\x12\x42\n\x07thermal\x18\x07 \x01(\x0b\x32\x31.chromiumos.config.api.ResourceConfig.ThermalZone\x1a\x16\n\x14\x43onservativeGovernor\x1a\x66\n\x10OndemandGovernor\x12&\n\x0epowersave_bias\x18\x01 \x01(\rR\x0epowersave-bias\x12*\n\x10sampling_rate_ms\x18\x02 \x01(\rR\x10sampling-rate-ms\x1a\x15\n\x13PerformanceGovernor\x1a\x13\n\x11PowersaveGovernor\x1a\x13\n\x11SchedutilGovernor\x1a\x13\n\x11UserspaceGovernor\x1a\xf2\x03\n\x08Governor\x12R\n\x0c\x63onservative\x18\x02 \x01(\x0b\x32:.chromiumos.config.api.ResourceConfig.ConservativeGovernorH\x00\x12J\n\x08ondemand\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.OndemandGovernorH\x00\x12P\n\x0bperformance\x18\x03 \x01(\x0b\x32\x39.chromiumos.config.api.ResourceConfig.PerformanceGovernorH\x00\x12L\n\tpowersave\x18\x04 \x01(\x0b\x32\x37.chromiumos.config.api.ResourceConfig.PowersaveGovernorH\x00\x12L\n\tschedutil\x18\x05 \x01(\x0b\x32\x37.chromiumos.config.api.ResourceConfig.SchedutilGovernorH\x00\x12L\n\tuserspace\x18\x06 \x01(\x0b\x32\x37.chromiumos.config.api.ResourceConfig.UserspaceGovernorH\x00\x42\n\n\x08governor\x1a\x0c\n\nDefaultEpp\x1a\x10\n\x0ePerformanceEpp\x1a\x17\n\x15\x42\x61lancePerformanceEpp\x1a\x11\n\x0f\x42\x61lancePowerEpp\x1a\n\n\x08PowerEpp\x1a\xc7\x03\n\x1b\x45nergyPerformancePreference\x12\x43\n\x07\x64\x65\x66\x61ult\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.ResourceConfig.DefaultEppH\x00\x12K\n\x0bperformance\x18\x02 \x01(\x0b\x32\x34.chromiumos.config.api.ResourceConfig.PerformanceEppH\x00\x12o\n\x13\x62\x61lance_performance\x18\x03 \x01(\x0b\x32;.chromiumos.config.api.ResourceConfig.BalancePerformanceEppH\x00R\x13\x62\x61lance-performance\x12]\n\rbalance_power\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.ResourceConfig.BalancePowerEppH\x00R\rbalance-power\x12?\n\x05power\x18\x05 \x01(\x0b\x32..chromiumos.config.api.ResourceConfig.PowerEppH\x00\x42\x05\n\x03\x65pp\x1a\x45\n\x13\x43puOfflineSmallCore\x12.\n\x12min_active_threads\x18\x01 \x01(\rR\x12min-active-threads\x1a?\n\rCpuOfflineSMT\x12.\n\x12min_active_threads\x18\x01 \x01(\rR\x12min-active-threads\x1a@\n\x0e\x43puOfflineHalf\x12.\n\x12min_active_threads\x18\x01 \x01(\rR\x12min-active-threads\x1a\x8c\x02\n\x14\x43puOfflinePreference\x12[\n\nsmall_core\x18\x01 \x01(\x0b\x32\x39.chromiumos.config.api.ResourceConfig.CpuOfflineSmallCoreH\x00R\nsmall-core\x12\x42\n\x03smt\x18\x02 \x01(\x0b\x32\x33.chromiumos.config.api.ResourceConfig.CpuOfflineSMTH\x00\x12\x44\n\x04half\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.ResourceConfig.CpuOfflineHalfH\x00\x42\r\n\x0b\x63pu_offline\x1a\xb8\x02\n\x10PowerPreferences\x12@\n\x08governor\x18\x01 \x01(\x0b\x32..chromiumos.config.api.ResourceConfig.Governor\x12N\n\x03\x65pp\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.ResourceConfig.EnergyPerformancePreference\x12\\\n\x0b\x63pu_offline\x18\x03 \x01(\x0b\x32:.chromiumos.config.api.ResourceConfig.CpuOfflinePreferenceR\x0b\x63pu-offline\x12\x34\n\x15\x63pufreq_disable_boost\x18\x04 \x01(\x08R\x15\x63pufreq-disable-boost\x1a\x63\n\x0bThermalZone\x12\"\n\x0cthermal_type\x18\x01 \x01(\tR\x0cthermal-type\x12\x1c\n\ttrip_temp\x18\x02 \x01(\x05R\ttrip-temp\x12\x12\n\nhysteresis\x18\x03 \x01(\r\x1a\x8c\x08\n\x16PowerSourcePreferences\x12t\n\x19\x64\x65\x66\x61ult_power_preferences\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x19\x64\x65\x66\x61ult-power-preferences\x12t\n\x19web_rtc_power_preferences\x18\x02 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x19web-rtc-power-preferences\x12\x80\x01\n\"fullscreen_video_power_preferences\x18\x03 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x1c\x66ullscreen-power-preferences\x12t\n\x19vm_boot_power_preferences\x18\x04 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x19vm-boot-power-preferences\x12\x84\x01\n!borealis_gaming_power_preferences\x18\x05 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR!borealis-gaming-power-preferences\x12~\n\x1e\x61rcvm_gaming_power_preferences\x18\x06 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x1e\x61rcvm-gaming-power-preferences\x12\x80\x01\n\x1f\x62\x61ttery_saver_power_preferences\x18\x07 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR\x1f\x62\x61ttery-saver-power-preferences\x12\x82\x01\n thermal_stress_power_preferences\x18\x08 \x01(\x0b\x32\x36.chromiumos.config.api.ResourceConfig.PowerPreferencesR thermal-stress-power-preferencesB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -45,8 +45,8 @@ _RESOURCECONFIG_CONSERVATIVEGOVERNOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=237,
-  serialized_end=259,
+  serialized_start=305,
+  serialized_end=327,
 )
 
 _RESOURCECONFIG_ONDEMANDGOVERNOR = _descriptor.Descriptor(
@@ -83,8 +83,8 @@ _RESOURCECONFIG_ONDEMANDGOVERNOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=261,
-  serialized_end=363,
+  serialized_start=329,
+  serialized_end=431,
 )
 
 _RESOURCECONFIG_PERFORMANCEGOVERNOR = _descriptor.Descriptor(
@@ -107,8 +107,8 @@ _RESOURCECONFIG_PERFORMANCEGOVERNOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=365,
-  serialized_end=386,
+  serialized_start=433,
+  serialized_end=454,
 )
 
 _RESOURCECONFIG_POWERSAVEGOVERNOR = _descriptor.Descriptor(
@@ -131,8 +131,8 @@ _RESOURCECONFIG_POWERSAVEGOVERNOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=388,
-  serialized_end=407,
+  serialized_start=456,
+  serialized_end=475,
 )
 
 _RESOURCECONFIG_SCHEDUTILGOVERNOR = _descriptor.Descriptor(
@@ -155,8 +155,8 @@ _RESOURCECONFIG_SCHEDUTILGOVERNOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=409,
-  serialized_end=428,
+  serialized_start=477,
+  serialized_end=496,
 )
 
 _RESOURCECONFIG_USERSPACEGOVERNOR = _descriptor.Descriptor(
@@ -179,8 +179,8 @@ _RESOURCECONFIG_USERSPACEGOVERNOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=430,
-  serialized_end=449,
+  serialized_start=498,
+  serialized_end=517,
 )
 
 _RESOURCECONFIG_GOVERNOR = _descriptor.Descriptor(
@@ -250,8 +250,8 @@ _RESOURCECONFIG_GOVERNOR = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=452,
-  serialized_end=950,
+  serialized_start=520,
+  serialized_end=1018,
 )
 
 _RESOURCECONFIG_DEFAULTEPP = _descriptor.Descriptor(
@@ -274,8 +274,8 @@ _RESOURCECONFIG_DEFAULTEPP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=952,
-  serialized_end=964,
+  serialized_start=1020,
+  serialized_end=1032,
 )
 
 _RESOURCECONFIG_PERFORMANCEEPP = _descriptor.Descriptor(
@@ -298,8 +298,8 @@ _RESOURCECONFIG_PERFORMANCEEPP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=966,
-  serialized_end=982,
+  serialized_start=1034,
+  serialized_end=1050,
 )
 
 _RESOURCECONFIG_BALANCEPERFORMANCEEPP = _descriptor.Descriptor(
@@ -322,8 +322,8 @@ _RESOURCECONFIG_BALANCEPERFORMANCEEPP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=984,
-  serialized_end=1007,
+  serialized_start=1052,
+  serialized_end=1075,
 )
 
 _RESOURCECONFIG_BALANCEPOWEREPP = _descriptor.Descriptor(
@@ -346,8 +346,8 @@ _RESOURCECONFIG_BALANCEPOWEREPP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1009,
-  serialized_end=1026,
+  serialized_start=1077,
+  serialized_end=1094,
 )
 
 _RESOURCECONFIG_POWEREPP = _descriptor.Descriptor(
@@ -370,8 +370,8 @@ _RESOURCECONFIG_POWEREPP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1028,
-  serialized_end=1038,
+  serialized_start=1096,
+  serialized_end=1106,
 )
 
 _RESOURCECONFIG_ENERGYPERFORMANCEPREFERENCE = _descriptor.Descriptor(
@@ -434,8 +434,8 @@ _RESOURCECONFIG_ENERGYPERFORMANCEPREFERENCE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1041,
-  serialized_end=1496,
+  serialized_start=1109,
+  serialized_end=1564,
 )
 
 _RESOURCECONFIG_CPUOFFLINESMALLCORE = _descriptor.Descriptor(
@@ -465,8 +465,8 @@ _RESOURCECONFIG_CPUOFFLINESMALLCORE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1498,
-  serialized_end=1567,
+  serialized_start=1566,
+  serialized_end=1635,
 )
 
 _RESOURCECONFIG_CPUOFFLINESMT = _descriptor.Descriptor(
@@ -496,8 +496,8 @@ _RESOURCECONFIG_CPUOFFLINESMT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1569,
-  serialized_end=1632,
+  serialized_start=1637,
+  serialized_end=1700,
 )
 
 _RESOURCECONFIG_CPUOFFLINEHALF = _descriptor.Descriptor(
@@ -527,8 +527,8 @@ _RESOURCECONFIG_CPUOFFLINEHALF = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1634,
-  serialized_end=1698,
+  serialized_start=1702,
+  serialized_end=1766,
 )
 
 _RESOURCECONFIG_CPUOFFLINEPREFERENCE = _descriptor.Descriptor(
@@ -577,8 +577,8 @@ _RESOURCECONFIG_CPUOFFLINEPREFERENCE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1701,
-  serialized_end=1969,
+  serialized_start=1769,
+  serialized_end=2037,
 )
 
 _RESOURCECONFIG_POWERPREFERENCES = _descriptor.Descriptor(
@@ -629,8 +629,53 @@ _RESOURCECONFIG_POWERPREFERENCES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1972,
-  serialized_end=2284,
+  serialized_start=2040,
+  serialized_end=2352,
+)
+
+_RESOURCECONFIG_THERMALZONE = _descriptor.Descriptor(
+  name='ThermalZone',
+  full_name='chromiumos.config.api.ResourceConfig.ThermalZone',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='thermal_type', full_name='chromiumos.config.api.ResourceConfig.ThermalZone.thermal_type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, json_name='thermal-type', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='trip_temp', full_name='chromiumos.config.api.ResourceConfig.ThermalZone.trip_temp', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, json_name='trip-temp', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hysteresis', full_name='chromiumos.config.api.ResourceConfig.ThermalZone.hysteresis', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2354,
+  serialized_end=2453,
 )
 
 _RESOURCECONFIG_POWERSOURCEPREFERENCES = _descriptor.Descriptor(
@@ -709,8 +754,8 @@ _RESOURCECONFIG_POWERSOURCEPREFERENCES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2287,
-  serialized_end=3323,
+  serialized_start=2456,
+  serialized_end=3492,
 )
 
 _RESOURCECONFIG = _descriptor.Descriptor(
@@ -735,10 +780,17 @@ _RESOURCECONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thermal', full_name='chromiumos.config.api.ResourceConfig.thermal', index=2,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_RESOURCECONFIG_CONSERVATIVEGOVERNOR, _RESOURCECONFIG_ONDEMANDGOVERNOR, _RESOURCECONFIG_PERFORMANCEGOVERNOR, _RESOURCECONFIG_POWERSAVEGOVERNOR, _RESOURCECONFIG_SCHEDUTILGOVERNOR, _RESOURCECONFIG_USERSPACEGOVERNOR, _RESOURCECONFIG_GOVERNOR, _RESOURCECONFIG_DEFAULTEPP, _RESOURCECONFIG_PERFORMANCEEPP, _RESOURCECONFIG_BALANCEPERFORMANCEEPP, _RESOURCECONFIG_BALANCEPOWEREPP, _RESOURCECONFIG_POWEREPP, _RESOURCECONFIG_ENERGYPERFORMANCEPREFERENCE, _RESOURCECONFIG_CPUOFFLINESMALLCORE, _RESOURCECONFIG_CPUOFFLINESMT, _RESOURCECONFIG_CPUOFFLINEHALF, _RESOURCECONFIG_CPUOFFLINEPREFERENCE, _RESOURCECONFIG_POWERPREFERENCES, _RESOURCECONFIG_POWERSOURCEPREFERENCES, ],
+  nested_types=[_RESOURCECONFIG_CONSERVATIVEGOVERNOR, _RESOURCECONFIG_ONDEMANDGOVERNOR, _RESOURCECONFIG_PERFORMANCEGOVERNOR, _RESOURCECONFIG_POWERSAVEGOVERNOR, _RESOURCECONFIG_SCHEDUTILGOVERNOR, _RESOURCECONFIG_USERSPACEGOVERNOR, _RESOURCECONFIG_GOVERNOR, _RESOURCECONFIG_DEFAULTEPP, _RESOURCECONFIG_PERFORMANCEEPP, _RESOURCECONFIG_BALANCEPERFORMANCEEPP, _RESOURCECONFIG_BALANCEPOWEREPP, _RESOURCECONFIG_POWEREPP, _RESOURCECONFIG_ENERGYPERFORMANCEPREFERENCE, _RESOURCECONFIG_CPUOFFLINESMALLCORE, _RESOURCECONFIG_CPUOFFLINESMT, _RESOURCECONFIG_CPUOFFLINEHALF, _RESOURCECONFIG_CPUOFFLINEPREFERENCE, _RESOURCECONFIG_POWERPREFERENCES, _RESOURCECONFIG_THERMALZONE, _RESOURCECONFIG_POWERSOURCEPREFERENCES, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -748,7 +800,7 @@ _RESOURCECONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=71,
-  serialized_end=3323,
+  serialized_end=3492,
 )
 
 _RESOURCECONFIG_CONSERVATIVEGOVERNOR.containing_type = _RESOURCECONFIG
@@ -828,6 +880,7 @@ _RESOURCECONFIG_POWERPREFERENCES.fields_by_name['governor'].message_type = _RESO
 _RESOURCECONFIG_POWERPREFERENCES.fields_by_name['epp'].message_type = _RESOURCECONFIG_ENERGYPERFORMANCEPREFERENCE
 _RESOURCECONFIG_POWERPREFERENCES.fields_by_name['cpu_offline'].message_type = _RESOURCECONFIG_CPUOFFLINEPREFERENCE
 _RESOURCECONFIG_POWERPREFERENCES.containing_type = _RESOURCECONFIG
+_RESOURCECONFIG_THERMALZONE.containing_type = _RESOURCECONFIG
 _RESOURCECONFIG_POWERSOURCEPREFERENCES.fields_by_name['default_power_preferences'].message_type = _RESOURCECONFIG_POWERPREFERENCES
 _RESOURCECONFIG_POWERSOURCEPREFERENCES.fields_by_name['web_rtc_power_preferences'].message_type = _RESOURCECONFIG_POWERPREFERENCES
 _RESOURCECONFIG_POWERSOURCEPREFERENCES.fields_by_name['fullscreen_video_power_preferences'].message_type = _RESOURCECONFIG_POWERPREFERENCES
@@ -839,6 +892,7 @@ _RESOURCECONFIG_POWERSOURCEPREFERENCES.fields_by_name['thermal_stress_power_pref
 _RESOURCECONFIG_POWERSOURCEPREFERENCES.containing_type = _RESOURCECONFIG
 _RESOURCECONFIG.fields_by_name['ac'].message_type = _RESOURCECONFIG_POWERSOURCEPREFERENCES
 _RESOURCECONFIG.fields_by_name['dc'].message_type = _RESOURCECONFIG_POWERSOURCEPREFERENCES
+_RESOURCECONFIG.fields_by_name['thermal'].message_type = _RESOURCECONFIG_THERMALZONE
 DESCRIPTOR.message_types_by_name['ResourceConfig'] = _RESOURCECONFIG
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -970,6 +1024,13 @@ ResourceConfig = _reflection.GeneratedProtocolMessageType('ResourceConfig', (_me
     })
   ,
 
+  'ThermalZone' : _reflection.GeneratedProtocolMessageType('ThermalZone', (_message.Message,), {
+    'DESCRIPTOR' : _RESOURCECONFIG_THERMALZONE,
+    '__module__' : 'chromiumos.config.api.resource_config_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.ResourceConfig.ThermalZone)
+    })
+  ,
+
   'PowerSourcePreferences' : _reflection.GeneratedProtocolMessageType('PowerSourcePreferences', (_message.Message,), {
     'DESCRIPTOR' : _RESOURCECONFIG_POWERSOURCEPREFERENCES,
     '__module__' : 'chromiumos.config.api.resource_config_pb2'
@@ -999,6 +1060,7 @@ _sym_db.RegisterMessage(ResourceConfig.CpuOfflineSMT)
 _sym_db.RegisterMessage(ResourceConfig.CpuOfflineHalf)
 _sym_db.RegisterMessage(ResourceConfig.CpuOfflinePreference)
 _sym_db.RegisterMessage(ResourceConfig.PowerPreferences)
+_sym_db.RegisterMessage(ResourceConfig.ThermalZone)
 _sym_db.RegisterMessage(ResourceConfig.PowerSourcePreferences)
 
 

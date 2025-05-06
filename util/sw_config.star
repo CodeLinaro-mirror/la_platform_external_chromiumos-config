@@ -415,16 +415,18 @@ def _create_power(preferences):
     """Builds a PowerConfig proto."""
     return pc_pb.PowerConfig(preferences = preferences)
 
-def _create_resource(ac = None, dc = None):
+def _create_resource(ac = None, dc = None, thermal = None):
     """Builds a ResourceConfig proto.
 
     Args:
         ac: PowerSourcePreferences
         dc: PowerSourcePreferences
+        thermal: ThermalZone
     """
     return resource_pb.ResourceConfig(
         ac = ac,
         dc = dc,
+        thermal = thermal,
     )
 
 def _create_power_source_preference(
@@ -574,6 +576,20 @@ def _create_cpu_offline_half(min_active_threads = None):
         half = resource_pb.ResourceConfig.CpuOfflineHalf(
             min_active_threads = min_active_threads,
         ),
+    )
+
+def _create_thermal_zone(thermal_type, trip_temp, hysteresis = 0):
+    """Builds a ThermalZone proto.
+
+    Args:
+        thermal_type: string
+        trip_temp: int32
+        hysteresis: uint32
+    """
+    return resource_pb.ResourceConfig.ThermalZone(
+        thermal_type = thermal_type,
+        trip_temp = trip_temp,
+        hysteresis = hysteresis,
     )
 
 def _create_ath10k_power_chain(limit_2g, limit_5g):
@@ -1766,6 +1782,7 @@ sw_config = struct(
     create_cpu_offline_small_core = _create_cpu_offline_small_core,
     create_cpu_offline_smt = _create_cpu_offline_smt,
     create_cpu_offline_half = _create_cpu_offline_half,
+    create_thermal_zone = _create_thermal_zone,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
