@@ -116,11 +116,12 @@ message ResourceConfig {
     // to determine which settings to apply:
     //
     // 1) Battery saver
-    // 2) Borealis gaming
-    // 3) ARCVM gaming
-    // 4) WebRTC
-    // 5) Fullscreen Video
-    // 6) VM boot
+    // 2) Thermal stress
+    // 3) Borealis gaming
+    // 4) ARCVM gaming
+    // 5) WebRTC
+    // 6) Fullscreen Video
+    // 7) VM boot
     //
     // Default will be applied when no activity is active.
 
@@ -151,6 +152,10 @@ message ResourceConfig {
     // PowerPreferences to apply when Battery Saver mode is on.
     PowerPreferences battery_saver_power_preferences = 7
         [json_name = "battery-saver-power-preferences"];
+
+    // PowerPreferences to apply when thermall stress.
+    PowerPreferences thermal_stress_power_preferences = 8
+        [json_name = "thermal-stress-power-preferences"];
   }
 
   // Power Preferences to apply when the device is on AC power (Plugged-in).

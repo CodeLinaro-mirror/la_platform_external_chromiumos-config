@@ -2952,6 +2952,14 @@
                   "number": 7,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "thermal-stress-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thermal_stress_power_preferences",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.ResourceConfig.PowerPreferences"
                 }
               ],
               "name": "PowerSourcePreferences"

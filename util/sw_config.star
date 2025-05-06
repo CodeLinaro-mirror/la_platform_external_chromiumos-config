@@ -434,7 +434,8 @@ def _create_power_source_preference(
         vm_boot = None,
         borealis_gaming = None,
         arcvm_gaming = None,
-        battery_saver = None):
+        battery_saver = None,
+        thermal_stress = None):
     """Builds a PowerSourcePreferences proto.
 
     Args:
@@ -444,6 +445,8 @@ def _create_power_source_preference(
         vm_boot: PowerPreferences
         borealis_gaming: PowerPreferences
         arcvm_gaming: PowerPreferences
+        battery_saver: PowerPreferences
+        thermal_stress: PowerPreferences
     """
     return resource_pb.ResourceConfig.PowerSourcePreferences(
         default_power_preferences = default,
@@ -453,6 +456,7 @@ def _create_power_source_preference(
         borealis_gaming_power_preferences = borealis_gaming,
         arcvm_gaming_power_preferences = arcvm_gaming,
         battery_saver_power_preferences = battery_saver,
+        thermal_stress_power_preferences = thermal_stress,
     )
 
 def _create_power_preference(governor = None, epp = None, cpu_offline = None, cpufreq_disable_boost = False):
