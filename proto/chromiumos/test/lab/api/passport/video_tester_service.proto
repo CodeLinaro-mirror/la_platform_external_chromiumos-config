@@ -48,6 +48,8 @@ It allows clients to:
 - Trigger HPD pulse:
   - Send a Hot Plug Detect (HPD) pulse to simulate connecting or disconnecting
     a display using the HpdPulseVideoTester RPC.
+- Run built-in compliance tests:
+  - Runs the UCD's built-in compliance tests.
 */
 
 
@@ -210,6 +212,61 @@ message HpdPulseVideoTesterResponse {
   // Empty response indicating success.
 }
 
+// Define the supported roles for the video tester device.
+enum ComplianceTestGroup {
+  GROUP_AUDIO_TEST = 0;
+  GROUP_PIXEL_LEVEL_VIDEO_TEST = 1;
+  GROUP_CRC_BASED_VIDEO_TEST = 2;
+  GROUP_LINK_TEST = 3;
+  GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS = 4;
+  GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS = 5;
+  GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST = 6;
+  GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7;
+  GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8;
+  GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9;
+}
+
+// Represents the status of a compliance test.
+enum ComplianceTestStatus {
+  // Default unknown status. Should not be used if a more specific status is available.
+  COMPLIANCE_TEST_STATUS_UNKOWN= 0;
+  // Indicates that the compliance test passed successfully.
+  COMPLIANCE_TEST_PASSED = 1;
+  // Indicates that the compliance test was skipped, e.g., due to prerequisites not being met.
+  COMPLIANCE_TEST_SKIPPED = 2;
+  // Indicates that the compliance test failed.
+  COMPLIANCE_TEST_FAILED = 3;
+  // Indicates that the compliance test was aborted before completion, e.g., due to an error or timeout.
+  COMPLIANCE_TEST_ABORTED = 4;
+}
+
+// Represents a specific compliance test executed by a video tester.
+message ComplianceTestVideoTester {
+  // The identifier for the group to which this compliance test belongs.
+  ComplianceTestGroup group_id = 1; // Assuming ComplianceTestGroup is another defined enum or message type.
+  // A unique identifier for the specific compliance test within its group.
+  int64 test_id = 2;
+}
+
+// Represents the result of a compliance test executed by a video tester.
+message ComplianceTestResultVideoTester {
+  // The specific compliance test for which this result is being reported.
+  ComplianceTestVideoTester test = 1;
+  // The status of the compliance test, indicating whether it passed, failed, skipped, or was aborted.
+  ComplianceTestStatus status = 2;
+}
+// Request message for initiating a DP compliance test.
+message RunComplianceTestRequest {
+  string id = 1; // ID of the video tester to run the compliance test.
+  repeated ComplianceTestVideoTester tests = 2;
+}
+
+// Response message initiating the results of a compliance test run.
+message RunComplianceTestResponse {
+  repeated ComplianceTestResultVideoTester results = 1; // Results of the executed test(s).
+  bytes results_html = 2;           // Results HTML from the test(s).
+}
+
 // Service definition for interacting with video tester devices.
 service VideoTesterService {
   // Retrieves a list of available video testers.
@@ -244,4 +301,7 @@ service VideoTesterService {
 
   // Sends an HPD (Hot Plug Detect) pulse to a video tester.
   rpc HpdPulseVideoTester(HpdPulseVideoTesterRequest) returns (HpdPulseVideoTesterResponse);
+
+  // Runs compliance test(s).
+  rpc RunComplianceTest(RunComplianceTestRequest) returns (RunComplianceTestResponse);
 }

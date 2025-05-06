@@ -41707,6 +41707,76 @@
               "number": 4
             }
           ]
+        },
+        {
+          "name": "ComplianceTestGroup",
+          "value": [
+            {
+              "name": "GROUP_AUDIO_TEST",
+              "number": 0
+            },
+            {
+              "name": "GROUP_PIXEL_LEVEL_VIDEO_TEST",
+              "number": 1
+            },
+            {
+              "name": "GROUP_CRC_BASED_VIDEO_TEST",
+              "number": 2
+            },
+            {
+              "name": "GROUP_LINK_TEST",
+              "number": 3
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS",
+              "number": 4
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS",
+              "number": 5
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST",
+              "number": 6
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS",
+              "number": 7
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT",
+              "number": 8
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST",
+              "number": 9
+            }
+          ]
+        },
+        {
+          "name": "ComplianceTestStatus",
+          "value": [
+            {
+              "name": "COMPLIANCE_TEST_STATUS_UNKOWN",
+              "number": 0
+            },
+            {
+              "name": "COMPLIANCE_TEST_PASSED",
+              "number": 1
+            },
+            {
+              "name": "COMPLIANCE_TEST_SKIPPED",
+              "number": 2
+            },
+            {
+              "name": "COMPLIANCE_TEST_FAILED",
+              "number": 3
+            },
+            {
+              "name": "COMPLIANCE_TEST_ABORTED",
+              "number": 4
+            }
+          ]
         }
       ],
       "messageType": [
@@ -42241,6 +42311,87 @@
         },
         {
           "name": "HpdPulseVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestGroup"
+            },
+            {
+              "jsonName": "testId",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_id",
+              "number": 2,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "ComplianceTestVideoTester"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "test",
+              "label": "LABEL_OPTIONAL",
+              "name": "test",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestVideoTester"
+            },
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestStatus"
+            }
+          ],
+          "name": "ComplianceTestResultVideoTester"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tests",
+              "label": "LABEL_REPEATED",
+              "name": "tests",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestVideoTester"
+            }
+          ],
+          "name": "RunComplianceTestRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "results",
+              "label": "LABEL_REPEATED",
+              "name": "results",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester"
+            },
+            {
+              "jsonName": "resultsHtml",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_html",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "RunComplianceTestResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
@@ -42310,6 +42461,11 @@
               "inputType": ".chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest",
               "name": "HpdPulseVideoTester",
               "outputType": ".chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.RunComplianceTestRequest",
+              "name": "RunComplianceTest",
+              "outputType": ".chromiumos.test.lab.api.passport.RunComplianceTestResponse"
             }
           ],
           "name": "VideoTesterService"

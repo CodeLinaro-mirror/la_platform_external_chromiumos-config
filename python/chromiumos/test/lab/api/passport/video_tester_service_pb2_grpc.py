@@ -75,6 +75,11 @@ class VideoTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterResponse.FromString,
                 )
+        self.RunComplianceTest = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/RunComplianceTest',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestResponse.FromString,
+                )
 
 
 class VideoTesterServiceServicer(object):
@@ -165,6 +170,13 @@ class VideoTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def RunComplianceTest(self, request, context):
+        """Runs compliance test(s).
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_VideoTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -227,6 +239,11 @@ def add_VideoTesterServiceServicer_to_server(servicer, server):
                     servicer.HpdPulseVideoTester,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterResponse.SerializeToString,
+            ),
+            'RunComplianceTest': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunComplianceTest,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -440,5 +457,22 @@ class VideoTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/HpdPulseVideoTester',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RunComplianceTest(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/RunComplianceTest',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

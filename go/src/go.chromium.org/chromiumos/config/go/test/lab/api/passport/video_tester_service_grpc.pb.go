@@ -46,6 +46,8 @@ type VideoTesterServiceClient interface {
 	AttachVideoTester(ctx context.Context, in *AttachVideoTesterRequest, opts ...grpc.CallOption) (*AttachVideoTesterResponse, error)
 	// Sends an HPD (Hot Plug Detect) pulse to a video tester.
 	HpdPulseVideoTester(ctx context.Context, in *HpdPulseVideoTesterRequest, opts ...grpc.CallOption) (*HpdPulseVideoTesterResponse, error)
+	// Runs compliance test(s).
+	RunComplianceTest(ctx context.Context, in *RunComplianceTestRequest, opts ...grpc.CallOption) (*RunComplianceTestResponse, error)
 }
 
 type videoTesterServiceClient struct {
@@ -164,6 +166,15 @@ func (c *videoTesterServiceClient) HpdPulseVideoTester(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *videoTesterServiceClient) RunComplianceTest(ctx context.Context, in *RunComplianceTestRequest, opts ...grpc.CallOption) (*RunComplianceTestResponse, error) {
+	out := new(RunComplianceTestResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/RunComplianceTest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VideoTesterServiceServer is the server API for VideoTesterService service.
 // All implementations should embed UnimplementedVideoTesterServiceServer
 // for forward compatibility
@@ -192,6 +203,8 @@ type VideoTesterServiceServer interface {
 	AttachVideoTester(context.Context, *AttachVideoTesterRequest) (*AttachVideoTesterResponse, error)
 	// Sends an HPD (Hot Plug Detect) pulse to a video tester.
 	HpdPulseVideoTester(context.Context, *HpdPulseVideoTesterRequest) (*HpdPulseVideoTesterResponse, error)
+	// Runs compliance test(s).
+	RunComplianceTest(context.Context, *RunComplianceTestRequest) (*RunComplianceTestResponse, error)
 }
 
 // UnimplementedVideoTesterServiceServer should be embedded to have forward compatible implementations.
@@ -233,6 +246,9 @@ func (UnimplementedVideoTesterServiceServer) AttachVideoTester(context.Context, 
 }
 func (UnimplementedVideoTesterServiceServer) HpdPulseVideoTester(context.Context, *HpdPulseVideoTesterRequest) (*HpdPulseVideoTesterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HpdPulseVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) RunComplianceTest(context.Context, *RunComplianceTestRequest) (*RunComplianceTestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunComplianceTest not implemented")
 }
 
 // UnsafeVideoTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -462,6 +478,24 @@ func _VideoTesterService_HpdPulseVideoTester_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VideoTesterService_RunComplianceTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunComplianceTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).RunComplianceTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/RunComplianceTest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).RunComplianceTest(ctx, req.(*RunComplianceTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VideoTesterService_ServiceDesc is the grpc.ServiceDesc for VideoTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -516,6 +550,10 @@ var VideoTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "HpdPulseVideoTester",
 			Handler:    _VideoTesterService_HpdPulseVideoTester_Handler,
+		},
+		{
+			MethodName: "RunComplianceTest",
+			Handler:    _VideoTesterService_RunComplianceTest_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
