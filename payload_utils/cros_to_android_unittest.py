@@ -228,8 +228,8 @@ class HalEntryHelpersTest(unittest.TestCase):
         )
         self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
 
-    def test_add_firmware_entry_valid(self):
-        """Test firmware entry with valid data."""
+    def test_add_firmware_entry_with_customizations(self):
+        """Test firmware entry with coreboot customizations data."""
         self.sw_config.firmware.main_ro_payload.firmware_image_name = (
             "test_image"
         )
@@ -244,6 +244,21 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.assertIsNotNone(fw_elem)
         self.assertEqual(
             fw_elem.find("firmware-manifest-key").text, "test_image_cust1_cust2"
+        )
+
+    def test_add_firmware_entry_without_customizations(self):
+        """Test firmware entry without coreboot customizations data."""
+        self.sw_config.firmware.main_ro_payload.firmware_image_name = (
+            "test_image"
+        )
+
+        cros_to_android._add_firmware_entry(
+            self.root_element, self.design_config, self.sw_config
+        )
+        fw_elem = self.root_element.find("FirmwareConfiguration")
+        self.assertIsNotNone(fw_elem)
+        self.assertEqual(
+            fw_elem.find("firmware-manifest-key").text, "test_image"
         )
 
     def test_add_firmware_entry_no_image_name(self):

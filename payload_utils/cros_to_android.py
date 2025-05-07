@@ -232,11 +232,10 @@ def _add_firmware_entry(
     """
     fw_main_ro = sw_config.firmware.main_ro_payload
     if fw_main_ro and fw_main_ro.firmware_image_name:
-        image_name = (
-            fw_main_ro.firmware_image_name.lower()
-            + "_"
-            + _get_fw_customization_id(design_config)
-        )
+        image_name = fw_main_ro.firmware_image_name.lower()
+        customization_id = _get_fw_customization_id(design_config)
+        if customization_id:
+            image_name += f"_{customization_id}"
     else:
         logging.warning(
             "Firmware image name not found for Design.Config ID '%s'."
