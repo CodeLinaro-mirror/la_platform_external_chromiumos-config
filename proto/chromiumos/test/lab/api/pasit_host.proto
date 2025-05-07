@@ -8,6 +8,8 @@ package chromiumos.test.lab.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
+import "chromiumos/test/lab/api/rpm.proto";
+
 // This proto defines the perhipheral topology in a PASIT testbed.
 
 // PASIT is a connected set of peripheral components used in interop testing.
@@ -49,6 +51,11 @@ message PasitHost {
     // Additional power supply information for devices that provide
     // power to the DUT.
     PowerSupply power_supply = 4;
+    // Optional RPM for controlling power to the device, must specify
+    // type, power_unit_hostname, power_unit_outlet for PASIT.
+    // For devices with an RPM power will be enabled/disabled by PASIT along
+    // with the device.
+    RPM rpm = 5;
 
     // The type of device represented.
     enum Type {

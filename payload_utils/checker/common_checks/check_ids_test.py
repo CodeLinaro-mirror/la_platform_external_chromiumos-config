@@ -6,6 +6,8 @@
 
 import unittest
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from checker.common_checks.check_ids import IdConstraintSuite
 from chromiumos.config.api.design_config_id_pb2 import DesignConfigId
 from chromiumos.config.api.design_id_pb2 import DesignId

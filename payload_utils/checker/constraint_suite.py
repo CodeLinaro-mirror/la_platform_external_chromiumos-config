@@ -8,6 +8,8 @@ import inspect
 import pathlib
 import unittest
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from chromiumos.config.payload import config_bundle_pb2
 
 

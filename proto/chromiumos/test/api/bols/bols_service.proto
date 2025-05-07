@@ -136,6 +136,12 @@ service BolsService {
 message StationIdentifier {
   // The port used by servod.
   int32 servod_port = 1;
+  // The serial name of the servo.
+  string servo_serial = 2;
+  // The name of servod container.
+  // This field will be ignored if the labstation does not
+  // use container for servod.
+  string container_name = 3;
 }
 
 /////// Labstation API Messages ////////
@@ -353,7 +359,8 @@ message ServodValue {
   oneof value {
     string string_value = 1;
     int32 int_value = 2;
-    float float_value = 3;
+    float float_value = 3 [deprecated = true];
+    double double_value = 4;
   }
 }
 

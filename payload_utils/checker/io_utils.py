@@ -8,6 +8,8 @@ import json
 import pathlib
 from typing import Any, Dict
 
+# Disable spurious no-name-in-module and import-error lints.
+# pylint: disable=no-name-in-module, import-error
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.payload import flat_config_pb2
 from google.protobuf import json_format

@@ -1,0 +1,29 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/build/api/ash_chrome_config.proto";
+
+// AshChromeProvisionStartupMetadata can be passed to
+// ProvisionStartupRequest.metadata.
+message AshChromeProvisionStartupMetadata {
+  reserved 1;
+  reserved "cache_server_address";
+}
+
+// AshChromeProvisionInstallMetadata can be passed to InstallRequest.metadata.
+message AshChromeProvisionInstallMetadata {
+  chromiumos.build.api.AshChromeConfig ash_chrome_config = 1;
+
+  bool strip = 2;
+}
+
+// AshChromeProvisionResponse records the response of the ash-chrome
+// provisioning.
+message AshChromeProvisionResponse {}
