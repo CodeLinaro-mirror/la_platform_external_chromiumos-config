@@ -383,49 +383,42 @@ def run_generate_hal_xml(opts: argparse.Namespace) -> None:
     logging.info("XML written to %s.", opts.output_xml)
 
 
-def _generate_fingerprint_feature_xml(
-    design_config: design_pb2.Design.Config, output_dir: pathlib.Path
+def _write_feature_xml(
+    design_config: design_pb2.Design.Config,
+    output_dir: pathlib.Path,
+    feature_name: str,
 ) -> None:
-    """Generates the fingerprint feature XML if the feature is present.
+    """Generates a feature XML file if the feature is present.
 
     Args:
         design_config: The Design.Config proto.
         output_dir: The base directory to write the feature XML into.
+        feature_name: The string name of the feature
+            (e.g., "android.hardware.sensor.accelerometer").
     """
     if not design_config.id.value:
         logging.warning(
-            "Skipping Design.config due to missing 'design_config.id': %s",
+            "Skipping feature XML '%s' due to missing 'design_config.id': %s",
+            feature_name,
             design_config,
-        )
-        return
-
-    if not design_config.hardware_features.fingerprint.present:
-        logging.debug(
-            "Skipping fingerprint feature XML for %s: feature not present.",
-            design_config.id.value,
         )
         return
 
     model, sku = design_config.id.value.split(":")
 
-    config_dir_name = f"{model}_{sku}"
-    config_output_dir = output_dir / config_dir_name
-    output_file = config_output_dir / "android.hardware.fingerprint.xml"
+    config_output_dir = output_dir / f"{model}_{sku}"
+    output_file = config_output_dir / f"{feature_name}.xml"
 
     permissions_elem = etree.Element("permissions")
     feature_elem = etree.SubElement(permissions_elem, "feature")
-    feature_elem.set("name", "android.hardware.fingerprint")
-
-    xml_bytes = etree.tostring(
-        permissions_elem,
-        pretty_print=True,
-    )
+    feature_elem.set("name", feature_name)
 
     config_output_dir.mkdir(parents=True, exist_ok=True)
     with open(output_file, "wb") as f:
-        f.write(xml_bytes)
+        f.write(etree.tostring(permissions_elem, pretty_print=True))
     logging.info(
-        "Writing fingerprint feature XML for %s:%s to %s",
+        "Writing feature XML '%s' for %s:%s to %s",
+        feature_name,
         model,
         sku,
         output_file,
@@ -442,7 +435,82 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
 
     for design in config_bundle.design_list:
         for design_config in design.configs:
-            _generate_fingerprint_feature_xml(design_config, output_dir)
+            hw_features = design_config.hardware_features
+            present_enum = topology_pb2.HardwareFeatures.PRESENT
+
+            if present_enum in (
+                hw_features.accelerometer.base_accelerometer,
+                hw_features.accelerometer.lid_accelerometer,
+            ):
+                _write_feature_xml(
+                    design_config,
+                    output_dir,
+                    "android.hardware.sensor.accelerometer",
+                )
+
+            if present_enum in (
+                hw_features.magnetometer.base_magnetometer,
+                hw_features.magnetometer.lid_magnetometer,
+            ):
+                _write_feature_xml(
+                    design_config, output_dir, "android.hardware.sensor.compass"
+                )
+
+            if hw_features.accelerometer.lid_accelerometer == present_enum:
+                _write_feature_xml(
+                    design_config,
+                    output_dir,
+                    "android.sensor.device_orientation",
+                )
+
+            if hw_features.fingerprint.present == present_enum:
+                _write_feature_xml(
+                    design_config, output_dir, "android.hardware.fingerprint"
+                )
+
+            if present_enum in (
+                hw_features.gyroscope.base_gyroscope,
+                hw_features.gyroscope.lid_gyroscope,
+            ):
+                _write_feature_xml(
+                    design_config,
+                    output_dir,
+                    "android.hardware.sensor.gyroscope",
+                )
+
+            if (
+                hw_features.form_factor.form_factor
+                == topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE
+            ):
+                _write_feature_xml(
+                    design_config,
+                    output_dir,
+                    "android.hardware.sensor.hinge_angle",
+                )
+
+            if present_enum in (
+                hw_features.light_sensor.camera_lightsensor,
+                hw_features.light_sensor.lid_lightsensor,
+                hw_features.light_sensor.base_lightsensor,
+            ):
+                _write_feature_xml(
+                    design_config, output_dir, "android.hardware.sensor.light"
+                )
+
+            if hw_features.proximity.configs:
+                _write_feature_xml(
+                    design_config,
+                    output_dir,
+                    "android.hardware.sensor.proximity",
+                )
+
+            if any(
+                prox_conf.WhichOneof("config") == "semtech_config"
+                for prox_conf in hw_features.proximity.configs
+            ):
+                _write_feature_xml(
+                    design_config, output_dir, "com.google.sensor.sar"
+                )
 
 
 def _get_parser() -> argparse.ArgumentParser:

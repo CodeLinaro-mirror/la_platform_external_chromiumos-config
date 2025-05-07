@@ -5,6 +5,7 @@
 
 """Unit tests for the cros_to_android script."""
 
+import argparse
 import pathlib
 import tempfile
 import unittest
@@ -13,7 +14,9 @@ import unittest
 from chromiumos.config.api import design_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.api.software import software_config_pb2
+from chromiumos.config.payload import config_bundle_pb2
 import cros_to_android
+from google.protobuf import json_format
 from lxml import etree
 
 
@@ -285,6 +288,118 @@ class HalEntryHelpersTest(unittest.TestCase):
         """Test audio entry with no card_configs."""
         cros_to_android._add_audio_entry(self.root_element, self.design_config)
         self.assertIsNone(self.root_element.find("AudioConfiguration"))
+
+
+class FeatureXmlGenerationTest(unittest.TestCase):
+    """Tests for feature XML generation functions."""
+
+    def setUp(self):
+        self.temp_dir_obj = (
+            tempfile.TemporaryDirectory()  # pylint: disable=consider-using-with
+        )
+        self.temp_dir = pathlib.Path(self.temp_dir_obj.name)
+        self.config = design_pb2.Design.Config()
+        self.config.id.value = "TestModel:123"
+
+    def _create_bundle_and_run_feature_generation(self):
+        """Helper to run feature generation for self.config."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        bundle.design_list.add().configs.add().CopyFrom(self.config)
+
+        temp_json_path = self.temp_dir / "test_input_features.jsonproto"
+        with open(temp_json_path, "w", encoding="utf-8") as f:
+            f.write(json_format.MessageToJson(bundle))
+
+        opts = argparse.Namespace(
+            jsonproto_file=temp_json_path,
+            output_dir=self.temp_dir,
+        )
+        cros_to_android.run_generate_feature_xml(opts)
+
+    def _assert_feature_xml(self, feature_name_str):
+        """Asserts the presence and content of a feature XML."""
+        feature_file_path = (
+            self.temp_dir / f"TestModel_123/{feature_name_str}.xml"
+        )
+
+        self.assertTrue(feature_file_path.is_file())
+        with open(feature_file_path, "rb") as f:
+            self.assertEqual(
+                f.read(),
+                (
+                    b"<permissions>\n  "
+                    + f'<feature name="{feature_name_str}"/>\n'.encode("utf-8")
+                    + b"</permissions>\n"
+                ),
+            )
+
+    def test_generate_fingerprint_feature(self):
+        """Test fingerprint feature XML."""
+        self.config.hardware_features.fingerprint.present = True
+
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.fingerprint")
+
+    def test_generate_accelerometer_feature(self):
+        """Test accelerometer feature XML."""
+        self.config.hardware_features.accelerometer.base_accelerometer = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.sensor.accelerometer")
+
+    def test_generate_gyroscope_feature(self):
+        """Test gyroscope feature XML."""
+        self.config.hardware_features.gyroscope.base_gyroscope = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.sensor.gyroscope")
+
+    def test_generate_compass_feature(self):
+        """Test compass feature XML."""
+        self.config.hardware_features.magnetometer.lid_magnetometer = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.sensor.compass")
+
+    def test_generate_light_sensor_feature(self):
+        """Test light sensor feature XML."""
+        self.config.hardware_features.light_sensor.camera_lightsensor = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.sensor.light")
+
+    def test_generate_hinge_angle_feature(self):
+        """Test hinge angle feature XML."""
+        self.config.hardware_features.form_factor.form_factor = (
+            topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.sensor.hinge_angle")
+
+    def test_generate_proximity_feature(self):
+        """Test proximity sensor feature XML."""
+        self.config.hardware_features.proximity.configs.add()
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.hardware.sensor.proximity")
+
+    def test_generate_sar_feature(self):
+        """Test com.google.sensor.sar feature XML."""
+        prox_config = self.config.hardware_features.proximity.configs.add()
+        prox_config.semtech_config.sampling_frequency = 1
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("com.google.sensor.sar")
+
+    def test_generate_device_orientation_feature(self):
+        """Test android.sensor.device_orientation feature XML."""
+        self.config.hardware_features.accelerometer.lid_accelerometer = (
+            topology_pb2.HardwareFeatures.PRESENT
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml("android.sensor.device_orientation")
 
 
 if __name__ == "__main__":
