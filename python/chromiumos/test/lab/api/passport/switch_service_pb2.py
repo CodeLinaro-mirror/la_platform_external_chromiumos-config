@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n5chromiumos/test/lab/api/passport/switch_service.proto\x12 chromiumos.test.lab.api.passport\"\x1b\n\rSwitchFixture\x12\n\n\x02id\x18\x01 \x01(\t\"\x14\n\x12GetSwitchesRequest\"X\n\x13GetSwitchesResponse\x12\x41\n\x08switches\x18\x01 \x03(\x0b\x32/.chromiumos.test.lab.api.passport.SwitchFixture\"\x19\n\x17ResetAllSwitchesRequest\"\x1a\n\x18ResetAllSwitchesResponse\"q\n\x1a\x43onfigureSwitchPortRequest\x12\x11\n\tswitch_id\x18\x01 \x01(\t\x12@\n\x05state\x18\x02 \x01(\x0e\x32\x31.chromiumos.test.lab.api.passport.SwitchPortState\"\x1d\n\x1b\x43onfigureSwitchPortResponse*s\n\x0fSwitchPortState\x12\x17\n\x13SWITCH_PORT_UNKNOWN\x10\x00\x12\x18\n\x14SWITCH_PORT_DISABLED\x10\x01\x12\x17\n\x13SWITCH_PORT_ENABLED\x10\x02\x12\x14\n\x10SWITCH_PORT_FLIP\x10\x03\x32\xb2\x03\n\rSwitchService\x12|\n\x0bGetSwitches\x12\x34.chromiumos.test.lab.api.passport.GetSwitchesRequest\x1a\x35.chromiumos.test.lab.api.passport.GetSwitchesResponse\"\x00\x12\x8b\x01\n\x10ResetAllSwitches\x12\x39.chromiumos.test.lab.api.passport.ResetAllSwitchesRequest\x1a:.chromiumos.test.lab.api.passport.ResetAllSwitchesResponse\"\x00\x12\x94\x01\n\x13\x43onfigureSwitchPort\x12<.chromiumos.test.lab.api.passport.ConfigureSwitchPortRequest\x1a=.chromiumos.test.lab.api.passport.ConfigureSwitchPortResponse\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n5chromiumos/test/lab/api/passport/switch_service.proto\x12 chromiumos.test.lab.api.passport\"\x1b\n\rSwitchFixture\x12\n\n\x02id\x18\x01 \x01(\t\"\x14\n\x12GetSwitchesRequest\"X\n\x13GetSwitchesResponse\x12\x41\n\x08switches\x18\x01 \x03(\x0b\x32/.chromiumos.test.lab.api.passport.SwitchFixture\"\x19\n\x17ResetAllSwitchesRequest\"\x1a\n\x18ResetAllSwitchesResponse\"\x82\x01\n\x1a\x43onfigureSwitchPortRequest\x12\x11\n\tswitch_id\x18\x01 \x01(\t\x12@\n\x05state\x18\x02 \x01(\x0e\x32\x31.chromiumos.test.lab.api.passport.SwitchPortState\x12\x0f\n\x07port_id\x18\x03 \x01(\t\"\x1d\n\x1b\x43onfigureSwitchPortResponse*s\n\x0fSwitchPortState\x12\x17\n\x13SWITCH_PORT_UNKNOWN\x10\x00\x12\x18\n\x14SWITCH_PORT_DISABLED\x10\x01\x12\x17\n\x13SWITCH_PORT_ENABLED\x10\x02\x12\x14\n\x10SWITCH_PORT_FLIP\x10\x03\x32\xb2\x03\n\rSwitchService\x12|\n\x0bGetSwitches\x12\x34.chromiumos.test.lab.api.passport.GetSwitchesRequest\x1a\x35.chromiumos.test.lab.api.passport.GetSwitchesResponse\"\x00\x12\x8b\x01\n\x10ResetAllSwitches\x12\x39.chromiumos.test.lab.api.passport.ResetAllSwitchesRequest\x1a:.chromiumos.test.lab.api.passport.ResetAllSwitchesResponse\"\x00\x12\x94\x01\n\x13\x43onfigureSwitchPort\x12<.chromiumos.test.lab.api.passport.ConfigureSwitchPortRequest\x1a=.chromiumos.test.lab.api.passport.ConfigureSwitchPortResponse\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
 )
 
 _SWITCHPORTSTATE = _descriptor.EnumDescriptor(
@@ -53,8 +53,8 @@ _SWITCHPORTSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=433,
-  serialized_end=548,
+  serialized_start=451,
+  serialized_end=566,
 )
 _sym_db.RegisterEnumDescriptor(_SWITCHPORTSTATE)
 
@@ -227,6 +227,13 @@ _CONFIGURESWITCHPORTREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='port_id', full_name='chromiumos.test.lab.api.passport.ConfigureSwitchPortRequest.port_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -239,8 +246,8 @@ _CONFIGURESWITCHPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=287,
-  serialized_end=400,
+  serialized_start=288,
+  serialized_end=418,
 )
 
 
@@ -264,8 +271,8 @@ _CONFIGURESWITCHPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=431,
+  serialized_start=420,
+  serialized_end=449,
 )
 
 _GETSWITCHESRESPONSE.fields_by_name['switches'].message_type = _SWITCHFIXTURE
@@ -339,8 +346,8 @@ _SWITCHSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=551,
-  serialized_end=985,
+  serialized_start=569,
+  serialized_end=1003,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetSwitches',

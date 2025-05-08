@@ -8,6 +8,7 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/build/api/ash_chrome_config.proto";
 import "chromiumos/build/api/firmware_config.proto";
 import "chromiumos/longrunning/operations.proto";
 import "chromiumos/storage_path.proto";
@@ -223,3 +224,17 @@ message InstallFirmwareResponse {
 }
 
 message InstallFirmwareMetadata {}
+
+message InstallAshChromeRequest {
+  chromiumos.build.api.AshChromeConfig ash_chrome_config = 1;
+
+  // Whether to strip symbols before deploy to DUT.
+  bool strip = 2;
+}
+
+message InstallAshChromeResponse {
+  oneof outcome {
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
+  }
+}
