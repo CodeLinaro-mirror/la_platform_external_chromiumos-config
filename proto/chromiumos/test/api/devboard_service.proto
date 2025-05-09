@@ -1,0 +1,88 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/longrunning/operations.proto";
+
+// Provides the ability to start/stop DevboardService daemon and execute devboard dutcontrol
+// commands on it.
+// DevboardService daemon can be running either inside a Docker container or directly
+// on the host.
+service DevboardService {
+  // StartDevboardService runs a gsc_dev_board Docker container and starts the service daemon
+  // inside the container.
+  rpc StartDevboardService(StartDevboardServiceRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "StartDevboardServiceResponse",
+      metadata_type: "StartDevboardServiceMetadata"
+    };
+  }
+
+  // StopDevboardService stops the daemon inside the container.
+  rpc StopDevboardService(StopDevboardServiceRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "StopDevboardServiceResponse",
+      metadata_type: "StopDevboardServiceMetadata"
+    };
+  }
+}
+
+message StartDevboardServiceRequest {
+  string container_name = 1;
+  string testbed_type = 2;
+  string gsc_serial = 3;
+  string debugger_serial = 4;
+  string service_port = 5;
+  string container_image = 6;
+  bool debug = 7;
+}
+
+message StartDevboardServiceResponse {
+  // Empty response for success.
+  message Success {
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message StartDevboardServiceMetadata {
+}
+
+message StopDevboardServiceRequest {
+  string container_name = 1;
+}
+
+message StopDevboardServiceResponse {
+  // Empty response for success.
+  message Success {
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message StopDevboardServiceMetadata {
+}

@@ -15,7 +15,7 @@ echo "Generating proto bindings..."
 
 # Discover and run unittests in payload_utils.
 echo "Running unittests..."
-vpython3 -m unittest discover -s payload_utils -p "*test.py"
+PYTHONPATH=payload_utils vpython3 -m pytest
 
 echo "Running pylint..."
 PYTHONPATH=payload_utils vpython3 -m pylint "$(pwd)/payload_utils" \
