@@ -41716,6 +41716,157 @@
           ]
         },
         {
+          "name": "StreamInfoColorFormat",
+          "value": [
+            {
+              "name": "STREAM_INFO_CF_NONE",
+              "number": 0
+            },
+            {
+              "name": "STREAM_INFO_CF_UNKNOWN",
+              "number": 1
+            },
+            {
+              "name": "STREAM_INFO_CF_RGB",
+              "number": 2
+            },
+            {
+              "name": "STREAM_INFO_CF_YCBCR_422",
+              "number": 3
+            },
+            {
+              "name": "STREAM_INFO_CF_YCBCR_444",
+              "number": 4
+            },
+            {
+              "name": "STREAM_INFO_CF_YCBCR_420",
+              "number": 5
+            },
+            {
+              "name": "STREAM_INFO_CF_IDO_DEFINED",
+              "number": 6
+            },
+            {
+              "name": "STREAM_INFO_CF_Y_ONLY",
+              "number": 7
+            },
+            {
+              "name": "STREAM_INFO_CF_RAW",
+              "number": 8
+            },
+            {
+              "name": "STREAM_INFO_CF_DSC",
+              "number": 9
+            }
+          ]
+        },
+        {
+          "name": "StreamInfoDynamicRange",
+          "value": [
+            {
+              "name": "STREAM_INFO_DR_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "STREAM_INFO_DR_VESA",
+              "number": 1
+            },
+            {
+              "name": "STREAM_INFO_DR_CTA",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "StreamInfoColorimetry",
+          "value": [
+            {
+              "name": "STREAM_INFO_CM_NONE",
+              "number": 0
+            },
+            {
+              "name": "STREAM_INFO_CM_RESERVED",
+              "number": 1
+            },
+            {
+              "name": "STREAM_INFO_CM_SRGB",
+              "number": 2
+            },
+            {
+              "name": "STREAM_INFO_CM_SMPTE_170M",
+              "number": 3
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT601",
+              "number": 4
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT709",
+              "number": 5
+            },
+            {
+              "name": "STREAM_INFO_CM_XVYCC601",
+              "number": 6
+            },
+            {
+              "name": "STREAM_INFO_CM_XVYCC709",
+              "number": 7
+            },
+            {
+              "name": "STREAM_INFO_CM_SYCC601",
+              "number": 8
+            },
+            {
+              "name": "STREAM_INFO_CM_ADOBEYCC601",
+              "number": 9
+            },
+            {
+              "name": "STREAM_INFO_CM_ADOBERGB",
+              "number": 10
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC",
+              "number": 11
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT2020_YCBCR",
+              "number": 12
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT2020_RGB",
+              "number": 13
+            },
+            {
+              "name": "STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX",
+              "number": 14
+            },
+            {
+              "name": "STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT",
+              "number": 15
+            },
+            {
+              "name": "STREAM_INFO_CM_DCI_P3",
+              "number": 16
+            },
+            {
+              "name": "STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE",
+              "number": 17
+            },
+            {
+              "name": "STREAM_INFO_CM_CUSTOM_COLOR_PROFILE",
+              "number": 18
+            },
+            {
+              "name": "STREAM_INFO_CM_OPYCC601",
+              "number": 19
+            },
+            {
+              "name": "STREAM_INFO_CM_OPRGB",
+              "number": 20
+            }
+          ]
+        },
+        {
           "name": "ComplianceTestGroup",
           "value": [
             {
@@ -42059,6 +42210,52 @@
               "oneofIndex": 8,
               "proto3Optional": true,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "bpp",
+              "label": "LABEL_OPTIONAL",
+              "name": "bpp",
+              "number": 10,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "colorFormat",
+              "label": "LABEL_OPTIONAL",
+              "name": "color_format",
+              "number": 11,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoColorFormat"
+            },
+            {
+              "jsonName": "colormetry",
+              "label": "LABEL_OPTIONAL",
+              "name": "colormetry",
+              "number": 12,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoColorimetry"
+            },
+            {
+              "jsonName": "dynamicRange",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_range",
+              "number": 13,
+              "oneofIndex": 12,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoDynamicRange"
+            },
+            {
+              "jsonName": "crc",
+              "label": "LABEL_REPEATED",
+              "name": "crc",
+              "number": 14,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "StreamInfoVideoTester",
@@ -42089,6 +42286,18 @@
             },
             {
               "name": "_vswidth"
+            },
+            {
+              "name": "_bpp"
+            },
+            {
+              "name": "_color_format"
+            },
+            {
+              "name": "_colormetry"
+            },
+            {
+              "name": "_dynamic_range"
             }
           ]
         },
@@ -42164,9 +42373,9 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "scamblerSeed",
+              "jsonName": "scramblerSeed",
               "label": "LABEL_OPTIONAL",
-              "name": "scambler_seed",
+              "name": "scrambler_seed",
               "number": 4,
               "oneofIndex": 2,
               "proto3Optional": true,
@@ -42191,7 +42400,7 @@
               "name": "_mst_sink_count"
             },
             {
-              "name": "_scambler_seed"
+              "name": "_scrambler_seed"
             },
             {
               "name": "_max_lane"
@@ -42234,9 +42443,9 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "scamblerSeed",
+              "jsonName": "scramblerSeed",
               "label": "LABEL_OPTIONAL",
-              "name": "scambler_seed",
+              "name": "scrambler_seed",
               "number": 3,
               "oneofIndex": 2,
               "proto3Optional": true,
@@ -42261,7 +42470,7 @@
               "name": "_mst_sink_count"
             },
             {
-              "name": "_scambler_seed"
+              "name": "_scrambler_seed"
             },
             {
               "name": "_max_lane"

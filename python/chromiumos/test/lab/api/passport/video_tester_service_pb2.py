@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n;chromiumos/test/lab/api/passport/video_tester_service.proto\x12 chromiumos.test.lab.api.passport\"\'\n\x0bVideoTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x18\n\x16GetVideoTestersRequest\"Y\n\x17GetVideoTestersResponse\x12>\n\x07testers\x18\x01 \x03(\x0b\x32-.chromiumos.test.lab.api.passport.VideoTester\"$\n\x16OpenVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x17OpenVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"%\n\x17\x43loseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"+\n\x18\x43loseVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1d\n\x0fGetRolesRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x10GetRolesResponse\x12\x35\n\x05roles\x18\x01 \x03(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"R\n\x0eSetRoleRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x34\n\x04role\x18\x02 \x01(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"\"\n\x0fSetRoleResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"I\n\x1aLoadEdidVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\x12\x11\n\tid_stream\x18\x03 \x01(\x03\".\n\x1bLoadEdidVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"-\n\x1fGetStreamInfoVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xc7\x02\n\x15StreamInfoVideoTester\x12\x17\n\nframe_rate\x18\x01 \x01(\x01H\x00\x88\x01\x01\x12\x14\n\x07hactive\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x14\n\x07vactive\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x13\n\x06htotal\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12\x13\n\x06vtotal\x18\x05 \x01(\x03H\x04\x88\x01\x01\x12\x13\n\x06hstart\x18\x06 \x01(\x03H\x05\x88\x01\x01\x12\x13\n\x06vstart\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x14\n\x07hswidth\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x14\n\x07vswidth\x18\t \x01(\x03H\x08\x88\x01\x01\x42\r\n\x0b_frame_rateB\n\n\x08_hactiveB\n\n\x08_vactiveB\t\n\x07_htotalB\t\n\x07_vtotalB\t\n\x07_hstartB\t\n\x07_vstartB\n\n\x08_hswidthB\n\n\x08_vswidth\"l\n GetStreamInfoVideoTesterResponse\x12H\n\x07streams\x18\x01 \x03(\x0b\x32\x37.chromiumos.test.lab.api.passport.StreamInfoVideoTester\"=\n\x1cScreenshotVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tid_stream\x18\x02 \x01(\x03\"3\n\x1dScreenshotVideoTesterResponse\x12\x12\n\nscreenshot\x18\x01 \x01(\x0c\"\xc3\x01\n\x19SetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x03mst\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x1a\n\rscambler_seed\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x05 \x01(\x03H\x03\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x10\n\x0e_scambler_seedB\x0b\n\t_max_lane\"\x1c\n\x1aSetLinkVideoTesterResponse\"\'\n\x19GetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb8\x01\n\x1aGetLinkVideoTesterResponse\x12\x10\n\x03mst\x18\x01 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x1a\n\rscambler_seed\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x04 \x01(\x03H\x03\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x10\n\x0e_scambler_seedB\x0b\n\t_max_lane\"6\n\x18\x41ttachVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61ttach\x18\x02 \x01(\x08\"\x1b\n\x19\x41ttachVideoTesterResponse\"^\n\x1aHpdPulseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11pulse_duration_ms\x18\x02 \x01(\x03H\x00\x88\x01\x01\x42\x14\n\x12_pulse_duration_ms\"\x1d\n\x1bHpdPulseVideoTesterResponse\"u\n\x19\x43omplianceTestVideoTester\x12G\n\x08group_id\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.lab.api.passport.ComplianceTestGroup\x12\x0f\n\x07test_id\x18\x02 \x01(\x03\"\xb4\x01\n\x1f\x43omplianceTestResultVideoTester\x12I\n\x04test\x18\x01 \x01(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x46\n\x06status\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.lab.api.passport.ComplianceTestStatus\"r\n\x18RunComplianceTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12J\n\x05tests\x18\x02 \x03(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\"\x85\x01\n\x19RunComplianceTestResponse\x12R\n\x07results\x18\x01 \x03(\x0b\x32\x41.chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester\x12\x14\n\x0cresults_html\x18\x02 \x01(\x0c*\x8c\x01\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x1a\n\x16ROLE_DPSOURCE_USBCSINK\x10\x01\x12\x18\n\x14ROLE_DPSOURCE_DPSINK\x10\x02\x12\x1c\n\x18ROLE_USBCSOURCE_USBCSINK\x10\x03\x12\x1a\n\x16ROLE_USBCSOURCE_DPSINK\x10\x04*\xa7\x03\n\x13\x43omplianceTestGroup\x12\x14\n\x10GROUP_AUDIO_TEST\x10\x00\x12 \n\x1cGROUP_PIXEL_LEVEL_VIDEO_TEST\x10\x01\x12\x1e\n\x1aGROUP_CRC_BASED_VIDEO_TEST\x10\x02\x12\x13\n\x0fGROUP_LINK_TEST\x10\x03\x12(\n$GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS\x10\x04\x12,\n(GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS\x10\x05\x12\x33\n/GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST\x10\x06\x12\x33\n/GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS\x10\x07\x12,\n(GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT\x10\x08\x12\x33\n/GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST\x10\t*\xab\x01\n\x14\x43omplianceTestStatus\x12!\n\x1d\x43OMPLIANCE_TEST_STATUS_UNKOWN\x10\x00\x12\x1a\n\x16\x43OMPLIANCE_TEST_PASSED\x10\x01\x12\x1b\n\x17\x43OMPLIANCE_TEST_SKIPPED\x10\x02\x12\x1a\n\x16\x43OMPLIANCE_TEST_FAILED\x10\x03\x12\x1b\n\x17\x43OMPLIANCE_TEST_ABORTED\x10\x04\x32\xd6\x0e\n\x12VideoTesterService\x12\x86\x01\n\x0fGetVideoTesters\x12\x38.chromiumos.test.lab.api.passport.GetVideoTestersRequest\x1a\x39.chromiumos.test.lab.api.passport.GetVideoTestersResponse\x12\x86\x01\n\x0fOpenVideoTester\x12\x38.chromiumos.test.lab.api.passport.OpenVideoTesterRequest\x1a\x39.chromiumos.test.lab.api.passport.OpenVideoTesterResponse\x12\x89\x01\n\x10\x43loseVideoTester\x12\x39.chromiumos.test.lab.api.passport.CloseVideoTesterRequest\x1a:.chromiumos.test.lab.api.passport.CloseVideoTesterResponse\x12|\n\x13GetRolesVideoTester\x12\x31.chromiumos.test.lab.api.passport.GetRolesRequest\x1a\x32.chromiumos.test.lab.api.passport.GetRolesResponse\x12y\n\x12SetRoleVideoTester\x12\x30.chromiumos.test.lab.api.passport.SetRoleRequest\x1a\x31.chromiumos.test.lab.api.passport.SetRoleResponse\x12\x92\x01\n\x13LoadEdidVideoTester\x12<.chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse\x12\xa1\x01\n\x18GetStreamInfoVideoTester\x12\x41.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest\x1a\x42.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse\x12\x98\x01\n\x15ScreenshotVideoTester\x12>.chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest\x1a?.chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse\x12\x8f\x01\n\x12SetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse\x12\x8f\x01\n\x12GetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse\x12\x8c\x01\n\x11\x41ttachVideoTester\x12:.chromiumos.test.lab.api.passport.AttachVideoTesterRequest\x1a;.chromiumos.test.lab.api.passport.AttachVideoTesterResponse\x12\x92\x01\n\x13HpdPulseVideoTester\x12<.chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse\x12\x8c\x01\n\x11RunComplianceTest\x12:.chromiumos.test.lab.api.passport.RunComplianceTestRequest\x1a;.chromiumos.test.lab.api.passport.RunComplianceTestResponseB<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n;chromiumos/test/lab/api/passport/video_tester_service.proto\x12 chromiumos.test.lab.api.passport\"\'\n\x0bVideoTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x18\n\x16GetVideoTestersRequest\"Y\n\x17GetVideoTestersResponse\x12>\n\x07testers\x18\x01 \x03(\x0b\x32-.chromiumos.test.lab.api.passport.VideoTester\"$\n\x16OpenVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x17OpenVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"%\n\x17\x43loseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"+\n\x18\x43loseVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1d\n\x0fGetRolesRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x10GetRolesResponse\x12\x35\n\x05roles\x18\x01 \x03(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"R\n\x0eSetRoleRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x34\n\x04role\x18\x02 \x01(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"\"\n\x0fSetRoleResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"I\n\x1aLoadEdidVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\x12\x11\n\tid_stream\x18\x03 \x01(\x03\".\n\x1bLoadEdidVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"-\n\x1fGetStreamInfoVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x9c\x05\n\x15StreamInfoVideoTester\x12\x17\n\nframe_rate\x18\x01 \x01(\x01H\x00\x88\x01\x01\x12\x14\n\x07hactive\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x14\n\x07vactive\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x13\n\x06htotal\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12\x13\n\x06vtotal\x18\x05 \x01(\x03H\x04\x88\x01\x01\x12\x13\n\x06hstart\x18\x06 \x01(\x03H\x05\x88\x01\x01\x12\x13\n\x06vstart\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x14\n\x07hswidth\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x14\n\x07vswidth\x18\t \x01(\x03H\x08\x88\x01\x01\x12\x10\n\x03\x62pp\x18\n \x01(\x03H\t\x88\x01\x01\x12R\n\x0c\x63olor_format\x18\x0b \x01(\x0e\x32\x37.chromiumos.test.lab.api.passport.StreamInfoColorFormatH\n\x88\x01\x01\x12P\n\ncolormetry\x18\x0c \x01(\x0e\x32\x37.chromiumos.test.lab.api.passport.StreamInfoColorimetryH\x0b\x88\x01\x01\x12T\n\rdynamic_range\x18\r \x01(\x0e\x32\x38.chromiumos.test.lab.api.passport.StreamInfoDynamicRangeH\x0c\x88\x01\x01\x12\x0b\n\x03\x63rc\x18\x0e \x03(\x03\x42\r\n\x0b_frame_rateB\n\n\x08_hactiveB\n\n\x08_vactiveB\t\n\x07_htotalB\t\n\x07_vtotalB\t\n\x07_hstartB\t\n\x07_vstartB\n\n\x08_hswidthB\n\n\x08_vswidthB\x06\n\x04_bppB\x0f\n\r_color_formatB\r\n\x0b_colormetryB\x10\n\x0e_dynamic_range\"l\n GetStreamInfoVideoTesterResponse\x12H\n\x07streams\x18\x01 \x03(\x0b\x32\x37.chromiumos.test.lab.api.passport.StreamInfoVideoTester\"=\n\x1cScreenshotVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tid_stream\x18\x02 \x01(\x03\"3\n\x1dScreenshotVideoTesterResponse\x12\x12\n\nscreenshot\x18\x01 \x01(\x0c\"\xc5\x01\n\x19SetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x03mst\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x1b\n\x0escrambler_seed\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x05 \x01(\x03H\x03\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x11\n\x0f_scrambler_seedB\x0b\n\t_max_lane\"\x1c\n\x1aSetLinkVideoTesterResponse\"\'\n\x19GetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xba\x01\n\x1aGetLinkVideoTesterResponse\x12\x10\n\x03mst\x18\x01 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x1b\n\x0escrambler_seed\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x04 \x01(\x03H\x03\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x11\n\x0f_scrambler_seedB\x0b\n\t_max_lane\"6\n\x18\x41ttachVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61ttach\x18\x02 \x01(\x08\"\x1b\n\x19\x41ttachVideoTesterResponse\"^\n\x1aHpdPulseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11pulse_duration_ms\x18\x02 \x01(\x03H\x00\x88\x01\x01\x42\x14\n\x12_pulse_duration_ms\"\x1d\n\x1bHpdPulseVideoTesterResponse\"u\n\x19\x43omplianceTestVideoTester\x12G\n\x08group_id\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.lab.api.passport.ComplianceTestGroup\x12\x0f\n\x07test_id\x18\x02 \x01(\x03\"\xb4\x01\n\x1f\x43omplianceTestResultVideoTester\x12I\n\x04test\x18\x01 \x01(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x46\n\x06status\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.lab.api.passport.ComplianceTestStatus\"r\n\x18RunComplianceTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12J\n\x05tests\x18\x02 \x03(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\"\x85\x01\n\x19RunComplianceTestResponse\x12R\n\x07results\x18\x01 \x03(\x0b\x32\x41.chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester\x12\x14\n\x0cresults_html\x18\x02 \x01(\x0c*\x8c\x01\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x1a\n\x16ROLE_DPSOURCE_USBCSINK\x10\x01\x12\x18\n\x14ROLE_DPSOURCE_DPSINK\x10\x02\x12\x1c\n\x18ROLE_USBCSOURCE_USBCSINK\x10\x03\x12\x1a\n\x16ROLE_USBCSOURCE_DPSINK\x10\x04*\xa9\x02\n\x15StreamInfoColorFormat\x12\x17\n\x13STREAM_INFO_CF_NONE\x10\x00\x12\x1a\n\x16STREAM_INFO_CF_UNKNOWN\x10\x01\x12\x16\n\x12STREAM_INFO_CF_RGB\x10\x02\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_422\x10\x03\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_444\x10\x04\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_420\x10\x05\x12\x1e\n\x1aSTREAM_INFO_CF_IDO_DEFINED\x10\x06\x12\x19\n\x15STREAM_INFO_CF_Y_ONLY\x10\x07\x12\x16\n\x12STREAM_INFO_CF_RAW\x10\x08\x12\x16\n\x12STREAM_INFO_CF_DSC\x10\t*e\n\x16StreamInfoDynamicRange\x12\x1a\n\x16STREAM_INFO_DR_UNKNOWN\x10\x00\x12\x17\n\x13STREAM_INFO_DR_VESA\x10\x01\x12\x16\n\x12STREAM_INFO_DR_CTA\x10\x02*\xbb\x05\n\x15StreamInfoColorimetry\x12\x17\n\x13STREAM_INFO_CM_NONE\x10\x00\x12\x1b\n\x17STREAM_INFO_CM_RESERVED\x10\x01\x12\x17\n\x13STREAM_INFO_CM_SRGB\x10\x02\x12\x1d\n\x19STREAM_INFO_CM_SMPTE_170M\x10\x03\x12\x1d\n\x19STREAM_INFO_CM_ITUR_BT601\x10\x04\x12\x1d\n\x19STREAM_INFO_CM_ITUR_BT709\x10\x05\x12\x1b\n\x17STREAM_INFO_CM_XVYCC601\x10\x06\x12\x1b\n\x17STREAM_INFO_CM_XVYCC709\x10\x07\x12\x1a\n\x16STREAM_INFO_CM_SYCC601\x10\x08\x12\x1e\n\x1aSTREAM_INFO_CM_ADOBEYCC601\x10\t\x12\x1b\n\x17STREAM_INFO_CM_ADOBERGB\x10\n\x12\'\n#STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC\x10\x0b\x12$\n STREAM_INFO_CM_ITUR_BT2020_YCBCR\x10\x0c\x12\"\n\x1eSTREAM_INFO_CM_ITUR_BT2020_RGB\x10\r\x12%\n!STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX\x10\x0e\x12%\n!STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT\x10\x0f\x12\x19\n\x15STREAM_INFO_CM_DCI_P3\x10\x10\x12\'\n#STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE\x10\x11\x12\'\n#STREAM_INFO_CM_CUSTOM_COLOR_PROFILE\x10\x12\x12\x1b\n\x17STREAM_INFO_CM_OPYCC601\x10\x13\x12\x18\n\x14STREAM_INFO_CM_OPRGB\x10\x14*\xa7\x03\n\x13\x43omplianceTestGroup\x12\x14\n\x10GROUP_AUDIO_TEST\x10\x00\x12 \n\x1cGROUP_PIXEL_LEVEL_VIDEO_TEST\x10\x01\x12\x1e\n\x1aGROUP_CRC_BASED_VIDEO_TEST\x10\x02\x12\x13\n\x0fGROUP_LINK_TEST\x10\x03\x12(\n$GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS\x10\x04\x12,\n(GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS\x10\x05\x12\x33\n/GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST\x10\x06\x12\x33\n/GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS\x10\x07\x12,\n(GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT\x10\x08\x12\x33\n/GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST\x10\t*\xab\x01\n\x14\x43omplianceTestStatus\x12!\n\x1d\x43OMPLIANCE_TEST_STATUS_UNKOWN\x10\x00\x12\x1a\n\x16\x43OMPLIANCE_TEST_PASSED\x10\x01\x12\x1b\n\x17\x43OMPLIANCE_TEST_SKIPPED\x10\x02\x12\x1a\n\x16\x43OMPLIANCE_TEST_FAILED\x10\x03\x12\x1b\n\x17\x43OMPLIANCE_TEST_ABORTED\x10\x04\x32\xd6\x0e\n\x12VideoTesterService\x12\x86\x01\n\x0fGetVideoTesters\x12\x38.chromiumos.test.lab.api.passport.GetVideoTestersRequest\x1a\x39.chromiumos.test.lab.api.passport.GetVideoTestersResponse\x12\x86\x01\n\x0fOpenVideoTester\x12\x38.chromiumos.test.lab.api.passport.OpenVideoTesterRequest\x1a\x39.chromiumos.test.lab.api.passport.OpenVideoTesterResponse\x12\x89\x01\n\x10\x43loseVideoTester\x12\x39.chromiumos.test.lab.api.passport.CloseVideoTesterRequest\x1a:.chromiumos.test.lab.api.passport.CloseVideoTesterResponse\x12|\n\x13GetRolesVideoTester\x12\x31.chromiumos.test.lab.api.passport.GetRolesRequest\x1a\x32.chromiumos.test.lab.api.passport.GetRolesResponse\x12y\n\x12SetRoleVideoTester\x12\x30.chromiumos.test.lab.api.passport.SetRoleRequest\x1a\x31.chromiumos.test.lab.api.passport.SetRoleResponse\x12\x92\x01\n\x13LoadEdidVideoTester\x12<.chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse\x12\xa1\x01\n\x18GetStreamInfoVideoTester\x12\x41.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest\x1a\x42.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse\x12\x98\x01\n\x15ScreenshotVideoTester\x12>.chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest\x1a?.chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse\x12\x8f\x01\n\x12SetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse\x12\x8f\x01\n\x12GetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse\x12\x8c\x01\n\x11\x41ttachVideoTester\x12:.chromiumos.test.lab.api.passport.AttachVideoTesterRequest\x1a;.chromiumos.test.lab.api.passport.AttachVideoTesterResponse\x12\x92\x01\n\x13HpdPulseVideoTester\x12<.chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse\x12\x8c\x01\n\x11RunComplianceTest\x12:.chromiumos.test.lab.api.passport.RunComplianceTestRequest\x1a;.chromiumos.test.lab.api.passport.RunComplianceTestResponseB<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
 )
 
 _ROLE = _descriptor.EnumDescriptor(
@@ -58,12 +58,230 @@ _ROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2596,
-  serialized_end=2736,
+  serialized_start=2941,
+  serialized_end=3081,
 )
 _sym_db.RegisterEnumDescriptor(_ROLE)
 
 Role = enum_type_wrapper.EnumTypeWrapper(_ROLE)
+_STREAMINFOCOLORFORMAT = _descriptor.EnumDescriptor(
+  name='StreamInfoColorFormat',
+  full_name='chromiumos.test.lab.api.passport.StreamInfoColorFormat',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_NONE', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_UNKNOWN', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_RGB', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_YCBCR_422', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_YCBCR_444', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_YCBCR_420', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_IDO_DEFINED', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_Y_ONLY', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_RAW', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CF_DSC', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3084,
+  serialized_end=3381,
+)
+_sym_db.RegisterEnumDescriptor(_STREAMINFOCOLORFORMAT)
+
+StreamInfoColorFormat = enum_type_wrapper.EnumTypeWrapper(_STREAMINFOCOLORFORMAT)
+_STREAMINFODYNAMICRANGE = _descriptor.EnumDescriptor(
+  name='StreamInfoDynamicRange',
+  full_name='chromiumos.test.lab.api.passport.StreamInfoDynamicRange',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_DR_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_DR_VESA', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_DR_CTA', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3383,
+  serialized_end=3484,
+)
+_sym_db.RegisterEnumDescriptor(_STREAMINFODYNAMICRANGE)
+
+StreamInfoDynamicRange = enum_type_wrapper.EnumTypeWrapper(_STREAMINFODYNAMICRANGE)
+_STREAMINFOCOLORIMETRY = _descriptor.EnumDescriptor(
+  name='StreamInfoColorimetry',
+  full_name='chromiumos.test.lab.api.passport.StreamInfoColorimetry',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_NONE', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_RESERVED', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_SRGB', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_SMPTE_170M', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ITUR_BT601', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ITUR_BT709', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_XVYCC601', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_XVYCC709', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_SYCC601', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ADOBEYCC601', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ADOBERGB', index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC', index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ITUR_BT2020_YCBCR', index=12, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_ITUR_BT2020_RGB', index=13, number=13,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX', index=14, number=14,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT', index=15, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_DCI_P3', index=16, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE', index=17, number=17,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_CUSTOM_COLOR_PROFILE', index=18, number=18,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_OPYCC601', index=19, number=19,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STREAM_INFO_CM_OPRGB', index=20, number=20,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3487,
+  serialized_end=4186,
+)
+_sym_db.RegisterEnumDescriptor(_STREAMINFOCOLORIMETRY)
+
+StreamInfoColorimetry = enum_type_wrapper.EnumTypeWrapper(_STREAMINFOCOLORIMETRY)
 _COMPLIANCETESTGROUP = _descriptor.EnumDescriptor(
   name='ComplianceTestGroup',
   full_name='chromiumos.test.lab.api.passport.ComplianceTestGroup',
@@ -124,8 +342,8 @@ _COMPLIANCETESTGROUP = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2739,
-  serialized_end=3162,
+  serialized_start=4189,
+  serialized_end=4612,
 )
 _sym_db.RegisterEnumDescriptor(_COMPLIANCETESTGROUP)
 
@@ -165,8 +383,8 @@ _COMPLIANCETESTSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3165,
-  serialized_end=3336,
+  serialized_start=4615,
+  serialized_end=4786,
 )
 _sym_db.RegisterEnumDescriptor(_COMPLIANCETESTSTATUS)
 
@@ -176,6 +394,40 @@ ROLE_DPSOURCE_USBCSINK = 1
 ROLE_DPSOURCE_DPSINK = 2
 ROLE_USBCSOURCE_USBCSINK = 3
 ROLE_USBCSOURCE_DPSINK = 4
+STREAM_INFO_CF_NONE = 0
+STREAM_INFO_CF_UNKNOWN = 1
+STREAM_INFO_CF_RGB = 2
+STREAM_INFO_CF_YCBCR_422 = 3
+STREAM_INFO_CF_YCBCR_444 = 4
+STREAM_INFO_CF_YCBCR_420 = 5
+STREAM_INFO_CF_IDO_DEFINED = 6
+STREAM_INFO_CF_Y_ONLY = 7
+STREAM_INFO_CF_RAW = 8
+STREAM_INFO_CF_DSC = 9
+STREAM_INFO_DR_UNKNOWN = 0
+STREAM_INFO_DR_VESA = 1
+STREAM_INFO_DR_CTA = 2
+STREAM_INFO_CM_NONE = 0
+STREAM_INFO_CM_RESERVED = 1
+STREAM_INFO_CM_SRGB = 2
+STREAM_INFO_CM_SMPTE_170M = 3
+STREAM_INFO_CM_ITUR_BT601 = 4
+STREAM_INFO_CM_ITUR_BT709 = 5
+STREAM_INFO_CM_XVYCC601 = 6
+STREAM_INFO_CM_XVYCC709 = 7
+STREAM_INFO_CM_SYCC601 = 8
+STREAM_INFO_CM_ADOBEYCC601 = 9
+STREAM_INFO_CM_ADOBERGB = 10
+STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC = 11
+STREAM_INFO_CM_ITUR_BT2020_YCBCR = 12
+STREAM_INFO_CM_ITUR_BT2020_RGB = 13
+STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX = 14
+STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT = 15
+STREAM_INFO_CM_DCI_P3 = 16
+STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE = 17
+STREAM_INFO_CM_CUSTOM_COLOR_PROFILE = 18
+STREAM_INFO_CM_OPYCC601 = 19
+STREAM_INFO_CM_OPRGB = 20
 GROUP_AUDIO_TEST = 0
 GROUP_PIXEL_LEVEL_VIDEO_TEST = 1
 GROUP_CRC_BASED_VIDEO_TEST = 2
@@ -734,6 +986,41 @@ _STREAMINFOVIDEOTESTER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bpp', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.bpp', index=9,
+      number=10, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='color_format', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.color_format', index=10,
+      number=11, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='colormetry', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.colormetry', index=11,
+      number=12, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dynamic_range', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.dynamic_range', index=12,
+      number=13, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='crc', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.crc', index=13,
+      number=14, type=3, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -790,9 +1077,29 @@ _STREAMINFOVIDEOTESTER = _descriptor.Descriptor(
       index=8, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_bpp', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._bpp',
+      index=9, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_color_format', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._color_format',
+      index=10, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_colormetry', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._colormetry',
+      index=11, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_dynamic_range', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._dynamic_range',
+      index=12, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=818,
-  serialized_end=1145,
+  serialized_end=1486,
 )
 
 
@@ -823,8 +1130,8 @@ _GETSTREAMINFOVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1147,
-  serialized_end=1255,
+  serialized_start=1488,
+  serialized_end=1596,
 )
 
 
@@ -862,8 +1169,8 @@ _SCREENSHOTVIDEOTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1257,
-  serialized_end=1318,
+  serialized_start=1598,
+  serialized_end=1659,
 )
 
 
@@ -894,8 +1201,8 @@ _SCREENSHOTVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1320,
-  serialized_end=1371,
+  serialized_start=1661,
+  serialized_end=1712,
 )
 
 
@@ -929,7 +1236,7 @@ _SETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='scambler_seed', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.scambler_seed', index=3,
+      name='scrambler_seed', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.scrambler_seed', index=3,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -964,7 +1271,7 @@ _SETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_scambler_seed', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest._scambler_seed',
+      name='_scrambler_seed', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest._scrambler_seed',
       index=2, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
@@ -974,8 +1281,8 @@ _SETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1374,
-  serialized_end=1569,
+  serialized_start=1715,
+  serialized_end=1912,
 )
 
 
@@ -999,8 +1306,8 @@ _SETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1571,
-  serialized_end=1599,
+  serialized_start=1914,
+  serialized_end=1942,
 )
 
 
@@ -1031,8 +1338,8 @@ _GETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1601,
-  serialized_end=1640,
+  serialized_start=1944,
+  serialized_end=1983,
 )
 
 
@@ -1059,7 +1366,7 @@ _GETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='scambler_seed', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.scambler_seed', index=2,
+      name='scrambler_seed', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.scrambler_seed', index=2,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -1094,7 +1401,7 @@ _GETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_scambler_seed', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse._scambler_seed',
+      name='_scrambler_seed', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse._scrambler_seed',
       index=2, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
@@ -1104,8 +1411,8 @@ _GETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1643,
-  serialized_end=1827,
+  serialized_start=1986,
+  serialized_end=2172,
 )
 
 
@@ -1143,8 +1450,8 @@ _ATTACHVIDEOTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1829,
-  serialized_end=1883,
+  serialized_start=2174,
+  serialized_end=2228,
 )
 
 
@@ -1168,8 +1475,8 @@ _ATTACHVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1885,
-  serialized_end=1912,
+  serialized_start=2230,
+  serialized_end=2257,
 )
 
 
@@ -1212,8 +1519,8 @@ _HPDPULSEVIDEOTESTERREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1914,
-  serialized_end=2008,
+  serialized_start=2259,
+  serialized_end=2353,
 )
 
 
@@ -1237,8 +1544,8 @@ _HPDPULSEVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2010,
-  serialized_end=2039,
+  serialized_start=2355,
+  serialized_end=2384,
 )
 
 
@@ -1276,8 +1583,8 @@ _COMPLIANCETESTVIDEOTESTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2041,
-  serialized_end=2158,
+  serialized_start=2386,
+  serialized_end=2503,
 )
 
 
@@ -1315,8 +1622,8 @@ _COMPLIANCETESTRESULTVIDEOTESTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2161,
-  serialized_end=2341,
+  serialized_start=2506,
+  serialized_end=2686,
 )
 
 
@@ -1354,8 +1661,8 @@ _RUNCOMPLIANCETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2343,
-  serialized_end=2457,
+  serialized_start=2688,
+  serialized_end=2802,
 )
 
 
@@ -1393,13 +1700,16 @@ _RUNCOMPLIANCETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2460,
-  serialized_end=2593,
+  serialized_start=2805,
+  serialized_end=2938,
 )
 
 _GETVIDEOTESTERSRESPONSE.fields_by_name['testers'].message_type = _VIDEOTESTER
 _GETROLESRESPONSE.fields_by_name['roles'].enum_type = _ROLE
 _SETROLEREQUEST.fields_by_name['role'].enum_type = _ROLE
+_STREAMINFOVIDEOTESTER.fields_by_name['color_format'].enum_type = _STREAMINFOCOLORFORMAT
+_STREAMINFOVIDEOTESTER.fields_by_name['colormetry'].enum_type = _STREAMINFOCOLORIMETRY
+_STREAMINFOVIDEOTESTER.fields_by_name['dynamic_range'].enum_type = _STREAMINFODYNAMICRANGE
 _STREAMINFOVIDEOTESTER.oneofs_by_name['_frame_rate'].fields.append(
   _STREAMINFOVIDEOTESTER.fields_by_name['frame_rate'])
 _STREAMINFOVIDEOTESTER.fields_by_name['frame_rate'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_frame_rate']
@@ -1427,6 +1737,18 @@ _STREAMINFOVIDEOTESTER.fields_by_name['hswidth'].containing_oneof = _STREAMINFOV
 _STREAMINFOVIDEOTESTER.oneofs_by_name['_vswidth'].fields.append(
   _STREAMINFOVIDEOTESTER.fields_by_name['vswidth'])
 _STREAMINFOVIDEOTESTER.fields_by_name['vswidth'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_vswidth']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_bpp'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['bpp'])
+_STREAMINFOVIDEOTESTER.fields_by_name['bpp'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_bpp']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_color_format'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['color_format'])
+_STREAMINFOVIDEOTESTER.fields_by_name['color_format'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_color_format']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_colormetry'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['colormetry'])
+_STREAMINFOVIDEOTESTER.fields_by_name['colormetry'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_colormetry']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_dynamic_range'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['dynamic_range'])
+_STREAMINFOVIDEOTESTER.fields_by_name['dynamic_range'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_dynamic_range']
 _GETSTREAMINFOVIDEOTESTERRESPONSE.fields_by_name['streams'].message_type = _STREAMINFOVIDEOTESTER
 _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst'].fields.append(
   _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst'])
@@ -1434,9 +1756,9 @@ _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst'].containing_oneof = _SETLINKVIDE
 _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst_sink_count'].fields.append(
   _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst_sink_count'])
 _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst_sink_count'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst_sink_count']
-_SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_scambler_seed'].fields.append(
-  _SETLINKVIDEOTESTERREQUEST.fields_by_name['scambler_seed'])
-_SETLINKVIDEOTESTERREQUEST.fields_by_name['scambler_seed'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_scambler_seed']
+_SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_scrambler_seed'].fields.append(
+  _SETLINKVIDEOTESTERREQUEST.fields_by_name['scrambler_seed'])
+_SETLINKVIDEOTESTERREQUEST.fields_by_name['scrambler_seed'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_scrambler_seed']
 _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_max_lane'].fields.append(
   _SETLINKVIDEOTESTERREQUEST.fields_by_name['max_lane'])
 _SETLINKVIDEOTESTERREQUEST.fields_by_name['max_lane'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_max_lane']
@@ -1446,9 +1768,9 @@ _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst'].containing_oneof = _GETLINKVID
 _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst_sink_count'].fields.append(
   _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst_sink_count'])
 _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst_sink_count'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst_sink_count']
-_GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_scambler_seed'].fields.append(
-  _GETLINKVIDEOTESTERRESPONSE.fields_by_name['scambler_seed'])
-_GETLINKVIDEOTESTERRESPONSE.fields_by_name['scambler_seed'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_scambler_seed']
+_GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_scrambler_seed'].fields.append(
+  _GETLINKVIDEOTESTERRESPONSE.fields_by_name['scrambler_seed'])
+_GETLINKVIDEOTESTERRESPONSE.fields_by_name['scrambler_seed'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_scrambler_seed']
 _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_max_lane'].fields.append(
   _GETLINKVIDEOTESTERRESPONSE.fields_by_name['max_lane'])
 _GETLINKVIDEOTESTERRESPONSE.fields_by_name['max_lane'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_max_lane']
@@ -1491,6 +1813,9 @@ DESCRIPTOR.message_types_by_name['ComplianceTestResultVideoTester'] = _COMPLIANC
 DESCRIPTOR.message_types_by_name['RunComplianceTestRequest'] = _RUNCOMPLIANCETESTREQUEST
 DESCRIPTOR.message_types_by_name['RunComplianceTestResponse'] = _RUNCOMPLIANCETESTRESPONSE
 DESCRIPTOR.enum_types_by_name['Role'] = _ROLE
+DESCRIPTOR.enum_types_by_name['StreamInfoColorFormat'] = _STREAMINFOCOLORFORMAT
+DESCRIPTOR.enum_types_by_name['StreamInfoDynamicRange'] = _STREAMINFODYNAMICRANGE
+DESCRIPTOR.enum_types_by_name['StreamInfoColorimetry'] = _STREAMINFOCOLORIMETRY
 DESCRIPTOR.enum_types_by_name['ComplianceTestGroup'] = _COMPLIANCETESTGROUP
 DESCRIPTOR.enum_types_by_name['ComplianceTestStatus'] = _COMPLIANCETESTSTATUS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -1715,8 +2040,8 @@ _VIDEOTESTERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3339,
-  serialized_end=5217,
+  serialized_start=4789,
+  serialized_end=6667,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVideoTesters',
