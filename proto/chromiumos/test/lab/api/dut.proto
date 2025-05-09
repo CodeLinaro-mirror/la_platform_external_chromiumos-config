@@ -15,7 +15,7 @@ import "chromiumos/test/lab/api/rpm.proto";
 import "chromiumos/test/lab/api/wifi_router.proto";
 
 // Specification of Device Under Test.
-// Next Tag: 7
+// Next Tag: 8
 message Dut {
   // Unique identifier for the lab device. It can be the DUT serial number
   // (e.g. "C144091") derived from the DUT itself or some other unique value
@@ -106,6 +106,8 @@ message Dut {
 
   // The secret for wifi tests.
   WifiSecret wifi_secret = 6;
+  // Pools related to the DUT.
+  repeated string pools = 7;
 }
 
 // Defines the build target/board and model of the Dut

@@ -20159,6 +20159,13 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.WifiSecret"
+            },
+            {
+              "jsonName": "pools",
+              "label": "LABEL_REPEATED",
+              "name": "pools",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Dut",
