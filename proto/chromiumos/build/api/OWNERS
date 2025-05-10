@@ -1,1 +1,2 @@
 per-file firmware_config.proto=file:/OWNERS.platformconfig
+per-file third_party_inventory.proto=file:chromiumos/owners:v1:/infra/OWNERS.security

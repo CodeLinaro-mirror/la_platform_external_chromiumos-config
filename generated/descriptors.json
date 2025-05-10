@@ -11776,6 +11776,136 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "milestone",
+              "label": "LABEL_OPTIONAL",
+              "name": "milestone",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "branch",
+              "label": "LABEL_OPTIONAL",
+              "name": "branch",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "patch",
+              "label": "LABEL_OPTIONAL",
+              "name": "patch",
+              "number": 4,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "OsVersion"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osVer",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_ver",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.OsVersion"
+            },
+            {
+              "jsonName": "shipped",
+              "label": "LABEL_OPTIONAL",
+              "name": "shipped",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "portageRepository",
+              "label": "LABEL_OPTIONAL",
+              "name": "portage_repository",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "category",
+              "label": "LABEL_OPTIONAL",
+              "name": "category",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "revision",
+              "label": "LABEL_OPTIONAL",
+              "name": "revision",
+              "number": 8,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "description",
+              "label": "LABEL_OPTIONAL",
+              "name": "description",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "installedSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "installed_size",
+              "number": 10,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "homepages",
+              "label": "LABEL_REPEATED",
+              "name": "homepages",
+              "number": 11,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PackageMetadata"
+        }
+      ],
+      "name": "chromiumos/build/api/third_party_inventory.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/partner.proto",
@@ -18906,96 +19036,6 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "dependency": [
-        "chromiumos/test/lab/api/ip_endpoint.proto"
-      ],
-      "enumType": [
-        {
-          "name": "RPMType",
-          "value": [
-            {
-              "name": "RPM_TYPE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "RPM_TYPE_SENTRY",
-              "number": 1
-            },
-            {
-              "name": "RPM_TYPE_IP9850",
-              "number": 2
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "frontendAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "frontend_address",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "powerUnitHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_unit_hostname",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "powerUnitOutlet",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_unit_outlet",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "hydraHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "hydra_hostname",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 6,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.RPMType"
-            }
-          ],
-          "name": "RPM"
-        }
-      ],
-      "name": "chromiumos/test/lab/api/rpm.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/lab/api/rpm.proto"
-      ],
       "messageType": [
         {
           "field": [
@@ -19151,14 +19191,6 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.PasitHost.Device.PowerSupply"
-                },
-                {
-                  "jsonName": "rpm",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "rpm",
-                  "number": 5,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.RPM"
                 }
               ],
               "name": "Device",
@@ -19195,6 +19227,93 @@
         }
       ],
       "name": "chromiumos/test/lab/api/pasit_host.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "enumType": [
+        {
+          "name": "RPMType",
+          "value": [
+            {
+              "name": "RPM_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "RPM_TYPE_SENTRY",
+              "number": 1
+            },
+            {
+              "name": "RPM_TYPE_IP9850",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frontendAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "frontend_address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_hostname",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitOutlet",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_outlet",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hydraHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hydra_hostname",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RPMType"
+            }
+          ],
+          "name": "RPM"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/rpm.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
@@ -20270,6 +20389,14 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.DutModel"
+                },
+                {
+                  "jsonName": "servo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Servo"
                 }
               ],
               "name": "Android"
@@ -20319,6 +20446,20 @@
                   "number": 6,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.DutModel"
+                },
+                {
+                  "jsonName": "gscSerial",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gsc_serial",
+                  "number": 7,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "debuggerSerial",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "debugger_serial",
+                  "number": 8,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Devboard"
@@ -29615,6 +29756,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.InternalTestplanFragment"
+            },
+            {
+              "jsonName": "authFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "auth_fragment",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AuthorizationFragment"
             }
           ],
           "name": "GenericFilterStreamRequest",
@@ -29643,6 +29793,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.LogFragment"
+            },
+            {
+              "jsonName": "authFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "auth_fragment",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AuthorizationFragment"
             }
           ],
           "name": "GenericFilterStreamResponse",
@@ -29724,6 +29883,57 @@
             }
           ],
           "name": "LogFragment"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "credentialPaths",
+              "label": "LABEL_REPEATED",
+              "name": "credential_paths",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "scopes",
+              "label": "LABEL_REPEATED",
+              "name": "scopes",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AuthorizationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "token",
+              "label": "LABEL_OPTIONAL",
+              "name": "token",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AuthorizationResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "AuthorizationFragment"
         }
       ],
       "name": "chromiumos/test/api/ctp2_filters.proto",
@@ -31048,6 +31258,214 @@
             }
           ],
           "name": "GenericFilterService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "containerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testbedType",
+              "label": "LABEL_OPTIONAL",
+              "name": "testbed_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_serial",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "debuggerSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "debugger_serial",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "servicePort",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_port",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_image",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "debug",
+              "label": "LABEL_OPTIONAL",
+              "name": "debug",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "StartDevboardServiceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StartDevboardServiceResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StartDevboardServiceResponse.Failure"
+            }
+          ],
+          "name": "StartDevboardServiceResponse",
+          "nestedType": [
+            {
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "StartDevboardServiceMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "containerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StopDevboardServiceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StopDevboardServiceResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StopDevboardServiceResponse.Failure"
+            }
+          ],
+          "name": "StopDevboardServiceResponse",
+          "nestedType": [
+            {
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "StopDevboardServiceMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/devboard_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.StartDevboardServiceRequest",
+              "name": "StartDevboardService",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "StartDevboardServiceMetadata",
+                  "responseType": "StartDevboardServiceResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StopDevboardServiceRequest",
+              "name": "StopDevboardService",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "StopDevboardServiceMetadata",
+                  "responseType": "StopDevboardServiceResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "DevboardService"
         }
       ],
       "syntax": "proto3"
@@ -40123,7 +40541,7 @@
               "number": 0
             },
             {
-              "name": "PIN_ASSIGMENT",
+              "name": "PIN_ASSIGNMENT",
               "number": 1
             },
             {
@@ -40222,10 +40640,10 @@
           ]
         },
         {
-          "name": "PinAassignment",
+          "name": "PinAssignment",
           "value": [
             {
-              "name": "PIN_AASSIGNMENT_NOT_SET",
+              "name": "PIN_ASSIGNMENT_NOT_SET",
               "number": 0
             },
             {
@@ -40621,7 +41039,7 @@
               "number": 4,
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+              "typeName": ".chromiumos.test.lab.api.passport.PinAssignment"
             },
             {
               "jsonName": "powerRole",
@@ -40740,7 +41158,7 @@
               "number": 6,
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+              "typeName": ".chromiumos.test.lab.api.passport.PinAssignment"
             },
             {
               "jsonName": "powerRole",
@@ -41289,6 +41707,76 @@
               "number": 4
             }
           ]
+        },
+        {
+          "name": "ComplianceTestGroup",
+          "value": [
+            {
+              "name": "GROUP_AUDIO_TEST",
+              "number": 0
+            },
+            {
+              "name": "GROUP_PIXEL_LEVEL_VIDEO_TEST",
+              "number": 1
+            },
+            {
+              "name": "GROUP_CRC_BASED_VIDEO_TEST",
+              "number": 2
+            },
+            {
+              "name": "GROUP_LINK_TEST",
+              "number": 3
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS",
+              "number": 4
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS",
+              "number": 5
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST",
+              "number": 6
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS",
+              "number": 7
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT",
+              "number": 8
+            },
+            {
+              "name": "GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST",
+              "number": 9
+            }
+          ]
+        },
+        {
+          "name": "ComplianceTestStatus",
+          "value": [
+            {
+              "name": "COMPLIANCE_TEST_STATUS_UNKOWN",
+              "number": 0
+            },
+            {
+              "name": "COMPLIANCE_TEST_PASSED",
+              "number": 1
+            },
+            {
+              "name": "COMPLIANCE_TEST_SKIPPED",
+              "number": 2
+            },
+            {
+              "name": "COMPLIANCE_TEST_FAILED",
+              "number": 3
+            },
+            {
+              "name": "COMPLIANCE_TEST_ABORTED",
+              "number": 4
+            }
+          ]
         }
       ],
       "messageType": [
@@ -41447,6 +41935,13 @@
               "name": "edid",
               "number": 2,
               "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "idStream",
+              "label": "LABEL_OPTIONAL",
+              "name": "id_stream",
+              "number": 3,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "LoadEdidVideoTesterRequest"
@@ -41462,6 +41957,441 @@
             }
           ],
           "name": "LoadEdidVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetStreamInfoVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "frameRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "frame_rate",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_DOUBLE"
+            },
+            {
+              "jsonName": "hactive",
+              "label": "LABEL_OPTIONAL",
+              "name": "hactive",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vactive",
+              "label": "LABEL_OPTIONAL",
+              "name": "vactive",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "htotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "htotal",
+              "number": 4,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vtotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "vtotal",
+              "number": 5,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "hstart",
+              "label": "LABEL_OPTIONAL",
+              "name": "hstart",
+              "number": 6,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vstart",
+              "label": "LABEL_OPTIONAL",
+              "name": "vstart",
+              "number": 7,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "hswidth",
+              "label": "LABEL_OPTIONAL",
+              "name": "hswidth",
+              "number": 8,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vswidth",
+              "label": "LABEL_OPTIONAL",
+              "name": "vswidth",
+              "number": 9,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "StreamInfoVideoTester",
+          "oneofDecl": [
+            {
+              "name": "_frame_rate"
+            },
+            {
+              "name": "_hactive"
+            },
+            {
+              "name": "_vactive"
+            },
+            {
+              "name": "_htotal"
+            },
+            {
+              "name": "_vtotal"
+            },
+            {
+              "name": "_hstart"
+            },
+            {
+              "name": "_vstart"
+            },
+            {
+              "name": "_hswidth"
+            },
+            {
+              "name": "_vswidth"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "streams",
+              "label": "LABEL_REPEATED",
+              "name": "streams",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoVideoTester"
+            }
+          ],
+          "name": "GetStreamInfoVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "idStream",
+              "label": "LABEL_OPTIONAL",
+              "name": "id_stream",
+              "number": 2,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "ScreenshotVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "screenshot",
+              "label": "LABEL_OPTIONAL",
+              "name": "screenshot",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "ScreenshotVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mst",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "mstSinkCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst_sink_count",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "scamblerSeed",
+              "label": "LABEL_OPTIONAL",
+              "name": "scambler_seed",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxLane",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_lane",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "SetLinkVideoTesterRequest",
+          "oneofDecl": [
+            {
+              "name": "_mst"
+            },
+            {
+              "name": "_mst_sink_count"
+            },
+            {
+              "name": "_scambler_seed"
+            },
+            {
+              "name": "_max_lane"
+            }
+          ]
+        },
+        {
+          "name": "SetLinkVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetLinkVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "mst",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "mstSinkCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst_sink_count",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "scamblerSeed",
+              "label": "LABEL_OPTIONAL",
+              "name": "scambler_seed",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxLane",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_lane",
+              "number": 4,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetLinkVideoTesterResponse",
+          "oneofDecl": [
+            {
+              "name": "_mst"
+            },
+            {
+              "name": "_mst_sink_count"
+            },
+            {
+              "name": "_scambler_seed"
+            },
+            {
+              "name": "_max_lane"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "attach",
+              "label": "LABEL_OPTIONAL",
+              "name": "attach",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "AttachVideoTesterRequest"
+        },
+        {
+          "name": "AttachVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pulseDurationMs",
+              "label": "LABEL_OPTIONAL",
+              "name": "pulse_duration_ms",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "HpdPulseVideoTesterRequest",
+          "oneofDecl": [
+            {
+              "name": "_pulse_duration_ms"
+            }
+          ]
+        },
+        {
+          "name": "HpdPulseVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestGroup"
+            },
+            {
+              "jsonName": "testId",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_id",
+              "number": 2,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "ComplianceTestVideoTester"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "test",
+              "label": "LABEL_OPTIONAL",
+              "name": "test",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestVideoTester"
+            },
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestStatus"
+            }
+          ],
+          "name": "ComplianceTestResultVideoTester"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tests",
+              "label": "LABEL_REPEATED",
+              "name": "tests",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestVideoTester"
+            }
+          ],
+          "name": "RunComplianceTestRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "results",
+              "label": "LABEL_REPEATED",
+              "name": "results",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester"
+            },
+            {
+              "jsonName": "resultsHtml",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_html",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "RunComplianceTestResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
@@ -41501,6 +42431,41 @@
               "inputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest",
               "name": "LoadEdidVideoTester",
               "outputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest",
+              "name": "GetStreamInfoVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest",
+              "name": "ScreenshotVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest",
+              "name": "SetLinkVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest",
+              "name": "GetLinkVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.AttachVideoTesterRequest",
+              "name": "AttachVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.AttachVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest",
+              "name": "HpdPulseVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.RunComplianceTestRequest",
+              "name": "RunComplianceTest",
+              "outputType": ".chromiumos.test.lab.api.passport.RunComplianceTestResponse"
             }
           ],
           "name": "VideoTesterService"
