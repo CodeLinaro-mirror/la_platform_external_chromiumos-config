@@ -20,6 +20,8 @@ python_library_host {
     name: "py-chromiumos-config-passport",
     srcs: [
         "chromiumos/test/lab/api/pasit_host_pb2.py",
+        "chromiumos/test/lab/api/rpm_pb2.py",
+        "chromiumos/test/lab/api/ip_endpoint_pb2.py",
         "chromiumos/test/lab/api/passport/*.py",
     ],
     libs: [

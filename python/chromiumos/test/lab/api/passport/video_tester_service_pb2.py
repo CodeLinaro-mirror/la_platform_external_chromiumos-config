@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n;chromiumos/test/lab/api/passport/video_tester_service.proto\x12 chromiumos.test.lab.api.passport\"\'\n\x0bVideoTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x18\n\x16GetVideoTestersRequest\"Y\n\x17GetVideoTestersResponse\x12>\n\x07testers\x18\x01 \x03(\x0b\x32-.chromiumos.test.lab.api.passport.VideoTester\"$\n\x16OpenVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x17OpenVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"%\n\x17\x43loseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"+\n\x18\x43loseVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1d\n\x0fGetRolesRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x10GetRolesResponse\x12\x35\n\x05roles\x18\x01 \x03(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"R\n\x0eSetRoleRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x34\n\x04role\x18\x02 \x01(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"\"\n\x0fSetRoleResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"6\n\x1aLoadEdidVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\".\n\x1bLoadEdidVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08*\x8c\x01\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x1a\n\x16ROLE_DPSOURCE_USBCSINK\x10\x01\x12\x18\n\x14ROLE_DPSOURCE_DPSINK\x10\x02\x12\x1c\n\x18ROLE_USBCSOURCE_USBCSINK\x10\x03\x12\x1a\n\x16ROLE_USBCSOURCE_DPSINK\x10\x04\x32\xc0\x06\n\x12VideoTesterService\x12\x86\x01\n\x0fGetVideoTesters\x12\x38.chromiumos.test.lab.api.passport.GetVideoTestersRequest\x1a\x39.chromiumos.test.lab.api.passport.GetVideoTestersResponse\x12\x86\x01\n\x0fOpenVideoTester\x12\x38.chromiumos.test.lab.api.passport.OpenVideoTesterRequest\x1a\x39.chromiumos.test.lab.api.passport.OpenVideoTesterResponse\x12\x89\x01\n\x10\x43loseVideoTester\x12\x39.chromiumos.test.lab.api.passport.CloseVideoTesterRequest\x1a:.chromiumos.test.lab.api.passport.CloseVideoTesterResponse\x12|\n\x13GetRolesVideoTester\x12\x31.chromiumos.test.lab.api.passport.GetRolesRequest\x1a\x32.chromiumos.test.lab.api.passport.GetRolesResponse\x12y\n\x12SetRoleVideoTester\x12\x30.chromiumos.test.lab.api.passport.SetRoleRequest\x1a\x31.chromiumos.test.lab.api.passport.SetRoleResponse\x12\x92\x01\n\x13LoadEdidVideoTester\x12<.chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponseB<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n;chromiumos/test/lab/api/passport/video_tester_service.proto\x12 chromiumos.test.lab.api.passport\"\'\n\x0bVideoTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x18\n\x16GetVideoTestersRequest\"Y\n\x17GetVideoTestersResponse\x12>\n\x07testers\x18\x01 \x03(\x0b\x32-.chromiumos.test.lab.api.passport.VideoTester\"$\n\x16OpenVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x17OpenVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"%\n\x17\x43loseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"+\n\x18\x43loseVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1d\n\x0fGetRolesRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x10GetRolesResponse\x12\x35\n\x05roles\x18\x01 \x03(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"R\n\x0eSetRoleRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x34\n\x04role\x18\x02 \x01(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"\"\n\x0fSetRoleResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"I\n\x1aLoadEdidVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\x12\x11\n\tid_stream\x18\x03 \x01(\x03\".\n\x1bLoadEdidVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"-\n\x1fGetStreamInfoVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xc7\x02\n\x15StreamInfoVideoTester\x12\x17\n\nframe_rate\x18\x01 \x01(\x01H\x00\x88\x01\x01\x12\x14\n\x07hactive\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x14\n\x07vactive\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x13\n\x06htotal\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12\x13\n\x06vtotal\x18\x05 \x01(\x03H\x04\x88\x01\x01\x12\x13\n\x06hstart\x18\x06 \x01(\x03H\x05\x88\x01\x01\x12\x13\n\x06vstart\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x14\n\x07hswidth\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x14\n\x07vswidth\x18\t \x01(\x03H\x08\x88\x01\x01\x42\r\n\x0b_frame_rateB\n\n\x08_hactiveB\n\n\x08_vactiveB\t\n\x07_htotalB\t\n\x07_vtotalB\t\n\x07_hstartB\t\n\x07_vstartB\n\n\x08_hswidthB\n\n\x08_vswidth\"l\n GetStreamInfoVideoTesterResponse\x12H\n\x07streams\x18\x01 \x03(\x0b\x32\x37.chromiumos.test.lab.api.passport.StreamInfoVideoTester\"=\n\x1cScreenshotVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tid_stream\x18\x02 \x01(\x03\"3\n\x1dScreenshotVideoTesterResponse\x12\x12\n\nscreenshot\x18\x01 \x01(\x0c\"\xc3\x01\n\x19SetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x03mst\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x1a\n\rscambler_seed\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x05 \x01(\x03H\x03\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x10\n\x0e_scambler_seedB\x0b\n\t_max_lane\"\x1c\n\x1aSetLinkVideoTesterResponse\"\'\n\x19GetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb8\x01\n\x1aGetLinkVideoTesterResponse\x12\x10\n\x03mst\x18\x01 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x1a\n\rscambler_seed\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x04 \x01(\x03H\x03\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x10\n\x0e_scambler_seedB\x0b\n\t_max_lane\"6\n\x18\x41ttachVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61ttach\x18\x02 \x01(\x08\"\x1b\n\x19\x41ttachVideoTesterResponse\"^\n\x1aHpdPulseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11pulse_duration_ms\x18\x02 \x01(\x03H\x00\x88\x01\x01\x42\x14\n\x12_pulse_duration_ms\"\x1d\n\x1bHpdPulseVideoTesterResponse\"u\n\x19\x43omplianceTestVideoTester\x12G\n\x08group_id\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.lab.api.passport.ComplianceTestGroup\x12\x0f\n\x07test_id\x18\x02 \x01(\x03\"\xb4\x01\n\x1f\x43omplianceTestResultVideoTester\x12I\n\x04test\x18\x01 \x01(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x46\n\x06status\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.lab.api.passport.ComplianceTestStatus\"r\n\x18RunComplianceTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12J\n\x05tests\x18\x02 \x03(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\"\x85\x01\n\x19RunComplianceTestResponse\x12R\n\x07results\x18\x01 \x03(\x0b\x32\x41.chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester\x12\x14\n\x0cresults_html\x18\x02 \x01(\x0c*\x8c\x01\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x1a\n\x16ROLE_DPSOURCE_USBCSINK\x10\x01\x12\x18\n\x14ROLE_DPSOURCE_DPSINK\x10\x02\x12\x1c\n\x18ROLE_USBCSOURCE_USBCSINK\x10\x03\x12\x1a\n\x16ROLE_USBCSOURCE_DPSINK\x10\x04*\xa7\x03\n\x13\x43omplianceTestGroup\x12\x14\n\x10GROUP_AUDIO_TEST\x10\x00\x12 \n\x1cGROUP_PIXEL_LEVEL_VIDEO_TEST\x10\x01\x12\x1e\n\x1aGROUP_CRC_BASED_VIDEO_TEST\x10\x02\x12\x13\n\x0fGROUP_LINK_TEST\x10\x03\x12(\n$GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS\x10\x04\x12,\n(GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS\x10\x05\x12\x33\n/GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST\x10\x06\x12\x33\n/GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS\x10\x07\x12,\n(GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT\x10\x08\x12\x33\n/GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST\x10\t*\xab\x01\n\x14\x43omplianceTestStatus\x12!\n\x1d\x43OMPLIANCE_TEST_STATUS_UNKOWN\x10\x00\x12\x1a\n\x16\x43OMPLIANCE_TEST_PASSED\x10\x01\x12\x1b\n\x17\x43OMPLIANCE_TEST_SKIPPED\x10\x02\x12\x1a\n\x16\x43OMPLIANCE_TEST_FAILED\x10\x03\x12\x1b\n\x17\x43OMPLIANCE_TEST_ABORTED\x10\x04\x32\xd6\x0e\n\x12VideoTesterService\x12\x86\x01\n\x0fGetVideoTesters\x12\x38.chromiumos.test.lab.api.passport.GetVideoTestersRequest\x1a\x39.chromiumos.test.lab.api.passport.GetVideoTestersResponse\x12\x86\x01\n\x0fOpenVideoTester\x12\x38.chromiumos.test.lab.api.passport.OpenVideoTesterRequest\x1a\x39.chromiumos.test.lab.api.passport.OpenVideoTesterResponse\x12\x89\x01\n\x10\x43loseVideoTester\x12\x39.chromiumos.test.lab.api.passport.CloseVideoTesterRequest\x1a:.chromiumos.test.lab.api.passport.CloseVideoTesterResponse\x12|\n\x13GetRolesVideoTester\x12\x31.chromiumos.test.lab.api.passport.GetRolesRequest\x1a\x32.chromiumos.test.lab.api.passport.GetRolesResponse\x12y\n\x12SetRoleVideoTester\x12\x30.chromiumos.test.lab.api.passport.SetRoleRequest\x1a\x31.chromiumos.test.lab.api.passport.SetRoleResponse\x12\x92\x01\n\x13LoadEdidVideoTester\x12<.chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse\x12\xa1\x01\n\x18GetStreamInfoVideoTester\x12\x41.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest\x1a\x42.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse\x12\x98\x01\n\x15ScreenshotVideoTester\x12>.chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest\x1a?.chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse\x12\x8f\x01\n\x12SetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse\x12\x8f\x01\n\x12GetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse\x12\x8c\x01\n\x11\x41ttachVideoTester\x12:.chromiumos.test.lab.api.passport.AttachVideoTesterRequest\x1a;.chromiumos.test.lab.api.passport.AttachVideoTesterResponse\x12\x92\x01\n\x13HpdPulseVideoTester\x12<.chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse\x12\x8c\x01\n\x11RunComplianceTest\x12:.chromiumos.test.lab.api.passport.RunComplianceTestRequest\x1a;.chromiumos.test.lab.api.passport.RunComplianceTestResponseB<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
 )
 
 _ROLE = _descriptor.EnumDescriptor(
@@ -58,17 +58,139 @@ _ROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=752,
-  serialized_end=892,
+  serialized_start=2596,
+  serialized_end=2736,
 )
 _sym_db.RegisterEnumDescriptor(_ROLE)
 
 Role = enum_type_wrapper.EnumTypeWrapper(_ROLE)
+_COMPLIANCETESTGROUP = _descriptor.EnumDescriptor(
+  name='ComplianceTestGroup',
+  full_name='chromiumos.test.lab.api.passport.ComplianceTestGroup',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_AUDIO_TEST', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_PIXEL_LEVEL_VIDEO_TEST', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_CRC_BASED_VIDEO_TEST', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_LINK_TEST', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2739,
+  serialized_end=3162,
+)
+_sym_db.RegisterEnumDescriptor(_COMPLIANCETESTGROUP)
+
+ComplianceTestGroup = enum_type_wrapper.EnumTypeWrapper(_COMPLIANCETESTGROUP)
+_COMPLIANCETESTSTATUS = _descriptor.EnumDescriptor(
+  name='ComplianceTestStatus',
+  full_name='chromiumos.test.lab.api.passport.ComplianceTestStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='COMPLIANCE_TEST_STATUS_UNKOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='COMPLIANCE_TEST_PASSED', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='COMPLIANCE_TEST_SKIPPED', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='COMPLIANCE_TEST_FAILED', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='COMPLIANCE_TEST_ABORTED', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3165,
+  serialized_end=3336,
+)
+_sym_db.RegisterEnumDescriptor(_COMPLIANCETESTSTATUS)
+
+ComplianceTestStatus = enum_type_wrapper.EnumTypeWrapper(_COMPLIANCETESTSTATUS)
 ROLE_UNSPECIFIED = 0
 ROLE_DPSOURCE_USBCSINK = 1
 ROLE_DPSOURCE_DPSINK = 2
 ROLE_USBCSOURCE_USBCSINK = 3
 ROLE_USBCSOURCE_DPSINK = 4
+GROUP_AUDIO_TEST = 0
+GROUP_PIXEL_LEVEL_VIDEO_TEST = 1
+GROUP_CRC_BASED_VIDEO_TEST = 2
+GROUP_LINK_TEST = 3
+GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS = 4
+GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS = 5
+GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST = 6
+GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7
+GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8
+GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9
+COMPLIANCE_TEST_STATUS_UNKOWN = 0
+COMPLIANCE_TEST_PASSED = 1
+COMPLIANCE_TEST_SKIPPED = 2
+COMPLIANCE_TEST_FAILED = 3
+COMPLIANCE_TEST_ABORTED = 4
 
 
 
@@ -453,6 +575,13 @@ _LOADEDIDVIDEOTESTERREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='id_stream', full_name='chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest.id_stream', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -466,7 +595,7 @@ _LOADEDIDVIDEOTESTERREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=647,
-  serialized_end=701,
+  serialized_end=720,
 )
 
 
@@ -497,13 +626,840 @@ _LOADEDIDVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=703,
-  serialized_end=749,
+  serialized_start=722,
+  serialized_end=768,
+)
+
+
+_GETSTREAMINFOVIDEOTESTERREQUEST = _descriptor.Descriptor(
+  name='GetStreamInfoVideoTesterRequest',
+  full_name='chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=770,
+  serialized_end=815,
+)
+
+
+_STREAMINFOVIDEOTESTER = _descriptor.Descriptor(
+  name='StreamInfoVideoTester',
+  full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='frame_rate', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.frame_rate', index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hactive', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.hactive', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='vactive', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.vactive', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='htotal', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.htotal', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='vtotal', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.vtotal', index=4,
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hstart', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.hstart', index=5,
+      number=6, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='vstart', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.vstart', index=6,
+      number=7, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hswidth', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.hswidth', index=7,
+      number=8, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='vswidth', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester.vswidth', index=8,
+      number=9, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_frame_rate', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._frame_rate',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_hactive', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._hactive',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_vactive', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._vactive',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_htotal', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._htotal',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_vtotal', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._vtotal',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_hstart', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._hstart',
+      index=5, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_vstart', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._vstart',
+      index=6, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_hswidth', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._hswidth',
+      index=7, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_vswidth', full_name='chromiumos.test.lab.api.passport.StreamInfoVideoTester._vswidth',
+      index=8, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=818,
+  serialized_end=1145,
+)
+
+
+_GETSTREAMINFOVIDEOTESTERRESPONSE = _descriptor.Descriptor(
+  name='GetStreamInfoVideoTesterResponse',
+  full_name='chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='streams', full_name='chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse.streams', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1147,
+  serialized_end=1255,
+)
+
+
+_SCREENSHOTVIDEOTESTERREQUEST = _descriptor.Descriptor(
+  name='ScreenshotVideoTesterRequest',
+  full_name='chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='id_stream', full_name='chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest.id_stream', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1257,
+  serialized_end=1318,
+)
+
+
+_SCREENSHOTVIDEOTESTERRESPONSE = _descriptor.Descriptor(
+  name='ScreenshotVideoTesterResponse',
+  full_name='chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='screenshot', full_name='chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse.screenshot', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1320,
+  serialized_end=1371,
+)
+
+
+_SETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
+  name='SetLinkVideoTesterRequest',
+  full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='mst', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.mst', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='mst_sink_count', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.mst_sink_count', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='scambler_seed', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.scambler_seed', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='max_lane', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.max_lane', index=4,
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_mst', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest._mst',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_mst_sink_count', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest._mst_sink_count',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_scambler_seed', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest._scambler_seed',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_max_lane', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest._max_lane',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1374,
+  serialized_end=1569,
+)
+
+
+_SETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
+  name='SetLinkVideoTesterResponse',
+  full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1571,
+  serialized_end=1599,
+)
+
+
+_GETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
+  name='GetLinkVideoTesterRequest',
+  full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1601,
+  serialized_end=1640,
+)
+
+
+_GETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
+  name='GetLinkVideoTesterResponse',
+  full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mst', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.mst', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='mst_sink_count', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.mst_sink_count', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='scambler_seed', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.scambler_seed', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='max_lane', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.max_lane', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_mst', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse._mst',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_mst_sink_count', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse._mst_sink_count',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_scambler_seed', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse._scambler_seed',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_max_lane', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse._max_lane',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1643,
+  serialized_end=1827,
+)
+
+
+_ATTACHVIDEOTESTERREQUEST = _descriptor.Descriptor(
+  name='AttachVideoTesterRequest',
+  full_name='chromiumos.test.lab.api.passport.AttachVideoTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.AttachVideoTesterRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='attach', full_name='chromiumos.test.lab.api.passport.AttachVideoTesterRequest.attach', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1829,
+  serialized_end=1883,
+)
+
+
+_ATTACHVIDEOTESTERRESPONSE = _descriptor.Descriptor(
+  name='AttachVideoTesterResponse',
+  full_name='chromiumos.test.lab.api.passport.AttachVideoTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1885,
+  serialized_end=1912,
+)
+
+
+_HPDPULSEVIDEOTESTERREQUEST = _descriptor.Descriptor(
+  name='HpdPulseVideoTesterRequest',
+  full_name='chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pulse_duration_ms', full_name='chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest.pulse_duration_ms', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_pulse_duration_ms', full_name='chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest._pulse_duration_ms',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1914,
+  serialized_end=2008,
+)
+
+
+_HPDPULSEVIDEOTESTERRESPONSE = _descriptor.Descriptor(
+  name='HpdPulseVideoTesterResponse',
+  full_name='chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2010,
+  serialized_end=2039,
+)
+
+
+_COMPLIANCETESTVIDEOTESTER = _descriptor.Descriptor(
+  name='ComplianceTestVideoTester',
+  full_name='chromiumos.test.lab.api.passport.ComplianceTestVideoTester',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='group_id', full_name='chromiumos.test.lab.api.passport.ComplianceTestVideoTester.group_id', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='test_id', full_name='chromiumos.test.lab.api.passport.ComplianceTestVideoTester.test_id', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2041,
+  serialized_end=2158,
+)
+
+
+_COMPLIANCETESTRESULTVIDEOTESTER = _descriptor.Descriptor(
+  name='ComplianceTestResultVideoTester',
+  full_name='chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='test', full_name='chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester.test', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester.status', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2161,
+  serialized_end=2341,
+)
+
+
+_RUNCOMPLIANCETESTREQUEST = _descriptor.Descriptor(
+  name='RunComplianceTestRequest',
+  full_name='chromiumos.test.lab.api.passport.RunComplianceTestRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.RunComplianceTestRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tests', full_name='chromiumos.test.lab.api.passport.RunComplianceTestRequest.tests', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2343,
+  serialized_end=2457,
+)
+
+
+_RUNCOMPLIANCETESTRESPONSE = _descriptor.Descriptor(
+  name='RunComplianceTestResponse',
+  full_name='chromiumos.test.lab.api.passport.RunComplianceTestResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='results', full_name='chromiumos.test.lab.api.passport.RunComplianceTestResponse.results', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='results_html', full_name='chromiumos.test.lab.api.passport.RunComplianceTestResponse.results_html', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2460,
+  serialized_end=2593,
 )
 
 _GETVIDEOTESTERSRESPONSE.fields_by_name['testers'].message_type = _VIDEOTESTER
 _GETROLESRESPONSE.fields_by_name['roles'].enum_type = _ROLE
 _SETROLEREQUEST.fields_by_name['role'].enum_type = _ROLE
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_frame_rate'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['frame_rate'])
+_STREAMINFOVIDEOTESTER.fields_by_name['frame_rate'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_frame_rate']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_hactive'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['hactive'])
+_STREAMINFOVIDEOTESTER.fields_by_name['hactive'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_hactive']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_vactive'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['vactive'])
+_STREAMINFOVIDEOTESTER.fields_by_name['vactive'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_vactive']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_htotal'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['htotal'])
+_STREAMINFOVIDEOTESTER.fields_by_name['htotal'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_htotal']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_vtotal'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['vtotal'])
+_STREAMINFOVIDEOTESTER.fields_by_name['vtotal'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_vtotal']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_hstart'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['hstart'])
+_STREAMINFOVIDEOTESTER.fields_by_name['hstart'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_hstart']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_vstart'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['vstart'])
+_STREAMINFOVIDEOTESTER.fields_by_name['vstart'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_vstart']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_hswidth'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['hswidth'])
+_STREAMINFOVIDEOTESTER.fields_by_name['hswidth'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_hswidth']
+_STREAMINFOVIDEOTESTER.oneofs_by_name['_vswidth'].fields.append(
+  _STREAMINFOVIDEOTESTER.fields_by_name['vswidth'])
+_STREAMINFOVIDEOTESTER.fields_by_name['vswidth'].containing_oneof = _STREAMINFOVIDEOTESTER.oneofs_by_name['_vswidth']
+_GETSTREAMINFOVIDEOTESTERRESPONSE.fields_by_name['streams'].message_type = _STREAMINFOVIDEOTESTER
+_SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst'].fields.append(
+  _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst'])
+_SETLINKVIDEOTESTERREQUEST.fields_by_name['mst'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst']
+_SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst_sink_count'].fields.append(
+  _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst_sink_count'])
+_SETLINKVIDEOTESTERREQUEST.fields_by_name['mst_sink_count'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst_sink_count']
+_SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_scambler_seed'].fields.append(
+  _SETLINKVIDEOTESTERREQUEST.fields_by_name['scambler_seed'])
+_SETLINKVIDEOTESTERREQUEST.fields_by_name['scambler_seed'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_scambler_seed']
+_SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_max_lane'].fields.append(
+  _SETLINKVIDEOTESTERREQUEST.fields_by_name['max_lane'])
+_SETLINKVIDEOTESTERREQUEST.fields_by_name['max_lane'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_max_lane']
+_GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst'].fields.append(
+  _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst'])
+_GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst']
+_GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst_sink_count'].fields.append(
+  _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst_sink_count'])
+_GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst_sink_count'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst_sink_count']
+_GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_scambler_seed'].fields.append(
+  _GETLINKVIDEOTESTERRESPONSE.fields_by_name['scambler_seed'])
+_GETLINKVIDEOTESTERRESPONSE.fields_by_name['scambler_seed'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_scambler_seed']
+_GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_max_lane'].fields.append(
+  _GETLINKVIDEOTESTERRESPONSE.fields_by_name['max_lane'])
+_GETLINKVIDEOTESTERRESPONSE.fields_by_name['max_lane'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_max_lane']
+_HPDPULSEVIDEOTESTERREQUEST.oneofs_by_name['_pulse_duration_ms'].fields.append(
+  _HPDPULSEVIDEOTESTERREQUEST.fields_by_name['pulse_duration_ms'])
+_HPDPULSEVIDEOTESTERREQUEST.fields_by_name['pulse_duration_ms'].containing_oneof = _HPDPULSEVIDEOTESTERREQUEST.oneofs_by_name['_pulse_duration_ms']
+_COMPLIANCETESTVIDEOTESTER.fields_by_name['group_id'].enum_type = _COMPLIANCETESTGROUP
+_COMPLIANCETESTRESULTVIDEOTESTER.fields_by_name['test'].message_type = _COMPLIANCETESTVIDEOTESTER
+_COMPLIANCETESTRESULTVIDEOTESTER.fields_by_name['status'].enum_type = _COMPLIANCETESTSTATUS
+_RUNCOMPLIANCETESTREQUEST.fields_by_name['tests'].message_type = _COMPLIANCETESTVIDEOTESTER
+_RUNCOMPLIANCETESTRESPONSE.fields_by_name['results'].message_type = _COMPLIANCETESTRESULTVIDEOTESTER
 DESCRIPTOR.message_types_by_name['VideoTester'] = _VIDEOTESTER
 DESCRIPTOR.message_types_by_name['GetVideoTestersRequest'] = _GETVIDEOTESTERSREQUEST
 DESCRIPTOR.message_types_by_name['GetVideoTestersResponse'] = _GETVIDEOTESTERSRESPONSE
@@ -517,7 +1473,26 @@ DESCRIPTOR.message_types_by_name['SetRoleRequest'] = _SETROLEREQUEST
 DESCRIPTOR.message_types_by_name['SetRoleResponse'] = _SETROLERESPONSE
 DESCRIPTOR.message_types_by_name['LoadEdidVideoTesterRequest'] = _LOADEDIDVIDEOTESTERREQUEST
 DESCRIPTOR.message_types_by_name['LoadEdidVideoTesterResponse'] = _LOADEDIDVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['GetStreamInfoVideoTesterRequest'] = _GETSTREAMINFOVIDEOTESTERREQUEST
+DESCRIPTOR.message_types_by_name['StreamInfoVideoTester'] = _STREAMINFOVIDEOTESTER
+DESCRIPTOR.message_types_by_name['GetStreamInfoVideoTesterResponse'] = _GETSTREAMINFOVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['ScreenshotVideoTesterRequest'] = _SCREENSHOTVIDEOTESTERREQUEST
+DESCRIPTOR.message_types_by_name['ScreenshotVideoTesterResponse'] = _SCREENSHOTVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['SetLinkVideoTesterRequest'] = _SETLINKVIDEOTESTERREQUEST
+DESCRIPTOR.message_types_by_name['SetLinkVideoTesterResponse'] = _SETLINKVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['GetLinkVideoTesterRequest'] = _GETLINKVIDEOTESTERREQUEST
+DESCRIPTOR.message_types_by_name['GetLinkVideoTesterResponse'] = _GETLINKVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['AttachVideoTesterRequest'] = _ATTACHVIDEOTESTERREQUEST
+DESCRIPTOR.message_types_by_name['AttachVideoTesterResponse'] = _ATTACHVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['HpdPulseVideoTesterRequest'] = _HPDPULSEVIDEOTESTERREQUEST
+DESCRIPTOR.message_types_by_name['HpdPulseVideoTesterResponse'] = _HPDPULSEVIDEOTESTERRESPONSE
+DESCRIPTOR.message_types_by_name['ComplianceTestVideoTester'] = _COMPLIANCETESTVIDEOTESTER
+DESCRIPTOR.message_types_by_name['ComplianceTestResultVideoTester'] = _COMPLIANCETESTRESULTVIDEOTESTER
+DESCRIPTOR.message_types_by_name['RunComplianceTestRequest'] = _RUNCOMPLIANCETESTREQUEST
+DESCRIPTOR.message_types_by_name['RunComplianceTestResponse'] = _RUNCOMPLIANCETESTRESPONSE
 DESCRIPTOR.enum_types_by_name['Role'] = _ROLE
+DESCRIPTOR.enum_types_by_name['ComplianceTestGroup'] = _COMPLIANCETESTGROUP
+DESCRIPTOR.enum_types_by_name['ComplianceTestStatus'] = _COMPLIANCETESTSTATUS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 VideoTester = _reflection.GeneratedProtocolMessageType('VideoTester', (_message.Message,), {
@@ -611,6 +1586,125 @@ LoadEdidVideoTesterResponse = _reflection.GeneratedProtocolMessageType('LoadEdid
   })
 _sym_db.RegisterMessage(LoadEdidVideoTesterResponse)
 
+GetStreamInfoVideoTesterRequest = _reflection.GeneratedProtocolMessageType('GetStreamInfoVideoTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETSTREAMINFOVIDEOTESTERREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest)
+  })
+_sym_db.RegisterMessage(GetStreamInfoVideoTesterRequest)
+
+StreamInfoVideoTester = _reflection.GeneratedProtocolMessageType('StreamInfoVideoTester', (_message.Message,), {
+  'DESCRIPTOR' : _STREAMINFOVIDEOTESTER,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.StreamInfoVideoTester)
+  })
+_sym_db.RegisterMessage(StreamInfoVideoTester)
+
+GetStreamInfoVideoTesterResponse = _reflection.GeneratedProtocolMessageType('GetStreamInfoVideoTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETSTREAMINFOVIDEOTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse)
+  })
+_sym_db.RegisterMessage(GetStreamInfoVideoTesterResponse)
+
+ScreenshotVideoTesterRequest = _reflection.GeneratedProtocolMessageType('ScreenshotVideoTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SCREENSHOTVIDEOTESTERREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest)
+  })
+_sym_db.RegisterMessage(ScreenshotVideoTesterRequest)
+
+ScreenshotVideoTesterResponse = _reflection.GeneratedProtocolMessageType('ScreenshotVideoTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SCREENSHOTVIDEOTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse)
+  })
+_sym_db.RegisterMessage(ScreenshotVideoTesterResponse)
+
+SetLinkVideoTesterRequest = _reflection.GeneratedProtocolMessageType('SetLinkVideoTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETLINKVIDEOTESTERREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest)
+  })
+_sym_db.RegisterMessage(SetLinkVideoTesterRequest)
+
+SetLinkVideoTesterResponse = _reflection.GeneratedProtocolMessageType('SetLinkVideoTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SETLINKVIDEOTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse)
+  })
+_sym_db.RegisterMessage(SetLinkVideoTesterResponse)
+
+GetLinkVideoTesterRequest = _reflection.GeneratedProtocolMessageType('GetLinkVideoTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETLINKVIDEOTESTERREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest)
+  })
+_sym_db.RegisterMessage(GetLinkVideoTesterRequest)
+
+GetLinkVideoTesterResponse = _reflection.GeneratedProtocolMessageType('GetLinkVideoTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETLINKVIDEOTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse)
+  })
+_sym_db.RegisterMessage(GetLinkVideoTesterResponse)
+
+AttachVideoTesterRequest = _reflection.GeneratedProtocolMessageType('AttachVideoTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ATTACHVIDEOTESTERREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.AttachVideoTesterRequest)
+  })
+_sym_db.RegisterMessage(AttachVideoTesterRequest)
+
+AttachVideoTesterResponse = _reflection.GeneratedProtocolMessageType('AttachVideoTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ATTACHVIDEOTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.AttachVideoTesterResponse)
+  })
+_sym_db.RegisterMessage(AttachVideoTesterResponse)
+
+HpdPulseVideoTesterRequest = _reflection.GeneratedProtocolMessageType('HpdPulseVideoTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _HPDPULSEVIDEOTESTERREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest)
+  })
+_sym_db.RegisterMessage(HpdPulseVideoTesterRequest)
+
+HpdPulseVideoTesterResponse = _reflection.GeneratedProtocolMessageType('HpdPulseVideoTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _HPDPULSEVIDEOTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse)
+  })
+_sym_db.RegisterMessage(HpdPulseVideoTesterResponse)
+
+ComplianceTestVideoTester = _reflection.GeneratedProtocolMessageType('ComplianceTestVideoTester', (_message.Message,), {
+  'DESCRIPTOR' : _COMPLIANCETESTVIDEOTESTER,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.ComplianceTestVideoTester)
+  })
+_sym_db.RegisterMessage(ComplianceTestVideoTester)
+
+ComplianceTestResultVideoTester = _reflection.GeneratedProtocolMessageType('ComplianceTestResultVideoTester', (_message.Message,), {
+  'DESCRIPTOR' : _COMPLIANCETESTRESULTVIDEOTESTER,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester)
+  })
+_sym_db.RegisterMessage(ComplianceTestResultVideoTester)
+
+RunComplianceTestRequest = _reflection.GeneratedProtocolMessageType('RunComplianceTestRequest', (_message.Message,), {
+  'DESCRIPTOR' : _RUNCOMPLIANCETESTREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.RunComplianceTestRequest)
+  })
+_sym_db.RegisterMessage(RunComplianceTestRequest)
+
+RunComplianceTestResponse = _reflection.GeneratedProtocolMessageType('RunComplianceTestResponse', (_message.Message,), {
+  'DESCRIPTOR' : _RUNCOMPLIANCETESTRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.video_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.RunComplianceTestResponse)
+  })
+_sym_db.RegisterMessage(RunComplianceTestResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -621,8 +1715,8 @@ _VIDEOTESTERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=895,
-  serialized_end=1727,
+  serialized_start=3339,
+  serialized_end=5217,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVideoTesters',
@@ -681,6 +1775,76 @@ _VIDEOTESTERSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LOADEDIDVIDEOTESTERREQUEST,
     output_type=_LOADEDIDVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetStreamInfoVideoTester',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.GetStreamInfoVideoTester',
+    index=6,
+    containing_service=None,
+    input_type=_GETSTREAMINFOVIDEOTESTERREQUEST,
+    output_type=_GETSTREAMINFOVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ScreenshotVideoTester',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.ScreenshotVideoTester',
+    index=7,
+    containing_service=None,
+    input_type=_SCREENSHOTVIDEOTESTERREQUEST,
+    output_type=_SCREENSHOTVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SetLinkVideoTester',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.SetLinkVideoTester',
+    index=8,
+    containing_service=None,
+    input_type=_SETLINKVIDEOTESTERREQUEST,
+    output_type=_SETLINKVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetLinkVideoTester',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.GetLinkVideoTester',
+    index=9,
+    containing_service=None,
+    input_type=_GETLINKVIDEOTESTERREQUEST,
+    output_type=_GETLINKVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AttachVideoTester',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.AttachVideoTester',
+    index=10,
+    containing_service=None,
+    input_type=_ATTACHVIDEOTESTERREQUEST,
+    output_type=_ATTACHVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='HpdPulseVideoTester',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.HpdPulseVideoTester',
+    index=11,
+    containing_service=None,
+    input_type=_HPDPULSEVIDEOTESTERREQUEST,
+    output_type=_HPDPULSEVIDEOTESTERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='RunComplianceTest',
+    full_name='chromiumos.test.lab.api.passport.VideoTesterService.RunComplianceTest',
+    index=12,
+    containing_service=None,
+    input_type=_RUNCOMPLIANCETESTREQUEST,
+    output_type=_RUNCOMPLIANCETESTRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

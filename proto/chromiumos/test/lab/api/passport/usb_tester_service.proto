@@ -133,7 +133,7 @@ message GetTestersReply {
 // USB tester.Examples: power role, data rola, vbus voltage, etc ...
 enum Capability {
   CAPABILITY_NOT_SET = 0;
-  PIN_ASSIGMENT = 1;
+  PIN_ASSIGNMENT = 1;
   USB_CHANNEL = 2;
   POWER_ROLE = 3;
   DATA_ROLE = 4;
@@ -161,8 +161,8 @@ enum ActiveCc {
   CC2 = 2;
 }
 
-enum PinAassignment {
-  PIN_AASSIGNMENT_NOT_SET = 0;
+enum PinAssignment {
+  PIN_ASSIGNMENT_NOT_SET = 0;
   C = 1;
   D = 2;
 }
@@ -223,7 +223,7 @@ message GetUsbTesterCapabilityReply {
   // of values.
   oneof value {
     ActiveCc active_cc = 3;
-    PinAassignment pin_mode = 4;
+    PinAssignment pin_mode = 4;
     PowerRole power_role = 5;
     DataRole data_role = 6;
     UsbChannel usb_channel = 7;
@@ -253,7 +253,7 @@ message SetUsbTesterCapabilityRequest {
   // of values.
   oneof value {
     ActiveCc active_cc = 5;
-    PinAassignment pin_mode = 6;
+    PinAssignment pin_mode = 6;
     PowerRole power_role = 7;
     DataRole data_role = 8;
     UsbChannel usb_channel = 9;
