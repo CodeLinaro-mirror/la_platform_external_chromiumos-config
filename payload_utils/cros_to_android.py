@@ -316,7 +316,7 @@ def _add_hal_config_entry(
     sku_elem = etree.SubElement(identity_elem, "sku-id")
     sku_elem.text = sku
     model_elem = etree.SubElement(identity_elem, "model")
-    model_elem.text = model
+    model_elem.text = model.lower()
 
     _add_cellular_entry(hal_config_elem, design_config)
     _add_fingerprint_entry(hal_config_elem, design_config)
