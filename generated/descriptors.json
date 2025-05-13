@@ -28474,6 +28474,10 @@
                 {
                   "name": "STATUS_PRE_PROVISION_USB_BOOT_FAILURE",
                   "number": 22
+                },
+                {
+                  "name": "STATUS_DOWNLOADING_FIRMWARE_FAILED",
+                  "number": 23
                 }
               ]
             }
