@@ -137,6 +137,10 @@ def _add_cellular_entry(
         logging.warning("ModemType is MODEM_UNKNOWN, skipping.")
         return
 
+    if modem_type_enum_str == "MODEM_L850":
+        logging.warning("ModemType MODEM_L850 is not supported, skipping.")
+        return
+
     if modem_type_enum_str.startswith("MODEM_"):
         modem_type_xsd_str = modem_type_enum_str.removeprefix("MODEM_")
     else:
