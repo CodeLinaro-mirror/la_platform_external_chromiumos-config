@@ -36098,6 +36098,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.DutInfo.UsbInfo"
+            },
+            {
+              "jsonName": "stressTestInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "stress_test_info",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo.StressTestInfo"
             }
           ],
           "name": "DutInfo",
@@ -36142,6 +36150,18 @@
                 }
               ],
               "name": "UsbInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "iterations",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "iterations",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "StressTestInfo"
             }
           ]
         },
