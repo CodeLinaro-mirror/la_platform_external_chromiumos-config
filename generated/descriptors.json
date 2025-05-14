@@ -29776,6 +29776,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.AuthorizationFragment"
+            },
+            {
+              "jsonName": "filterArgsFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter_args_fragment",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FilterArgsFragment"
             }
           ],
           "name": "GenericFilterStreamRequest",
@@ -29945,6 +29954,38 @@
             }
           ],
           "name": "AuthorizationFragment"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FilterArgs"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "FilterArgsFragment"
         }
       ],
       "name": "chromiumos/test/api/ctp2_filters.proto",
