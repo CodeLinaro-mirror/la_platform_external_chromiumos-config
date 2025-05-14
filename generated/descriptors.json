@@ -42069,6 +42069,10 @@
             {
               "name": "ROLE_USBCSOURCE_DPSINK",
               "number": 4
+            },
+            {
+              "name": "ROLE_HDMISOURCE_HDMISINK",
+              "number": 5
             }
           ]
         },
@@ -42224,6 +42228,80 @@
           ]
         },
         {
+          "name": "VideoSpecification",
+          "value": [
+            {
+              "name": "VIDEO_SPECIFICATION_UNKOWN",
+              "number": 0
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_1_3",
+              "number": 1
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_1_4",
+              "number": 2
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_2_0",
+              "number": 3
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_2_1",
+              "number": 4
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_HDMI_1_4",
+              "number": 5
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_HDMI_2_0",
+              "number": 6
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_HDMI_2_1",
+              "number": 7
+            }
+          ]
+        },
+        {
+          "name": "FrlMode",
+          "value": [
+            {
+              "name": "FRL_MODE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "FRL_MODE_DISABLE",
+              "number": 1
+            },
+            {
+              "name": "FRL_MODE_3LANES_3GBPS",
+              "number": 2
+            },
+            {
+              "name": "FRL_MODE_3LANES_6GBPS",
+              "number": 3
+            },
+            {
+              "name": "FRL_MODE_4LANES_6GBPS",
+              "number": 4
+            },
+            {
+              "name": "FRL_MODE_4LANES_8GBPS",
+              "number": 5
+            },
+            {
+              "name": "FRL_MODE_4LANES_10GBPS",
+              "number": 6
+            },
+            {
+              "name": "FRL_MODE_4LANES_12GBPS",
+              "number": 7
+            }
+          ]
+        },
+        {
           "name": "ComplianceTestGroup",
           "value": [
             {
@@ -42265,6 +42343,18 @@
             {
               "name": "GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST",
               "number": 9
+            },
+            {
+              "name": "GROUP_HDMI_RX_CRC_TEST",
+              "number": 10
+            },
+            {
+              "name": "GROUP_HDMI_RX_VRR_TEST",
+              "number": 11
+            },
+            {
+              "name": "GROUP_HD_TX_CONTINUITY_TEST",
+              "number": 12
             }
           ]
         },
@@ -42746,6 +42836,71 @@
               "oneofIndex": 3,
               "proto3Optional": true,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "frlMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_mode",
+              "number": 9,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.FrlMode"
+            },
+            {
+              "jsonName": "frlStart",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_start",
+              "number": 11,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlReady",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_ready",
+              "number": 12,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlMax",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_max",
+              "number": 13,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlNoTimeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_no_timeout",
+              "number": 14,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlCheckLtp",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_check_ltp",
+              "number": 15,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "videoSpec",
+              "label": "LABEL_OPTIONAL",
+              "name": "video_spec",
+              "number": 16,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoSpecification"
             }
           ],
           "name": "SetLinkVideoTesterRequest",
@@ -42761,6 +42916,27 @@
             },
             {
               "name": "_max_lane"
+            },
+            {
+              "name": "_frl_mode"
+            },
+            {
+              "name": "_frl_start"
+            },
+            {
+              "name": "_frl_ready"
+            },
+            {
+              "name": "_frl_max"
+            },
+            {
+              "name": "_frl_no_timeout"
+            },
+            {
+              "name": "_frl_check_ltp"
+            },
+            {
+              "name": "_video_spec"
             }
           ]
         },
@@ -42778,6 +42954,49 @@
             }
           ],
           "name": "GetLinkVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "laneSpeed",
+              "label": "LABEL_OPTIONAL",
+              "name": "lane_speed",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorCnt",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_cnt",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "laneLock",
+              "label": "LABEL_OPTIONAL",
+              "name": "lane_lock",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "VideoLane",
+          "oneofDecl": [
+            {
+              "name": "_lane_speed"
+            },
+            {
+              "name": "_error_cnt"
+            },
+            {
+              "name": "_lane_lock"
+            }
+          ]
         },
         {
           "field": [
@@ -42816,6 +43035,97 @@
               "oneofIndex": 3,
               "proto3Optional": true,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "frlMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_mode",
+              "number": 6,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.FrlMode"
+            },
+            {
+              "jsonName": "frlStart",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_start",
+              "number": 7,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlReady",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_ready",
+              "number": 8,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlMax",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_max",
+              "number": 9,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlNoTimeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_no_timeout",
+              "number": 10,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlCheckLtp",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_check_ltp",
+              "number": 11,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tdmsClockRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "tdms_clock_rate",
+              "number": 12,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "tdmsReportLocks",
+              "label": "LABEL_OPTIONAL",
+              "name": "tdms_report_locks",
+              "number": 13,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "videoSpec",
+              "label": "LABEL_OPTIONAL",
+              "name": "video_spec",
+              "number": 14,
+              "oneofIndex": 12,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoSpecification"
+            },
+            {
+              "jsonName": "lanes",
+              "label": "LABEL_REPEATED",
+              "name": "lanes",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoLane"
             }
           ],
           "name": "GetLinkVideoTesterResponse",
@@ -42831,6 +43141,33 @@
             },
             {
               "name": "_max_lane"
+            },
+            {
+              "name": "_frl_mode"
+            },
+            {
+              "name": "_frl_start"
+            },
+            {
+              "name": "_frl_ready"
+            },
+            {
+              "name": "_frl_max"
+            },
+            {
+              "name": "_frl_no_timeout"
+            },
+            {
+              "name": "_frl_check_ltp"
+            },
+            {
+              "name": "_tdms_clock_rate"
+            },
+            {
+              "name": "_tdms_report_locks"
+            },
+            {
+              "name": "_video_spec"
             }
           ]
         },
