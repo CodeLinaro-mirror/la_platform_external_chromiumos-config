@@ -486,9 +486,9 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
             ):
                 _add_feature_element(permissions_elem, "com.google.sensor.sar")
 
-            sku_dir = opts.output_dir / f"{model}_{sku}"
+            sku_dir = opts.output_dir / f"{model}_{sku}".lower()
             sku_dir.mkdir(parents=True, exist_ok=True)
-            output_file = sku_dir / "permissions.xml"
+            output_file = sku_dir / "features.xml"
             with open(output_file, "wb") as f:
                 f.write(etree.tostring(permissions_elem, pretty_print=True))
             logging.info(

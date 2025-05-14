@@ -83,8 +83,8 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 for p in output_files
             ),
             [
-                "TestDesign_123/permissions.xml",
-                "TestDesign_456/permissions.xml",
+                "testdesign_123/features.xml",
+                "testdesign_456/features.xml",
             ],
         )
 
@@ -318,7 +318,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
 
     def _assert_feature_xml(self, expected_features: list[str]):
         """Asserts the presence and content of a feature XML."""
-        feature_file_path = self.temp_dir / "TestModel_123/permissions.xml"
+        feature_file_path = self.temp_dir / "testmodel_123/features.xml"
 
         self.assertTrue(feature_file_path.is_file())
         with open(feature_file_path, "rb") as f:
