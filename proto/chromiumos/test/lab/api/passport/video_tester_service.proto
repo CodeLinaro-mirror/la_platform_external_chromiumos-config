@@ -29,21 +29,42 @@ It allows clients to:
     presence and capabilities of a specific display, which is crucial for
     testing device compatibility and video output behavior under various
     display profiles.
+- Retrieve stream information:
+  - Query the active video stream information (e.g., resolution, refresh rate)
+    using the GetStreamInfoVideoTester RPC.
+- Capture screenshots:
+  - Request a screenshot from a specific video stream of the video tester
+    using the ScreenshotVideoTester RPC.
+- Configure link parameters:
+  - Set advanced link parameters such as MST (Multi-Stream Transport) status,
+    number of MST sinks, scrambler seed, and maximum lane count using the
+    SetLinkVideoTester RPC.
+- Retrieve link parameters:
+  - Get the current advanced link parameters of the video tester using the
+    GetLinkVideoTester RPC.
+- Control device attachment:
+  - Simulate attaching or detaching a display or sink on the video
+    tester using the AttachVideoTester RPC.
+- Trigger HPD pulse:
+  - Send a Hot Plug Detect (HPD) pulse to simulate connecting or disconnecting
+    a display using the HpdPulseVideoTester RPC.
+- Run built-in compliance tests:
+  - Runs the UCD's built-in compliance tests.
 */
 
 
 // Define the supported roles for the video tester device.
 enum Role {
   ROLE_UNSPECIFIED = 0; // Default or unspecified role.
-  ROLE_DPSOURCE_USBCSINK = 1;
-  ROLE_DPSOURCE_DPSINK = 2;
-  ROLE_USBCSOURCE_USBCSINK = 3;
-  ROLE_USBCSOURCE_DPSINK = 4;
+  ROLE_DPSOURCE_USBCSINK = 1; // Video tester acts as a DisplayPort source and a USB-C sink.
+  ROLE_DPSOURCE_DPSINK = 2;   // Video tester acts as a DisplayPort source and a DisplayPort sink.
+  ROLE_USBCSOURCE_USBCSINK = 3; // Video tester acts as a USB-C source and a USB-C sink.
+  ROLE_USBCSOURCE_DPSINK = 4;   // Video tester acts as a USB-C source and a DisplayPort sink.
 }
 
 // Represents a video tester device.
 message VideoTester {
-  string id = 1; // Unique identifier for the video tester.
+  string id = 1;   // Unique identifier for the video tester.
   string name = 2; // Human-readable name of the video tester.
 }
 
@@ -87,8 +108,8 @@ message GetRolesResponse {
 
 // Request message for selecting a specific role for a video tester.
 message SetRoleRequest {
-  string id = 1; // ID of the video tester to select the role for.
-  Role role = 2; // The role to be selected.
+  string id = 1;   // ID of the video tester to select the role for.
+  Role role = 2;   // The role to be selected.
 }
 
 // Response message indicating the success of selecting a role for a video tester.
@@ -98,13 +119,152 @@ message SetRoleResponse {
 
 // Request message for loading an EDID (Extended Display Identification Data) for a video tester.
 message LoadEdidVideoTesterRequest {
-  string id = 1; // ID of the video tester to load the EDID for.
-  bytes edid = 2; // The EDID data to be loaded.
+  string id = 1;        // ID of the video tester to load the EDID for.
+  bytes edid = 2;         // The EDID data to be loaded.
+  int64 id_stream = 3; // The stream on which to load the EDID onto.
 }
 
 // Response message indicating the success of loading an EDID for a video tester.
 message LoadEdidVideoTesterResponse {
   bool success = 1; // True if the EDID was successfully loaded.
+}
+
+// Request message for getting the current stream information for a video tester.
+message GetStreamInfoVideoTesterRequest {
+  string id = 1; // ID of the video tester to get stream information for.
+}
+
+// Represents the information of a single video stream.
+message StreamInfoVideoTester {
+  optional double frame_rate = 1; // The frame rate of the video stream in frames per second.
+  optional int64 hactive = 2;    // Horizontal active pixels.
+  optional int64 vactive = 3;    // Vertical active lines.
+  optional int64 htotal = 4;     // Total horizontal pixels.
+  optional int64 vtotal = 5;     // Total vertical lines.
+  optional int64 hstart = 6;     // Horizontal start position.
+  optional int64 vstart = 7;     // Vertical start position.
+  optional int64 hswidth = 8;    // Horizontal sync width.
+  optional int64 vswidth = 9;    // Vertical sync width.
+}
+
+// Response message containing the current stream information for a video tester.
+message GetStreamInfoVideoTesterResponse {
+  repeated StreamInfoVideoTester streams = 1; // List of active video streams.
+}
+
+// Request message for taking a screenshot from a video tester.
+message ScreenshotVideoTesterRequest {
+  string id = 1;        // ID of the video tester to capture the screenshot from.
+  int64 id_stream = 2; // The specific stream ID to capture.
+}
+
+// Response message containing the captured screenshot.
+message ScreenshotVideoTesterResponse {
+  bytes screenshot = 1; // The captured screenshot data in bytes (e.g., PNG, JPEG).
+}
+
+// Request message for setting advanced link parameters for a video tester.
+message SetLinkVideoTesterRequest {
+  string id = 1;               // ID of the video tester to set the link parameters for.
+  optional bool mst = 2;       // Enable or disable Multi-Stream Transport (MST).
+  optional int64 mst_sink_count = 3; // The number of MST sink devices.
+  optional int64 scambler_seed = 4; // The scrambler seed value.
+  optional int64 max_lane = 5;     // The maximum number of active lanes.
+}
+
+// Response message indicating the success of setting link parameters for a video tester.
+message SetLinkVideoTesterResponse {
+  // Empty response indicating success.
+}
+
+// Request message for getting the current advanced link parameters for a video tester.
+message GetLinkVideoTesterRequest {
+  string id = 1; // ID of the video tester to get the link parameters from.
+}
+
+// Response message containing the current advanced link parameters for a video tester.
+message GetLinkVideoTesterResponse {
+  optional bool mst = 1;       // Current status of Multi-Stream Transport (MST).
+  optional int64 mst_sink_count = 2; // Current number of MST sink devices.
+  optional int64 scambler_seed = 3; // Current scrambler seed value.
+  optional int64 max_lane = 4;     // Current maximum number of active lanes.
+}
+
+// Request message for simulating attaching or detaching a display/sink.
+message AttachVideoTesterRequest {
+  string id = 1;    // ID of the video tester to control.
+  bool attach = 2;  // True to simulate attaching, false to simulate detaching.
+}
+
+// Response message indicating the success of the attach/detach operation.
+message AttachVideoTesterResponse {
+  // Empty response indicating success.
+}
+
+// Request message for sending an HPD (Hot Plug Detect) pulse.
+message HpdPulseVideoTesterRequest {
+  string id = 1;                   // ID of the video tester to send the HPD pulse to.
+  optional int64 pulse_duration_ms = 2; // Optional duration of the HPD pulse in milliseconds.
+}
+
+// Response message indicating the success of sending an HPD pulse.
+message HpdPulseVideoTesterResponse {
+  // Empty response indicating success.
+}
+
+// Define the supported roles for the video tester device.
+enum ComplianceTestGroup {
+  GROUP_AUDIO_TEST = 0;
+  GROUP_PIXEL_LEVEL_VIDEO_TEST = 1;
+  GROUP_CRC_BASED_VIDEO_TEST = 2;
+  GROUP_LINK_TEST = 3;
+  GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS = 4;
+  GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS = 5;
+  GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST = 6;
+  GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7;
+  GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8;
+  GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9;
+}
+
+// Represents the status of a compliance test.
+enum ComplianceTestStatus {
+  // Default unknown status. Should not be used if a more specific status is available.
+  COMPLIANCE_TEST_STATUS_UNKOWN= 0;
+  // Indicates that the compliance test passed successfully.
+  COMPLIANCE_TEST_PASSED = 1;
+  // Indicates that the compliance test was skipped, e.g., due to prerequisites not being met.
+  COMPLIANCE_TEST_SKIPPED = 2;
+  // Indicates that the compliance test failed.
+  COMPLIANCE_TEST_FAILED = 3;
+  // Indicates that the compliance test was aborted before completion, e.g., due to an error or timeout.
+  COMPLIANCE_TEST_ABORTED = 4;
+}
+
+// Represents a specific compliance test executed by a video tester.
+message ComplianceTestVideoTester {
+  // The identifier for the group to which this compliance test belongs.
+  ComplianceTestGroup group_id = 1; // Assuming ComplianceTestGroup is another defined enum or message type.
+  // A unique identifier for the specific compliance test within its group.
+  int64 test_id = 2;
+}
+
+// Represents the result of a compliance test executed by a video tester.
+message ComplianceTestResultVideoTester {
+  // The specific compliance test for which this result is being reported.
+  ComplianceTestVideoTester test = 1;
+  // The status of the compliance test, indicating whether it passed, failed, skipped, or was aborted.
+  ComplianceTestStatus status = 2;
+}
+// Request message for initiating a DP compliance test.
+message RunComplianceTestRequest {
+  string id = 1; // ID of the video tester to run the compliance test.
+  repeated ComplianceTestVideoTester tests = 2;
+}
+
+// Response message initiating the results of a compliance test run.
+message RunComplianceTestResponse {
+  repeated ComplianceTestResultVideoTester results = 1; // Results of the executed test(s).
+  bytes results_html = 2;           // Results HTML from the test(s).
 }
 
 // Service definition for interacting with video tester devices.
@@ -124,4 +284,24 @@ service VideoTesterService {
 
   // Loads the provided EDID data onto a given video tester.
   rpc LoadEdidVideoTester(LoadEdidVideoTesterRequest) returns (LoadEdidVideoTesterResponse);
+
+  // Gets the current stream information for a given video tester.
+  rpc GetStreamInfoVideoTester(GetStreamInfoVideoTesterRequest) returns (GetStreamInfoVideoTesterResponse);
+
+  // Captures a screenshot from a specific stream of a video tester.
+  rpc ScreenshotVideoTester(ScreenshotVideoTesterRequest) returns (ScreenshotVideoTesterResponse);
+
+  // Sets advanced link parameters for a given video tester.
+  rpc SetLinkVideoTester(SetLinkVideoTesterRequest) returns (SetLinkVideoTesterResponse);
+  // Gets the current advanced link parameters for a given video tester.
+  rpc GetLinkVideoTester(GetLinkVideoTesterRequest) returns (GetLinkVideoTesterResponse);
+
+  // Simulates attaching or detaching a display or sink on a video tester.
+  rpc AttachVideoTester(AttachVideoTesterRequest) returns (AttachVideoTesterResponse);
+
+  // Sends an HPD (Hot Plug Detect) pulse to a video tester.
+  rpc HpdPulseVideoTester(HpdPulseVideoTesterRequest) returns (HpdPulseVideoTesterResponse);
+
+  // Runs compliance test(s).
+  rpc RunComplianceTest(RunComplianceTestRequest) returns (RunComplianceTestResponse);
 }

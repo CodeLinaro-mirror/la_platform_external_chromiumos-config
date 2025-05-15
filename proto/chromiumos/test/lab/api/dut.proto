@@ -80,6 +80,7 @@ message Dut {
     // A string created by adb to uniquely identify the device.
     string serial_number = 3;
     DutModel dut_model = 4;
+    Servo servo = 5;
   }
 
   // Devboard specific DUT details
@@ -87,6 +88,7 @@ message Dut {
     // The type of devboard, e.g., andreiboard.
     string board_type = 1;
     // Serial for the UltraDebug interface, if present.
+    // Deprecated, use debugger_serial.
     string ultradebug_serial = 2;
     Servo servo = 3;
     // An ID string for the fingerprint module.
@@ -94,6 +96,9 @@ message Dut {
     // Devboard DUT name.
     string name = 5;
     DutModel dut_model = 6;
+    string gsc_serial = 7;
+    // Serial for the debugger interface.
+    string debugger_serial = 8;
   }
 
   // Cache server for downloading artifacts related to this DUT.
