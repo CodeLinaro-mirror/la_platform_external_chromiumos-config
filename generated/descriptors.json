@@ -26512,6 +26512,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetUsbInfoRequest"
+            },
+            {
+              "jsonName": "getStressTestInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_stress_test_info_request",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetStressTestInfoRequest"
             }
           ],
           "name": "Request",
@@ -26668,6 +26677,9 @@
           "name": "GetUsbInfoRequest"
         },
         {
+          "name": "GetStressTestInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -26731,6 +26743,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetUsbInfoResponse"
+            },
+            {
+              "jsonName": "getStressTestInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_stress_test_info_response",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetStressTestInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -26976,6 +26997,19 @@
             }
           ],
           "name": "GetUsbInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stressTestInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "stress_test_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "GetStressTestInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",

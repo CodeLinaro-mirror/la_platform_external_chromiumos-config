@@ -60,7 +60,7 @@ message RunActivityRequest {
   Request request = 1;
 }
 
-// NEXT TAG: 8
+// NEXT TAG: 9
 message Request {
   oneof request {
     GetFWInfoRequest get_fw_info_request = 1;
@@ -70,6 +70,7 @@ message Request {
     GetGscInfoRequest get_gsc_info_request = 5;
     GetServoInfoRequest get_servo_info_request = 6;
     GetUsbInfoRequest get_usb_info_request = 7;
+    GetStressTestInfoRequest get_stress_test_info_request = 8;
   }
 }
 
@@ -128,8 +129,13 @@ message GetServoInfoRequest {}
 // NEXT TAG: 1
 message GetUsbInfoRequest {}
 
+// GetStressTestInfoRequest captures the information about the stress tests
+// that are run on the device for reporting.
+// NEXT TAG: 1
+message GetStressTestInfoRequest {}
+
 // Specific response to be matched with the request.
-// NEXT TAG: 8
+// NEXT TAG: 9
 message RunActivityResponse {
   oneof response {
     GetFWInfoResponse get_fw_info_response = 1;
@@ -139,6 +145,7 @@ message RunActivityResponse {
     GetGscInfoResponse get_gsc_info_response = 5;
     GetServoInfoResponse get_servo_info_response = 6;
     GetUsbInfoResponse get_usb_info_response = 7;
+    GetStressTestInfoResponse get_stress_test_info_response = 8;
   }
 }
 
@@ -207,8 +214,17 @@ message GetServoInfoResponse {
 // NEXT TAG: 2
 message GetUsbInfoResponse {
   // Stores USB-C info:
-  // "chromiumos.test.artifact.UsbInfo". Note that the UsbInfo proto cannot
+  // "chromiumos.test.artifact.DutInfo.UsbInfo". Note that the UsbInfo proto cannot
   // be imported directly due to cyclic import issue.
   google.protobuf.Any usb_info = 1;
+}
+
+// GetStressTestInfoResponse contents of the information about stress tests.
+// NEXT TAG: 2
+message GetStressTestInfoResponse {
+  // Stores stress test info:
+  // "chromiumos.test.artifact.DutInfo.StressTestInfo". Note that the StressTestInfo
+  // proto cannot be imported directly due to cyclic import issue.
+  google.protobuf.Any stress_test_info = 1;
 }
 
