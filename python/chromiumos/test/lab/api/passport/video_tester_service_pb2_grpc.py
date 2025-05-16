@@ -171,7 +171,7 @@ class VideoTesterServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def RunComplianceTest(self, request, context):
-        """Runs compliance test(s).
+        """Runs compliance test(s) on a video tester.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

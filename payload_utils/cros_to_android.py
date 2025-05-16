@@ -137,6 +137,10 @@ def _add_cellular_entry(
         logging.warning("ModemType is MODEM_UNKNOWN, skipping.")
         return
 
+    if modem_type_enum_str == "MODEM_L850":
+        logging.warning("ModemType MODEM_L850 is not supported, skipping.")
+        return
+
     if modem_type_enum_str.startswith("MODEM_"):
         modem_type_xsd_str = modem_type_enum_str.removeprefix("MODEM_")
     else:
@@ -316,7 +320,7 @@ def _add_hal_config_entry(
     sku_elem = etree.SubElement(identity_elem, "sku-id")
     sku_elem.text = sku
     model_elem = etree.SubElement(identity_elem, "model")
-    model_elem.text = model
+    model_elem.text = model.lower()
 
     _add_cellular_entry(hal_config_elem, design_config)
     _add_fingerprint_entry(hal_config_elem, design_config)
@@ -383,46 +387,20 @@ def run_generate_hal_xml(opts: argparse.Namespace) -> None:
     logging.info("XML written to %s.", opts.output_xml)
 
 
-def _write_feature_xml(
-    design_config: design_pb2.Design.Config,
-    output_dir: pathlib.Path,
+def _add_feature_element(
+    permissions_element: etree._Element,
     feature_name: str,
 ) -> None:
-    """Generates a feature XML file if the feature is present.
+    """Adds a <feature> element to the given <permissions> element.
 
     Args:
-        design_config: The Design.Config proto.
-        output_dir: The base directory to write the feature XML into.
+        permissions_element: The parent <permissions> XML element.
         feature_name: The string name of the feature
             (e.g., "android.hardware.sensor.accelerometer").
     """
-    if not design_config.id.value:
-        logging.warning(
-            "Skipping feature XML '%s' due to missing 'design_config.id': %s",
-            feature_name,
-            design_config,
-        )
-        return
-
-    model, sku = design_config.id.value.split(":")
-
-    config_output_dir = output_dir / f"{model}_{sku}"
-    output_file = config_output_dir / f"{feature_name}.xml"
-
-    permissions_elem = etree.Element("permissions")
-    feature_elem = etree.SubElement(permissions_elem, "feature")
+    feature_elem = etree.SubElement(permissions_element, "feature")
     feature_elem.set("name", feature_name)
-
-    config_output_dir.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "wb") as f:
-        f.write(etree.tostring(permissions_elem, pretty_print=True))
-    logging.info(
-        "Writing feature XML '%s' for %s:%s to %s",
-        feature_name,
-        model,
-        sku,
-        output_file,
-    )
+    logging.debug("Added feature '%s' to XML tree.", feature_name)
 
 
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:
@@ -430,11 +408,19 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     logging.info("Running generate-feature-xml command...")
     config_bundle = _load_config_bundle(opts.jsonproto_file)
 
-    output_dir = opts.output_dir
-    output_dir.mkdir(parents=True, exist_ok=True)
-
     for design in config_bundle.design_list:
         for design_config in design.configs:
+            if not design_config.id.value:
+                logging.warning(
+                    "Skipping feature XML generation due to missing "
+                    "'design_config.id': %s",
+                    design_config,
+                )
+                continue
+
+            model, sku = design_config.id.value.split(":")
+            permissions_elem = etree.Element("permissions")
+
             hw_features = design_config.hardware_features
             present_enum = topology_pb2.HardwareFeatures.PRESENT
 
@@ -442,50 +428,42 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                 hw_features.accelerometer.base_accelerometer,
                 hw_features.accelerometer.lid_accelerometer,
             ):
-                _write_feature_xml(
-                    design_config,
-                    output_dir,
-                    "android.hardware.sensor.accelerometer",
+                _add_feature_element(
+                    permissions_elem, "android.hardware.sensor.accelerometer"
                 )
 
             if present_enum in (
                 hw_features.magnetometer.base_magnetometer,
                 hw_features.magnetometer.lid_magnetometer,
             ):
-                _write_feature_xml(
-                    design_config, output_dir, "android.hardware.sensor.compass"
+                _add_feature_element(
+                    permissions_elem, "android.hardware.sensor.compass"
                 )
 
             if hw_features.accelerometer.lid_accelerometer == present_enum:
-                _write_feature_xml(
-                    design_config,
-                    output_dir,
-                    "android.sensor.device_orientation",
+                _add_feature_element(
+                    permissions_elem, "android.sensor.device_orientation"
                 )
 
             if hw_features.fingerprint.present == present_enum:
-                _write_feature_xml(
-                    design_config, output_dir, "android.hardware.fingerprint"
+                _add_feature_element(
+                    permissions_elem, "android.hardware.fingerprint"
                 )
 
             if present_enum in (
                 hw_features.gyroscope.base_gyroscope,
                 hw_features.gyroscope.lid_gyroscope,
             ):
-                _write_feature_xml(
-                    design_config,
-                    output_dir,
-                    "android.hardware.sensor.gyroscope",
+                _add_feature_element(
+                    permissions_elem, "android.hardware.sensor.gyroscope"
                 )
 
             if (
                 hw_features.form_factor.form_factor
                 == topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE
             ):
-                _write_feature_xml(
-                    design_config,
-                    output_dir,
-                    "android.hardware.sensor.hinge_angle",
+                _add_feature_element(
+                    permissions_elem, "android.hardware.sensor.hinge_angle"
                 )
 
             if present_enum in (
@@ -493,24 +471,32 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                 hw_features.light_sensor.lid_lightsensor,
                 hw_features.light_sensor.base_lightsensor,
             ):
-                _write_feature_xml(
-                    design_config, output_dir, "android.hardware.sensor.light"
+                _add_feature_element(
+                    permissions_elem, "android.hardware.sensor.light"
                 )
 
             if hw_features.proximity.configs:
-                _write_feature_xml(
-                    design_config,
-                    output_dir,
-                    "android.hardware.sensor.proximity",
+                _add_feature_element(
+                    permissions_elem, "android.hardware.sensor.proximity"
                 )
 
             if any(
                 prox_conf.WhichOneof("config") == "semtech_config"
                 for prox_conf in hw_features.proximity.configs
             ):
-                _write_feature_xml(
-                    design_config, output_dir, "com.google.sensor.sar"
-                )
+                _add_feature_element(permissions_elem, "com.google.sensor.sar")
+
+            sku_dir = opts.output_dir / f"{model}_{sku}".lower()
+            sku_dir.mkdir(parents=True, exist_ok=True)
+            output_file = sku_dir / "features.xml"
+            with open(output_file, "wb") as f:
+                f.write(etree.tostring(permissions_elem, pretty_print=True))
+            logging.info(
+                "Wrote combined feature XML for %s:%s to %s",
+                model,
+                sku,
+                output_file,
+            )
 
 
 def _get_parser() -> argparse.ArgumentParser:
