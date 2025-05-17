@@ -337,6 +337,7 @@ message ProvisionInfo {
     CROS = 0;
     ANDROID = 1;
     ROFW = 2;
+    ASHCHROME = 3;
   }
   InstallRequest install_request = 1;
   string identifier = 2;

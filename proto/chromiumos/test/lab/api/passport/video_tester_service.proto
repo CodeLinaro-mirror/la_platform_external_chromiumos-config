@@ -1,8 +1,8 @@
-syntax = "proto3";
+syntax = "proto3"; // Specifies the protocol buffer language version.
 
-package chromiumos.test.lab.api.passport;
+package chromiumos.test.lab.api.passport; // Defines the package name for the generated code.
 
-option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport"; // Specifies the Go package path for the generated code.
 /*
 This proto files defines the interface for interacting with video tester devices.
 It allows clients to:
@@ -60,6 +60,52 @@ enum Role {
   ROLE_DPSOURCE_DPSINK = 2;   // Video tester acts as a DisplayPort source and a DisplayPort sink.
   ROLE_USBCSOURCE_USBCSINK = 3; // Video tester acts as a USB-C source and a USB-C sink.
   ROLE_USBCSOURCE_DPSINK = 4;   // Video tester acts as a USB-C source and a DisplayPort sink.
+}
+
+// Defines possible color formats for a video stream.
+enum StreamInfoColorFormat {
+  STREAM_INFO_CF_NONE = 0;      // No color format specified.
+  STREAM_INFO_CF_UNKNOWN = 1;   // Unknown color format.
+  STREAM_INFO_CF_RGB = 2;       // Red, Green, Blue color format.
+  STREAM_INFO_CF_YCBCR_422 = 3; // YCbCr 4:2:2 chroma subsampling.
+  STREAM_INFO_CF_YCBCR_444 = 4; // YCbCr 4:4:4 (no chroma subsampling).
+  STREAM_INFO_CF_YCBCR_420 = 5; // YCbCr 4:2:0 chroma subsampling.
+  STREAM_INFO_CF_IDO_DEFINED = 6; // Industry Defined Optimization (IDO).
+  STREAM_INFO_CF_Y_ONLY = 7;    // Luminance channel only.
+  STREAM_INFO_CF_RAW = 8;       // Raw data.
+  STREAM_INFO_CF_DSC = 9;       // Display Stream Compression (DSC) format.
+}
+
+// Defines possible dynamic ranges for a video stream.
+enum StreamInfoDynamicRange {
+  STREAM_INFO_DR_UNKNOWN = 0; // Unknown dynamic range.
+  STREAM_INFO_DR_VESA = 1;    // VESA dynamic range.
+  STREAM_INFO_DR_CTA = 2;     // CTA dynamic range.
+}
+
+// Defines possible colorimetry values for a video stream.
+enum StreamInfoColorimetry {
+  STREAM_INFO_CM_NONE = 0;                // No colorimetry specified.
+  STREAM_INFO_CM_RESERVED = 1;            // Reserved value.
+  STREAM_INFO_CM_SRGB = 2;                // sRGB color space.
+  STREAM_INFO_CM_SMPTE_170M = 3;          // SMPTE 170M color space.
+  STREAM_INFO_CM_ITUR_BT601 = 4;          // ITU-R BT.601 color space.
+  STREAM_INFO_CM_ITUR_BT709 = 5;          // ITU-R BT.709 color space.
+  STREAM_INFO_CM_XVYCC601 = 6;            // xvYCC 601 color space.
+  STREAM_INFO_CM_XVYCC709 = 7;            // xvYCC 709 color space.
+  STREAM_INFO_CM_SYCC601 = 8;             // sYCC 601 color space.
+  STREAM_INFO_CM_ADOBEYCC601 = 9;         // AdobeYCC 601 color space.
+  STREAM_INFO_CM_ADOBERGB = 10;           // Adobe RGB color space.
+  STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC = 11; // ITU-R BT.2020 YCbCr (constant luminance).
+  STREAM_INFO_CM_ITUR_BT2020_YCBCR = 12;    // ITU-R BT.2020 YCbCr.
+  STREAM_INFO_CM_ITUR_BT2020_RGB = 13;      // ITU-R BT.2020 RGB.
+  STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX = 14;   // RGB Wide Gamut (fixed point).
+  STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT = 15;   // RGB Wide Gamut (floating point).
+  STREAM_INFO_CM_DCI_P3 = 16;             // DCI-P3 color space.
+  STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE = 17; // DICOM Part 14 Grayscale Standard Display Function.
+  STREAM_INFO_CM_CUSTOM_COLOR_PROFILE = 18; // Custom color profile.
+  STREAM_INFO_CM_OPYCC601 = 19;           // opYCC 601 color space.
+  STREAM_INFO_CM_OPRGB = 20;              // opRGB color space.
 }
 
 // Represents a video tester device.
@@ -145,6 +191,11 @@ message StreamInfoVideoTester {
   optional int64 vstart = 7;     // Vertical start position.
   optional int64 hswidth = 8;    // Horizontal sync width.
   optional int64 vswidth = 9;    // Vertical sync width.
+  optional int64 bpp = 10;       // Bits per pixel.
+  optional StreamInfoColorFormat color_format = 11; // Color format of the stream.
+  optional StreamInfoColorimetry colormetry = 12; // Colorimetry of the stream.
+  optional StreamInfoDynamicRange dynamic_range = 13; // Dynamic range of the stream.
+  repeated int64 crc = 14; // Cyclic Redundancy Check (CRC) values for verification.
 }
 
 // Response message containing the current stream information for a video tester.
@@ -168,7 +219,7 @@ message SetLinkVideoTesterRequest {
   string id = 1;               // ID of the video tester to set the link parameters for.
   optional bool mst = 2;       // Enable or disable Multi-Stream Transport (MST).
   optional int64 mst_sink_count = 3; // The number of MST sink devices.
-  optional int64 scambler_seed = 4; // The scrambler seed value.
+  optional int64 scrambler_seed = 4; // The scrambler seed value.
   optional int64 max_lane = 5;     // The maximum number of active lanes.
 }
 
@@ -186,7 +237,7 @@ message GetLinkVideoTesterRequest {
 message GetLinkVideoTesterResponse {
   optional bool mst = 1;       // Current status of Multi-Stream Transport (MST).
   optional int64 mst_sink_count = 2; // Current number of MST sink devices.
-  optional int64 scambler_seed = 3; // Current scrambler seed value.
+  optional int64 scrambler_seed = 3; // Current scrambler seed value.
   optional int64 max_lane = 4;     // Current maximum number of active lanes.
 }
 
@@ -212,18 +263,18 @@ message HpdPulseVideoTesterResponse {
   // Empty response indicating success.
 }
 
-// Define the supported roles for the video tester device.
+// Define the supported groups for compliance tests.
 enum ComplianceTestGroup {
-  GROUP_AUDIO_TEST = 0;
-  GROUP_PIXEL_LEVEL_VIDEO_TEST = 1;
-  GROUP_CRC_BASED_VIDEO_TEST = 2;
-  GROUP_LINK_TEST = 3;
-  GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS = 4;
-  GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS = 5;
-  GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST = 6;
-  GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7;
-  GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8;
-  GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9;
+  GROUP_AUDIO_TEST = 0;                         // Group for audio related compliance tests.
+  GROUP_PIXEL_LEVEL_VIDEO_TEST = 1;             // Group for pixel level video compliance tests.
+  GROUP_CRC_BASED_VIDEO_TEST = 2;               // Group for CRC based video compliance tests.
+  GROUP_LINK_TEST = 3;                          // Group for link training and related tests.
+  GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS = 4;     // Group for DisplayPort 1.4 link layer compliance tests.
+  GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS = 5; // Group for DisplayPort 1.4 DSC link layer compliance tests.
+  GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST = 6; // Group for DisplayPort 1.4 DisplayID compliance tests (Source role).
+  GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7; // Group for DisplayPort 2.1 link layer compliance tests (Source DUT role).
+  GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8; // Group for DisplayPort 2.1 DSC compliance tests (Source DUT role).
+  GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9; // Group for DisplayPort 2.1 DisplayID compliance tests (Source role).
 }
 
 // Represents the status of a compliance test.
@@ -255,10 +306,10 @@ message ComplianceTestResultVideoTester {
   // The status of the compliance test, indicating whether it passed, failed, skipped, or was aborted.
   ComplianceTestStatus status = 2;
 }
-// Request message for initiating a DP compliance test.
+// Request message for initiating a DP compliance test run on a video tester.
 message RunComplianceTestRequest {
-  string id = 1; // ID of the video tester to run the compliance test.
-  repeated ComplianceTestVideoTester tests = 2;
+  string id = 1; // ID of the video tester to run the compliance test on.
+  repeated ComplianceTestVideoTester tests = 2; // The list of compliance tests to run.
 }
 
 // Response message initiating the results of a compliance test run.
@@ -302,6 +353,6 @@ service VideoTesterService {
   // Sends an HPD (Hot Plug Detect) pulse to a video tester.
   rpc HpdPulseVideoTester(HpdPulseVideoTesterRequest) returns (HpdPulseVideoTesterResponse);
 
-  // Runs compliance test(s).
+  // Runs compliance test(s) on a video tester.
   rpc RunComplianceTest(RunComplianceTestRequest) returns (RunComplianceTestResponse);
 }

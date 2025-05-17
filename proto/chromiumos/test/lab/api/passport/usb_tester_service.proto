@@ -25,12 +25,18 @@ service UsbTesterService {
   // Get the display port alternate mode information.
   rpc GetDpInfo(GetDpInfoRequest) returns (GetDpInfoReply) {}
 
+  // Get the power delivery objects
+  rpc GetPdos(GetPdosRequest) returns (GetPdosReply) {}
+
   // Simulate the physical disconnect and reconnect of the cable between the
   // tester and the DUT.
   rpc ReplugCable(DoCableReplugRequest) returns (DoCableReplugReply) {}
 
-  // This method is used to do a hard reset.
+  // This method is used to do a hard reset/power cycle.
   rpc HardResetTester(HardResetTesterRequest) returns (HardResetTesterReply) {}
+
+  // This method is used to issue power delivery resets.
+  rpc ResetPd(ResetPdRequest) returns (ResetPdReply) {}
 
   // This method is used to open the serial of the USB tester being used.
   rpc OpenTester(OpenTesterRequest) returns (OpenTesterReply) {}
@@ -153,6 +159,12 @@ enum Capability {
   VBUS_CC2 = 19;
   VBUS_SBU1 = 20;
   VBUS_SBU2 = 21;
+  DATA_SWAP_POLICY = 22;
+  POWER_SWAP_POLICY = 23;
+  VCONN_SWAP_POLICY = 24;
+  CONSTRAINED_POWER = 25;
+  POWER_DELIVERY = 26;
+  DISPLAY_PORT_AM = 27;
 }
 
 enum ActiveCc {
@@ -230,6 +242,12 @@ message GetUsbTesterCapabilityReply {
     CableMode cable_mode = 8;
     InitPdState init_pd_state = 9;
     int64 non_descrete = 10;
+    bool data_role_swap_policy = 13;
+    bool power_role_swap_policy = 14;
+    bool vconn_swap_policy = 15;
+    bool constrained_power = 16;
+    bool power_delivery = 17;
+    bool display_port_am = 18;
   }
 }
 
@@ -260,6 +278,12 @@ message SetUsbTesterCapabilityRequest {
     CableMode cable_mode = 10;
     InitPdState init_pd_state = 11;
     int64 non_descrete = 12;
+    bool data_role_swap_policy = 13;
+    bool power_role_swap_policy = 14;
+    bool vconn_swap_policy = 15;
+    bool constrained_power = 16;
+    bool power_delivery = 17;
+    bool display_port_am = 18;
   }
 }
 
@@ -414,4 +438,48 @@ message LoadEdidReply {
   // Human-readable error message providing more details about any errors
   // encountered.
   optional string error_msg = 2;
+}
+
+// Defines a request message for resetting the Power Delivery (PD) communication
+// on a USB tester device.
+message ResetPdRequest {
+  // Unique identifier (e.g., serial number) of the target USB tester.
+  string id = 1;
+
+  // Specifies the type of reset to perform.
+  // If true, a soft reset of the PD communication will be initiated.
+  // If false, a hard reset (potentially involving power cycling the PD PHY)
+  // will be performed.
+  bool soft = 2;
+}
+
+// Defines the reply message sent in response to a ResetPdRequest.
+message ResetPdReply {
+  // Numerical error code indicating the outcome of the reset operation.
+  // A value of 0 signifies successful execution.
+  // Non-zero values indicate specific error conditions.
+  int64 err_code = 1;
+
+  // Optional human-readable message providing additional context or details
+  // in case an error occurred during the reset process. This field will
+  // typically be populated when err_code is not 0.
+  optional string error_msg = 2;
+}
+
+message GetPdosRequest {
+  string id = 1;
+}
+
+message GetPdosReply {
+  // Error code indicating the success or failure of the operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+
+  // Human-readable error message providing more details about any errors
+  // encountered.
+  optional string error_msg = 2;
+
+  repeated int64 src_pdos = 3;
+
+  repeated int64 snk_pdos = 4;
 }
