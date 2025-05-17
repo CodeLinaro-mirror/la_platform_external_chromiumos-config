@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n&chromiumos/test/api/ctp2_filters.proto\x12\x13\x63hromiumos.test.api\"\xc1\x01\n\x1aGenericFilterStreamRequest\x12S\n\x1ainternal_testplan_fragment\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.InternalTestplanFragmentH\x00\x12\x43\n\rauth_fragment\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.AuthorizationFragmentH\x00\x42\t\n\x07message\"\xfc\x01\n\x1bGenericFilterStreamResponse\x12S\n\x1ainternal_testplan_fragment\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.InternalTestplanFragmentH\x00\x12\x38\n\x0clog_fragment\x18\x02 \x01(\x0b\x32 .chromiumos.test.api.LogFragmentH\x00\x12\x43\n\rauth_fragment\x18\x03 \x01(\x0b\x32*.chromiumos.test.api.AuthorizationFragmentH\x00\x42\t\n\x07message\"e\n\x10\x46ragmentMetadata\x12\x12\n\ntotal_size\x18\x01 \x01(\x03\x12\x17\n\x0ftotal_fragments\x18\x02 \x01(\x03\x12\r\n\x05index\x18\x03 \x01(\x03\x12\x15\n\rfragment_size\x18\x04 \x01(\x03\"e\n\x18InternalTestplanFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadata\"X\n\x0bLogFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadata\"@\n\x14\x41uthorizationRequest\x12\x18\n\x10\x63redential_paths\x18\x01 \x03(\t\x12\x0e\n\x06scopes\x18\x02 \x03(\t\"&\n\x15\x41uthorizationResponse\x12\r\n\x05token\x18\x01 \x01(\t\"b\n\x15\x41uthorizationFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n&chromiumos/test/api/ctp2_filters.proto\x12\x13\x63hromiumos.test.api\"\x8a\x02\n\x1aGenericFilterStreamRequest\x12S\n\x1ainternal_testplan_fragment\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.InternalTestplanFragmentH\x00\x12\x43\n\rauth_fragment\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.AuthorizationFragmentH\x00\x12G\n\x14\x66ilter_args_fragment\x18\x03 \x01(\x0b\x32\'.chromiumos.test.api.FilterArgsFragmentH\x00\x42\t\n\x07message\"\xfc\x01\n\x1bGenericFilterStreamResponse\x12S\n\x1ainternal_testplan_fragment\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.InternalTestplanFragmentH\x00\x12\x38\n\x0clog_fragment\x18\x02 \x01(\x0b\x32 .chromiumos.test.api.LogFragmentH\x00\x12\x43\n\rauth_fragment\x18\x03 \x01(\x0b\x32*.chromiumos.test.api.AuthorizationFragmentH\x00\x42\t\n\x07message\"e\n\x10\x46ragmentMetadata\x12\x12\n\ntotal_size\x18\x01 \x01(\x03\x12\x17\n\x0ftotal_fragments\x18\x02 \x01(\x03\x12\r\n\x05index\x18\x03 \x01(\x03\x12\x15\n\rfragment_size\x18\x04 \x01(\x03\"e\n\x18InternalTestplanFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadata\"X\n\x0bLogFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadata\"@\n\x14\x41uthorizationRequest\x12\x18\n\x10\x63redential_paths\x18\x01 \x03(\t\x12\x0e\n\x06scopes\x18\x02 \x03(\t\"&\n\x15\x41uthorizationResponse\x12\r\n\x05token\x18\x01 \x01(\t\"b\n\x15\x41uthorizationFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadata\"\x1a\n\nFilterArgs\x12\x0c\n\x04\x61rgs\x18\x01 \x03(\t\"_\n\x12\x46ilterArgsFragment\x12\x10\n\x08\x66ragment\x18\x01 \x01(\x0c\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.FragmentMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
 )
 
 
@@ -47,6 +47,13 @@ _GENERICFILTERSTREAMREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='filter_args_fragment', full_name='chromiumos.test.api.GenericFilterStreamRequest.filter_args_fragment', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -65,7 +72,7 @@ _GENERICFILTERSTREAMREQUEST = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=64,
-  serialized_end=257,
+  serialized_end=330,
 )
 
 
@@ -115,8 +122,8 @@ _GENERICFILTERSTREAMRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=260,
-  serialized_end=512,
+  serialized_start=333,
+  serialized_end=585,
 )
 
 
@@ -168,8 +175,8 @@ _FRAGMENTMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=514,
-  serialized_end=615,
+  serialized_start=587,
+  serialized_end=688,
 )
 
 
@@ -207,8 +214,8 @@ _INTERNALTESTPLANFRAGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=617,
-  serialized_end=718,
+  serialized_start=690,
+  serialized_end=791,
 )
 
 
@@ -246,8 +253,8 @@ _LOGFRAGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=720,
-  serialized_end=808,
+  serialized_start=793,
+  serialized_end=881,
 )
 
 
@@ -285,8 +292,8 @@ _AUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=810,
-  serialized_end=874,
+  serialized_start=883,
+  serialized_end=947,
 )
 
 
@@ -317,8 +324,8 @@ _AUTHORIZATIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=876,
-  serialized_end=914,
+  serialized_start=949,
+  serialized_end=987,
 )
 
 
@@ -356,18 +363,93 @@ _AUTHORIZATIONFRAGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=916,
-  serialized_end=1014,
+  serialized_start=989,
+  serialized_end=1087,
+)
+
+
+_FILTERARGS = _descriptor.Descriptor(
+  name='FilterArgs',
+  full_name='chromiumos.test.api.FilterArgs',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='args', full_name='chromiumos.test.api.FilterArgs.args', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1089,
+  serialized_end=1115,
+)
+
+
+_FILTERARGSFRAGMENT = _descriptor.Descriptor(
+  name='FilterArgsFragment',
+  full_name='chromiumos.test.api.FilterArgsFragment',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='fragment', full_name='chromiumos.test.api.FilterArgsFragment.fragment', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='metadata', full_name='chromiumos.test.api.FilterArgsFragment.metadata', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1117,
+  serialized_end=1212,
 )
 
 _GENERICFILTERSTREAMREQUEST.fields_by_name['internal_testplan_fragment'].message_type = _INTERNALTESTPLANFRAGMENT
 _GENERICFILTERSTREAMREQUEST.fields_by_name['auth_fragment'].message_type = _AUTHORIZATIONFRAGMENT
+_GENERICFILTERSTREAMREQUEST.fields_by_name['filter_args_fragment'].message_type = _FILTERARGSFRAGMENT
 _GENERICFILTERSTREAMREQUEST.oneofs_by_name['message'].fields.append(
   _GENERICFILTERSTREAMREQUEST.fields_by_name['internal_testplan_fragment'])
 _GENERICFILTERSTREAMREQUEST.fields_by_name['internal_testplan_fragment'].containing_oneof = _GENERICFILTERSTREAMREQUEST.oneofs_by_name['message']
 _GENERICFILTERSTREAMREQUEST.oneofs_by_name['message'].fields.append(
   _GENERICFILTERSTREAMREQUEST.fields_by_name['auth_fragment'])
 _GENERICFILTERSTREAMREQUEST.fields_by_name['auth_fragment'].containing_oneof = _GENERICFILTERSTREAMREQUEST.oneofs_by_name['message']
+_GENERICFILTERSTREAMREQUEST.oneofs_by_name['message'].fields.append(
+  _GENERICFILTERSTREAMREQUEST.fields_by_name['filter_args_fragment'])
+_GENERICFILTERSTREAMREQUEST.fields_by_name['filter_args_fragment'].containing_oneof = _GENERICFILTERSTREAMREQUEST.oneofs_by_name['message']
 _GENERICFILTERSTREAMRESPONSE.fields_by_name['internal_testplan_fragment'].message_type = _INTERNALTESTPLANFRAGMENT
 _GENERICFILTERSTREAMRESPONSE.fields_by_name['log_fragment'].message_type = _LOGFRAGMENT
 _GENERICFILTERSTREAMRESPONSE.fields_by_name['auth_fragment'].message_type = _AUTHORIZATIONFRAGMENT
@@ -383,6 +465,7 @@ _GENERICFILTERSTREAMRESPONSE.fields_by_name['auth_fragment'].containing_oneof = 
 _INTERNALTESTPLANFRAGMENT.fields_by_name['metadata'].message_type = _FRAGMENTMETADATA
 _LOGFRAGMENT.fields_by_name['metadata'].message_type = _FRAGMENTMETADATA
 _AUTHORIZATIONFRAGMENT.fields_by_name['metadata'].message_type = _FRAGMENTMETADATA
+_FILTERARGSFRAGMENT.fields_by_name['metadata'].message_type = _FRAGMENTMETADATA
 DESCRIPTOR.message_types_by_name['GenericFilterStreamRequest'] = _GENERICFILTERSTREAMREQUEST
 DESCRIPTOR.message_types_by_name['GenericFilterStreamResponse'] = _GENERICFILTERSTREAMRESPONSE
 DESCRIPTOR.message_types_by_name['FragmentMetadata'] = _FRAGMENTMETADATA
@@ -391,6 +474,8 @@ DESCRIPTOR.message_types_by_name['LogFragment'] = _LOGFRAGMENT
 DESCRIPTOR.message_types_by_name['AuthorizationRequest'] = _AUTHORIZATIONREQUEST
 DESCRIPTOR.message_types_by_name['AuthorizationResponse'] = _AUTHORIZATIONRESPONSE
 DESCRIPTOR.message_types_by_name['AuthorizationFragment'] = _AUTHORIZATIONFRAGMENT
+DESCRIPTOR.message_types_by_name['FilterArgs'] = _FILTERARGS
+DESCRIPTOR.message_types_by_name['FilterArgsFragment'] = _FILTERARGSFRAGMENT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GenericFilterStreamRequest = _reflection.GeneratedProtocolMessageType('GenericFilterStreamRequest', (_message.Message,), {
@@ -448,6 +533,20 @@ AuthorizationFragment = _reflection.GeneratedProtocolMessageType('AuthorizationF
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.AuthorizationFragment)
   })
 _sym_db.RegisterMessage(AuthorizationFragment)
+
+FilterArgs = _reflection.GeneratedProtocolMessageType('FilterArgs', (_message.Message,), {
+  'DESCRIPTOR' : _FILTERARGS,
+  '__module__' : 'chromiumos.test.api.ctp2_filters_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.FilterArgs)
+  })
+_sym_db.RegisterMessage(FilterArgs)
+
+FilterArgsFragment = _reflection.GeneratedProtocolMessageType('FilterArgsFragment', (_message.Message,), {
+  'DESCRIPTOR' : _FILTERARGSFRAGMENT,
+  '__module__' : 'chromiumos.test.api.ctp2_filters_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.FilterArgsFragment)
+  })
+_sym_db.RegisterMessage(FilterArgsFragment)
 
 
 DESCRIPTOR._options = None

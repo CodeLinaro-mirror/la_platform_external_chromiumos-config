@@ -498,7 +498,7 @@ message BuildMetadata {
 }
 
 // Captures DUT related info.
-// NEXT TAG: 6
+// NEXT TAG: 7
 message DutInfo {
   // DUT associated with the test run.
   chromiumos.test.lab.api.Dut dut = 1;
@@ -526,6 +526,16 @@ message DutInfo {
 
   // USB-C ports on device.
   UsbInfo usb_info = 5;
+
+  // Information about the stress tests associated with the test run.
+  // NEXT TAG: 2
+  message StressTestInfo {
+    // The number of stress test iterations.
+    uint32 iterations = 1;
+  }
+
+  // Information about the stress tests.
+  StressTestInfo stress_test_info = 6;
 }
 
 // Captures Drone related info.

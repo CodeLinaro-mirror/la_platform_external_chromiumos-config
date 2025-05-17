@@ -34,6 +34,11 @@ class UsbTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoReply.FromString,
                 )
+        self.GetPdos = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/GetPdos',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdosRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdosReply.FromString,
+                )
         self.ReplugCable = channel.unary_unary(
                 '/chromiumos.test.lab.api.passport.UsbTesterService/ReplugCable',
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.DoCableReplugRequest.SerializeToString,
@@ -43,6 +48,11 @@ class UsbTesterServiceStub(object):
                 '/chromiumos.test.lab.api.passport.UsbTesterService/HardResetTester',
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.HardResetTesterRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.HardResetTesterReply.FromString,
+                )
+        self.ResetPd = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/ResetPd',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdReply.FromString,
                 )
         self.OpenTester = channel.unary_unary(
                 '/chromiumos.test.lab.api.passport.UsbTesterService/OpenTester',
@@ -102,6 +112,13 @@ class UsbTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetPdos(self, request, context):
+        """Get the power delivery objects
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def ReplugCable(self, request, context):
         """Simulate the physical disconnect and reconnect of the cable between the
         tester and the DUT.
@@ -111,7 +128,14 @@ class UsbTesterServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def HardResetTester(self, request, context):
-        """This method is used to do a hard reset.
+        """This method is used to do a hard reset/power cycle.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ResetPd(self, request, context):
+        """This method is used to issue power delivery resets.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -175,6 +199,11 @@ def add_UsbTesterServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoReply.SerializeToString,
             ),
+            'GetPdos': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPdos,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdosRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdosReply.SerializeToString,
+            ),
             'ReplugCable': grpc.unary_unary_rpc_method_handler(
                     servicer.ReplugCable,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.DoCableReplugRequest.FromString,
@@ -184,6 +213,11 @@ def add_UsbTesterServiceServicer_to_server(servicer, server):
                     servicer.HardResetTester,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.HardResetTesterRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.HardResetTesterReply.SerializeToString,
+            ),
+            'ResetPd': grpc.unary_unary_rpc_method_handler(
+                    servicer.ResetPd,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdReply.SerializeToString,
             ),
             'OpenTester': grpc.unary_unary_rpc_method_handler(
                     servicer.OpenTester,
@@ -289,6 +323,23 @@ class UsbTesterService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def GetPdos(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/GetPdos',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdosRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdosReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def ReplugCable(request,
             target,
             options=(),
@@ -319,6 +370,23 @@ class UsbTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/HardResetTester',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.HardResetTesterRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.HardResetTesterReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ResetPd(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/ResetPd',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

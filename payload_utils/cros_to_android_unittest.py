@@ -83,8 +83,8 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 for p in output_files
             ),
             [
-                "TestDesign_123/android.hardware.fingerprint.xml",
-                "TestDesign_456/android.hardware.fingerprint.xml",
+                "testdesign_123/features.xml",
+                "testdesign_456/features.xml",
             ],
         )
 
@@ -316,29 +316,35 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         )
         cros_to_android.run_generate_feature_xml(opts)
 
-    def _assert_feature_xml(self, feature_name_str):
+    def _assert_feature_xml(self, expected_features: list[str]):
         """Asserts the presence and content of a feature XML."""
-        feature_file_path = (
-            self.temp_dir / f"TestModel_123/{feature_name_str}.xml"
-        )
+        feature_file_path = self.temp_dir / "testmodel_123/features.xml"
 
         self.assertTrue(feature_file_path.is_file())
         with open(feature_file_path, "rb") as f:
-            self.assertEqual(
-                f.read(),
-                (
-                    b"<permissions>\n  "
-                    + f'<feature name="{feature_name_str}"/>\n'.encode("utf-8")
-                    + b"</permissions>\n"
-                ),
-            )
+            xml_content = f.read()
+
+        root = etree.fromstring(xml_content)
+
+        found_features = {
+            feature.get("name") for feature in root.findall("feature")
+        }
+
+        self.assertSetEqual(
+            found_features,
+            set(expected_features),
+            (
+                f"Expected features {set(expected_features)} but found "
+                f"{found_features} in {feature_file_path}"
+            ),
+        )
 
     def test_generate_fingerprint_feature(self):
         """Test fingerprint feature XML."""
         self.config.hardware_features.fingerprint.present = True
 
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.fingerprint")
+        self._assert_feature_xml(["android.hardware.fingerprint"])
 
     def test_generate_accelerometer_feature(self):
         """Test accelerometer feature XML."""
@@ -346,7 +352,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.PRESENT
         )
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.sensor.accelerometer")
+        self._assert_feature_xml(["android.hardware.sensor.accelerometer"])
 
     def test_generate_gyroscope_feature(self):
         """Test gyroscope feature XML."""
@@ -354,7 +360,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.PRESENT
         )
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.sensor.gyroscope")
+        self._assert_feature_xml(["android.hardware.sensor.gyroscope"])
 
     def test_generate_compass_feature(self):
         """Test compass feature XML."""
@@ -362,7 +368,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.PRESENT
         )
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.sensor.compass")
+        self._assert_feature_xml(["android.hardware.sensor.compass"])
 
     def test_generate_light_sensor_feature(self):
         """Test light sensor feature XML."""
@@ -370,7 +376,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.PRESENT
         )
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.sensor.light")
+        self._assert_feature_xml(["android.hardware.sensor.light"])
 
     def test_generate_hinge_angle_feature(self):
         """Test hinge angle feature XML."""
@@ -378,20 +384,22 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE
         )
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.sensor.hinge_angle")
+        self._assert_feature_xml(["android.hardware.sensor.hinge_angle"])
 
     def test_generate_proximity_feature(self):
         """Test proximity sensor feature XML."""
         self.config.hardware_features.proximity.configs.add()
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.hardware.sensor.proximity")
+        self._assert_feature_xml(["android.hardware.sensor.proximity"])
 
     def test_generate_sar_feature(self):
         """Test com.google.sensor.sar feature XML."""
         prox_config = self.config.hardware_features.proximity.configs.add()
         prox_config.semtech_config.sampling_frequency = 1
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("com.google.sensor.sar")
+        self._assert_feature_xml(
+            ["android.hardware.sensor.proximity", "com.google.sensor.sar"]
+        )
 
     def test_generate_device_orientation_feature(self):
         """Test android.sensor.device_orientation feature XML."""
@@ -399,7 +407,12 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.PRESENT
         )
         self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml("android.sensor.device_orientation")
+        self._assert_feature_xml(
+            [
+                "android.hardware.sensor.accelerometer",
+                "android.sensor.device_orientation",
+            ]
+        )
 
 
 if __name__ == "__main__":
