@@ -30,8 +30,8 @@ service GenericFilterService {
 
   rpc ExecuteStream(stream InternalTestplanFragment)
       returns (stream InternalTestplanFragment) {
-        option deprecated = true;
-      };
+    option deprecated = true;
+  };
 
   rpc ExecuteWithStream(stream GenericFilterStreamRequest)
       returns (stream GenericFilterStreamResponse);

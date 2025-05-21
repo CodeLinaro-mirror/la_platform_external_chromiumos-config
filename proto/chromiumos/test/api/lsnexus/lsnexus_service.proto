@@ -67,8 +67,6 @@ service LSNexusService {
   // RunFlashEC forwards EC firmware flashing request to BOLS.
   // In most of implementation, it runs flash_ec tool on labstation.
   rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
-
-
 }
 
 message StartServodRequest {}
@@ -145,13 +143,11 @@ message EchoResponse {
   string result = 1;
 }
 
-message DownloadSystemLogsRequest {
-}
+message DownloadSystemLogsRequest {}
 
 message DownloadSystemLogsResponse {}
 
-message DownloadServoLogsRequest {
-}
+message DownloadServoLogsRequest {}
 
 message DownloadServoLogsResponse {}
 

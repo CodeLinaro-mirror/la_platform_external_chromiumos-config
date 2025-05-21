@@ -663,7 +663,8 @@ type KernelPrebuilts_PartitionImage struct {
 	PartitionName string `protobuf:"bytes,1,opt,name=partition_name,json=partitionName,proto3" json:"partition_name,omitempty"`
 	// Path to the new image file for that partition.
 	ImagePath *_go.StoragePath `protobuf:"bytes,2,opt,name=image_path,json=imagePath,proto3" json:"image_path,omitempty"`
-	// Optional: Name of the ramdisk on that partition that this image file should be installed to.
+	// Optional: Name of the ramdisk on that partition that this image file
+	// should be installed to.
 	RamdiskName string `protobuf:"bytes,3,opt,name=ramdisk_name,json=ramdiskName,proto3" json:"ramdisk_name,omitempty"`
 }
 
