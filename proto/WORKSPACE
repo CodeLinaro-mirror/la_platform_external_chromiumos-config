@@ -17,9 +17,11 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_go//go:deps.bzl",
-     "go_register_toolchains",
-     "go_rules_dependencies")
+load(
+    "@io_bazel_rules_go//go:deps.bzl",
+    "go_register_toolchains",
+    "go_rules_dependencies",
+)
 
 go_rules_dependencies()
 
@@ -37,14 +39,15 @@ http_archive(
 )
 
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+
 gazelle_dependencies()
 
 # proto rules
 
 http_archive(
     name = "com_google_protobuf",
-    strip_prefix = "protobuf-23.4",
     sha256 = "a700a49470d301f1190a487a923b5095bf60f08f4ae4cac9f5f7c36883d17971",
+    strip_prefix = "protobuf-23.4",
     urls = [
         "https://mirror.bazel.build/github.com/protocolbuffers/protobuf/archive/v23.4.tar.gz",
         "https://github.com/protocolbuffers/protobuf/archive/v23.4.tar.gz",
@@ -52,4 +55,5 @@ http_archive(
 )
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
 protobuf_deps()
