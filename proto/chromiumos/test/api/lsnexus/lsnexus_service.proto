@@ -23,18 +23,6 @@ service LSNexusService {
   // Allowed methods: doc, get, set, and hwinit.
   rpc CallServod(CallServodRequest) returns (CallServodResponse);
 
-  // GetFile gets a file from labstation/container.
-  // If there is an error in accessing the file, the error message
-  // will be included in the the GRPC error.
-  rpc GetFile(GetFileRequest) returns (GetFileResponse) {}
-
-  // PutFile put a file on labstation/container.
-  // If the directory of destination path does not exist, this service
-  // will also create the directory.
-  // If there is an error in accessing the file, the error message
-  // will be included in the the GRPC error.
-  rpc PutFile(PutFileRequest) returns (PutFileResponse) {}
-
   // RemoveFile removes a file on labstation/container.
   rpc RemoveFile(RemoveFileRequest) returns (RemoveFileResponse) {}
 
@@ -51,60 +39,11 @@ service LSNexusService {
   // DMesg returns the output from the dmesg command.
   rpc DMesg(DMesgRequest) returns (stream DMesgResponse) {}
 
-  // CorruptUSBKey makes a minimal change to the USB key
-  // to prevent it from booting. Use UncorruptUSBKey to repair it afterwards.
-  rpc CorruptUSBKey(CorruptUSBKeyRequest) returns (CorruptUSBKeyResponse) {}
-
-  // UncorruptUSBKey repair the USB key that was corrupted by
-  // CorruptUSBKey.
-  rpc UncorruptUSBKey(CorruptUSBKeyRequest) returns (UncorruptUSBKeyResponse) {}
-
-  // UpdateFirmware update the firmware of a DUT through servo.
-  rpc UpdateFirmware(UpdateFirmwareRequest)
-      returns (stream UpdateFirmwareResponse) {}
-
-  // SetWP enables/disables software write protection.
-  rpc SetWP(SetWPRequest) returns (stream SetWPResponse) {}
-
-  // ReadAP reads AP firmware to file.
-  rpc ReadAP(ReadAPRequest) returns (stream ReadAPResponse) {}
-
-  // FlashECFirmware flash EC firmware.
-  rpc FlashECFirmware(FlashECFirmwareRequest)
-      returns (stream FlashECFirmwareResponse) {}
-
-  // DownloadFirmwareFiles will extract the AP and EC bin files
-  // from the cloud storage, and put them in a location specified
-  // by users.
-  rpc DownloadFirmwareFiles(DownloadFirmwareFilesRequest)
-      returns (DownloadFirmwareFilesResponse) {}
-
-  // CheckUSB checks if there is any usb device connected to the host
-  // and gets its path.
-  rpc CheckUSB(CheckUSBRequest) returns (CheckUSBResponse) {}
-
-  // GetGBBFlags gets the gbb flags.
-  rpc GetGBBFlags(GetGBBFlagsRequest) returns (GetGBBFlagsResponse) {}
-
-  // SetGBBFlags sets the gbb flags.
-  rpc SetGBBFlags(SetGBBFlagsRequest) returns (SetGBBFlagsResponse) {}
-
-  // ValidateUSBImage verifies that the usb drive is mountable,
-  // and returns the version and milestone of the ChromeOS test image.
-  // A blank version means that the ChromeOS image on the USB drive is invalid.
-  // TODO: Not sure if the current technique will work for Desktop.
-  //       We may need to hold off the implementation for this API.
-  rpc ValidateUSBImage(ValidateUSBImageRequest)
-      returns (ValidateUSBImageResponse) {}
-
-  // ECCommand runs a given command on the EC on the device.
-  rpc ECCommand(ECCommandRequest) returns (ECCommandResponse) {}
-
   // Echo calls the Servo echo method.
   rpc Echo(EchoRequest) returns (EchoResponse) {}
 
   // DownloadSystemLogs downloads system logs of the labstation or container
-  // to a local destination directory
+  // to LSNexus' directory
   // Logs include:
   //     /var/log/message from the labstation or container if exists.
   //     The output of  "dmesg -H"  from the labstation or container.
@@ -112,7 +51,7 @@ service LSNexusService {
       returns (DownloadSystemLogsResponse) {}
 
   // DownloadServoLogs will save servod related logs from the labstation or
-  // container where servod is running.
+  // container where servod is running to LSNexus' directory
   // Logs include:
   //     /var/log/servo_<port>/ latest.DEBUG from servod host.
   //     /var/log/servo_<port>.STARTUP.log from servod host.
@@ -120,22 +59,16 @@ service LSNexusService {
   rpc DownloadServoLogs(DownloadServoLogsRequest)
       returns (DownloadServoLogsResponse) {}
 
-  // DolosVersion returns the version of the specified dolos.
-  rpc DolosVersion(DolosVersionRequest) returns (DolosVersionResponse) {}
+  ///////// Firmware tool API /////////
 
-  // DolosRepair repairs a failing device.
-  rpc DolosRepair(DolosRepairRequest) returns (DolosRepairResponse) {}
+  // RunFutility forwards futility request to BOLS.
+  rpc RunFutility(RunFutilityRequest) returns (RunFutilityResponse) {}
 
-  // DolosUpdateFirmware updates firmware of dolos.
-  // This API will first check if the firmware file is on the dolos host.
-  // If not, it will download the file from GCS.
-  // Then, it will update firmware.
-  rpc DolosUpdateFirmware(DolosUpdateFirmwareRequest)
-      returns (DolosUpdateFirmwareResponse) {}
+  // RunFlashEC forwards EC firmware flashing request to BOLS.
+  // In most of implementation, it runs flash_ec tool on labstation.
+  rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
 
-  // DolosUartSerial returns the urt serial number of the specified dolos.
-  rpc DolosUartSerial(DolosUartSerialRequest)
-      returns (DolosUartSerialResponse) {}
+
 }
 
 message StartServodRequest {}
@@ -175,6 +108,9 @@ message CallServodRequest {
   // For the set method, it will be control name and the value as
   // separate array values (e.g. ["lid_open", "yes"]).
   repeated chromiumos.test.api.bols.ServodValue args = 2;
+
+  // Control is used for for certain method such as GET and SET.
+  string control = 3;
 }
 
 message CallServodResponse {
@@ -194,40 +130,6 @@ message CallServodResponse {
   }
 }
 
-message GetFileRequest {
-  // The file path of the file to get.
-  string src_file_path = 1;
-  // The destination of the file in the local host.
-  string dst_file_path = 2;
-}
-
-message GetFileResponse {}
-
-message PutFileRequest {
-  // The source file path at the local host.
-  string src_file_path = 1;
-  // The destination of the file in the labstation.
-  string dst_file_path = 2;
-}
-
-message PutFileResponse {}
-
-message ECCommandRequest {
-  // The EC command that will be run.
-  string command = 1;
-
-  // A list of the output patterns that need to be captured in the
-  // response. If the field is empty, no output will be included in
-  // the response.
-  repeated string patterns = 2;
-}
-
-message ECCommandResponse {
-  // The output of the EC command that matches the patterns specified
-  // in the request.
-  repeated StringList output = 1;
-}
-
 message StringList {
   // A list of strings.
   repeated string values = 1;
@@ -238,18 +140,17 @@ message EchoRequest {
   string msg = 1;
 }
 
-message EchoResponse {}
+message EchoResponse {
+  // The result of echo.
+  string result = 1;
+}
 
 message DownloadSystemLogsRequest {
-  // The directory where the log files should be saved to.
-  string dest = 5;
 }
 
 message DownloadSystemLogsResponse {}
 
 message DownloadServoLogsRequest {
-  // The directory where the log files should be saved to.
-  string dest = 5;
 }
 
 message DownloadServoLogsResponse {}
@@ -289,87 +190,6 @@ message DMesgResponse {
   OutputStream output = 1;
 }
 
-message CorruptUSBKeyRequest {}
-
-message CorruptUSBKeyResponse {}
-
-message UncorruptUSBKeyRequest {}
-
-message UncorruptUSBKeyResponse {}
-
-message UpdateFirmwareRequest {
-  // The image path.
-  string image_path = 2;
-
-  // The ec image path.
-  string ec_image_path = 3;
-
-  // The Try AB mode.
-  bool try_ab = 4;
-
-  // The fast mode.
-  bool fast = 5;
-
-  message Quirk {
-    string key = 1;
-    string value = 2;
-  }
-  // The quirk name/value pairs.
-  Quirk quirks = 6;
-
-  enum UpdateMode {
-    UPDATEMODE_UNSPECIFIED = 0;
-    UPDATEMODE_AUTOUPDATE = 1;
-    UPDATEMODE_RECOVERY = 2;
-    UPDATEMODE_FACTORY = 3;
-  }
-  // The update mode.
-  UpdateMode update_mode = 7;
-
-  enum WPMode {
-    WPMODE_UNSPECIFIED = 0;
-    WPMODE_ENABLE = 1;
-    WPMODE_DISABLE = 2;
-  }
-  // The write protection mode.
-  WPMode wp_mode = 8;
-
-  // The host only mode.
-  bool host_only = 9;
-
-  // The GBB flags.
-  repeated uint32 gbb_flags = 10;
-
-  // The force mode.
-  bool force = 11;
-}
-
-message UpdateFirmwareResponse {
-  // The stdout and stderr of the firmware update request.
-  OutputStream output = 1;
-}
-
-message SetWPRequest {
-  // A flag to indicate whether write protection should be
-  // enabled or disable.
-  bool enable = 2;
-}
-
-message SetWPResponse {
-  // The stdout and stderr of the SetWP request.
-  OutputStream output = 1;
-}
-
-message ReadAPRequest {
-  // The debug mode.
-  bool debug = 2;
-  // The verbose mode.
-  bool verbose = 3;
-  // The region to be read by ReadAP.
-  // Empty means whole image.
-  bool region = 4;
-}
-
 message OutputStream {
   // The shell command's stdout output since the last response.
   bytes stdout = 1;
@@ -377,142 +197,33 @@ message OutputStream {
   bytes stderr = 2;
 }
 
-message ReadAPResponse {
-  // The stdout and stderr of the SetWP request.
+///////// Firmware tool API messages /////////
+
+message RunFutilityRequest {
+  // List of parameters used at execution.
+  // if --servo_port is specified and the port is not same as the one
+  // specified in the station identifier, an error will be returned.
+  // Example:  "futility gbb --servo_port=9999 --set --flash --flags=0x18".
+  // Params ["gbb", "--set",  "--servo_port=9999", "--flash", "--flags=0x18"]
+  repeated string params = 1;
+}
+
+message RunFutilityResponse {
   OutputStream output = 1;
 }
 
-message FlashECFirmwareRequest {
-  // The EC chip.
-  string ec_chip = 2;
+message RunFlashECRequest {
+  // Params is a list of name value pair that can use for flashing EC firmware.
+  // List of params with values applied used at execution.
+  // if port for --port is not same as the one specified in
+  // the station identifier, an error will be returned.
+  // Example:
+  //  flash_ec --chip=chip1 --image=/tmp/ec.bin --port=9999 --verify --verbose
+  //  Params: ["--chip=chip1", "--image:/tmp/ec.bin", "--port=9999", "--verify",
+  //  "--verbose"]
+  repeated string params = 1;
 }
 
-message FlashECFirmwareResponse {
-  // The stdout and stderr of the SetWP request.
+message RunFlashECResponse {
   OutputStream output = 1;
-}
-
-message DownloadFirmwareFilesRequest {
-  // The base url path for firmware files.
-  // Example: gs://chromeos-image-archive/zork-firmware/R87-13434.635.0/
-  string base_url = 2;
-  // The tar.bz2 file that is on the cloud storage.
-  // If it is empty, firmware_from_source.tar.bz2 will be used.
-  string firmware_filename = 3;
-  // The AP target name.
-  string ap_target = 4;
-  // The EC target name.
-  string ec_target = 5;
-}
-
-message DownloadFirmwareFilesResponse {
-  // The path for the EC firmware file on labstation.
-  string ec_firmware_file = 1;
-  // The path for the AP firmware file on labstation.
-  string ap_firmware_file = 2;
-  // The path for the monitor file on labstation.
-  string monitor_file = 3;
-}
-
-message CheckUSBRequest {}
-
-message CheckUSBResponse {
-  // The USB device path.
-  string usb_device_path = 1;
-}
-
-enum GBBFLAG {
-  // Reduce the dev screen delay to 2 sec from 30 sec to speed up factory.
-  GBBFLAG_DEV_SCREEN_SHORT_DELAY = 0;
-  // Deprecated: Do not use.
-  GBBFLAG_LOAD_OPTION_ROMS = 1;
-  // Deprecated: Do not use.
-  GBBFLAG_ENABLE_ALTERNATE_OS = 2;
-  // Force dev switch on, regardless of physical/keyboard dev switch position.
-  GBBFLAG_FORCE_DEV_SWITCH_ON = 3;
-  // Allow booting from external disk in dev mode even if dev_boot_usb=0.
-  GBBFLAG_FORCE_DEV_BOOT_USB = 4;
-  // Disable firmware rollback protection.
-  GBBFLAG_DISABLE_FW_ROLLBACK_CHECK = 5;
-  // Allow Enter key to trigger dev->tonorm screen transition.
-  GBBFLAG_ENTER_TRIGGERS_TONORM = 6;
-  // Allow booting Legacy OSes in dev mode even if dev_boot_altfw=0.
-  GBBFLAG_FORCE_DEV_BOOT_LEGACY = 7;
-  // Deprecated: Do not use.
-  GBBFLAG_DEPRECATED_RUNNING_FAFT = 8;
-  // Disable EC software sync
-  GBBFLAG_DISABLE_EC_SOFTWARE_SYNC = 9;
-  // Default to booting legacy OS when dev screen times out
-  GBBFLAG_DEFAULT_DEV_BOOT_ALTFW = 10;
-  // Disable auxiliary firmware (auxfw) software sync
-  GBBFLAG_DISABLE_AUXFW_SOFTWARE_SYNC = 11;
-  // Disable shutdown on lid closed
-  GBBFLAG_DISABLE_LID_SHUTDOWN = 12;
-  // Deprecated: Do not use.
-  GBBFLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13;
-  // Recovery mode always assumes manual recovery, even if EC_IN_RW=1
-  GBBFLAG_FORCE_MANUAL_RECOVERY = 14;
-  // Disable FWMP
-  GBBFLAG_DISABLE_FWMP = 15;
-  // Enable USB Device Controller
-  GBBFLAG_ENABLE_UDC = 16;
-  // Enforce CSE SYNC, even if current CSE is same as CBFS CSE
-  GBBFLAG_FORCE_CSE_SYNC = 17;
-}
-
-message GetGBBFlagsRequest {}
-
-message GetGBBFlagsResponse {
-  // The clear flags.
-  repeated GBBFLAG clear = 1;
-  // The set flags.
-  repeated GBBFLAG set = 2;
-}
-
-message SetGBBFlagsRequest {
-  // The clear flags.
-  repeated GBBFLAG clear = 2;
-  // The set flags.
-  repeated GBBFLAG set = 3;
-}
-
-message SetGBBFlagsResponse {}
-
-message ValidateUSBImageRequest {
-  // The mount path. If it is empty, it will use /media/servo_usb/<servo_port>.
-  string mount_path = 1;
-}
-
-message ValidateUSBImageResponse {
-  string version = 1;
-  string milestone = 2;
-}
-
-message DolosVersionRequest {}
-
-message DolosVersionResponse {
-  string version = 1;
-}
-
-message DolosStatusRequest {}
-
-message DolosStatusResponse {
-  chromiumos.test.api.bols.DolosStatus status = 1;
-}
-
-message DolosRepairRequest {}
-
-message DolosRepairResponse {}
-
-message DolosUpdateFirmwareRequest {
-  string firmware_file_path = 1;
-  string firmware_file_gcs_url = 2;
-}
-
-message DolosUpdateFirmwareResponse {}
-
-message DolosUartSerialRequest {}
-
-message DolosUartSerialResponse {
-  string uart_serial = 1;
 }
