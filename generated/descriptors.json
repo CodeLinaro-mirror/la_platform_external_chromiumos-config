@@ -40171,6 +40171,296 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/duration.proto"
+      ],
+      "messageType": [
+        {
+          "name": "GetHIDDevicesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HIDDevice"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.HIDDevice"
+            }
+          ],
+          "name": "GetHIDDevicesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InitHIDDeviceRequest"
+        },
+        {
+          "name": "InitHIDDeviceResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseHIDDeviceRequest"
+        },
+        {
+          "name": "CloseHIDDeviceResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "keys",
+              "label": "LABEL_REPEATED",
+              "name": "keys",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pressAndRelease",
+              "label": "LABEL_OPTIONAL",
+              "name": "press_and_release",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.KeyboardActionRequest.PressAndRelease"
+            }
+          ],
+          "name": "KeyboardActionRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "duration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "duration",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Duration"
+                }
+              ],
+              "name": "PressAndRelease"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "action"
+            }
+          ]
+        },
+        {
+          "name": "KeyboardActionResponse"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Button",
+              "value": [
+                {
+                  "name": "UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "LEFT",
+                  "number": 1
+                },
+                {
+                  "name": "RIGHT",
+                  "number": 2
+                },
+                {
+                  "name": "MIDDLE",
+                  "number": 3
+                },
+                {
+                  "name": "BACK",
+                  "number": 4
+                },
+                {
+                  "name": "FORWARD",
+                  "number": 5
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pressAndRelease",
+              "label": "LABEL_OPTIONAL",
+              "name": "press_and_release",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.PressAndRelease"
+            },
+            {
+              "jsonName": "scroll",
+              "label": "LABEL_OPTIONAL",
+              "name": "scroll",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.Scroll"
+            },
+            {
+              "jsonName": "move",
+              "label": "LABEL_OPTIONAL",
+              "name": "move",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.Move"
+            }
+          ],
+          "name": "MouseActionRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "button",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "button",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.Button"
+                },
+                {
+                  "jsonName": "duration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "duration",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Duration"
+                }
+              ],
+              "name": "PressAndRelease"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "distance",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "distance",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "Scroll"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "x",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "x",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "y",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "y",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "Move"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "action"
+            }
+          ]
+        },
+        {
+          "name": "MouseActionResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/hid_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetHIDDevicesRequest",
+              "name": "GetHIDDevices",
+              "outputType": ".chromiumos.test.lab.api.passport.GetHIDDevicesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.InitHIDDeviceRequest",
+              "name": "InitHIDDevice",
+              "outputType": ".chromiumos.test.lab.api.passport.InitHIDDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CloseHIDDeviceRequest",
+              "name": "CloseHIDDevice",
+              "outputType": ".chromiumos.test.lab.api.passport.CloseHIDDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.KeyboardActionRequest",
+              "name": "KeyboardAction",
+              "outputType": ".chromiumos.test.lab.api.passport.KeyboardActionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.MouseActionRequest",
+              "name": "MouseAction",
+              "outputType": ".chromiumos.test.lab.api.passport.MouseActionResponse"
+            }
+          ],
+          "name": "HIDService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "enumType": [
         {
           "name": "SwitchPortState",

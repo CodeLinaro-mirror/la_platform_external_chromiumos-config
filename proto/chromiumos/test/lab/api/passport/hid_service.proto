@@ -1,0 +1,120 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+import "google/protobuf/duration.proto";
+
+package chromiumos.test.lab.api.passport;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";
+
+// HIDService is a service which controls human interaction device simulators such
+// as keyboards, mice, etc.
+service HIDService {
+    // GetHIDDevices probes for all HID Simulators.
+    rpc GetHIDDevices(GetHIDDevicesRequest) returns (GetHIDDevicesResponse);
+
+    // InitHIDDevice initializes the specified HID device.
+    rpc InitHIDDevice(InitHIDDeviceRequest) returns (InitHIDDeviceResponse);
+
+    // CloseHIDDevice releases the specified HID device and releases any resources held open.
+    rpc CloseHIDDevice(CloseHIDDeviceRequest) returns (CloseHIDDeviceResponse);
+
+    // KeyboardAction performs the requested keyboard action.
+    rpc KeyboardAction(KeyboardActionRequest) returns (KeyboardActionResponse);
+
+    // MouseAction performs the requested mouse action.
+    rpc MouseAction(MouseActionRequest) returns (MouseActionResponse);
+}
+
+message GetHIDDevicesRequest{
+}
+
+message HIDDevice{
+    string id = 1;
+}
+
+message GetHIDDevicesResponse{
+    repeated HIDDevice devices = 1;
+}
+
+message InitHIDDeviceRequest{
+    string device_id = 1;
+}
+
+message InitHIDDeviceResponse{
+}
+
+message CloseHIDDeviceRequest{
+    string device_id = 1;
+}
+
+message CloseHIDDeviceResponse{
+}
+
+message KeyboardActionRequest {
+    string device_id = 1;
+
+    // The list of keys to control, strings follow: https://www.w3.org/TR/uievents-key/#key-attr-values.
+    // Note: Additional prefixes are available:
+    //  * L/R for left and right keys, respectively
+    //  * Oem for OEM specific keys
+    repeated string keys = 2;
+
+    oneof action {
+        // A single keyboard press and release.
+        PressAndRelease press_and_release = 3;
+    }
+
+    message PressAndRelease {
+        google.protobuf.Duration duration = 1;
+    }
+}
+
+message KeyboardActionResponse {
+}
+
+message MouseActionRequest {
+    string device_id = 1;
+
+    // The mouse action to perform.
+    oneof action {
+        PressAndRelease press_and_release = 2;
+        Scroll scroll = 3;
+        Move move = 4;
+    }
+
+    message PressAndRelease {
+        Button button = 1;
+        google.protobuf.Duration duration = 2;
+    }
+
+    message Scroll {
+        // Distance to scroll, positive numbers represent scrolling up,
+        // while negative numbers represent scrolling down.
+        int32 distance = 1;
+    }
+
+    message Move {
+        // Horizontal distance to move positive indicates movement to the right,
+        // while negative signifies movement to the left.
+        int32 x = 1;
+        // Vertical distance to move positive indicates movement to the down,
+        // while negative signifies movement to the up.
+        int32 y = 2;
+    }
+
+    enum Button {
+        UNSPECIFIED = 0;
+        LEFT = 1;
+        RIGHT = 2;
+        MIDDLE = 3;
+        BACK = 4;
+        FORWARD = 5;
+    }
+}
+
+message MouseActionResponse {
+}
