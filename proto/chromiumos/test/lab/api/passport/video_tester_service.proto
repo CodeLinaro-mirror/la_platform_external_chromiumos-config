@@ -252,6 +252,11 @@ message SetLinkVideoTesterRequest {
   optional bool frl_no_timeout = 14; // Disable FRL timeout.
   optional bool frl_check_ltp = 15; // Check FRL Link Training Pattern.
   optional VideoSpecification video_spec = 16; // The video specification to apply.
+  optional bool ss_sbm = 17; // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
+  optional bool fec = 18; // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
+  optional bool tps4 = 19; // Indicate support for Link Training Pattern Sequence 4.
+  optional bool tps3 = 20; // Indicate support for Link Training Pattern Sequence 3.
+  optional bool dsc = 21; // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
 }
 
 // Response message indicating the success of setting link parameters for a video tester.
@@ -287,6 +292,11 @@ message GetLinkVideoTesterResponse {
   optional int64 tdms_report_locks = 13; // TDMS report locks status.
   optional VideoSpecification video_spec = 14; // The current video specification.
   repeated VideoLane lanes = 15; // Details for each individual video lane.
+  optional bool ss_sbm = 16; // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
+  optional bool fec = 17; // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
+  optional bool tps4 = 18; // Indicate support for Link Training Pattern Sequence 4.
+  optional bool tps3 = 19; // Indicate support for Link Training Pattern Sequence 3.
+  optional bool dsc = 20; // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
 }
 
 // Request message for simulating attaching or detaching a display/sink.

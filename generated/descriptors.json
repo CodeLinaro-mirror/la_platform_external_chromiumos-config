@@ -42214,6 +42214,51 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.VideoSpecification"
+            },
+            {
+              "jsonName": "ssSbm",
+              "label": "LABEL_OPTIONAL",
+              "name": "ss_sbm",
+              "number": 17,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fec",
+              "label": "LABEL_OPTIONAL",
+              "name": "fec",
+              "number": 18,
+              "oneofIndex": 12,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps4",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps4",
+              "number": 19,
+              "oneofIndex": 13,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps3",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps3",
+              "number": 20,
+              "oneofIndex": 14,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dsc",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsc",
+              "number": 21,
+              "oneofIndex": 15,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "SetLinkVideoTesterRequest",
@@ -42250,6 +42295,21 @@
             },
             {
               "name": "_video_spec"
+            },
+            {
+              "name": "_ss_sbm"
+            },
+            {
+              "name": "_fec"
+            },
+            {
+              "name": "_tps4"
+            },
+            {
+              "name": "_tps3"
+            },
+            {
+              "name": "_dsc"
             }
           ]
         },
@@ -42439,6 +42499,51 @@
               "number": 15,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.passport.VideoLane"
+            },
+            {
+              "jsonName": "ssSbm",
+              "label": "LABEL_OPTIONAL",
+              "name": "ss_sbm",
+              "number": 16,
+              "oneofIndex": 13,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fec",
+              "label": "LABEL_OPTIONAL",
+              "name": "fec",
+              "number": 17,
+              "oneofIndex": 14,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps4",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps4",
+              "number": 18,
+              "oneofIndex": 15,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps3",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps3",
+              "number": 19,
+              "oneofIndex": 16,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dsc",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsc",
+              "number": 20,
+              "oneofIndex": 17,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "GetLinkVideoTesterResponse",
@@ -42481,6 +42586,21 @@
             },
             {
               "name": "_video_spec"
+            },
+            {
+              "name": "_ss_sbm"
+            },
+            {
+              "name": "_fec"
+            },
+            {
+              "name": "_tps4"
+            },
+            {
+              "name": "_tps3"
+            },
+            {
+              "name": "_dsc"
             }
           ]
         },
