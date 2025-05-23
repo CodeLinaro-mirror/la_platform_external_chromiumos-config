@@ -36237,6 +36237,13 @@
               "number": 7,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.metadata.PublishAntsMetadata.ATPEnvironment"
+            },
+            {
+              "jsonName": "isTfPluginEnabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_tf_plugin_enabled",
+              "number": 8,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "PublishAntsMetadata"
