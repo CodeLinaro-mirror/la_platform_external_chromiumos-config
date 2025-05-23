@@ -86,6 +86,9 @@ message CTPRequest {
   // CTP will use this to construct ctpv2 request.
   // is_al_run must be set to true for this.
   string encoded_atp_test_job_msg = 10;
+
+  // Skip provisioning if true.
+  bool skip_provision = 12;
 }
 
 message SchedulerInfo {
