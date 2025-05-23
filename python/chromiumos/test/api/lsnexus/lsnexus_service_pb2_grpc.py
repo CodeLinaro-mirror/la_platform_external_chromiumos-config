@@ -31,16 +31,6 @@ class LSNexusServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodResponse.FromString,
                 )
-        self.GetFile = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/GetFile',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileResponse.FromString,
-                )
-        self.PutFile = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/PutFile',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileResponse.FromString,
-                )
         self.RemoveFile = channel.unary_unary(
                 '/chromiumos.test.api.lsnexus.LSNexusService/RemoveFile',
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RemoveFileRequest.SerializeToString,
@@ -66,66 +56,6 @@ class LSNexusServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DMesgRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DMesgResponse.FromString,
                 )
-        self.CorruptUSBKey = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/CorruptUSBKey',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyResponse.FromString,
-                )
-        self.UncorruptUSBKey = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/UncorruptUSBKey',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UncorruptUSBKeyResponse.FromString,
-                )
-        self.UpdateFirmware = channel.unary_stream(
-                '/chromiumos.test.api.lsnexus.LSNexusService/UpdateFirmware',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UpdateFirmwareRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UpdateFirmwareResponse.FromString,
-                )
-        self.SetWP = channel.unary_stream(
-                '/chromiumos.test.api.lsnexus.LSNexusService/SetWP',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetWPRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetWPResponse.FromString,
-                )
-        self.ReadAP = channel.unary_stream(
-                '/chromiumos.test.api.lsnexus.LSNexusService/ReadAP',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ReadAPRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ReadAPResponse.FromString,
-                )
-        self.FlashECFirmware = channel.unary_stream(
-                '/chromiumos.test.api.lsnexus.LSNexusService/FlashECFirmware',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.FlashECFirmwareRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.FlashECFirmwareResponse.FromString,
-                )
-        self.DownloadFirmwareFiles = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/DownloadFirmwareFiles',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadFirmwareFilesRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadFirmwareFilesResponse.FromString,
-                )
-        self.CheckUSB = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/CheckUSB',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CheckUSBRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CheckUSBResponse.FromString,
-                )
-        self.GetGBBFlags = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/GetGBBFlags',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetGBBFlagsRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetGBBFlagsResponse.FromString,
-                )
-        self.SetGBBFlags = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/SetGBBFlags',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetGBBFlagsRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetGBBFlagsResponse.FromString,
-                )
-        self.ValidateUSBImage = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/ValidateUSBImage',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ValidateUSBImageRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ValidateUSBImageResponse.FromString,
-                )
-        self.ECCommand = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/ECCommand',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ECCommandRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ECCommandResponse.FromString,
-                )
         self.Echo = channel.unary_unary(
                 '/chromiumos.test.api.lsnexus.LSNexusService/Echo',
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoRequest.SerializeToString,
@@ -141,25 +71,15 @@ class LSNexusServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadServoLogsRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadServoLogsResponse.FromString,
                 )
-        self.DolosVersion = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/DolosVersion',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosVersionRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosVersionResponse.FromString,
+        self.RunFutility = channel.unary_unary(
+                '/chromiumos.test.api.lsnexus.LSNexusService/RunFutility',
+                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFutilityRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFutilityResponse.FromString,
                 )
-        self.DolosRepair = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/DolosRepair',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosRepairRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosRepairResponse.FromString,
-                )
-        self.DolosUpdateFirmware = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/DolosUpdateFirmware',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUpdateFirmwareRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUpdateFirmwareResponse.FromString,
-                )
-        self.DolosUartSerial = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/DolosUartSerial',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUartSerialRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUartSerialResponse.FromString,
+        self.RunFlashEC = channel.unary_unary(
+                '/chromiumos.test.api.lsnexus.LSNexusService/RunFlashEC',
+                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECResponse.FromString,
                 )
 
 
@@ -185,26 +105,6 @@ class LSNexusServiceServicer(object):
     def CallServod(self, request, context):
         """CallServod runs a servod command.
         Allowed methods: doc, get, set, and hwinit.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetFile(self, request, context):
-        """GetFile gets a file from labstation/container.
-        If there is an error in accessing the file, the error message
-        will be included in the the GRPC error.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def PutFile(self, request, context):
-        """PutFile put a file on labstation/container.
-        If the directory of destination path does not exist, this service
-        will also create the directory.
-        If there is an error in accessing the file, the error message
-        will be included in the the GRPC error.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -246,99 +146,6 @@ class LSNexusServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def CorruptUSBKey(self, request, context):
-        """CorruptUSBKey makes a minimal change to the USB key
-        to prevent it from booting. Use UncorruptUSBKey to repair it afterwards.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def UncorruptUSBKey(self, request, context):
-        """UncorruptUSBKey repair the USB key that was corrupted by
-        CorruptUSBKey.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def UpdateFirmware(self, request, context):
-        """UpdateFirmware update the firmware of a DUT through servo.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SetWP(self, request, context):
-        """SetWP enables/disables software write protection.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ReadAP(self, request, context):
-        """ReadAP reads AP firmware to file.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def FlashECFirmware(self, request, context):
-        """FlashECFirmware flash EC firmware.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DownloadFirmwareFiles(self, request, context):
-        """DownloadFirmwareFiles will extract the AP and EC bin files
-        from the cloud storage, and put them in a location specified
-        by users.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def CheckUSB(self, request, context):
-        """CheckUSB checks if there is any usb device connected to the host
-        and gets its path.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetGBBFlags(self, request, context):
-        """GetGBBFlags gets the gbb flags.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SetGBBFlags(self, request, context):
-        """SetGBBFlags sets the gbb flags.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ValidateUSBImage(self, request, context):
-        """ValidateUSBImage verifies that the usb drive is mountable,
-        and returns the version and milestone of the ChromeOS test image.
-        A blank version means that the ChromeOS image on the USB drive is invalid.
-        TODO: Not sure if the current technique will work for Desktop.
-        We may need to hold off the implementation for this API.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ECCommand(self, request, context):
-        """ECCommand runs a given command on the EC on the device.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def Echo(self, request, context):
         """Echo calls the Servo echo method.
         """
@@ -348,7 +155,7 @@ class LSNexusServiceServicer(object):
 
     def DownloadSystemLogs(self, request, context):
         """DownloadSystemLogs downloads system logs of the labstation or container
-        to a local destination directory
+        to LSNexus' directory
         Logs include:
         /var/log/message from the labstation or container if exists.
         The output of  "dmesg -H"  from the labstation or container.
@@ -359,7 +166,7 @@ class LSNexusServiceServicer(object):
 
     def DownloadServoLogs(self, request, context):
         """DownloadServoLogs will save servod related logs from the labstation or
-        container where servod is running.
+        container where servod is running to LSNexus' directory
         Logs include:
         /var/log/servo_<port>/ latest.DEBUG from servod host.
         /var/log/servo_<port>.STARTUP.log from servod host.
@@ -369,32 +176,18 @@ class LSNexusServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DolosVersion(self, request, context):
-        """DolosVersion returns the version of the specified dolos.
+    def RunFutility(self, request, context):
+        """/////// Firmware tool API /////////
+
+        RunFutility forwards futility request to BOLS.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DolosRepair(self, request, context):
-        """DolosRepair repairs a failing device.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DolosUpdateFirmware(self, request, context):
-        """DolosUpdateFirmware updates firmware of dolos.
-        This API will first check if the firmware file is on the dolos host.
-        If not, it will download the file from GCS.
-        Then, it will update firmware.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DolosUartSerial(self, request, context):
-        """DolosUartSerial returns the urt serial number of the specified dolos.
+    def RunFlashEC(self, request, context):
+        """RunFlashEC forwards EC firmware flashing request to BOLS.
+        In most of implementation, it runs flash_ec tool on labstation.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -417,16 +210,6 @@ def add_LSNexusServiceServicer_to_server(servicer, server):
                     servicer.CallServod,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodResponse.SerializeToString,
-            ),
-            'GetFile': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetFile,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileResponse.SerializeToString,
-            ),
-            'PutFile': grpc.unary_unary_rpc_method_handler(
-                    servicer.PutFile,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileResponse.SerializeToString,
             ),
             'RemoveFile': grpc.unary_unary_rpc_method_handler(
                     servicer.RemoveFile,
@@ -453,66 +236,6 @@ def add_LSNexusServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DMesgRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DMesgResponse.SerializeToString,
             ),
-            'CorruptUSBKey': grpc.unary_unary_rpc_method_handler(
-                    servicer.CorruptUSBKey,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyResponse.SerializeToString,
-            ),
-            'UncorruptUSBKey': grpc.unary_unary_rpc_method_handler(
-                    servicer.UncorruptUSBKey,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UncorruptUSBKeyResponse.SerializeToString,
-            ),
-            'UpdateFirmware': grpc.unary_stream_rpc_method_handler(
-                    servicer.UpdateFirmware,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UpdateFirmwareRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UpdateFirmwareResponse.SerializeToString,
-            ),
-            'SetWP': grpc.unary_stream_rpc_method_handler(
-                    servicer.SetWP,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetWPRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetWPResponse.SerializeToString,
-            ),
-            'ReadAP': grpc.unary_stream_rpc_method_handler(
-                    servicer.ReadAP,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ReadAPRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ReadAPResponse.SerializeToString,
-            ),
-            'FlashECFirmware': grpc.unary_stream_rpc_method_handler(
-                    servicer.FlashECFirmware,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.FlashECFirmwareRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.FlashECFirmwareResponse.SerializeToString,
-            ),
-            'DownloadFirmwareFiles': grpc.unary_unary_rpc_method_handler(
-                    servicer.DownloadFirmwareFiles,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadFirmwareFilesRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadFirmwareFilesResponse.SerializeToString,
-            ),
-            'CheckUSB': grpc.unary_unary_rpc_method_handler(
-                    servicer.CheckUSB,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CheckUSBRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CheckUSBResponse.SerializeToString,
-            ),
-            'GetGBBFlags': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetGBBFlags,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetGBBFlagsRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetGBBFlagsResponse.SerializeToString,
-            ),
-            'SetGBBFlags': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetGBBFlags,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetGBBFlagsRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetGBBFlagsResponse.SerializeToString,
-            ),
-            'ValidateUSBImage': grpc.unary_unary_rpc_method_handler(
-                    servicer.ValidateUSBImage,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ValidateUSBImageRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ValidateUSBImageResponse.SerializeToString,
-            ),
-            'ECCommand': grpc.unary_unary_rpc_method_handler(
-                    servicer.ECCommand,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ECCommandRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ECCommandResponse.SerializeToString,
-            ),
             'Echo': grpc.unary_unary_rpc_method_handler(
                     servicer.Echo,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoRequest.FromString,
@@ -528,25 +251,15 @@ def add_LSNexusServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadServoLogsRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadServoLogsResponse.SerializeToString,
             ),
-            'DolosVersion': grpc.unary_unary_rpc_method_handler(
-                    servicer.DolosVersion,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosVersionRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosVersionResponse.SerializeToString,
+            'RunFutility': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunFutility,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFutilityRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFutilityResponse.SerializeToString,
             ),
-            'DolosRepair': grpc.unary_unary_rpc_method_handler(
-                    servicer.DolosRepair,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosRepairRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosRepairResponse.SerializeToString,
-            ),
-            'DolosUpdateFirmware': grpc.unary_unary_rpc_method_handler(
-                    servicer.DolosUpdateFirmware,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUpdateFirmwareRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUpdateFirmwareResponse.SerializeToString,
-            ),
-            'DolosUartSerial': grpc.unary_unary_rpc_method_handler(
-                    servicer.DolosUartSerial,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUartSerialRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUartSerialResponse.SerializeToString,
+            'RunFlashEC': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunFlashEC,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -608,40 +321,6 @@ class LSNexusService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/CallServod',
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetFile(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/GetFile',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def PutFile(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/PutFile',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -731,210 +410,6 @@ class LSNexusService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def CorruptUSBKey(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/CorruptUSBKey',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UncorruptUSBKey(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/UncorruptUSBKey',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CorruptUSBKeyRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UncorruptUSBKeyResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UpdateFirmware(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/UpdateFirmware',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UpdateFirmwareRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.UpdateFirmwareResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def SetWP(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/SetWP',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetWPRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetWPResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ReadAP(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/ReadAP',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ReadAPRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ReadAPResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def FlashECFirmware(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/FlashECFirmware',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.FlashECFirmwareRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.FlashECFirmwareResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DownloadFirmwareFiles(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/DownloadFirmwareFiles',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadFirmwareFilesRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadFirmwareFilesResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def CheckUSB(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/CheckUSB',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CheckUSBRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CheckUSBResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetGBBFlags(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/GetGBBFlags',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetGBBFlagsRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetGBBFlagsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def SetGBBFlags(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/SetGBBFlags',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetGBBFlagsRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.SetGBBFlagsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ValidateUSBImage(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/ValidateUSBImage',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ValidateUSBImageRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ValidateUSBImageResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ECCommand(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/ECCommand',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ECCommandRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.ECCommandResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
     def Echo(request,
             target,
             options=(),
@@ -986,7 +461,7 @@ class LSNexusService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def DolosVersion(request,
+    def RunFutility(request,
             target,
             options=(),
             channel_credentials=None,
@@ -996,14 +471,14 @@ class LSNexusService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/DolosVersion',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosVersionRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosVersionResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/RunFutility',
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFutilityRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFutilityResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def DolosRepair(request,
+    def RunFlashEC(request,
             target,
             options=(),
             channel_credentials=None,
@@ -1013,42 +488,8 @@ class LSNexusService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/DolosRepair',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosRepairRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosRepairResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DolosUpdateFirmware(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/DolosUpdateFirmware',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUpdateFirmwareRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUpdateFirmwareResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DolosUartSerial(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/DolosUartSerial',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUartSerialRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DolosUartSerialResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/RunFlashEC',
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
