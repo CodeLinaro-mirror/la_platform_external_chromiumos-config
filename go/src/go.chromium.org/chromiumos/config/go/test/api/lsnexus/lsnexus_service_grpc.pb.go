@@ -29,16 +29,6 @@ type LSNexusServiceClient interface {
 	// CallServod runs a servod command.
 	// Allowed methods: doc, get, set, and hwinit.
 	CallServod(ctx context.Context, in *CallServodRequest, opts ...grpc.CallOption) (*CallServodResponse, error)
-	// GetFile gets a file from labstation/container.
-	// If there is an error in accessing the file, the error message
-	// will be included in the the GRPC error.
-	GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
-	// PutFile put a file on labstation/container.
-	// If the directory of destination path does not exist, this service
-	// will also create the directory.
-	// If there is an error in accessing the file, the error message
-	// will be included in the the GRPC error.
-	PutFile(ctx context.Context, in *PutFileRequest, opts ...grpc.CallOption) (*PutFileResponse, error)
 	// RemoveFile removes a file on labstation/container.
 	RemoveFile(ctx context.Context, in *RemoveFileRequest, opts ...grpc.CallOption) (*RemoveFileResponse, error)
 	// MakeDir make a directory on the labstation/container.
@@ -50,65 +40,26 @@ type LSNexusServiceClient interface {
 	MakeTempDir(ctx context.Context, in *MakeTempDirRequest, opts ...grpc.CallOption) (*MakeTempDirResponse, error)
 	// DMesg returns the output from the dmesg command.
 	DMesg(ctx context.Context, in *DMesgRequest, opts ...grpc.CallOption) (LSNexusService_DMesgClient, error)
-	// CorruptUSBKey makes a minimal change to the USB key
-	// to prevent it from booting. Use UncorruptUSBKey to repair it afterwards.
-	CorruptUSBKey(ctx context.Context, in *CorruptUSBKeyRequest, opts ...grpc.CallOption) (*CorruptUSBKeyResponse, error)
-	// UncorruptUSBKey repair the USB key that was corrupted by
-	// CorruptUSBKey.
-	UncorruptUSBKey(ctx context.Context, in *CorruptUSBKeyRequest, opts ...grpc.CallOption) (*UncorruptUSBKeyResponse, error)
-	// UpdateFirmware update the firmware of a DUT through servo.
-	UpdateFirmware(ctx context.Context, in *UpdateFirmwareRequest, opts ...grpc.CallOption) (LSNexusService_UpdateFirmwareClient, error)
-	// SetWP enables/disables software write protection.
-	SetWP(ctx context.Context, in *SetWPRequest, opts ...grpc.CallOption) (LSNexusService_SetWPClient, error)
-	// ReadAP reads AP firmware to file.
-	ReadAP(ctx context.Context, in *ReadAPRequest, opts ...grpc.CallOption) (LSNexusService_ReadAPClient, error)
-	// FlashECFirmware flash EC firmware.
-	FlashECFirmware(ctx context.Context, in *FlashECFirmwareRequest, opts ...grpc.CallOption) (LSNexusService_FlashECFirmwareClient, error)
-	// DownloadFirmwareFiles will extract the AP and EC bin files
-	// from the cloud storage, and put them in a location specified
-	// by users.
-	DownloadFirmwareFiles(ctx context.Context, in *DownloadFirmwareFilesRequest, opts ...grpc.CallOption) (*DownloadFirmwareFilesResponse, error)
-	// CheckUSB checks if there is any usb device connected to the host
-	// and gets its path.
-	CheckUSB(ctx context.Context, in *CheckUSBRequest, opts ...grpc.CallOption) (*CheckUSBResponse, error)
-	// GetGBBFlags gets the gbb flags.
-	GetGBBFlags(ctx context.Context, in *GetGBBFlagsRequest, opts ...grpc.CallOption) (*GetGBBFlagsResponse, error)
-	// SetGBBFlags sets the gbb flags.
-	SetGBBFlags(ctx context.Context, in *SetGBBFlagsRequest, opts ...grpc.CallOption) (*SetGBBFlagsResponse, error)
-	// ValidateUSBImage verifies that the usb drive is mountable,
-	// and returns the version and milestone of the ChromeOS test image.
-	// A blank version means that the ChromeOS image on the USB drive is invalid.
-	// TODO: Not sure if the current technique will work for Desktop.
-	//       We may need to hold off the implementation for this API.
-	ValidateUSBImage(ctx context.Context, in *ValidateUSBImageRequest, opts ...grpc.CallOption) (*ValidateUSBImageResponse, error)
-	// ECCommand runs a given command on the EC on the device.
-	ECCommand(ctx context.Context, in *ECCommandRequest, opts ...grpc.CallOption) (*ECCommandResponse, error)
 	// Echo calls the Servo echo method.
 	Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error)
 	// DownloadSystemLogs downloads system logs of the labstation or container
-	// to a local destination directory
+	// to LSNexus' directory
 	// Logs include:
 	//     /var/log/message from the labstation or container if exists.
 	//     The output of  "dmesg -H"  from the labstation or container.
 	DownloadSystemLogs(ctx context.Context, in *DownloadSystemLogsRequest, opts ...grpc.CallOption) (*DownloadSystemLogsResponse, error)
 	// DownloadServoLogs will save servod related logs from the labstation or
-	// container where servod is running.
+	// container where servod is running to LSNexus' directory
 	// Logs include:
 	//     /var/log/servo_<port>/ latest.DEBUG from servod host.
 	//     /var/log/servo_<port>.STARTUP.log from servod host.
 	//     The extraction of the MCU console logs from latest.DEBUG
 	DownloadServoLogs(ctx context.Context, in *DownloadServoLogsRequest, opts ...grpc.CallOption) (*DownloadServoLogsResponse, error)
-	// DolosVersion returns the version of the specified dolos.
-	DolosVersion(ctx context.Context, in *DolosVersionRequest, opts ...grpc.CallOption) (*DolosVersionResponse, error)
-	// DolosRepair repairs a failing device.
-	DolosRepair(ctx context.Context, in *DolosRepairRequest, opts ...grpc.CallOption) (*DolosRepairResponse, error)
-	// DolosUpdateFirmware updates firmware of dolos.
-	// This API will first check if the firmware file is on the dolos host.
-	// If not, it will download the file from GCS.
-	// Then, it will update firmware.
-	DolosUpdateFirmware(ctx context.Context, in *DolosUpdateFirmwareRequest, opts ...grpc.CallOption) (*DolosUpdateFirmwareResponse, error)
-	// DolosUartSerial returns the urt serial number of the specified dolos.
-	DolosUartSerial(ctx context.Context, in *DolosUartSerialRequest, opts ...grpc.CallOption) (*DolosUartSerialResponse, error)
+	// RunFutility forwards futility request to BOLS.
+	RunFutility(ctx context.Context, in *RunFutilityRequest, opts ...grpc.CallOption) (*RunFutilityResponse, error)
+	// RunFlashEC forwards EC firmware flashing request to BOLS.
+	// In most of implementation, it runs flash_ec tool on labstation.
+	RunFlashEC(ctx context.Context, in *RunFlashECRequest, opts ...grpc.CallOption) (*RunFlashECResponse, error)
 }
 
 type lSNexusServiceClient struct {
@@ -140,24 +91,6 @@ func (c *lSNexusServiceClient) StopServod(ctx context.Context, in *StopServodReq
 func (c *lSNexusServiceClient) CallServod(ctx context.Context, in *CallServodRequest, opts ...grpc.CallOption) (*CallServodResponse, error) {
 	out := new(CallServodResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/CallServod", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
-	out := new(GetFileResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/GetFile", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) PutFile(ctx context.Context, in *PutFileRequest, opts ...grpc.CallOption) (*PutFileResponse, error) {
-	out := new(PutFileResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/PutFile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -232,206 +165,6 @@ func (x *lSNexusServiceDMesgClient) Recv() (*DMesgResponse, error) {
 	return m, nil
 }
 
-func (c *lSNexusServiceClient) CorruptUSBKey(ctx context.Context, in *CorruptUSBKeyRequest, opts ...grpc.CallOption) (*CorruptUSBKeyResponse, error) {
-	out := new(CorruptUSBKeyResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/CorruptUSBKey", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) UncorruptUSBKey(ctx context.Context, in *CorruptUSBKeyRequest, opts ...grpc.CallOption) (*UncorruptUSBKeyResponse, error) {
-	out := new(UncorruptUSBKeyResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/UncorruptUSBKey", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) UpdateFirmware(ctx context.Context, in *UpdateFirmwareRequest, opts ...grpc.CallOption) (LSNexusService_UpdateFirmwareClient, error) {
-	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[1], "/chromiumos.test.api.lsnexus.LSNexusService/UpdateFirmware", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &lSNexusServiceUpdateFirmwareClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LSNexusService_UpdateFirmwareClient interface {
-	Recv() (*UpdateFirmwareResponse, error)
-	grpc.ClientStream
-}
-
-type lSNexusServiceUpdateFirmwareClient struct {
-	grpc.ClientStream
-}
-
-func (x *lSNexusServiceUpdateFirmwareClient) Recv() (*UpdateFirmwareResponse, error) {
-	m := new(UpdateFirmwareResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *lSNexusServiceClient) SetWP(ctx context.Context, in *SetWPRequest, opts ...grpc.CallOption) (LSNexusService_SetWPClient, error) {
-	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[2], "/chromiumos.test.api.lsnexus.LSNexusService/SetWP", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &lSNexusServiceSetWPClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LSNexusService_SetWPClient interface {
-	Recv() (*SetWPResponse, error)
-	grpc.ClientStream
-}
-
-type lSNexusServiceSetWPClient struct {
-	grpc.ClientStream
-}
-
-func (x *lSNexusServiceSetWPClient) Recv() (*SetWPResponse, error) {
-	m := new(SetWPResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *lSNexusServiceClient) ReadAP(ctx context.Context, in *ReadAPRequest, opts ...grpc.CallOption) (LSNexusService_ReadAPClient, error) {
-	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[3], "/chromiumos.test.api.lsnexus.LSNexusService/ReadAP", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &lSNexusServiceReadAPClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LSNexusService_ReadAPClient interface {
-	Recv() (*ReadAPResponse, error)
-	grpc.ClientStream
-}
-
-type lSNexusServiceReadAPClient struct {
-	grpc.ClientStream
-}
-
-func (x *lSNexusServiceReadAPClient) Recv() (*ReadAPResponse, error) {
-	m := new(ReadAPResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *lSNexusServiceClient) FlashECFirmware(ctx context.Context, in *FlashECFirmwareRequest, opts ...grpc.CallOption) (LSNexusService_FlashECFirmwareClient, error) {
-	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[4], "/chromiumos.test.api.lsnexus.LSNexusService/FlashECFirmware", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &lSNexusServiceFlashECFirmwareClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LSNexusService_FlashECFirmwareClient interface {
-	Recv() (*FlashECFirmwareResponse, error)
-	grpc.ClientStream
-}
-
-type lSNexusServiceFlashECFirmwareClient struct {
-	grpc.ClientStream
-}
-
-func (x *lSNexusServiceFlashECFirmwareClient) Recv() (*FlashECFirmwareResponse, error) {
-	m := new(FlashECFirmwareResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *lSNexusServiceClient) DownloadFirmwareFiles(ctx context.Context, in *DownloadFirmwareFilesRequest, opts ...grpc.CallOption) (*DownloadFirmwareFilesResponse, error) {
-	out := new(DownloadFirmwareFilesResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DownloadFirmwareFiles", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) CheckUSB(ctx context.Context, in *CheckUSBRequest, opts ...grpc.CallOption) (*CheckUSBResponse, error) {
-	out := new(CheckUSBResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/CheckUSB", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) GetGBBFlags(ctx context.Context, in *GetGBBFlagsRequest, opts ...grpc.CallOption) (*GetGBBFlagsResponse, error) {
-	out := new(GetGBBFlagsResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/GetGBBFlags", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) SetGBBFlags(ctx context.Context, in *SetGBBFlagsRequest, opts ...grpc.CallOption) (*SetGBBFlagsResponse, error) {
-	out := new(SetGBBFlagsResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/SetGBBFlags", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) ValidateUSBImage(ctx context.Context, in *ValidateUSBImageRequest, opts ...grpc.CallOption) (*ValidateUSBImageResponse, error) {
-	out := new(ValidateUSBImageResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/ValidateUSBImage", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) ECCommand(ctx context.Context, in *ECCommandRequest, opts ...grpc.CallOption) (*ECCommandResponse, error) {
-	out := new(ECCommandResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/ECCommand", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *lSNexusServiceClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error) {
 	out := new(EchoResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/Echo", in, out, opts...)
@@ -459,36 +192,18 @@ func (c *lSNexusServiceClient) DownloadServoLogs(ctx context.Context, in *Downlo
 	return out, nil
 }
 
-func (c *lSNexusServiceClient) DolosVersion(ctx context.Context, in *DolosVersionRequest, opts ...grpc.CallOption) (*DolosVersionResponse, error) {
-	out := new(DolosVersionResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DolosVersion", in, out, opts...)
+func (c *lSNexusServiceClient) RunFutility(ctx context.Context, in *RunFutilityRequest, opts ...grpc.CallOption) (*RunFutilityResponse, error) {
+	out := new(RunFutilityResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/RunFutility", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *lSNexusServiceClient) DolosRepair(ctx context.Context, in *DolosRepairRequest, opts ...grpc.CallOption) (*DolosRepairResponse, error) {
-	out := new(DolosRepairResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DolosRepair", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) DolosUpdateFirmware(ctx context.Context, in *DolosUpdateFirmwareRequest, opts ...grpc.CallOption) (*DolosUpdateFirmwareResponse, error) {
-	out := new(DolosUpdateFirmwareResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DolosUpdateFirmware", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *lSNexusServiceClient) DolosUartSerial(ctx context.Context, in *DolosUartSerialRequest, opts ...grpc.CallOption) (*DolosUartSerialResponse, error) {
-	out := new(DolosUartSerialResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DolosUartSerial", in, out, opts...)
+func (c *lSNexusServiceClient) RunFlashEC(ctx context.Context, in *RunFlashECRequest, opts ...grpc.CallOption) (*RunFlashECResponse, error) {
+	out := new(RunFlashECResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/RunFlashEC", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -506,16 +221,6 @@ type LSNexusServiceServer interface {
 	// CallServod runs a servod command.
 	// Allowed methods: doc, get, set, and hwinit.
 	CallServod(context.Context, *CallServodRequest) (*CallServodResponse, error)
-	// GetFile gets a file from labstation/container.
-	// If there is an error in accessing the file, the error message
-	// will be included in the the GRPC error.
-	GetFile(context.Context, *GetFileRequest) (*GetFileResponse, error)
-	// PutFile put a file on labstation/container.
-	// If the directory of destination path does not exist, this service
-	// will also create the directory.
-	// If there is an error in accessing the file, the error message
-	// will be included in the the GRPC error.
-	PutFile(context.Context, *PutFileRequest) (*PutFileResponse, error)
 	// RemoveFile removes a file on labstation/container.
 	RemoveFile(context.Context, *RemoveFileRequest) (*RemoveFileResponse, error)
 	// MakeDir make a directory on the labstation/container.
@@ -527,65 +232,26 @@ type LSNexusServiceServer interface {
 	MakeTempDir(context.Context, *MakeTempDirRequest) (*MakeTempDirResponse, error)
 	// DMesg returns the output from the dmesg command.
 	DMesg(*DMesgRequest, LSNexusService_DMesgServer) error
-	// CorruptUSBKey makes a minimal change to the USB key
-	// to prevent it from booting. Use UncorruptUSBKey to repair it afterwards.
-	CorruptUSBKey(context.Context, *CorruptUSBKeyRequest) (*CorruptUSBKeyResponse, error)
-	// UncorruptUSBKey repair the USB key that was corrupted by
-	// CorruptUSBKey.
-	UncorruptUSBKey(context.Context, *CorruptUSBKeyRequest) (*UncorruptUSBKeyResponse, error)
-	// UpdateFirmware update the firmware of a DUT through servo.
-	UpdateFirmware(*UpdateFirmwareRequest, LSNexusService_UpdateFirmwareServer) error
-	// SetWP enables/disables software write protection.
-	SetWP(*SetWPRequest, LSNexusService_SetWPServer) error
-	// ReadAP reads AP firmware to file.
-	ReadAP(*ReadAPRequest, LSNexusService_ReadAPServer) error
-	// FlashECFirmware flash EC firmware.
-	FlashECFirmware(*FlashECFirmwareRequest, LSNexusService_FlashECFirmwareServer) error
-	// DownloadFirmwareFiles will extract the AP and EC bin files
-	// from the cloud storage, and put them in a location specified
-	// by users.
-	DownloadFirmwareFiles(context.Context, *DownloadFirmwareFilesRequest) (*DownloadFirmwareFilesResponse, error)
-	// CheckUSB checks if there is any usb device connected to the host
-	// and gets its path.
-	CheckUSB(context.Context, *CheckUSBRequest) (*CheckUSBResponse, error)
-	// GetGBBFlags gets the gbb flags.
-	GetGBBFlags(context.Context, *GetGBBFlagsRequest) (*GetGBBFlagsResponse, error)
-	// SetGBBFlags sets the gbb flags.
-	SetGBBFlags(context.Context, *SetGBBFlagsRequest) (*SetGBBFlagsResponse, error)
-	// ValidateUSBImage verifies that the usb drive is mountable,
-	// and returns the version and milestone of the ChromeOS test image.
-	// A blank version means that the ChromeOS image on the USB drive is invalid.
-	// TODO: Not sure if the current technique will work for Desktop.
-	//       We may need to hold off the implementation for this API.
-	ValidateUSBImage(context.Context, *ValidateUSBImageRequest) (*ValidateUSBImageResponse, error)
-	// ECCommand runs a given command on the EC on the device.
-	ECCommand(context.Context, *ECCommandRequest) (*ECCommandResponse, error)
 	// Echo calls the Servo echo method.
 	Echo(context.Context, *EchoRequest) (*EchoResponse, error)
 	// DownloadSystemLogs downloads system logs of the labstation or container
-	// to a local destination directory
+	// to LSNexus' directory
 	// Logs include:
 	//     /var/log/message from the labstation or container if exists.
 	//     The output of  "dmesg -H"  from the labstation or container.
 	DownloadSystemLogs(context.Context, *DownloadSystemLogsRequest) (*DownloadSystemLogsResponse, error)
 	// DownloadServoLogs will save servod related logs from the labstation or
-	// container where servod is running.
+	// container where servod is running to LSNexus' directory
 	// Logs include:
 	//     /var/log/servo_<port>/ latest.DEBUG from servod host.
 	//     /var/log/servo_<port>.STARTUP.log from servod host.
 	//     The extraction of the MCU console logs from latest.DEBUG
 	DownloadServoLogs(context.Context, *DownloadServoLogsRequest) (*DownloadServoLogsResponse, error)
-	// DolosVersion returns the version of the specified dolos.
-	DolosVersion(context.Context, *DolosVersionRequest) (*DolosVersionResponse, error)
-	// DolosRepair repairs a failing device.
-	DolosRepair(context.Context, *DolosRepairRequest) (*DolosRepairResponse, error)
-	// DolosUpdateFirmware updates firmware of dolos.
-	// This API will first check if the firmware file is on the dolos host.
-	// If not, it will download the file from GCS.
-	// Then, it will update firmware.
-	DolosUpdateFirmware(context.Context, *DolosUpdateFirmwareRequest) (*DolosUpdateFirmwareResponse, error)
-	// DolosUartSerial returns the urt serial number of the specified dolos.
-	DolosUartSerial(context.Context, *DolosUartSerialRequest) (*DolosUartSerialResponse, error)
+	// RunFutility forwards futility request to BOLS.
+	RunFutility(context.Context, *RunFutilityRequest) (*RunFutilityResponse, error)
+	// RunFlashEC forwards EC firmware flashing request to BOLS.
+	// In most of implementation, it runs flash_ec tool on labstation.
+	RunFlashEC(context.Context, *RunFlashECRequest) (*RunFlashECResponse, error)
 }
 
 // UnimplementedLSNexusServiceServer should be embedded to have forward compatible implementations.
@@ -600,12 +266,6 @@ func (UnimplementedLSNexusServiceServer) StopServod(context.Context, *StopServod
 }
 func (UnimplementedLSNexusServiceServer) CallServod(context.Context, *CallServodRequest) (*CallServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CallServod not implemented")
-}
-func (UnimplementedLSNexusServiceServer) GetFile(context.Context, *GetFileRequest) (*GetFileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetFile not implemented")
-}
-func (UnimplementedLSNexusServiceServer) PutFile(context.Context, *PutFileRequest) (*PutFileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PutFile not implemented")
 }
 func (UnimplementedLSNexusServiceServer) RemoveFile(context.Context, *RemoveFileRequest) (*RemoveFileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveFile not implemented")
@@ -622,42 +282,6 @@ func (UnimplementedLSNexusServiceServer) MakeTempDir(context.Context, *MakeTempD
 func (UnimplementedLSNexusServiceServer) DMesg(*DMesgRequest, LSNexusService_DMesgServer) error {
 	return status.Errorf(codes.Unimplemented, "method DMesg not implemented")
 }
-func (UnimplementedLSNexusServiceServer) CorruptUSBKey(context.Context, *CorruptUSBKeyRequest) (*CorruptUSBKeyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CorruptUSBKey not implemented")
-}
-func (UnimplementedLSNexusServiceServer) UncorruptUSBKey(context.Context, *CorruptUSBKeyRequest) (*UncorruptUSBKeyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UncorruptUSBKey not implemented")
-}
-func (UnimplementedLSNexusServiceServer) UpdateFirmware(*UpdateFirmwareRequest, LSNexusService_UpdateFirmwareServer) error {
-	return status.Errorf(codes.Unimplemented, "method UpdateFirmware not implemented")
-}
-func (UnimplementedLSNexusServiceServer) SetWP(*SetWPRequest, LSNexusService_SetWPServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetWP not implemented")
-}
-func (UnimplementedLSNexusServiceServer) ReadAP(*ReadAPRequest, LSNexusService_ReadAPServer) error {
-	return status.Errorf(codes.Unimplemented, "method ReadAP not implemented")
-}
-func (UnimplementedLSNexusServiceServer) FlashECFirmware(*FlashECFirmwareRequest, LSNexusService_FlashECFirmwareServer) error {
-	return status.Errorf(codes.Unimplemented, "method FlashECFirmware not implemented")
-}
-func (UnimplementedLSNexusServiceServer) DownloadFirmwareFiles(context.Context, *DownloadFirmwareFilesRequest) (*DownloadFirmwareFilesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DownloadFirmwareFiles not implemented")
-}
-func (UnimplementedLSNexusServiceServer) CheckUSB(context.Context, *CheckUSBRequest) (*CheckUSBResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckUSB not implemented")
-}
-func (UnimplementedLSNexusServiceServer) GetGBBFlags(context.Context, *GetGBBFlagsRequest) (*GetGBBFlagsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetGBBFlags not implemented")
-}
-func (UnimplementedLSNexusServiceServer) SetGBBFlags(context.Context, *SetGBBFlagsRequest) (*SetGBBFlagsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetGBBFlags not implemented")
-}
-func (UnimplementedLSNexusServiceServer) ValidateUSBImage(context.Context, *ValidateUSBImageRequest) (*ValidateUSBImageResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ValidateUSBImage not implemented")
-}
-func (UnimplementedLSNexusServiceServer) ECCommand(context.Context, *ECCommandRequest) (*ECCommandResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ECCommand not implemented")
-}
 func (UnimplementedLSNexusServiceServer) Echo(context.Context, *EchoRequest) (*EchoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Echo not implemented")
 }
@@ -667,17 +291,11 @@ func (UnimplementedLSNexusServiceServer) DownloadSystemLogs(context.Context, *Do
 func (UnimplementedLSNexusServiceServer) DownloadServoLogs(context.Context, *DownloadServoLogsRequest) (*DownloadServoLogsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DownloadServoLogs not implemented")
 }
-func (UnimplementedLSNexusServiceServer) DolosVersion(context.Context, *DolosVersionRequest) (*DolosVersionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DolosVersion not implemented")
+func (UnimplementedLSNexusServiceServer) RunFutility(context.Context, *RunFutilityRequest) (*RunFutilityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunFutility not implemented")
 }
-func (UnimplementedLSNexusServiceServer) DolosRepair(context.Context, *DolosRepairRequest) (*DolosRepairResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DolosRepair not implemented")
-}
-func (UnimplementedLSNexusServiceServer) DolosUpdateFirmware(context.Context, *DolosUpdateFirmwareRequest) (*DolosUpdateFirmwareResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DolosUpdateFirmware not implemented")
-}
-func (UnimplementedLSNexusServiceServer) DolosUartSerial(context.Context, *DolosUartSerialRequest) (*DolosUartSerialResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DolosUartSerial not implemented")
+func (UnimplementedLSNexusServiceServer) RunFlashEC(context.Context, *RunFlashECRequest) (*RunFlashECResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunFlashEC not implemented")
 }
 
 // UnsafeLSNexusServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -741,42 +359,6 @@ func _LSNexusService_CallServod_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LSNexusServiceServer).CallServod(ctx, req.(*CallServodRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_GetFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetFileRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).GetFile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/GetFile",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).GetFile(ctx, req.(*GetFileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_PutFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PutFileRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).PutFile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/PutFile",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).PutFile(ctx, req.(*PutFileRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -874,234 +456,6 @@ func (x *lSNexusServiceDMesgServer) Send(m *DMesgResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _LSNexusService_CorruptUSBKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CorruptUSBKeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).CorruptUSBKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/CorruptUSBKey",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).CorruptUSBKey(ctx, req.(*CorruptUSBKeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_UncorruptUSBKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CorruptUSBKeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).UncorruptUSBKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/UncorruptUSBKey",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).UncorruptUSBKey(ctx, req.(*CorruptUSBKeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_UpdateFirmware_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(UpdateFirmwareRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LSNexusServiceServer).UpdateFirmware(m, &lSNexusServiceUpdateFirmwareServer{stream})
-}
-
-type LSNexusService_UpdateFirmwareServer interface {
-	Send(*UpdateFirmwareResponse) error
-	grpc.ServerStream
-}
-
-type lSNexusServiceUpdateFirmwareServer struct {
-	grpc.ServerStream
-}
-
-func (x *lSNexusServiceUpdateFirmwareServer) Send(m *UpdateFirmwareResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LSNexusService_SetWP_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SetWPRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LSNexusServiceServer).SetWP(m, &lSNexusServiceSetWPServer{stream})
-}
-
-type LSNexusService_SetWPServer interface {
-	Send(*SetWPResponse) error
-	grpc.ServerStream
-}
-
-type lSNexusServiceSetWPServer struct {
-	grpc.ServerStream
-}
-
-func (x *lSNexusServiceSetWPServer) Send(m *SetWPResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LSNexusService_ReadAP_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(ReadAPRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LSNexusServiceServer).ReadAP(m, &lSNexusServiceReadAPServer{stream})
-}
-
-type LSNexusService_ReadAPServer interface {
-	Send(*ReadAPResponse) error
-	grpc.ServerStream
-}
-
-type lSNexusServiceReadAPServer struct {
-	grpc.ServerStream
-}
-
-func (x *lSNexusServiceReadAPServer) Send(m *ReadAPResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LSNexusService_FlashECFirmware_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(FlashECFirmwareRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LSNexusServiceServer).FlashECFirmware(m, &lSNexusServiceFlashECFirmwareServer{stream})
-}
-
-type LSNexusService_FlashECFirmwareServer interface {
-	Send(*FlashECFirmwareResponse) error
-	grpc.ServerStream
-}
-
-type lSNexusServiceFlashECFirmwareServer struct {
-	grpc.ServerStream
-}
-
-func (x *lSNexusServiceFlashECFirmwareServer) Send(m *FlashECFirmwareResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LSNexusService_DownloadFirmwareFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DownloadFirmwareFilesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).DownloadFirmwareFiles(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/DownloadFirmwareFiles",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).DownloadFirmwareFiles(ctx, req.(*DownloadFirmwareFilesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_CheckUSB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckUSBRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).CheckUSB(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/CheckUSB",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).CheckUSB(ctx, req.(*CheckUSBRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_GetGBBFlags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetGBBFlagsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).GetGBBFlags(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/GetGBBFlags",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).GetGBBFlags(ctx, req.(*GetGBBFlagsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_SetGBBFlags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetGBBFlagsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).SetGBBFlags(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/SetGBBFlags",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).SetGBBFlags(ctx, req.(*SetGBBFlagsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_ValidateUSBImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ValidateUSBImageRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).ValidateUSBImage(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/ValidateUSBImage",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).ValidateUSBImage(ctx, req.(*ValidateUSBImageRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_ECCommand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ECCommandRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).ECCommand(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/ECCommand",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).ECCommand(ctx, req.(*ECCommandRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _LSNexusService_Echo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EchoRequest)
 	if err := dec(in); err != nil {
@@ -1156,74 +510,38 @@ func _LSNexusService_DownloadServoLogs_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LSNexusService_DolosVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DolosVersionRequest)
+func _LSNexusService_RunFutility_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunFutilityRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LSNexusServiceServer).DolosVersion(ctx, in)
+		return srv.(LSNexusServiceServer).RunFutility(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/DolosVersion",
+		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/RunFutility",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).DolosVersion(ctx, req.(*DolosVersionRequest))
+		return srv.(LSNexusServiceServer).RunFutility(ctx, req.(*RunFutilityRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LSNexusService_DolosRepair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DolosRepairRequest)
+func _LSNexusService_RunFlashEC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunFlashECRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LSNexusServiceServer).DolosRepair(ctx, in)
+		return srv.(LSNexusServiceServer).RunFlashEC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/DolosRepair",
+		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/RunFlashEC",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).DolosRepair(ctx, req.(*DolosRepairRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_DolosUpdateFirmware_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DolosUpdateFirmwareRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).DolosUpdateFirmware(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/DolosUpdateFirmware",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).DolosUpdateFirmware(ctx, req.(*DolosUpdateFirmwareRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LSNexusService_DolosUartSerial_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DolosUartSerialRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).DolosUartSerial(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/DolosUartSerial",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).DolosUartSerial(ctx, req.(*DolosUartSerialRequest))
+		return srv.(LSNexusServiceServer).RunFlashEC(ctx, req.(*RunFlashECRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1248,14 +566,6 @@ var LSNexusService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _LSNexusService_CallServod_Handler,
 		},
 		{
-			MethodName: "GetFile",
-			Handler:    _LSNexusService_GetFile_Handler,
-		},
-		{
-			MethodName: "PutFile",
-			Handler:    _LSNexusService_PutFile_Handler,
-		},
-		{
 			MethodName: "RemoveFile",
 			Handler:    _LSNexusService_RemoveFile_Handler,
 		},
@@ -1272,38 +582,6 @@ var LSNexusService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _LSNexusService_MakeTempDir_Handler,
 		},
 		{
-			MethodName: "CorruptUSBKey",
-			Handler:    _LSNexusService_CorruptUSBKey_Handler,
-		},
-		{
-			MethodName: "UncorruptUSBKey",
-			Handler:    _LSNexusService_UncorruptUSBKey_Handler,
-		},
-		{
-			MethodName: "DownloadFirmwareFiles",
-			Handler:    _LSNexusService_DownloadFirmwareFiles_Handler,
-		},
-		{
-			MethodName: "CheckUSB",
-			Handler:    _LSNexusService_CheckUSB_Handler,
-		},
-		{
-			MethodName: "GetGBBFlags",
-			Handler:    _LSNexusService_GetGBBFlags_Handler,
-		},
-		{
-			MethodName: "SetGBBFlags",
-			Handler:    _LSNexusService_SetGBBFlags_Handler,
-		},
-		{
-			MethodName: "ValidateUSBImage",
-			Handler:    _LSNexusService_ValidateUSBImage_Handler,
-		},
-		{
-			MethodName: "ECCommand",
-			Handler:    _LSNexusService_ECCommand_Handler,
-		},
-		{
 			MethodName: "Echo",
 			Handler:    _LSNexusService_Echo_Handler,
 		},
@@ -1316,46 +594,18 @@ var LSNexusService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _LSNexusService_DownloadServoLogs_Handler,
 		},
 		{
-			MethodName: "DolosVersion",
-			Handler:    _LSNexusService_DolosVersion_Handler,
+			MethodName: "RunFutility",
+			Handler:    _LSNexusService_RunFutility_Handler,
 		},
 		{
-			MethodName: "DolosRepair",
-			Handler:    _LSNexusService_DolosRepair_Handler,
-		},
-		{
-			MethodName: "DolosUpdateFirmware",
-			Handler:    _LSNexusService_DolosUpdateFirmware_Handler,
-		},
-		{
-			MethodName: "DolosUartSerial",
-			Handler:    _LSNexusService_DolosUartSerial_Handler,
+			MethodName: "RunFlashEC",
+			Handler:    _LSNexusService_RunFlashEC_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "DMesg",
 			Handler:       _LSNexusService_DMesg_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "UpdateFirmware",
-			Handler:       _LSNexusService_UpdateFirmware_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "SetWP",
-			Handler:       _LSNexusService_SetWP_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "ReadAP",
-			Handler:       _LSNexusService_ReadAP_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "FlashECFirmware",
-			Handler:       _LSNexusService_FlashECFirmware_Handler,
 			ServerStreams: true,
 		},
 	},

@@ -294,6 +294,30 @@ def _add_audio_entry(
     etree.SubElement(audio_config_elem, "audio-config-dir").text = model
     etree.SubElement(audio_config_elem, "soundcard").text = soundcard_name
 
+def _add_video_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds VideoConfiguration to the XML tree for a Design.Config.
+
+    Skips if the Design.Config doesn't have arc_media_codecs_suffix.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    soc_features = design_config.hardware_features.soc
+    if not soc_features.arc_media_codecs_suffix:
+        logging.debug(
+            "[%s] No arc_media_codecs_suffix found. Skipping VideoConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    video_config_elem = etree.SubElement(hal_config, "VideoConfiguration")
+    etree.SubElement(video_config_elem, "video-codec-suffix").text = (
+        soc_features.arc_media_codecs_suffix
+    )
 
 def _add_hal_config_entry(
     root_element: etree._Element,
@@ -326,6 +350,7 @@ def _add_hal_config_entry(
     _add_fingerprint_entry(hal_config_elem, design_config)
     _add_firmware_entry(hal_config_elem, design_config, sw_config)
     _add_audio_entry(hal_config_elem, design_config)
+    _add_video_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:

@@ -27002,14 +27002,39 @@
           "field": [
             {
               "jsonName": "stressTestInfo",
-              "label": "LABEL_OPTIONAL",
+              "label": "LABEL_REPEATED",
               "name": "stress_test_info",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
+              "typeName": ".chromiumos.test.api.GetStressTestInfoResponse.StressTestInfoEntry"
             }
           ],
-          "name": "GetStressTestInfoResponse"
+          "name": "GetStressTestInfoResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Any"
+                }
+              ],
+              "name": "StressTestInfoEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
@@ -33873,85 +33898,6 @@
       "dependency": [
         "chromiumos/test/api/bols/bols_service.proto"
       ],
-      "enumType": [
-        {
-          "name": "GBBFLAG",
-          "value": [
-            {
-              "name": "GBBFLAG_DEV_SCREEN_SHORT_DELAY",
-              "number": 0
-            },
-            {
-              "name": "GBBFLAG_LOAD_OPTION_ROMS",
-              "number": 1
-            },
-            {
-              "name": "GBBFLAG_ENABLE_ALTERNATE_OS",
-              "number": 2
-            },
-            {
-              "name": "GBBFLAG_FORCE_DEV_SWITCH_ON",
-              "number": 3
-            },
-            {
-              "name": "GBBFLAG_FORCE_DEV_BOOT_USB",
-              "number": 4
-            },
-            {
-              "name": "GBBFLAG_DISABLE_FW_ROLLBACK_CHECK",
-              "number": 5
-            },
-            {
-              "name": "GBBFLAG_ENTER_TRIGGERS_TONORM",
-              "number": 6
-            },
-            {
-              "name": "GBBFLAG_FORCE_DEV_BOOT_LEGACY",
-              "number": 7
-            },
-            {
-              "name": "GBBFLAG_DEPRECATED_RUNNING_FAFT",
-              "number": 8
-            },
-            {
-              "name": "GBBFLAG_DISABLE_EC_SOFTWARE_SYNC",
-              "number": 9
-            },
-            {
-              "name": "GBBFLAG_DEFAULT_DEV_BOOT_ALTFW",
-              "number": 10
-            },
-            {
-              "name": "GBBFLAG_DISABLE_AUXFW_SOFTWARE_SYNC",
-              "number": 11
-            },
-            {
-              "name": "GBBFLAG_DISABLE_LID_SHUTDOWN",
-              "number": 12
-            },
-            {
-              "name": "GBBFLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP",
-              "number": 13
-            },
-            {
-              "name": "GBBFLAG_FORCE_MANUAL_RECOVERY",
-              "number": 14
-            },
-            {
-              "name": "GBBFLAG_DISABLE_FWMP",
-              "number": 15
-            },
-            {
-              "name": "GBBFLAG_ENABLE_UDC",
-              "number": 16
-            },
-            {
-              "name": "GBBFLAG_FORCE_CSE_SYNC",
-              "number": 17
-            }
-          ]
-        }
-      ],
       "messageType": [
         {
           "name": "StartServodRequest"
@@ -34021,6 +33967,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.bols.ServodValue"
+            },
+            {
+              "jsonName": "control",
+              "label": "LABEL_OPTIONAL",
+              "name": "control",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CallServodRequest"
@@ -34083,82 +34036,6 @@
         {
           "field": [
             {
-              "jsonName": "srcFilePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "src_file_path",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "dstFilePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "dst_file_path",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "GetFileRequest"
-        },
-        {
-          "name": "GetFileResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "srcFilePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "src_file_path",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "dstFilePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "dst_file_path",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "PutFileRequest"
-        },
-        {
-          "name": "PutFileResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "command",
-              "label": "LABEL_OPTIONAL",
-              "name": "command",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "patterns",
-              "label": "LABEL_REPEATED",
-              "name": "patterns",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ECCommandRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "output",
-              "label": "LABEL_REPEATED",
-              "name": "output",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.lsnexus.StringList"
-            }
-          ],
-          "name": "ECCommandResponse"
-        },
-        {
-          "field": [
-            {
               "jsonName": "values",
               "label": "LABEL_REPEATED",
               "name": "values",
@@ -34181,33 +34058,24 @@
           "name": "EchoRequest"
         },
         {
-          "name": "EchoResponse"
-        },
-        {
           "field": [
             {
-              "jsonName": "dest",
+              "jsonName": "result",
               "label": "LABEL_OPTIONAL",
-              "name": "dest",
-              "number": 5,
+              "name": "result",
+              "number": 1,
               "type": "TYPE_STRING"
             }
           ],
+          "name": "EchoResponse"
+        },
+        {
           "name": "DownloadSystemLogsRequest"
         },
         {
           "name": "DownloadSystemLogsResponse"
         },
         {
-          "field": [
-            {
-              "jsonName": "dest",
-              "label": "LABEL_OPTIONAL",
-              "name": "dest",
-              "number": 5,
-              "type": "TYPE_STRING"
-            }
-          ],
           "name": "DownloadServoLogsRequest"
         },
         {
@@ -34299,221 +34167,6 @@
           "name": "DMesgResponse"
         },
         {
-          "name": "CorruptUSBKeyRequest"
-        },
-        {
-          "name": "CorruptUSBKeyResponse"
-        },
-        {
-          "name": "UncorruptUSBKeyRequest"
-        },
-        {
-          "name": "UncorruptUSBKeyResponse"
-        },
-        {
-          "enumType": [
-            {
-              "name": "UpdateMode",
-              "value": [
-                {
-                  "name": "UPDATEMODE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "UPDATEMODE_AUTOUPDATE",
-                  "number": 1
-                },
-                {
-                  "name": "UPDATEMODE_RECOVERY",
-                  "number": 2
-                },
-                {
-                  "name": "UPDATEMODE_FACTORY",
-                  "number": 3
-                }
-              ]
-            },
-            {
-              "name": "WPMode",
-              "value": [
-                {
-                  "name": "WPMODE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "WPMODE_ENABLE",
-                  "number": 1
-                },
-                {
-                  "name": "WPMODE_DISABLE",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "imagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "image_path",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "ecImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ec_image_path",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "tryAb",
-              "label": "LABEL_OPTIONAL",
-              "name": "try_ab",
-              "number": 4,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "fast",
-              "label": "LABEL_OPTIONAL",
-              "name": "fast",
-              "number": 5,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "quirks",
-              "label": "LABEL_OPTIONAL",
-              "name": "quirks",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest.Quirk"
-            },
-            {
-              "jsonName": "updateMode",
-              "label": "LABEL_OPTIONAL",
-              "name": "update_mode",
-              "number": 7,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest.UpdateMode"
-            },
-            {
-              "jsonName": "wpMode",
-              "label": "LABEL_OPTIONAL",
-              "name": "wp_mode",
-              "number": 8,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest.WPMode"
-            },
-            {
-              "jsonName": "hostOnly",
-              "label": "LABEL_OPTIONAL",
-              "name": "host_only",
-              "number": 9,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "gbbFlags",
-              "label": "LABEL_REPEATED",
-              "name": "gbb_flags",
-              "number": 10,
-              "type": "TYPE_UINT32"
-            },
-            {
-              "jsonName": "force",
-              "label": "LABEL_OPTIONAL",
-              "name": "force",
-              "number": 11,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "UpdateFirmwareRequest",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Quirk"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "output",
-              "label": "LABEL_OPTIONAL",
-              "name": "output",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
-            }
-          ],
-          "name": "UpdateFirmwareResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "enable",
-              "label": "LABEL_OPTIONAL",
-              "name": "enable",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "SetWPRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "output",
-              "label": "LABEL_OPTIONAL",
-              "name": "output",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
-            }
-          ],
-          "name": "SetWPResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "debug",
-              "label": "LABEL_OPTIONAL",
-              "name": "debug",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "verbose",
-              "label": "LABEL_OPTIONAL",
-              "name": "verbose",
-              "number": 3,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "region",
-              "label": "LABEL_OPTIONAL",
-              "name": "region",
-              "number": 4,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "ReadAPRequest"
-        },
-        {
           "field": [
             {
               "jsonName": "stdout",
@@ -34535,27 +34188,14 @@
         {
           "field": [
             {
-              "jsonName": "output",
-              "label": "LABEL_OPTIONAL",
-              "name": "output",
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
               "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
-            }
-          ],
-          "name": "ReadAPResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ecChip",
-              "label": "LABEL_OPTIONAL",
-              "name": "ec_chip",
-              "number": 2,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "FlashECFirmwareRequest"
+          "name": "RunFutilityRequest"
         },
         {
           "field": [
@@ -34568,234 +34208,32 @@
               "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
             }
           ],
-          "name": "FlashECFirmwareResponse"
+          "name": "RunFutilityResponse"
         },
         {
           "field": [
             {
-              "jsonName": "baseUrl",
-              "label": "LABEL_OPTIONAL",
-              "name": "base_url",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "firmwareFilename",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_filename",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "apTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "ap_target",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "ecTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "ec_target",
-              "number": 5,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DownloadFirmwareFilesRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ecFirmwareFile",
-              "label": "LABEL_OPTIONAL",
-              "name": "ec_firmware_file",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "apFirmwareFile",
-              "label": "LABEL_OPTIONAL",
-              "name": "ap_firmware_file",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "monitorFile",
-              "label": "LABEL_OPTIONAL",
-              "name": "monitor_file",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DownloadFirmwareFilesResponse"
-        },
-        {
-          "name": "CheckUSBRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "usbDevicePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "usb_device_path",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CheckUSBResponse"
-        },
-        {
-          "name": "GetGBBFlagsRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "clear",
+              "jsonName": "params",
               "label": "LABEL_REPEATED",
-              "name": "clear",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
-            },
-            {
-              "jsonName": "set",
-              "label": "LABEL_REPEATED",
-              "name": "set",
-              "number": 2,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
-            }
-          ],
-          "name": "GetGBBFlagsResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "clear",
-              "label": "LABEL_REPEATED",
-              "name": "clear",
-              "number": 2,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
-            },
-            {
-              "jsonName": "set",
-              "label": "LABEL_REPEATED",
-              "name": "set",
-              "number": 3,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.lsnexus.GBBFLAG"
-            }
-          ],
-          "name": "SetGBBFlagsRequest"
-        },
-        {
-          "name": "SetGBBFlagsResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "mountPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "mount_path",
+              "name": "params",
               "number": 1,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ValidateUSBImageRequest"
+          "name": "RunFlashECRequest"
         },
         {
           "field": [
             {
-              "jsonName": "version",
+              "jsonName": "output",
               "label": "LABEL_OPTIONAL",
-              "name": "version",
+              "name": "output",
               "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "milestone",
-              "label": "LABEL_OPTIONAL",
-              "name": "milestone",
-              "number": 2,
-              "type": "TYPE_STRING"
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
             }
           ],
-          "name": "ValidateUSBImageResponse"
-        },
-        {
-          "name": "DolosVersionRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "version",
-              "label": "LABEL_OPTIONAL",
-              "name": "version",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DolosVersionResponse"
-        },
-        {
-          "name": "DolosStatusRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "status",
-              "label": "LABEL_OPTIONAL",
-              "name": "status",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.bols.DolosStatus"
-            }
-          ],
-          "name": "DolosStatusResponse"
-        },
-        {
-          "name": "DolosRepairRequest"
-        },
-        {
-          "name": "DolosRepairResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "firmwareFilePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_file_path",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "firmwareFileGcsUrl",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_file_gcs_url",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DolosUpdateFirmwareRequest"
-        },
-        {
-          "name": "DolosUpdateFirmwareResponse"
-        },
-        {
-          "name": "DolosUartSerialRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "uartSerial",
-              "label": "LABEL_OPTIONAL",
-              "name": "uart_serial",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DolosUartSerialResponse"
+          "name": "RunFlashECResponse"
         }
       ],
       "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
@@ -34820,18 +34258,6 @@
               "inputType": ".chromiumos.test.api.lsnexus.CallServodRequest",
               "name": "CallServod",
               "outputType": ".chromiumos.test.api.lsnexus.CallServodResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.GetFileRequest",
-              "name": "GetFile",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.GetFileResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.PutFileRequest",
-              "name": "PutFile",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.PutFileResponse"
             },
             {
               "inputType": ".chromiumos.test.api.lsnexus.RemoveFileRequest",
@@ -34865,82 +34291,6 @@
               "serverStreaming": true
             },
             {
-              "inputType": ".chromiumos.test.api.lsnexus.CorruptUSBKeyRequest",
-              "name": "CorruptUSBKey",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.CorruptUSBKeyResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.CorruptUSBKeyRequest",
-              "name": "UncorruptUSBKey",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.UncorruptUSBKeyResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.UpdateFirmwareRequest",
-              "name": "UpdateFirmware",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.UpdateFirmwareResponse",
-              "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.SetWPRequest",
-              "name": "SetWP",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.SetWPResponse",
-              "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.ReadAPRequest",
-              "name": "ReadAP",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.ReadAPResponse",
-              "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.FlashECFirmwareRequest",
-              "name": "FlashECFirmware",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.FlashECFirmwareResponse",
-              "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.DownloadFirmwareFilesRequest",
-              "name": "DownloadFirmwareFiles",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DownloadFirmwareFilesResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.CheckUSBRequest",
-              "name": "CheckUSB",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.CheckUSBResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.GetGBBFlagsRequest",
-              "name": "GetGBBFlags",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.GetGBBFlagsResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.SetGBBFlagsRequest",
-              "name": "SetGBBFlags",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.SetGBBFlagsResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.ValidateUSBImageRequest",
-              "name": "ValidateUSBImage",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.ValidateUSBImageResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.ECCommandRequest",
-              "name": "ECCommand",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.ECCommandResponse"
-            },
-            {
               "inputType": ".chromiumos.test.api.lsnexus.EchoRequest",
               "name": "Echo",
               "options": {},
@@ -34959,28 +34309,16 @@
               "outputType": ".chromiumos.test.api.lsnexus.DownloadServoLogsResponse"
             },
             {
-              "inputType": ".chromiumos.test.api.lsnexus.DolosVersionRequest",
-              "name": "DolosVersion",
+              "inputType": ".chromiumos.test.api.lsnexus.RunFutilityRequest",
+              "name": "RunFutility",
               "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DolosVersionResponse"
+              "outputType": ".chromiumos.test.api.lsnexus.RunFutilityResponse"
             },
             {
-              "inputType": ".chromiumos.test.api.lsnexus.DolosRepairRequest",
-              "name": "DolosRepair",
+              "inputType": ".chromiumos.test.api.lsnexus.RunFlashECRequest",
+              "name": "RunFlashEC",
               "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DolosRepairResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.DolosUpdateFirmwareRequest",
-              "name": "DolosUpdateFirmware",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DolosUpdateFirmwareResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.DolosUartSerialRequest",
-              "name": "DolosUartSerial",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DolosUartSerialResponse"
+              "outputType": ".chromiumos.test.api.lsnexus.RunFlashECResponse"
             }
           ],
           "name": "LSNexusService"
@@ -42044,6 +41382,10 @@
             {
               "name": "ROLE_USBCSOURCE_DPSINK",
               "number": 4
+            },
+            {
+              "name": "ROLE_HDMISOURCE_HDMISINK",
+              "number": 5
             }
           ]
         },
@@ -42199,6 +41541,80 @@
           ]
         },
         {
+          "name": "VideoSpecification",
+          "value": [
+            {
+              "name": "VIDEO_SPECIFICATION_UNKOWN",
+              "number": 0
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_1_3",
+              "number": 1
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_1_4",
+              "number": 2
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_2_0",
+              "number": 3
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_2_1",
+              "number": 4
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_HDMI_1_4",
+              "number": 5
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_HDMI_2_0",
+              "number": 6
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_HDMI_2_1",
+              "number": 7
+            }
+          ]
+        },
+        {
+          "name": "FrlMode",
+          "value": [
+            {
+              "name": "FRL_MODE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "FRL_MODE_DISABLE",
+              "number": 1
+            },
+            {
+              "name": "FRL_MODE_3LANES_3GBPS",
+              "number": 2
+            },
+            {
+              "name": "FRL_MODE_3LANES_6GBPS",
+              "number": 3
+            },
+            {
+              "name": "FRL_MODE_4LANES_6GBPS",
+              "number": 4
+            },
+            {
+              "name": "FRL_MODE_4LANES_8GBPS",
+              "number": 5
+            },
+            {
+              "name": "FRL_MODE_4LANES_10GBPS",
+              "number": 6
+            },
+            {
+              "name": "FRL_MODE_4LANES_12GBPS",
+              "number": 7
+            }
+          ]
+        },
+        {
           "name": "ComplianceTestGroup",
           "value": [
             {
@@ -42240,6 +41656,18 @@
             {
               "name": "GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST",
               "number": 9
+            },
+            {
+              "name": "GROUP_HDMI_RX_CRC_TEST",
+              "number": 10
+            },
+            {
+              "name": "GROUP_HDMI_RX_VRR_TEST",
+              "number": 11
+            },
+            {
+              "name": "GROUP_HD_TX_CONTINUITY_TEST",
+              "number": 12
             }
           ]
         },
@@ -42721,6 +42149,116 @@
               "oneofIndex": 3,
               "proto3Optional": true,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "frlMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_mode",
+              "number": 9,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.FrlMode"
+            },
+            {
+              "jsonName": "frlStart",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_start",
+              "number": 11,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlReady",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_ready",
+              "number": 12,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlMax",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_max",
+              "number": 13,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlNoTimeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_no_timeout",
+              "number": 14,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlCheckLtp",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_check_ltp",
+              "number": 15,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "videoSpec",
+              "label": "LABEL_OPTIONAL",
+              "name": "video_spec",
+              "number": 16,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoSpecification"
+            },
+            {
+              "jsonName": "ssSbm",
+              "label": "LABEL_OPTIONAL",
+              "name": "ss_sbm",
+              "number": 17,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fec",
+              "label": "LABEL_OPTIONAL",
+              "name": "fec",
+              "number": 18,
+              "oneofIndex": 12,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps4",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps4",
+              "number": 19,
+              "oneofIndex": 13,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps3",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps3",
+              "number": 20,
+              "oneofIndex": 14,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dsc",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsc",
+              "number": 21,
+              "oneofIndex": 15,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "SetLinkVideoTesterRequest",
@@ -42736,6 +42274,42 @@
             },
             {
               "name": "_max_lane"
+            },
+            {
+              "name": "_frl_mode"
+            },
+            {
+              "name": "_frl_start"
+            },
+            {
+              "name": "_frl_ready"
+            },
+            {
+              "name": "_frl_max"
+            },
+            {
+              "name": "_frl_no_timeout"
+            },
+            {
+              "name": "_frl_check_ltp"
+            },
+            {
+              "name": "_video_spec"
+            },
+            {
+              "name": "_ss_sbm"
+            },
+            {
+              "name": "_fec"
+            },
+            {
+              "name": "_tps4"
+            },
+            {
+              "name": "_tps3"
+            },
+            {
+              "name": "_dsc"
             }
           ]
         },
@@ -42753,6 +42327,49 @@
             }
           ],
           "name": "GetLinkVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "laneSpeed",
+              "label": "LABEL_OPTIONAL",
+              "name": "lane_speed",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorCnt",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_cnt",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "laneLock",
+              "label": "LABEL_OPTIONAL",
+              "name": "lane_lock",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "VideoLane",
+          "oneofDecl": [
+            {
+              "name": "_lane_speed"
+            },
+            {
+              "name": "_error_cnt"
+            },
+            {
+              "name": "_lane_lock"
+            }
+          ]
         },
         {
           "field": [
@@ -42791,6 +42408,142 @@
               "oneofIndex": 3,
               "proto3Optional": true,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "frlMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_mode",
+              "number": 6,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.FrlMode"
+            },
+            {
+              "jsonName": "frlStart",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_start",
+              "number": 7,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlReady",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_ready",
+              "number": 8,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlMax",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_max",
+              "number": 9,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlNoTimeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_no_timeout",
+              "number": 10,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frlCheckLtp",
+              "label": "LABEL_OPTIONAL",
+              "name": "frl_check_ltp",
+              "number": 11,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tdmsClockRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "tdms_clock_rate",
+              "number": 12,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "tdmsReportLocks",
+              "label": "LABEL_OPTIONAL",
+              "name": "tdms_report_locks",
+              "number": 13,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "videoSpec",
+              "label": "LABEL_OPTIONAL",
+              "name": "video_spec",
+              "number": 14,
+              "oneofIndex": 12,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoSpecification"
+            },
+            {
+              "jsonName": "lanes",
+              "label": "LABEL_REPEATED",
+              "name": "lanes",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoLane"
+            },
+            {
+              "jsonName": "ssSbm",
+              "label": "LABEL_OPTIONAL",
+              "name": "ss_sbm",
+              "number": 16,
+              "oneofIndex": 13,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fec",
+              "label": "LABEL_OPTIONAL",
+              "name": "fec",
+              "number": 17,
+              "oneofIndex": 14,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps4",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps4",
+              "number": 18,
+              "oneofIndex": 15,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "tps3",
+              "label": "LABEL_OPTIONAL",
+              "name": "tps3",
+              "number": 19,
+              "oneofIndex": 16,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dsc",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsc",
+              "number": 20,
+              "oneofIndex": 17,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "GetLinkVideoTesterResponse",
@@ -42806,6 +42559,48 @@
             },
             {
               "name": "_max_lane"
+            },
+            {
+              "name": "_frl_mode"
+            },
+            {
+              "name": "_frl_start"
+            },
+            {
+              "name": "_frl_ready"
+            },
+            {
+              "name": "_frl_max"
+            },
+            {
+              "name": "_frl_no_timeout"
+            },
+            {
+              "name": "_frl_check_ltp"
+            },
+            {
+              "name": "_tdms_clock_rate"
+            },
+            {
+              "name": "_tdms_report_locks"
+            },
+            {
+              "name": "_video_spec"
+            },
+            {
+              "name": "_ss_sbm"
+            },
+            {
+              "name": "_fec"
+            },
+            {
+              "name": "_tps4"
+            },
+            {
+              "name": "_tps3"
+            },
+            {
+              "name": "_dsc"
             }
           ]
         },

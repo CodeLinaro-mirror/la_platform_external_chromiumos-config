@@ -60,6 +60,7 @@ enum Role {
   ROLE_DPSOURCE_DPSINK = 2;   // Video tester acts as a DisplayPort source and a DisplayPort sink.
   ROLE_USBCSOURCE_USBCSINK = 3; // Video tester acts as a USB-C source and a USB-C sink.
   ROLE_USBCSOURCE_DPSINK = 4;   // Video tester acts as a USB-C source and a DisplayPort sink.
+  ROLE_HDMISOURCE_HDMISINK = 5; // Video tester acts as a HDMI source and a HDMI sink.
 }
 
 // Defines possible color formats for a video stream.
@@ -154,7 +155,7 @@ message GetRolesResponse {
 
 // Request message for selecting a specific role for a video tester.
 message SetRoleRequest {
-  string id = 1;   // ID of the video tester to select the role for.
+  string id = 1;   // ID of the tester to set the role for.
   Role role = 2;   // The role to be selected.
 }
 
@@ -214,6 +215,29 @@ message ScreenshotVideoTesterResponse {
   bytes screenshot = 1; // The captured screenshot data in bytes (e.g., PNG, JPEG).
 }
 
+// Defines the video specifications supported by the video tester.
+enum VideoSpecification {
+  VIDEO_SPECIFICATION_UNKOWN = 0; // Unknown video specification.
+  VIDEO_SPECIFICATION_DP_1_3 = 1; // DisplayPort 1.3 specification.
+  VIDEO_SPECIFICATION_DP_1_4 = 2; // DisplayPort 1.4 specification.
+  VIDEO_SPECIFICATION_DP_2_0 = 3; // DisplayPort 2.0 specification.
+  VIDEO_SPECIFICATION_DP_2_1 = 4; // DisplayPort 2.1 specification.
+  VIDEO_SPECIFICATION_HDMI_1_4 = 5; // HDMI 1.4 specification.
+  VIDEO_SPECIFICATION_HDMI_2_0 = 6; // HDMI 2.0 specification.
+  VIDEO_SPECIFICATION_HDMI_2_1 = 7; // HDMI 2.1 specification.
+}
+
+enum FrlMode {
+  FRL_MODE_UNKNOWN = 0;
+  FRL_MODE_DISABLE = 1;
+  FRL_MODE_3LANES_3GBPS = 2;
+  FRL_MODE_3LANES_6GBPS = 3;
+  FRL_MODE_4LANES_6GBPS = 4;
+  FRL_MODE_4LANES_8GBPS = 5;
+  FRL_MODE_4LANES_10GBPS = 6;
+  FRL_MODE_4LANES_12GBPS = 7;
+}
+
 // Request message for setting advanced link parameters for a video tester.
 message SetLinkVideoTesterRequest {
   string id = 1;               // ID of the video tester to set the link parameters for.
@@ -221,6 +245,18 @@ message SetLinkVideoTesterRequest {
   optional int64 mst_sink_count = 3; // The number of MST sink devices.
   optional int64 scrambler_seed = 4; // The scrambler seed value.
   optional int64 max_lane = 5;     // The maximum number of active lanes.
+  optional FrlMode frl_mode = 9; // FRL lane speed in mbps.
+  optional bool frl_start = 11; // Start FRL.
+  optional bool frl_ready = 12; // FRL ready status.
+  optional bool frl_max = 13; // FRL max settings.
+  optional bool frl_no_timeout = 14; // Disable FRL timeout.
+  optional bool frl_check_ltp = 15; // Check FRL Link Training Pattern.
+  optional VideoSpecification video_spec = 16; // The video specification to apply.
+  optional bool ss_sbm = 17; // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
+  optional bool fec = 18; // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
+  optional bool tps4 = 19; // Indicate support for Link Training Pattern Sequence 4.
+  optional bool tps3 = 20; // Indicate support for Link Training Pattern Sequence 3.
+  optional bool dsc = 21; // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
 }
 
 // Response message indicating the success of setting link parameters for a video tester.
@@ -233,12 +269,34 @@ message GetLinkVideoTesterRequest {
   string id = 1; // ID of the video tester to get the link parameters from.
 }
 
+// Represents the details of a single video lane.
+message VideoLane {
+  optional int64 lane_speed = 1; // Lane speed in mbps.
+  optional int64 error_cnt = 2;  // Error count for the lane.
+  optional int64 lane_lock = 3;  // Lane lock status.
+}
+
 // Response message containing the current advanced link parameters for a video tester.
 message GetLinkVideoTesterResponse {
   optional bool mst = 1;       // Current status of Multi-Stream Transport (MST).
   optional int64 mst_sink_count = 2; // Current number of MST sink devices.
   optional int64 scrambler_seed = 3; // Current scrambler seed value.
   optional int64 max_lane = 4;     // Current maximum number of active lanes.
+  optional FrlMode frl_mode = 6; // Current FRL lane speed in mbps.
+  optional bool frl_start = 7; // Current FRL start status.
+  optional bool frl_ready = 8; // Current FRL ready status.
+  optional bool frl_max = 9; // Current FRL max settings.
+  optional bool frl_no_timeout = 10; // Current FRL no timeout status.
+  optional bool frl_check_ltp = 11; // Current FRL Link Training Pattern check status.
+  optional int64 tdms_clock_rate = 12; // TDMS (Transition Minimized Differential Signaling) clock rate.
+  optional int64 tdms_report_locks = 13; // TDMS report locks status.
+  optional VideoSpecification video_spec = 14; // The current video specification.
+  repeated VideoLane lanes = 15; // Details for each individual video lane.
+  optional bool ss_sbm = 16; // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
+  optional bool fec = 17; // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
+  optional bool tps4 = 18; // Indicate support for Link Training Pattern Sequence 4.
+  optional bool tps3 = 19; // Indicate support for Link Training Pattern Sequence 3.
+  optional bool dsc = 20; // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
 }
 
 // Request message for simulating attaching or detaching a display/sink.
@@ -275,6 +333,9 @@ enum ComplianceTestGroup {
   GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7; // Group for DisplayPort 2.1 link layer compliance tests (Source DUT role).
   GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8; // Group for DisplayPort 2.1 DSC compliance tests (Source DUT role).
   GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9; // Group for DisplayPort 2.1 DisplayID compliance tests (Source role).
+  GROUP_HDMI_RX_CRC_TEST = 10; // Group for DisplayPort HDMI RX CRC tests.
+  GROUP_HDMI_RX_VRR_TEST = 11; // Group for DisplayPort HDMI RX VRR (Variable Refresh Rate) tests.
+  GROUP_HD_TX_CONTINUITY_TEST = 12; // Group for DisplayPort HD TX continuity tests.
 }
 
 // Represents the status of a compliance test.
@@ -294,7 +355,7 @@ enum ComplianceTestStatus {
 // Represents a specific compliance test executed by a video tester.
 message ComplianceTestVideoTester {
   // The identifier for the group to which this compliance test belongs.
-  ComplianceTestGroup group_id = 1; // Assuming ComplianceTestGroup is another defined enum or message type.
+  ComplianceTestGroup group_id = 1;
   // A unique identifier for the specific compliance test within its group.
   int64 test_id = 2;
 }
