@@ -321,6 +321,51 @@ def _add_video_entry(
     )
 
 
+def _add_hardware_features_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds HardwareFeature to the XML tree for a Design.Config.
+
+    Skips if the Design.Config doesn't have form factor defined.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("form_factor"):
+        logging.debug(
+            "[%s] No form_factor found. Skipping HardwareFeature.",
+            design_config.id.value,
+        )
+        return
+
+    form_factor = hw_features.form_factor.form_factor
+
+    form_factor_names = {
+        topology_pb2.HardwareFeatures.FormFactor.CLAMSHELL: "CLAMSHELL",
+        topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE: "CONVERTIBLE",
+        topology_pb2.HardwareFeatures.FormFactor.DETACHABLE: "DETACHABLE",
+        topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE: "CHROMEBASE",
+        topology_pb2.HardwareFeatures.FormFactor.CHROMEBOX: "CHROMEBOX",
+        topology_pb2.HardwareFeatures.FormFactor.CHROMEBIT: "CHROMEBIT",
+        topology_pb2.HardwareFeatures.FormFactor.CHROMESLATE: "CHROMESLATE",
+    }
+
+    if form_factor in form_factor_names:
+        hw_feature_elem = etree.SubElement(hal_config, "HardwareFeatures")
+        etree.SubElement(hw_feature_elem, "form-factor").text = (
+            form_factor_names[form_factor]
+        )
+    else:
+        logging.warning(
+            "[%s] Unknown form_factor value: %s. Skipping HardwareFeature.",
+            design_config.id.value,
+            form_factor,
+        )
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -353,6 +398,7 @@ def _add_hal_config_entry(
     _add_firmware_entry(hal_config_elem, design_config, sw_config)
     _add_audio_entry(hal_config_elem, design_config)
     _add_video_entry(hal_config_elem, design_config)
+    _add_hardware_features_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
