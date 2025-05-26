@@ -40105,6 +40105,10 @@
             {
               "name": "DISPLAY_PORT_AM",
               "number": 27
+            },
+            {
+              "name": "USB_PATH",
+              "number": 28
             }
           ]
         },
@@ -40228,6 +40232,23 @@
             {
               "name": "PD_DRP",
               "number": 3
+            }
+          ]
+        },
+        {
+          "name": "UsbPath",
+          "value": [
+            {
+              "name": "USB_PATH_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "USB_PATH_INTERNAL",
+              "number": 1
+            },
+            {
+              "name": "USB_PATH_EXTERNAL",
+              "number": 2
             }
           ]
         },
@@ -40627,6 +40648,15 @@
               "number": 18,
               "oneofIndex": 0,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "usbPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_path",
+              "number": 19,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbPath"
             }
           ],
           "name": "GetUsbTesterCapabilityReply",
@@ -40794,6 +40824,15 @@
               "number": 18,
               "oneofIndex": 0,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "usbPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_path",
+              "number": 19,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbPath"
             }
           ],
           "name": "SetUsbTesterCapabilityRequest",
