@@ -27,6 +27,9 @@ type CameraServiceClient interface {
 	// GetAveragePixel gets the average pixel color detected by the specified
 	// camera.
 	GetAveragePixel(ctx context.Context, in *GetAveragePixelRequest, opts ...grpc.CallOption) (*GetAveragePixelResponse, error)
+	// Analyzes an image and returns the percentage of pixels that fall within
+	// the specified HSV masks.
+	AnalyzeImageHSV(ctx context.Context, in *AnalyzeHSVRequest, opts ...grpc.CallOption) (*AnalyzeHSVResponse, error)
 }
 
 type cameraServiceClient struct {
@@ -55,6 +58,15 @@ func (c *cameraServiceClient) GetAveragePixel(ctx context.Context, in *GetAverag
 	return out, nil
 }
 
+func (c *cameraServiceClient) AnalyzeImageHSV(ctx context.Context, in *AnalyzeHSVRequest, opts ...grpc.CallOption) (*AnalyzeHSVResponse, error) {
+	out := new(AnalyzeHSVResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.CameraService/AnalyzeImageHSV", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CameraServiceServer is the server API for CameraService service.
 // All implementations should embed UnimplementedCameraServiceServer
 // for forward compatibility
@@ -64,6 +76,9 @@ type CameraServiceServer interface {
 	// GetAveragePixel gets the average pixel color detected by the specified
 	// camera.
 	GetAveragePixel(context.Context, *GetAveragePixelRequest) (*GetAveragePixelResponse, error)
+	// Analyzes an image and returns the percentage of pixels that fall within
+	// the specified HSV masks.
+	AnalyzeImageHSV(context.Context, *AnalyzeHSVRequest) (*AnalyzeHSVResponse, error)
 }
 
 // UnimplementedCameraServiceServer should be embedded to have forward compatible implementations.
@@ -75,6 +90,9 @@ func (UnimplementedCameraServiceServer) GetCameras(context.Context, *GetCamerasR
 }
 func (UnimplementedCameraServiceServer) GetAveragePixel(context.Context, *GetAveragePixelRequest) (*GetAveragePixelResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAveragePixel not implemented")
+}
+func (UnimplementedCameraServiceServer) AnalyzeImageHSV(context.Context, *AnalyzeHSVRequest) (*AnalyzeHSVResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeImageHSV not implemented")
 }
 
 // UnsafeCameraServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -124,6 +142,24 @@ func _CameraService_GetAveragePixel_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CameraService_AnalyzeImageHSV_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AnalyzeHSVRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CameraServiceServer).AnalyzeImageHSV(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.CameraService/AnalyzeImageHSV",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CameraServiceServer).AnalyzeImageHSV(ctx, req.(*AnalyzeHSVRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CameraService_ServiceDesc is the grpc.ServiceDesc for CameraService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -138,6 +174,10 @@ var CameraService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAveragePixel",
 			Handler:    _CameraService_GetAveragePixel_Handler,
+		},
+		{
+			MethodName: "AnalyzeImageHSV",
+			Handler:    _CameraService_AnalyzeImageHSV_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

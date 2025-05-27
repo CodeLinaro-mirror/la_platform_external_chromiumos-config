@@ -39832,6 +39832,142 @@
             }
           ],
           "name": "GetAveragePixelResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hue",
+              "label": "LABEL_OPTIONAL",
+              "name": "hue",
+              "number": 1,
+              "type": "TYPE_FLOAT"
+            },
+            {
+              "jsonName": "saturation",
+              "label": "LABEL_OPTIONAL",
+              "name": "saturation",
+              "number": 2,
+              "type": "TYPE_FLOAT"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 3,
+              "type": "TYPE_FLOAT"
+            }
+          ],
+          "name": "HSV"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "min",
+              "label": "LABEL_OPTIONAL",
+              "name": "min",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.HSV"
+            },
+            {
+              "jsonName": "max",
+              "label": "LABEL_OPTIONAL",
+              "name": "max",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.HSV"
+            }
+          ],
+          "name": "HSVMask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "masks",
+              "label": "LABEL_REPEATED",
+              "name": "masks",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry"
+            }
+          ],
+          "name": "AnalyzeHSVRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.passport.HSVMask"
+                }
+              ],
+              "name": "MasksEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "percentageMatched",
+              "label": "LABEL_REPEATED",
+              "name": "percentage_matched",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry"
+            },
+            {
+              "jsonName": "frame",
+              "label": "LABEL_OPTIONAL",
+              "name": "frame",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "AnalyzeHSVResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_FLOAT"
+                }
+              ],
+              "name": "PercentageMatchedEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/camera_service.proto",
@@ -39853,6 +39989,12 @@
               "name": "GetAveragePixel",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.GetAveragePixelResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.AnalyzeHSVRequest",
+              "name": "AnalyzeImageHSV",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.AnalyzeHSVResponse"
             }
           ],
           "name": "CameraService"
