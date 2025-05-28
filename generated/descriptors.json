@@ -33195,6 +33195,25 @@
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "OperatingSystem",
+              "value": [
+                {
+                  "name": "UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "CHROMEOS",
+                  "number": 1
+                },
+                {
+                  "name": "ANDROID",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "firmwareConfig",
@@ -33203,6 +33222,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "os",
+              "label": "LABEL_OPTIONAL",
+              "name": "os",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem"
             }
           ],
           "name": "FirmwareProvisionInstallMetadata"
