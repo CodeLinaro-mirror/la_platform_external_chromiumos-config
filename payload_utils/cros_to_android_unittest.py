@@ -295,21 +295,15 @@ class HalEntryHelpersTest(unittest.TestCase):
             "test_suffix"
         )
 
-        cros_to_android._add_video_entry(
-            self.root_element, self.design_config
-        )
+        cros_to_android._add_video_entry(self.root_element, self.design_config)
 
         vc_elem = self.root_element.find("VideoConfiguration")
         self.assertIsNotNone(vc_elem)
-        self.assertEqual(
-            vc_elem.find("video-codec-suffix").text, "test_suffix"
-        )
+        self.assertEqual(vc_elem.find("video-codec-suffix").text, "test_suffix")
 
     def test_add_video_entry_not_present(self):
         """Test video entry when arc_media_codecs_suffix is not present."""
-        cros_to_android._add_video_entry(
-            self.root_element, self.design_config
-        )
+        cros_to_android._add_video_entry(self.root_element, self.design_config)
         self.assertIsNone(self.root_element.find("VideoConfiguration"))
 
 

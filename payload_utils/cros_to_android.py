@@ -294,6 +294,7 @@ def _add_audio_entry(
     etree.SubElement(audio_config_elem, "audio-config-dir").text = model
     etree.SubElement(audio_config_elem, "soundcard").text = soundcard_name
 
+
 def _add_video_entry(
     hal_config: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -318,6 +319,7 @@ def _add_video_entry(
     etree.SubElement(video_config_elem, "video-codec-suffix").text = (
         soc_features.arc_media_codecs_suffix
     )
+
 
 def _add_hal_config_entry(
     root_element: etree._Element,
