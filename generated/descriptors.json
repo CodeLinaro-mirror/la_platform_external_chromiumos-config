@@ -31791,9 +31791,41 @@
               "name": "idempotency_key",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "userPayload",
+              "label": "LABEL_REPEATED",
+              "name": "user_payload",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry"
             }
           ],
-          "name": "ExtendLeaseRequest"
+          "name": "ExtendLeaseRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "UserPayloadEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [
@@ -32146,9 +32178,41 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.HardwareRequirements"
+            },
+            {
+              "jsonName": "userPayload",
+              "label": "LABEL_REPEATED",
+              "name": "user_payload",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry"
             }
           ],
-          "name": "LeaseDeviceRequest"
+          "name": "LeaseDeviceRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "UserPayloadEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [
@@ -32322,6 +32386,66 @@
             }
           ],
           "name": "ListDevicesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dutId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_id",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListDeviceLeasesRequest",
+          "oneofDecl": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseRecords",
+              "label": "LABEL_REPEATED",
+              "name": "lease_records",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceLeaseRecord"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListDeviceLeasesResponse"
         }
       ],
       "name": "chromiumos/test/api/device_manager_service.proto",
@@ -32367,6 +32491,12 @@
               "name": "ListDevices",
               "options": {},
               "outputType": ".chromiumos.test.api.ListDevicesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ListDeviceLeasesRequest",
+              "name": "ListDeviceLeases",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ListDeviceLeasesResponse"
             }
           ],
           "name": "DeviceLeaseService"
