@@ -20159,6 +20159,13 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.WifiSecret"
+            },
+            {
+              "jsonName": "pools",
+              "label": "LABEL_REPEATED",
+              "name": "pools",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Dut",
@@ -26505,6 +26512,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetUsbInfoRequest"
+            },
+            {
+              "jsonName": "getStressTestInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_stress_test_info_request",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetStressTestInfoRequest"
             }
           ],
           "name": "Request",
@@ -26661,6 +26677,9 @@
           "name": "GetUsbInfoRequest"
         },
         {
+          "name": "GetStressTestInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -26724,6 +26743,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetUsbInfoResponse"
+            },
+            {
+              "jsonName": "getStressTestInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_stress_test_info_response",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetStressTestInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -26969,6 +26997,19 @@
             }
           ],
           "name": "GetUsbInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stressTestInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "stress_test_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "GetStressTestInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
@@ -28467,6 +28508,10 @@
                 {
                   "name": "STATUS_PRE_PROVISION_USB_BOOT_FAILURE",
                   "number": 22
+                },
+                {
+                  "name": "STATUS_DOWNLOADING_FIRMWARE_FAILED",
+                  "number": 23
                 }
               ]
             }
@@ -29765,6 +29810,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.AuthorizationFragment"
+            },
+            {
+              "jsonName": "filterArgsFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter_args_fragment",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FilterArgsFragment"
             }
           ],
           "name": "GenericFilterStreamRequest",
@@ -29934,6 +29988,38 @@
             }
           ],
           "name": "AuthorizationFragment"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FilterArgs"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "FilterArgsFragment"
         }
       ],
       "name": "chromiumos/test/api/ctp2_filters.proto",
@@ -31021,6 +31107,10 @@
                 {
                   "name": "ROFW",
                   "number": 2
+                },
+                {
+                  "name": "ASHCHROME",
+                  "number": 3
                 }
               ]
             }
@@ -36042,6 +36132,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.DutInfo.UsbInfo"
+            },
+            {
+              "jsonName": "stressTestInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "stress_test_info",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo.StressTestInfo"
             }
           ],
           "name": "DutInfo",
@@ -36086,6 +36184,18 @@
                 }
               ],
               "name": "UsbInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "iterations",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "iterations",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "StressTestInfo"
             }
           ]
         },
@@ -40619,6 +40729,30 @@
             {
               "name": "VBUS_SBU2",
               "number": 21
+            },
+            {
+              "name": "DATA_SWAP_POLICY",
+              "number": 22
+            },
+            {
+              "name": "POWER_SWAP_POLICY",
+              "number": 23
+            },
+            {
+              "name": "VCONN_SWAP_POLICY",
+              "number": 24
+            },
+            {
+              "name": "CONSTRAINED_POWER",
+              "number": 25
+            },
+            {
+              "name": "POWER_DELIVERY",
+              "number": 26
+            },
+            {
+              "name": "DISPLAY_PORT_AM",
+              "number": 27
             }
           ]
         },
@@ -41093,6 +41227,54 @@
               "number": 10,
               "oneofIndex": 0,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_policy",
+              "number": 13,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "powerRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_policy",
+              "number": 14,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "vconnSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "vconn_swap_policy",
+              "number": 15,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "constrainedPower",
+              "label": "LABEL_OPTIONAL",
+              "name": "constrained_power",
+              "number": 16,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "powerDelivery",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_delivery",
+              "number": 17,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "displayPortAm",
+              "label": "LABEL_OPTIONAL",
+              "name": "display_port_am",
+              "number": 18,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "GetUsbTesterCapabilityReply",
@@ -41212,6 +41394,54 @@
               "number": 12,
               "oneofIndex": 0,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_policy",
+              "number": 13,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "powerRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_policy",
+              "number": 14,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "vconnSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "vconn_swap_policy",
+              "number": 15,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "constrainedPower",
+              "label": "LABEL_OPTIONAL",
+              "name": "constrained_power",
+              "number": 16,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "powerDelivery",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_delivery",
+              "number": 17,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "displayPortAm",
+              "label": "LABEL_OPTIONAL",
+              "name": "display_port_am",
+              "number": 18,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "SetUsbTesterCapabilityRequest",
@@ -41595,6 +41825,103 @@
               "name": "_error_msg"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "soft",
+              "label": "LABEL_OPTIONAL",
+              "name": "soft",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "ResetPdRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ResetPdReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetPdosRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "srcPdos",
+              "label": "LABEL_REPEATED",
+              "name": "src_pdos",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "snkPdos",
+              "label": "LABEL_REPEATED",
+              "name": "snk_pdos",
+              "number": 4,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetPdosReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
@@ -41630,6 +41957,12 @@
               "outputType": ".chromiumos.test.lab.api.passport.GetDpInfoReply"
             },
             {
+              "inputType": ".chromiumos.test.lab.api.passport.GetPdosRequest",
+              "name": "GetPdos",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetPdosReply"
+            },
+            {
               "inputType": ".chromiumos.test.lab.api.passport.DoCableReplugRequest",
               "name": "ReplugCable",
               "options": {},
@@ -41640,6 +41973,12 @@
               "name": "HardResetTester",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.HardResetTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ResetPdRequest",
+              "name": "ResetPd",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ResetPdReply"
             },
             {
               "inputType": ".chromiumos.test.lab.api.passport.OpenTesterRequest",
@@ -41705,6 +42044,157 @@
             {
               "name": "ROLE_USBCSOURCE_DPSINK",
               "number": 4
+            }
+          ]
+        },
+        {
+          "name": "StreamInfoColorFormat",
+          "value": [
+            {
+              "name": "STREAM_INFO_CF_NONE",
+              "number": 0
+            },
+            {
+              "name": "STREAM_INFO_CF_UNKNOWN",
+              "number": 1
+            },
+            {
+              "name": "STREAM_INFO_CF_RGB",
+              "number": 2
+            },
+            {
+              "name": "STREAM_INFO_CF_YCBCR_422",
+              "number": 3
+            },
+            {
+              "name": "STREAM_INFO_CF_YCBCR_444",
+              "number": 4
+            },
+            {
+              "name": "STREAM_INFO_CF_YCBCR_420",
+              "number": 5
+            },
+            {
+              "name": "STREAM_INFO_CF_IDO_DEFINED",
+              "number": 6
+            },
+            {
+              "name": "STREAM_INFO_CF_Y_ONLY",
+              "number": 7
+            },
+            {
+              "name": "STREAM_INFO_CF_RAW",
+              "number": 8
+            },
+            {
+              "name": "STREAM_INFO_CF_DSC",
+              "number": 9
+            }
+          ]
+        },
+        {
+          "name": "StreamInfoDynamicRange",
+          "value": [
+            {
+              "name": "STREAM_INFO_DR_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "STREAM_INFO_DR_VESA",
+              "number": 1
+            },
+            {
+              "name": "STREAM_INFO_DR_CTA",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "StreamInfoColorimetry",
+          "value": [
+            {
+              "name": "STREAM_INFO_CM_NONE",
+              "number": 0
+            },
+            {
+              "name": "STREAM_INFO_CM_RESERVED",
+              "number": 1
+            },
+            {
+              "name": "STREAM_INFO_CM_SRGB",
+              "number": 2
+            },
+            {
+              "name": "STREAM_INFO_CM_SMPTE_170M",
+              "number": 3
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT601",
+              "number": 4
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT709",
+              "number": 5
+            },
+            {
+              "name": "STREAM_INFO_CM_XVYCC601",
+              "number": 6
+            },
+            {
+              "name": "STREAM_INFO_CM_XVYCC709",
+              "number": 7
+            },
+            {
+              "name": "STREAM_INFO_CM_SYCC601",
+              "number": 8
+            },
+            {
+              "name": "STREAM_INFO_CM_ADOBEYCC601",
+              "number": 9
+            },
+            {
+              "name": "STREAM_INFO_CM_ADOBERGB",
+              "number": 10
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC",
+              "number": 11
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT2020_YCBCR",
+              "number": 12
+            },
+            {
+              "name": "STREAM_INFO_CM_ITUR_BT2020_RGB",
+              "number": 13
+            },
+            {
+              "name": "STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX",
+              "number": 14
+            },
+            {
+              "name": "STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT",
+              "number": 15
+            },
+            {
+              "name": "STREAM_INFO_CM_DCI_P3",
+              "number": 16
+            },
+            {
+              "name": "STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE",
+              "number": 17
+            },
+            {
+              "name": "STREAM_INFO_CM_CUSTOM_COLOR_PROFILE",
+              "number": 18
+            },
+            {
+              "name": "STREAM_INFO_CM_OPYCC601",
+              "number": 19
+            },
+            {
+              "name": "STREAM_INFO_CM_OPRGB",
+              "number": 20
             }
           ]
         },
@@ -42052,6 +42542,52 @@
               "oneofIndex": 8,
               "proto3Optional": true,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "bpp",
+              "label": "LABEL_OPTIONAL",
+              "name": "bpp",
+              "number": 10,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "colorFormat",
+              "label": "LABEL_OPTIONAL",
+              "name": "color_format",
+              "number": 11,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoColorFormat"
+            },
+            {
+              "jsonName": "colormetry",
+              "label": "LABEL_OPTIONAL",
+              "name": "colormetry",
+              "number": 12,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoColorimetry"
+            },
+            {
+              "jsonName": "dynamicRange",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_range",
+              "number": 13,
+              "oneofIndex": 12,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoDynamicRange"
+            },
+            {
+              "jsonName": "crc",
+              "label": "LABEL_REPEATED",
+              "name": "crc",
+              "number": 14,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "StreamInfoVideoTester",
@@ -42082,6 +42618,18 @@
             },
             {
               "name": "_vswidth"
+            },
+            {
+              "name": "_bpp"
+            },
+            {
+              "name": "_color_format"
+            },
+            {
+              "name": "_colormetry"
+            },
+            {
+              "name": "_dynamic_range"
             }
           ]
         },
@@ -42157,9 +42705,9 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "scamblerSeed",
+              "jsonName": "scramblerSeed",
               "label": "LABEL_OPTIONAL",
-              "name": "scambler_seed",
+              "name": "scrambler_seed",
               "number": 4,
               "oneofIndex": 2,
               "proto3Optional": true,
@@ -42184,7 +42732,7 @@
               "name": "_mst_sink_count"
             },
             {
-              "name": "_scambler_seed"
+              "name": "_scrambler_seed"
             },
             {
               "name": "_max_lane"
@@ -42227,9 +42775,9 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "scamblerSeed",
+              "jsonName": "scramblerSeed",
               "label": "LABEL_OPTIONAL",
-              "name": "scambler_seed",
+              "name": "scrambler_seed",
               "number": 3,
               "oneofIndex": 2,
               "proto3Optional": true,
@@ -42254,7 +42802,7 @@
               "name": "_mst_sink_count"
             },
             {
-              "name": "_scambler_seed"
+              "name": "_scrambler_seed"
             },
             {
               "name": "_max_lane"
