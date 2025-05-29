@@ -46,7 +46,7 @@ type VideoTesterServiceClient interface {
 	AttachVideoTester(ctx context.Context, in *AttachVideoTesterRequest, opts ...grpc.CallOption) (*AttachVideoTesterResponse, error)
 	// Sends an HPD (Hot Plug Detect) pulse to a video tester.
 	HpdPulseVideoTester(ctx context.Context, in *HpdPulseVideoTesterRequest, opts ...grpc.CallOption) (*HpdPulseVideoTesterResponse, error)
-	// Runs compliance test(s).
+	// Runs compliance test(s) on a video tester.
 	RunComplianceTest(ctx context.Context, in *RunComplianceTestRequest, opts ...grpc.CallOption) (*RunComplianceTestResponse, error)
 }
 
@@ -203,7 +203,7 @@ type VideoTesterServiceServer interface {
 	AttachVideoTester(context.Context, *AttachVideoTesterRequest) (*AttachVideoTesterResponse, error)
 	// Sends an HPD (Hot Plug Detect) pulse to a video tester.
 	HpdPulseVideoTester(context.Context, *HpdPulseVideoTesterRequest) (*HpdPulseVideoTesterResponse, error)
-	// Runs compliance test(s).
+	// Runs compliance test(s) on a video tester.
 	RunComplianceTest(context.Context, *RunComplianceTestRequest) (*RunComplianceTestResponse, error)
 }
 

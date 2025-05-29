@@ -113,6 +113,8 @@ message InstallResponse {
     STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 21;
     // status code: ABORTED
     STATUS_PRE_PROVISION_USB_BOOT_FAILURE = 22;
+    // A firmware artifact could not be downloaded.
+    STATUS_DOWNLOADING_FIRMWARE_FAILED = 23;
   }
   Status status = 1;
 
