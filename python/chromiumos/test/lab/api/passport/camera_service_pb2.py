@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n5chromiumos/test/lab/api/passport/camera_service.proto\x12 chromiumos.test.lab.api.passport\"\x13\n\x11GetCamerasRequest\"\"\n\x06\x43\x61mera\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"O\n\x12GetCamerasResponse\x12\x39\n\x07\x63\x61meras\x18\x01 \x03(\x0b\x32(.chromiumos.test.lab.api.passport.Camera\"+\n\x16GetAveragePixelRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\"3\n\x05Pixel\x12\t\n\x01r\x18\x01 \x01(\x05\x12\t\n\x01g\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05\x12\t\n\x01\x61\x18\x04 \x01(\x05\"`\n\x17GetAveragePixelResponse\x12\x36\n\x05pixel\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.passport.Pixel\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\x32\x95\x02\n\rCameraService\x12y\n\nGetCameras\x12\x33.chromiumos.test.lab.api.passport.GetCamerasRequest\x1a\x34.chromiumos.test.lab.api.passport.GetCamerasResponse\"\x00\x12\x88\x01\n\x0fGetAveragePixel\x12\x38.chromiumos.test.lab.api.passport.GetAveragePixelRequest\x1a\x39.chromiumos.test.lab.api.passport.GetAveragePixelResponse\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n5chromiumos/test/lab/api/passport/camera_service.proto\x12 chromiumos.test.lab.api.passport\"\x13\n\x11GetCamerasRequest\"\"\n\x06\x43\x61mera\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"O\n\x12GetCamerasResponse\x12\x39\n\x07\x63\x61meras\x18\x01 \x03(\x0b\x32(.chromiumos.test.lab.api.passport.Camera\"+\n\x16GetAveragePixelRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\"3\n\x05Pixel\x12\t\n\x01r\x18\x01 \x01(\x05\x12\t\n\x01g\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05\x12\t\n\x01\x61\x18\x04 \x01(\x05\"`\n\x17GetAveragePixelResponse\x12\x36\n\x05pixel\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.passport.Pixel\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\"5\n\x03HSV\x12\x0b\n\x03hue\x18\x01 \x01(\x02\x12\x12\n\nsaturation\x18\x02 \x01(\x02\x12\r\n\x05value\x18\x03 \x01(\x02\"q\n\x07HSVMask\x12\x32\n\x03min\x18\x01 \x01(\x0b\x32%.chromiumos.test.lab.api.passport.HSV\x12\x32\n\x03max\x18\x02 \x01(\x0b\x32%.chromiumos.test.lab.api.passport.HSV\"\xce\x01\n\x11\x41nalyzeHSVRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12M\n\x05masks\x18\x02 \x03(\x0b\x32>.chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry\x1aW\n\nMasksEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32).chromiumos.test.lab.api.passport.HSVMask:\x02\x38\x01\"\xc6\x01\n\x12\x41nalyzeHSVResponse\x12g\n\x12percentage_matched\x18\x01 \x03(\x0b\x32K.chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\x1a\x38\n\x16PercentageMatchedEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\x32\x95\x03\n\rCameraService\x12y\n\nGetCameras\x12\x33.chromiumos.test.lab.api.passport.GetCamerasRequest\x1a\x34.chromiumos.test.lab.api.passport.GetCamerasResponse\"\x00\x12\x88\x01\n\x0fGetAveragePixel\x12\x38.chromiumos.test.lab.api.passport.GetAveragePixelRequest\x1a\x39.chromiumos.test.lab.api.passport.GetAveragePixelResponse\"\x00\x12~\n\x0f\x41nalyzeImageHSV\x12\x33.chromiumos.test.lab.api.passport.AnalyzeHSVRequest\x1a\x34.chromiumos.test.lab.api.passport.AnalyzeHSVResponse\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
 )
 
 
@@ -244,14 +244,264 @@ _GETAVERAGEPIXELRESPONSE = _descriptor.Descriptor(
   serialized_end=423,
 )
 
+
+_HSV = _descriptor.Descriptor(
+  name='HSV',
+  full_name='chromiumos.test.lab.api.passport.HSV',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='hue', full_name='chromiumos.test.lab.api.passport.HSV.hue', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='saturation', full_name='chromiumos.test.lab.api.passport.HSV.saturation', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.lab.api.passport.HSV.value', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=425,
+  serialized_end=478,
+)
+
+
+_HSVMASK = _descriptor.Descriptor(
+  name='HSVMask',
+  full_name='chromiumos.test.lab.api.passport.HSVMask',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='min', full_name='chromiumos.test.lab.api.passport.HSVMask.min', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='max', full_name='chromiumos.test.lab.api.passport.HSVMask.max', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=480,
+  serialized_end=593,
+)
+
+
+_ANALYZEHSVREQUEST_MASKSENTRY = _descriptor.Descriptor(
+  name='MasksEntry',
+  full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=715,
+  serialized_end=802,
+)
+
+_ANALYZEHSVREQUEST = _descriptor.Descriptor(
+  name='AnalyzeHSVRequest',
+  full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_id', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest.device_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='masks', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest.masks', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_ANALYZEHSVREQUEST_MASKSENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=596,
+  serialized_end=802,
+)
+
+
+_ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY = _descriptor.Descriptor(
+  name='PercentageMatchedEntry',
+  full_name='chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry.value', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=947,
+  serialized_end=1003,
+)
+
+_ANALYZEHSVRESPONSE = _descriptor.Descriptor(
+  name='AnalyzeHSVResponse',
+  full_name='chromiumos.test.lab.api.passport.AnalyzeHSVResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='percentage_matched', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVResponse.percentage_matched', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='frame', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVResponse.frame', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=805,
+  serialized_end=1003,
+)
+
 _GETCAMERASRESPONSE.fields_by_name['cameras'].message_type = _CAMERA
 _GETAVERAGEPIXELRESPONSE.fields_by_name['pixel'].message_type = _PIXEL
+_HSVMASK.fields_by_name['min'].message_type = _HSV
+_HSVMASK.fields_by_name['max'].message_type = _HSV
+_ANALYZEHSVREQUEST_MASKSENTRY.fields_by_name['value'].message_type = _HSVMASK
+_ANALYZEHSVREQUEST_MASKSENTRY.containing_type = _ANALYZEHSVREQUEST
+_ANALYZEHSVREQUEST.fields_by_name['masks'].message_type = _ANALYZEHSVREQUEST_MASKSENTRY
+_ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY.containing_type = _ANALYZEHSVRESPONSE
+_ANALYZEHSVRESPONSE.fields_by_name['percentage_matched'].message_type = _ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY
 DESCRIPTOR.message_types_by_name['GetCamerasRequest'] = _GETCAMERASREQUEST
 DESCRIPTOR.message_types_by_name['Camera'] = _CAMERA
 DESCRIPTOR.message_types_by_name['GetCamerasResponse'] = _GETCAMERASRESPONSE
 DESCRIPTOR.message_types_by_name['GetAveragePixelRequest'] = _GETAVERAGEPIXELREQUEST
 DESCRIPTOR.message_types_by_name['Pixel'] = _PIXEL
 DESCRIPTOR.message_types_by_name['GetAveragePixelResponse'] = _GETAVERAGEPIXELRESPONSE
+DESCRIPTOR.message_types_by_name['HSV'] = _HSV
+DESCRIPTOR.message_types_by_name['HSVMask'] = _HSVMASK
+DESCRIPTOR.message_types_by_name['AnalyzeHSVRequest'] = _ANALYZEHSVREQUEST
+DESCRIPTOR.message_types_by_name['AnalyzeHSVResponse'] = _ANALYZEHSVRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GetCamerasRequest = _reflection.GeneratedProtocolMessageType('GetCamerasRequest', (_message.Message,), {
@@ -296,8 +546,54 @@ GetAveragePixelResponse = _reflection.GeneratedProtocolMessageType('GetAveragePi
   })
 _sym_db.RegisterMessage(GetAveragePixelResponse)
 
+HSV = _reflection.GeneratedProtocolMessageType('HSV', (_message.Message,), {
+  'DESCRIPTOR' : _HSV,
+  '__module__' : 'chromiumos.test.lab.api.passport.camera_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.HSV)
+  })
+_sym_db.RegisterMessage(HSV)
+
+HSVMask = _reflection.GeneratedProtocolMessageType('HSVMask', (_message.Message,), {
+  'DESCRIPTOR' : _HSVMASK,
+  '__module__' : 'chromiumos.test.lab.api.passport.camera_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.HSVMask)
+  })
+_sym_db.RegisterMessage(HSVMask)
+
+AnalyzeHSVRequest = _reflection.GeneratedProtocolMessageType('AnalyzeHSVRequest', (_message.Message,), {
+
+  'MasksEntry' : _reflection.GeneratedProtocolMessageType('MasksEntry', (_message.Message,), {
+    'DESCRIPTOR' : _ANALYZEHSVREQUEST_MASKSENTRY,
+    '__module__' : 'chromiumos.test.lab.api.passport.camera_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry)
+    })
+  ,
+  'DESCRIPTOR' : _ANALYZEHSVREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.camera_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.AnalyzeHSVRequest)
+  })
+_sym_db.RegisterMessage(AnalyzeHSVRequest)
+_sym_db.RegisterMessage(AnalyzeHSVRequest.MasksEntry)
+
+AnalyzeHSVResponse = _reflection.GeneratedProtocolMessageType('AnalyzeHSVResponse', (_message.Message,), {
+
+  'PercentageMatchedEntry' : _reflection.GeneratedProtocolMessageType('PercentageMatchedEntry', (_message.Message,), {
+    'DESCRIPTOR' : _ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY,
+    '__module__' : 'chromiumos.test.lab.api.passport.camera_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry)
+    })
+  ,
+  'DESCRIPTOR' : _ANALYZEHSVRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.passport.camera_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.AnalyzeHSVResponse)
+  })
+_sym_db.RegisterMessage(AnalyzeHSVResponse)
+_sym_db.RegisterMessage(AnalyzeHSVResponse.PercentageMatchedEntry)
+
 
 DESCRIPTOR._options = None
+_ANALYZEHSVREQUEST_MASKSENTRY._options = None
+_ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY._options = None
 
 _CAMERASERVICE = _descriptor.ServiceDescriptor(
   name='CameraService',
@@ -306,8 +602,8 @@ _CAMERASERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=426,
-  serialized_end=703,
+  serialized_start=1006,
+  serialized_end=1411,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetCameras',
@@ -326,6 +622,16 @@ _CAMERASERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETAVERAGEPIXELREQUEST,
     output_type=_GETAVERAGEPIXELRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AnalyzeImageHSV',
+    full_name='chromiumos.test.lab.api.passport.CameraService.AnalyzeImageHSV',
+    index=2,
+    containing_service=None,
+    input_type=_ANALYZEHSVREQUEST,
+    output_type=_ANALYZEHSVRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
