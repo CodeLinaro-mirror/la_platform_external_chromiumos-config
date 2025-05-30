@@ -9,12 +9,12 @@ third_party {
   last_upgrade_date {
     year: 2025
     month: 5
-    day: 16
+    day: 23
   }
   identifier {
     type: "Git"
     value: "https://chromium.googlesource.com/chromiumos/config/"
-    version: "6c4a9bce932da4b4e3d89c7a1bf7f06e00eb2967"
+    version: "b86d6fee1326d35a1fd72d153f466b00cf8d0817"
     primary_source: true
   }
 }

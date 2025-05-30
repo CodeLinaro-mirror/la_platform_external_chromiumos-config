@@ -82,6 +82,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="VideoConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="video-codec-suffix" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Suffix to media codec configuration files.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -89,6 +99,7 @@
       <xs:element name="FingerprintConfiguration" type="FingerprintConfigurationType" minOccurs="0"/>
       <xs:element name="FirmwareConfiguration" type="FirmwareConfigurationType" minOccurs="0"/>
       <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
+      <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
