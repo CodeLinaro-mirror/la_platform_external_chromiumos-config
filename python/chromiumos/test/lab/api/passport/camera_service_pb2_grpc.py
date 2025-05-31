@@ -28,6 +28,11 @@ class CameraServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.GetAveragePixelRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.GetAveragePixelResponse.FromString,
                 )
+        self.AnalyzeImageHSV = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.CameraService/AnalyzeImageHSV',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVResponse.FromString,
+                )
 
 
 class CameraServiceServicer(object):
@@ -52,6 +57,14 @@ class CameraServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AnalyzeImageHSV(self, request, context):
+        """Analyzes an image and returns the percentage of pixels that fall within
+        the specified HSV masks.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CameraServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -64,6 +77,11 @@ def add_CameraServiceServicer_to_server(servicer, server):
                     servicer.GetAveragePixel,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.GetAveragePixelRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.GetAveragePixelResponse.SerializeToString,
+            ),
+            'AnalyzeImageHSV': grpc.unary_unary_rpc_method_handler(
+                    servicer.AnalyzeImageHSV,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -110,5 +128,22 @@ class CameraService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.CameraService/GetAveragePixel',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.GetAveragePixelRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.GetAveragePixelResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AnalyzeImageHSV(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.CameraService/AnalyzeImageHSV',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
