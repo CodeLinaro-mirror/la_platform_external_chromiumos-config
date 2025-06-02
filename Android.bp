@@ -13,7 +13,10 @@
 // limitations under the License.
 
 package {
-    default_applicable_licenses: ["external_chromiumos-config_license"],
+    default_applicable_licenses: [
+        "external_chromiumos-config_license",
+        "Android-Apache-2.0",
+    ],
 }
 
 license {
@@ -24,5 +27,75 @@ license {
     ],
     license_text: [
         "LICENSE",
+    ],
+}
+
+// Common tools for Protobuf and gRPC generation
+PROTO_TOOLS = [
+    "aprotoc",
+    "protoc-gen-grpc-java-plugin",
+    "soong_zip",
+]
+
+SERVO_PROTO_CMD = "mkdir -p $(genDir)/gen && " +
+    "$(location aprotoc) --java_opt=annotate_code=false " +
+    "--plugin=protoc-gen-grpc-java=$(location protoc-gen-grpc-java-plugin) " +
+    "--grpc-java_out=lite:$(genDir)/gen " +
+    "--java_out=lite:$(genDir)/gen " +
+    "-I external/chromiumos-config/proto " +
+    "$(in) && " +
+    "$(location soong_zip) -o $(out) -C $(genDir)/gen -D $(genDir)/gen"
+
+genrule {
+    name: "chromiumos-config-grpc-gen",
+    tools: [
+        "aprotoc",
+        "protoc-gen-grpc-java-plugin",
+        "soong_zip",
+    ],
+    cmd: SERVO_PROTO_CMD,
+    srcs: [
+        "proto/chromiumos/test/api/bols/bols_service.proto",
+        "proto/chromiumos/test/api/lsnexus/lsnexus_service.proto",
+    ],
+    out: [
+        "chromiumos_config_protos.srcjar",
+    ],
+}
+
+java_library {
+    name: "chromiumos-config-protos-java",
+    proto: {
+        type: "lite",
+        include_dirs: [
+            "external/chromiumos-config/proto",
+            "external/protobuf/src",
+        ],
+    },
+    srcs: [
+        ":chromiumos-config-grpc-gen",
+    ],
+    libs: ["javax_annotation-api_1.3.2"],
+    static_libs: [
+        "libprotobuf-java-lite",
+        "grpc-java-protobuf-lite",
+        "grpc-java-core-android",
+        "grpc-java-stub",
+        "grpc-java-context",
+        "grpc-java-core",
+        "grpc-java-core-internal",
+        "grpc-java-core-util",
+        "grpc-java-okhttp",
+        "guava",
+    ],
+
+}
+
+java_library {
+    name: "chromiumos-config-java-lib",
+    static_libs: ["chromiumos-config-protos-java"],
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
     ],
 }
