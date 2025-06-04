@@ -12,7 +12,6 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
-from chromiumos.test.api import test_case_metadata_pb2 as chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n)chromiumos/test/api/logging_service.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a,chromiumos/test/api/test_case_metadata.proto\"=\n\x13StartLoggingRequest\x12&\n\x08metadata\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\"\xd7\x01\n\x14StartLoggingResponse\x12@\n\x06status\x18\x01 \x01(\x0e\x32\x30.chromiumos.test.api.StartLoggingResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0f\n\x07message\x18\x03 \x01(\t\"D\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x12\n\x0eSTATUS_FAILURE\x10\x02\"<\n\x12StopLoggingRequest\x12&\n\x08metadata\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\"\xd5\x01\n\x13StopLoggingResponse\x12?\n\x06status\x18\x01 \x01(\x0e\x32/.chromiumos.test.api.StopLoggingResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0f\n\x07message\x18\x03 \x01(\t\"D\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x12\n\x0eSTATUS_FAILURE\x10\x02\x32\xc9\x01\n\x0eLoggingService\x12\\\n\x05Start\x12(.chromiumos.test.api.StartLoggingRequest\x1a).chromiumos.test.api.StartLoggingResponse\x12Y\n\x04Stop\x12\'.chromiumos.test.api.StopLoggingRequest\x1a(.chromiumos.test.api.StopLoggingResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n)chromiumos/test/api/logging_service.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\"=\n\x13StartLoggingRequest\x12&\n\x08metadata\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\"\xd7\x01\n\x14StartLoggingResponse\x12@\n\x06status\x18\x01 \x01(\x0e\x32\x30.chromiumos.test.api.StartLoggingResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0f\n\x07message\x18\x03 \x01(\t\"D\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x12\n\x0eSTATUS_FAILURE\x10\x02\"<\n\x12StopLoggingRequest\x12&\n\x08metadata\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\"\xd5\x01\n\x13StopLoggingResponse\x12?\n\x06status\x18\x01 \x01(\x0e\x32/.chromiumos.test.api.StopLoggingResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0f\n\x07message\x18\x03 \x01(\t\"D\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x12\n\x0eSTATUS_FAILURE\x10\x02\x32\xc9\x01\n\x0eLoggingService\x12\\\n\x05Start\x12(.chromiumos.test.api.StartLoggingRequest\x1a).chromiumos.test.api.StartLoggingResponse\x12Y\n\x04Stop\x12\'.chromiumos.test.api.StopLoggingRequest\x1a(.chromiumos.test.api.StopLoggingResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
 
 
@@ -52,8 +51,8 @@ _STARTLOGGINGRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=350,
-  serialized_end=418,
+  serialized_start=304,
+  serialized_end=372,
 )
 _sym_db.RegisterEnumDescriptor(_STARTLOGGINGRESPONSE_STATUS)
 
@@ -82,8 +81,8 @@ _STOPLOGGINGRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=350,
-  serialized_end=418,
+  serialized_start=304,
+  serialized_end=372,
 )
 _sym_db.RegisterEnumDescriptor(_STOPLOGGINGRESPONSE_STATUS)
 
@@ -115,8 +114,8 @@ _STARTLOGGINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=139,
-  serialized_end=200,
+  serialized_start=93,
+  serialized_end=154,
 )
 
 
@@ -162,8 +161,8 @@ _STARTLOGGINGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=203,
-  serialized_end=418,
+  serialized_start=157,
+  serialized_end=372,
 )
 
 
@@ -194,8 +193,8 @@ _STOPLOGGINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=420,
-  serialized_end=480,
+  serialized_start=374,
+  serialized_end=434,
 )
 
 
@@ -241,8 +240,8 @@ _STOPLOGGINGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=483,
-  serialized_end=696,
+  serialized_start=437,
+  serialized_end=650,
 )
 
 _STARTLOGGINGREQUEST.fields_by_name['metadata'].message_type = google_dot_protobuf_dot_any__pb2._ANY
@@ -297,8 +296,8 @@ _LOGGINGSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=699,
-  serialized_end=900,
+  serialized_start=653,
+  serialized_end=854,
   methods=[
   _descriptor.MethodDescriptor(
     name='Start',

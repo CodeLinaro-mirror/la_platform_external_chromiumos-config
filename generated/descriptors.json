@@ -33906,14 +33906,10 @@
     {
       "bufExtension": {
         "isImport": false,
-        "isSyntaxUnspecified": false,
-        "unusedDependency": [
-          1
-        ]
+        "isSyntaxUnspecified": false
       },
       "dependency": [
-        "google/protobuf/any.proto",
-        "chromiumos/test/api/test_case_metadata.proto"
+        "google/protobuf/any.proto"
       ],
       "messageType": [
         {

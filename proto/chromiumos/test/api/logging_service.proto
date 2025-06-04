@@ -9,7 +9,6 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "google/protobuf/any.proto";
-import "chromiumos/test/api/test_case_metadata.proto";
 
 service LoggingService {
   rpc Start(StartLoggingRequest) returns (StartLoggingResponse);
