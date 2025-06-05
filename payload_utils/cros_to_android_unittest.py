@@ -431,6 +431,73 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             ]
         )
 
+    def test_generate_camera_any_feature(self):
+        """Test camera.any feature presence."""
+        self.config.hardware_features.camera.devices.add()
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(["android.hardware.camera.any"])
+
+    def test_generate_camera_rear_feature(self):
+        """Test rear camera feature presence."""
+        cam_dev = self.config.hardware_features.camera.devices.add()
+        cam_dev.facing = topology_pb2.HardwareFeatures.Camera.FACING_BACK
+        cam_dev.detachable = False
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(
+            ["android.hardware.camera.any", "android.hardware.camera"]
+        )
+
+    def test_generate_camera_front_feature(self):
+        """Test front camera feature presence."""
+        cam_dev = self.config.hardware_features.camera.devices.add()
+        cam_dev.facing = topology_pb2.HardwareFeatures.Camera.FACING_FRONT
+        cam_dev.detachable = False
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(
+            ["android.hardware.camera.any", "android.hardware.camera.front"]
+        )
+
+    def test_generate_camera_autofocus_feature(self):
+        """Test camera autofocus feature presence."""
+        cam_dev = self.config.hardware_features.camera.devices.add()
+        cam_dev.facing = topology_pb2.HardwareFeatures.Camera.FACING_BACK
+        cam_dev.detachable = False
+        cam_dev.flags = (
+            topology_pb2.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(
+            [
+                "android.hardware.camera.any",
+                "android.hardware.camera",
+                "android.hardware.camera.autofocus",
+            ]
+        )
+
+    def test_generate_camera_all_features(self):
+        """Test all camera features present."""
+        # Front camera
+        front_cam = self.config.hardware_features.camera.devices.add()
+        front_cam.facing = topology_pb2.HardwareFeatures.Camera.FACING_FRONT
+        front_cam.detachable = False
+        # Back camera with autofocus
+        back_cam = self.config.hardware_features.camera.devices.add()
+        back_cam.facing = topology_pb2.HardwareFeatures.Camera.FACING_BACK
+        back_cam.detachable = False
+        back_cam.flags = (
+            topology_pb2.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS
+        )
+
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(
+            [
+                "android.hardware.camera.any",
+                "android.hardware.camera",
+                "android.hardware.camera.front",
+                "android.hardware.camera.autofocus",
+            ]
+        )
+
 
 if __name__ == "__main__":
     unittest.main(module=__name__)
