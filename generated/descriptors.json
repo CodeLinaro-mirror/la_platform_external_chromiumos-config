@@ -34976,6 +34976,14 @@
               "number": 12,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.GscInfo"
+            },
+            {
+              "jsonName": "stressTestInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "stress_test_info",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.StressTestInfo"
             }
           ],
           "name": "TestCaseInfo"
@@ -35639,6 +35647,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "stress_test_info",
               "number": 6,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.DutInfo.StressTestInfo"
             }
@@ -35693,10 +35704,16 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "iterations",
                   "number": 1,
+                  "options": {
+                    "deprecated": true
+                  },
                   "type": "TYPE_UINT32"
                 }
               ],
-              "name": "StressTestInfo"
+              "name": "StressTestInfo",
+              "options": {
+                "deprecated": true
+              }
             }
           ]
         },
@@ -36310,6 +36327,18 @@
             }
           ],
           "name": "GscInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "iterations",
+              "label": "LABEL_OPTIONAL",
+              "name": "iterations",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "StressTestInfo"
         }
       ],
       "name": "chromiumos/test/artifact/test_result.proto",
