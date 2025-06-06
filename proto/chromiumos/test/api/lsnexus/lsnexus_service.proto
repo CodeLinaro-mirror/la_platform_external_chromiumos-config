@@ -7,6 +7,7 @@ syntax = "proto3";
 package chromiumos.test.api.lsnexus;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/lsnexus";
+option java_outer_classname = "LsnexusServiceOuterClass";
 
 import "chromiumos/test/api/bols/bols_service.proto";
 
@@ -41,14 +42,6 @@ service LSNexusService {
 
   // Echo calls the Servo echo method.
   rpc Echo(EchoRequest) returns (EchoResponse) {}
-
-  // DownloadSystemLogs downloads system logs of the labstation or container
-  // to LSNexus' directory
-  // Logs include:
-  //     /var/log/message from the labstation or container if exists.
-  //     The output of  "dmesg -H"  from the labstation or container.
-  rpc DownloadSystemLogs(DownloadSystemLogsRequest)
-      returns (DownloadSystemLogsResponse) {}
 
   // DownloadServoLogs will save servod related logs from the labstation or
   // container where servod is running to LSNexus' directory

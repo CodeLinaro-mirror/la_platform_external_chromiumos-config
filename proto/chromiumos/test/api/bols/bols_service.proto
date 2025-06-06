@@ -7,6 +7,7 @@ syntax = "proto3";
 package chromiumos.test.api.bols;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/bols";
+option java_outer_classname = "BolsServiceOuterClass";
 
 // Provides the ability to interact with a labstation/container and
 // its peripherals such as servo and dolos.

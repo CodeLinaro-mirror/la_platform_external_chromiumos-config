@@ -23431,7 +23431,8 @@
       ],
       "name": "chromiumos/test/api/bols/bols_service.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/bols"
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/bols",
+        "javaOuterClassname": "BolsServiceOuterClass"
       },
       "package": "chromiumos.test.api.bols",
       "service": [
@@ -34405,7 +34406,8 @@
       ],
       "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/lsnexus"
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/lsnexus",
+        "javaOuterClassname": "LsnexusServiceOuterClass"
       },
       "package": "chromiumos.test.api.lsnexus",
       "service": [
@@ -34462,12 +34464,6 @@
               "name": "Echo",
               "options": {},
               "outputType": ".chromiumos.test.api.lsnexus.EchoResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.DownloadSystemLogsRequest",
-              "name": "DownloadSystemLogs",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DownloadSystemLogsResponse"
             },
             {
               "inputType": ".chromiumos.test.api.lsnexus.DownloadServoLogsRequest",
