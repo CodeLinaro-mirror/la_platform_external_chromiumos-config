@@ -165,6 +165,7 @@ enum Capability {
   CONSTRAINED_POWER = 25;
   POWER_DELIVERY = 26;
   DISPLAY_PORT_AM = 27;
+  USB_PATH = 28;
 }
 
 enum ActiveCc {
@@ -210,6 +211,12 @@ enum InitPdState {
   PD_DRP = 3;
 }
 
+enum UsbPath {
+  USB_PATH_NOT_SET = 0;
+  USB_PATH_INTERNAL = 1;
+  USB_PATH_EXTERNAL = 2;
+}
+
 // Request to get the value of a capability.
 message GetUsbTesterCapabilityRequest {
   // Id (or serial) of the usb tester for which the request is intended.
@@ -248,6 +255,7 @@ message GetUsbTesterCapabilityReply {
     bool constrained_power = 16;
     bool power_delivery = 17;
     bool display_port_am = 18;
+    UsbPath usb_path = 19;
   }
 }
 
@@ -284,6 +292,7 @@ message SetUsbTesterCapabilityRequest {
     bool constrained_power = 16;
     bool power_delivery = 17;
     bool display_port_am = 18;
+    UsbPath usb_path = 19;
   }
 }
 

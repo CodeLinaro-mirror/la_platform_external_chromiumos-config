@@ -19,6 +19,9 @@ service CameraService {
   // camera.
   rpc GetAveragePixel(GetAveragePixelRequest)
       returns (GetAveragePixelResponse) {}
+  // Analyzes an image and returns the percentage of pixels that fall within
+  // the specified HSV masks.
+  rpc AnalyzeImageHSV (AnalyzeHSVRequest) returns (AnalyzeHSVResponse) {};
 }
 
 message GetCamerasRequest {}
@@ -54,6 +57,61 @@ message Pixel {
 message GetAveragePixelResponse {
   // The average pixel color.
   Pixel pixel = 1;
+  // The frame used to generate the image (.jpeg)
+  bytes frame = 2;
+}
+
+// HSV (Hue, Saturation, Value) is a color model that describes the three
+// components of a color: hue, saturation, and value.
+// Hue is the primary color component, representing the location of the color
+// on the color wheel. Range for hue is 0-360 degrees.
+// Saturation measures how much a color is diluted with white or black.
+// A color with full saturation is a pure color, while desaturated colors have
+// more white or gray mixed in. Range for saturation is 0-1.
+// Value, also known as brightness, represents the color's intensity or how
+// much light it emits. A value of 0 is black, and a value of 1 is the
+// brightest possible color for that specific hue and saturation. Range for
+// value is 0-1.
+message HSV {
+  // Hue is the primary color component, representing the location of the color on the color wheel.
+  // Typical range for hue is 0-360 degrees.
+  float hue = 1;
+  // Saturation measures how much a color is diluted with white or black.
+  // A color with full saturation is a pure color, while desaturated colors have more white or gray mixed in.
+  // Typical range for saturation is 0-1.
+  float saturation = 2;
+  // Value, also known as brightness, represents the color's intensity or how much light it emits.
+  // A value of 0 is black, and a value of 1 is the brightest possible color for that specific hue and saturation.
+  // Typical range for value is 0-1.
+  float value = 3;
+}
+
+// HSVMask is a set of HSV colors to match against, each color is represented
+// by a min and max (inclusive) HSV value.
+message HSVMask {
+  // lower bound (inclusive) of color
+  HSV min = 1;
+  // upper bound (inclusive) of color to match
+  HSV max = 2;
+}
+
+// Request to capture and then analyze an image against a set of HSV masks.
+message AnalyzeHSVRequest {
+  // The unique ID of the camera to query.
+  string device_id = 1;
+
+  // A map of HSV masks to apply to the image, the key is the name of the mask
+  // and it will be used in the response to identify the percentage of pixels
+  // that match the mask.
+  map<string, HSVMask> masks = 2;
+}
+
+// Response containing the analysis results.
+message AnalyzeHSVResponse {
+  // The percentage of pixels that match each of the provided HSV masks.
+  // Represented as a float from 0.0 to 100.0.
+  map<string, float> percentage_matched = 1;
+
   // The frame used to generate the image (.jpeg)
   bytes frame = 2;
 }

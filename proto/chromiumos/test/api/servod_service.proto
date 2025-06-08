@@ -111,6 +111,7 @@ message StartServodRequest {
   string config = 10;
 
   // The --ALLOW-DUAL-V4 parameter value for servod command.
+  // Blank and "1" are the only legal values.
   string allow_dual_v4 = 11;
 }
 

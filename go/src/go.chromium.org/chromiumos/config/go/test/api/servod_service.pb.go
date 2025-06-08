@@ -112,6 +112,7 @@ type StartServodRequest struct {
 	// The --CONFIG parameter value for servod command.
 	Config string `protobuf:"bytes,10,opt,name=config,proto3" json:"config,omitempty"`
 	// The --ALLOW-DUAL-V4 parameter value for servod command.
+	// Blank and "1" are the only legal values.
 	AllowDualV4 string `protobuf:"bytes,11,opt,name=allow_dual_v4,json=allowDualV4,proto3" json:"allow_dual_v4,omitempty"`
 }
 
