@@ -61,11 +61,6 @@ class LSNexusServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoResponse.FromString,
                 )
-        self.DownloadSystemLogs = channel.unary_unary(
-                '/chromiumos.test.api.lsnexus.LSNexusService/DownloadSystemLogs',
-                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadSystemLogsRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadSystemLogsResponse.FromString,
-                )
         self.DownloadServoLogs = channel.unary_unary(
                 '/chromiumos.test.api.lsnexus.LSNexusService/DownloadServoLogs',
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadServoLogsRequest.SerializeToString,
@@ -153,17 +148,6 @@ class LSNexusServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DownloadSystemLogs(self, request, context):
-        """DownloadSystemLogs downloads system logs of the labstation or container
-        to LSNexus' directory
-        Logs include:
-        /var/log/message from the labstation or container if exists.
-        The output of  "dmesg -H"  from the labstation or container.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def DownloadServoLogs(self, request, context):
         """DownloadServoLogs will save servod related logs from the labstation or
         container where servod is running to LSNexus' directory
@@ -240,11 +224,6 @@ def add_LSNexusServiceServicer_to_server(servicer, server):
                     servicer.Echo,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoResponse.SerializeToString,
-            ),
-            'DownloadSystemLogs': grpc.unary_unary_rpc_method_handler(
-                    servicer.DownloadSystemLogs,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadSystemLogsRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadSystemLogsResponse.SerializeToString,
             ),
             'DownloadServoLogs': grpc.unary_unary_rpc_method_handler(
                     servicer.DownloadServoLogs,
@@ -423,23 +402,6 @@ class LSNexusService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/Echo',
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.EchoResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DownloadSystemLogs(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/DownloadSystemLogs',
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadSystemLogsRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.DownloadSystemLogsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

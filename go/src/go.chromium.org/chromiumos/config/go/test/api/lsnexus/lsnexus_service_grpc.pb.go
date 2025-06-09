@@ -42,12 +42,6 @@ type LSNexusServiceClient interface {
 	DMesg(ctx context.Context, in *DMesgRequest, opts ...grpc.CallOption) (LSNexusService_DMesgClient, error)
 	// Echo calls the Servo echo method.
 	Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error)
-	// DownloadSystemLogs downloads system logs of the labstation or container
-	// to LSNexus' directory
-	// Logs include:
-	//     /var/log/message from the labstation or container if exists.
-	//     The output of  "dmesg -H"  from the labstation or container.
-	DownloadSystemLogs(ctx context.Context, in *DownloadSystemLogsRequest, opts ...grpc.CallOption) (*DownloadSystemLogsResponse, error)
 	// DownloadServoLogs will save servod related logs from the labstation or
 	// container where servod is running to LSNexus' directory
 	// Logs include:
@@ -174,15 +168,6 @@ func (c *lSNexusServiceClient) Echo(ctx context.Context, in *EchoRequest, opts .
 	return out, nil
 }
 
-func (c *lSNexusServiceClient) DownloadSystemLogs(ctx context.Context, in *DownloadSystemLogsRequest, opts ...grpc.CallOption) (*DownloadSystemLogsResponse, error) {
-	out := new(DownloadSystemLogsResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DownloadSystemLogs", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *lSNexusServiceClient) DownloadServoLogs(ctx context.Context, in *DownloadServoLogsRequest, opts ...grpc.CallOption) (*DownloadServoLogsResponse, error) {
 	out := new(DownloadServoLogsResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/DownloadServoLogs", in, out, opts...)
@@ -234,12 +219,6 @@ type LSNexusServiceServer interface {
 	DMesg(*DMesgRequest, LSNexusService_DMesgServer) error
 	// Echo calls the Servo echo method.
 	Echo(context.Context, *EchoRequest) (*EchoResponse, error)
-	// DownloadSystemLogs downloads system logs of the labstation or container
-	// to LSNexus' directory
-	// Logs include:
-	//     /var/log/message from the labstation or container if exists.
-	//     The output of  "dmesg -H"  from the labstation or container.
-	DownloadSystemLogs(context.Context, *DownloadSystemLogsRequest) (*DownloadSystemLogsResponse, error)
 	// DownloadServoLogs will save servod related logs from the labstation or
 	// container where servod is running to LSNexus' directory
 	// Logs include:
@@ -284,9 +263,6 @@ func (UnimplementedLSNexusServiceServer) DMesg(*DMesgRequest, LSNexusService_DMe
 }
 func (UnimplementedLSNexusServiceServer) Echo(context.Context, *EchoRequest) (*EchoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Echo not implemented")
-}
-func (UnimplementedLSNexusServiceServer) DownloadSystemLogs(context.Context, *DownloadSystemLogsRequest) (*DownloadSystemLogsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DownloadSystemLogs not implemented")
 }
 func (UnimplementedLSNexusServiceServer) DownloadServoLogs(context.Context, *DownloadServoLogsRequest) (*DownloadServoLogsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DownloadServoLogs not implemented")
@@ -474,24 +450,6 @@ func _LSNexusService_Echo_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LSNexusService_DownloadSystemLogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DownloadSystemLogsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LSNexusServiceServer).DownloadSystemLogs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/DownloadSystemLogs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LSNexusServiceServer).DownloadSystemLogs(ctx, req.(*DownloadSystemLogsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _LSNexusService_DownloadServoLogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DownloadServoLogsRequest)
 	if err := dec(in); err != nil {
@@ -584,10 +542,6 @@ var LSNexusService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Echo",
 			Handler:    _LSNexusService_Echo_Handler,
-		},
-		{
-			MethodName: "DownloadSystemLogs",
-			Handler:    _LSNexusService_DownloadSystemLogs_Handler,
 		},
 		{
 			MethodName: "DownloadServoLogs",

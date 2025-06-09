@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(chromiumos/test/api/device_leasing.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x02\n\x0eVMRequirements\x12\x11\n\tgce_image\x18\x01 \x01(\t\x12\x12\n\ngce_region\x18\x02 \x01(\t\x12\x13\n\x0bgce_project\x18\x03 \x01(\t\x12\x13\n\x0bgce_network\x18\x04 \x01(\t\x12\x12\n\ngce_subnet\x18\x05 \x01(\t\x12#\n\x1bsubnet_mode_network_enabled\x18\x0b \x01(\x08\x12\x18\n\x10gce_machine_type\x18\x06 \x01(\t\x12\x11\n\tgce_scope\x18\x07 \x01(\t\x12\x16\n\x0egce_ip_address\x18\x08 \x01(\t\x12\x15\n\rgce_disk_size\x18\n \x01(\x03\x12\x1c\n\x14gce_min_cpu_platform\x18\x0c \x01(\t\x12)\n\x04type\x18\t \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\"\x84\x02\n\x14HardwareRequirements\x12\\\n\x12schedulable_labels\x18\x01 \x03(\x0b\x32@.chromiumos.test.api.HardwareRequirements.SchedulableLabelsEntry\x1a\x1d\n\x0bLabelValues\x12\x0e\n\x06values\x18\x01 \x03(\t\x1ao\n\x16SchedulableLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x44\n\x05value\x18\x02 \x01(\x0b\x32\x35.chromiumos.test.api.HardwareRequirements.LabelValues:\x02\x38\x01\"s\n\x12\x45xtendLeaseRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x32\n\x0f\x65xtend_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x17\n\x0fidempotency_key\x18\x03 \x01(\t\"\\\n\x13\x45xtendLeaseResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x33\n\x0f\x65xpiration_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp*E\n\x06VMType\x12\x17\n\x13VM_TYPE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bVM_TYPE_DUT\x10\x01\x12\x11\n\rVM_TYPE_DRONE\x10\x02\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n(chromiumos/test/api/device_leasing.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x02\n\x0eVMRequirements\x12\x11\n\tgce_image\x18\x01 \x01(\t\x12\x12\n\ngce_region\x18\x02 \x01(\t\x12\x13\n\x0bgce_project\x18\x03 \x01(\t\x12\x13\n\x0bgce_network\x18\x04 \x01(\t\x12\x12\n\ngce_subnet\x18\x05 \x01(\t\x12#\n\x1bsubnet_mode_network_enabled\x18\x0b \x01(\x08\x12\x18\n\x10gce_machine_type\x18\x06 \x01(\t\x12\x11\n\tgce_scope\x18\x07 \x01(\t\x12\x16\n\x0egce_ip_address\x18\x08 \x01(\t\x12\x15\n\rgce_disk_size\x18\n \x01(\x03\x12\x1c\n\x14gce_min_cpu_platform\x18\x0c \x01(\t\x12)\n\x04type\x18\t \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\"\x84\x02\n\x14HardwareRequirements\x12\\\n\x12schedulable_labels\x18\x01 \x03(\x0b\x32@.chromiumos.test.api.HardwareRequirements.SchedulableLabelsEntry\x1a\x1d\n\x0bLabelValues\x12\x0e\n\x06values\x18\x01 \x03(\t\x1ao\n\x16SchedulableLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x44\n\x05value\x18\x02 \x01(\x0b\x32\x35.chromiumos.test.api.HardwareRequirements.LabelValues:\x02\x38\x01\"\xf7\x01\n\x12\x45xtendLeaseRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x32\n\x0f\x65xtend_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x17\n\x0fidempotency_key\x18\x03 \x01(\t\x12N\n\x0cuser_payload\x18\x04 \x03(\x0b\x32\x38.chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry\x1a\x32\n\x10UserPayloadEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\\\n\x13\x45xtendLeaseResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x33\n\x0f\x65xpiration_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp*E\n\x06VMType\x12\x17\n\x13VM_TYPE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bVM_TYPE_DUT\x10\x01\x12\x11\n\rVM_TYPE_DRONE\x10\x02\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -51,8 +51,8 @@ _VMTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=926,
-  serialized_end=995,
+  serialized_start=1059,
+  serialized_end=1128,
 )
 _sym_db.RegisterEnumDescriptor(_VMTYPE)
 
@@ -273,6 +273,44 @@ _HARDWAREREQUIREMENTS = _descriptor.Descriptor(
 )
 
 
+_EXTENDLEASEREQUEST_USERPAYLOADENTRY = _descriptor.Descriptor(
+  name='UserPayloadEntry',
+  full_name='chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=913,
+  serialized_end=963,
+)
+
 _EXTENDLEASEREQUEST = _descriptor.Descriptor(
   name='ExtendLeaseRequest',
   full_name='chromiumos.test.api.ExtendLeaseRequest',
@@ -302,10 +340,17 @@ _EXTENDLEASEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user_payload', full_name='chromiumos.test.api.ExtendLeaseRequest.user_payload', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_EXTENDLEASEREQUEST_USERPAYLOADENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -314,8 +359,8 @@ _EXTENDLEASEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=715,
-  serialized_end=830,
+  serialized_start=716,
+  serialized_end=963,
 )
 
 
@@ -353,8 +398,8 @@ _EXTENDLEASERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=832,
-  serialized_end=924,
+  serialized_start=965,
+  serialized_end=1057,
 )
 
 _VMREQUIREMENTS.fields_by_name['type'].enum_type = _VMTYPE
@@ -362,7 +407,9 @@ _HARDWAREREQUIREMENTS_LABELVALUES.containing_type = _HARDWAREREQUIREMENTS
 _HARDWAREREQUIREMENTS_SCHEDULABLELABELSENTRY.fields_by_name['value'].message_type = _HARDWAREREQUIREMENTS_LABELVALUES
 _HARDWAREREQUIREMENTS_SCHEDULABLELABELSENTRY.containing_type = _HARDWAREREQUIREMENTS
 _HARDWAREREQUIREMENTS.fields_by_name['schedulable_labels'].message_type = _HARDWAREREQUIREMENTS_SCHEDULABLELABELSENTRY
+_EXTENDLEASEREQUEST_USERPAYLOADENTRY.containing_type = _EXTENDLEASEREQUEST
 _EXTENDLEASEREQUEST.fields_by_name['extend_duration'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
+_EXTENDLEASEREQUEST.fields_by_name['user_payload'].message_type = _EXTENDLEASEREQUEST_USERPAYLOADENTRY
 _EXTENDLEASERESPONSE.fields_by_name['expiration_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 DESCRIPTOR.message_types_by_name['VMRequirements'] = _VMREQUIREMENTS
 DESCRIPTOR.message_types_by_name['HardwareRequirements'] = _HARDWAREREQUIREMENTS
@@ -402,11 +449,19 @@ _sym_db.RegisterMessage(HardwareRequirements.LabelValues)
 _sym_db.RegisterMessage(HardwareRequirements.SchedulableLabelsEntry)
 
 ExtendLeaseRequest = _reflection.GeneratedProtocolMessageType('ExtendLeaseRequest', (_message.Message,), {
+
+  'UserPayloadEntry' : _reflection.GeneratedProtocolMessageType('UserPayloadEntry', (_message.Message,), {
+    'DESCRIPTOR' : _EXTENDLEASEREQUEST_USERPAYLOADENTRY,
+    '__module__' : 'chromiumos.test.api.device_leasing_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry)
+    })
+  ,
   'DESCRIPTOR' : _EXTENDLEASEREQUEST,
   '__module__' : 'chromiumos.test.api.device_leasing_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.ExtendLeaseRequest)
   })
 _sym_db.RegisterMessage(ExtendLeaseRequest)
+_sym_db.RegisterMessage(ExtendLeaseRequest.UserPayloadEntry)
 
 ExtendLeaseResponse = _reflection.GeneratedProtocolMessageType('ExtendLeaseResponse', (_message.Message,), {
   'DESCRIPTOR' : _EXTENDLEASERESPONSE,
@@ -418,4 +473,5 @@ _sym_db.RegisterMessage(ExtendLeaseResponse)
 
 DESCRIPTOR._options = None
 _HARDWAREREQUIREMENTS_SCHEDULABLELABELSENTRY._options = None
+_EXTENDLEASEREQUEST_USERPAYLOADENTRY._options = None
 # @@protoc_insertion_point(module_scope)

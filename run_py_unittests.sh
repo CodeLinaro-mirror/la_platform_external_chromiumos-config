@@ -25,7 +25,7 @@ echo "Checking Python files formatted..."
 files=(
   $(git ls-tree -r HEAD | awk '$1 != "120000" && $NF ~ /\.py$/ {print $NF}')
 )
-if ! ./black --diff "${files[@]}"; then
+if ! ./black --check --diff "${files[@]}"; then
   echo "Python files require reformatting."
   exit 1
 fi

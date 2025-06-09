@@ -363,16 +363,17 @@ type HSV struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Hue is the primary color component, representing the location of the color on the color wheel.
-	// Typical range for hue is 0-360 degrees.
+	// Hue is the primary color component, representing the location of the color
+	// on the color wheel. Typical range for hue is 0-360 degrees.
 	Hue float32 `protobuf:"fixed32,1,opt,name=hue,proto3" json:"hue,omitempty"`
 	// Saturation measures how much a color is diluted with white or black.
-	// A color with full saturation is a pure color, while desaturated colors have more white or gray mixed in.
-	// Typical range for saturation is 0-1.
+	// A color with full saturation is a pure color, while desaturated colors have
+	// more white or gray mixed in. Typical range for saturation is 0-1.
 	Saturation float32 `protobuf:"fixed32,2,opt,name=saturation,proto3" json:"saturation,omitempty"`
-	// Value, also known as brightness, represents the color's intensity or how much light it emits.
-	// A value of 0 is black, and a value of 1 is the brightest possible color for that specific hue and saturation.
-	// Typical range for value is 0-1.
+	// Value, also known as brightness, represents the color's intensity or how
+	// much light it emits. A value of 0 is black, and a value of 1 is the
+	// brightest possible color for that specific hue and saturation. Typical
+	// range for value is 0-1.
 	Value float32 `protobuf:"fixed32,3,opt,name=value,proto3" json:"value,omitempty"`
 }
 

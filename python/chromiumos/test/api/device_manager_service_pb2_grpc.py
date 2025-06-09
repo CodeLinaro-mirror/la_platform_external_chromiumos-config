@@ -45,6 +45,11 @@ class DeviceLeaseServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDevicesRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDevicesResponse.FromString,
                 )
+        self.ListDeviceLeases = channel.unary_unary(
+                '/chromiumos.test.api.DeviceLeaseService/ListDeviceLeases',
+                request_serializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDeviceLeasesRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDeviceLeasesResponse.FromString,
+                )
 
 
 class DeviceLeaseServiceServicer(object):
@@ -94,6 +99,13 @@ class DeviceLeaseServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListDeviceLeases(self, request, context):
+        """List device leases for a given device.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DeviceLeaseServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -126,6 +138,11 @@ def add_DeviceLeaseServiceServicer_to_server(servicer, server):
                     servicer.ListDevices,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDevicesRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDevicesResponse.SerializeToString,
+            ),
+            'ListDeviceLeases': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListDeviceLeases,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDeviceLeasesRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDeviceLeasesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -236,5 +253,22 @@ class DeviceLeaseService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DeviceLeaseService/ListDevices',
             chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDevicesRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDevicesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListDeviceLeases(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DeviceLeaseService/ListDeviceLeases',
+            chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDeviceLeasesRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_device__manager__service__pb2.ListDeviceLeasesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

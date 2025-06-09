@@ -1,11 +1,11 @@
-syntax = "proto3"; // Specifies the protocol buffer language version.
+syntax = "proto3";  // Specifies the protocol buffer language version.
 
-package chromiumos.test.lab.api.passport; // Defines the package name for the generated code.
+package chromiumos.test.lab.api.passport;  // Defines the package name for the generated code.
 
-option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport"; // Specifies the Go package path for the generated code.
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";  // Specifies the Go package path for the generated code.
 /*
-This proto files defines the interface for interacting with video tester devices.
-It allows clients to:
+This proto files defines the interface for interacting with video tester
+devices. It allows clients to:
 
 - Discover available video testers:** Use the GetVideoTesters RPC to retrieve a
   list of connected and usable video tester devices, identified by a unique ID
@@ -52,67 +52,73 @@ It allows clients to:
   - Runs the UCD's built-in compliance tests.
 */
 
-
 // Define the supported roles for the video tester device.
 enum Role {
-  ROLE_UNSPECIFIED = 0; // Default or unspecified role.
-  ROLE_DPSOURCE_USBCSINK = 1; // Video tester acts as a DisplayPort source and a USB-C sink.
-  ROLE_DPSOURCE_DPSINK = 2;   // Video tester acts as a DisplayPort source and a DisplayPort sink.
-  ROLE_USBCSOURCE_USBCSINK = 3; // Video tester acts as a USB-C source and a USB-C sink.
-  ROLE_USBCSOURCE_DPSINK = 4;   // Video tester acts as a USB-C source and a DisplayPort sink.
-  ROLE_HDMISOURCE_HDMISINK = 5; // Video tester acts as a HDMI source and a HDMI sink.
+  ROLE_UNSPECIFIED = 0;  // Default or unspecified role.
+  ROLE_DPSOURCE_USBCSINK =
+      1;  // Video tester acts as a DisplayPort source and a USB-C sink.
+  ROLE_DPSOURCE_DPSINK =
+      2;  // Video tester acts as a DisplayPort source and a DisplayPort sink.
+  ROLE_USBCSOURCE_USBCSINK =
+      3;  // Video tester acts as a USB-C source and a USB-C sink.
+  ROLE_USBCSOURCE_DPSINK =
+      4;  // Video tester acts as a USB-C source and a DisplayPort sink.
+  ROLE_HDMISOURCE_HDMISINK =
+      5;  // Video tester acts as a HDMI source and a HDMI sink.
 }
 
 // Defines possible color formats for a video stream.
 enum StreamInfoColorFormat {
-  STREAM_INFO_CF_NONE = 0;      // No color format specified.
-  STREAM_INFO_CF_UNKNOWN = 1;   // Unknown color format.
-  STREAM_INFO_CF_RGB = 2;       // Red, Green, Blue color format.
-  STREAM_INFO_CF_YCBCR_422 = 3; // YCbCr 4:2:2 chroma subsampling.
-  STREAM_INFO_CF_YCBCR_444 = 4; // YCbCr 4:4:4 (no chroma subsampling).
-  STREAM_INFO_CF_YCBCR_420 = 5; // YCbCr 4:2:0 chroma subsampling.
-  STREAM_INFO_CF_IDO_DEFINED = 6; // Industry Defined Optimization (IDO).
-  STREAM_INFO_CF_Y_ONLY = 7;    // Luminance channel only.
-  STREAM_INFO_CF_RAW = 8;       // Raw data.
-  STREAM_INFO_CF_DSC = 9;       // Display Stream Compression (DSC) format.
+  STREAM_INFO_CF_NONE = 0;         // No color format specified.
+  STREAM_INFO_CF_UNKNOWN = 1;      // Unknown color format.
+  STREAM_INFO_CF_RGB = 2;          // Red, Green, Blue color format.
+  STREAM_INFO_CF_YCBCR_422 = 3;    // YCbCr 4:2:2 chroma subsampling.
+  STREAM_INFO_CF_YCBCR_444 = 4;    // YCbCr 4:4:4 (no chroma subsampling).
+  STREAM_INFO_CF_YCBCR_420 = 5;    // YCbCr 4:2:0 chroma subsampling.
+  STREAM_INFO_CF_IDO_DEFINED = 6;  // Industry Defined Optimization (IDO).
+  STREAM_INFO_CF_Y_ONLY = 7;       // Luminance channel only.
+  STREAM_INFO_CF_RAW = 8;          // Raw data.
+  STREAM_INFO_CF_DSC = 9;          // Display Stream Compression (DSC) format.
 }
 
 // Defines possible dynamic ranges for a video stream.
 enum StreamInfoDynamicRange {
-  STREAM_INFO_DR_UNKNOWN = 0; // Unknown dynamic range.
-  STREAM_INFO_DR_VESA = 1;    // VESA dynamic range.
-  STREAM_INFO_DR_CTA = 2;     // CTA dynamic range.
+  STREAM_INFO_DR_UNKNOWN = 0;  // Unknown dynamic range.
+  STREAM_INFO_DR_VESA = 1;     // VESA dynamic range.
+  STREAM_INFO_DR_CTA = 2;      // CTA dynamic range.
 }
 
 // Defines possible colorimetry values for a video stream.
 enum StreamInfoColorimetry {
-  STREAM_INFO_CM_NONE = 0;                // No colorimetry specified.
-  STREAM_INFO_CM_RESERVED = 1;            // Reserved value.
-  STREAM_INFO_CM_SRGB = 2;                // sRGB color space.
-  STREAM_INFO_CM_SMPTE_170M = 3;          // SMPTE 170M color space.
-  STREAM_INFO_CM_ITUR_BT601 = 4;          // ITU-R BT.601 color space.
-  STREAM_INFO_CM_ITUR_BT709 = 5;          // ITU-R BT.709 color space.
-  STREAM_INFO_CM_XVYCC601 = 6;            // xvYCC 601 color space.
-  STREAM_INFO_CM_XVYCC709 = 7;            // xvYCC 709 color space.
-  STREAM_INFO_CM_SYCC601 = 8;             // sYCC 601 color space.
-  STREAM_INFO_CM_ADOBEYCC601 = 9;         // AdobeYCC 601 color space.
-  STREAM_INFO_CM_ADOBERGB = 10;           // Adobe RGB color space.
-  STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC = 11; // ITU-R BT.2020 YCbCr (constant luminance).
-  STREAM_INFO_CM_ITUR_BT2020_YCBCR = 12;    // ITU-R BT.2020 YCbCr.
-  STREAM_INFO_CM_ITUR_BT2020_RGB = 13;      // ITU-R BT.2020 RGB.
-  STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX = 14;   // RGB Wide Gamut (fixed point).
-  STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT = 15;   // RGB Wide Gamut (floating point).
-  STREAM_INFO_CM_DCI_P3 = 16;             // DCI-P3 color space.
-  STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE = 17; // DICOM Part 14 Grayscale Standard Display Function.
-  STREAM_INFO_CM_CUSTOM_COLOR_PROFILE = 18; // Custom color profile.
-  STREAM_INFO_CM_OPYCC601 = 19;           // opYCC 601 color space.
-  STREAM_INFO_CM_OPRGB = 20;              // opRGB color space.
+  STREAM_INFO_CM_NONE = 0;         // No colorimetry specified.
+  STREAM_INFO_CM_RESERVED = 1;     // Reserved value.
+  STREAM_INFO_CM_SRGB = 2;         // sRGB color space.
+  STREAM_INFO_CM_SMPTE_170M = 3;   // SMPTE 170M color space.
+  STREAM_INFO_CM_ITUR_BT601 = 4;   // ITU-R BT.601 color space.
+  STREAM_INFO_CM_ITUR_BT709 = 5;   // ITU-R BT.709 color space.
+  STREAM_INFO_CM_XVYCC601 = 6;     // xvYCC 601 color space.
+  STREAM_INFO_CM_XVYCC709 = 7;     // xvYCC 709 color space.
+  STREAM_INFO_CM_SYCC601 = 8;      // sYCC 601 color space.
+  STREAM_INFO_CM_ADOBEYCC601 = 9;  // AdobeYCC 601 color space.
+  STREAM_INFO_CM_ADOBERGB = 10;    // Adobe RGB color space.
+  STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC =
+      11;  // ITU-R BT.2020 YCbCr (constant luminance).
+  STREAM_INFO_CM_ITUR_BT2020_YCBCR = 12;   // ITU-R BT.2020 YCbCr.
+  STREAM_INFO_CM_ITUR_BT2020_RGB = 13;     // ITU-R BT.2020 RGB.
+  STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX = 14;  // RGB Wide Gamut (fixed point).
+  STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT = 15;  // RGB Wide Gamut (floating point).
+  STREAM_INFO_CM_DCI_P3 = 16;              // DCI-P3 color space.
+  STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE =
+      17;  // DICOM Part 14 Grayscale Standard Display Function.
+  STREAM_INFO_CM_CUSTOM_COLOR_PROFILE = 18;  // Custom color profile.
+  STREAM_INFO_CM_OPYCC601 = 19;              // opYCC 601 color space.
+  STREAM_INFO_CM_OPRGB = 20;                 // opRGB color space.
 }
 
 // Represents a video tester device.
 message VideoTester {
-  string id = 1;   // Unique identifier for the video tester.
-  string name = 2; // Human-readable name of the video tester.
+  string id = 1;    // Unique identifier for the video tester.
+  string name = 2;  // Human-readable name of the video tester.
 }
 
 // Request message for getting a list of available video testers.
@@ -120,111 +126,121 @@ message GetVideoTestersRequest {}
 
 // Response message containing a list of available video testers.
 message GetVideoTestersResponse {
-  repeated VideoTester testers = 1; // List of video tester devices.
+  repeated VideoTester testers = 1;  // List of video tester devices.
 }
 
 // Request message for opening a specific video tester.
 message OpenVideoTesterRequest {
-  string id = 1; // ID of the video tester to open.
+  string id = 1;  // ID of the video tester to open.
 }
 
 // Response message indicating the success of opening a video tester.
 message OpenVideoTesterResponse {
-  bool success = 1; // True if the video tester was successfully opened.
+  bool success = 1;  // True if the video tester was successfully opened.
 }
 
 // Request message for closing a specific video tester.
 message CloseVideoTesterRequest {
-  string id = 1; // ID of the video tester to close.
+  string id = 1;  // ID of the video tester to close.
 }
 
 // Response message indicating the success of closing a video tester.
 message CloseVideoTesterResponse {
-  bool success = 1; // True if the video tester was successfully closed.
+  bool success = 1;  // True if the video tester was successfully closed.
 }
 
 // Request message for getting the list of supported roles for a video tester.
 message GetRolesRequest {
-  string id = 1; // ID of the video tester to get roles for.
+  string id = 1;  // ID of the video tester to get roles for.
 }
 
 // Response message containing the list of supported roles for a video tester.
 message GetRolesResponse {
-  repeated Role roles = 1; // List of supported roles for the video tester.
+  repeated Role roles = 1;  // List of supported roles for the video tester.
 }
 
 // Request message for selecting a specific role for a video tester.
 message SetRoleRequest {
-  string id = 1;   // ID of the tester to set the role for.
-  Role role = 2;   // The role to be selected.
+  string id = 1;  // ID of the tester to set the role for.
+  Role role = 2;  // The role to be selected.
 }
 
-// Response message indicating the success of selecting a role for a video tester.
+// Response message indicating the success of selecting a role for a video
+// tester.
 message SetRoleResponse {
-  bool success = 1; // True if the role was successfully selected.
+  bool success = 1;  // True if the role was successfully selected.
 }
 
-// Request message for loading an EDID (Extended Display Identification Data) for a video tester.
+// Request message for loading an EDID (Extended Display Identification Data)
+// for a video tester.
 message LoadEdidVideoTesterRequest {
   string id = 1;        // ID of the video tester to load the EDID for.
-  bytes edid = 2;         // The EDID data to be loaded.
-  int64 id_stream = 3; // The stream on which to load the EDID onto.
+  bytes edid = 2;       // The EDID data to be loaded.
+  int64 id_stream = 3;  // The stream on which to load the EDID onto.
 }
 
-// Response message indicating the success of loading an EDID for a video tester.
+// Response message indicating the success of loading an EDID for a video
+// tester.
 message LoadEdidVideoTesterResponse {
-  bool success = 1; // True if the EDID was successfully loaded.
+  bool success = 1;  // True if the EDID was successfully loaded.
 }
 
-// Request message for getting the current stream information for a video tester.
+// Request message for getting the current stream information for a video
+// tester.
 message GetStreamInfoVideoTesterRequest {
-  string id = 1; // ID of the video tester to get stream information for.
+  string id = 1;  // ID of the video tester to get stream information for.
 }
 
 // Represents the information of a single video stream.
 message StreamInfoVideoTester {
-  optional double frame_rate = 1; // The frame rate of the video stream in frames per second.
-  optional int64 hactive = 2;    // Horizontal active pixels.
-  optional int64 vactive = 3;    // Vertical active lines.
-  optional int64 htotal = 4;     // Total horizontal pixels.
-  optional int64 vtotal = 5;     // Total vertical lines.
-  optional int64 hstart = 6;     // Horizontal start position.
-  optional int64 vstart = 7;     // Vertical start position.
-  optional int64 hswidth = 8;    // Horizontal sync width.
-  optional int64 vswidth = 9;    // Vertical sync width.
-  optional int64 bpp = 10;       // Bits per pixel.
-  optional StreamInfoColorFormat color_format = 11; // Color format of the stream.
-  optional StreamInfoColorimetry colormetry = 12; // Colorimetry of the stream.
-  optional StreamInfoDynamicRange dynamic_range = 13; // Dynamic range of the stream.
-  repeated int64 crc = 14; // Cyclic Redundancy Check (CRC) values for verification.
+  optional double frame_rate =
+      1;  // The frame rate of the video stream in frames per second.
+  optional int64 hactive = 2;  // Horizontal active pixels.
+  optional int64 vactive = 3;  // Vertical active lines.
+  optional int64 htotal = 4;   // Total horizontal pixels.
+  optional int64 vtotal = 5;   // Total vertical lines.
+  optional int64 hstart = 6;   // Horizontal start position.
+  optional int64 vstart = 7;   // Vertical start position.
+  optional int64 hswidth = 8;  // Horizontal sync width.
+  optional int64 vswidth = 9;  // Vertical sync width.
+  optional int64 bpp = 10;     // Bits per pixel.
+  optional StreamInfoColorFormat color_format =
+      11;  // Color format of the stream.
+  optional StreamInfoColorimetry colormetry = 12;  // Colorimetry of the stream.
+  optional StreamInfoDynamicRange dynamic_range =
+      13;  // Dynamic range of the stream.
+  repeated int64 crc =
+      14;  // Cyclic Redundancy Check (CRC) values for verification.
 }
 
-// Response message containing the current stream information for a video tester.
+// Response message containing the current stream information for a video
+// tester.
 message GetStreamInfoVideoTesterResponse {
-  repeated StreamInfoVideoTester streams = 1; // List of active video streams.
+  repeated StreamInfoVideoTester streams = 1;  // List of active video streams.
 }
 
 // Request message for taking a screenshot from a video tester.
 message ScreenshotVideoTesterRequest {
-  string id = 1;        // ID of the video tester to capture the screenshot from.
-  int64 id_stream = 2; // The specific stream ID to capture.
+  string id = 1;  // ID of the video tester to capture the screenshot from.
+  int64 id_stream = 2;  // The specific stream ID to capture.
 }
 
 // Response message containing the captured screenshot.
 message ScreenshotVideoTesterResponse {
-  bytes screenshot = 1; // The captured screenshot data in bytes (e.g., PNG, JPEG).
+  bytes screenshot =
+      1;  // The captured screenshot data in bytes (e.g., PNG, JPEG).
 }
 
 // Defines the video specifications supported by the video tester.
 enum VideoSpecification {
-  VIDEO_SPECIFICATION_UNKOWN = 0; // Unknown video specification.
-  VIDEO_SPECIFICATION_DP_1_3 = 1; // DisplayPort 1.3 specification.
-  VIDEO_SPECIFICATION_DP_1_4 = 2; // DisplayPort 1.4 specification.
-  VIDEO_SPECIFICATION_DP_2_0 = 3; // DisplayPort 2.0 specification.
-  VIDEO_SPECIFICATION_DP_2_1 = 4; // DisplayPort 2.1 specification.
-  VIDEO_SPECIFICATION_HDMI_1_4 = 5; // HDMI 1.4 specification.
-  VIDEO_SPECIFICATION_HDMI_2_0 = 6; // HDMI 2.0 specification.
-  VIDEO_SPECIFICATION_HDMI_2_1 = 7; // HDMI 2.1 specification.
+  VIDEO_SPECIFICATION_UNKOWN = 0;    // Unknown video specification.
+  VIDEO_SPECIFICATION_DP_1_3 = 1;    // DisplayPort 1.3 specification.
+  VIDEO_SPECIFICATION_DP_1_4 = 2;    // DisplayPort 1.4 specification.
+  VIDEO_SPECIFICATION_DP_2_0 = 3;    // DisplayPort 2.0 specification.
+  VIDEO_SPECIFICATION_DP_2_1 = 4;    // DisplayPort 2.1 specification.
+  VIDEO_SPECIFICATION_HDMI_1_4 = 5;  // HDMI 1.4 specification.
+  VIDEO_SPECIFICATION_HDMI_2_0 = 6;  // HDMI 2.0 specification.
+  VIDEO_SPECIFICATION_HDMI_2_1 = 7;  // HDMI 2.1 specification.
 }
 
 enum FrlMode {
@@ -240,63 +256,84 @@ enum FrlMode {
 
 // Request message for setting advanced link parameters for a video tester.
 message SetLinkVideoTesterRequest {
-  string id = 1;               // ID of the video tester to set the link parameters for.
-  optional bool mst = 2;       // Enable or disable Multi-Stream Transport (MST).
-  optional int64 mst_sink_count = 3; // The number of MST sink devices.
-  optional int64 scrambler_seed = 4; // The scrambler seed value.
-  optional int64 max_lane = 5;     // The maximum number of active lanes.
-  optional FrlMode frl_mode = 9; // FRL lane speed in mbps.
-  optional bool frl_start = 11; // Start FRL.
-  optional bool frl_ready = 12; // FRL ready status.
-  optional bool frl_max = 13; // FRL max settings.
-  optional bool frl_no_timeout = 14; // Disable FRL timeout.
-  optional bool frl_check_ltp = 15; // Check FRL Link Training Pattern.
-  optional VideoSpecification video_spec = 16; // The video specification to apply.
-  optional bool ss_sbm = 17; // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
-  optional bool fec = 18; // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
-  optional bool tps4 = 19; // Indicate support for Link Training Pattern Sequence 4.
-  optional bool tps3 = 20; // Indicate support for Link Training Pattern Sequence 3.
-  optional bool dsc = 21; // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
+  string id = 1;  // ID of the video tester to set the link parameters for.
+  optional bool mst = 2;  // Enable or disable Multi-Stream Transport (MST).
+  optional int64 mst_sink_count = 3;  // The number of MST sink devices.
+  optional int64 scrambler_seed = 4;  // The scrambler seed value.
+  optional int64 max_lane = 5;        // The maximum number of active lanes.
+  optional FrlMode frl_mode = 9;      // FRL lane speed in mbps.
+  optional bool frl_start = 11;       // Start FRL.
+  optional bool frl_ready = 12;       // FRL ready status.
+  optional bool frl_max = 13;         // FRL max settings.
+  optional bool frl_no_timeout = 14;  // Disable FRL timeout.
+  optional bool frl_check_ltp = 15;   // Check FRL Link Training Pattern.
+  optional VideoSpecification video_spec =
+      16;  // The video specification to apply.
+  optional bool ss_sbm =
+      17;  // When selected, indicate support Sideband MSG while not supporting
+           // multi-stream transport. Valid only with 128b/132b channel coding
+           // and when “MST” is unchecked.
+  optional bool fec = 18;  // Indicated support for Forward Error Correction
+                           // feature when 8b/10b link coding is enabled.
+  optional bool tps4 =
+      19;  // Indicate support for Link Training Pattern Sequence 4.
+  optional bool tps3 =
+      20;  // Indicate support for Link Training Pattern Sequence 3.
+  optional bool dsc = 21;  // Select to enable Display Stream Compression (DSC)
+                           // feature when 8b/10b link coding is enabled.
 }
 
-// Response message indicating the success of setting link parameters for a video tester.
+// Response message indicating the success of setting link parameters for a
+// video tester.
 message SetLinkVideoTesterResponse {
   // Empty response indicating success.
 }
 
-// Request message for getting the current advanced link parameters for a video tester.
+// Request message for getting the current advanced link parameters for a video
+// tester.
 message GetLinkVideoTesterRequest {
-  string id = 1; // ID of the video tester to get the link parameters from.
+  string id = 1;  // ID of the video tester to get the link parameters from.
 }
 
 // Represents the details of a single video lane.
 message VideoLane {
-  optional int64 lane_speed = 1; // Lane speed in mbps.
-  optional int64 error_cnt = 2;  // Error count for the lane.
-  optional int64 lane_lock = 3;  // Lane lock status.
+  optional int64 lane_speed = 1;  // Lane speed in mbps.
+  optional int64 error_cnt = 2;   // Error count for the lane.
+  optional int64 lane_lock = 3;   // Lane lock status.
 }
 
-// Response message containing the current advanced link parameters for a video tester.
+// Response message containing the current advanced link parameters for a video
+// tester.
 message GetLinkVideoTesterResponse {
-  optional bool mst = 1;       // Current status of Multi-Stream Transport (MST).
-  optional int64 mst_sink_count = 2; // Current number of MST sink devices.
-  optional int64 scrambler_seed = 3; // Current scrambler seed value.
-  optional int64 max_lane = 4;     // Current maximum number of active lanes.
-  optional FrlMode frl_mode = 6; // Current FRL lane speed in mbps.
-  optional bool frl_start = 7; // Current FRL start status.
-  optional bool frl_ready = 8; // Current FRL ready status.
-  optional bool frl_max = 9; // Current FRL max settings.
-  optional bool frl_no_timeout = 10; // Current FRL no timeout status.
-  optional bool frl_check_ltp = 11; // Current FRL Link Training Pattern check status.
-  optional int64 tdms_clock_rate = 12; // TDMS (Transition Minimized Differential Signaling) clock rate.
-  optional int64 tdms_report_locks = 13; // TDMS report locks status.
-  optional VideoSpecification video_spec = 14; // The current video specification.
-  repeated VideoLane lanes = 15; // Details for each individual video lane.
-  optional bool ss_sbm = 16; // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
-  optional bool fec = 17; // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
-  optional bool tps4 = 18; // Indicate support for Link Training Pattern Sequence 4.
-  optional bool tps3 = 19; // Indicate support for Link Training Pattern Sequence 3.
-  optional bool dsc = 20; // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
+  optional bool mst = 1;  // Current status of Multi-Stream Transport (MST).
+  optional int64 mst_sink_count = 2;  // Current number of MST sink devices.
+  optional int64 scrambler_seed = 3;  // Current scrambler seed value.
+  optional int64 max_lane = 4;        // Current maximum number of active lanes.
+  optional FrlMode frl_mode = 6;      // Current FRL lane speed in mbps.
+  optional bool frl_start = 7;        // Current FRL start status.
+  optional bool frl_ready = 8;        // Current FRL ready status.
+  optional bool frl_max = 9;          // Current FRL max settings.
+  optional bool frl_no_timeout = 10;  // Current FRL no timeout status.
+  optional bool frl_check_ltp =
+      11;  // Current FRL Link Training Pattern check status.
+  optional int64 tdms_clock_rate =
+      12;  // TDMS (Transition Minimized Differential Signaling) clock rate.
+  optional int64 tdms_report_locks = 13;  // TDMS report locks status.
+  optional VideoSpecification video_spec =
+      14;                         // The current video specification.
+  repeated VideoLane lanes = 15;  // Details for each individual video lane.
+  optional bool ss_sbm =
+      16;  // When selected, indicate support Sideband MSG while not supporting
+           // multi-stream transport. Valid only with 128b/132b channel coding
+           // and when “MST” is unchecked.
+  optional bool fec = 17;  // Indicated support for Forward Error Correction
+                           // feature when 8b/10b link coding is enabled.
+  optional bool tps4 =
+      18;  // Indicate support for Link Training Pattern Sequence 4.
+  optional bool tps3 =
+      19;  // Indicate support for Link Training Pattern Sequence 3.
+  optional bool dsc = 20;  // Select to enable Display Stream Compression (DSC)
+                           // feature when 8b/10b link coding is enabled.
 }
 
 // Request message for simulating attaching or detaching a display/sink.
@@ -312,8 +349,9 @@ message AttachVideoTesterResponse {
 
 // Request message for sending an HPD (Hot Plug Detect) pulse.
 message HpdPulseVideoTesterRequest {
-  string id = 1;                   // ID of the video tester to send the HPD pulse to.
-  optional int64 pulse_duration_ms = 2; // Optional duration of the HPD pulse in milliseconds.
+  string id = 1;  // ID of the video tester to send the HPD pulse to.
+  optional int64 pulse_duration_ms =
+      2;  // Optional duration of the HPD pulse in milliseconds.
 }
 
 // Response message indicating the success of sending an HPD pulse.
@@ -323,32 +361,46 @@ message HpdPulseVideoTesterResponse {
 
 // Define the supported groups for compliance tests.
 enum ComplianceTestGroup {
-  GROUP_AUDIO_TEST = 0;                         // Group for audio related compliance tests.
-  GROUP_PIXEL_LEVEL_VIDEO_TEST = 1;             // Group for pixel level video compliance tests.
-  GROUP_CRC_BASED_VIDEO_TEST = 2;               // Group for CRC based video compliance tests.
-  GROUP_LINK_TEST = 3;                          // Group for link training and related tests.
-  GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS = 4;     // Group for DisplayPort 1.4 link layer compliance tests.
-  GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS = 5; // Group for DisplayPort 1.4 DSC link layer compliance tests.
-  GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST = 6; // Group for DisplayPort 1.4 DisplayID compliance tests (Source role).
-  GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS = 7; // Group for DisplayPort 2.1 link layer compliance tests (Source DUT role).
-  GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT = 8; // Group for DisplayPort 2.1 DSC compliance tests (Source DUT role).
-  GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST = 9; // Group for DisplayPort 2.1 DisplayID compliance tests (Source role).
-  GROUP_HDMI_RX_CRC_TEST = 10; // Group for DisplayPort HDMI RX CRC tests.
-  GROUP_HDMI_RX_VRR_TEST = 11; // Group for DisplayPort HDMI RX VRR (Variable Refresh Rate) tests.
-  GROUP_HD_TX_CONTINUITY_TEST = 12; // Group for DisplayPort HD TX continuity tests.
+  GROUP_AUDIO_TEST = 0;  // Group for audio related compliance tests.
+  GROUP_PIXEL_LEVEL_VIDEO_TEST =
+      1;  // Group for pixel level video compliance tests.
+  GROUP_CRC_BASED_VIDEO_TEST =
+      2;                // Group for CRC based video compliance tests.
+  GROUP_LINK_TEST = 3;  // Group for link training and related tests.
+  GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS =
+      4;  // Group for DisplayPort 1.4 link layer compliance tests.
+  GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS =
+      5;  // Group for DisplayPort 1.4 DSC link layer compliance tests.
+  GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST =
+      6;  // Group for DisplayPort 1.4 DisplayID compliance tests (Source role).
+  GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS =
+      7;  // Group for DisplayPort 2.1 link layer compliance tests (Source DUT
+          // role).
+  GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT =
+      8;  // Group for DisplayPort 2.1 DSC compliance tests (Source DUT role).
+  GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST =
+      9;  // Group for DisplayPort 2.1 DisplayID compliance tests (Source role).
+  GROUP_HDMI_RX_CRC_TEST = 10;  // Group for DisplayPort HDMI RX CRC tests.
+  GROUP_HDMI_RX_VRR_TEST =
+      11;  // Group for DisplayPort HDMI RX VRR (Variable Refresh Rate) tests.
+  GROUP_HD_TX_CONTINUITY_TEST =
+      12;  // Group for DisplayPort HD TX continuity tests.
 }
 
 // Represents the status of a compliance test.
 enum ComplianceTestStatus {
-  // Default unknown status. Should not be used if a more specific status is available.
-  COMPLIANCE_TEST_STATUS_UNKOWN= 0;
+  // Default unknown status. Should not be used if a more specific status is
+  // available.
+  COMPLIANCE_TEST_STATUS_UNKOWN = 0;
   // Indicates that the compliance test passed successfully.
   COMPLIANCE_TEST_PASSED = 1;
-  // Indicates that the compliance test was skipped, e.g., due to prerequisites not being met.
+  // Indicates that the compliance test was skipped, e.g., due to prerequisites
+  // not being met.
   COMPLIANCE_TEST_SKIPPED = 2;
   // Indicates that the compliance test failed.
   COMPLIANCE_TEST_FAILED = 3;
-  // Indicates that the compliance test was aborted before completion, e.g., due to an error or timeout.
+  // Indicates that the compliance test was aborted before completion, e.g., due
+  // to an error or timeout.
   COMPLIANCE_TEST_ABORTED = 4;
 }
 
@@ -364,19 +416,22 @@ message ComplianceTestVideoTester {
 message ComplianceTestResultVideoTester {
   // The specific compliance test for which this result is being reported.
   ComplianceTestVideoTester test = 1;
-  // The status of the compliance test, indicating whether it passed, failed, skipped, or was aborted.
+  // The status of the compliance test, indicating whether it passed, failed,
+  // skipped, or was aborted.
   ComplianceTestStatus status = 2;
 }
 // Request message for initiating a DP compliance test run on a video tester.
 message RunComplianceTestRequest {
-  string id = 1; // ID of the video tester to run the compliance test on.
-  repeated ComplianceTestVideoTester tests = 2; // The list of compliance tests to run.
+  string id = 1;  // ID of the video tester to run the compliance test on.
+  repeated ComplianceTestVideoTester tests =
+      2;  // The list of compliance tests to run.
 }
 
 // Response message initiating the results of a compliance test run.
 message RunComplianceTestResponse {
-  repeated ComplianceTestResultVideoTester results = 1; // Results of the executed test(s).
-  bytes results_html = 2;           // Results HTML from the test(s).
+  repeated ComplianceTestResultVideoTester results =
+      1;                   // Results of the executed test(s).
+  bytes results_html = 2;  // Results HTML from the test(s).
 }
 
 // Service definition for interacting with video tester devices.
@@ -387,7 +442,8 @@ service VideoTesterService {
   // Opens a specific video tester for interaction.
   rpc OpenVideoTester(OpenVideoTesterRequest) returns (OpenVideoTesterResponse);
   // Closes an opened video tester.
-  rpc CloseVideoTester(CloseVideoTesterRequest) returns (CloseVideoTesterResponse);
+  rpc CloseVideoTester(CloseVideoTesterRequest)
+      returns (CloseVideoTesterResponse);
 
   // Gets the list of supported roles for a given video tester.
   rpc GetRolesVideoTester(GetRolesRequest) returns (GetRolesResponse);
@@ -395,25 +451,33 @@ service VideoTesterService {
   rpc SetRoleVideoTester(SetRoleRequest) returns (SetRoleResponse);
 
   // Loads the provided EDID data onto a given video tester.
-  rpc LoadEdidVideoTester(LoadEdidVideoTesterRequest) returns (LoadEdidVideoTesterResponse);
+  rpc LoadEdidVideoTester(LoadEdidVideoTesterRequest)
+      returns (LoadEdidVideoTesterResponse);
 
   // Gets the current stream information for a given video tester.
-  rpc GetStreamInfoVideoTester(GetStreamInfoVideoTesterRequest) returns (GetStreamInfoVideoTesterResponse);
+  rpc GetStreamInfoVideoTester(GetStreamInfoVideoTesterRequest)
+      returns (GetStreamInfoVideoTesterResponse);
 
   // Captures a screenshot from a specific stream of a video tester.
-  rpc ScreenshotVideoTester(ScreenshotVideoTesterRequest) returns (ScreenshotVideoTesterResponse);
+  rpc ScreenshotVideoTester(ScreenshotVideoTesterRequest)
+      returns (ScreenshotVideoTesterResponse);
 
   // Sets advanced link parameters for a given video tester.
-  rpc SetLinkVideoTester(SetLinkVideoTesterRequest) returns (SetLinkVideoTesterResponse);
+  rpc SetLinkVideoTester(SetLinkVideoTesterRequest)
+      returns (SetLinkVideoTesterResponse);
   // Gets the current advanced link parameters for a given video tester.
-  rpc GetLinkVideoTester(GetLinkVideoTesterRequest) returns (GetLinkVideoTesterResponse);
+  rpc GetLinkVideoTester(GetLinkVideoTesterRequest)
+      returns (GetLinkVideoTesterResponse);
 
   // Simulates attaching or detaching a display or sink on a video tester.
-  rpc AttachVideoTester(AttachVideoTesterRequest) returns (AttachVideoTesterResponse);
+  rpc AttachVideoTester(AttachVideoTesterRequest)
+      returns (AttachVideoTesterResponse);
 
   // Sends an HPD (Hot Plug Detect) pulse to a video tester.
-  rpc HpdPulseVideoTester(HpdPulseVideoTesterRequest) returns (HpdPulseVideoTesterResponse);
+  rpc HpdPulseVideoTester(HpdPulseVideoTesterRequest)
+      returns (HpdPulseVideoTesterResponse);
 
   // Runs compliance test(s) on a video tester.
-  rpc RunComplianceTest(RunComplianceTestRequest) returns (RunComplianceTestResponse);
+  rpc RunComplianceTest(RunComplianceTestRequest)
+      returns (RunComplianceTestResponse);
 }

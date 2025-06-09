@@ -23,8 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DevboardServiceClient interface {
-	// StartDevboardService runs a gsc_dev_board Docker container and starts the service daemon
-	// inside the container.
+	// StartDevboardService runs a gsc_dev_board Docker container and starts the
+	// service daemon inside the container.
 	StartDevboardService(ctx context.Context, in *StartDevboardServiceRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// StopDevboardService stops the daemon inside the container.
 	StopDevboardService(ctx context.Context, in *StopDevboardServiceRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -60,8 +60,8 @@ func (c *devboardServiceClient) StopDevboardService(ctx context.Context, in *Sto
 // All implementations should embed UnimplementedDevboardServiceServer
 // for forward compatibility
 type DevboardServiceServer interface {
-	// StartDevboardService runs a gsc_dev_board Docker container and starts the service daemon
-	// inside the container.
+	// StartDevboardService runs a gsc_dev_board Docker container and starts the
+	// service daemon inside the container.
 	StartDevboardService(context.Context, *StartDevboardServiceRequest) (*longrunning.Operation, error)
 	// StopDevboardService stops the daemon inside the container.
 	StopDevboardService(context.Context, *StopDevboardServiceRequest) (*longrunning.Operation, error)

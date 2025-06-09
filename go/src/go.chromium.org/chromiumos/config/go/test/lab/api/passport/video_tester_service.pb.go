@@ -437,14 +437,15 @@ func (FrlMode) EnumDescriptor() ([]byte, []int) {
 type ComplianceTestGroup int32
 
 const (
-	ComplianceTestGroup_GROUP_AUDIO_TEST                                ComplianceTestGroup = 0  // Group for audio related compliance tests.
-	ComplianceTestGroup_GROUP_PIXEL_LEVEL_VIDEO_TEST                    ComplianceTestGroup = 1  // Group for pixel level video compliance tests.
-	ComplianceTestGroup_GROUP_CRC_BASED_VIDEO_TEST                      ComplianceTestGroup = 2  // Group for CRC based video compliance tests.
-	ComplianceTestGroup_GROUP_LINK_TEST                                 ComplianceTestGroup = 3  // Group for link training and related tests.
-	ComplianceTestGroup_GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS            ComplianceTestGroup = 4  // Group for DisplayPort 1.4 link layer compliance tests.
-	ComplianceTestGroup_GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS        ComplianceTestGroup = 5  // Group for DisplayPort 1.4 DSC link layer compliance tests.
-	ComplianceTestGroup_GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST ComplianceTestGroup = 6  // Group for DisplayPort 1.4 DisplayID compliance tests (Source role).
-	ComplianceTestGroup_GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS ComplianceTestGroup = 7  // Group for DisplayPort 2.1 link layer compliance tests (Source DUT role).
+	ComplianceTestGroup_GROUP_AUDIO_TEST                                ComplianceTestGroup = 0 // Group for audio related compliance tests.
+	ComplianceTestGroup_GROUP_PIXEL_LEVEL_VIDEO_TEST                    ComplianceTestGroup = 1 // Group for pixel level video compliance tests.
+	ComplianceTestGroup_GROUP_CRC_BASED_VIDEO_TEST                      ComplianceTestGroup = 2 // Group for CRC based video compliance tests.
+	ComplianceTestGroup_GROUP_LINK_TEST                                 ComplianceTestGroup = 3 // Group for link training and related tests.
+	ComplianceTestGroup_GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS            ComplianceTestGroup = 4 // Group for DisplayPort 1.4 link layer compliance tests.
+	ComplianceTestGroup_GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS        ComplianceTestGroup = 5 // Group for DisplayPort 1.4 DSC link layer compliance tests.
+	ComplianceTestGroup_GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST ComplianceTestGroup = 6 // Group for DisplayPort 1.4 DisplayID compliance tests (Source role).
+	ComplianceTestGroup_GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS ComplianceTestGroup = 7 // Group for DisplayPort 2.1 link layer compliance tests (Source DUT
+	// role).
 	ComplianceTestGroup_GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT        ComplianceTestGroup = 8  // Group for DisplayPort 2.1 DSC compliance tests (Source DUT role).
 	ComplianceTestGroup_GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST ComplianceTestGroup = 9  // Group for DisplayPort 2.1 DisplayID compliance tests (Source role).
 	ComplianceTestGroup_GROUP_HDMI_RX_CRC_TEST                          ComplianceTestGroup = 10 // Group for DisplayPort HDMI RX CRC tests.
@@ -517,15 +518,18 @@ func (ComplianceTestGroup) EnumDescriptor() ([]byte, []int) {
 type ComplianceTestStatus int32
 
 const (
-	// Default unknown status. Should not be used if a more specific status is available.
+	// Default unknown status. Should not be used if a more specific status is
+	// available.
 	ComplianceTestStatus_COMPLIANCE_TEST_STATUS_UNKOWN ComplianceTestStatus = 0
 	// Indicates that the compliance test passed successfully.
 	ComplianceTestStatus_COMPLIANCE_TEST_PASSED ComplianceTestStatus = 1
-	// Indicates that the compliance test was skipped, e.g., due to prerequisites not being met.
+	// Indicates that the compliance test was skipped, e.g., due to prerequisites
+	// not being met.
 	ComplianceTestStatus_COMPLIANCE_TEST_SKIPPED ComplianceTestStatus = 2
 	// Indicates that the compliance test failed.
 	ComplianceTestStatus_COMPLIANCE_TEST_FAILED ComplianceTestStatus = 3
-	// Indicates that the compliance test was aborted before completion, e.g., due to an error or timeout.
+	// Indicates that the compliance test was aborted before completion, e.g., due
+	// to an error or timeout.
 	ComplianceTestStatus_COMPLIANCE_TEST_ABORTED ComplianceTestStatus = 4
 )
 
@@ -1061,7 +1065,8 @@ func (x *SetRoleRequest) GetRole() Role {
 	return Role_ROLE_UNSPECIFIED
 }
 
-// Response message indicating the success of selecting a role for a video tester.
+// Response message indicating the success of selecting a role for a video
+// tester.
 type SetRoleResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1109,7 +1114,8 @@ func (x *SetRoleResponse) GetSuccess() bool {
 	return false
 }
 
-// Request message for loading an EDID (Extended Display Identification Data) for a video tester.
+// Request message for loading an EDID (Extended Display Identification Data)
+// for a video tester.
 type LoadEdidVideoTesterRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1173,7 +1179,8 @@ func (x *LoadEdidVideoTesterRequest) GetIdStream() int64 {
 	return 0
 }
 
-// Response message indicating the success of loading an EDID for a video tester.
+// Response message indicating the success of loading an EDID for a video
+// tester.
 type LoadEdidVideoTesterResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1221,7 +1228,8 @@ func (x *LoadEdidVideoTesterResponse) GetSuccess() bool {
 	return false
 }
 
-// Request message for getting the current stream information for a video tester.
+// Request message for getting the current stream information for a video
+// tester.
 type GetStreamInfoVideoTesterRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1421,7 +1429,8 @@ func (x *StreamInfoVideoTester) GetCrc() []int64 {
 	return nil
 }
 
-// Response message containing the current stream information for a video tester.
+// Response message containing the current stream information for a video
+// tester.
 type GetStreamInfoVideoTesterResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1591,11 +1600,14 @@ type SetLinkVideoTesterRequest struct {
 	FrlNoTimeout  *bool               `protobuf:"varint,14,opt,name=frl_no_timeout,json=frlNoTimeout,proto3,oneof" json:"frl_no_timeout,omitempty"`                                               // Disable FRL timeout.
 	FrlCheckLtp   *bool               `protobuf:"varint,15,opt,name=frl_check_ltp,json=frlCheckLtp,proto3,oneof" json:"frl_check_ltp,omitempty"`                                                  // Check FRL Link Training Pattern.
 	VideoSpec     *VideoSpecification `protobuf:"varint,16,opt,name=video_spec,json=videoSpec,proto3,enum=chromiumos.test.lab.api.passport.VideoSpecification,oneof" json:"video_spec,omitempty"` // The video specification to apply.
-	SsSbm         *bool               `protobuf:"varint,17,opt,name=ss_sbm,json=ssSbm,proto3,oneof" json:"ss_sbm,omitempty"`                                                                      // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
-	Fec           *bool               `protobuf:"varint,18,opt,name=fec,proto3,oneof" json:"fec,omitempty"`                                                                                       // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
-	Tps4          *bool               `protobuf:"varint,19,opt,name=tps4,proto3,oneof" json:"tps4,omitempty"`                                                                                     // Indicate support for Link Training Pattern Sequence 4.
-	Tps3          *bool               `protobuf:"varint,20,opt,name=tps3,proto3,oneof" json:"tps3,omitempty"`                                                                                     // Indicate support for Link Training Pattern Sequence 3.
-	Dsc           *bool               `protobuf:"varint,21,opt,name=dsc,proto3,oneof" json:"dsc,omitempty"`                                                                                       // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
+	SsSbm         *bool               `protobuf:"varint,17,opt,name=ss_sbm,json=ssSbm,proto3,oneof" json:"ss_sbm,omitempty"`                                                                      // When selected, indicate support Sideband MSG while not supporting
+	// multi-stream transport. Valid only with 128b/132b channel coding
+	// and when “MST” is unchecked.
+	Fec *bool `protobuf:"varint,18,opt,name=fec,proto3,oneof" json:"fec,omitempty"` // Indicated support for Forward Error Correction
+	// feature when 8b/10b link coding is enabled.
+	Tps4 *bool `protobuf:"varint,19,opt,name=tps4,proto3,oneof" json:"tps4,omitempty"` // Indicate support for Link Training Pattern Sequence 4.
+	Tps3 *bool `protobuf:"varint,20,opt,name=tps3,proto3,oneof" json:"tps3,omitempty"` // Indicate support for Link Training Pattern Sequence 3.
+	Dsc  *bool `protobuf:"varint,21,opt,name=dsc,proto3,oneof" json:"dsc,omitempty"`   // Select to enable Display Stream Compression (DSC)
 }
 
 func (x *SetLinkVideoTesterRequest) Reset() {
@@ -1749,7 +1761,8 @@ func (x *SetLinkVideoTesterRequest) GetDsc() bool {
 	return false
 }
 
-// Response message indicating the success of setting link parameters for a video tester.
+// Response message indicating the success of setting link parameters for a
+// video tester.
 type SetLinkVideoTesterResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1788,7 +1801,8 @@ func (*SetLinkVideoTesterResponse) Descriptor() ([]byte, []int) {
 	return file_chromiumos_test_lab_api_passport_video_tester_service_proto_rawDescGZIP(), []int{19}
 }
 
-// Request message for getting the current advanced link parameters for a video tester.
+// Request message for getting the current advanced link parameters for a video
+// tester.
 type GetLinkVideoTesterRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1900,7 +1914,8 @@ func (x *VideoLane) GetLaneLock() int64 {
 	return 0
 }
 
-// Response message containing the current advanced link parameters for a video tester.
+// Response message containing the current advanced link parameters for a video
+// tester.
 type GetLinkVideoTesterResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1920,11 +1935,14 @@ type GetLinkVideoTesterResponse struct {
 	TdmsReportLocks *int64              `protobuf:"varint,13,opt,name=tdms_report_locks,json=tdmsReportLocks,proto3,oneof" json:"tdms_report_locks,omitempty"`                                      // TDMS report locks status.
 	VideoSpec       *VideoSpecification `protobuf:"varint,14,opt,name=video_spec,json=videoSpec,proto3,enum=chromiumos.test.lab.api.passport.VideoSpecification,oneof" json:"video_spec,omitempty"` // The current video specification.
 	Lanes           []*VideoLane        `protobuf:"bytes,15,rep,name=lanes,proto3" json:"lanes,omitempty"`                                                                                          // Details for each individual video lane.
-	SsSbm           *bool               `protobuf:"varint,16,opt,name=ss_sbm,json=ssSbm,proto3,oneof" json:"ss_sbm,omitempty"`                                                                      // When selected, indicate support Sideband MSG while not supporting multi-stream transport. Valid only with 128b/132b channel coding and when “MST” is unchecked.
-	Fec             *bool               `protobuf:"varint,17,opt,name=fec,proto3,oneof" json:"fec,omitempty"`                                                                                       // Indicated support for Forward Error Correction feature when 8b/10b link coding is enabled.
-	Tps4            *bool               `protobuf:"varint,18,opt,name=tps4,proto3,oneof" json:"tps4,omitempty"`                                                                                     // Indicate support for Link Training Pattern Sequence 4.
-	Tps3            *bool               `protobuf:"varint,19,opt,name=tps3,proto3,oneof" json:"tps3,omitempty"`                                                                                     // Indicate support for Link Training Pattern Sequence 3.
-	Dsc             *bool               `protobuf:"varint,20,opt,name=dsc,proto3,oneof" json:"dsc,omitempty"`                                                                                       // Select to enable Display Stream Compression (DSC) feature when 8b/10b link coding is enabled.
+	SsSbm           *bool               `protobuf:"varint,16,opt,name=ss_sbm,json=ssSbm,proto3,oneof" json:"ss_sbm,omitempty"`                                                                      // When selected, indicate support Sideband MSG while not supporting
+	// multi-stream transport. Valid only with 128b/132b channel coding
+	// and when “MST” is unchecked.
+	Fec *bool `protobuf:"varint,17,opt,name=fec,proto3,oneof" json:"fec,omitempty"` // Indicated support for Forward Error Correction
+	// feature when 8b/10b link coding is enabled.
+	Tps4 *bool `protobuf:"varint,18,opt,name=tps4,proto3,oneof" json:"tps4,omitempty"` // Indicate support for Link Training Pattern Sequence 4.
+	Tps3 *bool `protobuf:"varint,19,opt,name=tps3,proto3,oneof" json:"tps3,omitempty"` // Indicate support for Link Training Pattern Sequence 3.
+	Dsc  *bool `protobuf:"varint,20,opt,name=dsc,proto3,oneof" json:"dsc,omitempty"`   // Select to enable Display Stream Compression (DSC)
 }
 
 func (x *GetLinkVideoTesterResponse) Reset() {
@@ -2348,7 +2366,8 @@ type ComplianceTestResultVideoTester struct {
 
 	// The specific compliance test for which this result is being reported.
 	Test *ComplianceTestVideoTester `protobuf:"bytes,1,opt,name=test,proto3" json:"test,omitempty"`
-	// The status of the compliance test, indicating whether it passed, failed, skipped, or was aborted.
+	// The status of the compliance test, indicating whether it passed, failed,
+	// skipped, or was aborted.
 	Status ComplianceTestStatus `protobuf:"varint,2,opt,name=status,proto3,enum=chromiumos.test.lab.api.passport.ComplianceTestStatus" json:"status,omitempty"`
 }
 
