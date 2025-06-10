@@ -1495,17 +1495,16 @@ func (x *GetServoInfoResponse) GetServoInfo() *anypb.Any {
 	return nil
 }
 
-// GetUsbInfoResponse contents of the information about the USB-C ports on device.
-// info.
-// NEXT TAG: 2
+// GetUsbInfoResponse contents of the information about the USB-C ports on
+// device. info. NEXT TAG: 2
 type GetUsbInfoResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Stores USB-C info:
-	// "chromiumos.test.artifact.DutInfo.UsbInfo". Note that the UsbInfo proto cannot
-	// be imported directly due to cyclic import issue.
+	// "chromiumos.test.artifact.DutInfo.UsbInfo". Note that the UsbInfo proto
+	// cannot be imported directly due to cyclic import issue.
 	UsbInfo *anypb.Any `protobuf:"bytes,1,opt,name=usb_info,json=usbInfo,proto3" json:"usb_info,omitempty"`
 }
 
@@ -1556,8 +1555,9 @@ type GetStressTestInfoResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Mapping from test name to stress test info:
-	// "chromiumos.test.artifact.DutInfo.StressTestInfo". Note that the StressTestInfo
-	// proto cannot be imported directly due to cyclic import issue.
+	// "chromiumos.test.artifact.DutInfo.StressTestInfo". Note that the
+	// StressTestInfo proto cannot be imported directly due to cyclic import
+	// issue.
 	StressTestInfo map[string]*anypb.Any `protobuf:"bytes,1,rep,name=stress_test_info,json=stressTestInfo,proto3" json:"stress_test_info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

@@ -294,6 +294,7 @@ def _add_audio_entry(
     etree.SubElement(audio_config_elem, "audio-config-dir").text = model
     etree.SubElement(audio_config_elem, "soundcard").text = soundcard_name
 
+
 def _add_video_entry(
     hal_config: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -318,6 +319,7 @@ def _add_video_entry(
     etree.SubElement(video_config_elem, "video-codec-suffix").text = (
         soc_features.arc_media_codecs_suffix
     )
+
 
 def _add_hal_config_entry(
     root_element: etree._Element,
@@ -428,6 +430,47 @@ def _add_feature_element(
     logging.debug("Added feature '%s' to XML tree.", feature_name)
 
 
+def _add_camera_features(
+    permissions_elem: etree._Element,
+    camera_features: topology_pb2.HardwareFeatures.Camera,
+) -> None:
+    """Adds camera-related <feature> elements to the <permissions> element."""
+    if not camera_features.devices:
+        return
+
+    _add_feature_element(permissions_elem, "android.hardware.camera.any")
+
+    has_back_camera = any(
+        not d.detachable
+        and d.facing == topology_pb2.HardwareFeatures.Camera.FACING_BACK
+        for d in camera_features.devices
+    )
+    if has_back_camera:
+        _add_feature_element(permissions_elem, "android.hardware.camera")
+
+    has_front_camera = any(
+        not d.detachable
+        and d.facing == topology_pb2.HardwareFeatures.Camera.FACING_FRONT
+        for d in camera_features.devices
+    )
+    if has_front_camera:
+        _add_feature_element(permissions_elem, "android.hardware.camera.front")
+
+    has_autofocus_back_camera = any(
+        not d.detachable
+        and d.facing == topology_pb2.HardwareFeatures.Camera.FACING_BACK
+        and (
+            d.flags
+            & topology_pb2.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS
+        )
+        for d in camera_features.devices
+    )
+    if has_autofocus_back_camera:
+        _add_feature_element(
+            permissions_elem, "android.hardware.camera.autofocus"
+        )
+
+
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     """Handles the 'generate-feature-xml' sub-command logic."""
     logging.info("Running generate-feature-xml command...")
@@ -510,6 +553,8 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                 for prox_conf in hw_features.proximity.configs
             ):
                 _add_feature_element(permissions_elem, "com.google.sensor.sar")
+
+            _add_camera_features(permissions_elem, hw_features.camera)
 
             sku_dir = opts.output_dir / f"{model}_{sku}".lower()
             sku_dir.mkdir(parents=True, exist_ok=True)
