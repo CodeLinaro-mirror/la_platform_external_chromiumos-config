@@ -163,9 +163,6 @@
 			"metadata": {
 				"owners": [
 					{
-						"email": "essential-inputs-gardener-oncall@google.com"
-					},
-					{
 						"email": "essential-inputs-team@google.com"
 					}
 				],
@@ -188,9 +185,6 @@
 			},
 			"metadata": {
 				"owners": [
-					{
-						"email": "essential-inputs-gardener-oncall@google.com"
-					},
 					{
 						"email": "essential-inputs-team@google.com"
 					}
