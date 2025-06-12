@@ -25612,6 +25612,14 @@
                   "number": 5,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "lsnexusServer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "lsnexus_server",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
                 }
               ],
               "name": "Device"
