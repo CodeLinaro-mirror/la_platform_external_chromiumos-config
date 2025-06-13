@@ -19830,6 +19830,10 @@
             {
               "name": "MODEM_TYPE_LCUK54",
               "number": 11
+            },
+            {
+              "name": "MODEM_TYPE_RW350",
+              "number": 12
             }
           ]
         },
