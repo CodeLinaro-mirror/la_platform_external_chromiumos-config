@@ -669,6 +669,108 @@ def _add_camera_entry(
     )
 
 
+# pylint: disable=too-many-statements
+def _build_mtk_entry(parent, mtk_config) -> None:
+    """Handle WiFiSarConfiguration for MTKConfig case.
+
+    Args:
+        parent: The parent <HalConfig> XML element.
+        mtk_config: MtkConfig config.
+    """
+    sar_elem = etree.SubElement(parent, "MTKConfig")
+
+    def geo_power_chain(parent, power) -> None:
+        cfg = etree.SubElement(parent, "PowerConfig.2g")
+        etree.SubElement(cfg, "PowerLimit").text = str(power.limit_2g)
+        etree.SubElement(cfg, "PowerOffset").text = str(power.offset_2g)
+
+        cfg = etree.SubElement(parent, "PowerConfig.5g")
+        etree.SubElement(cfg, "PowerLimit").text = str(power.limit_5g)
+        etree.SubElement(cfg, "PowerOffset").text = str(power.offset_5g)
+
+        if power.limit_6g or power.offset_6g:
+            cfg = etree.SubElement(parent, "PowerConfig.6g")
+            etree.SubElement(cfg, "PowerLimit").text = str(power.limit_6g)
+            etree.SubElement(cfg, "PowerOffset").text = str(power.offset_6g)
+
+    if mtk_config.HasField("fcc_power_table"):
+        regdom_elem = etree.SubElement(sar_elem, "RegDomain.fcc")
+        geo_power_chain(regdom_elem, mtk_config.fcc_power_table)
+    if mtk_config.HasField("eu_power_table"):
+        regdom_elem = etree.SubElement(sar_elem, "RegDomain.eu")
+        geo_power_chain(regdom_elem, mtk_config.eu_power_table)
+    if mtk_config.HasField("other_power_table"):
+        regdom_elem = etree.SubElement(sar_elem, "RegDomain.other")
+        geo_power_chain(regdom_elem, mtk_config.other_power_table)
+
+    def power_chain(power, tablet_mode: bool) -> None:
+        if tablet_mode:
+            table = etree.SubElement(sar_elem, "PowerTable.tablet")
+        else:
+            table = etree.SubElement(sar_elem, "PowerTable.clamshell")
+
+        for sband in ("2g", "5g_1", "5g_2", "5g_3", "5g_4"):
+            cfg = etree.SubElement(table, f"PowerConfig.{sband}")
+            etree.SubElement(cfg, "PowerLimit").text = str(
+                getattr(power, f"limit_{sband}")
+            )
+
+        # Ignore 6 GHz parameters that are 0, which is the protobuf 3 default
+        for sband in ("6g_1", "6g_2", "6g_3", "6g_4", "6g_5", "6g_6"):
+            power_limit = getattr(power, f"limit_{sband}")
+            if power_limit:
+                cfg = etree.SubElement(table, f"PowerConfig.{sband}")
+                etree.SubElement(cfg, "PowerLimit").text = str(power_limit)
+
+    if mtk_config.HasField("tablet_mode_power_table"):
+        power_chain(mtk_config.tablet_mode_power_table, True)
+
+    if mtk_config.HasField("non_tablet_mode_power_table"):
+        power_chain(mtk_config.non_tablet_mode_power_table, False)
+
+
+# pylint: enable=too-many-statements
+
+
+def _add_wifi_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+    sw_config: software_config_pb2.SoftwareConfig,
+) -> None:
+    """Adds WiFiSarConfiguration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+        sw_config: software_config_pb2.SoftwareConfig specific to a design
+        config.
+    """
+    hw_features = design_config.hardware_features
+
+    wifi_config = None
+    if hw_features.wifi.HasField("wifi_config"):
+        wifi_config = hw_features.wifi.wifi_config
+    else:
+        wifi_config = sw_config.wifi_config
+
+    config_field = wifi_config.WhichOneof("wifi_config")
+    if config_field is not None:
+        logging.info("wifi_config is %s", config_field)
+
+        wifi_config_elem = etree.SubElement(hal_config, "WiFiSarConfiguration")
+        # skipping "ath10k_config" case as it is outdated,
+        # will add "qcom" when chip config is ready
+        if config_field in ("intel_config", "legacy_intel_config"):
+            etree.SubElement(wifi_config_elem, "Chip").text = "intel"
+        elif config_field.startswith("rtw"):
+            etree.SubElement(wifi_config_elem, "Chip").text = "rtw"
+        elif config_field == "mtk_config":
+            etree.SubElement(wifi_config_elem, "Chip").text = "mtk"
+            _build_mtk_entry(wifi_config_elem, wifi_config.mtk_config)
+        else:
+            logging.warning("unknown wifi_config: %s", config_field)
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -710,6 +812,7 @@ def _add_hal_config_entry(
         sku,
     )
     _add_hardware_features_entry(hal_config_elem, design_config)
+    _add_wifi_entry(hal_config_elem, design_config, sw_config)
 
 
 def _convert_to_hal_xml(

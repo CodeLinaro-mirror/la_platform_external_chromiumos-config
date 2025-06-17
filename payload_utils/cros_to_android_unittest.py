@@ -10,6 +10,7 @@ import pathlib
 import tempfile
 import unittest
 
+# pylint: disable=too-many-public-methods
 # pylint: disable=import-error
 from chromiumos.config.api import design_pb2
 from chromiumos.config.api import topology_pb2
@@ -382,6 +383,109 @@ class HalEntryHelpersTest(unittest.TestCase):
         )
         cam_config_elem = self.root_element.find("CameraConfiguration")
         self.assertIsNone(cam_config_elem)
+
+    def test_add_wifi_entry_intel_config(self):
+        """Test wifi entry when chip vendor is Intel."""
+        wifi_config = self.design_config.hardware_features.wifi.wifi_config
+        intel_wifi = wifi_config.intel_config
+        intel_wifi.sar_table.sar_table_version = 1
+
+        cros_to_android._add_wifi_entry(
+            self.root_element, self.design_config, self.sw_config
+        )
+
+        wifi_elem = self.root_element.find("WiFiSarConfiguration")
+        self.assertIsNotNone(wifi_elem)
+        self.assertEqual(wifi_elem.find("Chip").text, "intel")
+
+    def test_add_wifi_entry_mtk_no_regdomain(self):
+        """Test wifi entry when chip vendor is MediaTek and no regdomain config."""
+        wifi_config = self.design_config.hardware_features.wifi.wifi_config
+        mtk_wifi = wifi_config.mtk_config
+        tablet_power = mtk_wifi.tablet_mode_power_table
+        tablet_power.limit_2g = 25
+        tablet_power.limit_5g_1 = 55
+        nontab_power = mtk_wifi.non_tablet_mode_power_table
+        nontab_power.limit_2g = 25
+        nontab_power.limit_5g_1 = 55
+
+        cros_to_android._add_wifi_entry(
+            self.root_element, self.design_config, self.sw_config
+        )
+
+        wifi_elem = self.root_element.find("WiFiSarConfiguration")
+        self.assertIsNotNone(wifi_elem)
+        self.assertEqual(wifi_elem.find("Chip").text, "mtk")
+        power_elem = wifi_elem.find("MTKConfig").find("PowerTable.tablet")
+        self.assertIsNotNone(power_elem)
+        self.assertEqual(
+            power_elem.find("PowerConfig.2g").find("PowerLimit").text, "25"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.5g_1").find("PowerLimit").text, "55"
+        )
+        power_elem = wifi_elem.find("MTKConfig").find("PowerTable.clamshell")
+        self.assertIsNotNone(power_elem)
+        self.assertEqual(
+            power_elem.find("PowerConfig.2g").find("PowerLimit").text, "25"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.5g_1").find("PowerLimit").text, "55"
+        )
+
+    def test_add_wifi_entry_mtk_fcc_regdomain(self):
+        """Test wifi entry when chip vendor is MediaTek and regdomain config is FCC."""
+        wifi_config = self.design_config.hardware_features.wifi.wifi_config
+        mtk_wifi = wifi_config.mtk_config
+        tablet_power = mtk_wifi.tablet_mode_power_table
+        tablet_power.limit_2g = 25
+        tablet_power.limit_5g_1 = 55
+        nontab_power = mtk_wifi.non_tablet_mode_power_table
+        nontab_power.limit_2g = 25
+        nontab_power.limit_5g_1 = 55
+        fcc_power = mtk_wifi.fcc_power_table
+        fcc_power.limit_2g = 20
+        fcc_power.offset_2g = 2
+        fcc_power.limit_5g = 50
+        fcc_power.offset_5g = 5
+
+        cros_to_android._add_wifi_entry(
+            self.root_element, self.design_config, self.sw_config
+        )
+
+        wifi_elem = self.root_element.find("WiFiSarConfiguration")
+        self.assertIsNotNone(wifi_elem)
+        self.assertEqual(wifi_elem.find("Chip").text, "mtk")
+        power_elem = wifi_elem.find("MTKConfig").find("PowerTable.tablet")
+        self.assertIsNotNone(power_elem)
+        self.assertEqual(
+            power_elem.find("PowerConfig.2g").find("PowerLimit").text, "25"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.5g_1").find("PowerLimit").text, "55"
+        )
+        power_elem = wifi_elem.find("MTKConfig").find("PowerTable.clamshell")
+        self.assertIsNotNone(power_elem)
+        self.assertEqual(
+            power_elem.find("PowerConfig.2g").find("PowerLimit").text, "25"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.5g_1").find("PowerLimit").text, "55"
+        )
+        power_elem = wifi_elem.find("MTKConfig").find("RegDomain.fcc")
+        self.assertIsNotNone(power_elem)
+        self.assertEqual(
+            power_elem.find("PowerConfig.2g").find("PowerLimit").text, "20"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.2g").find("PowerOffset").text, "2"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.5g").find("PowerLimit").text, "50"
+        )
+        self.assertEqual(
+            power_elem.find("PowerConfig.5g").find("PowerOffset").text, "5"
+        )
 
 
 class FeatureXmlGenerationTest(unittest.TestCase):
