@@ -19157,6 +19157,10 @@
                     {
                       "name": "IP_POWER",
                       "number": 11
+                    },
+                    {
+                      "name": "USB_TESTER",
+                      "number": 12
                     }
                   ]
                 }
