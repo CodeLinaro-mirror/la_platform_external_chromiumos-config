@@ -19108,6 +19108,13 @@
                   "name": "type",
                   "number": 5,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "tags",
+                  "label": "LABEL_REPEATED",
+                  "name": "tags",
+                  "number": 6,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Connection"
