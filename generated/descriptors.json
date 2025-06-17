@@ -39973,6 +39973,13 @@
               "name": "device_id",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "exposureMicroseconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "exposure_microseconds",
+              "number": 2,
+              "type": "TYPE_INT32"
             }
           ],
           "name": "GetAveragePixelRequest"
@@ -40093,6 +40100,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry"
+            },
+            {
+              "jsonName": "exposureMicroseconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "exposure_microseconds",
+              "number": 3,
+              "type": "TYPE_INT32"
             }
           ],
           "name": "AnalyzeHSVRequest",
