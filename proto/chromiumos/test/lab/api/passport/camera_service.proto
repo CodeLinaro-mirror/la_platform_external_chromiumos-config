@@ -21,7 +21,7 @@ service CameraService {
       returns (GetAveragePixelResponse) {}
   // Analyzes an image and returns the percentage of pixels that fall within
   // the specified HSV masks.
-  rpc AnalyzeImageHSV (AnalyzeHSVRequest) returns (AnalyzeHSVResponse) {};
+  rpc AnalyzeImageHSV(AnalyzeHSVRequest) returns (AnalyzeHSVResponse) {};
 }
 
 message GetCamerasRequest {}
@@ -73,16 +73,17 @@ message GetAveragePixelResponse {
 // brightest possible color for that specific hue and saturation. Range for
 // value is 0-1.
 message HSV {
-  // Hue is the primary color component, representing the location of the color on the color wheel.
-  // Typical range for hue is 0-360 degrees.
+  // Hue is the primary color component, representing the location of the color
+  // on the color wheel. Typical range for hue is 0-360 degrees.
   float hue = 1;
   // Saturation measures how much a color is diluted with white or black.
-  // A color with full saturation is a pure color, while desaturated colors have more white or gray mixed in.
-  // Typical range for saturation is 0-1.
+  // A color with full saturation is a pure color, while desaturated colors have
+  // more white or gray mixed in. Typical range for saturation is 0-1.
   float saturation = 2;
-  // Value, also known as brightness, represents the color's intensity or how much light it emits.
-  // A value of 0 is black, and a value of 1 is the brightest possible color for that specific hue and saturation.
-  // Typical range for value is 0-1.
+  // Value, also known as brightness, represents the color's intensity or how
+  // much light it emits. A value of 0 is black, and a value of 1 is the
+  // brightest possible color for that specific hue and saturation. Typical
+  // range for value is 0-1.
   float value = 3;
 }
 

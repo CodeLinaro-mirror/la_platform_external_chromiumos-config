@@ -61,6 +61,9 @@ message ExtendLeaseRequest {
   // across different logical requests. Requests with the same key will be
   // treated as duplicate of original request, return the same response.
   string idempotency_key = 3;
+
+  // New user payload to update.
+  map<string, string> user_payload = 4;
 }
 
 message ExtendLeaseResponse {

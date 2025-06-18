@@ -25,6 +25,15 @@ message FirmwareProvisionInstallMetadata {
   // them individually over futility.
   // ec_ro over Servo is flashed using flash_ec.
   chromiumos.build.api.FirmwareConfig firmware_config = 1;
+
+  enum OperatingSystem {
+    UNKNOWN = 0;
+    CHROMEOS = 1;
+    ANDROID = 2;
+  }
+
+  // The expected operating system of the device.
+  OperatingSystem os = 2;
 }
 
 // FirmwareProvisionResponse records the response of the firmware provisioning.

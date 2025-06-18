@@ -209,13 +209,12 @@ message GetServoInfoResponse {
   google.protobuf.Any servo_info = 1;
 }
 
-// GetUsbInfoResponse contents of the information about the USB-C ports on device.
-// info.
-// NEXT TAG: 2
+// GetUsbInfoResponse contents of the information about the USB-C ports on
+// device. info. NEXT TAG: 2
 message GetUsbInfoResponse {
   // Stores USB-C info:
-  // "chromiumos.test.artifact.DutInfo.UsbInfo". Note that the UsbInfo proto cannot
-  // be imported directly due to cyclic import issue.
+  // "chromiumos.test.artifact.DutInfo.UsbInfo". Note that the UsbInfo proto
+  // cannot be imported directly due to cyclic import issue.
   google.protobuf.Any usb_info = 1;
 }
 
@@ -223,8 +222,8 @@ message GetUsbInfoResponse {
 // NEXT TAG: 2
 message GetStressTestInfoResponse {
   // Mapping from test name to stress test info:
-  // "chromiumos.test.artifact.DutInfo.StressTestInfo". Note that the StressTestInfo
-  // proto cannot be imported directly due to cyclic import issue.
+  // "chromiumos.test.artifact.DutInfo.StressTestInfo". Note that the
+  // StressTestInfo proto cannot be imported directly due to cyclic import
+  // issue.
   map<string, google.protobuf.Any> stress_test_info = 1;
 }
-

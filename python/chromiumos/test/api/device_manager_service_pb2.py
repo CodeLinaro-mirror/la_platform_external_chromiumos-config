@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n0chromiumos/test/api/device_manager_service.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(chromiumos/test/api/device_leasing.proto\"\xfb\x01\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x64ut_id\x18\x06 \x01(\t\x12\x33\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\".chromiumos.test.api.DeviceAddress\x12-\n\x04type\x18\x03 \x01(\x0e\x32\x1f.chromiumos.test.api.DeviceType\x12/\n\x05state\x18\x04 \x01(\x0e\x32 .chromiumos.test.api.DeviceState\x12@\n\rhardware_reqs\x18\x05 \x01(\x0b\x32).chromiumos.test.api.HardwareRequirements\"+\n\rDeviceAddress\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"\xb2\x04\n\x11\x44\x65viceLeaseRecord\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0fidempotency_key\x18\x02 \x01(\t\x12\x11\n\tdevice_id\x18\x03 \x01(\t\x12\x0e\n\x06\x64ut_id\x18\x0b \x01(\t\x12:\n\x0e\x64\x65vice_address\x18\x04 \x01(\x0b\x32\".chromiumos.test.api.DeviceAddress\x12\x34\n\x0b\x64\x65vice_type\x18\x05 \x01(\x0e\x32\x1f.chromiumos.test.api.DeviceType\x12/\n\x0bleased_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rreleased_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x0f\x65xpiration_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11last_updated_time\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12Y\n\x12request_parameters\x18\n \x03(\x0b\x32=.chromiumos.test.api.DeviceLeaseRecord.RequestParametersEntry\x1a\x38\n\x16RequestParametersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8c\x02\n\x12LeaseDeviceRequest\x12\x17\n\x0fidempotency_key\x18\x01 \x01(\t\x12\x14\n\x0con_behalf_of\x18\x02 \x01(\t\x12\x10\n\x08quota_id\x18\x03 \x01(\t\x12\x31\n\x0elease_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x39\n\x0cvm_host_reqs\x18\x05 \x01(\x0b\x32#.chromiumos.test.api.VMRequirements\x12G\n\x14hardware_device_reqs\x18\x06 \x01(\x0b\x32).chromiumos.test.api.HardwareRequirements\"\xb0\x01\n\x13LeaseDeviceResponse\x12<\n\x0c\x64\x65vice_lease\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.DeviceLeaseRecord\x12\x45\n\nerror_type\x18\x02 \x01(\x0e\x32\x31.chromiumos.test.api.LeaseDeviceResponseErrorType\x12\x14\n\x0c\x65rror_string\x18\x03 \x01(\t\"a\n\x17\x42ulkLeaseDevicesRequest\x12\x46\n\x15lease_device_requests\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.LeaseDeviceRequest\"\xc6\x01\n\x18\x42ulkLeaseDevicesResponse\x12H\n\x16lease_device_responses\x18\x01 \x03(\x0b\x32(.chromiumos.test.api.LeaseDeviceResponse\x12J\n\nerror_type\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.api.BulkLeaseDevicesResponseErrorType\x12\x14\n\x0c\x65rror_string\x18\x03 \x01(\t\"(\n\x14ReleaseDeviceRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\"\x88\x01\n\x15ReleaseDeviceResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12G\n\nerror_type\x18\x02 \x01(\x0e\x32\x33.chromiumos.test.api.ReleaseDeviceResponseErrorType\x12\x14\n\x0c\x65rror_string\x18\x03 \x01(\t\" \n\x10GetDeviceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"[\n\x12ListDevicesRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x04 \x01(\t\"\\\n\x13ListDevicesResponse\x12,\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32\x1b.chromiumos.test.api.Device\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t*\\\n\nDeviceType\x12\x1b\n\x17\x44\x45VICE_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13\x44\x45VICE_TYPE_VIRTUAL\x10\x01\x12\x18\n\x14\x44\x45VICE_TYPE_PHYSICAL\x10\x02*`\n\x0b\x44\x65viceState\x12\x1c\n\x18\x44\x45VICE_STATE_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x44\x45VICE_STATE_AVAILABLE\x10\x01\x12\x17\n\x13\x44\x45VICE_STATE_LEASED\x10\x02*\x8c\x01\n\x1cLeaseDeviceResponseErrorType\x12\x19\n\x15LEASE_ERROR_TYPE_NONE\x10\x00\x12%\n!LEASE_ERROR_TYPE_DEVICE_NOT_FOUND\x10\x01\x12*\n&LEASE_ERROR_TYPE_DEVICE_ALREADY_LEASED\x10\x02*\xa5\x01\n!BulkLeaseDevicesResponseErrorType\x12\x1e\n\x1a\x42ULK_LEASE_ERROR_TYPE_NONE\x10\x00\x12/\n+BULK_LEASE_ERROR_TYPE_INTERNAL_DATABASE_ERR\x10\x01\x12/\n+BULK_LEASE_ERROR_TYPE_PARTIAL_LEASE_FAILURE\x10\x02*]\n\x1eReleaseDeviceResponseErrorType\x12\x13\n\x0f\x45RROR_TYPE_NONE\x10\x00\x12&\n\"ERROR_TYPE_DEVICE_ALREADY_RELEASED\x10\x01\x32\xf0\x04\n\x12\x44\x65viceLeaseService\x12\x62\n\x0bLeaseDevice\x12\'.chromiumos.test.api.LeaseDeviceRequest\x1a(.chromiumos.test.api.LeaseDeviceResponse\"\x00\x12q\n\x10\x42ulkLeaseDevices\x12,.chromiumos.test.api.BulkLeaseDevicesRequest\x1a-.chromiumos.test.api.BulkLeaseDevicesResponse\"\x00\x12h\n\rReleaseDevice\x12).chromiumos.test.api.ReleaseDeviceRequest\x1a*.chromiumos.test.api.ReleaseDeviceResponse\"\x00\x12\x62\n\x0b\x45xtendLease\x12\'.chromiumos.test.api.ExtendLeaseRequest\x1a(.chromiumos.test.api.ExtendLeaseResponse\"\x00\x12Q\n\tGetDevice\x12%.chromiumos.test.api.GetDeviceRequest\x1a\x1b.chromiumos.test.api.Device\"\x00\x12\x62\n\x0bListDevices\x12\'.chromiumos.test.api.ListDevicesRequest\x1a(.chromiumos.test.api.ListDevicesResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n0chromiumos/test/api/device_manager_service.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(chromiumos/test/api/device_leasing.proto\"\xfb\x01\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x64ut_id\x18\x06 \x01(\t\x12\x33\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\".chromiumos.test.api.DeviceAddress\x12-\n\x04type\x18\x03 \x01(\x0e\x32\x1f.chromiumos.test.api.DeviceType\x12/\n\x05state\x18\x04 \x01(\x0e\x32 .chromiumos.test.api.DeviceState\x12@\n\rhardware_reqs\x18\x05 \x01(\x0b\x32).chromiumos.test.api.HardwareRequirements\"+\n\rDeviceAddress\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"\xb2\x04\n\x11\x44\x65viceLeaseRecord\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\x0fidempotency_key\x18\x02 \x01(\t\x12\x11\n\tdevice_id\x18\x03 \x01(\t\x12\x0e\n\x06\x64ut_id\x18\x0b \x01(\t\x12:\n\x0e\x64\x65vice_address\x18\x04 \x01(\x0b\x32\".chromiumos.test.api.DeviceAddress\x12\x34\n\x0b\x64\x65vice_type\x18\x05 \x01(\x0e\x32\x1f.chromiumos.test.api.DeviceType\x12/\n\x0bleased_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rreleased_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x0f\x65xpiration_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11last_updated_time\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12Y\n\x12request_parameters\x18\n \x03(\x0b\x32=.chromiumos.test.api.DeviceLeaseRecord.RequestParametersEntry\x1a\x38\n\x16RequestParametersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x90\x03\n\x12LeaseDeviceRequest\x12\x17\n\x0fidempotency_key\x18\x01 \x01(\t\x12\x14\n\x0con_behalf_of\x18\x02 \x01(\t\x12\x10\n\x08quota_id\x18\x03 \x01(\t\x12\x31\n\x0elease_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x39\n\x0cvm_host_reqs\x18\x05 \x01(\x0b\x32#.chromiumos.test.api.VMRequirements\x12G\n\x14hardware_device_reqs\x18\x06 \x01(\x0b\x32).chromiumos.test.api.HardwareRequirements\x12N\n\x0cuser_payload\x18\x07 \x03(\x0b\x32\x38.chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry\x1a\x32\n\x10UserPayloadEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xb0\x01\n\x13LeaseDeviceResponse\x12<\n\x0c\x64\x65vice_lease\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.DeviceLeaseRecord\x12\x45\n\nerror_type\x18\x02 \x01(\x0e\x32\x31.chromiumos.test.api.LeaseDeviceResponseErrorType\x12\x14\n\x0c\x65rror_string\x18\x03 \x01(\t\"a\n\x17\x42ulkLeaseDevicesRequest\x12\x46\n\x15lease_device_requests\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.LeaseDeviceRequest\"\xc6\x01\n\x18\x42ulkLeaseDevicesResponse\x12H\n\x16lease_device_responses\x18\x01 \x03(\x0b\x32(.chromiumos.test.api.LeaseDeviceResponse\x12J\n\nerror_type\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.api.BulkLeaseDevicesResponseErrorType\x12\x14\n\x0c\x65rror_string\x18\x03 \x01(\t\"(\n\x14ReleaseDeviceRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\"\x88\x01\n\x15ReleaseDeviceResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12G\n\nerror_type\x18\x02 \x01(\x0e\x32\x33.chromiumos.test.api.ReleaseDeviceResponseErrorType\x12\x14\n\x0c\x65rror_string\x18\x03 \x01(\t\" \n\x10GetDeviceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"[\n\x12ListDevicesRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x04 \x01(\t\"\\\n\x13ListDevicesResponse\x12,\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32\x1b.chromiumos.test.api.Device\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"m\n\x17ListDeviceLeasesRequest\x12\x13\n\tdevice_id\x18\x01 \x01(\tH\x00\x12\x10\n\x06\x64ut_id\x18\x02 \x01(\tH\x00\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\tB\x04\n\x02id\"r\n\x18ListDeviceLeasesResponse\x12=\n\rlease_records\x18\x01 \x03(\x0b\x32&.chromiumos.test.api.DeviceLeaseRecord\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t*\\\n\nDeviceType\x12\x1b\n\x17\x44\x45VICE_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13\x44\x45VICE_TYPE_VIRTUAL\x10\x01\x12\x18\n\x14\x44\x45VICE_TYPE_PHYSICAL\x10\x02*`\n\x0b\x44\x65viceState\x12\x1c\n\x18\x44\x45VICE_STATE_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x44\x45VICE_STATE_AVAILABLE\x10\x01\x12\x17\n\x13\x44\x45VICE_STATE_LEASED\x10\x02*\x8c\x01\n\x1cLeaseDeviceResponseErrorType\x12\x19\n\x15LEASE_ERROR_TYPE_NONE\x10\x00\x12%\n!LEASE_ERROR_TYPE_DEVICE_NOT_FOUND\x10\x01\x12*\n&LEASE_ERROR_TYPE_DEVICE_ALREADY_LEASED\x10\x02*\xa5\x01\n!BulkLeaseDevicesResponseErrorType\x12\x1e\n\x1a\x42ULK_LEASE_ERROR_TYPE_NONE\x10\x00\x12/\n+BULK_LEASE_ERROR_TYPE_INTERNAL_DATABASE_ERR\x10\x01\x12/\n+BULK_LEASE_ERROR_TYPE_PARTIAL_LEASE_FAILURE\x10\x02*]\n\x1eReleaseDeviceResponseErrorType\x12\x13\n\x0f\x45RROR_TYPE_NONE\x10\x00\x12&\n\"ERROR_TYPE_DEVICE_ALREADY_RELEASED\x10\x01\x32\xe3\x05\n\x12\x44\x65viceLeaseService\x12\x62\n\x0bLeaseDevice\x12\'.chromiumos.test.api.LeaseDeviceRequest\x1a(.chromiumos.test.api.LeaseDeviceResponse\"\x00\x12q\n\x10\x42ulkLeaseDevices\x12,.chromiumos.test.api.BulkLeaseDevicesRequest\x1a-.chromiumos.test.api.BulkLeaseDevicesResponse\"\x00\x12h\n\rReleaseDevice\x12).chromiumos.test.api.ReleaseDeviceRequest\x1a*.chromiumos.test.api.ReleaseDeviceResponse\"\x00\x12\x62\n\x0b\x45xtendLease\x12\'.chromiumos.test.api.ExtendLeaseRequest\x1a(.chromiumos.test.api.ExtendLeaseResponse\"\x00\x12Q\n\tGetDevice\x12%.chromiumos.test.api.GetDeviceRequest\x1a\x1b.chromiumos.test.api.Device\"\x00\x12\x62\n\x0bListDevices\x12\'.chromiumos.test.api.ListDevicesRequest\x1a(.chromiumos.test.api.ListDevicesResponse\"\x00\x12q\n\x10ListDeviceLeases\x12,.chromiumos.test.api.ListDeviceLeasesRequest\x1a-.chromiumos.test.api.ListDeviceLeasesResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_device__leasing__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _DEVICETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2196,
-  serialized_end=2288,
+  serialized_start=2555,
+  serialized_end=2647,
 )
 _sym_db.RegisterEnumDescriptor(_DEVICETYPE)
 
@@ -83,8 +83,8 @@ _DEVICESTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2290,
-  serialized_end=2386,
+  serialized_start=2649,
+  serialized_end=2745,
 )
 _sym_db.RegisterEnumDescriptor(_DEVICESTATE)
 
@@ -114,8 +114,8 @@ _LEASEDEVICERESPONSEERRORTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2389,
-  serialized_end=2529,
+  serialized_start=2748,
+  serialized_end=2888,
 )
 _sym_db.RegisterEnumDescriptor(_LEASEDEVICERESPONSEERRORTYPE)
 
@@ -145,8 +145,8 @@ _BULKLEASEDEVICESRESPONSEERRORTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2532,
-  serialized_end=2697,
+  serialized_start=2891,
+  serialized_end=3056,
 )
 _sym_db.RegisterEnumDescriptor(_BULKLEASEDEVICESRESPONSEERRORTYPE)
 
@@ -171,8 +171,8 @@ _RELEASEDEVICERESPONSEERRORTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2699,
-  serialized_end=2792,
+  serialized_start=3058,
+  serialized_end=3151,
 )
 _sym_db.RegisterEnumDescriptor(_RELEASEDEVICERESPONSEERRORTYPE)
 
@@ -440,6 +440,44 @@ _DEVICELEASERECORD = _descriptor.Descriptor(
 )
 
 
+_LEASEDEVICEREQUEST_USERPAYLOADENTRY = _descriptor.Descriptor(
+  name='UserPayloadEntry',
+  full_name='chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1395,
+  serialized_end=1445,
+)
+
 _LEASEDEVICEREQUEST = _descriptor.Descriptor(
   name='LeaseDeviceRequest',
   full_name='chromiumos.test.api.LeaseDeviceRequest',
@@ -490,10 +528,17 @@ _LEASEDEVICEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user_payload', full_name='chromiumos.test.api.LeaseDeviceRequest.user_payload', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_LEASEDEVICEREQUEST_USERPAYLOADENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -503,7 +548,7 @@ _LEASEDEVICEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1045,
-  serialized_end=1313,
+  serialized_end=1445,
 )
 
 
@@ -548,8 +593,8 @@ _LEASEDEVICERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1316,
-  serialized_end=1492,
+  serialized_start=1448,
+  serialized_end=1624,
 )
 
 
@@ -580,8 +625,8 @@ _BULKLEASEDEVICESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1494,
-  serialized_end=1591,
+  serialized_start=1626,
+  serialized_end=1723,
 )
 
 
@@ -626,8 +671,8 @@ _BULKLEASEDEVICESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1594,
-  serialized_end=1792,
+  serialized_start=1726,
+  serialized_end=1924,
 )
 
 
@@ -658,8 +703,8 @@ _RELEASEDEVICEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1794,
-  serialized_end=1834,
+  serialized_start=1926,
+  serialized_end=1966,
 )
 
 
@@ -704,8 +749,8 @@ _RELEASEDEVICERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1837,
-  serialized_end=1973,
+  serialized_start=1969,
+  serialized_end=2105,
 )
 
 
@@ -736,8 +781,8 @@ _GETDEVICEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1975,
-  serialized_end=2007,
+  serialized_start=2107,
+  serialized_end=2139,
 )
 
 
@@ -789,8 +834,8 @@ _LISTDEVICESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2009,
-  serialized_end=2100,
+  serialized_start=2141,
+  serialized_end=2232,
 )
 
 
@@ -828,8 +873,105 @@ _LISTDEVICESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2102,
-  serialized_end=2194,
+  serialized_start=2234,
+  serialized_end=2326,
+)
+
+
+_LISTDEVICELEASESREQUEST = _descriptor.Descriptor(
+  name='ListDeviceLeasesRequest',
+  full_name='chromiumos.test.api.ListDeviceLeasesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_id', full_name='chromiumos.test.api.ListDeviceLeasesRequest.device_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dut_id', full_name='chromiumos.test.api.ListDeviceLeasesRequest.dut_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='page_size', full_name='chromiumos.test.api.ListDeviceLeasesRequest.page_size', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='page_token', full_name='chromiumos.test.api.ListDeviceLeasesRequest.page_token', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='id', full_name='chromiumos.test.api.ListDeviceLeasesRequest.id',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=2328,
+  serialized_end=2437,
+)
+
+
+_LISTDEVICELEASESRESPONSE = _descriptor.Descriptor(
+  name='ListDeviceLeasesResponse',
+  full_name='chromiumos.test.api.ListDeviceLeasesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='lease_records', full_name='chromiumos.test.api.ListDeviceLeasesResponse.lease_records', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='next_page_token', full_name='chromiumos.test.api.ListDeviceLeasesResponse.next_page_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2439,
+  serialized_end=2553,
 )
 
 _DEVICE.fields_by_name['address'].message_type = _DEVICEADDRESS
@@ -844,9 +986,11 @@ _DEVICELEASERECORD.fields_by_name['released_time'].message_type = google_dot_pro
 _DEVICELEASERECORD.fields_by_name['expiration_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _DEVICELEASERECORD.fields_by_name['last_updated_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _DEVICELEASERECORD.fields_by_name['request_parameters'].message_type = _DEVICELEASERECORD_REQUESTPARAMETERSENTRY
+_LEASEDEVICEREQUEST_USERPAYLOADENTRY.containing_type = _LEASEDEVICEREQUEST
 _LEASEDEVICEREQUEST.fields_by_name['lease_duration'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _LEASEDEVICEREQUEST.fields_by_name['vm_host_reqs'].message_type = chromiumos_dot_test_dot_api_dot_device__leasing__pb2._VMREQUIREMENTS
 _LEASEDEVICEREQUEST.fields_by_name['hardware_device_reqs'].message_type = chromiumos_dot_test_dot_api_dot_device__leasing__pb2._HARDWAREREQUIREMENTS
+_LEASEDEVICEREQUEST.fields_by_name['user_payload'].message_type = _LEASEDEVICEREQUEST_USERPAYLOADENTRY
 _LEASEDEVICERESPONSE.fields_by_name['device_lease'].message_type = _DEVICELEASERECORD
 _LEASEDEVICERESPONSE.fields_by_name['error_type'].enum_type = _LEASEDEVICERESPONSEERRORTYPE
 _BULKLEASEDEVICESREQUEST.fields_by_name['lease_device_requests'].message_type = _LEASEDEVICEREQUEST
@@ -854,6 +998,13 @@ _BULKLEASEDEVICESRESPONSE.fields_by_name['lease_device_responses'].message_type 
 _BULKLEASEDEVICESRESPONSE.fields_by_name['error_type'].enum_type = _BULKLEASEDEVICESRESPONSEERRORTYPE
 _RELEASEDEVICERESPONSE.fields_by_name['error_type'].enum_type = _RELEASEDEVICERESPONSEERRORTYPE
 _LISTDEVICESRESPONSE.fields_by_name['devices'].message_type = _DEVICE
+_LISTDEVICELEASESREQUEST.oneofs_by_name['id'].fields.append(
+  _LISTDEVICELEASESREQUEST.fields_by_name['device_id'])
+_LISTDEVICELEASESREQUEST.fields_by_name['device_id'].containing_oneof = _LISTDEVICELEASESREQUEST.oneofs_by_name['id']
+_LISTDEVICELEASESREQUEST.oneofs_by_name['id'].fields.append(
+  _LISTDEVICELEASESREQUEST.fields_by_name['dut_id'])
+_LISTDEVICELEASESREQUEST.fields_by_name['dut_id'].containing_oneof = _LISTDEVICELEASESREQUEST.oneofs_by_name['id']
+_LISTDEVICELEASESRESPONSE.fields_by_name['lease_records'].message_type = _DEVICELEASERECORD
 DESCRIPTOR.message_types_by_name['Device'] = _DEVICE
 DESCRIPTOR.message_types_by_name['DeviceAddress'] = _DEVICEADDRESS
 DESCRIPTOR.message_types_by_name['DeviceLeaseRecord'] = _DEVICELEASERECORD
@@ -866,6 +1017,8 @@ DESCRIPTOR.message_types_by_name['ReleaseDeviceResponse'] = _RELEASEDEVICERESPON
 DESCRIPTOR.message_types_by_name['GetDeviceRequest'] = _GETDEVICEREQUEST
 DESCRIPTOR.message_types_by_name['ListDevicesRequest'] = _LISTDEVICESREQUEST
 DESCRIPTOR.message_types_by_name['ListDevicesResponse'] = _LISTDEVICESRESPONSE
+DESCRIPTOR.message_types_by_name['ListDeviceLeasesRequest'] = _LISTDEVICELEASESREQUEST
+DESCRIPTOR.message_types_by_name['ListDeviceLeasesResponse'] = _LISTDEVICELEASESRESPONSE
 DESCRIPTOR.enum_types_by_name['DeviceType'] = _DEVICETYPE
 DESCRIPTOR.enum_types_by_name['DeviceState'] = _DEVICESTATE
 DESCRIPTOR.enum_types_by_name['LeaseDeviceResponseErrorType'] = _LEASEDEVICERESPONSEERRORTYPE
@@ -903,11 +1056,19 @@ _sym_db.RegisterMessage(DeviceLeaseRecord)
 _sym_db.RegisterMessage(DeviceLeaseRecord.RequestParametersEntry)
 
 LeaseDeviceRequest = _reflection.GeneratedProtocolMessageType('LeaseDeviceRequest', (_message.Message,), {
+
+  'UserPayloadEntry' : _reflection.GeneratedProtocolMessageType('UserPayloadEntry', (_message.Message,), {
+    'DESCRIPTOR' : _LEASEDEVICEREQUEST_USERPAYLOADENTRY,
+    '__module__' : 'chromiumos.test.api.device_manager_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry)
+    })
+  ,
   'DESCRIPTOR' : _LEASEDEVICEREQUEST,
   '__module__' : 'chromiumos.test.api.device_manager_service_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.LeaseDeviceRequest)
   })
 _sym_db.RegisterMessage(LeaseDeviceRequest)
+_sym_db.RegisterMessage(LeaseDeviceRequest.UserPayloadEntry)
 
 LeaseDeviceResponse = _reflection.GeneratedProtocolMessageType('LeaseDeviceResponse', (_message.Message,), {
   'DESCRIPTOR' : _LEASEDEVICERESPONSE,
@@ -965,9 +1126,24 @@ ListDevicesResponse = _reflection.GeneratedProtocolMessageType('ListDevicesRespo
   })
 _sym_db.RegisterMessage(ListDevicesResponse)
 
+ListDeviceLeasesRequest = _reflection.GeneratedProtocolMessageType('ListDeviceLeasesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTDEVICELEASESREQUEST,
+  '__module__' : 'chromiumos.test.api.device_manager_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ListDeviceLeasesRequest)
+  })
+_sym_db.RegisterMessage(ListDeviceLeasesRequest)
+
+ListDeviceLeasesResponse = _reflection.GeneratedProtocolMessageType('ListDeviceLeasesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTDEVICELEASESRESPONSE,
+  '__module__' : 'chromiumos.test.api.device_manager_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ListDeviceLeasesResponse)
+  })
+_sym_db.RegisterMessage(ListDeviceLeasesResponse)
+
 
 DESCRIPTOR._options = None
 _DEVICELEASERECORD_REQUESTPARAMETERSENTRY._options = None
+_LEASEDEVICEREQUEST_USERPAYLOADENTRY._options = None
 
 _DEVICELEASESERVICE = _descriptor.ServiceDescriptor(
   name='DeviceLeaseService',
@@ -976,8 +1152,8 @@ _DEVICELEASESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2795,
-  serialized_end=3419,
+  serialized_start=3154,
+  serialized_end=3893,
   methods=[
   _descriptor.MethodDescriptor(
     name='LeaseDevice',
@@ -1036,6 +1212,16 @@ _DEVICELEASESERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LISTDEVICESREQUEST,
     output_type=_LISTDEVICESRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ListDeviceLeases',
+    full_name='chromiumos.test.api.DeviceLeaseService.ListDeviceLeases',
+    index=6,
+    containing_service=None,
+    input_type=_LISTDEVICELEASESREQUEST,
+    output_type=_LISTDEVICELEASESRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

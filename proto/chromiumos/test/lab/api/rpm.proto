@@ -10,7 +10,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
-
 // Next Tag: 3
 enum RPMType {
   RPM_TYPE_UNKNOWN = 0;
@@ -33,4 +32,3 @@ message RPM {
   // RPM type
   RPMType type = 6;
 }
-

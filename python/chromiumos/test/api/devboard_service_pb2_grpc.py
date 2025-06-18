@@ -7,10 +7,9 @@ from chromiumos.test.api import devboard_service_pb2 as chromiumos_dot_test_dot_
 
 
 class DevboardServiceStub(object):
-    """Provides the ability to start/stop DevboardService daemon and execute devboard dutcontrol
-    commands on it.
-    DevboardService daemon can be running either inside a Docker container or directly
-    on the host.
+    """Provides the ability to start/stop DevboardService daemon and execute
+    devboard dutcontrol commands on it. DevboardService daemon can be running
+    either inside a Docker container or directly on the host.
     """
 
     def __init__(self, channel):
@@ -32,15 +31,14 @@ class DevboardServiceStub(object):
 
 
 class DevboardServiceServicer(object):
-    """Provides the ability to start/stop DevboardService daemon and execute devboard dutcontrol
-    commands on it.
-    DevboardService daemon can be running either inside a Docker container or directly
-    on the host.
+    """Provides the ability to start/stop DevboardService daemon and execute
+    devboard dutcontrol commands on it. DevboardService daemon can be running
+    either inside a Docker container or directly on the host.
     """
 
     def StartDevboardService(self, request, context):
-        """StartDevboardService runs a gsc_dev_board Docker container and starts the service daemon
-        inside the container.
+        """StartDevboardService runs a gsc_dev_board Docker container and starts the
+        service daemon inside the container.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -74,10 +72,9 @@ def add_DevboardServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class DevboardService(object):
-    """Provides the ability to start/stop DevboardService daemon and execute devboard dutcontrol
-    commands on it.
-    DevboardService daemon can be running either inside a Docker container or directly
-    on the host.
+    """Provides the ability to start/stop DevboardService daemon and execute
+    devboard dutcontrol commands on it. DevboardService daemon can be running
+    either inside a Docker container or directly on the host.
     """
 
     @staticmethod
