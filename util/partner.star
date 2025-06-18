@@ -217,6 +217,12 @@ partner = struct(
             vendor_id = "1DA0",
             symlink_file_format = "paradetech_{product_id}.bin",
         ),
+        CIRQUE = _create_touch_partner(
+            name = "cirque",
+            vendor_id = "0488",
+            symlink_file_format = "cirque_firmware_{product_id}.hex",
+            destination_file_format = "{vendor_id}_{product_id}_{fw_version}.hex",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(

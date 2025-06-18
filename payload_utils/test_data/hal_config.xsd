@@ -13,6 +13,18 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="FormFactorTypeEn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CLAMSHELL"/>
+      <xs:enumeration value="CONVERTIBLE"/>
+      <xs:enumeration value="DETACHABLE"/>
+      <xs:enumeration value="CHROMEBASE"/>
+      <xs:enumeration value="CHROMEBOX"/>
+      <xs:enumeration value="CHROMEBIT"/>
+      <xs:enumeration value="CHROMESLATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="IdentityType">
     <xs:sequence>
       <xs:element type="xs:string" name="sku-id"/>
@@ -92,6 +104,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="HardwareFeaturesType">
+    <xs:sequence>
+      <xs:element type="FormFactorTypeEn" name="form-factor" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The form factor of the device (e.g., CLAMSHELL, CONVERTIBLE).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -100,6 +122,7 @@
       <xs:element name="FirmwareConfiguration" type="FirmwareConfigurationType" minOccurs="0"/>
       <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
       <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
+      <xs:element name="HardwareFeatures" type="HardwareFeaturesType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

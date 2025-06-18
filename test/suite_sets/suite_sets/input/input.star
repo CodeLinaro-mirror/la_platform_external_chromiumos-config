@@ -5,7 +5,6 @@
 load("//create.star", "create")
 
 shared_owners = [
-    "essential-inputs-gardener-oncall@google.com",
     "essential-inputs-team@google.com",
 ]
 
