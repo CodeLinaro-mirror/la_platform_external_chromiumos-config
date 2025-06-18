@@ -104,6 +104,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="CameraConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="media-profile" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The media_profile.xml file for the given SKU. This is used to set ro.media.xml_variant.profiles.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HardwareFeaturesType">
     <xs:sequence>
       <xs:element type="FormFactorTypeEn" name="form-factor" minOccurs="1">
@@ -122,6 +132,7 @@
       <xs:element name="FirmwareConfiguration" type="FirmwareConfigurationType" minOccurs="0"/>
       <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
       <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
+      <xs:element name="CameraConfiguration" type="CameraConfigurationType" minOccurs="0"/>
       <xs:element name="HardwareFeatures" type="HardwareFeaturesType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>

@@ -12202,6 +12202,13 @@
               "name": "height",
               "number": 2,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "bitrate",
+              "label": "LABEL_OPTIONAL",
+              "name": "bitrate",
+              "number": 3,
+              "type": "TYPE_UINT32"
             }
           ],
           "name": "Resolution"
