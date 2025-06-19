@@ -434,9 +434,6 @@
 			"metadata": {
 				"owners": [
 					{
-						"email": "essential-inputs-gardener-oncall@google.com"
-					},
-					{
 						"email": "essential-inputs-team@google.com"
 					}
 				],
@@ -3751,9 +3748,6 @@
 				},
 				{
 					"value": "tast.mojo.ServiceManagerTestSharedBuffer"
-				},
-				{
-					"value": "tast.nacl.Pnacl"
 				},
 				{
 					"value": "tast.network.ARCCreateWifiInShillByCmd.auto_reconnect_disabled"

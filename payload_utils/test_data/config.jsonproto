@@ -24,6 +24,9 @@
               "board": "testfpboard",
               "present": true,
               "roVersion": "123"
+            },
+            "formFactor": {
+              "formFactor": "CLAMSHELL"
             }
           }
         },
@@ -42,6 +45,9 @@
               "board": "testfpboard",
               "present": true,
               "roVersion": "123"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE"
             }
           }
         }
@@ -98,9 +104,9 @@
             "major": 15217,
             "minor": 531
           }
+          }
         }
       }
-    }
   ],
   "partnerList": [],
   "components": [],
