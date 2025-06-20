@@ -36,6 +36,8 @@ type DeviceLeaseServiceClient interface {
 	// List devices managed by Device Manager.
 	// Designed to adhere to https://google.aip.dev/132.
 	ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error)
+	// List device leases for a given device.
+	ListDeviceLeases(ctx context.Context, in *ListDeviceLeasesRequest, opts ...grpc.CallOption) (*ListDeviceLeasesResponse, error)
 }
 
 type deviceLeaseServiceClient struct {
@@ -100,6 +102,15 @@ func (c *deviceLeaseServiceClient) ListDevices(ctx context.Context, in *ListDevi
 	return out, nil
 }
 
+func (c *deviceLeaseServiceClient) ListDeviceLeases(ctx context.Context, in *ListDeviceLeasesRequest, opts ...grpc.CallOption) (*ListDeviceLeasesResponse, error) {
+	out := new(ListDeviceLeasesResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.DeviceLeaseService/ListDeviceLeases", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DeviceLeaseServiceServer is the server API for DeviceLeaseService service.
 // All implementations should embed UnimplementedDeviceLeaseServiceServer
 // for forward compatibility
@@ -118,6 +129,8 @@ type DeviceLeaseServiceServer interface {
 	// List devices managed by Device Manager.
 	// Designed to adhere to https://google.aip.dev/132.
 	ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error)
+	// List device leases for a given device.
+	ListDeviceLeases(context.Context, *ListDeviceLeasesRequest) (*ListDeviceLeasesResponse, error)
 }
 
 // UnimplementedDeviceLeaseServiceServer should be embedded to have forward compatible implementations.
@@ -141,6 +154,9 @@ func (UnimplementedDeviceLeaseServiceServer) GetDevice(context.Context, *GetDevi
 }
 func (UnimplementedDeviceLeaseServiceServer) ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDevices not implemented")
+}
+func (UnimplementedDeviceLeaseServiceServer) ListDeviceLeases(context.Context, *ListDeviceLeasesRequest) (*ListDeviceLeasesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDeviceLeases not implemented")
 }
 
 // UnsafeDeviceLeaseServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -262,6 +278,24 @@ func _DeviceLeaseService_ListDevices_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceLeaseService_ListDeviceLeases_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDeviceLeasesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceLeaseServiceServer).ListDeviceLeases(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.DeviceLeaseService/ListDeviceLeases",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceLeaseServiceServer).ListDeviceLeases(ctx, req.(*ListDeviceLeasesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeviceLeaseService_ServiceDesc is the grpc.ServiceDesc for DeviceLeaseService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -292,6 +326,10 @@ var DeviceLeaseService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListDevices",
 			Handler:    _DeviceLeaseService_ListDevices_Handler,
+		},
+		{
+			MethodName: "ListDeviceLeases",
+			Handler:    _DeviceLeaseService_ListDeviceLeases_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

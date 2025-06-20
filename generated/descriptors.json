@@ -23431,7 +23431,8 @@
       ],
       "name": "chromiumos/test/api/bols/bols_service.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/bols"
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/bols",
+        "javaOuterClassname": "BolsServiceOuterClass"
       },
       "package": "chromiumos.test.api.bols",
       "service": [
@@ -30377,6 +30378,13 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Iterations"
+            },
+            {
+              "jsonName": "ignoreVariantCategory",
+              "label": "LABEL_OPTIONAL",
+              "name": "ignore_variant_category",
+              "number": 11,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "SuiteRequest",
@@ -31784,9 +31792,41 @@
               "name": "idempotency_key",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "userPayload",
+              "label": "LABEL_REPEATED",
+              "name": "user_payload",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry"
             }
           ],
-          "name": "ExtendLeaseRequest"
+          "name": "ExtendLeaseRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "UserPayloadEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [
@@ -32139,9 +32179,41 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.HardwareRequirements"
+            },
+            {
+              "jsonName": "userPayload",
+              "label": "LABEL_REPEATED",
+              "name": "user_payload",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry"
             }
           ],
-          "name": "LeaseDeviceRequest"
+          "name": "LeaseDeviceRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "UserPayloadEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [
@@ -32315,6 +32387,66 @@
             }
           ],
           "name": "ListDevicesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dutId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_id",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListDeviceLeasesRequest",
+          "oneofDecl": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseRecords",
+              "label": "LABEL_REPEATED",
+              "name": "lease_records",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceLeaseRecord"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListDeviceLeasesResponse"
         }
       ],
       "name": "chromiumos/test/api/device_manager_service.proto",
@@ -32360,6 +32492,12 @@
               "name": "ListDevices",
               "options": {},
               "outputType": ".chromiumos.test.api.ListDevicesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ListDeviceLeasesRequest",
+              "name": "ListDeviceLeases",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ListDeviceLeasesResponse"
             }
           ],
           "name": "DeviceLeaseService"
@@ -33188,6 +33326,25 @@
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "OperatingSystem",
+              "value": [
+                {
+                  "name": "UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "CHROMEOS",
+                  "number": 1
+                },
+                {
+                  "name": "ANDROID",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "firmwareConfig",
@@ -33196,6 +33353,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "os",
+              "label": "LABEL_OPTIONAL",
+              "name": "os",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem"
             }
           ],
           "name": "FirmwareProvisionInstallMetadata"
@@ -33742,14 +33907,10 @@
     {
       "bufExtension": {
         "isImport": false,
-        "isSyntaxUnspecified": false,
-        "unusedDependency": [
-          1
-        ]
+        "isSyntaxUnspecified": false
       },
       "dependency": [
-        "google/protobuf/any.proto",
-        "chromiumos/test/api/test_case_metadata.proto"
+        "google/protobuf/any.proto"
       ],
       "messageType": [
         {
@@ -34245,7 +34406,8 @@
       ],
       "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/lsnexus"
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/lsnexus",
+        "javaOuterClassname": "LsnexusServiceOuterClass"
       },
       "package": "chromiumos.test.api.lsnexus",
       "service": [
@@ -34302,12 +34464,6 @@
               "name": "Echo",
               "options": {},
               "outputType": ".chromiumos.test.api.lsnexus.EchoResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.lsnexus.DownloadSystemLogsRequest",
-              "name": "DownloadSystemLogs",
-              "options": {},
-              "outputType": ".chromiumos.test.api.lsnexus.DownloadSystemLogsResponse"
             },
             {
               "inputType": ".chromiumos.test.api.lsnexus.DownloadServoLogsRequest",
@@ -39998,6 +40154,296 @@
             }
           ],
           "name": "CameraService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "google/protobuf/duration.proto"
+      ],
+      "messageType": [
+        {
+          "name": "GetHIDDevicesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HIDDevice"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.HIDDevice"
+            }
+          ],
+          "name": "GetHIDDevicesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InitHIDDeviceRequest"
+        },
+        {
+          "name": "InitHIDDeviceResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseHIDDeviceRequest"
+        },
+        {
+          "name": "CloseHIDDeviceResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "keys",
+              "label": "LABEL_REPEATED",
+              "name": "keys",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pressAndRelease",
+              "label": "LABEL_OPTIONAL",
+              "name": "press_and_release",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.KeyboardActionRequest.PressAndRelease"
+            }
+          ],
+          "name": "KeyboardActionRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "duration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "duration",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Duration"
+                }
+              ],
+              "name": "PressAndRelease"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "action"
+            }
+          ]
+        },
+        {
+          "name": "KeyboardActionResponse"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Button",
+              "value": [
+                {
+                  "name": "UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "LEFT",
+                  "number": 1
+                },
+                {
+                  "name": "RIGHT",
+                  "number": 2
+                },
+                {
+                  "name": "MIDDLE",
+                  "number": 3
+                },
+                {
+                  "name": "BACK",
+                  "number": 4
+                },
+                {
+                  "name": "FORWARD",
+                  "number": 5
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pressAndRelease",
+              "label": "LABEL_OPTIONAL",
+              "name": "press_and_release",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.PressAndRelease"
+            },
+            {
+              "jsonName": "scroll",
+              "label": "LABEL_OPTIONAL",
+              "name": "scroll",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.Scroll"
+            },
+            {
+              "jsonName": "move",
+              "label": "LABEL_OPTIONAL",
+              "name": "move",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.Move"
+            }
+          ],
+          "name": "MouseActionRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "button",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "button",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.lab.api.passport.MouseActionRequest.Button"
+                },
+                {
+                  "jsonName": "duration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "duration",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Duration"
+                }
+              ],
+              "name": "PressAndRelease"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "distance",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "distance",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "Scroll"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "x",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "x",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "y",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "y",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "Move"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "action"
+            }
+          ]
+        },
+        {
+          "name": "MouseActionResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/hid_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetHIDDevicesRequest",
+              "name": "GetHIDDevices",
+              "outputType": ".chromiumos.test.lab.api.passport.GetHIDDevicesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.InitHIDDeviceRequest",
+              "name": "InitHIDDevice",
+              "outputType": ".chromiumos.test.lab.api.passport.InitHIDDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CloseHIDDeviceRequest",
+              "name": "CloseHIDDevice",
+              "outputType": ".chromiumos.test.lab.api.passport.CloseHIDDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.KeyboardActionRequest",
+              "name": "KeyboardAction",
+              "outputType": ".chromiumos.test.lab.api.passport.KeyboardActionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.MouseActionRequest",
+              "name": "MouseAction",
+              "outputType": ".chromiumos.test.lab.api.passport.MouseActionResponse"
+            }
+          ],
+          "name": "HIDService"
         }
       ],
       "syntax": "proto3"
