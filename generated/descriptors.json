@@ -6358,6 +6358,14 @@
                   "number": 15,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "ishHasMainFw",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ish_has_main_fw",
+                  "number": 16,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",
