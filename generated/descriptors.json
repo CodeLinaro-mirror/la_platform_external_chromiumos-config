@@ -22922,7 +22922,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ReadServodRequest"
+          "name": "DocServodRequest"
         },
         {
           "field": [
@@ -22941,7 +22941,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ReadServodResponse"
+          "name": "DocServodResponse"
         },
         {
           "field": [
@@ -23563,9 +23563,9 @@
               "outputType": ".chromiumos.test.api.bols.HWInitServodResponse"
             },
             {
-              "inputType": ".chromiumos.test.api.bols.ReadServodRequest",
-              "name": "ReadServod",
-              "outputType": ".chromiumos.test.api.bols.ReadServodResponse"
+              "inputType": ".chromiumos.test.api.bols.DocServodRequest",
+              "name": "DocServod",
+              "outputType": ".chromiumos.test.api.bols.DocServodResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetServodRequest",
