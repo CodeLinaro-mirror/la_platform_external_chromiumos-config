@@ -529,10 +529,46 @@ def _add_audio_entry(
             soundcard_name,
         )
 
-    model, _ = design_config.id.value.split(":")
+    # Initialize a list to hold parts of the audio_config_dir string in format
+    audio_config_fields = [soundcard_name]
 
+    headphone_codec_name = topology_pb2.HardwareFeatures.Audio.AudioCodec.Name(
+        audio_features.headphone_codec
+    )
+    if headphone_codec_name != "AUDIO_CODEC_UNKNOWN":
+        _, _, codec_str = headphone_codec_name.lower().rpartition("_")
+        if codec_str:
+            audio_config_fields.append(codec_str)
+
+    amplifier_name = topology_pb2.HardwareFeatures.Audio.Amplifier.Name(
+        audio_features.speaker_amp
+    )
+    if amplifier_name != "AMPLIFIER_UNKNOWN":
+        _, _, ampl_str = amplifier_name.lower().rpartition("_")
+        if ampl_str:
+            audio_config_fields.append(ampl_str)
+
+    lid_mic_count = (
+        audio_features.lid_microphone.value
+        if audio_features.HasField("lid_microphone")
+        else 0
+    )
+    base_mic_count = (
+        audio_features.base_microphone.value
+        if audio_features.HasField("base_microphone")
+        else 0
+    )
+    total_mic_count = lid_mic_count + base_mic_count
+
+    if total_mic_count > 0:
+        audio_config_fields.append(str(total_mic_count))
+
+    # Construct the audio-config-dir string by joining the parts
+    audio_config_dir_value = "_".join(audio_config_fields)
     audio_config_elem = etree.SubElement(hal_config, "AudioConfiguration")
-    etree.SubElement(audio_config_elem, "audio-config-dir").text = model
+    etree.SubElement(audio_config_elem, "audio-config-dir").text = (
+        audio_config_dir_value
+    )
     etree.SubElement(audio_config_elem, "soundcard").text = soundcard_name
 
 

@@ -288,7 +288,7 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.assertIsNone(self.root_element.find("FirmwareConfiguration"))
 
     def test_add_audio_entry_valid(self):
-        """Test audio entry with valid data."""
+        """Test audio entry with valid data (soundcard only)."""
         audio_features = self.design_config.hardware_features.audio
         card_config = audio_features.card_configs.add()
         card_config.card_name = "TestSoundcard"
@@ -297,7 +297,32 @@ class HalEntryHelpersTest(unittest.TestCase):
         audio_elem = self.root_element.find("AudioConfiguration")
         self.assertIsNotNone(audio_elem)
         self.assertEqual(audio_elem.find("soundcard").text, "TestSoundcard")
-        self.assertEqual(audio_elem.find("audio-config-dir").text, "TestModel")
+        self.assertEqual(
+            audio_elem.find("audio-config-dir").text, "TestSoundcard"
+        )
+
+    def test_add_audio_entry_full_config(self):
+        """Test audio entry with all valid data fields."""
+        audio_features = self.design_config.hardware_features.audio
+        card_config = audio_features.card_configs.add()
+        card_config.card_name = "TestSoundcard"
+        audio_features.headphone_codec = (
+            topology_pb2.HardwareFeatures.Audio.ALC5682I
+        )
+        audio_features.speaker_amp = (
+            topology_pb2.HardwareFeatures.Audio.MAX98390
+        )
+        audio_features.lid_microphone.value = 2
+        audio_features.base_microphone.value = 1
+
+        cros_to_android._add_audio_entry(self.root_element, self.design_config)
+        audio_elem = self.root_element.find("AudioConfiguration")
+        self.assertIsNotNone(audio_elem)
+        self.assertEqual(audio_elem.find("soundcard").text, "TestSoundcard")
+        self.assertEqual(
+            audio_elem.find("audio-config-dir").text,
+            "TestSoundcard_alc5682i_max98390_3",
+        )
 
     def test_add_audio_entry_no_card_configs(self):
         """Test audio entry with no card_configs."""
