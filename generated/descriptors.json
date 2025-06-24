@@ -30285,13 +30285,6 @@
               "name": "encoded_atp_test_job_msg",
               "number": 10,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "skipProvision",
-              "label": "LABEL_OPTIONAL",
-              "name": "skip_provision",
-              "number": 12,
-              "type": "TYPE_BOOL"
             }
           ],
           "name": "CTPRequest"
@@ -30422,6 +30415,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "ignore_variant_category",
               "number": 11,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "skipProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_provision",
+              "number": 12,
               "type": "TYPE_BOOL"
             }
           ],
