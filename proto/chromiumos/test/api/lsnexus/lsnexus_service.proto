@@ -24,6 +24,14 @@ service LSNexusService {
   // Allowed methods: doc, get, set, and hwinit.
   rpc CallServod(CallServodRequest) returns (CallServodResponse);
 
+  // GetFile gets a file from labstation/container.
+  rpc GetFile(GetFileRequest) returns (stream GetFileResponse) {}
+
+  // PutFile puts a file on labstation/container.
+  // If the directory of destination path does not exist, this service
+  // will also create the directory.
+  rpc PutFile(stream PutFileRequest) returns (PutFileResponse) {}
+
   // RemoveFile removes a file on labstation/container.
   rpc RemoveFile(RemoveFileRequest) returns (RemoveFileResponse) {}
 
@@ -143,6 +151,31 @@ message DownloadSystemLogsResponse {}
 message DownloadServoLogsRequest {}
 
 message DownloadServoLogsResponse {}
+
+message GetFileRequest {
+  // The path of the file to get.
+  string filename = 1;
+}
+
+message GetFileResponse {
+  // A chunk of the file's content.
+  // The entire file content is sent as a sequence of these messages.
+  bytes data = 1;
+}
+
+message PutFileRequest {
+  // Source for the file.
+  oneof source {
+    PutFileRequestInitInfo req_info = 1;
+    bytes data = 2;
+  }
+}
+
+message PutFileRequestInitInfo {
+  string filename = 1;
+}
+
+message PutFileResponse {}
 
 message RemoveFileRequest {
   string file_name = 1;

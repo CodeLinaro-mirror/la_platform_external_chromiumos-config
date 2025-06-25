@@ -34290,6 +34290,72 @@
         {
           "field": [
             {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFileRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "GetFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "reqInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "req_info",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.PutFileRequestInitInfo"
+            },
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "PutFileRequest",
+          "oneofDecl": [
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PutFileRequestInitInfo"
+        },
+        {
+          "name": "PutFileResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "fileName",
               "label": "LABEL_OPTIONAL",
               "name": "file_name",
@@ -34465,6 +34531,20 @@
               "inputType": ".chromiumos.test.api.lsnexus.CallServodRequest",
               "name": "CallServod",
               "outputType": ".chromiumos.test.api.lsnexus.CallServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.GetFileRequest",
+              "name": "GetFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.GetFileResponse",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.lsnexus.PutFileRequest",
+              "name": "PutFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.PutFileResponse"
             },
             {
               "inputType": ".chromiumos.test.api.lsnexus.RemoveFileRequest",
