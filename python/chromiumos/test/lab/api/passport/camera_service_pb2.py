@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n5chromiumos/test/lab/api/passport/camera_service.proto\x12 chromiumos.test.lab.api.passport\"\x13\n\x11GetCamerasRequest\"\"\n\x06\x43\x61mera\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"O\n\x12GetCamerasResponse\x12\x39\n\x07\x63\x61meras\x18\x01 \x03(\x0b\x32(.chromiumos.test.lab.api.passport.Camera\"+\n\x16GetAveragePixelRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\"3\n\x05Pixel\x12\t\n\x01r\x18\x01 \x01(\x05\x12\t\n\x01g\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05\x12\t\n\x01\x61\x18\x04 \x01(\x05\"`\n\x17GetAveragePixelResponse\x12\x36\n\x05pixel\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.passport.Pixel\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\"5\n\x03HSV\x12\x0b\n\x03hue\x18\x01 \x01(\x02\x12\x12\n\nsaturation\x18\x02 \x01(\x02\x12\r\n\x05value\x18\x03 \x01(\x02\"q\n\x07HSVMask\x12\x32\n\x03min\x18\x01 \x01(\x0b\x32%.chromiumos.test.lab.api.passport.HSV\x12\x32\n\x03max\x18\x02 \x01(\x0b\x32%.chromiumos.test.lab.api.passport.HSV\"\xce\x01\n\x11\x41nalyzeHSVRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12M\n\x05masks\x18\x02 \x03(\x0b\x32>.chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry\x1aW\n\nMasksEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32).chromiumos.test.lab.api.passport.HSVMask:\x02\x38\x01\"\xc6\x01\n\x12\x41nalyzeHSVResponse\x12g\n\x12percentage_matched\x18\x01 \x03(\x0b\x32K.chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\x1a\x38\n\x16PercentageMatchedEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\x32\x95\x03\n\rCameraService\x12y\n\nGetCameras\x12\x33.chromiumos.test.lab.api.passport.GetCamerasRequest\x1a\x34.chromiumos.test.lab.api.passport.GetCamerasResponse\"\x00\x12\x88\x01\n\x0fGetAveragePixel\x12\x38.chromiumos.test.lab.api.passport.GetAveragePixelRequest\x1a\x39.chromiumos.test.lab.api.passport.GetAveragePixelResponse\"\x00\x12~\n\x0f\x41nalyzeImageHSV\x12\x33.chromiumos.test.lab.api.passport.AnalyzeHSVRequest\x1a\x34.chromiumos.test.lab.api.passport.AnalyzeHSVResponse\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n5chromiumos/test/lab/api/passport/camera_service.proto\x12 chromiumos.test.lab.api.passport\"\x13\n\x11GetCamerasRequest\"\"\n\x06\x43\x61mera\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"O\n\x12GetCamerasResponse\x12\x39\n\x07\x63\x61meras\x18\x01 \x03(\x0b\x32(.chromiumos.test.lab.api.passport.Camera\"J\n\x16GetAveragePixelRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12\x1d\n\x15\x65xposure_microseconds\x18\x02 \x01(\x05\"3\n\x05Pixel\x12\t\n\x01r\x18\x01 \x01(\x05\x12\t\n\x01g\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05\x12\t\n\x01\x61\x18\x04 \x01(\x05\"`\n\x17GetAveragePixelResponse\x12\x36\n\x05pixel\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.passport.Pixel\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\"5\n\x03HSV\x12\x0b\n\x03hue\x18\x01 \x01(\x02\x12\x12\n\nsaturation\x18\x02 \x01(\x02\x12\r\n\x05value\x18\x03 \x01(\x02\"q\n\x07HSVMask\x12\x32\n\x03min\x18\x01 \x01(\x0b\x32%.chromiumos.test.lab.api.passport.HSV\x12\x32\n\x03max\x18\x02 \x01(\x0b\x32%.chromiumos.test.lab.api.passport.HSV\"\xed\x01\n\x11\x41nalyzeHSVRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12M\n\x05masks\x18\x02 \x03(\x0b\x32>.chromiumos.test.lab.api.passport.AnalyzeHSVRequest.MasksEntry\x12\x1d\n\x15\x65xposure_microseconds\x18\x03 \x01(\x05\x1aW\n\nMasksEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32).chromiumos.test.lab.api.passport.HSVMask:\x02\x38\x01\"\xc6\x01\n\x12\x41nalyzeHSVResponse\x12g\n\x12percentage_matched\x18\x01 \x03(\x0b\x32K.chromiumos.test.lab.api.passport.AnalyzeHSVResponse.PercentageMatchedEntry\x12\r\n\x05\x66rame\x18\x02 \x01(\x0c\x1a\x38\n\x16PercentageMatchedEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\x32\x95\x03\n\rCameraService\x12y\n\nGetCameras\x12\x33.chromiumos.test.lab.api.passport.GetCamerasRequest\x1a\x34.chromiumos.test.lab.api.passport.GetCamerasResponse\"\x00\x12\x88\x01\n\x0fGetAveragePixel\x12\x38.chromiumos.test.lab.api.passport.GetAveragePixelRequest\x1a\x39.chromiumos.test.lab.api.passport.GetAveragePixelResponse\"\x00\x12~\n\x0f\x41nalyzeImageHSV\x12\x33.chromiumos.test.lab.api.passport.AnalyzeHSVRequest\x1a\x34.chromiumos.test.lab.api.passport.AnalyzeHSVResponse\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
 )
 
 
@@ -136,6 +136,13 @@ _GETAVERAGEPIXELREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='exposure_microseconds', full_name='chromiumos.test.lab.api.passport.GetAveragePixelRequest.exposure_microseconds', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -149,7 +156,7 @@ _GETAVERAGEPIXELREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=229,
-  serialized_end=272,
+  serialized_end=303,
 )
 
 
@@ -201,8 +208,8 @@ _PIXEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=274,
-  serialized_end=325,
+  serialized_start=305,
+  serialized_end=356,
 )
 
 
@@ -240,8 +247,8 @@ _GETAVERAGEPIXELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=327,
-  serialized_end=423,
+  serialized_start=358,
+  serialized_end=454,
 )
 
 
@@ -286,8 +293,8 @@ _HSV = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=425,
-  serialized_end=478,
+  serialized_start=456,
+  serialized_end=509,
 )
 
 
@@ -325,8 +332,8 @@ _HSVMASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=480,
-  serialized_end=593,
+  serialized_start=511,
+  serialized_end=624,
 )
 
 
@@ -364,8 +371,8 @@ _ANALYZEHSVREQUEST_MASKSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=715,
-  serialized_end=802,
+  serialized_start=777,
+  serialized_end=864,
 )
 
 _ANALYZEHSVREQUEST = _descriptor.Descriptor(
@@ -390,6 +397,13 @@ _ANALYZEHSVREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='exposure_microseconds', full_name='chromiumos.test.lab.api.passport.AnalyzeHSVRequest.exposure_microseconds', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -402,8 +416,8 @@ _ANALYZEHSVREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=596,
-  serialized_end=802,
+  serialized_start=627,
+  serialized_end=864,
 )
 
 
@@ -441,8 +455,8 @@ _ANALYZEHSVRESPONSE_PERCENTAGEMATCHEDENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=947,
-  serialized_end=1003,
+  serialized_start=1009,
+  serialized_end=1065,
 )
 
 _ANALYZEHSVRESPONSE = _descriptor.Descriptor(
@@ -479,8 +493,8 @@ _ANALYZEHSVRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=805,
-  serialized_end=1003,
+  serialized_start=867,
+  serialized_end=1065,
 )
 
 _GETCAMERASRESPONSE.fields_by_name['cameras'].message_type = _CAMERA
@@ -602,8 +616,8 @@ _CAMERASERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1006,
-  serialized_end=1411,
+  serialized_start=1068,
+  serialized_end=1473,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetCameras',
