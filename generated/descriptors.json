@@ -22854,6 +22854,13 @@
               "name": "config",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "reuseExisting",
+              "label": "LABEL_OPTIONAL",
+              "name": "reuse_existing",
+              "number": 6,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "StartServodRequest"

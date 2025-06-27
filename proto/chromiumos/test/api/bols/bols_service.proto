@@ -385,6 +385,9 @@ message StartServodRequest {
   // Special configuration param used at servod start.
   // The parameter specified by --CONFIG.
   string config = 5;
+
+  // Reuse the existing servod session if it is already running.
+  bool reuse_existing = 6;
 }
 
 message StartServodResponse {}
