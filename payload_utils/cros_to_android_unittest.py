@@ -76,23 +76,31 @@ class CrosConfigConverterMainTest(unittest.TestCase):
         output_files = [
             p for p in self.output_features_dir.rglob("*") if p.is_file()
         ]
-
+        output_files = sorted(output_files)
         self.assertEqual(
-            sorted(
+            [
                 str(p.relative_to(self.output_features_dir))
                 for p in output_files
-            ),
+            ],
             [
                 "testdesign_123/features.xml",
                 "testdesign_456/features.xml",
             ],
         )
-
         with open(output_files[0], "rb") as f:
             self.assertEqual(
                 f.read(),
                 b"<permissions>\n  "
                 b'<feature name="android.hardware.fingerprint"/>\n'
+                b"</permissions>\n",
+            )
+
+        with open(output_files[1], "rb") as f:
+            self.assertEqual(
+                f.read(),
+                b"<permissions>\n  "
+                b'<feature name="android.hardware.fingerprint"/>\n  '
+                b'<feature name="android.hardware.sensor.hinge_angle"/>\n'
                 b"</permissions>\n",
             )
 
@@ -305,6 +313,29 @@ class HalEntryHelpersTest(unittest.TestCase):
         """Test video entry when arc_media_codecs_suffix is not present."""
         cros_to_android._add_video_entry(self.root_element, self.design_config)
         self.assertIsNone(self.root_element.find("VideoConfiguration"))
+
+    def test_add_hardware_features_entry_valid_form_factor(self):
+        """Test hardware features entry with a valid form factor."""
+        self.design_config.hardware_features.form_factor.form_factor = (
+            topology_pb2.HardwareFeatures.FormFactor.CLAMSHELL
+        )
+        cros_to_android._add_hardware_features_entry(
+            self.root_element, self.design_config
+        )
+        hw_features_elem = self.root_element.find("HardwareFeatures")
+        self.assertIsNotNone(hw_features_elem)
+        self.assertEqual(hw_features_elem.find("form-factor").text, "CLAMSHELL")
+
+    def test_add_hardware_features_entry_no_form_factor(self):
+        """Test hardware features entry when no form factor is defined."""
+        # Ensure form_factor is not set
+        self.assertFalse(
+            self.design_config.hardware_features.HasField("form_factor")
+        )
+        cros_to_android._add_hardware_features_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("HardwareFeatures"))
 
 
 class FeatureXmlGenerationTest(unittest.TestCase):

@@ -183,7 +183,7 @@ message TestRun {
 }
 
 // Captures test case information associated with a test run.
-// NEXT TAG: 13
+// NEXT TAG: 14
 message TestCaseInfo {
   // Deprecated. Use the `test_case_metadata` field from
   // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
@@ -228,8 +228,11 @@ message TestCaseInfo {
   // AVL component qualification info.
   AvlInfo avl_info = 11;
 
-  // GSC devboard info
+  // GSC devboard info.
   GscInfo gsc_info = 12;
+
+  // Stress test info.
+  StressTestInfo stress_test_info = 13;
 }
 
 // Captures ChromeOS build information associated with a test run.
@@ -530,12 +533,13 @@ message DutInfo {
   // Information about the stress tests associated with the test run.
   // NEXT TAG: 2
   message StressTestInfo {
+    option deprecated = true;
     // The number of stress test iterations.
-    uint32 iterations = 1;
+    uint32 iterations = 1 [deprecated = true];
   }
 
   // Information about the stress tests.
-  StressTestInfo stress_test_info = 6;
+  StressTestInfo stress_test_info = 6 [deprecated = true];
 }
 
 // Captures Drone related info.
@@ -863,4 +867,11 @@ message GscInfo {
   // From devboardservice Query grpc.
   // Example: "gsc_dt_shield"
   string gsc_testbed_type = 14;
+}
+
+// Information about the stress tests associated with the test run.
+// NEXT TAG: 2
+message StressTestInfo {
+  // The number of stress test iterations.
+  uint32 iterations = 1;
 }

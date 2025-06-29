@@ -41,6 +41,9 @@ message GetCamerasResponse {
 message GetAveragePixelRequest {
   // The unique ID of the camera to query.
   string device_id = 1;
+  // Optional, the exposure time in microseconds to use when capturing the
+  // image. If not set, the camera's auto exposure setting will be used.
+  int32 exposure_microseconds = 2;
 }
 
 message Pixel {
@@ -105,6 +108,10 @@ message AnalyzeHSVRequest {
   // and it will be used in the response to identify the percentage of pixels
   // that match the mask.
   map<string, HSVMask> masks = 2;
+
+   // Optional, the exposure time in microseconds to use when capturing the
+  // image. If not set, the camera's auto exposure setting will be used.
+  int32 exposure_microseconds = 3;
 }
 
 // Response containing the analysis results.
