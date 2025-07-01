@@ -34113,6 +34113,15 @@
       ],
       "messageType": [
         {
+          "field": [
+            {
+              "jsonName": "reuseExisting",
+              "label": "LABEL_OPTIONAL",
+              "name": "reuse_existing",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
           "name": "StartServodRequest"
         },
         {

@@ -70,7 +70,10 @@ service LSNexusService {
   rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
 }
 
-message StartServodRequest {}
+message StartServodRequest {
+  // Reuse the existing servod session if it is already running.
+  bool reuse_existing = 1;
+}
 
 message StartServodResponse {}
 
