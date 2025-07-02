@@ -79,8 +79,8 @@ service BolsService {
   // HWInitServod calls hwinit of servod.
   rpc HWInitServod(HWInitServodRequest) returns (HWInitServodResponse);
 
-  // ReadServod read a servod control documentation.
-  rpc ReadServod(ReadServodRequest) returns (ReadServodResponse);
+  // DocServod read a servod control documentation.
+  rpc DocServod(DocServodRequest) returns (DocServodResponse);
 
   // GetServod gets a servod control value.
   rpc GetServod(GetServodRequest) returns (GetServodResponse);
@@ -385,6 +385,9 @@ message StartServodRequest {
   // Special configuration param used at servod start.
   // The parameter specified by --CONFIG.
   string config = 5;
+
+  // Reuse the existing servod session if it is already running.
+  bool reuse_existing = 6;
 }
 
 message StartServodResponse {}
@@ -418,7 +421,7 @@ message HWInitServodRequest {
 
 message HWInitServodResponse {}
 
-message ReadServodRequest {
+message DocServodRequest {
   // The station identifier.
   StationIdentifier station_id = 1;
   // The control of servod.
@@ -426,7 +429,7 @@ message ReadServodRequest {
   string control = 2;
 }
 
-message ReadServodResponse {
+message DocServodResponse {
   string control = 1;
   string description = 2;
 }

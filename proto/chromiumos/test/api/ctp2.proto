@@ -86,9 +86,6 @@ message CTPRequest {
   // CTP will use this to construct ctpv2 request.
   // is_al_run must be set to true for this.
   string encoded_atp_test_job_msg = 10;
-
-  // Skip provisioning if true.
-  bool skip_provision = 12;
 }
 
 message SchedulerInfo {
@@ -137,6 +134,8 @@ message SuiteRequest {
   Iterations iterations = 10;
   // For non-3D, this will ignore tests with variantCategory metadata values
   bool ignore_variant_category = 11;
+  // Skip provisioning if true.
+  bool skip_provision = 12;
 }
 
 message KeyValue {
