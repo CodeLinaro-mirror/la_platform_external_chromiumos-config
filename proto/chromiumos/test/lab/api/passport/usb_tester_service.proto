@@ -52,6 +52,12 @@ service UsbTesterService {
 
   // This method is used to load an EDID.
   rpc LoadEdid(LoadEdidRequest) returns (LoadEdidReply) {}
+
+  // This method is used send a VDM HPDs
+  rpc SendVdmHpd(SendVdmHpdRequest) returns (SendVdmHpdReply) {}
+
+  // Simulate a key press. ATM this will simulate the "G" key press.
+  rpc SimulateKeyPress(SimulateKeyPressRequest) returns (SimulateKeyPressReply) {}
 }
 
 // Request to do hard reset.
@@ -166,6 +172,14 @@ enum Capability {
   POWER_DELIVERY = 26;
   DISPLAY_PORT_AM = 27;
   USB_PATH = 28;
+  TRY_BEHAVIOUR = 29;
+  NON_PD_CURRENT = 30;
+}
+
+enum TryBehaviour {
+  TRY_BEHAVIOUR_NOT_SET = 0;
+  TRY_SRC = 1;
+  TRY_SNK = 2;
 }
 
 enum ActiveCc {
@@ -217,6 +231,17 @@ enum UsbPath {
   USB_PATH_EXTERNAL = 2;
 }
 
+enum PortState {
+  PORT_STATE_NOT_SET = 0;
+  PORT_STATE_ON = 1;
+  PORT_STATE_OFF = 2;
+}
+
+enum VdmHpd {
+  VDM_HPD_NOT_SET = 0;
+  VDM_HPD_IRQ = 1;
+}
+
 // Request to get the value of a capability.
 message GetUsbTesterCapabilityRequest {
   // Id (or serial) of the usb tester for which the request is intended.
@@ -256,6 +281,7 @@ message GetUsbTesterCapabilityReply {
     bool power_delivery = 17;
     bool display_port_am = 18;
     UsbPath usb_path = 19;
+    TryBehaviour try_behaviour = 20;
   }
 }
 
@@ -293,6 +319,7 @@ message SetUsbTesterCapabilityRequest {
     bool power_delivery = 17;
     bool display_port_am = 18;
     UsbPath usb_path = 19;
+    TryBehaviour try_behaviour = 20;
   }
 }
 
@@ -408,6 +435,9 @@ message GetActivePortReply {
 
   // The maximum number of ports on the device.
   uint32 max_num_ports = 4;
+
+  // The state of the port (on/off)
+  PortState state = 5;
 }
 
 // Data used in a SetActivePort call.
@@ -415,9 +445,12 @@ message SetActivePortRequest {
   // Id (or serial) of the usb tester for which the request is intended.
   string id = 1;
 
-  // The id of the port that we want to mark as active. If port_id is already
-  // active then this method will do nothing.
+  // The id of the port that we want to use for testing.
   uint32 port_id = 2;
+
+  // The state of the port (on/off). If left unset the port state will be left in
+  // untouched.
+  PortState state = 3;
 }
 
 // Data returned as part of a SetActivePort call.
@@ -491,4 +524,43 @@ message GetPdosReply {
   repeated int64 src_pdos = 3;
 
   repeated int64 snk_pdos = 4;
+}
+
+message SendVdmHpdRequest {
+  // Unique identifier (e.g., serial number) of the target USB tester.
+  string id = 1;
+
+  // The type of vdm hpd to apply.
+  VdmHpd vdm_hpd = 2;
+}
+
+// Defines the reply message sent in response to a SendVdmHpdRequest.
+message SendVdmHpdReply {
+  // Numerical error code indicating the outcome of the reset operation.
+  // A value of 0 signifies successful execution.
+  // Non-zero values indicate specific error conditions.
+  int64 err_code = 1;
+
+  // Optional human-readable message providing additional context or details
+  // in case an error occurred during the reset process. This field will
+  // typically be populated when err_code is not 0.
+  optional string error_msg = 2;
+}
+
+message SimulateKeyPressRequest {
+  // Unique identifier (e.g., serial number) of the target USB tester.
+  string id = 1;
+}
+
+// Defines the reply message sent in response to a SimulateKeyPressRequest.
+message SimulateKeyPressReply {
+  // Numerical error code indicating the outcome of the reset operation.
+  // A value of 0 signifies successful execution.
+  // Non-zero values indicate specific error conditions.
+  int64 err_code = 1;
+
+  // Optional human-readable message providing additional context or details
+  // in case an error occurred during the reset process. This field will
+  // typically be populated when err_code is not 0.
+  optional string error_msg = 2;
 }
