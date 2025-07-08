@@ -385,8 +385,8 @@ class HalEntryHelpersTest(unittest.TestCase):
         cam_config_elem = self.root_element.find("CameraConfiguration")
         self.assertIsNotNone(cam_config_elem)
         self.assertEqual(
-            cam_config_elem.find("media-profile").text,
-            "media_profiles_testmodel_123.xml",
+            cam_config_elem.find("media-profile-suffix").text,
+            "_testmodel_123",
         )
 
     def test_add_camera_entry_disabled(self):

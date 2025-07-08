@@ -690,16 +690,16 @@ def _add_camera_entry(
         )
         return
 
-    media_profile_filename = f"media_profiles_{model.lower()}_{sku.lower()}.xml"
+    media_profile_suffix = f"_{model.lower()}_{sku.lower()}"
     camera_config_elem = etree.SubElement(
         hal_config_elem, "CameraConfiguration"
     )
-    etree.SubElement(camera_config_elem, "media-profile").text = (
-        media_profile_filename
+    etree.SubElement(camera_config_elem, "media-profile-suffix").text = (
+        media_profile_suffix
     )
     logging.debug(
-        "Added CameraConfiguration with media-profile '%s' for %s:%s.",
-        media_profile_filename,
+        "Added CameraConfiguration with media-profile-suffix '%s' for %s:%s.",
+        media_profile_suffix,
         model,
         sku,
     )
