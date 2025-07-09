@@ -95,7 +95,6 @@ class CrosConfigConverterMainTest(unittest.TestCase):
             self.assertEqual(
                 content,
                 b"<permissions>\n  "
-                b'<feature name="android.hardware.fingerprint"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
                 b'<feature name="android.hardware.camera.front"/>\n'
                 b"</permissions>\n",
@@ -106,7 +105,6 @@ class CrosConfigConverterMainTest(unittest.TestCase):
             self.assertEqual(
                 f.read(),
                 b"<permissions>\n  "
-                b'<feature name="android.hardware.fingerprint"/>\n  '
                 b'<feature name="android.hardware.sensor.hinge_angle"/>\n'
                 b"</permissions>\n",
             )
@@ -561,13 +559,6 @@ class FeatureXmlGenerationTest(unittest.TestCase):
                 f"{found_features} in {feature_file_path}"
             ),
         )
-
-    def test_generate_fingerprint_feature(self):
-        """Test fingerprint feature XML."""
-        self.config.hardware_features.fingerprint.present = True
-
-        self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml(["android.hardware.fingerprint"])
 
     def test_generate_accelerometer_feature(self):
         """Test accelerometer feature XML."""
