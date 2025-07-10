@@ -2555,8 +2555,8 @@ type SetActivePortRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// The id of the port that we want to use for testing.
 	PortId uint32 `protobuf:"varint,2,opt,name=port_id,json=portId,proto3" json:"port_id,omitempty"`
-	// The state of the port (on/off). If left unset the port state will be left in
-	// untouched.
+	// The state of the port (on/off). If left unset the port state will be left
+	// in untouched.
 	State PortState `protobuf:"varint,3,opt,name=state,proto3,enum=chromiumos.test.lab.api.passport.PortState" json:"state,omitempty"`
 }
 

@@ -191,7 +191,8 @@ type PasitHost_Connection struct {
 	Speed float32 `protobuf:"fixed32,4,opt,name=speed,proto3" json:"speed,omitempty"`
 	// The physical port type/technology, e.g. "USBA", "USBC", "HDMI".
 	Type string `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	// Tags associated with the connection, e.g. "DOCK", "DOCKLESS", "DAISY_CHAIN" see go/pasit-multi-topology.
+	// Tags associated with the connection, e.g. "DOCK", "DOCKLESS",
+	// "DAISY_CHAIN" see go/pasit-multi-topology.
 	Tags []string `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
 }
 

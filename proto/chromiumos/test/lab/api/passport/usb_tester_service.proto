@@ -57,7 +57,8 @@ service UsbTesterService {
   rpc SendVdmHpd(SendVdmHpdRequest) returns (SendVdmHpdReply) {}
 
   // Simulate a key press. ATM this will simulate the "G" key press.
-  rpc SimulateKeyPress(SimulateKeyPressRequest) returns (SimulateKeyPressReply) {}
+  rpc SimulateKeyPress(SimulateKeyPressRequest)
+      returns (SimulateKeyPressReply) {}
 }
 
 // Request to do hard reset.
@@ -448,8 +449,8 @@ message SetActivePortRequest {
   // The id of the port that we want to use for testing.
   uint32 port_id = 2;
 
-  // The state of the port (on/off). If left unset the port state will be left in
-  // untouched.
+  // The state of the port (on/off). If left unset the port state will be left
+  // in untouched.
   PortState state = 3;
 }
 

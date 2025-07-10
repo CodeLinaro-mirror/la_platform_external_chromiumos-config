@@ -109,7 +109,7 @@ message AnalyzeHSVRequest {
   // that match the mask.
   map<string, HSVMask> masks = 2;
 
-   // Optional, the exposure time in microseconds to use when capturing the
+  // Optional, the exposure time in microseconds to use when capturing the
   // image. If not set, the camera's auto exposure setting will be used.
   int32 exposure_microseconds = 3;
 }
