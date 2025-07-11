@@ -65,8 +65,8 @@ type BolsServiceClient interface {
 	GetServodStatus(ctx context.Context, in *GetServodStatusRequest, opts ...grpc.CallOption) (*GetServodStatusResponse, error)
 	// HWInitServod calls hwinit of servod.
 	HWInitServod(ctx context.Context, in *HWInitServodRequest, opts ...grpc.CallOption) (*HWInitServodResponse, error)
-	// ReadServod read a servod control documentation.
-	ReadServod(ctx context.Context, in *ReadServodRequest, opts ...grpc.CallOption) (*ReadServodResponse, error)
+	// DocServod read a servod control documentation.
+	DocServod(ctx context.Context, in *DocServodRequest, opts ...grpc.CallOption) (*DocServodResponse, error)
 	// GetServod gets a servod control value.
 	GetServod(ctx context.Context, in *GetServodRequest, opts ...grpc.CallOption) (*GetServodResponse, error)
 	// SetServod sets value to a servod control.
@@ -383,9 +383,9 @@ func (c *bolsServiceClient) HWInitServod(ctx context.Context, in *HWInitServodRe
 	return out, nil
 }
 
-func (c *bolsServiceClient) ReadServod(ctx context.Context, in *ReadServodRequest, opts ...grpc.CallOption) (*ReadServodResponse, error) {
-	out := new(ReadServodResponse)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/ReadServod", in, out, opts...)
+func (c *bolsServiceClient) DocServod(ctx context.Context, in *DocServodRequest, opts ...grpc.CallOption) (*DocServodResponse, error) {
+	out := new(DocServodResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/DocServod", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -547,8 +547,8 @@ type BolsServiceServer interface {
 	GetServodStatus(context.Context, *GetServodStatusRequest) (*GetServodStatusResponse, error)
 	// HWInitServod calls hwinit of servod.
 	HWInitServod(context.Context, *HWInitServodRequest) (*HWInitServodResponse, error)
-	// ReadServod read a servod control documentation.
-	ReadServod(context.Context, *ReadServodRequest) (*ReadServodResponse, error)
+	// DocServod read a servod control documentation.
+	DocServod(context.Context, *DocServodRequest) (*DocServodResponse, error)
 	// GetServod gets a servod control value.
 	GetServod(context.Context, *GetServodRequest) (*GetServodResponse, error)
 	// SetServod sets value to a servod control.
@@ -634,8 +634,8 @@ func (UnimplementedBolsServiceServer) GetServodStatus(context.Context, *GetServo
 func (UnimplementedBolsServiceServer) HWInitServod(context.Context, *HWInitServodRequest) (*HWInitServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HWInitServod not implemented")
 }
-func (UnimplementedBolsServiceServer) ReadServod(context.Context, *ReadServodRequest) (*ReadServodResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadServod not implemented")
+func (UnimplementedBolsServiceServer) DocServod(context.Context, *DocServodRequest) (*DocServodResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DocServod not implemented")
 }
 func (UnimplementedBolsServiceServer) GetServod(context.Context, *GetServodRequest) (*GetServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetServod not implemented")
@@ -1034,20 +1034,20 @@ func _BolsService_HWInitServod_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BolsService_ReadServod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadServodRequest)
+func _BolsService_DocServod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DocServodRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BolsServiceServer).ReadServod(ctx, in)
+		return srv.(BolsServiceServer).DocServod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/chromiumos.test.api.bols.BolsService/ReadServod",
+		FullMethod: "/chromiumos.test.api.bols.BolsService/DocServod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BolsServiceServer).ReadServod(ctx, req.(*ReadServodRequest))
+		return srv.(BolsServiceServer).DocServod(ctx, req.(*DocServodRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1328,8 +1328,8 @@ var BolsService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _BolsService_HWInitServod_Handler,
 		},
 		{
-			MethodName: "ReadServod",
-			Handler:    _BolsService_ReadServod_Handler,
+			MethodName: "DocServod",
+			Handler:    _BolsService_DocServod_Handler,
 		},
 		{
 			MethodName: "GetServod",

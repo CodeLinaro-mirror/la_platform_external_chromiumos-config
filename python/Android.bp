@@ -29,3 +29,17 @@ python_library_host {
         "py-grpcio",
     ],
 }
+
+python_library_host {
+    name: "py-chromiumos-config-lsnexus",
+    srcs: [
+        "chromiumos/test/api/lsnexus/lsnexus_service_pb2.py",
+        "chromiumos/test/api/lsnexus/lsnexus_service_pb2_grpc.py",
+        "chromiumos/test/api/bols/bols_service_pb2.py",
+        "chromiumos/test/api/bols/bols_service_pb2_grpc.py",
+    ],
+    libs: [
+        "libprotobuf-python",
+        "py-grpcio",
+    ],
+}

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'B\030LsnexusServiceOuterClassZ5go.chromium.org/chromiumos/config/go/test/api/lsnexus',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n1chromiumos/test/api/lsnexus/lsnexus_service.proto\x12\x1b\x63hromiumos.test.api.lsnexus\x1a+chromiumos/test/api/bols/bols_service.proto\"\x14\n\x12StartServodRequest\"\x15\n\x13StartServodResponse\"\x13\n\x11StopServodRequest\"\x14\n\x12StopServodResponse\"\xa0\x02\n\x11\x43\x61llServodRequest\x12\x45\n\x06method\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.api.lsnexus.CallServodRequest.Method\x12\x33\n\x04\x61rgs\x18\x02 \x03(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x12\x0f\n\x07\x63ontrol\x18\x03 \x01(\t\"~\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\x12\n\n\x06HWINIT\x10\x03\x12\x08\n\x04\x45\x43HO\x10\x04\x12\x14\n\x10GET_SERVO_SERIAL\x10\x05\x12\x15\n\x11GET_SERVO_VERSION\x10\x06\x12\x16\n\x12GET_SERVOD_VERSION\x10\x07\"\x9a\x02\n\x12\x43\x61llServodResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.FailureH\x00\x1a@\n\x07Success\x12\x35\n\x06result\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x1c\n\nStringList\x12\x0e\n\x06values\x18\x01 \x03(\t\"\x1a\n\x0b\x45\x63hoRequest\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x1e\n\x0c\x45\x63hoResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"\x1b\n\x19\x44ownloadSystemLogsRequest\"\x1c\n\x1a\x44ownloadSystemLogsResponse\"\x1a\n\x18\x44ownloadServoLogsRequest\"\x1b\n\x19\x44ownloadServoLogsResponse\"&\n\x11RemoveFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"\x14\n\x12RemoveFileResponse\"\x1e\n\x0eMakeDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x11\n\x0fMakeDirResponse\" \n\x10RemoveDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x13\n\x11RemoveDirResponse\"$\n\x12MakeTempDirRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\"#\n\x13MakeTempDirResponse\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x0e\n\x0c\x44MesgRequest\"J\n\rDMesgResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\".\n\x0cOutputStream\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\"$\n\x12RunFutilityRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"P\n\x13RunFutilityResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\"#\n\x11RunFlashECRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"O\n\x12RunFlashECResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream2\xca\n\n\x0eLSNexusService\x12p\n\x0bStartServod\x12/.chromiumos.test.api.lsnexus.StartServodRequest\x1a\x30.chromiumos.test.api.lsnexus.StartServodResponse\x12m\n\nStopServod\x12..chromiumos.test.api.lsnexus.StopServodRequest\x1a/.chromiumos.test.api.lsnexus.StopServodResponse\x12m\n\nCallServod\x12..chromiumos.test.api.lsnexus.CallServodRequest\x1a/.chromiumos.test.api.lsnexus.CallServodResponse\x12o\n\nRemoveFile\x12..chromiumos.test.api.lsnexus.RemoveFileRequest\x1a/.chromiumos.test.api.lsnexus.RemoveFileResponse\"\x00\x12\x66\n\x07MakeDir\x12+.chromiumos.test.api.lsnexus.MakeDirRequest\x1a,.chromiumos.test.api.lsnexus.MakeDirResponse\"\x00\x12l\n\tRemoveDir\x12-.chromiumos.test.api.lsnexus.RemoveDirRequest\x1a..chromiumos.test.api.lsnexus.RemoveDirResponse\"\x00\x12r\n\x0bMakeTempDir\x12/.chromiumos.test.api.lsnexus.MakeTempDirRequest\x1a\x30.chromiumos.test.api.lsnexus.MakeTempDirResponse\"\x00\x12\x62\n\x05\x44Mesg\x12).chromiumos.test.api.lsnexus.DMesgRequest\x1a*.chromiumos.test.api.lsnexus.DMesgResponse\"\x00\x30\x01\x12]\n\x04\x45\x63ho\x12(.chromiumos.test.api.lsnexus.EchoRequest\x1a).chromiumos.test.api.lsnexus.EchoResponse\"\x00\x12\x84\x01\n\x11\x44ownloadServoLogs\x12\x35.chromiumos.test.api.lsnexus.DownloadServoLogsRequest\x1a\x36.chromiumos.test.api.lsnexus.DownloadServoLogsResponse\"\x00\x12r\n\x0bRunFutility\x12/.chromiumos.test.api.lsnexus.RunFutilityRequest\x1a\x30.chromiumos.test.api.lsnexus.RunFutilityResponse\"\x00\x12o\n\nRunFlashEC\x12..chromiumos.test.api.lsnexus.RunFlashECRequest\x1a/.chromiumos.test.api.lsnexus.RunFlashECResponse\"\x00\x42QB\x18LsnexusServiceOuterClassZ5go.chromium.org/chromiumos/config/go/test/api/lsnexusb\x06proto3'
+  serialized_pb=b'\n1chromiumos/test/api/lsnexus/lsnexus_service.proto\x12\x1b\x63hromiumos.test.api.lsnexus\x1a+chromiumos/test/api/bols/bols_service.proto\",\n\x12StartServodRequest\x12\x16\n\x0ereuse_existing\x18\x01 \x01(\x08\"\x15\n\x13StartServodResponse\"\x13\n\x11StopServodRequest\"\x14\n\x12StopServodResponse\"\xa0\x02\n\x11\x43\x61llServodRequest\x12\x45\n\x06method\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.api.lsnexus.CallServodRequest.Method\x12\x33\n\x04\x61rgs\x18\x02 \x03(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x12\x0f\n\x07\x63ontrol\x18\x03 \x01(\t\"~\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\x12\n\n\x06HWINIT\x10\x03\x12\x08\n\x04\x45\x43HO\x10\x04\x12\x14\n\x10GET_SERVO_SERIAL\x10\x05\x12\x15\n\x11GET_SERVO_VERSION\x10\x06\x12\x16\n\x12GET_SERVOD_VERSION\x10\x07\"\x9a\x02\n\x12\x43\x61llServodResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.FailureH\x00\x1a@\n\x07Success\x12\x35\n\x06result\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x1c\n\nStringList\x12\x0e\n\x06values\x18\x01 \x03(\t\"\x1a\n\x0b\x45\x63hoRequest\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x1e\n\x0c\x45\x63hoResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"\x1b\n\x19\x44ownloadSystemLogsRequest\"\x1c\n\x1a\x44ownloadSystemLogsResponse\"\x1a\n\x18\x44ownloadServoLogsRequest\"\x1b\n\x19\x44ownloadServoLogsResponse\"\"\n\x0eGetFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x1f\n\x0fGetFileResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"s\n\x0ePutFileRequest\x12G\n\x08req_info\x18\x01 \x01(\x0b\x32\x33.chromiumos.test.api.lsnexus.PutFileRequestInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"*\n\x16PutFileRequestInitInfo\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x11\n\x0fPutFileResponse\"&\n\x11RemoveFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"\x14\n\x12RemoveFileResponse\"\x1e\n\x0eMakeDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x11\n\x0fMakeDirResponse\" \n\x10RemoveDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x13\n\x11RemoveDirResponse\"$\n\x12MakeTempDirRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\"#\n\x13MakeTempDirResponse\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x0e\n\x0c\x44MesgRequest\"J\n\rDMesgResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\".\n\x0cOutputStream\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\"$\n\x12RunFutilityRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"P\n\x13RunFutilityResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\"#\n\x11RunFlashECRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"O\n\x12RunFlashECResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream2\x9e\x0c\n\x0eLSNexusService\x12p\n\x0bStartServod\x12/.chromiumos.test.api.lsnexus.StartServodRequest\x1a\x30.chromiumos.test.api.lsnexus.StartServodResponse\x12m\n\nStopServod\x12..chromiumos.test.api.lsnexus.StopServodRequest\x1a/.chromiumos.test.api.lsnexus.StopServodResponse\x12m\n\nCallServod\x12..chromiumos.test.api.lsnexus.CallServodRequest\x1a/.chromiumos.test.api.lsnexus.CallServodResponse\x12h\n\x07GetFile\x12+.chromiumos.test.api.lsnexus.GetFileRequest\x1a,.chromiumos.test.api.lsnexus.GetFileResponse\"\x00\x30\x01\x12h\n\x07PutFile\x12+.chromiumos.test.api.lsnexus.PutFileRequest\x1a,.chromiumos.test.api.lsnexus.PutFileResponse\"\x00(\x01\x12o\n\nRemoveFile\x12..chromiumos.test.api.lsnexus.RemoveFileRequest\x1a/.chromiumos.test.api.lsnexus.RemoveFileResponse\"\x00\x12\x66\n\x07MakeDir\x12+.chromiumos.test.api.lsnexus.MakeDirRequest\x1a,.chromiumos.test.api.lsnexus.MakeDirResponse\"\x00\x12l\n\tRemoveDir\x12-.chromiumos.test.api.lsnexus.RemoveDirRequest\x1a..chromiumos.test.api.lsnexus.RemoveDirResponse\"\x00\x12r\n\x0bMakeTempDir\x12/.chromiumos.test.api.lsnexus.MakeTempDirRequest\x1a\x30.chromiumos.test.api.lsnexus.MakeTempDirResponse\"\x00\x12\x62\n\x05\x44Mesg\x12).chromiumos.test.api.lsnexus.DMesgRequest\x1a*.chromiumos.test.api.lsnexus.DMesgResponse\"\x00\x30\x01\x12]\n\x04\x45\x63ho\x12(.chromiumos.test.api.lsnexus.EchoRequest\x1a).chromiumos.test.api.lsnexus.EchoResponse\"\x00\x12\x84\x01\n\x11\x44ownloadServoLogs\x12\x35.chromiumos.test.api.lsnexus.DownloadServoLogsRequest\x1a\x36.chromiumos.test.api.lsnexus.DownloadServoLogsResponse\"\x00\x12r\n\x0bRunFutility\x12/.chromiumos.test.api.lsnexus.RunFutilityRequest\x1a\x30.chromiumos.test.api.lsnexus.RunFutilityResponse\"\x00\x12o\n\nRunFlashEC\x12..chromiumos.test.api.lsnexus.RunFlashECRequest\x1a/.chromiumos.test.api.lsnexus.RunFlashECResponse\"\x00\x42QB\x18LsnexusServiceOuterClassZ5go.chromium.org/chromiumos/config/go/test/api/lsnexusb\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DESCRIPTOR,])
 
@@ -76,8 +76,8 @@ _CALLSERVODREQUEST_METHOD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=378,
-  serialized_end=504,
+  serialized_start=402,
+  serialized_end=528,
 )
 _sym_db.RegisterEnumDescriptor(_CALLSERVODREQUEST_METHOD)
 
@@ -90,6 +90,13 @@ _STARTSERVODREQUEST = _descriptor.Descriptor(
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='reuse_existing', full_name='chromiumos.test.api.lsnexus.StartServodRequest.reuse_existing', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -103,7 +110,7 @@ _STARTSERVODREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=127,
-  serialized_end=147,
+  serialized_end=171,
 )
 
 
@@ -127,8 +134,8 @@ _STARTSERVODRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=149,
-  serialized_end=170,
+  serialized_start=173,
+  serialized_end=194,
 )
 
 
@@ -152,8 +159,8 @@ _STOPSERVODREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=172,
-  serialized_end=191,
+  serialized_start=196,
+  serialized_end=215,
 )
 
 
@@ -177,8 +184,8 @@ _STOPSERVODRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=213,
+  serialized_start=217,
+  serialized_end=237,
 )
 
 
@@ -224,8 +231,8 @@ _CALLSERVODREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=216,
-  serialized_end=504,
+  serialized_start=240,
+  serialized_end=528,
 )
 
 
@@ -256,8 +263,8 @@ _CALLSERVODRESPONSE_SUCCESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=681,
-  serialized_end=745,
+  serialized_start=705,
+  serialized_end=769,
 )
 
 _CALLSERVODRESPONSE_FAILURE = _descriptor.Descriptor(
@@ -287,8 +294,8 @@ _CALLSERVODRESPONSE_FAILURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=747,
-  serialized_end=779,
+  serialized_start=771,
+  serialized_end=803,
 )
 
 _CALLSERVODRESPONSE = _descriptor.Descriptor(
@@ -330,8 +337,8 @@ _CALLSERVODRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=507,
-  serialized_end=789,
+  serialized_start=531,
+  serialized_end=813,
 )
 
 
@@ -362,8 +369,8 @@ _STRINGLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=791,
-  serialized_end=819,
+  serialized_start=815,
+  serialized_end=843,
 )
 
 
@@ -394,8 +401,8 @@ _ECHOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=821,
-  serialized_end=847,
+  serialized_start=845,
+  serialized_end=871,
 )
 
 
@@ -426,8 +433,8 @@ _ECHORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=849,
-  serialized_end=879,
+  serialized_start=873,
+  serialized_end=903,
 )
 
 
@@ -451,8 +458,8 @@ _DOWNLOADSYSTEMLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=881,
-  serialized_end=908,
+  serialized_start=905,
+  serialized_end=932,
 )
 
 
@@ -476,8 +483,8 @@ _DOWNLOADSYSTEMLOGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=910,
-  serialized_end=938,
+  serialized_start=934,
+  serialized_end=962,
 )
 
 
@@ -501,8 +508,8 @@ _DOWNLOADSERVOLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=940,
-  serialized_end=966,
+  serialized_start=964,
+  serialized_end=990,
 )
 
 
@@ -526,8 +533,173 @@ _DOWNLOADSERVOLOGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=968,
-  serialized_end=995,
+  serialized_start=992,
+  serialized_end=1019,
+)
+
+
+_GETFILEREQUEST = _descriptor.Descriptor(
+  name='GetFileRequest',
+  full_name='chromiumos.test.api.lsnexus.GetFileRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='filename', full_name='chromiumos.test.api.lsnexus.GetFileRequest.filename', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1021,
+  serialized_end=1055,
+)
+
+
+_GETFILERESPONSE = _descriptor.Descriptor(
+  name='GetFileResponse',
+  full_name='chromiumos.test.api.lsnexus.GetFileResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='data', full_name='chromiumos.test.api.lsnexus.GetFileResponse.data', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1057,
+  serialized_end=1088,
+)
+
+
+_PUTFILEREQUEST = _descriptor.Descriptor(
+  name='PutFileRequest',
+  full_name='chromiumos.test.api.lsnexus.PutFileRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='req_info', full_name='chromiumos.test.api.lsnexus.PutFileRequest.req_info', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='chromiumos.test.api.lsnexus.PutFileRequest.data', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='source', full_name='chromiumos.test.api.lsnexus.PutFileRequest.source',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1090,
+  serialized_end=1205,
+)
+
+
+_PUTFILEREQUESTINITINFO = _descriptor.Descriptor(
+  name='PutFileRequestInitInfo',
+  full_name='chromiumos.test.api.lsnexus.PutFileRequestInitInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='filename', full_name='chromiumos.test.api.lsnexus.PutFileRequestInitInfo.filename', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1207,
+  serialized_end=1249,
+)
+
+
+_PUTFILERESPONSE = _descriptor.Descriptor(
+  name='PutFileResponse',
+  full_name='chromiumos.test.api.lsnexus.PutFileResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1251,
+  serialized_end=1268,
 )
 
 
@@ -558,8 +730,8 @@ _REMOVEFILEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=997,
-  serialized_end=1035,
+  serialized_start=1270,
+  serialized_end=1308,
 )
 
 
@@ -583,8 +755,8 @@ _REMOVEFILERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1037,
-  serialized_end=1057,
+  serialized_start=1310,
+  serialized_end=1330,
 )
 
 
@@ -615,8 +787,8 @@ _MAKEDIRREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1059,
-  serialized_end=1089,
+  serialized_start=1332,
+  serialized_end=1362,
 )
 
 
@@ -640,8 +812,8 @@ _MAKEDIRRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1091,
-  serialized_end=1108,
+  serialized_start=1364,
+  serialized_end=1381,
 )
 
 
@@ -672,8 +844,8 @@ _REMOVEDIRREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1110,
-  serialized_end=1142,
+  serialized_start=1383,
+  serialized_end=1415,
 )
 
 
@@ -697,8 +869,8 @@ _REMOVEDIRRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1144,
-  serialized_end=1163,
+  serialized_start=1417,
+  serialized_end=1436,
 )
 
 
@@ -729,8 +901,8 @@ _MAKETEMPDIRREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1165,
-  serialized_end=1201,
+  serialized_start=1438,
+  serialized_end=1474,
 )
 
 
@@ -761,8 +933,8 @@ _MAKETEMPDIRRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1203,
-  serialized_end=1238,
+  serialized_start=1476,
+  serialized_end=1511,
 )
 
 
@@ -786,8 +958,8 @@ _DMESGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1240,
-  serialized_end=1254,
+  serialized_start=1513,
+  serialized_end=1527,
 )
 
 
@@ -818,8 +990,8 @@ _DMESGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1256,
-  serialized_end=1330,
+  serialized_start=1529,
+  serialized_end=1603,
 )
 
 
@@ -857,8 +1029,8 @@ _OUTPUTSTREAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1332,
-  serialized_end=1378,
+  serialized_start=1605,
+  serialized_end=1651,
 )
 
 
@@ -889,8 +1061,8 @@ _RUNFUTILITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1380,
-  serialized_end=1416,
+  serialized_start=1653,
+  serialized_end=1689,
 )
 
 
@@ -921,8 +1093,8 @@ _RUNFUTILITYRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1418,
-  serialized_end=1498,
+  serialized_start=1691,
+  serialized_end=1771,
 )
 
 
@@ -953,8 +1125,8 @@ _RUNFLASHECREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1500,
-  serialized_end=1535,
+  serialized_start=1773,
+  serialized_end=1808,
 )
 
 
@@ -985,8 +1157,8 @@ _RUNFLASHECRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1537,
-  serialized_end=1616,
+  serialized_start=1810,
+  serialized_end=1889,
 )
 
 _CALLSERVODREQUEST.fields_by_name['method'].enum_type = _CALLSERVODREQUEST_METHOD
@@ -1003,6 +1175,13 @@ _CALLSERVODRESPONSE.fields_by_name['success'].containing_oneof = _CALLSERVODRESP
 _CALLSERVODRESPONSE.oneofs_by_name['result'].fields.append(
   _CALLSERVODRESPONSE.fields_by_name['failure'])
 _CALLSERVODRESPONSE.fields_by_name['failure'].containing_oneof = _CALLSERVODRESPONSE.oneofs_by_name['result']
+_PUTFILEREQUEST.fields_by_name['req_info'].message_type = _PUTFILEREQUESTINITINFO
+_PUTFILEREQUEST.oneofs_by_name['source'].fields.append(
+  _PUTFILEREQUEST.fields_by_name['req_info'])
+_PUTFILEREQUEST.fields_by_name['req_info'].containing_oneof = _PUTFILEREQUEST.oneofs_by_name['source']
+_PUTFILEREQUEST.oneofs_by_name['source'].fields.append(
+  _PUTFILEREQUEST.fields_by_name['data'])
+_PUTFILEREQUEST.fields_by_name['data'].containing_oneof = _PUTFILEREQUEST.oneofs_by_name['source']
 _DMESGRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _RUNFUTILITYRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _RUNFLASHECRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
@@ -1019,6 +1198,11 @@ DESCRIPTOR.message_types_by_name['DownloadSystemLogsRequest'] = _DOWNLOADSYSTEML
 DESCRIPTOR.message_types_by_name['DownloadSystemLogsResponse'] = _DOWNLOADSYSTEMLOGSRESPONSE
 DESCRIPTOR.message_types_by_name['DownloadServoLogsRequest'] = _DOWNLOADSERVOLOGSREQUEST
 DESCRIPTOR.message_types_by_name['DownloadServoLogsResponse'] = _DOWNLOADSERVOLOGSRESPONSE
+DESCRIPTOR.message_types_by_name['GetFileRequest'] = _GETFILEREQUEST
+DESCRIPTOR.message_types_by_name['GetFileResponse'] = _GETFILERESPONSE
+DESCRIPTOR.message_types_by_name['PutFileRequest'] = _PUTFILEREQUEST
+DESCRIPTOR.message_types_by_name['PutFileRequestInitInfo'] = _PUTFILEREQUESTINITINFO
+DESCRIPTOR.message_types_by_name['PutFileResponse'] = _PUTFILERESPONSE
 DESCRIPTOR.message_types_by_name['RemoveFileRequest'] = _REMOVEFILEREQUEST
 DESCRIPTOR.message_types_by_name['RemoveFileResponse'] = _REMOVEFILERESPONSE
 DESCRIPTOR.message_types_by_name['MakeDirRequest'] = _MAKEDIRREQUEST
@@ -1143,6 +1327,41 @@ DownloadServoLogsResponse = _reflection.GeneratedProtocolMessageType('DownloadSe
   })
 _sym_db.RegisterMessage(DownloadServoLogsResponse)
 
+GetFileRequest = _reflection.GeneratedProtocolMessageType('GetFileRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETFILEREQUEST,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.GetFileRequest)
+  })
+_sym_db.RegisterMessage(GetFileRequest)
+
+GetFileResponse = _reflection.GeneratedProtocolMessageType('GetFileResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETFILERESPONSE,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.GetFileResponse)
+  })
+_sym_db.RegisterMessage(GetFileResponse)
+
+PutFileRequest = _reflection.GeneratedProtocolMessageType('PutFileRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PUTFILEREQUEST,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.PutFileRequest)
+  })
+_sym_db.RegisterMessage(PutFileRequest)
+
+PutFileRequestInitInfo = _reflection.GeneratedProtocolMessageType('PutFileRequestInitInfo', (_message.Message,), {
+  'DESCRIPTOR' : _PUTFILEREQUESTINITINFO,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.PutFileRequestInitInfo)
+  })
+_sym_db.RegisterMessage(PutFileRequestInitInfo)
+
+PutFileResponse = _reflection.GeneratedProtocolMessageType('PutFileResponse', (_message.Message,), {
+  'DESCRIPTOR' : _PUTFILERESPONSE,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.PutFileResponse)
+  })
+_sym_db.RegisterMessage(PutFileResponse)
+
 RemoveFileRequest = _reflection.GeneratedProtocolMessageType('RemoveFileRequest', (_message.Message,), {
   'DESCRIPTOR' : _REMOVEFILEREQUEST,
   '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
@@ -1258,8 +1477,8 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1619,
-  serialized_end=2973,
+  serialized_start=1892,
+  serialized_end=3458,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartServod',
@@ -1292,9 +1511,29 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='GetFile',
+    full_name='chromiumos.test.api.lsnexus.LSNexusService.GetFile',
+    index=3,
+    containing_service=None,
+    input_type=_GETFILEREQUEST,
+    output_type=_GETFILERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='PutFile',
+    full_name='chromiumos.test.api.lsnexus.LSNexusService.PutFile',
+    index=4,
+    containing_service=None,
+    input_type=_PUTFILEREQUEST,
+    output_type=_PUTFILERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='RemoveFile',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.RemoveFile',
-    index=3,
+    index=5,
     containing_service=None,
     input_type=_REMOVEFILEREQUEST,
     output_type=_REMOVEFILERESPONSE,
@@ -1304,7 +1543,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MakeDir',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.MakeDir',
-    index=4,
+    index=6,
     containing_service=None,
     input_type=_MAKEDIRREQUEST,
     output_type=_MAKEDIRRESPONSE,
@@ -1314,7 +1553,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RemoveDir',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.RemoveDir',
-    index=5,
+    index=7,
     containing_service=None,
     input_type=_REMOVEDIRREQUEST,
     output_type=_REMOVEDIRRESPONSE,
@@ -1324,7 +1563,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MakeTempDir',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.MakeTempDir',
-    index=6,
+    index=8,
     containing_service=None,
     input_type=_MAKETEMPDIRREQUEST,
     output_type=_MAKETEMPDIRRESPONSE,
@@ -1334,7 +1573,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DMesg',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.DMesg',
-    index=7,
+    index=9,
     containing_service=None,
     input_type=_DMESGREQUEST,
     output_type=_DMESGRESPONSE,
@@ -1344,7 +1583,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Echo',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.Echo',
-    index=8,
+    index=10,
     containing_service=None,
     input_type=_ECHOREQUEST,
     output_type=_ECHORESPONSE,
@@ -1354,7 +1593,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DownloadServoLogs',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.DownloadServoLogs',
-    index=9,
+    index=11,
     containing_service=None,
     input_type=_DOWNLOADSERVOLOGSREQUEST,
     output_type=_DOWNLOADSERVOLOGSRESPONSE,
@@ -1364,7 +1603,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RunFutility',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.RunFutility',
-    index=10,
+    index=12,
     containing_service=None,
     input_type=_RUNFUTILITYREQUEST,
     output_type=_RUNFUTILITYRESPONSE,
@@ -1374,7 +1613,7 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RunFlashEC',
     full_name='chromiumos.test.api.lsnexus.LSNexusService.RunFlashEC',
-    index=11,
+    index=13,
     containing_service=None,
     input_type=_RUNFLASHECREQUEST,
     output_type=_RUNFLASHECRESPONSE,

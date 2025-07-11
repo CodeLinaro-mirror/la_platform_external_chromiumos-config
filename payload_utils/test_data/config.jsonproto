@@ -5,15 +5,23 @@
         "value": "TestDesign"
       },
       "name": "TestDesign",
-      "programId": {
-        "value": "TestProgram"
-      },
       "configs": [
         {
           "id": {
             "value": "TestDesign:123"
           },
           "hardwareFeatures": {
+            "camera": {
+              "devices": [
+                {
+                  "interface": "INTERFACE_MIPI",
+                  "facing": "FACING_FRONT",
+                  "orientation": "ORIENTATION_0",
+                  "flags": 1,
+                  "ids": ["TestFrontCamera"]
+                }
+              ]
+            },
             "cellular": {
               "present": "PRESENT",
               "model": "testdesign_fm101",
@@ -58,6 +66,9 @@
     {
       "designConfigId": {
         "value": "TestDesign:123"
+      },
+      "cameraConfig": {
+        "generateMediaProfiles": true
       },
       "idScanConfig": {
         "firmwareSku": 123
@@ -110,7 +121,6 @@
   ],
   "partnerList": [],
   "components": [],
-  "programList": [],
   "deviceBrandList": [],
   "brandConfigs": []
 }

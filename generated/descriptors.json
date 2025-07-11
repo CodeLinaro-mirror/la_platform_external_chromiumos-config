@@ -6358,6 +6358,14 @@
                   "number": 15,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "ishHasMainFw",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ish_has_main_fw",
+                  "number": 16,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",
@@ -12201,6 +12209,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "height",
               "number": 2,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "bitrate",
+              "label": "LABEL_OPTIONAL",
+              "name": "bitrate",
+              "number": 3,
               "type": "TYPE_UINT32"
             }
           ],
@@ -19101,6 +19116,13 @@
                   "name": "type",
                   "number": 5,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "tags",
+                  "label": "LABEL_REPEATED",
+                  "name": "tags",
+                  "number": 6,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Connection"
@@ -22832,6 +22854,13 @@
               "name": "config",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "reuseExisting",
+              "label": "LABEL_OPTIONAL",
+              "name": "reuse_existing",
+              "number": 6,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "StartServodRequest"
@@ -22915,7 +22944,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ReadServodRequest"
+          "name": "DocServodRequest"
         },
         {
           "field": [
@@ -22934,7 +22963,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ReadServodResponse"
+          "name": "DocServodResponse"
         },
         {
           "field": [
@@ -23556,9 +23585,9 @@
               "outputType": ".chromiumos.test.api.bols.HWInitServodResponse"
             },
             {
-              "inputType": ".chromiumos.test.api.bols.ReadServodRequest",
-              "name": "ReadServod",
-              "outputType": ".chromiumos.test.api.bols.ReadServodResponse"
+              "inputType": ".chromiumos.test.api.bols.DocServodRequest",
+              "name": "DocServod",
+              "outputType": ".chromiumos.test.api.bols.DocServodResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetServodRequest",
@@ -30263,13 +30292,6 @@
               "name": "encoded_atp_test_job_msg",
               "number": 10,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "skipProvision",
-              "label": "LABEL_OPTIONAL",
-              "name": "skip_provision",
-              "number": 12,
-              "type": "TYPE_BOOL"
             }
           ],
           "name": "CTPRequest"
@@ -30400,6 +30422,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "ignore_variant_category",
               "number": 11,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "skipProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_provision",
+              "number": 12,
               "type": "TYPE_BOOL"
             }
           ],
@@ -34084,6 +34113,15 @@
       ],
       "messageType": [
         {
+          "field": [
+            {
+              "jsonName": "reuseExisting",
+              "label": "LABEL_OPTIONAL",
+              "name": "reuse_existing",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
           "name": "StartServodRequest"
         },
         {
@@ -34268,6 +34306,72 @@
         {
           "field": [
             {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFileRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "GetFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "reqInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "req_info",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.PutFileRequestInitInfo"
+            },
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "PutFileRequest",
+          "oneofDecl": [
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PutFileRequestInitInfo"
+        },
+        {
+          "name": "PutFileResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "fileName",
               "label": "LABEL_OPTIONAL",
               "name": "file_name",
@@ -34443,6 +34547,20 @@
               "inputType": ".chromiumos.test.api.lsnexus.CallServodRequest",
               "name": "CallServod",
               "outputType": ".chromiumos.test.api.lsnexus.CallServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.GetFileRequest",
+              "name": "GetFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.GetFileResponse",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.lsnexus.PutFileRequest",
+              "name": "PutFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.PutFileResponse"
             },
             {
               "inputType": ".chromiumos.test.api.lsnexus.RemoveFileRequest",
@@ -36948,6 +37066,20 @@
               "name": "apfe_gcs_prefix",
               "number": 6,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "enableAlResultsArchiver",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_al_results_archiver",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "enableAlApfeArchiver",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_al_apfe_archiver",
+              "number": 8,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "XtsArchiverMetadata"

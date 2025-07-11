@@ -12,7 +12,7 @@ import "chromiumos/storage_path.proto";
 
 // Defines the properties needed for archiving XTS suite results to be ingested
 // by the XTS pipeline for release qualification and monitoring.
-// NEXT TAG: 7
+// NEXT TAG: 9
 message XtsArchiverMetadata {
   // Whether the run is for AL project.
   bool al_run = 1;
@@ -43,6 +43,12 @@ message XtsArchiverMetadata {
 
   // The GCS path prefix to upload XTS result file for APFE approval.
   string apfe_gcs_prefix = 6;
+
+  // Whether to archive xTS results to results GCS bucket for the given AL run.
+  bool enable_al_results_archiver = 7;
+
+  // Whether to archive xTS results to APFE GCS bucket for the given AL run.
+  bool enable_al_apfe_archiver = 8;
 }
 
 // NEXT TAG: 5
