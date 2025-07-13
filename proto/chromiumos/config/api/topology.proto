@@ -320,6 +320,9 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_CHROMEOS_ENABLE_ESOL feature enabled.
     Present mainboard_has_early_sign_of_life = 15;
+
+    // The AP firmware has the CONFIG_DRIVER_INTEL_ISH_HAS_MAIN_FW feature enabled.
+    Present ish_has_main_fw = 16;
   }
 
   // Audio properties of system

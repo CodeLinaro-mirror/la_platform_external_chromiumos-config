@@ -31,6 +31,16 @@ class LSNexusServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodResponse.FromString,
                 )
+        self.GetFile = channel.unary_stream(
+                '/chromiumos.test.api.lsnexus.LSNexusService/GetFile',
+                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileResponse.FromString,
+                )
+        self.PutFile = channel.stream_unary(
+                '/chromiumos.test.api.lsnexus.LSNexusService/PutFile',
+                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileResponse.FromString,
+                )
         self.RemoveFile = channel.unary_unary(
                 '/chromiumos.test.api.lsnexus.LSNexusService/RemoveFile',
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RemoveFileRequest.SerializeToString,
@@ -100,6 +110,22 @@ class LSNexusServiceServicer(object):
     def CallServod(self, request, context):
         """CallServod runs a servod command.
         Allowed methods: doc, get, set, and hwinit.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetFile(self, request, context):
+        """GetFile gets a file from labstation/container.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PutFile(self, request_iterator, context):
+        """PutFile puts a file on labstation/container.
+        If the directory of destination path does not exist, this service
+        will also create the directory.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -194,6 +220,16 @@ def add_LSNexusServiceServicer_to_server(servicer, server):
                     servicer.CallServod,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodResponse.SerializeToString,
+            ),
+            'GetFile': grpc.unary_stream_rpc_method_handler(
+                    servicer.GetFile,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileResponse.SerializeToString,
+            ),
+            'PutFile': grpc.stream_unary_rpc_method_handler(
+                    servicer.PutFile,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileResponse.SerializeToString,
             ),
             'RemoveFile': grpc.unary_unary_rpc_method_handler(
                     servicer.RemoveFile,
@@ -300,6 +336,40 @@ class LSNexusService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/CallServod',
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.CallServodResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/GetFile',
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.GetFileResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PutFile(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/chromiumos.test.api.lsnexus.LSNexusService/PutFile',
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.PutFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
