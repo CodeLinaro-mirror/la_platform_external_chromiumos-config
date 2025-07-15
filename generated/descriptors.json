@@ -32165,6 +32165,14 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.DeviceLeaseRecord.RequestParametersEntry"
+            },
+            {
+              "jsonName": "userPayload",
+              "label": "LABEL_REPEATED",
+              "name": "user_payload",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceLeaseRecord.UserPayloadEntry"
             }
           ],
           "name": "DeviceLeaseRecord",
@@ -32187,6 +32195,28 @@
                 }
               ],
               "name": "RequestParametersEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "UserPayloadEntry",
               "options": {
                 "mapEntry": true
               }
