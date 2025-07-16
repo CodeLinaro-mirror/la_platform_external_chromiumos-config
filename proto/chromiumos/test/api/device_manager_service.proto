@@ -35,7 +35,8 @@ service DeviceLeaseService {
   rpc ListDevices(ListDevicesRequest) returns (ListDevicesResponse) {};
 
   // List device leases for a given device.
-  rpc ListDeviceLeases(ListDeviceLeasesRequest) returns (ListDeviceLeasesResponse) {};
+  rpc ListDeviceLeases(ListDeviceLeasesRequest)
+      returns (ListDeviceLeasesResponse) {};
 }
 
 message Device {
@@ -250,8 +251,8 @@ message ListDevicesResponse {
 
 message ListDeviceLeasesRequest {
   oneof id {
-    string device_id = 1; // i.e. DUT name, e.g. chromeos8-rowX-rackY-hostZ.
-    string dut_id = 2;    // i.e. Asset ID, e.g. C1234567.
+    string device_id = 1;  // i.e. DUT name, e.g. chromeos8-rowX-rackY-hostZ.
+    string dut_id = 2;     // i.e. Asset ID, e.g. C1234567.
   }
   // The maximum number of leases records to return. The service may return
   // fewer than this value.
@@ -266,7 +267,7 @@ message ListDeviceLeasesRequest {
   string page_token = 4;
 }
 
-message ListDeviceLeasesResponse{
+message ListDeviceLeasesResponse {
   // List of lease records to be returned.
   repeated DeviceLeaseRecord lease_records = 1;
 

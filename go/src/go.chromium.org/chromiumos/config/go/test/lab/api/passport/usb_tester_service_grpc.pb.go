@@ -49,6 +49,10 @@ type UsbTesterServiceClient interface {
 	SetActivePort(ctx context.Context, in *SetActivePortRequest, opts ...grpc.CallOption) (*SetActivePortReply, error)
 	// This method is used to load an EDID.
 	LoadEdid(ctx context.Context, in *LoadEdidRequest, opts ...grpc.CallOption) (*LoadEdidReply, error)
+	// This method is used send a VDM HPDs
+	SendVdmHpd(ctx context.Context, in *SendVdmHpdRequest, opts ...grpc.CallOption) (*SendVdmHpdReply, error)
+	// Simulate a key press. ATM this will simulate the "G" key press.
+	SimulateKeyPress(ctx context.Context, in *SimulateKeyPressRequest, opts ...grpc.CallOption) (*SimulateKeyPressReply, error)
 }
 
 type usbTesterServiceClient struct {
@@ -176,6 +180,24 @@ func (c *usbTesterServiceClient) LoadEdid(ctx context.Context, in *LoadEdidReque
 	return out, nil
 }
 
+func (c *usbTesterServiceClient) SendVdmHpd(ctx context.Context, in *SendVdmHpdRequest, opts ...grpc.CallOption) (*SendVdmHpdReply, error) {
+	out := new(SendVdmHpdReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/SendVdmHpd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usbTesterServiceClient) SimulateKeyPress(ctx context.Context, in *SimulateKeyPressRequest, opts ...grpc.CallOption) (*SimulateKeyPressReply, error) {
+	out := new(SimulateKeyPressReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/SimulateKeyPress", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsbTesterServiceServer is the server API for UsbTesterService service.
 // All implementations should embed UnimplementedUsbTesterServiceServer
 // for forward compatibility
@@ -207,6 +229,10 @@ type UsbTesterServiceServer interface {
 	SetActivePort(context.Context, *SetActivePortRequest) (*SetActivePortReply, error)
 	// This method is used to load an EDID.
 	LoadEdid(context.Context, *LoadEdidRequest) (*LoadEdidReply, error)
+	// This method is used send a VDM HPDs
+	SendVdmHpd(context.Context, *SendVdmHpdRequest) (*SendVdmHpdReply, error)
+	// Simulate a key press. ATM this will simulate the "G" key press.
+	SimulateKeyPress(context.Context, *SimulateKeyPressRequest) (*SimulateKeyPressReply, error)
 }
 
 // UnimplementedUsbTesterServiceServer should be embedded to have forward compatible implementations.
@@ -251,6 +277,12 @@ func (UnimplementedUsbTesterServiceServer) SetActivePort(context.Context, *SetAc
 }
 func (UnimplementedUsbTesterServiceServer) LoadEdid(context.Context, *LoadEdidRequest) (*LoadEdidReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoadEdid not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) SendVdmHpd(context.Context, *SendVdmHpdRequest) (*SendVdmHpdReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendVdmHpd not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) SimulateKeyPress(context.Context, *SimulateKeyPressRequest) (*SimulateKeyPressReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SimulateKeyPress not implemented")
 }
 
 // UnsafeUsbTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -498,6 +530,42 @@ func _UsbTesterService_LoadEdid_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsbTesterService_SendVdmHpd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendVdmHpdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).SendVdmHpd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/SendVdmHpd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).SendVdmHpd(ctx, req.(*SendVdmHpdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsbTesterService_SimulateKeyPress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SimulateKeyPressRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).SimulateKeyPress(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/SimulateKeyPress",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).SimulateKeyPress(ctx, req.(*SimulateKeyPressRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsbTesterService_ServiceDesc is the grpc.ServiceDesc for UsbTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -556,6 +624,14 @@ var UsbTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoadEdid",
 			Handler:    _UsbTesterService_LoadEdid_Handler,
+		},
+		{
+			MethodName: "SendVdmHpd",
+			Handler:    _UsbTesterService_SendVdmHpd_Handler,
+		},
+		{
+			MethodName: "SimulateKeyPress",
+			Handler:    _UsbTesterService_SimulateKeyPress_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
