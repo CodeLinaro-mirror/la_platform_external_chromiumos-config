@@ -65,6 +65,7 @@ genrule {
 
 java_library {
     name: "chromiumos-config-protos-java",
+    host_supported: true,
     proto: {
         type: "lite",
         include_dirs: [
@@ -76,23 +77,40 @@ java_library {
         ":chromiumos-config-grpc-gen",
     ],
     libs: ["javax_annotation-api_1.3.2"],
-    static_libs: [
-        "libprotobuf-java-lite",
-        "grpc-java-protobuf-lite",
-        "grpc-java-core-android",
-        "grpc-java-stub",
-        "grpc-java-context",
-        "grpc-java-core",
-        "grpc-java-core-internal",
-        "grpc-java-core-util",
-        "grpc-java-okhttp",
-        "guava",
-    ],
-
+    target: {
+        android: {
+            static_libs: [
+                "libprotobuf-java-lite",
+                "grpc-java-protobuf-lite",
+                "grpc-java-core-android",
+                "grpc-java-stub",
+                "grpc-java-context",
+                "grpc-java-core",
+                "grpc-java-core-internal",
+                "grpc-java-core-util",
+                "grpc-java-okhttp",
+                "guava",
+            ],
+        },
+        host: {
+            static_libs: [
+                "libprotobuf-java-lite",
+                "grpc-java-protobuf-lite",
+                "grpc-java-stub",
+                "grpc-java-context",
+                "grpc-java-core",
+                "grpc-java-core-internal",
+                "grpc-java-core-util",
+                "grpc-java-netty",
+                "guava",
+            ],
+        },
+    },
 }
 
 java_library {
     name: "chromiumos-config-java-lib",
+    host_supported: true,
     static_libs: ["chromiumos-config-protos-java"],
     srcs: [
         "src/**/*.java",

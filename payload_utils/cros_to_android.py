@@ -1011,11 +1011,6 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                     permissions_elem, "android.sensor.device_orientation"
                 )
 
-            if hw_features.fingerprint.present == present_enum:
-                _add_feature_element(
-                    permissions_elem, "android.hardware.fingerprint"
-                )
-
             if present_enum in (
                 hw_features.gyroscope.base_gyroscope,
                 hw_features.gyroscope.lid_gyroscope,
