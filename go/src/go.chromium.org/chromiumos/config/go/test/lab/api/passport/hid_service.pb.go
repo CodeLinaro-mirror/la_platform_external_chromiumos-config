@@ -391,8 +391,9 @@ type KeyboardActionRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
-	// The list of keys to control, strings follow: https://www.w3.org/TR/uievents-key/#key-attr-values.
-	// Note: Additional prefixes are available:
+	// The list of keys to control, strings follow:
+	// https://www.w3.org/TR/uievents-key/#key-attr-values. Note: Additional
+	// prefixes are available:
 	//  * L/R for left and right keys, respectively
 	//  * Oem for OEM specific keys
 	Keys []string `protobuf:"bytes,2,rep,name=keys,proto3" json:"keys,omitempty"`

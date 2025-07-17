@@ -690,16 +690,16 @@ def _add_camera_entry(
         )
         return
 
-    media_profile_filename = f"media_profiles_{model.lower()}_{sku.lower()}.xml"
+    media_profile_suffix = f"_{model.lower()}_{sku.lower()}"
     camera_config_elem = etree.SubElement(
         hal_config_elem, "CameraConfiguration"
     )
-    etree.SubElement(camera_config_elem, "media-profile").text = (
-        media_profile_filename
+    etree.SubElement(camera_config_elem, "media-profile-suffix").text = (
+        media_profile_suffix
     )
     logging.debug(
-        "Added CameraConfiguration with media-profile '%s' for %s:%s.",
-        media_profile_filename,
+        "Added CameraConfiguration with media-profile-suffix '%s' for %s:%s.",
+        media_profile_suffix,
         model,
         sku,
     )
@@ -971,6 +971,8 @@ def _add_camera_features(
 
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     """Handles the 'generate-feature-xml' sub-command logic."""
+    # pylint: disable=too-many-branches
+
     logging.info("Running generate-feature-xml command...")
     config_bundle = _load_config_bundle(opts.jsonproto_file)
 
@@ -984,7 +986,19 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                 )
                 continue
 
-            model, sku = design_config.id.value.split(":")
+            sw_config = _get_sw_config(
+                config_bundle.software_configs, design_config.id.value
+            )
+            frid = sw_config.id_scan_config.frid.removeprefix("Google_")
+            if not frid:
+                logging.warning(
+                    "Skipping feature XML generation due to missing 'frid' in"
+                    " 'id_scan_config' for Design.Config ID '%s'.",
+                    design_config.id.value,
+                )
+                continue
+
+            _, sku = design_config.id.value.split(":")
             permissions_elem = etree.Element("permissions")
 
             hw_features = design_config.hardware_features
@@ -1049,14 +1063,14 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
 
             _add_camera_features(permissions_elem, hw_features.camera)
 
-            sku_dir = opts.output_dir / f"{model}_{sku}".lower()
+            sku_dir = opts.output_dir / f"{frid}_{sku}".lower()
             sku_dir.mkdir(parents=True, exist_ok=True)
             output_file = sku_dir / "features.xml"
             with open(output_file, "wb") as f:
                 f.write(etree.tostring(permissions_elem, pretty_print=True))
             logging.info(
                 "Wrote combined feature XML for %s:%s to %s",
-                model,
+                frid,
                 sku,
                 output_file,
             )

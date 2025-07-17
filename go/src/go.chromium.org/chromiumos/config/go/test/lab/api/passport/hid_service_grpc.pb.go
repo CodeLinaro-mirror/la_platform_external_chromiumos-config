@@ -26,7 +26,8 @@ type HIDServiceClient interface {
 	GetHIDDevices(ctx context.Context, in *GetHIDDevicesRequest, opts ...grpc.CallOption) (*GetHIDDevicesResponse, error)
 	// InitHIDDevice initializes the specified HID device.
 	InitHIDDevice(ctx context.Context, in *InitHIDDeviceRequest, opts ...grpc.CallOption) (*InitHIDDeviceResponse, error)
-	// CloseHIDDevice releases the specified HID device and releases any resources held open.
+	// CloseHIDDevice releases the specified HID device and releases any resources
+	// held open.
 	CloseHIDDevice(ctx context.Context, in *CloseHIDDeviceRequest, opts ...grpc.CallOption) (*CloseHIDDeviceResponse, error)
 	// KeyboardAction performs the requested keyboard action.
 	KeyboardAction(ctx context.Context, in *KeyboardActionRequest, opts ...grpc.CallOption) (*KeyboardActionResponse, error)
@@ -95,7 +96,8 @@ type HIDServiceServer interface {
 	GetHIDDevices(context.Context, *GetHIDDevicesRequest) (*GetHIDDevicesResponse, error)
 	// InitHIDDevice initializes the specified HID device.
 	InitHIDDevice(context.Context, *InitHIDDeviceRequest) (*InitHIDDeviceResponse, error)
-	// CloseHIDDevice releases the specified HID device and releases any resources held open.
+	// CloseHIDDevice releases the specified HID device and releases any resources
+	// held open.
 	CloseHIDDevice(context.Context, *CloseHIDDeviceRequest) (*CloseHIDDeviceResponse, error)
 	// KeyboardAction performs the requested keyboard action.
 	KeyboardAction(context.Context, *KeyboardActionRequest) (*KeyboardActionResponse, error)
