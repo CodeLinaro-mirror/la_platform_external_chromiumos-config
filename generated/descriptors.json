@@ -28655,6 +28655,10 @@
                 {
                   "name": "STATUS_DOWNLOADING_FIRMWARE_FAILED",
                   "number": 23
+                },
+                {
+                  "name": "STATUS_FIRMWARE_CSME_LOCKED",
+                  "number": 24
                 }
               ]
             }

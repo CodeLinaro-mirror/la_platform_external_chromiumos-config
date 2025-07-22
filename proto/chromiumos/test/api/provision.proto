@@ -117,6 +117,8 @@ message InstallResponse {
     STATUS_PRE_PROVISION_USB_BOOT_FAILURE = 22;
     // A firmware artifact could not be downloaded.
     STATUS_DOWNLOADING_FIRMWARE_FAILED = 23;
+    // The CSME is locked and cannot be unlocked
+    STATUS_FIRMWARE_CSME_LOCKED = 24;
   }
   Status status = 1;
 
