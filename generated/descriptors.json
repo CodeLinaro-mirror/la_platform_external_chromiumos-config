@@ -28507,6 +28507,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "lsNexusAddr",
+              "label": "LABEL_OPTIONAL",
+              "name": "ls_nexus_addr",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
           "name": "ProvisionStartupRequest"

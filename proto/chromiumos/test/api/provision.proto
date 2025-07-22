@@ -44,6 +44,8 @@ message ProvisionStartupRequest {
   google.protobuf.Any metadata = 3;
   // Address where servoNexus cft service can be reached.
   chromiumos.test.lab.api.IpEndpoint servo_nexus_addr = 4;
+  // Address where lsNexus cft service can be reached.
+  chromiumos.test.lab.api.IpEndpoint ls_nexus_addr = 5;
 }
 
 // ProvisionStartupResponse provides a status message to signal
