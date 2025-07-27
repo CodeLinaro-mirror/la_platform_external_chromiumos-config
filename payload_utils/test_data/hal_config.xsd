@@ -106,9 +106,9 @@
 
   <xs:complexType name="CameraConfigurationType">
     <xs:sequence>
-      <xs:element type="xs:string" name="media-profile" minOccurs="1">
+      <xs:element type="xs:string" name="media-profile-suffix" minOccurs="1">
         <xs:annotation>
-          <xs:documentation>The media_profile.xml file for the given SKU. This is used to set ro.media.xml_variant.profiles.</xs:documentation>
+          <xs:documentation>This is used to set ro.media.xml_variant.profiles, which derives the media_profile.xml file for the given SKU. </xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

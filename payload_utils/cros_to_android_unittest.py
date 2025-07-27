@@ -86,8 +86,8 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 for p in output_files
             ],
             [
-                "testdesign_123/features.xml",
-                "testdesign_456/features.xml",
+                "frid123_123/features.xml",
+                "frid456_456/features.xml",
             ],
         )
         with open(output_files[0], "rb") as f:
@@ -385,8 +385,8 @@ class HalEntryHelpersTest(unittest.TestCase):
         cam_config_elem = self.root_element.find("CameraConfiguration")
         self.assertIsNotNone(cam_config_elem)
         self.assertEqual(
-            cam_config_elem.find("media-profile").text,
-            "media_profiles_testmodel_123.xml",
+            cam_config_elem.find("media-profile-suffix").text,
+            "_testmodel_123",
         )
 
     def test_add_camera_entry_disabled(self):
@@ -527,6 +527,11 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         bundle = config_bundle_pb2.ConfigBundle()
         bundle.design_list.add().configs.add().CopyFrom(self.config)
 
+        # Add a sw_config to the bundle that matches the design config
+        sw_config = bundle.software_configs.add()
+        sw_config.design_config_id.value = self.config.id.value
+        sw_config.id_scan_config.frid = "Google_testfrid"
+
         temp_json_path = self.temp_dir / "test_input_features.jsonproto"
         with open(temp_json_path, "w", encoding="utf-8") as f:
             f.write(json_format.MessageToJson(bundle))
@@ -539,7 +544,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
 
     def _assert_feature_xml(self, expected_features: list[str]):
         """Asserts the presence and content of a feature XML."""
-        feature_file_path = self.temp_dir / "testmodel_123/features.xml"
+        feature_file_path = self.temp_dir / "testfrid_123/features.xml"
 
         self.assertTrue(feature_file_path.is_file())
         with open(feature_file_path, "rb") as f:
