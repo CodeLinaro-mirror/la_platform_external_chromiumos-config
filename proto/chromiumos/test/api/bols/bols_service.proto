@@ -528,6 +528,16 @@ message UpdateServoFirmwareRequest {
   }
   repeated Target targets = 2;
   bool force = 3;
+
+  // Firmware channel.
+  enum FirmwareChannel {
+    FIRMWARE_CHANNEL_UNSPECIFIED = 0;
+    FIRMWARE_CHANNEL_PREV = 1;
+    FIRMWARE_CHANNEL_DEV = 2;
+    FIRMWARE_CHANNEL_ALPHA = 3;
+    FIRMWARE_CHANNEL_STABLE = 4;
+  }
+  FirmwareChannel channel = 4;
 }
 
 message UpdateServoFirmwareResponse {

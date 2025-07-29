@@ -23236,6 +23236,33 @@
           "name": "ServoTopologyItem"
         },
         {
+          "enumType": [
+            {
+              "name": "FirmwareChannel",
+              "value": [
+                {
+                  "name": "FIRMWARE_CHANNEL_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_PREV",
+                  "number": 1
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_DEV",
+                  "number": 2
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_ALPHA",
+                  "number": 3
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_STABLE",
+                  "number": 4
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "stationId",
@@ -23259,6 +23286,14 @@
               "name": "force",
               "number": 3,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "channel",
+              "label": "LABEL_OPTIONAL",
+              "name": "channel",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.bols.UpdateServoFirmwareRequest.FirmwareChannel"
             }
           ],
           "name": "UpdateServoFirmwareRequest",
