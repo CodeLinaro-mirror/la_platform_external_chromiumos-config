@@ -55,6 +55,10 @@ enum WifiRouterFeature {
 
   // SAE-EXT-KEY support for AKM-24/25.
   WIFI_ROUTER_FEATURE_SAE_EXT_KEY = 12;
+
+  // temp feature for ignoring the U6+ router in tests
+  // TODO(astrouski): Remove this feature once the U6+ router is fixed. (b/389945993)
+  WIFI_ROUTER_FEATURE_NOT_U6PLUS_ROUTER = 13;
 }
 
 // The type of Wifi AP device a WiFi AP peripheral is, functionally speaking.

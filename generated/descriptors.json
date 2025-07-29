@@ -19466,6 +19466,10 @@
             {
               "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
               "number": 12
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_NOT_U6PLUS_ROUTER",
+              "number": 13
             }
           ]
         },
