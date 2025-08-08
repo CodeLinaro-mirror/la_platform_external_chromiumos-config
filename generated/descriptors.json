@@ -31074,6 +31074,14 @@
               "number": 9,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SchedulingUnitOptions"
+            },
+            {
+              "jsonName": "dddInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_info",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DDDInfo"
             }
           ],
           "name": "SuiteMetadata"
@@ -31504,6 +31512,18 @@
             }
           ],
           "name": "Iterations"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "variantCategory",
+              "label": "LABEL_OPTIONAL",
+              "name": "variant_category",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DDDInfo"
         }
       ],
       "name": "chromiumos/test/api/ctp2.proto",
