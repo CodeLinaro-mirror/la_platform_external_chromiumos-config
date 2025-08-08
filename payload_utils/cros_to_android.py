@@ -834,6 +834,9 @@ def _add_hal_config_entry(
     sku_elem.text = sku
     model_elem = etree.SubElement(identity_elem, "model")
     model_elem.text = model.lower()
+    frid = sw_config.id_scan_config.frid.removeprefix("Google_")
+    frid_elem = etree.SubElement(identity_elem, "frid")
+    frid_elem.text = frid.lower()
 
     _add_cellular_entry(hal_config_elem, design_config)
     _add_fingerprint_entry(hal_config_elem, design_config)

@@ -29,6 +29,7 @@
     <xs:sequence>
       <xs:element type="xs:string" name="sku-id"/>
       <xs:element type="xs:string" name="model"/>
+      <xs:element type="xs:string" name="frid"/>
       <xs:element type="xs:string" name="custom-label-tag" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
