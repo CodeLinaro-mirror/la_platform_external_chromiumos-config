@@ -95,6 +95,10 @@ class CrosConfigConverterMainTest(unittest.TestCase):
             self.assertEqual(
                 content,
                 b"<permissions>\n  "
+                b'<feature name="android.hardware.touchscreen"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch.distinct"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch.jazzhand"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
                 b'<feature name="android.hardware.camera.front"/>\n'
                 b"</permissions>\n",

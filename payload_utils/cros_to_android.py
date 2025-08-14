@@ -1064,6 +1064,22 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
             ):
                 _add_feature_element(permissions_elem, "com.google.sensor.sar")
 
+            if hw_features.screen.touch_support == present_enum:
+                _add_feature_element(
+                    permissions_elem, "android.hardware.touchscreen"
+                )
+                _add_feature_element(
+                    permissions_elem, "android.hardware.touchscreen.multitouch"
+                )
+                _add_feature_element(
+                    permissions_elem,
+                    "android.hardware.touchscreen.multitouch.distinct",
+                )
+                _add_feature_element(
+                    permissions_elem,
+                    "android.hardware.touchscreen.multitouch.jazzhand",
+                )
+
             _add_camera_features(permissions_elem, hw_features.camera)
 
             sku_dir = opts.output_dir / f"{frid}_{sku}".lower()

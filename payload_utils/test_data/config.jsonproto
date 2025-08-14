@@ -35,6 +35,9 @@
             },
             "formFactor": {
               "formFactor": "CLAMSHELL"
+            },
+            "screen": {
+              "touchSupport": "PRESENT"
             }
           }
         },
