@@ -44063,6 +44063,20 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestVideoTester"
+            },
+            {
+              "jsonName": "platform",
+              "label": "LABEL_OPTIONAL",
+              "name": "platform",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "RunComplianceTestRequest"

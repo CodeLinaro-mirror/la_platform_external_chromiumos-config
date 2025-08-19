@@ -425,6 +425,11 @@ message RunComplianceTestRequest {
   string id = 1;  // ID of the video tester to run the compliance test on.
   repeated ComplianceTestVideoTester tests =
       2;  // The list of compliance tests to run.
+
+  // Platform representing the DUT platform. If left empty then a default will be used.
+  string platform = 3;
+  // Platform representing the DUT model. If left empty then a default will be used.
+  string model = 4;
 }
 
 // Response message initiating the results of a compliance test run.
