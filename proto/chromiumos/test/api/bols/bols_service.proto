@@ -112,6 +112,12 @@ service BolsService {
   // In most of implementation, it runs flash_ec tool on labstation.
   rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
 
+  // RunGSCTool run gsctool on labstation.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  rpc RunGSCTool(RunGSCToolRequest) returns (RunGSCToolResponse) {}
+
   ///////// Dolos API /////////
 
   rpc GetDolosVersion(GetDolosVersionRequest)
@@ -585,6 +591,21 @@ message RunFlashECRequest {
 }
 
 message RunFlashECResponse {
+  OutputStream output = 1;
+}
+
+message RunGSCToolRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // List of parameters used at execution.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  repeated string params = 2;
+}
+
+message RunGSCToolResponse {
   OutputStream output = 1;
 }
 

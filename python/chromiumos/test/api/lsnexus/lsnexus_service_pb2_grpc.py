@@ -86,6 +86,11 @@ class LSNexusServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECResponse.FromString,
                 )
+        self.RunGSCTool = channel.unary_unary(
+                '/chromiumos.test.api.lsnexus.LSNexusService/RunGSCTool',
+                request_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunGSCToolRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunGSCToolResponse.FromString,
+                )
 
 
 class LSNexusServiceServicer(object):
@@ -203,6 +208,16 @@ class LSNexusServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def RunGSCTool(self, request, context):
+        """RunGSCTool forwards gsctool request to BOLS.
+        Example:
+        gsctool -n 1002D052-9066B226 -f
+        Params: ["-n", "1002D052-9066B226", "-f" ]
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_LSNexusServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -275,6 +290,11 @@ def add_LSNexusServiceServicer_to_server(servicer, server):
                     servicer.RunFlashEC,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECResponse.SerializeToString,
+            ),
+            'RunGSCTool': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunGSCTool,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunGSCToolRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunGSCToolResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -523,5 +543,22 @@ class LSNexusService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/RunFlashEC',
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunFlashECResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RunGSCTool(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.lsnexus.LSNexusService/RunGSCTool',
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunGSCToolRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_lsnexus_dot_lsnexus__service__pb2.RunGSCToolResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

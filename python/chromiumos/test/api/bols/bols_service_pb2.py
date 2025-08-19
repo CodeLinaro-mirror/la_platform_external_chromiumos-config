@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'B\025BolsServiceOuterClassZ2go.chromium.org/chromiumos/config/go/test/api/bols',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/test/api/bols/bols_service.proto\x12\x18\x63hromiumos.test.api.bols\"V\n\x11StationIdentifier\x12\x13\n\x0bservod_port\x18\x01 \x01(\x05\x12\x14\n\x0cservo_serial\x18\x02 \x01(\t\x12\x16\n\x0e\x63ontainer_name\x18\x03 \x01(\t\"<\n\x08\x46ileData\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x10\n\x08\x66ilepath\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"X\n\x08\x46ileStat\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x0e\n\x06is_dir\x18\x04 \x01(\x08\x12\x12\n\nis_symlink\x18\x05 \x01(\x08\"U\n\rDirectoryInfo\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x36\n\nfile_stats\x18\x02 \x03(\x0b\x32\".chromiumos.test.api.bols.FileStat\"g\n\x12GetFileStatRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilepath\x18\x02 \x01(\t\"M\n\x13GetFileStatResponse\x12\x36\n\nfile_stats\x18\x01 \x01(\x0b\x32\".chromiumos.test.api.bols.FileStat\"c\n\x0eGetFileRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"\x1f\n\x0fGetFileResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"p\n\x0ePutFileRequest\x12\x44\n\x08req_info\x18\x01 \x01(\x0b\x32\x30.chromiumos.test.api.bols.PutFileRequestInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"\x11\n\x0fPutFileResponse\"k\n\x16PutFileRequestInitInfo\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"\xa3\x01\n\x13\x44ownloadFileRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65st\x18\x03 \x01(\t\x12\x30\n\x07headers\x18\x04 \x03(\x0b\x32\x1f.chromiumos.test.api.bols.Param\"#\n\x05Param\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"$\n\x14\x44ownloadFileResponse\x12\x0c\n\x04\x66ile\x18\x03 \x01(\t\"f\n\x11RemoveFileRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"\x14\n\x12RemoveFileResponse\"b\n\x11GetDirInfoRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\"K\n\x12GetDirInfoResponse\x12\x35\n\x04info\x18\x01 \x01(\x0b\x32\'.chromiumos.test.api.bols.DirectoryInfo\"_\n\x0eMakeDirRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\"H\n\x0fMakeDirResponse\x12\x35\n\x04info\x18\x01 \x01(\x0b\x32\'.chromiumos.test.api.bols.DirectoryInfo\"s\n\x12MakeTempDirRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0b\n\x03\x64ir\x18\x02 \x01(\t\x12\x0f\n\x07pattern\x18\x03 \x01(\t\"L\n\x13MakeTempDirResponse\x12\x35\n\x04info\x18\x01 \x01(\x0b\x32\'.chromiumos.test.api.bols.DirectoryInfo\"u\n\x10RemoveDirRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x12\n\nremove_all\x18\x03 \x01(\x08\"\x13\n\x11RemoveDirResponse\"O\n\x0c\x44MesgRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"G\n\rDMesgResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"{\n\x17WriteFileByBlockRequest\x12\x46\n\x08req_info\x18\x01 \x01(\x0b\x32\x32.chromiumos.test.api.bols.WriteFileByBlockInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"\x81\x01\n\x18WriteFileByBlockInitInfo\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x11\n\tbyte_size\x18\x03 \x01(\x05\"\x81\x01\n\x18WriteFileByBlockResponse\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x11\n\tbyte_size\x18\x03 \x01(\x05\"\x99\x01\n\x16ReadFileByBlockRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x11\n\tbyte_size\x18\x03 \x01(\x05\x12\x18\n\x10number_of_blocks\x18\x04 \x01(\x05\"Q\n\x17ReadFileByBlockResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"}\n\x0fRunMountRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0b\n\x03src\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65st\x18\x03 \x01(\t\x12\x0e\n\x06params\x18\x04 \x03(\t\"\x12\n\x10RunMountResponse\"a\n\x10RunUMountRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\"\x13\n\x11RunUMountResponse\"v\n\x0bServodValue\x12\x16\n\x0cstring_value\x18\x01 \x01(\tH\x00\x12\x13\n\tint_value\x18\x02 \x01(\x05H\x00\x12\x19\n\x0b\x66loat_value\x18\x03 \x01(\x02\x42\x02\x18\x01H\x00\x12\x16\n\x0c\x64ouble_value\x18\x04 \x01(\x01H\x00\x42\x07\n\x05value\"\xb2\x01\n\x12StartServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12\r\n\x05model\x18\x03 \x01(\t\x12\x15\n\rrecovery_mode\x18\x04 \x01(\x08\x12\x0e\n\x06\x63onfig\x18\x05 \x01(\t\x12\x16\n\x0ereuse_existing\x18\x06 \x01(\x08\"\x15\n\x13StartServodResponse\"T\n\x11StopServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"\x14\n\x12StopServodResponse\"Y\n\x16GetServodStatusRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"Q\n\x17GetServodStatusResponse\x12\x36\n\x06status\x18\x01 \x01(\x0e\x32&.chromiumos.test.api.bols.ServodStatus\"V\n\x13HWInitServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"\x16\n\x14HWInitServodResponse\"d\n\x10\x44ocServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0f\n\x07\x63ontrol\x18\x02 \x01(\t\"9\n\x11\x44ocServodResponse\x12\x0f\n\x07\x63ontrol\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"d\n\x10GetServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0f\n\x07\x63ontrol\x18\x02 \x01(\t\"Z\n\x11GetServodResponse\x12\x0f\n\x07\x63ontrol\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\"\x9a\x01\n\x10SetServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0f\n\x07\x63ontrol\x18\x02 \x01(\t\x12\x34\n\x05value\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\"\x13\n\x11SetServodResponse\"Z\n\x17GetServodVersionRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"+\n\x18GetServodVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"b\n\x11\x45\x63hoServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04\x65\x63ho\x18\x02 \x01(\t\"$\n\x12\x45\x63hoServodResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"Z\n\x17GetServoTopologyRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"\x94\x01\n\x18GetServoTopologyResponse\x12\x39\n\x04root\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.ServoTopologyItem\x12=\n\x08\x63hildren\x18\x02 \x03(\x0b\x32+.chromiumos.test.api.bols.ServoTopologyItem\"\x86\x01\n\x11ServoTopologyItem\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x15\n\rsysfs_product\x18\x02 \x01(\t\x12\x0e\n\x06serial\x18\x03 \x01(\t\x12\x14\n\x0cusb_hub_port\x18\x04 \x01(\t\x12\x12\n\nsysfs_path\x18\x05 \x01(\t\x12\x12\n\nfw_version\x18\x06 \x01(\t\"\xd3\x03\n\x1aUpdateServoFirmwareRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12L\n\x07targets\x18\x02 \x03(\x0b\x32;.chromiumos.test.api.bols.UpdateServoFirmwareRequest.Target\x12\r\n\x05\x66orce\x18\x03 \x01(\x08\x12U\n\x07\x63hannel\x18\x04 \x01(\x0e\x32\x44.chromiumos.test.api.bols.UpdateServoFirmwareRequest.FirmwareChannel\x1a\x1c\n\x06Target\x12\x12\n\nservo_type\x18\x01 \x01(\t\"\xa1\x01\n\x0f\x46irmwareChannel\x12 \n\x1c\x46IRMWARE_CHANNEL_UNSPECIFIED\x10\x00\x12\x19\n\x15\x46IRMWARE_CHANNEL_PREV\x10\x01\x12\x18\n\x14\x46IRMWARE_CHANNEL_DEV\x10\x02\x12\x1a\n\x16\x46IRMWARE_CHANNEL_ALPHA\x10\x03\x12\x1b\n\x17\x46IRMWARE_CHANNEL_STABLE\x10\x04\"[\n\x1bUpdateServoFirmwareResponse\x12<\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32+.chromiumos.test.api.bols.ServoTopologyItem\".\n\x0cOutputStream\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\"e\n\x12RunFutilityRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0e\n\x06params\x18\x02 \x03(\t\"M\n\x13RunFutilityResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"d\n\x11RunFlashECRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0e\n\x06params\x18\x02 \x03(\t\"L\n\x12RunFlashECResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"*\n\x0f\x44olosIdentifier\x12\x17\n\x0f\x64olos_uart_name\x18\x01 \x01(\t\"\x96\x01\n\x16GetDolosVersionRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12;\n\x08\x64olos_id\x18\x02 \x01(\x0b\x32).chromiumos.test.api.bols.DolosIdentifier\"*\n\x17GetDolosVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\xb3\x01\n\x19UpdateDolosVersionRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12;\n\x08\x64olos_id\x18\x02 \x01(\x0b\x32).chromiumos.test.api.bols.DolosIdentifier\x12\x18\n\x10\x65xpected_version\x18\x03 \x01(\t\"-\n\x1aUpdateDolosVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\x95\x01\n\x15GetDolosStatusRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12;\n\x08\x64olos_id\x18\x02 \x01(\x0b\x32).chromiumos.test.api.bols.DolosIdentifier\"O\n\x16GetDolosStatusResponse\x12\x35\n\x06status\x18\x01 \x01(\x0e\x32%.chromiumos.test.api.bols.DolosStatus\"s\n\x14\x46indDolosUARTRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x1a\n\x12\x64olos_cable_serial\x18\x02 \x01(\t\"0\n\x15\x46indDolosUARTResponse\x12\x17\n\x0f\x64olos_uart_name\x18\x01 \x01(\t*J\n\x0cServodStatus\x12\x12\n\x0eSERVOD_UNKNOWN\x10\x00\x12\x12\n\x0eSERVOD_RUNNING\x10\x01\x12\x12\n\x0eSERVOD_STOPPED\x10\x02*\xf7\x01\n\x0b\x44olosStatus\x12\x11\n\rDOLOS_UNKNOWN\x10\x00\x12\x1b\n\x17\x44OLOS_NO_POWER_SUPPLIED\x10\x01\x12\x1d\n\x19\x44OLOS_OUTPUT_POWER_FAILED\x10\x02\x12\x1b\n\x17\x44OLOS_BMS_STATE_INVALID\x10\x03\x12!\n\x1d\x44OLOS_SMBUS_COMM_NOT_DETECTED\x10\x04\x12\x18\n\x14\x44OLOS_EEPROM_FAILURE\x10\x05\x12\x0c\n\x08\x44OLOS_OK\x10\x06\x12\x1a\n\x16\x44OLOS_NO_COMMUNICATION\x10\x07\x12\x15\n\x11\x44OLOS_NOT_PRESENT\x10\x08\x32\xfe\x1a\n\x0b\x42olsService\x12l\n\x0bGetFileStat\x12,.chromiumos.test.api.bols.GetFileStatRequest\x1a-.chromiumos.test.api.bols.GetFileStatResponse\"\x00\x12\x62\n\x07GetFile\x12(.chromiumos.test.api.bols.GetFileRequest\x1a).chromiumos.test.api.bols.GetFileResponse\"\x00\x30\x01\x12\x62\n\x07PutFile\x12(.chromiumos.test.api.bols.PutFileRequest\x1a).chromiumos.test.api.bols.PutFileResponse\"\x00(\x01\x12o\n\x0c\x44ownloadFile\x12-.chromiumos.test.api.bols.DownloadFileRequest\x1a..chromiumos.test.api.bols.DownloadFileResponse\"\x00\x12i\n\nRemoveFile\x12+.chromiumos.test.api.bols.RemoveFileRequest\x1a,.chromiumos.test.api.bols.RemoveFileResponse\"\x00\x12i\n\nGetDirInfo\x12+.chromiumos.test.api.bols.GetDirInfoRequest\x1a,.chromiumos.test.api.bols.GetDirInfoResponse\"\x00\x12`\n\x07MakeDir\x12(.chromiumos.test.api.bols.MakeDirRequest\x1a).chromiumos.test.api.bols.MakeDirResponse\"\x00\x12l\n\x0bMakeTempDir\x12,.chromiumos.test.api.bols.MakeTempDirRequest\x1a-.chromiumos.test.api.bols.MakeTempDirResponse\"\x00\x12\x66\n\tRemoveDir\x12*.chromiumos.test.api.bols.RemoveDirRequest\x1a+.chromiumos.test.api.bols.RemoveDirResponse\"\x00\x12\\\n\x05\x44Mesg\x12&.chromiumos.test.api.bols.DMesgRequest\x1a\'.chromiumos.test.api.bols.DMesgResponse\"\x00\x30\x01\x12}\n\x10WriteFileByBlock\x12\x31.chromiumos.test.api.bols.WriteFileByBlockRequest\x1a\x32.chromiumos.test.api.bols.WriteFileByBlockResponse\"\x00(\x01\x12z\n\x0fReadFileByBlock\x12\x30.chromiumos.test.api.bols.ReadFileByBlockRequest\x1a\x31.chromiumos.test.api.bols.ReadFileByBlockResponse\"\x00\x30\x01\x12\x63\n\x08RunMount\x12).chromiumos.test.api.bols.RunMountRequest\x1a*.chromiumos.test.api.bols.RunMountResponse\"\x00\x12\x66\n\tRunUMount\x12*.chromiumos.test.api.bols.RunUMountRequest\x1a+.chromiumos.test.api.bols.RunUMountResponse\"\x00\x12j\n\x0bStartServod\x12,.chromiumos.test.api.bols.StartServodRequest\x1a-.chromiumos.test.api.bols.StartServodResponse\x12g\n\nStopServod\x12+.chromiumos.test.api.bols.StopServodRequest\x1a,.chromiumos.test.api.bols.StopServodResponse\x12v\n\x0fGetServodStatus\x12\x30.chromiumos.test.api.bols.GetServodStatusRequest\x1a\x31.chromiumos.test.api.bols.GetServodStatusResponse\x12m\n\x0cHWInitServod\x12-.chromiumos.test.api.bols.HWInitServodRequest\x1a..chromiumos.test.api.bols.HWInitServodResponse\x12\x64\n\tDocServod\x12*.chromiumos.test.api.bols.DocServodRequest\x1a+.chromiumos.test.api.bols.DocServodResponse\x12\x64\n\tGetServod\x12*.chromiumos.test.api.bols.GetServodRequest\x1a+.chromiumos.test.api.bols.GetServodResponse\x12\x64\n\tSetServod\x12*.chromiumos.test.api.bols.SetServodRequest\x1a+.chromiumos.test.api.bols.SetServodResponse\x12y\n\x10GetServodVersion\x12\x31.chromiumos.test.api.bols.GetServodVersionRequest\x1a\x32.chromiumos.test.api.bols.GetServodVersionResponse\x12g\n\nEchoServod\x12+.chromiumos.test.api.bols.EchoServodRequest\x1a,.chromiumos.test.api.bols.EchoServodResponse\x12y\n\x10GetServoTopology\x12\x31.chromiumos.test.api.bols.GetServoTopologyRequest\x1a\x32.chromiumos.test.api.bols.GetServoTopologyResponse\x12\x84\x01\n\x13UpdateServoFirmware\x12\x34.chromiumos.test.api.bols.UpdateServoFirmwareRequest\x1a\x35.chromiumos.test.api.bols.UpdateServoFirmwareResponse\"\x00\x12l\n\x0bRunFutility\x12,.chromiumos.test.api.bols.RunFutilityRequest\x1a-.chromiumos.test.api.bols.RunFutilityResponse\"\x00\x12i\n\nRunFlashEC\x12+.chromiumos.test.api.bols.RunFlashECRequest\x1a,.chromiumos.test.api.bols.RunFlashECResponse\"\x00\x12x\n\x0fGetDolosVersion\x12\x30.chromiumos.test.api.bols.GetDolosVersionRequest\x1a\x31.chromiumos.test.api.bols.GetDolosVersionResponse\"\x00\x12\x81\x01\n\x12UpdateDolosVersion\x12\x33.chromiumos.test.api.bols.UpdateDolosVersionRequest\x1a\x34.chromiumos.test.api.bols.UpdateDolosVersionResponse\"\x00\x12u\n\x0eGetDolosStatus\x12/.chromiumos.test.api.bols.GetDolosStatusRequest\x1a\x30.chromiumos.test.api.bols.GetDolosStatusResponse\"\x00\x12r\n\rFindDolosUART\x12..chromiumos.test.api.bols.FindDolosUARTRequest\x1a/.chromiumos.test.api.bols.FindDolosUARTResponse\"\x00\x42KB\x15\x42olsServiceOuterClassZ2go.chromium.org/chromiumos/config/go/test/api/bolsb\x06proto3'
+  serialized_pb=b'\n+chromiumos/test/api/bols/bols_service.proto\x12\x18\x63hromiumos.test.api.bols\"V\n\x11StationIdentifier\x12\x13\n\x0bservod_port\x18\x01 \x01(\x05\x12\x14\n\x0cservo_serial\x18\x02 \x01(\t\x12\x16\n\x0e\x63ontainer_name\x18\x03 \x01(\t\"<\n\x08\x46ileData\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x10\n\x08\x66ilepath\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"X\n\x08\x46ileStat\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x0e\n\x06is_dir\x18\x04 \x01(\x08\x12\x12\n\nis_symlink\x18\x05 \x01(\x08\"U\n\rDirectoryInfo\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x36\n\nfile_stats\x18\x02 \x03(\x0b\x32\".chromiumos.test.api.bols.FileStat\"g\n\x12GetFileStatRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilepath\x18\x02 \x01(\t\"M\n\x13GetFileStatResponse\x12\x36\n\nfile_stats\x18\x01 \x01(\x0b\x32\".chromiumos.test.api.bols.FileStat\"c\n\x0eGetFileRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"\x1f\n\x0fGetFileResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"p\n\x0ePutFileRequest\x12\x44\n\x08req_info\x18\x01 \x01(\x0b\x32\x30.chromiumos.test.api.bols.PutFileRequestInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"\x11\n\x0fPutFileResponse\"k\n\x16PutFileRequestInitInfo\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"\xa3\x01\n\x13\x44ownloadFileRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65st\x18\x03 \x01(\t\x12\x30\n\x07headers\x18\x04 \x03(\x0b\x32\x1f.chromiumos.test.api.bols.Param\"#\n\x05Param\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"$\n\x14\x44ownloadFileResponse\x12\x0c\n\x04\x66ile\x18\x03 \x01(\t\"f\n\x11RemoveFileRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\"\x14\n\x12RemoveFileResponse\"b\n\x11GetDirInfoRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\"K\n\x12GetDirInfoResponse\x12\x35\n\x04info\x18\x01 \x01(\x0b\x32\'.chromiumos.test.api.bols.DirectoryInfo\"_\n\x0eMakeDirRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\"H\n\x0fMakeDirResponse\x12\x35\n\x04info\x18\x01 \x01(\x0b\x32\'.chromiumos.test.api.bols.DirectoryInfo\"s\n\x12MakeTempDirRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0b\n\x03\x64ir\x18\x02 \x01(\t\x12\x0f\n\x07pattern\x18\x03 \x01(\t\"L\n\x13MakeTempDirResponse\x12\x35\n\x04info\x18\x01 \x01(\x0b\x32\'.chromiumos.test.api.bols.DirectoryInfo\"u\n\x10RemoveDirRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x12\n\nremove_all\x18\x03 \x01(\x08\"\x13\n\x11RemoveDirResponse\"O\n\x0c\x44MesgRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"G\n\rDMesgResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"{\n\x17WriteFileByBlockRequest\x12\x46\n\x08req_info\x18\x01 \x01(\x0b\x32\x32.chromiumos.test.api.bols.WriteFileByBlockInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"\x81\x01\n\x18WriteFileByBlockInitInfo\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x11\n\tbyte_size\x18\x03 \x01(\x05\"\x81\x01\n\x18WriteFileByBlockResponse\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x11\n\tbyte_size\x18\x03 \x01(\x05\"\x99\x01\n\x16ReadFileByBlockRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x11\n\tbyte_size\x18\x03 \x01(\x05\x12\x18\n\x10number_of_blocks\x18\x04 \x01(\x05\"Q\n\x17ReadFileByBlockResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"}\n\x0fRunMountRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0b\n\x03src\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65st\x18\x03 \x01(\t\x12\x0e\n\x06params\x18\x04 \x03(\t\"\x12\n\x10RunMountResponse\"a\n\x10RunUMountRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04path\x18\x02 \x01(\t\"\x13\n\x11RunUMountResponse\"v\n\x0bServodValue\x12\x16\n\x0cstring_value\x18\x01 \x01(\tH\x00\x12\x13\n\tint_value\x18\x02 \x01(\x05H\x00\x12\x19\n\x0b\x66loat_value\x18\x03 \x01(\x02\x42\x02\x18\x01H\x00\x12\x16\n\x0c\x64ouble_value\x18\x04 \x01(\x01H\x00\x42\x07\n\x05value\"\xb2\x01\n\x12StartServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12\r\n\x05model\x18\x03 \x01(\t\x12\x15\n\rrecovery_mode\x18\x04 \x01(\x08\x12\x0e\n\x06\x63onfig\x18\x05 \x01(\t\x12\x16\n\x0ereuse_existing\x18\x06 \x01(\x08\"\x15\n\x13StartServodResponse\"T\n\x11StopServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"\x14\n\x12StopServodResponse\"Y\n\x16GetServodStatusRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"Q\n\x17GetServodStatusResponse\x12\x36\n\x06status\x18\x01 \x01(\x0e\x32&.chromiumos.test.api.bols.ServodStatus\"V\n\x13HWInitServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"\x16\n\x14HWInitServodResponse\"d\n\x10\x44ocServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0f\n\x07\x63ontrol\x18\x02 \x01(\t\"9\n\x11\x44ocServodResponse\x12\x0f\n\x07\x63ontrol\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"d\n\x10GetServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0f\n\x07\x63ontrol\x18\x02 \x01(\t\"Z\n\x11GetServodResponse\x12\x0f\n\x07\x63ontrol\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\"\x9a\x01\n\x10SetServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0f\n\x07\x63ontrol\x18\x02 \x01(\t\x12\x34\n\x05value\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\"\x13\n\x11SetServodResponse\"Z\n\x17GetServodVersionRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"+\n\x18GetServodVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"b\n\x11\x45\x63hoServodRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0c\n\x04\x65\x63ho\x18\x02 \x01(\t\"$\n\x12\x45\x63hoServodResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"Z\n\x17GetServoTopologyRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\"\x94\x01\n\x18GetServoTopologyResponse\x12\x39\n\x04root\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.ServoTopologyItem\x12=\n\x08\x63hildren\x18\x02 \x03(\x0b\x32+.chromiumos.test.api.bols.ServoTopologyItem\"\x86\x01\n\x11ServoTopologyItem\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x15\n\rsysfs_product\x18\x02 \x01(\t\x12\x0e\n\x06serial\x18\x03 \x01(\t\x12\x14\n\x0cusb_hub_port\x18\x04 \x01(\t\x12\x12\n\nsysfs_path\x18\x05 \x01(\t\x12\x12\n\nfw_version\x18\x06 \x01(\t\"\xd3\x03\n\x1aUpdateServoFirmwareRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12L\n\x07targets\x18\x02 \x03(\x0b\x32;.chromiumos.test.api.bols.UpdateServoFirmwareRequest.Target\x12\r\n\x05\x66orce\x18\x03 \x01(\x08\x12U\n\x07\x63hannel\x18\x04 \x01(\x0e\x32\x44.chromiumos.test.api.bols.UpdateServoFirmwareRequest.FirmwareChannel\x1a\x1c\n\x06Target\x12\x12\n\nservo_type\x18\x01 \x01(\t\"\xa1\x01\n\x0f\x46irmwareChannel\x12 \n\x1c\x46IRMWARE_CHANNEL_UNSPECIFIED\x10\x00\x12\x19\n\x15\x46IRMWARE_CHANNEL_PREV\x10\x01\x12\x18\n\x14\x46IRMWARE_CHANNEL_DEV\x10\x02\x12\x1a\n\x16\x46IRMWARE_CHANNEL_ALPHA\x10\x03\x12\x1b\n\x17\x46IRMWARE_CHANNEL_STABLE\x10\x04\"[\n\x1bUpdateServoFirmwareResponse\x12<\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32+.chromiumos.test.api.bols.ServoTopologyItem\".\n\x0cOutputStream\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\"e\n\x12RunFutilityRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0e\n\x06params\x18\x02 \x03(\t\"M\n\x13RunFutilityResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"d\n\x11RunFlashECRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0e\n\x06params\x18\x02 \x03(\t\"L\n\x12RunFlashECResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"d\n\x11RunGSCToolRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x0e\n\x06params\x18\x02 \x03(\t\"L\n\x12RunGSCToolResponse\x12\x36\n\x06output\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.bols.OutputStream\"*\n\x0f\x44olosIdentifier\x12\x17\n\x0f\x64olos_uart_name\x18\x01 \x01(\t\"\x96\x01\n\x16GetDolosVersionRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12;\n\x08\x64olos_id\x18\x02 \x01(\x0b\x32).chromiumos.test.api.bols.DolosIdentifier\"*\n\x17GetDolosVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\xb3\x01\n\x19UpdateDolosVersionRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12;\n\x08\x64olos_id\x18\x02 \x01(\x0b\x32).chromiumos.test.api.bols.DolosIdentifier\x12\x18\n\x10\x65xpected_version\x18\x03 \x01(\t\"-\n\x1aUpdateDolosVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\x95\x01\n\x15GetDolosStatusRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12;\n\x08\x64olos_id\x18\x02 \x01(\x0b\x32).chromiumos.test.api.bols.DolosIdentifier\"O\n\x16GetDolosStatusResponse\x12\x35\n\x06status\x18\x01 \x01(\x0e\x32%.chromiumos.test.api.bols.DolosStatus\"s\n\x14\x46indDolosUARTRequest\x12?\n\nstation_id\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.bols.StationIdentifier\x12\x1a\n\x12\x64olos_cable_serial\x18\x02 \x01(\t\"0\n\x15\x46indDolosUARTResponse\x12\x17\n\x0f\x64olos_uart_name\x18\x01 \x01(\t*J\n\x0cServodStatus\x12\x12\n\x0eSERVOD_UNKNOWN\x10\x00\x12\x12\n\x0eSERVOD_RUNNING\x10\x01\x12\x12\n\x0eSERVOD_STOPPED\x10\x02*\xf7\x01\n\x0b\x44olosStatus\x12\x11\n\rDOLOS_UNKNOWN\x10\x00\x12\x1b\n\x17\x44OLOS_NO_POWER_SUPPLIED\x10\x01\x12\x1d\n\x19\x44OLOS_OUTPUT_POWER_FAILED\x10\x02\x12\x1b\n\x17\x44OLOS_BMS_STATE_INVALID\x10\x03\x12!\n\x1d\x44OLOS_SMBUS_COMM_NOT_DETECTED\x10\x04\x12\x18\n\x14\x44OLOS_EEPROM_FAILURE\x10\x05\x12\x0c\n\x08\x44OLOS_OK\x10\x06\x12\x1a\n\x16\x44OLOS_NO_COMMUNICATION\x10\x07\x12\x15\n\x11\x44OLOS_NOT_PRESENT\x10\x08\x32\xe9\x1b\n\x0b\x42olsService\x12l\n\x0bGetFileStat\x12,.chromiumos.test.api.bols.GetFileStatRequest\x1a-.chromiumos.test.api.bols.GetFileStatResponse\"\x00\x12\x62\n\x07GetFile\x12(.chromiumos.test.api.bols.GetFileRequest\x1a).chromiumos.test.api.bols.GetFileResponse\"\x00\x30\x01\x12\x62\n\x07PutFile\x12(.chromiumos.test.api.bols.PutFileRequest\x1a).chromiumos.test.api.bols.PutFileResponse\"\x00(\x01\x12o\n\x0c\x44ownloadFile\x12-.chromiumos.test.api.bols.DownloadFileRequest\x1a..chromiumos.test.api.bols.DownloadFileResponse\"\x00\x12i\n\nRemoveFile\x12+.chromiumos.test.api.bols.RemoveFileRequest\x1a,.chromiumos.test.api.bols.RemoveFileResponse\"\x00\x12i\n\nGetDirInfo\x12+.chromiumos.test.api.bols.GetDirInfoRequest\x1a,.chromiumos.test.api.bols.GetDirInfoResponse\"\x00\x12`\n\x07MakeDir\x12(.chromiumos.test.api.bols.MakeDirRequest\x1a).chromiumos.test.api.bols.MakeDirResponse\"\x00\x12l\n\x0bMakeTempDir\x12,.chromiumos.test.api.bols.MakeTempDirRequest\x1a-.chromiumos.test.api.bols.MakeTempDirResponse\"\x00\x12\x66\n\tRemoveDir\x12*.chromiumos.test.api.bols.RemoveDirRequest\x1a+.chromiumos.test.api.bols.RemoveDirResponse\"\x00\x12\\\n\x05\x44Mesg\x12&.chromiumos.test.api.bols.DMesgRequest\x1a\'.chromiumos.test.api.bols.DMesgResponse\"\x00\x30\x01\x12}\n\x10WriteFileByBlock\x12\x31.chromiumos.test.api.bols.WriteFileByBlockRequest\x1a\x32.chromiumos.test.api.bols.WriteFileByBlockResponse\"\x00(\x01\x12z\n\x0fReadFileByBlock\x12\x30.chromiumos.test.api.bols.ReadFileByBlockRequest\x1a\x31.chromiumos.test.api.bols.ReadFileByBlockResponse\"\x00\x30\x01\x12\x63\n\x08RunMount\x12).chromiumos.test.api.bols.RunMountRequest\x1a*.chromiumos.test.api.bols.RunMountResponse\"\x00\x12\x66\n\tRunUMount\x12*.chromiumos.test.api.bols.RunUMountRequest\x1a+.chromiumos.test.api.bols.RunUMountResponse\"\x00\x12j\n\x0bStartServod\x12,.chromiumos.test.api.bols.StartServodRequest\x1a-.chromiumos.test.api.bols.StartServodResponse\x12g\n\nStopServod\x12+.chromiumos.test.api.bols.StopServodRequest\x1a,.chromiumos.test.api.bols.StopServodResponse\x12v\n\x0fGetServodStatus\x12\x30.chromiumos.test.api.bols.GetServodStatusRequest\x1a\x31.chromiumos.test.api.bols.GetServodStatusResponse\x12m\n\x0cHWInitServod\x12-.chromiumos.test.api.bols.HWInitServodRequest\x1a..chromiumos.test.api.bols.HWInitServodResponse\x12\x64\n\tDocServod\x12*.chromiumos.test.api.bols.DocServodRequest\x1a+.chromiumos.test.api.bols.DocServodResponse\x12\x64\n\tGetServod\x12*.chromiumos.test.api.bols.GetServodRequest\x1a+.chromiumos.test.api.bols.GetServodResponse\x12\x64\n\tSetServod\x12*.chromiumos.test.api.bols.SetServodRequest\x1a+.chromiumos.test.api.bols.SetServodResponse\x12y\n\x10GetServodVersion\x12\x31.chromiumos.test.api.bols.GetServodVersionRequest\x1a\x32.chromiumos.test.api.bols.GetServodVersionResponse\x12g\n\nEchoServod\x12+.chromiumos.test.api.bols.EchoServodRequest\x1a,.chromiumos.test.api.bols.EchoServodResponse\x12y\n\x10GetServoTopology\x12\x31.chromiumos.test.api.bols.GetServoTopologyRequest\x1a\x32.chromiumos.test.api.bols.GetServoTopologyResponse\x12\x84\x01\n\x13UpdateServoFirmware\x12\x34.chromiumos.test.api.bols.UpdateServoFirmwareRequest\x1a\x35.chromiumos.test.api.bols.UpdateServoFirmwareResponse\"\x00\x12l\n\x0bRunFutility\x12,.chromiumos.test.api.bols.RunFutilityRequest\x1a-.chromiumos.test.api.bols.RunFutilityResponse\"\x00\x12i\n\nRunFlashEC\x12+.chromiumos.test.api.bols.RunFlashECRequest\x1a,.chromiumos.test.api.bols.RunFlashECResponse\"\x00\x12i\n\nRunGSCTool\x12+.chromiumos.test.api.bols.RunGSCToolRequest\x1a,.chromiumos.test.api.bols.RunGSCToolResponse\"\x00\x12x\n\x0fGetDolosVersion\x12\x30.chromiumos.test.api.bols.GetDolosVersionRequest\x1a\x31.chromiumos.test.api.bols.GetDolosVersionResponse\"\x00\x12\x81\x01\n\x12UpdateDolosVersion\x12\x33.chromiumos.test.api.bols.UpdateDolosVersionRequest\x1a\x34.chromiumos.test.api.bols.UpdateDolosVersionResponse\"\x00\x12u\n\x0eGetDolosStatus\x12/.chromiumos.test.api.bols.GetDolosStatusRequest\x1a\x30.chromiumos.test.api.bols.GetDolosStatusResponse\"\x00\x12r\n\rFindDolosUART\x12..chromiumos.test.api.bols.FindDolosUARTRequest\x1a/.chromiumos.test.api.bols.FindDolosUARTResponse\"\x00\x42KB\x15\x42olsServiceOuterClassZ2go.chromium.org/chromiumos/config/go/test/api/bolsb\x06proto3'
 )
 
 _SERVODSTATUS = _descriptor.EnumDescriptor(
@@ -48,8 +48,8 @@ _SERVODSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6808,
-  serialized_end=6882,
+  serialized_start=6988,
+  serialized_end=7062,
 )
 _sym_db.RegisterEnumDescriptor(_SERVODSTATUS)
 
@@ -109,8 +109,8 @@ _DOLOSSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6885,
-  serialized_end=7132,
+  serialized_start=7065,
+  serialized_end=7312,
 )
 _sym_db.RegisterEnumDescriptor(_DOLOSSTATUS)
 
@@ -2643,6 +2643,77 @@ _RUNFLASHECRESPONSE = _descriptor.Descriptor(
 )
 
 
+_RUNGSCTOOLREQUEST = _descriptor.Descriptor(
+  name='RunGSCToolRequest',
+  full_name='chromiumos.test.api.bols.RunGSCToolRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='station_id', full_name='chromiumos.test.api.bols.RunGSCToolRequest.station_id', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='params', full_name='chromiumos.test.api.bols.RunGSCToolRequest.params', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=5938,
+  serialized_end=6038,
+)
+
+
+_RUNGSCTOOLRESPONSE = _descriptor.Descriptor(
+  name='RunGSCToolResponse',
+  full_name='chromiumos.test.api.bols.RunGSCToolResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='output', full_name='chromiumos.test.api.bols.RunGSCToolResponse.output', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6040,
+  serialized_end=6116,
+)
+
+
 _DOLOSIDENTIFIER = _descriptor.Descriptor(
   name='DolosIdentifier',
   full_name='chromiumos.test.api.bols.DolosIdentifier',
@@ -2670,8 +2741,8 @@ _DOLOSIDENTIFIER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5938,
-  serialized_end=5980,
+  serialized_start=6118,
+  serialized_end=6160,
 )
 
 
@@ -2709,8 +2780,8 @@ _GETDOLOSVERSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5983,
-  serialized_end=6133,
+  serialized_start=6163,
+  serialized_end=6313,
 )
 
 
@@ -2741,8 +2812,8 @@ _GETDOLOSVERSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6135,
-  serialized_end=6177,
+  serialized_start=6315,
+  serialized_end=6357,
 )
 
 
@@ -2787,8 +2858,8 @@ _UPDATEDOLOSVERSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6180,
-  serialized_end=6359,
+  serialized_start=6360,
+  serialized_end=6539,
 )
 
 
@@ -2819,8 +2890,8 @@ _UPDATEDOLOSVERSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6361,
-  serialized_end=6406,
+  serialized_start=6541,
+  serialized_end=6586,
 )
 
 
@@ -2858,8 +2929,8 @@ _GETDOLOSSTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6409,
-  serialized_end=6558,
+  serialized_start=6589,
+  serialized_end=6738,
 )
 
 
@@ -2890,8 +2961,8 @@ _GETDOLOSSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6560,
-  serialized_end=6639,
+  serialized_start=6740,
+  serialized_end=6819,
 )
 
 
@@ -2929,8 +3000,8 @@ _FINDDOLOSUARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6641,
-  serialized_end=6756,
+  serialized_start=6821,
+  serialized_end=6936,
 )
 
 
@@ -2961,8 +3032,8 @@ _FINDDOLOSUARTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6758,
-  serialized_end=6806,
+  serialized_start=6938,
+  serialized_end=6986,
 )
 
 _DIRECTORYINFO.fields_by_name['file_stats'].message_type = _FILESTAT
@@ -3039,6 +3110,8 @@ _RUNFUTILITYREQUEST.fields_by_name['station_id'].message_type = _STATIONIDENTIFI
 _RUNFUTILITYRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _RUNFLASHECREQUEST.fields_by_name['station_id'].message_type = _STATIONIDENTIFIER
 _RUNFLASHECRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
+_RUNGSCTOOLREQUEST.fields_by_name['station_id'].message_type = _STATIONIDENTIFIER
+_RUNGSCTOOLRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _GETDOLOSVERSIONREQUEST.fields_by_name['station_id'].message_type = _STATIONIDENTIFIER
 _GETDOLOSVERSIONREQUEST.fields_by_name['dolos_id'].message_type = _DOLOSIDENTIFIER
 _UPDATEDOLOSVERSIONREQUEST.fields_by_name['station_id'].message_type = _STATIONIDENTIFIER
@@ -3111,6 +3184,8 @@ DESCRIPTOR.message_types_by_name['RunFutilityRequest'] = _RUNFUTILITYREQUEST
 DESCRIPTOR.message_types_by_name['RunFutilityResponse'] = _RUNFUTILITYRESPONSE
 DESCRIPTOR.message_types_by_name['RunFlashECRequest'] = _RUNFLASHECREQUEST
 DESCRIPTOR.message_types_by_name['RunFlashECResponse'] = _RUNFLASHECRESPONSE
+DESCRIPTOR.message_types_by_name['RunGSCToolRequest'] = _RUNGSCTOOLREQUEST
+DESCRIPTOR.message_types_by_name['RunGSCToolResponse'] = _RUNGSCTOOLRESPONSE
 DESCRIPTOR.message_types_by_name['DolosIdentifier'] = _DOLOSIDENTIFIER
 DESCRIPTOR.message_types_by_name['GetDolosVersionRequest'] = _GETDOLOSVERSIONREQUEST
 DESCRIPTOR.message_types_by_name['GetDolosVersionResponse'] = _GETDOLOSVERSIONRESPONSE
@@ -3580,6 +3655,20 @@ RunFlashECResponse = _reflection.GeneratedProtocolMessageType('RunFlashECRespons
   })
 _sym_db.RegisterMessage(RunFlashECResponse)
 
+RunGSCToolRequest = _reflection.GeneratedProtocolMessageType('RunGSCToolRequest', (_message.Message,), {
+  'DESCRIPTOR' : _RUNGSCTOOLREQUEST,
+  '__module__' : 'chromiumos.test.api.bols.bols_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.bols.RunGSCToolRequest)
+  })
+_sym_db.RegisterMessage(RunGSCToolRequest)
+
+RunGSCToolResponse = _reflection.GeneratedProtocolMessageType('RunGSCToolResponse', (_message.Message,), {
+  'DESCRIPTOR' : _RUNGSCTOOLRESPONSE,
+  '__module__' : 'chromiumos.test.api.bols.bols_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.bols.RunGSCToolResponse)
+  })
+_sym_db.RegisterMessage(RunGSCToolResponse)
+
 DolosIdentifier = _reflection.GeneratedProtocolMessageType('DolosIdentifier', (_message.Message,), {
   'DESCRIPTOR' : _DOLOSIDENTIFIER,
   '__module__' : 'chromiumos.test.api.bols.bols_service_pb2'
@@ -3654,8 +3743,8 @@ _BOLSSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=7135,
-  serialized_end=10589,
+  serialized_start=7315,
+  serialized_end=10876,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFileStat',
@@ -3928,9 +4017,19 @@ _BOLSSERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='RunGSCTool',
+    full_name='chromiumos.test.api.bols.BolsService.RunGSCTool',
+    index=27,
+    containing_service=None,
+    input_type=_RUNGSCTOOLREQUEST,
+    output_type=_RUNGSCTOOLRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetDolosVersion',
     full_name='chromiumos.test.api.bols.BolsService.GetDolosVersion',
-    index=27,
+    index=28,
     containing_service=None,
     input_type=_GETDOLOSVERSIONREQUEST,
     output_type=_GETDOLOSVERSIONRESPONSE,
@@ -3940,7 +4039,7 @@ _BOLSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='UpdateDolosVersion',
     full_name='chromiumos.test.api.bols.BolsService.UpdateDolosVersion',
-    index=28,
+    index=29,
     containing_service=None,
     input_type=_UPDATEDOLOSVERSIONREQUEST,
     output_type=_UPDATEDOLOSVERSIONRESPONSE,
@@ -3950,7 +4049,7 @@ _BOLSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetDolosStatus',
     full_name='chromiumos.test.api.bols.BolsService.GetDolosStatus',
-    index=29,
+    index=30,
     containing_service=None,
     input_type=_GETDOLOSSTATUSREQUEST,
     output_type=_GETDOLOSSTATUSRESPONSE,
@@ -3960,7 +4059,7 @@ _BOLSSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='FindDolosUART',
     full_name='chromiumos.test.api.bols.BolsService.FindDolosUART',
-    index=30,
+    index=31,
     containing_service=None,
     input_type=_FINDDOLOSUARTREQUEST,
     output_type=_FINDDOLOSUARTRESPONSE,

@@ -23413,6 +23413,39 @@
         {
           "field": [
             {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunGSCToolRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "RunGSCToolResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "dolosUartName",
               "label": "LABEL_OPTIONAL",
               "name": "dolos_uart_name",
@@ -23727,6 +23760,12 @@
               "name": "RunFlashEC",
               "options": {},
               "outputType": ".chromiumos.test.api.bols.RunFlashECResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunGSCToolRequest",
+              "name": "RunGSCTool",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunGSCToolResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetDolosVersionRequest",
@@ -34709,6 +34748,31 @@
             }
           ],
           "name": "RunFlashECResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunGSCToolRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "RunGSCToolResponse"
         }
       ],
       "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
@@ -34803,6 +34867,12 @@
               "name": "RunFlashEC",
               "options": {},
               "outputType": ".chromiumos.test.api.lsnexus.RunFlashECResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.RunGSCToolRequest",
+              "name": "RunGSCTool",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.RunGSCToolResponse"
             }
           ],
           "name": "LSNexusService"

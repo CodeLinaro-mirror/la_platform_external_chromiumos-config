@@ -68,6 +68,12 @@ service LSNexusService {
   // RunFlashEC forwards EC firmware flashing request to BOLS.
   // In most of implementation, it runs flash_ec tool on labstation.
   rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
+
+  // RunGSCTool forwards gsctool request to BOLS.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  rpc RunGSCTool(RunGSCToolRequest) returns (RunGSCToolResponse) {}
 }
 
 message StartServodRequest {
@@ -250,5 +256,17 @@ message RunFlashECRequest {
 }
 
 message RunFlashECResponse {
+  OutputStream output = 1;
+}
+
+message RunGSCToolRequest {
+  // List of parameters used at execution.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  repeated string params = 1;
+}
+
+message RunGSCToolResponse {
   OutputStream output = 1;
 }
