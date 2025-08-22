@@ -624,19 +624,6 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             ["android.hardware.sensor.proximity", "com.google.sensor.sar"]
         )
 
-    def test_generate_device_orientation_feature(self):
-        """Test android.sensor.device_orientation feature XML."""
-        self.config.hardware_features.accelerometer.lid_accelerometer = (
-            topology_pb2.HardwareFeatures.PRESENT
-        )
-        self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml(
-            [
-                "android.hardware.sensor.accelerometer",
-                "android.sensor.device_orientation",
-            ]
-        )
-
     def test_generate_camera_any_feature(self):
         """Test camera.any feature presence."""
         self.config.hardware_features.camera.devices.add()

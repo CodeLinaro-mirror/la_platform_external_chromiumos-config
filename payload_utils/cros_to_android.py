@@ -1023,11 +1023,6 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                     permissions_elem, "android.hardware.sensor.compass"
                 )
 
-            if hw_features.accelerometer.lid_accelerometer == present_enum:
-                _add_feature_element(
-                    permissions_elem, "android.sensor.device_orientation"
-                )
-
             if present_enum in (
                 hw_features.gyroscope.base_gyroscope,
                 hw_features.gyroscope.lid_gyroscope,
