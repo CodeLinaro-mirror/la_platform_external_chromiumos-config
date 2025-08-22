@@ -37,6 +37,7 @@ from lxml import etree  # pylint: disable=import-error
 # TODO(b/402027869): Figure out a better way to distribute this proto with the
 # script.
 try:
+    from chromiumos.config.api import component_pb2
     from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
     from chromiumos.config.api import topology_pb2
@@ -807,6 +808,49 @@ def _add_wifi_entry(
             logging.warning("unknown wifi_config: %s", config_field)
 
 
+def _add_storage_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Storage Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("storage"):
+        logging.debug(
+            "[%s] No storage found. Skipping StorageConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    storage_type = hw_features.storage.storage_type
+
+    storage_type_names = {
+        component_pb2.Component.Storage.StorageType.EMMC: "EMMC",
+        component_pb2.Component.Storage.StorageType.NVME: "NVME",
+        component_pb2.Component.Storage.StorageType.SATA: "SATA",
+        component_pb2.Component.Storage.StorageType.UFS: "UFS",
+        component_pb2.Component.Storage.StorageType.BRIDGED_EMMC: (
+            "BRIDGED_EMMC"
+        ),
+    }
+
+    if storage_type in storage_type_names:
+        storage_elem = etree.SubElement(hal_config, "StorageConfiguration")
+        etree.SubElement(storage_elem, "storage-type").text = (
+            storage_type_names[storage_type]
+        )
+    else:
+        logging.warning(
+            "[%s] Unknown storage_type value: %s. Skipping StorageConfiguration.",
+            design_config.id.value,
+            storage_type,
+        )
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -852,6 +896,7 @@ def _add_hal_config_entry(
     )
     _add_hardware_features_entry(hal_config_elem, design_config)
     _add_wifi_entry(hal_config_elem, design_config, sw_config)
+    _add_storage_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(
