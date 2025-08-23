@@ -118,6 +118,15 @@ service BolsService {
   //  Params: ["-n", "1002D052-9066B226", "-f" ]
   rpc RunGSCTool(RunGSCToolRequest) returns (RunGSCToolResponse) {}
 
+  // RunUARTStressTester runs uart_stress_tester.py on labstation.
+  // uart_stress_tester.py repeats sending a uart console command
+  // to each UART device for a given time, and check if output
+  // has any missing characters.
+  // Example:
+  //  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+  rpc RunUARTStressTester(RunUARTStressTesterRequest)
+      returns (RunUARTStressTesterResponse) {}
+
   ///////// Dolos API /////////
 
   rpc GetDolosVersion(GetDolosVersionRequest)
@@ -606,6 +615,20 @@ message RunGSCToolRequest {
 }
 
 message RunGSCToolResponse {
+  OutputStream output = 1;
+}
+
+message RunUARTStressTesterRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // List of parameters used at execution.
+  // Example:
+  //  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+  //  Params: ["/dev/ttyUSB2", "--time", "3600"]
+  repeated string params = 2;
+}
+
+message RunUARTStressTesterResponse {
   OutputStream output = 1;
 }
 

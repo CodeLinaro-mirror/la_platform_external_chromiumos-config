@@ -23446,6 +23446,39 @@
         {
           "field": [
             {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunUARTStressTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "RunUARTStressTesterResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "dolosUartName",
               "label": "LABEL_OPTIONAL",
               "name": "dolos_uart_name",
@@ -23766,6 +23799,12 @@
               "name": "RunGSCTool",
               "options": {},
               "outputType": ".chromiumos.test.api.bols.RunGSCToolResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunUARTStressTesterRequest",
+              "name": "RunUARTStressTester",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunUARTStressTesterResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetDolosVersionRequest",
@@ -34773,6 +34812,31 @@
             }
           ],
           "name": "RunGSCToolResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunUARTStressTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "RunUARTStressTesterResponse"
         }
       ],
       "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
@@ -34873,6 +34937,12 @@
               "name": "RunGSCTool",
               "options": {},
               "outputType": ".chromiumos.test.api.lsnexus.RunGSCToolResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.RunUARTStressTesterRequest",
+              "name": "RunUARTStressTester",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.RunUARTStressTesterResponse"
             }
           ],
           "name": "LSNexusService"

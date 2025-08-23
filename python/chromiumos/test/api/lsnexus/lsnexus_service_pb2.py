@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'B\030LsnexusServiceOuterClassZ5go.chromium.org/chromiumos/config/go/test/api/lsnexus',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n1chromiumos/test/api/lsnexus/lsnexus_service.proto\x12\x1b\x63hromiumos.test.api.lsnexus\x1a+chromiumos/test/api/bols/bols_service.proto\",\n\x12StartServodRequest\x12\x16\n\x0ereuse_existing\x18\x01 \x01(\x08\"\x15\n\x13StartServodResponse\"\x13\n\x11StopServodRequest\"\x14\n\x12StopServodResponse\"\xa0\x02\n\x11\x43\x61llServodRequest\x12\x45\n\x06method\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.api.lsnexus.CallServodRequest.Method\x12\x33\n\x04\x61rgs\x18\x02 \x03(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x12\x0f\n\x07\x63ontrol\x18\x03 \x01(\t\"~\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\x12\n\n\x06HWINIT\x10\x03\x12\x08\n\x04\x45\x43HO\x10\x04\x12\x14\n\x10GET_SERVO_SERIAL\x10\x05\x12\x15\n\x11GET_SERVO_VERSION\x10\x06\x12\x16\n\x12GET_SERVOD_VERSION\x10\x07\"\x9a\x02\n\x12\x43\x61llServodResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.FailureH\x00\x1a@\n\x07Success\x12\x35\n\x06result\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x1c\n\nStringList\x12\x0e\n\x06values\x18\x01 \x03(\t\"\x1a\n\x0b\x45\x63hoRequest\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x1e\n\x0c\x45\x63hoResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"\x1b\n\x19\x44ownloadSystemLogsRequest\"\x1c\n\x1a\x44ownloadSystemLogsResponse\"\x1a\n\x18\x44ownloadServoLogsRequest\"\x1b\n\x19\x44ownloadServoLogsResponse\"\"\n\x0eGetFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x1f\n\x0fGetFileResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"s\n\x0ePutFileRequest\x12G\n\x08req_info\x18\x01 \x01(\x0b\x32\x33.chromiumos.test.api.lsnexus.PutFileRequestInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"*\n\x16PutFileRequestInitInfo\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x11\n\x0fPutFileResponse\"&\n\x11RemoveFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"\x14\n\x12RemoveFileResponse\"\x1e\n\x0eMakeDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x11\n\x0fMakeDirResponse\" \n\x10RemoveDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x13\n\x11RemoveDirResponse\"$\n\x12MakeTempDirRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\"#\n\x13MakeTempDirResponse\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x0e\n\x0c\x44MesgRequest\"J\n\rDMesgResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\".\n\x0cOutputStream\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\"$\n\x12RunFutilityRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"P\n\x13RunFutilityResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\"#\n\x11RunFlashECRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"O\n\x12RunFlashECResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\"#\n\x11RunGSCToolRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"O\n\x12RunGSCToolResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream2\x8f\r\n\x0eLSNexusService\x12p\n\x0bStartServod\x12/.chromiumos.test.api.lsnexus.StartServodRequest\x1a\x30.chromiumos.test.api.lsnexus.StartServodResponse\x12m\n\nStopServod\x12..chromiumos.test.api.lsnexus.StopServodRequest\x1a/.chromiumos.test.api.lsnexus.StopServodResponse\x12m\n\nCallServod\x12..chromiumos.test.api.lsnexus.CallServodRequest\x1a/.chromiumos.test.api.lsnexus.CallServodResponse\x12h\n\x07GetFile\x12+.chromiumos.test.api.lsnexus.GetFileRequest\x1a,.chromiumos.test.api.lsnexus.GetFileResponse\"\x00\x30\x01\x12h\n\x07PutFile\x12+.chromiumos.test.api.lsnexus.PutFileRequest\x1a,.chromiumos.test.api.lsnexus.PutFileResponse\"\x00(\x01\x12o\n\nRemoveFile\x12..chromiumos.test.api.lsnexus.RemoveFileRequest\x1a/.chromiumos.test.api.lsnexus.RemoveFileResponse\"\x00\x12\x66\n\x07MakeDir\x12+.chromiumos.test.api.lsnexus.MakeDirRequest\x1a,.chromiumos.test.api.lsnexus.MakeDirResponse\"\x00\x12l\n\tRemoveDir\x12-.chromiumos.test.api.lsnexus.RemoveDirRequest\x1a..chromiumos.test.api.lsnexus.RemoveDirResponse\"\x00\x12r\n\x0bMakeTempDir\x12/.chromiumos.test.api.lsnexus.MakeTempDirRequest\x1a\x30.chromiumos.test.api.lsnexus.MakeTempDirResponse\"\x00\x12\x62\n\x05\x44Mesg\x12).chromiumos.test.api.lsnexus.DMesgRequest\x1a*.chromiumos.test.api.lsnexus.DMesgResponse\"\x00\x30\x01\x12]\n\x04\x45\x63ho\x12(.chromiumos.test.api.lsnexus.EchoRequest\x1a).chromiumos.test.api.lsnexus.EchoResponse\"\x00\x12\x84\x01\n\x11\x44ownloadServoLogs\x12\x35.chromiumos.test.api.lsnexus.DownloadServoLogsRequest\x1a\x36.chromiumos.test.api.lsnexus.DownloadServoLogsResponse\"\x00\x12r\n\x0bRunFutility\x12/.chromiumos.test.api.lsnexus.RunFutilityRequest\x1a\x30.chromiumos.test.api.lsnexus.RunFutilityResponse\"\x00\x12o\n\nRunFlashEC\x12..chromiumos.test.api.lsnexus.RunFlashECRequest\x1a/.chromiumos.test.api.lsnexus.RunFlashECResponse\"\x00\x12o\n\nRunGSCTool\x12..chromiumos.test.api.lsnexus.RunGSCToolRequest\x1a/.chromiumos.test.api.lsnexus.RunGSCToolResponse\"\x00\x42QB\x18LsnexusServiceOuterClassZ5go.chromium.org/chromiumos/config/go/test/api/lsnexusb\x06proto3'
+  serialized_pb=b'\n1chromiumos/test/api/lsnexus/lsnexus_service.proto\x12\x1b\x63hromiumos.test.api.lsnexus\x1a+chromiumos/test/api/bols/bols_service.proto\",\n\x12StartServodRequest\x12\x16\n\x0ereuse_existing\x18\x01 \x01(\x08\"\x15\n\x13StartServodResponse\"\x13\n\x11StopServodRequest\"\x14\n\x12StopServodResponse\"\xa0\x02\n\x11\x43\x61llServodRequest\x12\x45\n\x06method\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.api.lsnexus.CallServodRequest.Method\x12\x33\n\x04\x61rgs\x18\x02 \x03(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x12\x0f\n\x07\x63ontrol\x18\x03 \x01(\t\"~\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\x12\n\n\x06HWINIT\x10\x03\x12\x08\n\x04\x45\x43HO\x10\x04\x12\x14\n\x10GET_SERVO_SERIAL\x10\x05\x12\x15\n\x11GET_SERVO_VERSION\x10\x06\x12\x16\n\x12GET_SERVOD_VERSION\x10\x07\"\x9a\x02\n\x12\x43\x61llServodResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.api.lsnexus.CallServodResponse.FailureH\x00\x1a@\n\x07Success\x12\x35\n\x06result\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.bols.ServodValue\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x1c\n\nStringList\x12\x0e\n\x06values\x18\x01 \x03(\t\"\x1a\n\x0b\x45\x63hoRequest\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x1e\n\x0c\x45\x63hoResponse\x12\x0e\n\x06result\x18\x01 \x01(\t\"\x1b\n\x19\x44ownloadSystemLogsRequest\"\x1c\n\x1a\x44ownloadSystemLogsResponse\"\x1a\n\x18\x44ownloadServoLogsRequest\"\x1b\n\x19\x44ownloadServoLogsResponse\"\"\n\x0eGetFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x1f\n\x0fGetFileResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"s\n\x0ePutFileRequest\x12G\n\x08req_info\x18\x01 \x01(\x0b\x32\x33.chromiumos.test.api.lsnexus.PutFileRequestInitInfoH\x00\x12\x0e\n\x04\x64\x61ta\x18\x02 \x01(\x0cH\x00\x42\x08\n\x06source\"*\n\x16PutFileRequestInitInfo\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x11\n\x0fPutFileResponse\"&\n\x11RemoveFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"\x14\n\x12RemoveFileResponse\"\x1e\n\x0eMakeDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x11\n\x0fMakeDirResponse\" \n\x10RemoveDirRequest\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x13\n\x11RemoveDirResponse\"$\n\x12MakeTempDirRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\"#\n\x13MakeTempDirResponse\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x0e\n\x0c\x44MesgRequest\"J\n\rDMesgResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\".\n\x0cOutputStream\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\"$\n\x12RunFutilityRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"P\n\x13RunFutilityResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\"#\n\x11RunFlashECRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"O\n\x12RunFlashECResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\"#\n\x11RunGSCToolRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"O\n\x12RunGSCToolResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream\",\n\x1aRunUARTStressTesterRequest\x12\x0e\n\x06params\x18\x01 \x03(\t\"X\n\x1bRunUARTStressTesterResponse\x12\x39\n\x06output\x18\x01 \x01(\x0b\x32).chromiumos.test.api.lsnexus.OutputStream2\x9c\x0e\n\x0eLSNexusService\x12p\n\x0bStartServod\x12/.chromiumos.test.api.lsnexus.StartServodRequest\x1a\x30.chromiumos.test.api.lsnexus.StartServodResponse\x12m\n\nStopServod\x12..chromiumos.test.api.lsnexus.StopServodRequest\x1a/.chromiumos.test.api.lsnexus.StopServodResponse\x12m\n\nCallServod\x12..chromiumos.test.api.lsnexus.CallServodRequest\x1a/.chromiumos.test.api.lsnexus.CallServodResponse\x12h\n\x07GetFile\x12+.chromiumos.test.api.lsnexus.GetFileRequest\x1a,.chromiumos.test.api.lsnexus.GetFileResponse\"\x00\x30\x01\x12h\n\x07PutFile\x12+.chromiumos.test.api.lsnexus.PutFileRequest\x1a,.chromiumos.test.api.lsnexus.PutFileResponse\"\x00(\x01\x12o\n\nRemoveFile\x12..chromiumos.test.api.lsnexus.RemoveFileRequest\x1a/.chromiumos.test.api.lsnexus.RemoveFileResponse\"\x00\x12\x66\n\x07MakeDir\x12+.chromiumos.test.api.lsnexus.MakeDirRequest\x1a,.chromiumos.test.api.lsnexus.MakeDirResponse\"\x00\x12l\n\tRemoveDir\x12-.chromiumos.test.api.lsnexus.RemoveDirRequest\x1a..chromiumos.test.api.lsnexus.RemoveDirResponse\"\x00\x12r\n\x0bMakeTempDir\x12/.chromiumos.test.api.lsnexus.MakeTempDirRequest\x1a\x30.chromiumos.test.api.lsnexus.MakeTempDirResponse\"\x00\x12\x62\n\x05\x44Mesg\x12).chromiumos.test.api.lsnexus.DMesgRequest\x1a*.chromiumos.test.api.lsnexus.DMesgResponse\"\x00\x30\x01\x12]\n\x04\x45\x63ho\x12(.chromiumos.test.api.lsnexus.EchoRequest\x1a).chromiumos.test.api.lsnexus.EchoResponse\"\x00\x12\x84\x01\n\x11\x44ownloadServoLogs\x12\x35.chromiumos.test.api.lsnexus.DownloadServoLogsRequest\x1a\x36.chromiumos.test.api.lsnexus.DownloadServoLogsResponse\"\x00\x12r\n\x0bRunFutility\x12/.chromiumos.test.api.lsnexus.RunFutilityRequest\x1a\x30.chromiumos.test.api.lsnexus.RunFutilityResponse\"\x00\x12o\n\nRunFlashEC\x12..chromiumos.test.api.lsnexus.RunFlashECRequest\x1a/.chromiumos.test.api.lsnexus.RunFlashECResponse\"\x00\x12o\n\nRunGSCTool\x12..chromiumos.test.api.lsnexus.RunGSCToolRequest\x1a/.chromiumos.test.api.lsnexus.RunGSCToolResponse\"\x00\x12\x8a\x01\n\x13RunUARTStressTester\x12\x37.chromiumos.test.api.lsnexus.RunUARTStressTesterRequest\x1a\x38.chromiumos.test.api.lsnexus.RunUARTStressTesterResponse\"\x00\x42QB\x18LsnexusServiceOuterClassZ5go.chromium.org/chromiumos/config/go/test/api/lsnexusb\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DESCRIPTOR,])
 
@@ -1225,6 +1225,70 @@ _RUNGSCTOOLRESPONSE = _descriptor.Descriptor(
   serialized_end=2007,
 )
 
+
+_RUNUARTSTRESSTESTERREQUEST = _descriptor.Descriptor(
+  name='RunUARTStressTesterRequest',
+  full_name='chromiumos.test.api.lsnexus.RunUARTStressTesterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='params', full_name='chromiumos.test.api.lsnexus.RunUARTStressTesterRequest.params', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2009,
+  serialized_end=2053,
+)
+
+
+_RUNUARTSTRESSTESTERRESPONSE = _descriptor.Descriptor(
+  name='RunUARTStressTesterResponse',
+  full_name='chromiumos.test.api.lsnexus.RunUARTStressTesterResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='output', full_name='chromiumos.test.api.lsnexus.RunUARTStressTesterResponse.output', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2055,
+  serialized_end=2143,
+)
+
 _CALLSERVODREQUEST.fields_by_name['method'].enum_type = _CALLSERVODREQUEST_METHOD
 _CALLSERVODREQUEST.fields_by_name['args'].message_type = chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2._SERVODVALUE
 _CALLSERVODREQUEST_METHOD.containing_type = _CALLSERVODREQUEST
@@ -1250,6 +1314,7 @@ _DMESGRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _RUNFUTILITYRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _RUNFLASHECRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 _RUNGSCTOOLRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
+_RUNUARTSTRESSTESTERRESPONSE.fields_by_name['output'].message_type = _OUTPUTSTREAM
 DESCRIPTOR.message_types_by_name['StartServodRequest'] = _STARTSERVODREQUEST
 DESCRIPTOR.message_types_by_name['StartServodResponse'] = _STARTSERVODRESPONSE
 DESCRIPTOR.message_types_by_name['StopServodRequest'] = _STOPSERVODREQUEST
@@ -1285,6 +1350,8 @@ DESCRIPTOR.message_types_by_name['RunFlashECRequest'] = _RUNFLASHECREQUEST
 DESCRIPTOR.message_types_by_name['RunFlashECResponse'] = _RUNFLASHECRESPONSE
 DESCRIPTOR.message_types_by_name['RunGSCToolRequest'] = _RUNGSCTOOLREQUEST
 DESCRIPTOR.message_types_by_name['RunGSCToolResponse'] = _RUNGSCTOOLRESPONSE
+DESCRIPTOR.message_types_by_name['RunUARTStressTesterRequest'] = _RUNUARTSTRESSTESTERREQUEST
+DESCRIPTOR.message_types_by_name['RunUARTStressTesterResponse'] = _RUNUARTSTRESSTESTERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StartServodRequest = _reflection.GeneratedProtocolMessageType('StartServodRequest', (_message.Message,), {
@@ -1548,6 +1615,20 @@ RunGSCToolResponse = _reflection.GeneratedProtocolMessageType('RunGSCToolRespons
   })
 _sym_db.RegisterMessage(RunGSCToolResponse)
 
+RunUARTStressTesterRequest = _reflection.GeneratedProtocolMessageType('RunUARTStressTesterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _RUNUARTSTRESSTESTERREQUEST,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.RunUARTStressTesterRequest)
+  })
+_sym_db.RegisterMessage(RunUARTStressTesterRequest)
+
+RunUARTStressTesterResponse = _reflection.GeneratedProtocolMessageType('RunUARTStressTesterResponse', (_message.Message,), {
+  'DESCRIPTOR' : _RUNUARTSTRESSTESTERRESPONSE,
+  '__module__' : 'chromiumos.test.api.lsnexus.lsnexus_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.lsnexus.RunUARTStressTesterResponse)
+  })
+_sym_db.RegisterMessage(RunUARTStressTesterResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -1558,8 +1639,8 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2010,
-  serialized_end=3689,
+  serialized_start=2146,
+  serialized_end=3966,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartServod',
@@ -1708,6 +1789,16 @@ _LSNEXUSSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_RUNGSCTOOLREQUEST,
     output_type=_RUNGSCTOOLRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='RunUARTStressTester',
+    full_name='chromiumos.test.api.lsnexus.LSNexusService.RunUARTStressTester',
+    index=15,
+    containing_service=None,
+    input_type=_RUNUARTSTRESSTESTERREQUEST,
+    output_type=_RUNUARTSTRESSTESTERRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
