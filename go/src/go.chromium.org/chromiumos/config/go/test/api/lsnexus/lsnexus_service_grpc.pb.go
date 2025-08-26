@@ -60,6 +60,18 @@ type LSNexusServiceClient interface {
 	// RunFlashEC forwards EC firmware flashing request to BOLS.
 	// In most of implementation, it runs flash_ec tool on labstation.
 	RunFlashEC(ctx context.Context, in *RunFlashECRequest, opts ...grpc.CallOption) (*RunFlashECResponse, error)
+	// RunGSCTool forwards gsctool request to BOLS.
+	// Example:
+	//  gsctool -n 1002D052-9066B226 -f
+	//  Params: ["-n", "1002D052-9066B226", "-f" ]
+	RunGSCTool(ctx context.Context, in *RunGSCToolRequest, opts ...grpc.CallOption) (*RunGSCToolResponse, error)
+	// RunUARTStressTester forwards uart_stress_tester.py request to BOLS.
+	// uart_stress_tester.py repeats sending a uart console command
+	// to each UART device for a given time, and check if output
+	// has any missing characters.
+	// Example:
+	//  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+	RunUARTStressTester(ctx context.Context, in *RunUARTStressTesterRequest, opts ...grpc.CallOption) (*RunUARTStressTesterResponse, error)
 }
 
 type lSNexusServiceClient struct {
@@ -267,6 +279,24 @@ func (c *lSNexusServiceClient) RunFlashEC(ctx context.Context, in *RunFlashECReq
 	return out, nil
 }
 
+func (c *lSNexusServiceClient) RunGSCTool(ctx context.Context, in *RunGSCToolRequest, opts ...grpc.CallOption) (*RunGSCToolResponse, error) {
+	out := new(RunGSCToolResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/RunGSCTool", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lSNexusServiceClient) RunUARTStressTester(ctx context.Context, in *RunUARTStressTesterRequest, opts ...grpc.CallOption) (*RunUARTStressTesterResponse, error) {
+	out := new(RunUARTStressTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/RunUARTStressTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // LSNexusServiceServer is the server API for LSNexusService service.
 // All implementations should embed UnimplementedLSNexusServiceServer
 // for forward compatibility
@@ -309,6 +339,18 @@ type LSNexusServiceServer interface {
 	// RunFlashEC forwards EC firmware flashing request to BOLS.
 	// In most of implementation, it runs flash_ec tool on labstation.
 	RunFlashEC(context.Context, *RunFlashECRequest) (*RunFlashECResponse, error)
+	// RunGSCTool forwards gsctool request to BOLS.
+	// Example:
+	//  gsctool -n 1002D052-9066B226 -f
+	//  Params: ["-n", "1002D052-9066B226", "-f" ]
+	RunGSCTool(context.Context, *RunGSCToolRequest) (*RunGSCToolResponse, error)
+	// RunUARTStressTester forwards uart_stress_tester.py request to BOLS.
+	// uart_stress_tester.py repeats sending a uart console command
+	// to each UART device for a given time, and check if output
+	// has any missing characters.
+	// Example:
+	//  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+	RunUARTStressTester(context.Context, *RunUARTStressTesterRequest) (*RunUARTStressTesterResponse, error)
 }
 
 // UnimplementedLSNexusServiceServer should be embedded to have forward compatible implementations.
@@ -356,6 +398,12 @@ func (UnimplementedLSNexusServiceServer) RunFutility(context.Context, *RunFutili
 }
 func (UnimplementedLSNexusServiceServer) RunFlashEC(context.Context, *RunFlashECRequest) (*RunFlashECResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunFlashEC not implemented")
+}
+func (UnimplementedLSNexusServiceServer) RunGSCTool(context.Context, *RunGSCToolRequest) (*RunGSCToolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunGSCTool not implemented")
+}
+func (UnimplementedLSNexusServiceServer) RunUARTStressTester(context.Context, *RunUARTStressTesterRequest) (*RunUARTStressTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunUARTStressTester not implemented")
 }
 
 // UnsafeLSNexusServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -635,6 +683,42 @@ func _LSNexusService_RunFlashEC_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _LSNexusService_RunGSCTool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunGSCToolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LSNexusServiceServer).RunGSCTool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/RunGSCTool",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LSNexusServiceServer).RunGSCTool(ctx, req.(*RunGSCToolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LSNexusService_RunUARTStressTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunUARTStressTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LSNexusServiceServer).RunUARTStressTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.lsnexus.LSNexusService/RunUARTStressTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LSNexusServiceServer).RunUARTStressTester(ctx, req.(*RunUARTStressTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // LSNexusService_ServiceDesc is the grpc.ServiceDesc for LSNexusService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -685,6 +769,14 @@ var LSNexusService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RunFlashEC",
 			Handler:    _LSNexusService_RunFlashEC_Handler,
+		},
+		{
+			MethodName: "RunGSCTool",
+			Handler:    _LSNexusService_RunGSCTool_Handler,
+		},
+		{
+			MethodName: "RunUARTStressTester",
+			Handler:    _LSNexusService_RunUARTStressTester_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

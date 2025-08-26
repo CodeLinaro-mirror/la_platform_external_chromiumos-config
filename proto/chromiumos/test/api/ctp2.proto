@@ -86,6 +86,9 @@ message CTPRequest {
   // CTP will use this to construct ctpv2 request.
   // is_al_run must be set to true for this.
   string encoded_atp_test_job_msg = 10;
+
+  // 3D info for the suite
+  DDDInfo ddd_info = 12;
 }
 
 message SchedulerInfo {
@@ -122,6 +125,7 @@ message SuiteRequest {
   // The total number of tests allowed to be used in a shard.
   int64 max_in_shard = 6;
   // Should run the suite via 3d or not. Default false.
+  // TODO: move to DDDInfo
   bool ddd_suite = 7;
   // The total number of retries that should be done to failed test(s).
   // By default it will be 0 which means no retry.
@@ -274,6 +278,8 @@ message SuiteMetadata {
   // will be deprecated when field #9 is being used in all filters
   repeated SchedulingUnit scheduling_units = 8;
   repeated SchedulingUnitOptions scheduling_unit_options = 9;
+  // 3D info for the suite
+  DDDInfo ddd_info = 10;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.
@@ -379,4 +385,12 @@ message PublishKey {
 
 message Iterations {
   int64 num_retries = 1;
+}
+
+message DDDInfo {
+  // Variant category info
+  string variant_category = 1;
+  // Should run the suite via 3d or not
+  // TODO: Move all existing protos to use this bool for ddd suites
+  bool ddd_suite = 2;
 }

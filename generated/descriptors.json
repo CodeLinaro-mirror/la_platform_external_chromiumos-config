@@ -2614,6 +2614,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.ResourceConfig.PowerSourcePreferences"
+            },
+            {
+              "jsonName": "thermal",
+              "label": "LABEL_OPTIONAL",
+              "name": "thermal",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ResourceConfig.ThermalZone"
             }
           ],
           "name": "ResourceConfig",
@@ -2898,6 +2906,32 @@
             {
               "field": [
                 {
+                  "jsonName": "thermal-type",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thermal_type",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "trip-temp",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "trip_temp",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "hysteresis",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hysteresis",
+                  "number": 3,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "ThermalZone"
+            },
+            {
+              "field": [
+                {
                   "jsonName": "default-power-preferences",
                   "label": "LABEL_OPTIONAL",
                   "name": "default_power_preferences",
@@ -2950,6 +2984,14 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "battery_saver_power_preferences",
                   "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "thermal-stress-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thermal_stress_power_preferences",
+                  "number": 8,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.ResourceConfig.PowerPreferences"
                 }
@@ -19424,6 +19466,10 @@
             {
               "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
               "number": 12
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_NOT_U6PLUS_ROUTER",
+              "number": 13
             }
           ]
         },
@@ -23190,6 +23236,33 @@
           "name": "ServoTopologyItem"
         },
         {
+          "enumType": [
+            {
+              "name": "FirmwareChannel",
+              "value": [
+                {
+                  "name": "FIRMWARE_CHANNEL_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_PREV",
+                  "number": 1
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_DEV",
+                  "number": 2
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_ALPHA",
+                  "number": 3
+                },
+                {
+                  "name": "FIRMWARE_CHANNEL_STABLE",
+                  "number": 4
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "stationId",
@@ -23213,6 +23286,14 @@
               "name": "force",
               "number": 3,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "channel",
+              "label": "LABEL_OPTIONAL",
+              "name": "channel",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.bols.UpdateServoFirmwareRequest.FirmwareChannel"
             }
           ],
           "name": "UpdateServoFirmwareRequest",
@@ -23328,6 +23409,72 @@
             }
           ],
           "name": "RunFlashECResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunGSCToolRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "RunGSCToolResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunUARTStressTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.OutputStream"
+            }
+          ],
+          "name": "RunUARTStressTesterResponse"
         },
         {
           "field": [
@@ -23646,6 +23793,18 @@
               "name": "RunFlashEC",
               "options": {},
               "outputType": ".chromiumos.test.api.bols.RunFlashECResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunGSCToolRequest",
+              "name": "RunGSCTool",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunGSCToolResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.RunUARTStressTesterRequest",
+              "name": "RunUARTStressTester",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.RunUARTStressTesterResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetDolosVersionRequest",
@@ -25247,6 +25406,13 @@
               "name": "only_googler_ssh_keys",
               "number": 4,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "useFastboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "use_fastboot",
+              "number": 7,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "CrOSProvisionMetadata",
@@ -25615,6 +25781,13 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.PublishServer"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 8,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CrosTestRequest",
@@ -28458,6 +28631,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "lsNexusAddr",
+              "label": "LABEL_OPTIONAL",
+              "name": "ls_nexus_addr",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
           "name": "ProvisionStartupRequest"
@@ -28598,6 +28779,10 @@
                 {
                   "name": "STATUS_DOWNLOADING_FIRMWARE_FAILED",
                   "number": 23
+                },
+                {
+                  "name": "STATUS_FIRMWARE_CSME_LOCKED",
+                  "number": 24
                 }
               ]
             }
@@ -30307,6 +30492,14 @@
               "name": "encoded_atp_test_job_msg",
               "number": 10,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dddInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_info",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DDDInfo"
             }
           ],
           "name": "CTPRequest"
@@ -30974,6 +31167,14 @@
               "number": 9,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SchedulingUnitOptions"
+            },
+            {
+              "jsonName": "dddInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_info",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DDDInfo"
             }
           ],
           "name": "SuiteMetadata"
@@ -31404,6 +31605,25 @@
             }
           ],
           "name": "Iterations"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "variantCategory",
+              "label": "LABEL_OPTIONAL",
+              "name": "variant_category",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dddSuite",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_suite",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DDDInfo"
         }
       ],
       "name": "chromiumos/test/api/ctp2.proto",
@@ -32165,6 +32385,14 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.DeviceLeaseRecord.RequestParametersEntry"
+            },
+            {
+              "jsonName": "userPayload",
+              "label": "LABEL_REPEATED",
+              "name": "user_payload",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceLeaseRecord.UserPayloadEntry"
             }
           ],
           "name": "DeviceLeaseRecord",
@@ -32187,6 +32415,28 @@
                 }
               ],
               "name": "RequestParametersEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "UserPayloadEntry",
               "options": {
                 "mapEntry": true
               }
@@ -34537,6 +34787,56 @@
             }
           ],
           "name": "RunFlashECResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunGSCToolRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "RunGSCToolResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunUARTStressTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.OutputStream"
+            }
+          ],
+          "name": "RunUARTStressTesterResponse"
         }
       ],
       "name": "chromiumos/test/api/lsnexus/lsnexus_service.proto",
@@ -34631,6 +34931,18 @@
               "name": "RunFlashEC",
               "options": {},
               "outputType": ".chromiumos.test.api.lsnexus.RunFlashECResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.RunGSCToolRequest",
+              "name": "RunGSCTool",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.RunGSCToolResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.RunUARTStressTesterRequest",
+              "name": "RunUARTStressTester",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.RunUARTStressTesterResponse"
             }
           ],
           "name": "LSNexusService"
