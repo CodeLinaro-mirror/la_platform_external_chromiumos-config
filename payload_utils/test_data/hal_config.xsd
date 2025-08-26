@@ -222,7 +222,7 @@
       <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
       <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
       <xs:element name="CameraConfiguration" type="CameraConfigurationType" minOccurs="0"/>
-      <xs:element name="HardwareFeatures" type="HardwareFeaturesType" minOccurs="0"/>
+      <xs:element name="HardwareFeaturesConfiguration" type="HardwareFeaturesType" minOccurs="0"/>
       <xs:element name="WiFiSarConfiguration" type="SarConfigType" minOccurs="0"/>
       <xs:element name="StorageConfiguration" type="StorageConfigurationType" minOccurs="0"/>
     </xs:sequence>

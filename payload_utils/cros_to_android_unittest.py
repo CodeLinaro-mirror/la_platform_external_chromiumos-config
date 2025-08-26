@@ -356,7 +356,9 @@ class HalEntryHelpersTest(unittest.TestCase):
         cros_to_android._add_hardware_features_entry(
             self.root_element, self.design_config
         )
-        hw_features_elem = self.root_element.find("HardwareFeatures")
+        hw_features_elem = self.root_element.find(
+            "HardwareFeaturesConfiguration"
+        )
         self.assertIsNotNone(hw_features_elem)
         self.assertEqual(hw_features_elem.find("form-factor").text, "CLAMSHELL")
 
@@ -369,7 +371,9 @@ class HalEntryHelpersTest(unittest.TestCase):
         cros_to_android._add_hardware_features_entry(
             self.root_element, self.design_config
         )
-        self.assertIsNone(self.root_element.find("HardwareFeatures"))
+        self.assertIsNone(
+            self.root_element.find("HardwareFeaturesConfiguration")
+        )
 
     def test_add_camera_entry_generated(self):
         """Camera entry generated if sw config enables it."""

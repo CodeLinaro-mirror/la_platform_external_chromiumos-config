@@ -632,7 +632,9 @@ def _add_hardware_features_entry(
     }
 
     if form_factor in form_factor_names:
-        hw_feature_elem = etree.SubElement(hal_config, "HardwareFeatures")
+        hw_feature_elem = etree.SubElement(
+            hal_config, "HardwareFeaturesConfiguration"
+        )
         etree.SubElement(hw_feature_elem, "form-factor").text = (
             form_factor_names[form_factor]
         )
