@@ -33671,6 +33671,13 @@
               "number": 2,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem"
+            },
+            {
+              "jsonName": "forceFlashSameVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "force_flash_same_version",
+              "number": 3,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FirmwareProvisionInstallMetadata"
