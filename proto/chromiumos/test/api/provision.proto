@@ -44,6 +44,8 @@ message ProvisionStartupRequest {
   google.protobuf.Any metadata = 3;
   // Address where servoNexus cft service can be reached.
   chromiumos.test.lab.api.IpEndpoint servo_nexus_addr = 4;
+  // Address where lsNexus cft service can be reached.
+  chromiumos.test.lab.api.IpEndpoint ls_nexus_addr = 5;
 }
 
 // ProvisionStartupResponse provides a status message to signal
@@ -115,6 +117,8 @@ message InstallResponse {
     STATUS_PRE_PROVISION_USB_BOOT_FAILURE = 22;
     // A firmware artifact could not be downloaded.
     STATUS_DOWNLOADING_FIRMWARE_FAILED = 23;
+    // The CSME is locked and cannot be unlocked
+    STATUS_FIRMWARE_CSME_LOCKED = 24;
   }
   Status status = 1;
 

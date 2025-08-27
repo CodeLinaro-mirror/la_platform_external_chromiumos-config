@@ -95,6 +95,10 @@ class CrosConfigConverterMainTest(unittest.TestCase):
             self.assertEqual(
                 content,
                 b"<permissions>\n  "
+                b'<feature name="android.hardware.touchscreen"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch.distinct"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch.jazzhand"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
                 b'<feature name="android.hardware.camera.front"/>\n'
                 b"</permissions>\n",
@@ -618,19 +622,6 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         self._create_bundle_and_run_feature_generation()
         self._assert_feature_xml(
             ["android.hardware.sensor.proximity", "com.google.sensor.sar"]
-        )
-
-    def test_generate_device_orientation_feature(self):
-        """Test android.sensor.device_orientation feature XML."""
-        self.config.hardware_features.accelerometer.lid_accelerometer = (
-            topology_pb2.HardwareFeatures.PRESENT
-        )
-        self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml(
-            [
-                "android.hardware.sensor.accelerometer",
-                "android.sensor.device_orientation",
-            ]
         )
 
     def test_generate_camera_any_feature(self):

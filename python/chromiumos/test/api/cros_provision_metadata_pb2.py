@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n1chromiumos/test/api/cros_provision_metadata.proto\x12\x13\x63hromiumos.test.api\"\xc8\x01\n\x15\x43rOSProvisionMetadata\x12\x45\n\tdlc_specs\x18\x02 \x03(\x0b\x32\x32.chromiumos.test.api.CrOSProvisionMetadata.DLCSpec\x12\x19\n\x11preserve_stateful\x18\x03 \x01(\x08\x12\x17\n\x0fupdate_firmware\x18\x06 \x01(\x08\x12\x1d\n\x15only_googler_ssh_keys\x18\x04 \x01(\x08\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n1chromiumos/test/api/cros_provision_metadata.proto\x12\x13\x63hromiumos.test.api\"\xde\x01\n\x15\x43rOSProvisionMetadata\x12\x45\n\tdlc_specs\x18\x02 \x03(\x0b\x32\x32.chromiumos.test.api.CrOSProvisionMetadata.DLCSpec\x12\x19\n\x11preserve_stateful\x18\x03 \x01(\x08\x12\x17\n\x0fupdate_firmware\x18\x06 \x01(\x08\x12\x1d\n\x15only_googler_ssh_keys\x18\x04 \x01(\x08\x12\x14\n\x0cuse_fastboot\x18\x07 \x01(\x08\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
 )
 
 
@@ -52,8 +52,8 @@ _CROSPROVISIONMETADATA_DLCSPEC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=254,
-  serialized_end=275,
+  serialized_start=276,
+  serialized_end=297,
 )
 
 _CROSPROVISIONMETADATA = _descriptor.Descriptor(
@@ -92,6 +92,13 @@ _CROSPROVISIONMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='use_fastboot', full_name='chromiumos.test.api.CrOSProvisionMetadata.use_fastboot', index=4,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -105,7 +112,7 @@ _CROSPROVISIONMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=75,
-  serialized_end=275,
+  serialized_end=297,
 )
 
 _CROSPROVISIONMETADATA_DLCSPEC.containing_type = _CROSPROVISIONMETADATA

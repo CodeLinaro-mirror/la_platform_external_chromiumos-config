@@ -113,6 +113,10 @@ message DeviceLeaseRecord {
   // All parameters used to create a device will be saved for further analysis.
   // Possible that the data will be removed later if established as not needed.
   map<string, string> request_parameters = 10;
+
+  // user_payload string-based key-value pairs.
+  // This map provides relevant information may interested to users.
+  map<string, string> user_payload = 12;
 }
 
 message LeaseDeviceRequest {
