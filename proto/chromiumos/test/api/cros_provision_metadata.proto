@@ -33,4 +33,6 @@ message CrOSProvisionMetadata {
   // If true, provision will only enable googler ssh key on the DUT.
   // If false, provision will enable external & googler ssh key on the DUT.
   bool only_googler_ssh_keys = 4;
+  // use_fastboot decides whether or not to utilize fastboot for provisioning.
+  bool use_fastboot = 7;
 }

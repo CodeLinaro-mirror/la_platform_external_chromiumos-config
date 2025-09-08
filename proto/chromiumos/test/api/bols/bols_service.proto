@@ -112,6 +112,21 @@ service BolsService {
   // In most of implementation, it runs flash_ec tool on labstation.
   rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
 
+  // RunGSCTool run gsctool on labstation.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  rpc RunGSCTool(RunGSCToolRequest) returns (RunGSCToolResponse) {}
+
+  // RunUARTStressTester runs uart_stress_tester.py on labstation.
+  // uart_stress_tester.py repeats sending a uart console command
+  // to each UART device for a given time, and check if output
+  // has any missing characters.
+  // Example:
+  //  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+  rpc RunUARTStressTester(RunUARTStressTesterRequest)
+      returns (RunUARTStressTesterResponse) {}
+
   ///////// Dolos API /////////
 
   rpc GetDolosVersion(GetDolosVersionRequest)
@@ -528,6 +543,16 @@ message UpdateServoFirmwareRequest {
   }
   repeated Target targets = 2;
   bool force = 3;
+
+  // Firmware channel.
+  enum FirmwareChannel {
+    FIRMWARE_CHANNEL_UNSPECIFIED = 0;
+    FIRMWARE_CHANNEL_PREV = 1;
+    FIRMWARE_CHANNEL_DEV = 2;
+    FIRMWARE_CHANNEL_ALPHA = 3;
+    FIRMWARE_CHANNEL_STABLE = 4;
+  }
+  FirmwareChannel channel = 4;
 }
 
 message UpdateServoFirmwareResponse {
@@ -575,6 +600,35 @@ message RunFlashECRequest {
 }
 
 message RunFlashECResponse {
+  OutputStream output = 1;
+}
+
+message RunGSCToolRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // List of parameters used at execution.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  repeated string params = 2;
+}
+
+message RunGSCToolResponse {
+  OutputStream output = 1;
+}
+
+message RunUARTStressTesterRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // List of parameters used at execution.
+  // Example:
+  //  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+  //  Params: ["/dev/ttyUSB2", "--time", "3600"]
+  repeated string params = 2;
+}
+
+message RunUARTStressTesterResponse {
   OutputStream output = 1;
 }
 

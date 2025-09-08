@@ -152,6 +152,16 @@ class BolsServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunFlashECRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunFlashECResponse.FromString,
                 )
+        self.RunGSCTool = channel.unary_unary(
+                '/chromiumos.test.api.bols.BolsService/RunGSCTool',
+                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunGSCToolRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunGSCToolResponse.FromString,
+                )
+        self.RunUARTStressTester = channel.unary_unary(
+                '/chromiumos.test.api.bols.BolsService/RunUARTStressTester',
+                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUARTStressTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUARTStressTesterResponse.FromString,
+                )
         self.GetDolosVersion = channel.unary_unary(
                 '/chromiumos.test.api.bols.BolsService/GetDolosVersion',
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.GetDolosVersionRequest.SerializeToString,
@@ -381,6 +391,28 @@ class BolsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def RunGSCTool(self, request, context):
+        """RunGSCTool run gsctool on labstation.
+        Example:
+        gsctool -n 1002D052-9066B226 -f
+        Params: ["-n", "1002D052-9066B226", "-f" ]
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def RunUARTStressTester(self, request, context):
+        """RunUARTStressTester runs uart_stress_tester.py on labstation.
+        uart_stress_tester.py repeats sending a uart console command
+        to each UART device for a given time, and check if output
+        has any missing characters.
+        Example:
+        uart_stress_tester.py /dev/ttyUSB2 --time 3600
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetDolosVersion(self, request, context):
         """/////// Dolos API /////////
 
@@ -548,6 +580,16 @@ def add_BolsServiceServicer_to_server(servicer, server):
                     servicer.RunFlashEC,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunFlashECRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunFlashECResponse.SerializeToString,
+            ),
+            'RunGSCTool': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunGSCTool,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunGSCToolRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunGSCToolResponse.SerializeToString,
+            ),
+            'RunUARTStressTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunUARTStressTester,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUARTStressTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUARTStressTesterResponse.SerializeToString,
             ),
             'GetDolosVersion': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDolosVersion,
@@ -1038,6 +1080,40 @@ class BolsService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/RunFlashEC',
             chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunFlashECRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunFlashECResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RunGSCTool(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/RunGSCTool',
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunGSCToolRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunGSCToolResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RunUARTStressTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/RunUARTStressTester',
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUARTStressTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUARTStressTesterResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
