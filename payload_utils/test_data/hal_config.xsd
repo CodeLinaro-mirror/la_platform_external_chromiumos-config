@@ -25,10 +25,21 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="StorageTypeEn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EMMC"/>
+      <xs:enumeration value="NVME"/>
+      <xs:enumeration value="SATA"/>
+      <xs:enumeration value="UFS"/>
+      <xs:enumeration value="BRIDGED_EMMC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="IdentityType">
     <xs:sequence>
       <xs:element type="xs:string" name="sku-id"/>
       <xs:element type="xs:string" name="model"/>
+      <xs:element type="xs:string" name="frid"/>
       <xs:element type="xs:string" name="custom-label-tag" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
@@ -192,6 +203,16 @@
   </xs:complexType>
   <!-- End of WiFi related section -->
 
+  <xs:complexType name="StorageConfigurationType">
+    <xs:sequence>
+      <xs:element type="StorageTypeEn" name="storage-type" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Non-volatile storage type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -203,6 +224,7 @@
       <xs:element name="CameraConfiguration" type="CameraConfigurationType" minOccurs="0"/>
       <xs:element name="HardwareFeatures" type="HardwareFeaturesType" minOccurs="0"/>
       <xs:element name="WiFiSarConfiguration" type="SarConfigType" minOccurs="0"/>
+      <xs:element name="StorageConfiguration" type="StorageConfigurationType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

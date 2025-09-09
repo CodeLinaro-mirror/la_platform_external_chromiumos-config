@@ -48,6 +48,9 @@ message CrosTestRequest {
 
   // Publish server address.
   repeated PublishServer publish_servers = 7;
+  // Timeout of the parent runner, to be handled by drivers for exiting early to
+  // allow time to publish results.
+  string timeout = 8;
 }
 
 message PublishServer {
