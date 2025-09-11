@@ -857,6 +857,80 @@ def _add_storage_entry(
         )
 
 
+def _add_keyboard_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Keyboard Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("keyboard"):
+        logging.debug(
+            "[%s] No keyboard found. Skipping KeyboardConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    keyboard = hw_features.keyboard
+    backlight_support = "false"
+    if keyboard.backlight == topology_pb2.HardwareFeatures.PRESENT:
+        backlight_support = "true"
+
+    kb_elem = etree.SubElement(hal_config, "KeyboardConfiguration")
+    etree.SubElement(kb_elem, "backlight-support").text = backlight_support
+    if keyboard.no_als_brightness:
+        etree.SubElement(kb_elem, "kb-default-brightness").text = (
+            f"{keyboard.no_als_brightness}"
+        )
+    if keyboard.backlight_user_steps:
+        etree.SubElement(kb_elem, "kb-backlight-steps").text = (
+            f"{keyboard.backlight_user_steps}"
+        )
+
+
+def _add_stylus_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Stylus Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("stylus"):
+        logging.debug(
+            "[%s] No stylus found. Skipping StylusConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    stylus_type = hw_features.stylus.stylus
+
+    stylus_type_names = {
+        topology_pb2.HardwareFeatures.Stylus.NONE: "NONE",
+        topology_pb2.HardwareFeatures.Stylus.INTERNAL: "GARAGED",
+        topology_pb2.HardwareFeatures.Stylus.EXTERNAL: "NON_GARAGED",
+    }
+
+    if stylus_type in stylus_type_names:
+        storage_elem = etree.SubElement(hal_config, "StylusConfiguration")
+        etree.SubElement(storage_elem, "stylus-type").text = stylus_type_names[
+            stylus_type
+        ]
+    else:
+        logging.warning(
+            "[%s] Unknown stylus_type value: %s. Skipping SylusConfiguration.",
+            design_config.id.value,
+            stylus_type,
+        )
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -903,6 +977,8 @@ def _add_hal_config_entry(
     _add_hardware_features_entry(hal_config_elem, design_config)
     _add_wifi_entry(hal_config_elem, design_config, sw_config)
     _add_storage_entry(hal_config_elem, design_config)
+    _add_keyboard_entry(hal_config_elem, design_config)
+    _add_stylus_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(

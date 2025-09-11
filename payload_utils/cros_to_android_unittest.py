@@ -521,6 +521,42 @@ class HalEntryHelpersTest(unittest.TestCase):
             power_elem.find("PowerConfig.5g").find("PowerOffset").text, "5"
         )
 
+    def test_add_keyboard_entry_present_valid(self):
+        """Test keyboard entry with a valid hw_features.keyboard."""
+        this_keyboard = self.design_config.hardware_features.keyboard
+        this_keyboard.backlight = topology_pb2.HardwareFeatures.NOT_PRESENT
+
+        cros_to_android._add_keyboard_entry(
+            self.root_element, self.design_config
+        )
+
+        kb_elem = self.root_element.find("KeyboardConfiguration")
+        self.assertIsNotNone(kb_elem)
+        self.assertEqual(kb_elem.find("backlight-support").text, "false")
+
+    def test_add_keyboard_entry_not_present(self):
+        """Test keyboard entry when hw_features.keyboard is not present."""
+        cros_to_android._add_keyboard_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("KeyboardConfiguration"))
+
+    def test_add_stylus_entry_present_valid(self):
+        """Test stylus entry with a valid hw_features.stylus."""
+        this_stylus = self.design_config.hardware_features.stylus
+        this_stylus.stylus = topology_pb2.HardwareFeatures.Stylus.NONE
+
+        cros_to_android._add_stylus_entry(self.root_element, self.design_config)
+
+        sty_elem = self.root_element.find("StylusConfiguration")
+        self.assertIsNotNone(sty_elem)
+        self.assertEqual(sty_elem.find("stylus-type").text, "NONE")
+
+    def test_add_stylus_entry_not_present(self):
+        """Test stylus entry when hw_features.stylus is not present."""
+        cros_to_android._add_stylus_entry(self.root_element, self.design_config)
+        self.assertIsNone(self.root_element.find("StylusConfiguration"))
+
 
 class FeatureXmlGenerationTest(unittest.TestCase):
     """Tests for feature XML generation functions."""
