@@ -496,6 +496,10 @@ def _add_firmware_entry(
     )
     fw_image_name_elem.text = image_name
 
+    boot_config = str(design_config.hardware_features.fw_config.value)
+    boot_config_elem = etree.SubElement(firmware_config_elem, "firmware-config")
+    boot_config_elem.text = boot_config
+
 
 def _add_audio_entry(
     hal_config: etree._Element,
