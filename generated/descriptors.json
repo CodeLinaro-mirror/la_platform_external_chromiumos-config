@@ -13055,6 +13055,275 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "audioCodec",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_codec",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "audioAmplifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_amplifier",
+              "number": 2,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "audioBusType",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_bus_type",
+              "number": 3,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraUfcType",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_ufc_type",
+              "number": 4,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraUfcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_ufc_name",
+              "number": 5,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraWfcType",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_wfc_type",
+              "number": 6,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraWfcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_wfc_name",
+              "number": 7,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "storageType",
+              "label": "LABEL_OPTIONAL",
+              "name": "storage_type",
+              "number": 8,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "sdCardController",
+              "label": "LABEL_OPTIONAL",
+              "name": "sd_card_controller",
+              "number": 9,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "touchscreen",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen",
+              "number": 10,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "touchscreenProbeType",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen_probe_type",
+              "number": 11,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "touchscreenSocInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen_soc_interface",
+              "number": 12,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "sensorHubPresent",
+              "label": "LABEL_OPTIONAL",
+              "name": "sensor_hub_present",
+              "number": 13,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fingerprintPresent",
+              "label": "LABEL_OPTIONAL",
+              "name": "fingerprint_present",
+              "number": 14,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "wifiInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "wifi_interface",
+              "number": 15,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "trackpad",
+              "label": "LABEL_OPTIONAL",
+              "name": "trackpad",
+              "number": 16,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "trackpadProbeType",
+              "label": "LABEL_OPTIONAL",
+              "name": "trackpad_probe_type",
+              "number": 17,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "trackpadSocInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "trackpad_soc_interface",
+              "number": 18,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cellularInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "cellular_interface",
+              "number": 19,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "formFactor",
+              "label": "LABEL_OPTIONAL",
+              "name": "form_factor",
+              "number": 20,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "keyboardComponentName",
+              "label": "LABEL_OPTIONAL",
+              "name": "keyboard_component_name",
+              "number": 21,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "panelId",
+              "label": "LABEL_OPTIONAL",
+              "name": "panel_id",
+              "number": 22,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "stylusPresent",
+              "label": "LABEL_OPTIONAL",
+              "name": "stylus_present",
+              "number": 23,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "kbBacklightPresent",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_backlight_present",
+              "number": 24,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "kbNumPadPresent",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_num_pad_present",
+              "number": 25,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "fanPresent",
+              "label": "LABEL_OPTIONAL",
+              "name": "fan_present",
+              "number": 26,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "lidSensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "lid_sensor",
+              "number": 27,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "baseSensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "base_sensor",
+              "number": 28,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "tabletModeBaseOrientation",
+              "label": "LABEL_OPTIONAL",
+              "name": "tablet_mode_base_orientation",
+              "number": 29,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "chargerChip",
+              "label": "LABEL_OPTIONAL",
+              "name": "charger_chip",
+              "number": 30,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort0",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_0",
+              "number": 31,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort1",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_1",
+              "number": 32,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort2",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_2",
+              "number": 33,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort3",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_3",
+              "number": 34,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "FirmwareConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_REPEATED",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "UnifiedFirmwareConfig"
+        }
+      ],
+      "name": "chromiumos/config/api/software/unified_fw_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "enumType": [
         {
           "name": "OperatingSystem",
