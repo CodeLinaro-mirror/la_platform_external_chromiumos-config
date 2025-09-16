@@ -18,7 +18,7 @@ echo "Running unittests..."
 PYTHONPATH=payload_utils vpython3 -m pytest
 
 echo "Running pylint..."
-PYTHONPATH=payload_utils vpython3 -m pylint "$(pwd)/payload_utils" \
+vpython3 -m pylint "$(pwd)/payload_utils" \
     --rcfile=payload_utils/pylintrc
 
 echo "Checking Python files formatted..."
