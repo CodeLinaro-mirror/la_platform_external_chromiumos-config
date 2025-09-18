@@ -1106,7 +1106,7 @@
               "mcuType": 1,
               "noAlsBrightness": 40.0,
               "numericPad": 1,
-              "powerButton": 1
+              "powerButton": 2
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -1428,7 +1428,7 @@
                   "mcuType": 1,
                   "noAlsBrightness": 40.0,
                   "numericPad": 1,
-                  "powerButton": 1
+                  "powerButton": 2
                 }
               },
               "id": "KB_BL",
@@ -1731,7 +1731,7 @@
               "keyboardType": 1,
               "numericPad": 1,
               "numericPadLayout": 2,
-              "powerButton": 1
+              "powerButton": 2
             },
             "lightSensor": {
               "baseLightsensor": 1,
@@ -2023,7 +2023,7 @@
                   "keyboardType": 1,
                   "numericPad": 1,
                   "numericPadLayout": 2,
-                  "powerButton": 1
+                  "powerButton": 2
                 }
               },
               "id": "KB_BL",
@@ -8194,7 +8194,7 @@
               "mcuType": 1,
               "noAlsBrightness": 40.0,
               "numericPad": 1,
-              "powerButton": 1
+              "powerButton": 2
             },
             "powerButton": {
               "edge": 1,
@@ -8405,7 +8405,7 @@
                   "mcuType": 1,
                   "noAlsBrightness": 40.0,
                   "numericPad": 1,
-                  "powerButton": 1
+                  "powerButton": 2
                 }
               },
               "id": "KB_BL",
@@ -8672,7 +8672,7 @@
               "mcuType": 1,
               "noAlsBrightness": 40.0,
               "numericPad": 1,
-              "powerButton": 1
+              "powerButton": 2
             },
             "powerButton": {
               "edge": 1,
@@ -8883,7 +8883,7 @@
                   "mcuType": 1,
                   "noAlsBrightness": 40.0,
                   "numericPad": 1,
-                  "powerButton": 1
+                  "powerButton": 2
                 }
               },
               "id": "KB_BL",
