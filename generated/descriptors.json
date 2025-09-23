@@ -24772,6 +24772,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseInfo.ExtraInfoEntry"
+            },
+            {
+              "jsonName": "parameters",
+              "label": "LABEL_REPEATED",
+              "name": "parameters",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Parameter"
             }
           ],
           "name": "TestCaseInfo",
@@ -24859,6 +24867,18 @@
             }
           ],
           "name": "HwAgnostic"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Parameter"
         },
         {
           "enumType": [
