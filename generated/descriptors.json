@@ -11976,6 +11976,141 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "soundcard",
+              "label": "LABEL_OPTIONAL",
+              "name": "soundcard",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AudioConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "modemType",
+              "label": "LABEL_OPTIONAL",
+              "name": "modem_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareVariant",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_variant",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CellularConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fingerprintSensorType",
+              "label": "LABEL_OPTIONAL",
+              "name": "fingerprint_sensor_type",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "sensorLocation",
+              "label": "LABEL_OPTIONAL",
+              "name": "sensor_location",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "roVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "ro_version",
+              "number": 5,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FingerprintConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_ro_version"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "audioList",
+              "label": "LABEL_REPEATED",
+              "name": "audio_list",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.AudioConfigurationType"
+            },
+            {
+              "jsonName": "fingerprintList",
+              "label": "LABEL_REPEATED",
+              "name": "fingerprint_list",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.FingerprintConfigurationType"
+            },
+            {
+              "jsonName": "cellularList",
+              "label": "LABEL_REPEATED",
+              "name": "cellular_list",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.CellularConfigurationType"
+            }
+          ],
+          "name": "HalConfiguration"
+        }
+      ],
+      "name": "chromiumos/config/api/android_component_configs.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/partner.proto",
@@ -17829,6 +17964,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/config/api/android_component_configs.proto",
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/device_brand.proto",
@@ -17895,6 +18031,14 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.BrandConfig"
+            },
+            {
+              "jsonName": "androidHalConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "android_hal_config",
+              "number": 18,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HalConfiguration"
             }
           ],
           "name": "ConfigBundle",
