@@ -368,7 +368,10 @@ class BolsServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def UpdateServoFirmware(self, request, context):
-        """UpdateServoFirmware update the firmware of a servo device.
+        """UpdateServoFirmware updates the firmware of servo devices connected to the same hub as the servo with the given serial.
+        It can update specific servo types or all qualified servo types.
+        The firmware channel (stable, dev, etc.) and whether to force the update can be specified.
+        Note: The servod process must be stopped before calling this API, as the update will fail if servod is running.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
