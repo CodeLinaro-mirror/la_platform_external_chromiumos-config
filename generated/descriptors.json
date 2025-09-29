@@ -22844,6 +22844,19 @@
         {
           "field": [
             {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValue"
+            }
+          ],
+          "name": "ServodValueArray"
+        },
+        {
+          "field": [
+            {
               "jsonName": "stringValue",
               "label": "LABEL_OPTIONAL",
               "name": "string_value",
@@ -22877,6 +22890,15 @@
               "number": 4,
               "oneofIndex": 0,
               "type": "TYPE_DOUBLE"
+            },
+            {
+              "jsonName": "arrayValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "array_value",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValueArray"
             }
           ],
           "name": "ServodValue",

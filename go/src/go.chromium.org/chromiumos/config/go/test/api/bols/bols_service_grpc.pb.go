@@ -77,10 +77,12 @@ type BolsServiceClient interface {
 	EchoServod(ctx context.Context, in *EchoServodRequest, opts ...grpc.CallOption) (*EchoServodResponse, error)
 	// GetServoTopology gets the servo topology.
 	GetServoTopology(ctx context.Context, in *GetServoTopologyRequest, opts ...grpc.CallOption) (*GetServoTopologyResponse, error)
-	// UpdateServoFirmware updates the firmware of servo devices connected to the same hub as the servo with the given serial.
-	// It can update specific servo types or all qualified servo types.
-	// The firmware channel (stable, dev, etc.) and whether to force the update can be specified.
-	// Note: The servod process must be stopped before calling this API, as the update will fail if servod is running.
+	// UpdateServoFirmware updates the firmware of servo devices connected to the
+	// same hub as the servo with the given serial. It can update specific servo
+	// types or all qualified servo types. The firmware channel (stable, dev,
+	// etc.) and whether to force the update can be specified. Note: The servod
+	// process must be stopped before calling this API, as the update will fail if
+	// servod is running.
 	UpdateServoFirmware(ctx context.Context, in *UpdateServoFirmwareRequest, opts ...grpc.CallOption) (*UpdateServoFirmwareResponse, error)
 	// RunFutility run futility tool on labstation.
 	RunFutility(ctx context.Context, in *RunFutilityRequest, opts ...grpc.CallOption) (*RunFutilityResponse, error)
@@ -592,10 +594,12 @@ type BolsServiceServer interface {
 	EchoServod(context.Context, *EchoServodRequest) (*EchoServodResponse, error)
 	// GetServoTopology gets the servo topology.
 	GetServoTopology(context.Context, *GetServoTopologyRequest) (*GetServoTopologyResponse, error)
-	// UpdateServoFirmware updates the firmware of servo devices connected to the same hub as the servo with the given serial.
-	// It can update specific servo types or all qualified servo types.
-	// The firmware channel (stable, dev, etc.) and whether to force the update can be specified.
-	// Note: The servod process must be stopped before calling this API, as the update will fail if servod is running.
+	// UpdateServoFirmware updates the firmware of servo devices connected to the
+	// same hub as the servo with the given serial. It can update specific servo
+	// types or all qualified servo types. The firmware channel (stable, dev,
+	// etc.) and whether to force the update can be specified. Note: The servod
+	// process must be stopped before calling this API, as the update will fail if
+	// servod is running.
 	UpdateServoFirmware(context.Context, *UpdateServoFirmwareRequest) (*UpdateServoFirmwareResponse, error)
 	// RunFutility run futility tool on labstation.
 	RunFutility(context.Context, *RunFutilityRequest) (*RunFutilityResponse, error)
