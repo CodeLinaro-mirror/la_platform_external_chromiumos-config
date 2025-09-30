@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#chromiumos/test/api/provision.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a\x19google/protobuf/any.proto\"\xa0\x02\n\x17ProvisionStartupRequest\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\x12=\n\x10servo_nexus_addr\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12:\n\rls_nexus_addr\x18\x05 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\xcd\x01\n\x18ProvisionStartupResponse\x12\x44\n\x06status\x18\x01 \x01(\x0e\x32\x34.chromiumos.test.api.ProvisionStartupResponse.Status\"k\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x19\n\x15STATUS_STARTUP_FAILED\x10\x03\"\x97\x08\n\x0fInstallResponse\x12;\n\x06status\x18\x01 \x01(\x0e\x32+.chromiumos.test.api.InstallResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0f\n\x07message\x18\x03 \x01(\t\"\x8d\x07\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x01\x12(\n$STATUS_DUT_UNREACHABLE_PRE_PROVISION\x10\x02\x12#\n\x1fSTATUS_DOWNLOADING_IMAGE_FAILED\x10\x03\x12 \n\x1cSTATUS_PROVISIONING_TIMEDOUT\x10\x04\x12\x1e\n\x1aSTATUS_PROVISIONING_FAILED\x10\x05\x12)\n%STATUS_DUT_UNREACHABLE_POST_PROVISION\x10\x06\x12!\n\x1dSTATUS_UPDATE_FIRMWARE_FAILED\x10\x07\x12\x31\n-STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE\x10\x08\x12/\n+STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE\x10\t\x12\x1f\n\x1bSTATUS_UPDATE_MINIOS_FAILED\x10\n\x12&\n\"STATUS_POST_PROVISION_SETUP_FAILED\x10\x0b\x12\x1b\n\x17STATUS_CLEAR_TPM_FAILED\x10\x0c\x12\x1e\n\x1aSTATUS_STABLIZE_DUT_FAILED\x10\r\x12\x1d\n\x19STATUS_INSTALL_DLC_FAILED\x10\x0e\x12%\n!STATUS_PRE_PROVISION_SETUP_FAILED\x10\x0f\x12%\n!STATUS_CIPD_PACKAGE_LOOKUP_FAILED\x10\x10\x12$\n STATUS_CIPD_PACKAGE_FETCH_FAILED\x10\x11\x12\x1b\n\x17STATUS_GS_UPLOAD_FAILED\x10\x12\x12\x1d\n\x19STATUS_GS_DOWNLOAD_FAILED\x10\x13\x12\x12\n\x0eSTATUS_SUCCESS\x10\x14\x12/\n+STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE\x10\x15\x12)\n%STATUS_PRE_PROVISION_USB_BOOT_FAILURE\x10\x16\x12&\n\"STATUS_DOWNLOADING_FIRMWARE_FAILED\x10\x17\x12\x1f\n\x1bSTATUS_FIRMWARE_CSME_LOCKED\x10\x18\"\x11\n\x0fInstallMetadata\"\xb1\x02\n\x0eInstallRequest\x12+\n\nimage_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x16\n\x0eprevent_reboot\x18\x02 \x01(\x08\x12\x32\n\x11overwrite_payload\x18\x03 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12&\n\x08metadata\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any\x12>\n\x10partner_metadata\x18\x05 \x01(\x0b\x32$.chromiumos.test.api.PartnerMetadata\x12>\n\x10kernel_prebuilts\x18\x06 \x01(\x0b\x32$.chromiumos.test.api.KernelPrebuilts\"A\n\x0fPartnerMetadata\x12\x12\n\naccount_id\x18\x01 \x01(\x03\x12\x1a\n\x12partner_gcs_bucket\x18\x02 \x01(\t\"\xcd\x01\n\x0fKernelPrebuilts\x12M\n\x10partition_images\x18\x01 \x03(\x0b\x32\x33.chromiumos.test.api.KernelPrebuilts.PartitionImage\x1ak\n\x0ePartitionImage\x12\x16\n\x0epartition_name\x18\x01 \x01(\t\x12+\n\nimage_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x14\n\x0cramdisk_name\x18\x03 \x01(\t2\xfb\x01\n\x17GenericProvisionService\x12\x66\n\x07StartUp\x12,.chromiumos.test.api.ProvisionStartupRequest\x1a-.chromiumos.test.api.ProvisionStartupResponse\x12x\n\x07Install\x12#.chromiumos.test.api.InstallRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fInstallResponse\x12\x0fInstallMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n#chromiumos/test/api/provision.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a\x19google/protobuf/any.proto\"\xa0\x02\n\x17ProvisionStartupRequest\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\x12=\n\x10servo_nexus_addr\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12:\n\rls_nexus_addr\x18\x05 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\xe3\x01\n\x18ProvisionStartupResponse\x12\x44\n\x06status\x18\x01 \x01(\x0e\x32\x34.chromiumos.test.api.ProvisionStartupResponse.Status\x12\x14\n\x0cversion_info\x18\x02 \x01(\t\"k\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x19\n\x15STATUS_STARTUP_FAILED\x10\x03\"\x97\x08\n\x0fInstallResponse\x12;\n\x06status\x18\x01 \x01(\x0e\x32+.chromiumos.test.api.InstallResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0f\n\x07message\x18\x03 \x01(\t\"\x8d\x07\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x01\x12(\n$STATUS_DUT_UNREACHABLE_PRE_PROVISION\x10\x02\x12#\n\x1fSTATUS_DOWNLOADING_IMAGE_FAILED\x10\x03\x12 \n\x1cSTATUS_PROVISIONING_TIMEDOUT\x10\x04\x12\x1e\n\x1aSTATUS_PROVISIONING_FAILED\x10\x05\x12)\n%STATUS_DUT_UNREACHABLE_POST_PROVISION\x10\x06\x12!\n\x1dSTATUS_UPDATE_FIRMWARE_FAILED\x10\x07\x12\x31\n-STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE\x10\x08\x12/\n+STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE\x10\t\x12\x1f\n\x1bSTATUS_UPDATE_MINIOS_FAILED\x10\n\x12&\n\"STATUS_POST_PROVISION_SETUP_FAILED\x10\x0b\x12\x1b\n\x17STATUS_CLEAR_TPM_FAILED\x10\x0c\x12\x1e\n\x1aSTATUS_STABLIZE_DUT_FAILED\x10\r\x12\x1d\n\x19STATUS_INSTALL_DLC_FAILED\x10\x0e\x12%\n!STATUS_PRE_PROVISION_SETUP_FAILED\x10\x0f\x12%\n!STATUS_CIPD_PACKAGE_LOOKUP_FAILED\x10\x10\x12$\n STATUS_CIPD_PACKAGE_FETCH_FAILED\x10\x11\x12\x1b\n\x17STATUS_GS_UPLOAD_FAILED\x10\x12\x12\x1d\n\x19STATUS_GS_DOWNLOAD_FAILED\x10\x13\x12\x12\n\x0eSTATUS_SUCCESS\x10\x14\x12/\n+STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE\x10\x15\x12)\n%STATUS_PRE_PROVISION_USB_BOOT_FAILURE\x10\x16\x12&\n\"STATUS_DOWNLOADING_FIRMWARE_FAILED\x10\x17\x12\x1f\n\x1bSTATUS_FIRMWARE_CSME_LOCKED\x10\x18\"\x11\n\x0fInstallMetadata\"\xb1\x02\n\x0eInstallRequest\x12+\n\nimage_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x16\n\x0eprevent_reboot\x18\x02 \x01(\x08\x12\x32\n\x11overwrite_payload\x18\x03 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12&\n\x08metadata\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any\x12>\n\x10partner_metadata\x18\x05 \x01(\x0b\x32$.chromiumos.test.api.PartnerMetadata\x12>\n\x10kernel_prebuilts\x18\x06 \x01(\x0b\x32$.chromiumos.test.api.KernelPrebuilts\"A\n\x0fPartnerMetadata\x12\x12\n\naccount_id\x18\x01 \x01(\x03\x12\x1a\n\x12partner_gcs_bucket\x18\x02 \x01(\t\"\xcd\x01\n\x0fKernelPrebuilts\x12M\n\x10partition_images\x18\x01 \x03(\x0b\x32\x33.chromiumos.test.api.KernelPrebuilts.PartitionImage\x1ak\n\x0ePartitionImage\x12\x16\n\x0epartition_name\x18\x01 \x01(\t\x12+\n\nimage_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x14\n\x0cramdisk_name\x18\x03 \x01(\t2\xfb\x01\n\x17GenericProvisionService\x12\x66\n\x07StartUp\x12,.chromiumos.test.api.ProvisionStartupRequest\x1a-.chromiumos.test.api.ProvisionStartupResponse\x12x\n\x07Install\x12#.chromiumos.test.api.InstallRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fInstallResponse\x12\x0fInstallMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -60,8 +60,8 @@ _PROVISIONSTARTUPRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=627,
-  serialized_end=734,
+  serialized_start=649,
+  serialized_end=756,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONSTARTUPRESPONSE_STATUS)
 
@@ -200,8 +200,8 @@ _INSTALLRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=875,
-  serialized_end=1784,
+  serialized_start=897,
+  serialized_end=1806,
 )
 _sym_db.RegisterEnumDescriptor(_INSTALLRESPONSE_STATUS)
 
@@ -281,6 +281,13 @@ _PROVISIONSTARTUPRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='version_info', full_name='chromiumos.test.api.ProvisionStartupResponse.version_info', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -295,7 +302,7 @@ _PROVISIONSTARTUPRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=529,
-  serialized_end=734,
+  serialized_end=756,
 )
 
 
@@ -341,8 +348,8 @@ _INSTALLRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=737,
-  serialized_end=1784,
+  serialized_start=759,
+  serialized_end=1806,
 )
 
 
@@ -366,8 +373,8 @@ _INSTALLMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1786,
-  serialized_end=1803,
+  serialized_start=1808,
+  serialized_end=1825,
 )
 
 
@@ -433,8 +440,8 @@ _INSTALLREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1806,
-  serialized_end=2111,
+  serialized_start=1828,
+  serialized_end=2133,
 )
 
 
@@ -472,8 +479,8 @@ _PARTNERMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2113,
-  serialized_end=2178,
+  serialized_start=2135,
+  serialized_end=2200,
 )
 
 
@@ -518,8 +525,8 @@ _KERNELPREBUILTS_PARTITIONIMAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2279,
-  serialized_end=2386,
+  serialized_start=2301,
+  serialized_end=2408,
 )
 
 _KERNELPREBUILTS = _descriptor.Descriptor(
@@ -549,8 +556,8 @@ _KERNELPREBUILTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2181,
-  serialized_end=2386,
+  serialized_start=2203,
+  serialized_end=2408,
 )
 
 _PROVISIONSTARTUPREQUEST.fields_by_name['dut'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUT
@@ -647,8 +654,8 @@ _GENERICPROVISIONSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2389,
-  serialized_end=2640,
+  serialized_start=2411,
+  serialized_end=2662,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartUp',

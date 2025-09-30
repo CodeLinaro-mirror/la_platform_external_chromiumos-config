@@ -61,6 +61,7 @@ message ProvisionStartupResponse {
     STATUS_STARTUP_FAILED = 3;
   }
   Status status = 1;
+  string version_info = 2;
 }
 
 message InstallResponse {

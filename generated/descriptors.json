@@ -28725,6 +28725,13 @@
               "number": 1,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.ProvisionStartupResponse.Status"
+            },
+            {
+              "jsonName": "versionInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "version_info",
+              "number": 2,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ProvisionStartupResponse"
