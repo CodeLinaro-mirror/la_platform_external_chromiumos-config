@@ -28645,7 +28645,8 @@
         "chromiumos/storage_path.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto",
-        "google/protobuf/any.proto"
+        "google/protobuf/any.proto",
+        "chromiumos/test/api/test_execution_metadata.proto"
       ],
       "messageType": [
         {
@@ -28689,6 +28690,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecutionMetadata"
             }
           ],
           "name": "ProvisionStartupRequest"
@@ -28922,6 +28931,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.KernelPrebuilts"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecutionMetadata"
             }
           ],
           "name": "InstallRequest"
