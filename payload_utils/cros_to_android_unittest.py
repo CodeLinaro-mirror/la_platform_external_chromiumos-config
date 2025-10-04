@@ -557,6 +557,26 @@ class HalEntryHelpersTest(unittest.TestCase):
         cros_to_android._add_stylus_entry(self.root_element, self.design_config)
         self.assertIsNone(self.root_element.find("StylusConfiguration"))
 
+    def test_add_touchscreen_entry_present_valid(self):
+        """Test touchscreen entry with screen.touch_support is PRESENT."""
+        this_screen = self.design_config.hardware_features.screen
+        this_screen.touch_support = (
+            topology_pb2.HardwareFeatures.Present.PRESENT
+        )
+        this_screen.panel_properties.diagonal_milliinch = 14000
+
+        cros_to_android._add_screen_entry(self.root_element, self.design_config)
+        screen_elem = self.root_element.find("ScreenConfiguration")
+        self.assertIsNotNone(screen_elem)
+        self.assertEqual(
+            screen_elem.find("screen-size").text, "14000 diagonal_milliinch"
+        )
+
+    def test_add_touchscreen_entry_not_present(self):
+        """Test touchscreen entry when screen is not present."""
+        cros_to_android._add_screen_entry(self.root_element, self.design_config)
+        self.assertIsNone(self.root_element.find("ScreenConfiguration"))
+
 
 class FeatureXmlGenerationTest(unittest.TestCase):
     """Tests for feature XML generation functions."""

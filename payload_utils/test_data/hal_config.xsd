@@ -148,6 +148,11 @@
           <xs:documentation>The form factor of the device (e.g., CLAMSHELL, CONVERTIBLE).</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element type="xs:boolean" name="touchscreen-support" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Screen touch support present.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -255,6 +260,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="ScreenConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="screen-size" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Touch screen size in diagonal length in milliinch.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -269,6 +284,7 @@
       <xs:element name="StorageConfiguration" type="StorageConfigurationType" minOccurs="0"/>
       <xs:element name="KeyboardConfiguration" type="KeyboardConfigurationType" minOccurs="0"/>
       <xs:element name="StylusConfiguration" type="StylusConfigurationType" minOccurs="0"/>
+      <xs:element name="ScreenConfiguration" type="ScreenConfigurationType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

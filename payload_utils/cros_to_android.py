@@ -648,6 +648,27 @@ def _add_hardware_features_entry(
             design_config.id.value,
             form_factor,
         )
+        return
+
+    if not hw_features.HasField("screen"):
+        logging.debug(
+            "[%s] No screen found. Skipping HardwareFeatures.Screen.",
+            design_config.id.value,
+        )
+        return
+
+    touch_support = "false"
+    if (
+        hw_features.screen.touch_support
+        == topology_pb2.HardwareFeatures.PRESENT
+    ):
+        touch_support = "true"
+
+    hw_feature_elem = hal_config.find("HardwareFeaturesConfiguration")
+    if hw_feature_elem:
+        etree.SubElement(hw_feature_elem, "touchscreen-support").text = (
+            touch_support
+        )
 
 
 def _add_camera_entry(
@@ -931,6 +952,30 @@ def _add_stylus_entry(
         )
 
 
+def _add_screen_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Screen Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("screen"):
+        logging.debug(
+            "[%s] No screen found. Skipping ScreenConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    panel_prop = hw_features.screen.panel_properties
+    screen_elem = etree.SubElement(hal_config, "ScreenConfiguration")
+    value_text = f"{panel_prop.diagonal_milliinch} diagonal_milliinch"
+    etree.SubElement(screen_elem, "screen-size").text = value_text
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -979,6 +1024,7 @@ def _add_hal_config_entry(
     _add_storage_entry(hal_config_elem, design_config)
     _add_keyboard_entry(hal_config_elem, design_config)
     _add_stylus_entry(hal_config_elem, design_config)
+    _add_screen_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(
