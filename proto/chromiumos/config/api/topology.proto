@@ -377,7 +377,7 @@ message HardwareFeatures {
       AUDIO_CODEC_ALC256 = 18;
       AUDIO_CODEC_ALC3247 = 19;
       AUDIO_CODEC_ALC3287 = 20;
-      // 21 is free to be used
+      CS42L43 = 21;
       AUDIO_CODEC_ALC722 = 22;
       AUDIO_CODEC_ALC721 = 23;
       AUDIO_CODEC_ALC3204 = 24;
@@ -410,6 +410,7 @@ message HardwareFeatures {
       AMPLIFIER_ALC3204 = 24;
       ALC1320 = 25;
       RT9123 = 26;
+      CS35L56 = 27;
     }
 
     enum AudioConfigStructure {
