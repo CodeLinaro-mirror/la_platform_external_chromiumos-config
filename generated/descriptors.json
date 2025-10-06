@@ -28498,6 +28498,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Container.PortBinding"
+            },
+            {
+              "jsonName": "image",
+              "label": "LABEL_OPTIONAL",
+              "name": "image",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Container",
