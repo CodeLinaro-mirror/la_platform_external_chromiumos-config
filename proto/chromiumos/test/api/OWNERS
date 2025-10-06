@@ -5,3 +5,5 @@ include chromiumos/config:/OWNERS.testplatform
 per-file *publish*=file:chromiumos/owners:v1:/infra/OWNERS.ctrp
 per-file *post_test*=file:chromiumos/owners:v1:/infra/OWNERS.ctrp
 per-file metadata/...=file:chromiumos/owners:v1:/infra/OWNERS.ctrp
+
+per-file firmware_provision.proto=jbettis@chromium.org

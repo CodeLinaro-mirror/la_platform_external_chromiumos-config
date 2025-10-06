@@ -34,6 +34,9 @@ message FirmwareProvisionInstallMetadata {
 
   // The expected operating system of the device.
   OperatingSystem os = 2;
+
+  // Force updating the firmware even if it is already the right version.
+  bool force_flash_same_version = 3;
 }
 
 // FirmwareProvisionResponse records the response of the firmware provisioning.
