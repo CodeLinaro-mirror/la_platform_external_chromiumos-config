@@ -12797,268 +12797,6 @@
         {
           "field": [
             {
-              "jsonName": "typecd",
-              "label": "LABEL_OPTIONAL",
-              "name": "typecd",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.UsbConfig.TypeCD"
-            }
-          ],
-          "name": "UsbConfig",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "dpOnly",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "dp_only",
-                  "number": 1,
-                  "type": "TYPE_BOOL"
-                }
-              ],
-              "name": "TypeCD"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/config/api/software/usb_config.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
-      },
-      "package": "chromiumos.config.api.software",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/build/api/factory.proto",
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/build/api/system_image.proto",
-        "chromiumos/config/api/design_config_id.proto",
-        "chromiumos/config/api/resource_config.proto",
-        "chromiumos/config/api/software/audio_config.proto",
-        "chromiumos/config/api/software/bluetooth_config.proto",
-        "chromiumos/config/api/software/camera_config.proto",
-        "chromiumos/config/api/software/disk_layout.proto",
-        "chromiumos/config/api/software/firmware_info.proto",
-        "chromiumos/config/api/software/health_config.proto",
-        "chromiumos/config/api/software/nnpalm_config.proto",
-        "chromiumos/config/api/software/power_config.proto",
-        "chromiumos/config/api/software/rma_config.proto",
-        "chromiumos/config/api/software/ui_config.proto",
-        "chromiumos/config/api/software/usb_config.proto",
-        "chromiumos/config/api/wifi_config.proto",
-        "chromiumos/config/public_replication/public_replication.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "publicReplication",
-              "label": "LABEL_OPTIONAL",
-              "name": "public_replication",
-              "number": 12,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.public_replication.PublicReplication"
-            },
-            {
-              "jsonName": "designConfigId",
-              "label": "LABEL_OPTIONAL",
-              "name": "design_config_id",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.DesignConfigId"
-            },
-            {
-              "jsonName": "idScanConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "id_scan_config",
-              "number": 8,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.DesignConfigId.ScanConfig"
-            },
-            {
-              "jsonName": "firmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "firmwareBuildConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_build_config",
-              "number": 9,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareBuildConfig"
-            },
-            {
-              "jsonName": "firmwareBuildTargets",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_build_targets",
-              "number": 16,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.Firmware.BuildTargets"
-            },
-            {
-              "jsonName": "systemBuildTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "system_build_target",
-              "number": 13,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
-            },
-            {
-              "jsonName": "factoryBuildTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "factory_build_target",
-              "number": 14,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.Factory.BuildTarget"
-            },
-            {
-              "jsonName": "bluetoothConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "bluetooth_config",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.BluetoothConfig"
-            },
-            {
-              "jsonName": "powerConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_config",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.PowerConfig"
-            },
-            {
-              "jsonName": "resourceConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "resource_config",
-              "number": 19,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.ResourceConfig"
-            },
-            {
-              "jsonName": "audioConfigs",
-              "label": "LABEL_REPEATED",
-              "name": "audio_configs",
-              "number": 10,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.AudioConfig"
-            },
-            {
-              "jsonName": "wifiConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "wifi_config",
-              "number": 11,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.WifiConfig"
-            },
-            {
-              "jsonName": "healthConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "health_config",
-              "number": 18,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.HealthConfig"
-            },
-            {
-              "jsonName": "cameraConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "camera_config",
-              "number": 15,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.CameraConfig"
-            },
-            {
-              "jsonName": "uiConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "ui_config",
-              "number": 17,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.UiConfig"
-            },
-            {
-              "jsonName": "usbConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "usb_config",
-              "number": 20,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.UsbConfig"
-            },
-            {
-              "jsonName": "nnpalmConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "nnpalm_config",
-              "number": 21,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.NnpalmConfig"
-            },
-            {
-              "jsonName": "rmaConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "rma_config",
-              "number": 22,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.RmaConfig"
-            },
-            {
-              "jsonName": "firmwareInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_info",
-              "number": 23,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.FirmwareInfo"
-            },
-            {
-              "jsonName": "diskLayout",
-              "label": "LABEL_OPTIONAL",
-              "name": "disk_layout",
-              "number": 24,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.DiskLayout"
-            }
-          ],
-          "name": "SoftwareConfig",
-          "reservedRange": [
-            {
-              "end": 2,
-              "start": 1
-            },
-            {
-              "end": 3,
-              "start": 2
-            },
-            {
-              "end": 7,
-              "start": 6
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/config/api/software/software_config.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
-      },
-      "package": "chromiumos.config.api.software",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
               "jsonName": "audioCodec",
               "label": "LABEL_OPTIONAL",
               "name": "audio_codec",
@@ -13313,6 +13051,277 @@
         }
       ],
       "name": "chromiumos/config/api/software/unified_fw_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "typecd",
+              "label": "LABEL_OPTIONAL",
+              "name": "typecd",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UsbConfig.TypeCD"
+            }
+          ],
+          "name": "UsbConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dpOnly",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dp_only",
+                  "number": 1,
+                  "type": "TYPE_BOOL"
+                }
+              ],
+              "name": "TypeCD"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/software/usb_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/factory.proto",
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/build/api/system_image.proto",
+        "chromiumos/config/api/design_config_id.proto",
+        "chromiumos/config/api/resource_config.proto",
+        "chromiumos/config/api/software/audio_config.proto",
+        "chromiumos/config/api/software/bluetooth_config.proto",
+        "chromiumos/config/api/software/camera_config.proto",
+        "chromiumos/config/api/software/disk_layout.proto",
+        "chromiumos/config/api/software/firmware_info.proto",
+        "chromiumos/config/api/software/health_config.proto",
+        "chromiumos/config/api/software/nnpalm_config.proto",
+        "chromiumos/config/api/software/power_config.proto",
+        "chromiumos/config/api/software/rma_config.proto",
+        "chromiumos/config/api/software/ui_config.proto",
+        "chromiumos/config/api/software/unified_fw_config.proto",
+        "chromiumos/config/api/software/usb_config.proto",
+        "chromiumos/config/api/wifi_config.proto",
+        "chromiumos/config/public_replication/public_replication.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "publicReplication",
+              "label": "LABEL_OPTIONAL",
+              "name": "public_replication",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.PublicReplication"
+            },
+            {
+              "jsonName": "designConfigId",
+              "label": "LABEL_OPTIONAL",
+              "name": "design_config_id",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DesignConfigId"
+            },
+            {
+              "jsonName": "idScanConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "id_scan_config",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DesignConfigId.ScanConfig"
+            },
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "firmwareBuildConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_build_config",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareBuildConfig"
+            },
+            {
+              "jsonName": "firmwareBuildTargets",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_build_targets",
+              "number": 16,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.Firmware.BuildTargets"
+            },
+            {
+              "jsonName": "systemBuildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "system_build_target",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
+            },
+            {
+              "jsonName": "factoryBuildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "factory_build_target",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.Factory.BuildTarget"
+            },
+            {
+              "jsonName": "bluetoothConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth_config",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.BluetoothConfig"
+            },
+            {
+              "jsonName": "powerConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_config",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.PowerConfig"
+            },
+            {
+              "jsonName": "resourceConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "resource_config",
+              "number": 19,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ResourceConfig"
+            },
+            {
+              "jsonName": "audioConfigs",
+              "label": "LABEL_REPEATED",
+              "name": "audio_configs",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.AudioConfig"
+            },
+            {
+              "jsonName": "wifiConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "wifi_config",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.WifiConfig"
+            },
+            {
+              "jsonName": "healthConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "health_config",
+              "number": 18,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.HealthConfig"
+            },
+            {
+              "jsonName": "cameraConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_config",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.CameraConfig"
+            },
+            {
+              "jsonName": "uiConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "ui_config",
+              "number": 17,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UiConfig"
+            },
+            {
+              "jsonName": "usbConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_config",
+              "number": 20,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UsbConfig"
+            },
+            {
+              "jsonName": "nnpalmConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "nnpalm_config",
+              "number": 21,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.NnpalmConfig"
+            },
+            {
+              "jsonName": "rmaConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "rma_config",
+              "number": 22,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.RmaConfig"
+            },
+            {
+              "jsonName": "firmwareInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_info",
+              "number": 23,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.FirmwareInfo"
+            },
+            {
+              "jsonName": "diskLayout",
+              "label": "LABEL_OPTIONAL",
+              "name": "disk_layout",
+              "number": 24,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.DiskLayout"
+            },
+            {
+              "jsonName": "unifiedFwConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "unified_fw_config",
+              "number": 25,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UnifiedFirmwareConfig"
+            }
+          ],
+          "name": "SoftwareConfig",
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            },
+            {
+              "end": 3,
+              "start": 2
+            },
+            {
+              "end": 7,
+              "start": 6
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/software/software_config.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
       },
