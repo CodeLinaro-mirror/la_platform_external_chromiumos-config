@@ -22984,6 +22984,50 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "recoveryMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "recovery_mode",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "config",
+              "label": "LABEL_OPTIONAL",
+              "name": "config",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartEmptyContainerRequest"
+        },
+        {
+          "name": "StartEmptyContainerResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
             }
           ],
           "name": "GetServodStatusRequest"
@@ -23765,6 +23809,11 @@
               "inputType": ".chromiumos.test.api.bols.StopServodRequest",
               "name": "StopServod",
               "outputType": ".chromiumos.test.api.bols.StopServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.StartEmptyContainerRequest",
+              "name": "StartEmptyContainer",
+              "outputType": ".chromiumos.test.api.bols.StartEmptyContainerResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetServodStatusRequest",

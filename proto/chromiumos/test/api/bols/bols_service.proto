@@ -73,6 +73,16 @@ service BolsService {
   // StopServod stops the servod daemon.
   rpc StopServod(StopServodRequest) returns (StopServodResponse);
 
+  // StartEmptyContainer starts a servod container without running a servod
+  // process. For BOLS services that run servod in a container, this is
+  // useful for maintenance or debugging, such as when updating servo
+  // firmware. If the BOLS service does not use a container, this RPC will do
+  // nothing.
+  // When work in the empty container is complete, users should call StopServod
+  // to clean up and remove the container.
+  rpc StartEmptyContainer(StartEmptyContainerRequest)
+      returns (StartEmptyContainerResponse);
+
   // GetServodStatus gets the current status of servod.
   rpc GetServodStatus(GetServodStatusRequest) returns (GetServodStatusResponse);
 
@@ -424,6 +434,30 @@ message StopServodRequest {
 }
 
 message StopServodResponse {}
+
+message StartEmptyContainerRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // The board name of the device managed by servod.
+  // Used to load target controls and configs for servod.
+  string board = 2;
+
+  // The model name of the device managed by servod.
+  // Used to load target controls and configs for servod.
+  string model = 3;
+
+  // Specify if servod need to start in recovery_mode.
+  // This is a special startup for servod, please do not confuse with
+  // the boot mode of the connected device.
+  bool recovery_mode = 4;
+
+  // Special configuration param used at servod start.
+  // The parameter specified by --CONFIG.
+  string config = 5;
+}
+
+message StartEmptyContainerResponse {}
 
 message GetServodStatusRequest {
   // The station identifier.

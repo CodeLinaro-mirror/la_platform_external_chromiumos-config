@@ -61,6 +61,14 @@ type BolsServiceClient interface {
 	StartServod(ctx context.Context, in *StartServodRequest, opts ...grpc.CallOption) (*StartServodResponse, error)
 	// StopServod stops the servod daemon.
 	StopServod(ctx context.Context, in *StopServodRequest, opts ...grpc.CallOption) (*StopServodResponse, error)
+	// StartEmptyContainer starts a servod container without running a servod
+	// process. For BOLS services that run servod in a container, this is
+	// useful for maintenance or debugging, such as when updating servo
+	// firmware. If the BOLS service does not use a container, this RPC will do
+	// nothing.
+	// When work in the empty container is complete, users should call StopServod
+	// to clean up and remove the container.
+	StartEmptyContainer(ctx context.Context, in *StartEmptyContainerRequest, opts ...grpc.CallOption) (*StartEmptyContainerResponse, error)
 	// GetServodStatus gets the current status of servod.
 	GetServodStatus(ctx context.Context, in *GetServodStatusRequest, opts ...grpc.CallOption) (*GetServodStatusResponse, error)
 	// HWInitServod calls hwinit of servod.
@@ -382,6 +390,15 @@ func (c *bolsServiceClient) StopServod(ctx context.Context, in *StopServodReques
 	return out, nil
 }
 
+func (c *bolsServiceClient) StartEmptyContainer(ctx context.Context, in *StartEmptyContainerRequest, opts ...grpc.CallOption) (*StartEmptyContainerResponse, error) {
+	out := new(StartEmptyContainerResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/StartEmptyContainer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bolsServiceClient) GetServodStatus(ctx context.Context, in *GetServodStatusRequest, opts ...grpc.CallOption) (*GetServodStatusResponse, error) {
 	out := new(GetServodStatusResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/GetServodStatus", in, out, opts...)
@@ -578,6 +595,14 @@ type BolsServiceServer interface {
 	StartServod(context.Context, *StartServodRequest) (*StartServodResponse, error)
 	// StopServod stops the servod daemon.
 	StopServod(context.Context, *StopServodRequest) (*StopServodResponse, error)
+	// StartEmptyContainer starts a servod container without running a servod
+	// process. For BOLS services that run servod in a container, this is
+	// useful for maintenance or debugging, such as when updating servo
+	// firmware. If the BOLS service does not use a container, this RPC will do
+	// nothing.
+	// When work in the empty container is complete, users should call StopServod
+	// to clean up and remove the container.
+	StartEmptyContainer(context.Context, *StartEmptyContainerRequest) (*StartEmptyContainerResponse, error)
 	// GetServodStatus gets the current status of servod.
 	GetServodStatus(context.Context, *GetServodStatusRequest) (*GetServodStatusResponse, error)
 	// HWInitServod calls hwinit of servod.
@@ -679,6 +704,9 @@ func (UnimplementedBolsServiceServer) StartServod(context.Context, *StartServodR
 }
 func (UnimplementedBolsServiceServer) StopServod(context.Context, *StopServodRequest) (*StopServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopServod not implemented")
+}
+func (UnimplementedBolsServiceServer) StartEmptyContainer(context.Context, *StartEmptyContainerRequest) (*StartEmptyContainerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartEmptyContainer not implemented")
 }
 func (UnimplementedBolsServiceServer) GetServodStatus(context.Context, *GetServodStatusRequest) (*GetServodStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetServodStatus not implemented")
@@ -1056,6 +1084,24 @@ func _BolsService_StopServod_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BolsService_StartEmptyContainer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartEmptyContainerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BolsServiceServer).StartEmptyContainer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.bols.BolsService/StartEmptyContainer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BolsServiceServer).StartEmptyContainer(ctx, req.(*StartEmptyContainerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BolsService_GetServodStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetServodStatusRequest)
 	if err := dec(in); err != nil {
@@ -1412,6 +1458,10 @@ var BolsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "StopServod",
 			Handler:    _BolsService_StopServod_Handler,
+		},
+		{
+			MethodName: "StartEmptyContainer",
+			Handler:    _BolsService_StartEmptyContainer_Handler,
 		},
 		{
 			MethodName: "GetServodStatus",
