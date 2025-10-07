@@ -6047,6 +6047,10 @@
                     {
                       "name": "MODEM_LCUK54",
                       "number": 10
+                    },
+                    {
+                      "name": "MODEM_RW350",
+                      "number": 11
                     }
                   ]
                 }
@@ -6356,6 +6360,14 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "mainboard_has_early_sign_of_life",
                   "number": 15,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "ishHasMainFw",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ish_has_main_fw",
+                  "number": 16,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
@@ -12201,6 +12213,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "height",
               "number": 2,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "bitrate",
+              "label": "LABEL_OPTIONAL",
+              "name": "bitrate",
+              "number": 3,
               "type": "TYPE_UINT32"
             }
           ],
@@ -19036,6 +19055,96 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "enumType": [
+        {
+          "name": "RPMType",
+          "value": [
+            {
+              "name": "RPM_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "RPM_TYPE_SENTRY",
+              "number": 1
+            },
+            {
+              "name": "RPM_TYPE_IP9850",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frontendAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "frontend_address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_hostname",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitOutlet",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_outlet",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hydraHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hydra_hostname",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RPMType"
+            }
+          ],
+          "name": "RPM"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/rpm.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/lab/api/rpm.proto"
+      ],
       "messageType": [
         {
           "field": [
@@ -19100,6 +19209,13 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "type",
                   "number": 5,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "tags",
+                  "label": "LABEL_REPEATED",
+                  "name": "tags",
+                  "number": 6,
                   "type": "TYPE_STRING"
                 }
               ],
@@ -19195,6 +19311,14 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.PasitHost.Device.PowerSupply"
+                },
+                {
+                  "jsonName": "rpm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "rpm",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.RPM"
                 }
               ],
               "name": "Device",
@@ -19231,93 +19355,6 @@
         }
       ],
       "name": "chromiumos/test/lab/api/pasit_host.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/lab/api/ip_endpoint.proto"
-      ],
-      "enumType": [
-        {
-          "name": "RPMType",
-          "value": [
-            {
-              "name": "RPM_TYPE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "RPM_TYPE_SENTRY",
-              "number": 1
-            },
-            {
-              "name": "RPM_TYPE_IP9850",
-              "number": 2
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "frontendAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "frontend_address",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "powerUnitHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_unit_hostname",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "powerUnitOutlet",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_unit_outlet",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "hydraHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "hydra_hostname",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 6,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.RPMType"
-            }
-          ],
-          "name": "RPM"
-        }
-      ],
-      "name": "chromiumos/test/lab/api/rpm.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
@@ -22832,6 +22869,13 @@
               "name": "config",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "reuseExisting",
+              "label": "LABEL_OPTIONAL",
+              "name": "reuse_existing",
+              "number": 6,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "StartServodRequest"
@@ -22915,7 +22959,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ReadServodRequest"
+          "name": "DocServodRequest"
         },
         {
           "field": [
@@ -22934,7 +22978,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "ReadServodResponse"
+          "name": "DocServodResponse"
         },
         {
           "field": [
@@ -23556,9 +23600,9 @@
               "outputType": ".chromiumos.test.api.bols.HWInitServodResponse"
             },
             {
-              "inputType": ".chromiumos.test.api.bols.ReadServodRequest",
-              "name": "ReadServod",
-              "outputType": ".chromiumos.test.api.bols.ReadServodResponse"
+              "inputType": ".chromiumos.test.api.bols.DocServodRequest",
+              "name": "DocServod",
+              "outputType": ".chromiumos.test.api.bols.DocServodResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetServodRequest",
@@ -30263,13 +30307,6 @@
               "name": "encoded_atp_test_job_msg",
               "number": 10,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "skipProvision",
-              "label": "LABEL_OPTIONAL",
-              "name": "skip_provision",
-              "number": 12,
-              "type": "TYPE_BOOL"
             }
           ],
           "name": "CTPRequest"
@@ -30400,6 +30437,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "ignore_variant_category",
               "number": 11,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "skipProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_provision",
+              "number": 12,
               "type": "TYPE_BOOL"
             }
           ],
@@ -34084,6 +34128,15 @@
       ],
       "messageType": [
         {
+          "field": [
+            {
+              "jsonName": "reuseExisting",
+              "label": "LABEL_OPTIONAL",
+              "name": "reuse_existing",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
           "name": "StartServodRequest"
         },
         {
@@ -34268,6 +34321,72 @@
         {
           "field": [
             {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFileRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "GetFileResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "reqInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "req_info",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.lsnexus.PutFileRequestInitInfo"
+            },
+            {
+              "jsonName": "data",
+              "label": "LABEL_OPTIONAL",
+              "name": "data",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "PutFileRequest",
+          "oneofDecl": [
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PutFileRequestInitInfo"
+        },
+        {
+          "name": "PutFileResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "fileName",
               "label": "LABEL_OPTIONAL",
               "name": "file_name",
@@ -34443,6 +34562,20 @@
               "inputType": ".chromiumos.test.api.lsnexus.CallServodRequest",
               "name": "CallServod",
               "outputType": ".chromiumos.test.api.lsnexus.CallServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.lsnexus.GetFileRequest",
+              "name": "GetFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.GetFileResponse",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.lsnexus.PutFileRequest",
+              "name": "PutFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.lsnexus.PutFileResponse"
             },
             {
               "inputType": ".chromiumos.test.api.lsnexus.RemoveFileRequest",
@@ -36948,6 +37081,20 @@
               "name": "apfe_gcs_prefix",
               "number": 6,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "enableAlResultsArchiver",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_al_results_archiver",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "enableAlApfeArchiver",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_al_apfe_archiver",
+              "number": 8,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "XtsArchiverMetadata"
@@ -40756,6 +40903,31 @@
             {
               "name": "USB_PATH",
               "number": 28
+            },
+            {
+              "name": "TRY_BEHAVIOUR",
+              "number": 29
+            },
+            {
+              "name": "NON_PD_CURRENT",
+              "number": 30
+            }
+          ]
+        },
+        {
+          "name": "TryBehaviour",
+          "value": [
+            {
+              "name": "TRY_BEHAVIOUR_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "TRY_SRC",
+              "number": 1
+            },
+            {
+              "name": "TRY_SNK",
+              "number": 2
             }
           ]
         },
@@ -40896,6 +41068,36 @@
             {
               "name": "USB_PATH_EXTERNAL",
               "number": 2
+            }
+          ]
+        },
+        {
+          "name": "PortState",
+          "value": [
+            {
+              "name": "PORT_STATE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PORT_STATE_ON",
+              "number": 1
+            },
+            {
+              "name": "PORT_STATE_OFF",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "VdmHpd",
+          "value": [
+            {
+              "name": "VDM_HPD_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "VDM_HPD_IRQ",
+              "number": 1
             }
           ]
         },
@@ -41304,6 +41506,15 @@
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.UsbPath"
+            },
+            {
+              "jsonName": "tryBehaviour",
+              "label": "LABEL_OPTIONAL",
+              "name": "try_behaviour",
+              "number": 20,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.TryBehaviour"
             }
           ],
           "name": "GetUsbTesterCapabilityReply",
@@ -41480,6 +41691,15 @@
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.UsbPath"
+            },
+            {
+              "jsonName": "tryBehaviour",
+              "label": "LABEL_OPTIONAL",
+              "name": "try_behaviour",
+              "number": 20,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.TryBehaviour"
             }
           ],
           "name": "SetUsbTesterCapabilityRequest",
@@ -41765,6 +41985,14 @@
               "name": "max_num_ports",
               "number": 4,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PortState"
             }
           ],
           "name": "GetActivePortReply",
@@ -41789,6 +42017,14 @@
               "name": "port_id",
               "number": 2,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PortState"
             }
           ],
           "name": "SetActivePortRequest"
@@ -41960,6 +42196,90 @@
               "name": "_error_msg"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "vdmHpd",
+              "label": "LABEL_OPTIONAL",
+              "name": "vdm_hpd",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.VdmHpd"
+            }
+          ],
+          "name": "SendVdmHpdRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SendVdmHpdReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SimulateKeyPressRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SimulateKeyPressReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
@@ -42047,6 +42367,18 @@
               "name": "LoadEdid",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.LoadEdidReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SendVdmHpdRequest",
+              "name": "SendVdmHpd",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SendVdmHpdReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SimulateKeyPressRequest",
+              "name": "SimulateKeyPress",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SimulateKeyPressReply"
             }
           ],
           "name": "UsbTesterService"

@@ -10,6 +10,8 @@ message and generates corresponding Android configs, such as HAL XML files
 and feature XML files.
 """
 
+# pylint: disable=too-many-lines
+
 # [VPYTHON:BEGIN]
 # python_version: "3.11"
 # wheel: <
@@ -38,6 +40,7 @@ try:
     from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
     from chromiumos.config.api import topology_pb2
+    from chromiumos.config.api.software import camera_config_pb2
     from chromiumos.config.api.software import software_config_pb2
     from chromiumos.config.payload import config_bundle_pb2
 except ImportError:
@@ -107,6 +110,244 @@ def _load_config_bundle(
     json_format.Parse(json_content, bundle, ignore_unknown_fields=True)
     logging.info("Successfully parsed file: %s", file_path)
     return bundle
+
+
+def _generate_media_profiles_xml_string(
+    hw_features: topology_pb2.HardwareFeatures,
+    sw_config: software_config_pb2.SoftwareConfig,
+    dtd_path: Optional[pathlib.Path],
+) -> Optional[bytes]:
+    """Generates ARC media_profiles.xml file content as a string.
+
+    Similar to _generate_arc_media_profiles in cros_config_proto_converter.py,
+    but with dtd_path optional.
+
+    Args:
+        hw_features: HardwareFeatures proto message.
+        sw_config: SoftwareConfig proto message.
+        dtd_path: Full path to media_profiles.dtd file. If None, DTD
+          validation is skipped.
+
+    Returns:
+        Bytes of the media_profiles.xml content, or None if generation is
+        disabled or no camera devices are present.
+    """
+    # pylint: disable=too-many-locals
+
+    def _gen_camcorder_profiles(camera_id, resolutions):
+        elem = etree.Element(
+            "CamcorderProfiles", attrib={"cameraId": str(camera_id)}
+        )
+        for resolution in resolutions:
+            elem.extend(
+                [
+                    _gen_encoder_profile(resolution, False),
+                    _gen_encoder_profile(resolution, True),
+                ]
+            )
+        elem.extend(
+            [
+                etree.Element("ImageEncoding", attrib={"quality": "90"}),
+                etree.Element("ImageEncoding", attrib={"quality": "80"}),
+                etree.Element("ImageEncoding", attrib={"quality": "70"}),
+                etree.Element("ImageDecoding", attrib={"memCap": "20000000"}),
+            ]
+        )
+        return elem
+
+    def _gen_encoder_profile(resolution, timelapse):
+        # Default bitrates based on resolution
+        default_bitrates = {
+            (640, 480): 3000000,  # 3 Mbps for 480p
+            (1280, 720): 8000000,  # 8 Mbps for 720p
+            (1920, 1080): 12000000,  # 12 Mbps for 1080p
+        }
+        width = resolution.width
+        height = resolution.height
+        bitrate = (
+            resolution.bitrate
+            if resolution.bitrate
+            else default_bitrates.get((width, height), 8000000)
+        )
+
+        elem = etree.Element(
+            "EncoderProfile",
+            attrib={
+                "quality": ("timelapse" if timelapse else "")
+                + str(height)
+                + "p",
+                "fileFormat": "mp4",
+                "duration": "60",
+            },
+        )
+        elem.append(
+            etree.Element(
+                "Video",
+                attrib={
+                    "codec": "h264",
+                    "bitRate": str(bitrate),
+                    "width": str(width),
+                    "height": str(height),
+                    "frameRate": "30",
+                },
+            )
+        )
+        elem.append(
+            etree.Element(
+                "Audio",
+                attrib={
+                    "codec": "aac",
+                    "bitRate": "96000",
+                    "sampleRate": "44100",
+                    "channels": "1",
+                },
+            )
+        )
+        return elem
+
+    def _gen_video_encoder_cap(name, min_bit_rate, max_bit_rate):
+        return etree.Element(
+            "VideoEncoderCap",
+            attrib={
+                "name": name,
+                "enabled": "true",
+                "minBitRate": str(min_bit_rate),
+                "maxBitRate": str(max_bit_rate),
+                "minFrameWidth": "320",
+                "maxFrameWidth": "1920",
+                "minFrameHeight": "240",
+                "maxFrameHeight": "1080",
+                "minFrameRate": "15",
+                "maxFrameRate": "30",
+            },
+        )
+
+    def _gen_audio_encoder_cap(
+        name, min_bit_rate, max_bit_rate, min_sample_rate, max_sample_rate
+    ):
+        return etree.Element(
+            "AudioEncoderCap",
+            attrib={
+                "name": name,
+                "enabled": "true",
+                "minBitRate": str(min_bit_rate),
+                "maxBitRate": str(max_bit_rate),
+                "minSampleRate": str(min_sample_rate),
+                "maxSampleRate": str(max_sample_rate),
+                "minChannels": "1",
+                "maxChannels": "1",
+            },
+        )
+
+    camera_config = sw_config.camera_config
+    if not camera_config.generate_media_profiles:
+        return None
+
+    camera_pb = topology_pb2.HardwareFeatures.Camera
+    root = etree.Element("MediaSettings")
+    camera_id = 0
+    for facing in [camera_pb.FACING_FRONT, camera_pb.FACING_BACK]:
+        camera_device = next(
+            (
+                d
+                for d in hw_features.camera.devices
+                if not d.detachable and d.facing == facing
+            ),
+            None,
+        )
+        if camera_device is None:
+            continue
+        if camera_config.camcorder_resolutions:
+            resolutions = camera_config.camcorder_resolutions
+        else:
+            resolution = camera_config_pb2.Resolution()
+            resolution.width = 1280
+            resolution.height = 720
+            resolutions = [resolution]
+            if camera_device.flags & camera_pb.FLAGS_SUPPORT_1080P:
+                resolution_1080p = camera_config_pb2.Resolution()
+                resolution_1080p.width = 1920
+                resolution_1080p.height = 1080
+                resolutions.append(resolution_1080p)
+        root.append(_gen_camcorder_profiles(camera_id, resolutions))
+        camera_id += 1
+    # media_profiles.xml should have at least one CamcorderProfiles.
+    if camera_id == 0:
+        return None
+
+    root.extend(
+        [
+            etree.Element("EncoderOutputFileFormat", attrib={"name": "3gp"}),
+            etree.Element("EncoderOutputFileFormat", attrib={"name": "mp4"}),
+            _gen_video_encoder_cap("h264", 64000, 17000000),
+            _gen_video_encoder_cap("h263", 64000, 1000000),
+            _gen_video_encoder_cap("m4v", 64000, 2000000),
+            _gen_audio_encoder_cap("aac", 758, 288000, 8000, 48000),
+            _gen_audio_encoder_cap("heaac", 8000, 64000, 16000, 48000),
+            _gen_audio_encoder_cap("aaceld", 16000, 192000, 16000, 48000),
+            _gen_audio_encoder_cap("amrwb", 6600, 23050, 16000, 16000),
+            _gen_audio_encoder_cap("amrnb", 5525, 12200, 8000, 8000),
+            etree.Element(
+                "VideoDecoderCap", attrib={"name": "wmv", "enabled": "false"}
+            ),
+            etree.Element(
+                "AudioDecoderCap", attrib={"name": "wma", "enabled": "false"}
+            ),
+        ]
+    )
+
+    xml_content = etree.tostring(root, pretty_print=True)
+
+    # Validate against DTD if dtd_path is provided
+    if dtd_path:
+        dtd = etree.DTD(str(dtd_path))
+        if not dtd.validate(root):
+            raise etree.DTDValidateError(
+                f"Invalid media_profiles.xml generated:\n{dtd.error_log}"
+            )
+        logging.info("Media profile XML DTD validation successful.")
+    else:
+        logging.info("DTD schema not provided, skipping validation.")
+
+    return xml_content
+
+
+def run_generate_media_profiles(opts: argparse.Namespace) -> None:
+    """Handles the 'generate-media-profiles' sub-command logic."""
+    logging.info("Running generate-media-profiles command...")
+    config_bundle = _load_config_bundle(opts.jsonproto_file)
+    for design in config_bundle.design_list:
+        for design_config in design.configs:
+            model, sku = design_config.id.value.split(":")
+            sw_config = _get_sw_config(
+                config_bundle.software_configs, design_config.id.value
+            )
+
+            xml_content = _generate_media_profiles_xml_string(
+                design_config.hardware_features,
+                sw_config,
+                opts.dtd_schema,
+            )
+            if not xml_content:
+                logging.info(
+                    "Skipping media profile for %s:%s as generation was"
+                    " disabled or no relevant cameras found.",
+                    model,
+                    sku,
+                )
+                continue
+
+            sku_dir = opts.output_dir / f"{model}_{sku}".lower()
+            sku_dir.mkdir(parents=True, exist_ok=True)
+            output_file = sku_dir / f"media_profiles_{model}_{sku}.xml".lower()
+            with open(output_file, "wb") as f:
+                f.write(xml_content)
+            logging.info(
+                "Wrote media profile XML for %s:%s to %s",
+                model,
+                sku,
+                output_file,
+            )
 
 
 def _add_cellular_entry(
@@ -288,10 +529,46 @@ def _add_audio_entry(
             soundcard_name,
         )
 
-    model, _ = design_config.id.value.split(":")
+    # Initialize a list to hold parts of the audio_config_dir string in format
+    audio_config_fields = [soundcard_name]
 
+    headphone_codec_name = topology_pb2.HardwareFeatures.Audio.AudioCodec.Name(
+        audio_features.headphone_codec
+    )
+    if headphone_codec_name != "AUDIO_CODEC_UNKNOWN":
+        _, _, codec_str = headphone_codec_name.lower().rpartition("_")
+        if codec_str:
+            audio_config_fields.append(codec_str)
+
+    amplifier_name = topology_pb2.HardwareFeatures.Audio.Amplifier.Name(
+        audio_features.speaker_amp
+    )
+    if amplifier_name != "AMPLIFIER_UNKNOWN":
+        _, _, ampl_str = amplifier_name.lower().rpartition("_")
+        if ampl_str:
+            audio_config_fields.append(ampl_str)
+
+    lid_mic_count = (
+        audio_features.lid_microphone.value
+        if audio_features.HasField("lid_microphone")
+        else 0
+    )
+    base_mic_count = (
+        audio_features.base_microphone.value
+        if audio_features.HasField("base_microphone")
+        else 0
+    )
+    total_mic_count = lid_mic_count + base_mic_count
+
+    if total_mic_count > 0:
+        audio_config_fields.append(str(total_mic_count))
+
+    # Construct the audio-config-dir string by joining the parts
+    audio_config_dir_value = "_".join(audio_config_fields)
     audio_config_elem = etree.SubElement(hal_config, "AudioConfiguration")
-    etree.SubElement(audio_config_elem, "audio-config-dir").text = model
+    etree.SubElement(audio_config_elem, "audio-config-dir").text = (
+        audio_config_dir_value
+    )
     etree.SubElement(audio_config_elem, "soundcard").text = soundcard_name
 
 
@@ -366,6 +643,170 @@ def _add_hardware_features_entry(
         )
 
 
+def _add_camera_entry(
+    # pylint: disable=too-many-arguments
+    hal_config_elem: etree._Element,
+    hw_features: topology_pb2.HardwareFeatures,
+    sw_config: software_config_pb2.SoftwareConfig,
+    model: str,
+    sku: str,
+) -> None:
+    """Adds CameraConfiguration to the XML tree if applicable.
+
+    This entry will point to the expected media_profiles_MODEL_SKU.xml file.
+
+    Args:
+        hal_config_elem: The parent <HalConfig> XML element.
+        hw_features: HardwareFeatures proto for the design config.
+        sw_config: SoftwareConfig proto for the design config.
+        model: The model name.
+        sku: The SKU ID.
+    """
+
+    if not sw_config.camera_config.generate_media_profiles:
+        logging.debug(
+            "Skipping CameraConfiguration for %s:%s: Media profile generation"
+            " disabled in software config.",
+            model,
+            sku,
+        )
+        return
+
+    non_detachable_camera_found = any(
+        not d.detachable
+        and d.facing
+        in (
+            topology_pb2.HardwareFeatures.Camera.FACING_BACK,
+            topology_pb2.HardwareFeatures.Camera.FACING_FRONT,
+        )
+        for d in hw_features.camera.devices
+    )
+    if not non_detachable_camera_found:
+        logging.debug(
+            "Skipping CameraConfiguration for %s:%s: No non-detachable"
+            " cameras found.",
+            model,
+            sku,
+        )
+        return
+
+    media_profile_suffix = f"_{model.lower()}_{sku.lower()}"
+    camera_config_elem = etree.SubElement(
+        hal_config_elem, "CameraConfiguration"
+    )
+    etree.SubElement(camera_config_elem, "media-profile-suffix").text = (
+        media_profile_suffix
+    )
+    logging.debug(
+        "Added CameraConfiguration with media-profile-suffix '%s' for %s:%s.",
+        media_profile_suffix,
+        model,
+        sku,
+    )
+
+
+# pylint: disable=too-many-statements
+def _build_mtk_entry(parent, mtk_config) -> None:
+    """Handle WiFiSarConfiguration for MTKConfig case.
+
+    Args:
+        parent: The parent <HalConfig> XML element.
+        mtk_config: MtkConfig config.
+    """
+    sar_elem = etree.SubElement(parent, "MTKConfig")
+
+    def geo_power_chain(parent, power) -> None:
+        cfg = etree.SubElement(parent, "PowerConfig.2g")
+        etree.SubElement(cfg, "PowerLimit").text = str(power.limit_2g)
+        etree.SubElement(cfg, "PowerOffset").text = str(power.offset_2g)
+
+        cfg = etree.SubElement(parent, "PowerConfig.5g")
+        etree.SubElement(cfg, "PowerLimit").text = str(power.limit_5g)
+        etree.SubElement(cfg, "PowerOffset").text = str(power.offset_5g)
+
+        if power.limit_6g or power.offset_6g:
+            cfg = etree.SubElement(parent, "PowerConfig.6g")
+            etree.SubElement(cfg, "PowerLimit").text = str(power.limit_6g)
+            etree.SubElement(cfg, "PowerOffset").text = str(power.offset_6g)
+
+    if mtk_config.HasField("fcc_power_table"):
+        regdom_elem = etree.SubElement(sar_elem, "RegDomain.fcc")
+        geo_power_chain(regdom_elem, mtk_config.fcc_power_table)
+    if mtk_config.HasField("eu_power_table"):
+        regdom_elem = etree.SubElement(sar_elem, "RegDomain.eu")
+        geo_power_chain(regdom_elem, mtk_config.eu_power_table)
+    if mtk_config.HasField("other_power_table"):
+        regdom_elem = etree.SubElement(sar_elem, "RegDomain.other")
+        geo_power_chain(regdom_elem, mtk_config.other_power_table)
+
+    def power_chain(power, tablet_mode: bool) -> None:
+        if tablet_mode:
+            table = etree.SubElement(sar_elem, "PowerTable.tablet")
+        else:
+            table = etree.SubElement(sar_elem, "PowerTable.clamshell")
+
+        for sband in ("2g", "5g_1", "5g_2", "5g_3", "5g_4"):
+            cfg = etree.SubElement(table, f"PowerConfig.{sband}")
+            etree.SubElement(cfg, "PowerLimit").text = str(
+                getattr(power, f"limit_{sband}")
+            )
+
+        # Ignore 6 GHz parameters that are 0, which is the protobuf 3 default
+        for sband in ("6g_1", "6g_2", "6g_3", "6g_4", "6g_5", "6g_6"):
+            power_limit = getattr(power, f"limit_{sband}")
+            if power_limit:
+                cfg = etree.SubElement(table, f"PowerConfig.{sband}")
+                etree.SubElement(cfg, "PowerLimit").text = str(power_limit)
+
+    if mtk_config.HasField("tablet_mode_power_table"):
+        power_chain(mtk_config.tablet_mode_power_table, True)
+
+    if mtk_config.HasField("non_tablet_mode_power_table"):
+        power_chain(mtk_config.non_tablet_mode_power_table, False)
+
+
+# pylint: enable=too-many-statements
+
+
+def _add_wifi_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+    sw_config: software_config_pb2.SoftwareConfig,
+) -> None:
+    """Adds WiFiSarConfiguration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+        sw_config: software_config_pb2.SoftwareConfig specific to a design
+        config.
+    """
+    hw_features = design_config.hardware_features
+
+    wifi_config = None
+    if hw_features.wifi.HasField("wifi_config"):
+        wifi_config = hw_features.wifi.wifi_config
+    else:
+        wifi_config = sw_config.wifi_config
+
+    config_field = wifi_config.WhichOneof("wifi_config")
+    if config_field is not None:
+        logging.info("wifi_config is %s", config_field)
+
+        wifi_config_elem = etree.SubElement(hal_config, "WiFiSarConfiguration")
+        # skipping "ath10k_config" case as it is outdated,
+        # will add "qcom" when chip config is ready
+        if config_field in ("intel_config", "legacy_intel_config"):
+            etree.SubElement(wifi_config_elem, "Chip").text = "intel"
+        elif config_field.startswith("rtw"):
+            etree.SubElement(wifi_config_elem, "Chip").text = "rtw"
+        elif config_field == "mtk_config":
+            etree.SubElement(wifi_config_elem, "Chip").text = "mtk"
+            _build_mtk_entry(wifi_config_elem, wifi_config.mtk_config)
+        else:
+            logging.warning("unknown wifi_config: %s", config_field)
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -376,6 +817,7 @@ def _add_hal_config_entry(
     Args:
         root_element: The root XML element (<HalConfigurations>).
         design_config: The Design.Config proto to process.
+        sw_config: The SoftwareConfig proto.
     """
     if not design_config.id.value:
         logging.warning(
@@ -398,10 +840,20 @@ def _add_hal_config_entry(
     _add_firmware_entry(hal_config_elem, design_config, sw_config)
     _add_audio_entry(hal_config_elem, design_config)
     _add_video_entry(hal_config_elem, design_config)
+    _add_camera_entry(
+        hal_config_elem,
+        design_config.hardware_features,
+        sw_config,
+        model,
+        sku,
+    )
     _add_hardware_features_entry(hal_config_elem, design_config)
+    _add_wifi_entry(hal_config_elem, design_config, sw_config)
 
 
-def _convert_to_hal_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
+def _convert_to_hal_xml(
+    config_bundle: config_bundle_pb2.ConfigBundle,
+) -> bytes:
     """Converts a ConfigBundle proto to HAL XML.
 
     Args:
@@ -519,6 +971,8 @@ def _add_camera_features(
 
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     """Handles the 'generate-feature-xml' sub-command logic."""
+    # pylint: disable=too-many-branches
+
     logging.info("Running generate-feature-xml command...")
     config_bundle = _load_config_bundle(opts.jsonproto_file)
 
@@ -532,7 +986,19 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                 )
                 continue
 
-            model, sku = design_config.id.value.split(":")
+            sw_config = _get_sw_config(
+                config_bundle.software_configs, design_config.id.value
+            )
+            frid = sw_config.id_scan_config.frid.removeprefix("Google_")
+            if not frid:
+                logging.warning(
+                    "Skipping feature XML generation due to missing 'frid' in"
+                    " 'id_scan_config' for Design.Config ID '%s'.",
+                    design_config.id.value,
+                )
+                continue
+
+            _, sku = design_config.id.value.split(":")
             permissions_elem = etree.Element("permissions")
 
             hw_features = design_config.hardware_features
@@ -557,11 +1023,6 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
             if hw_features.accelerometer.lid_accelerometer == present_enum:
                 _add_feature_element(
                     permissions_elem, "android.sensor.device_orientation"
-                )
-
-            if hw_features.fingerprint.present == present_enum:
-                _add_feature_element(
-                    permissions_elem, "android.hardware.fingerprint"
                 )
 
             if present_enum in (
@@ -602,14 +1063,14 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
 
             _add_camera_features(permissions_elem, hw_features.camera)
 
-            sku_dir = opts.output_dir / f"{model}_{sku}".lower()
+            sku_dir = opts.output_dir / f"{frid}_{sku}".lower()
             sku_dir.mkdir(parents=True, exist_ok=True)
             output_file = sku_dir / "features.xml"
             with open(output_file, "wb") as f:
                 f.write(etree.tostring(permissions_elem, pretty_print=True))
             logging.info(
                 "Wrote combined feature XML for %s:%s to %s",
-                model,
+                frid,
                 sku,
                 output_file,
             )
@@ -677,6 +1138,35 @@ def _get_parser() -> argparse.ArgumentParser:
         "containing feature XML files will be created.",
     )
     parser_feature_xml.set_defaults(func=run_generate_feature_xml)
+
+    parser_media_profiles = subparsers.add_parser(
+        "generate-media-profiles",
+        help="Generate Android media profile XML files.",
+    )
+    parser_media_profiles.add_argument(
+        "jsonproto_file",
+        metavar="JSONPROTO_FILE",
+        type=pathlib.Path,
+        help="Path to the input JSON file representing a ConfigBundle message.",
+    )
+    parser_media_profiles.add_argument(
+        "-o",
+        "--output-dir",
+        required=True,
+        type=pathlib.Path,
+        help="Path to the base directory where <Model>_<SkuID> subdirectories "
+        "containing media profile XML files will be created.",
+    )
+    parser_media_profiles.add_argument(
+        "-d",
+        "--dtd-schema",
+        required=False,
+        default=None,
+        type=pathlib.Path,
+        help="Path to the media_profiles.dtd schema file for validation. "
+        "If not provided, validation is skipped.",
+    )
+    parser_media_profiles.set_defaults(func=run_generate_media_profiles)
 
     return parser
 

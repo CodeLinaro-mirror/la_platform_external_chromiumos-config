@@ -107,10 +107,10 @@ class BolsServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.HWInitServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.HWInitServodResponse.FromString,
                 )
-        self.ReadServod = channel.unary_unary(
-                '/chromiumos.test.api.bols.BolsService/ReadServod',
-                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.ReadServodRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.ReadServodResponse.FromString,
+        self.DocServod = channel.unary_unary(
+                '/chromiumos.test.api.bols.BolsService/DocServod',
+                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DocServodRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DocServodResponse.FromString,
                 )
         self.GetServod = channel.unary_unary(
                 '/chromiumos.test.api.bols.BolsService/GetServod',
@@ -315,8 +315,8 @@ class BolsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ReadServod(self, request, context):
-        """ReadServod read a servod control documentation.
+    def DocServod(self, request, context):
+        """DocServod read a servod control documentation.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -504,10 +504,10 @@ def add_BolsServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.HWInitServodRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.HWInitServodResponse.SerializeToString,
             ),
-            'ReadServod': grpc.unary_unary_rpc_method_handler(
-                    servicer.ReadServod,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.ReadServodRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.ReadServodResponse.SerializeToString,
+            'DocServod': grpc.unary_unary_rpc_method_handler(
+                    servicer.DocServod,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DocServodRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DocServodResponse.SerializeToString,
             ),
             'GetServod': grpc.unary_unary_rpc_method_handler(
                     servicer.GetServod,
@@ -889,7 +889,7 @@ class BolsService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ReadServod(request,
+    def DocServod(request,
             target,
             options=(),
             channel_credentials=None,
@@ -899,9 +899,9 @@ class BolsService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/ReadServod',
-            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.ReadServodRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.ReadServodResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/DocServod',
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DocServodRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DocServodResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

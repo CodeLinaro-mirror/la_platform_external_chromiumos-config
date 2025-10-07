@@ -104,6 +104,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="CameraConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="media-profile-suffix" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>This is used to set ro.media.xml_variant.profiles, which derives the media_profile.xml file for the given SKU. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HardwareFeaturesType">
     <xs:sequence>
       <xs:element type="FormFactorTypeEn" name="form-factor" minOccurs="1">
@@ -114,6 +124,74 @@
     </xs:sequence>
   </xs:complexType>
 
+  <!-- Beginning of WiFi related types -->
+  <xs:simpleType name="WiFiChipType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intel"/>
+      <xs:enumeration value="mtk"/>
+      <xs:enumeration value="rtw"/>
+      <xs:enumeration value="qcom"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PowerValueType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="PowerConfigType">
+    <xs:sequence>
+      <xs:element name="PowerLimit" type="PowerValueType"/>
+      <xs:element name="PowerOffset" type="PowerValueType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RegDomainType">
+    <xs:sequence>
+      <xs:element name="PowerConfig.2g" type="PowerConfigType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="PowerConfig.5g" type="PowerConfigType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PowerTableType">
+    <xs:sequence>
+      <xs:element name="PowerConfig.2g" type="PowerConfigType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="PowerConfig.5g" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.5g_1" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.5g_2" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.5g_3" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.5g_4" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g_1" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g_2" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g_3" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g_4" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g_5" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerConfig.6g_6" type="PowerConfigType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SarSpecType">
+    <xs:all>
+      <xs:element name="RegDomain.fcc" type="RegDomainType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RegDomain.eu" type="RegDomainType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RegDomain.other" type="RegDomainType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerTable.tablet" type="PowerTableType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PowerTable.clamshell" type="PowerTableType" minOccurs="1" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="SarConfigType">
+    <xs:sequence>
+      <xs:element name="Chip" type="WiFiChipType" minOccurs="1"/>
+      <xs:element name="MTKConfig" type="SarSpecType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="RTWConfig" type="SarSpecType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- End of WiFi related section -->
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -122,7 +200,9 @@
       <xs:element name="FirmwareConfiguration" type="FirmwareConfigurationType" minOccurs="0"/>
       <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
       <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
+      <xs:element name="CameraConfiguration" type="CameraConfigurationType" minOccurs="0"/>
       <xs:element name="HardwareFeatures" type="HardwareFeaturesType" minOccurs="0"/>
+      <xs:element name="WiFiSarConfiguration" type="SarConfigType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

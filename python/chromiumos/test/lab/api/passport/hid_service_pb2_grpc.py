@@ -6,8 +6,8 @@ from chromiumos.test.lab.api.passport import hid_service_pb2 as chromiumos_dot_t
 
 
 class HIDServiceStub(object):
-    """HIDService is a service which controls human interaction device simulators such
-    as keyboards, mice, etc.
+    """HIDService is a service which controls human interaction device simulators
+    such as keyboards, mice, etc.
     """
 
     def __init__(self, channel):
@@ -44,8 +44,8 @@ class HIDServiceStub(object):
 
 
 class HIDServiceServicer(object):
-    """HIDService is a service which controls human interaction device simulators such
-    as keyboards, mice, etc.
+    """HIDService is a service which controls human interaction device simulators
+    such as keyboards, mice, etc.
     """
 
     def GetHIDDevices(self, request, context):
@@ -63,7 +63,8 @@ class HIDServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def CloseHIDDevice(self, request, context):
-        """CloseHIDDevice releases the specified HID device and releases any resources held open.
+        """CloseHIDDevice releases the specified HID device and releases any resources
+        held open.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -119,8 +120,8 @@ def add_HIDServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class HIDService(object):
-    """HIDService is a service which controls human interaction device simulators such
-    as keyboards, mice, etc.
+    """HIDService is a service which controls human interaction device simulators
+    such as keyboards, mice, etc.
     """
 
     @staticmethod

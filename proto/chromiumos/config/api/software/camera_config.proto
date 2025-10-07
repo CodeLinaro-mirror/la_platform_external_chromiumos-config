@@ -11,6 +11,9 @@ package chromiumos.config.api.software;
 message Resolution {
   uint32 width = 1;
   uint32 height = 2;
+  // Optional bitrate in bits per second for this resolution. If not set,
+  // a default bitrate will be used based on the resolution.
+  uint32 bitrate = 3;
 }
 
 message CameraConfig {

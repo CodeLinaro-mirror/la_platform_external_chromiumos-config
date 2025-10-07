@@ -5,15 +5,23 @@
         "value": "TestDesign"
       },
       "name": "TestDesign",
-      "programId": {
-        "value": "TestProgram"
-      },
       "configs": [
         {
           "id": {
             "value": "TestDesign:123"
           },
           "hardwareFeatures": {
+            "camera": {
+              "devices": [
+                {
+                  "interface": "INTERFACE_MIPI",
+                  "facing": "FACING_FRONT",
+                  "orientation": "ORIENTATION_0",
+                  "flags": 1,
+                  "ids": ["TestFrontCamera"]
+                }
+              ]
+            },
             "cellular": {
               "present": "PRESENT",
               "model": "testdesign_fm101",
@@ -59,8 +67,12 @@
       "designConfigId": {
         "value": "TestDesign:123"
       },
+      "cameraConfig": {
+        "generateMediaProfiles": true
+      },
       "idScanConfig": {
-        "firmwareSku": 123
+        "firmwareSku": 123,
+        "frid": "Google_Frid123"
       },
       "firmware": {
         "ecRoPayload": {
@@ -86,7 +98,8 @@
         "value": "TestDesign:456"
       },
       "idScanConfig": {
-        "firmwareSku": 456
+        "firmwareSku": 456,
+        "frid": "Google_Frid456"
       },
       "firmware": {
         "ecRoPayload": {
@@ -110,7 +123,6 @@
   ],
   "partnerList": [],
   "components": [],
-  "programList": [],
   "deviceBrandList": [],
   "brandConfigs": []
 }

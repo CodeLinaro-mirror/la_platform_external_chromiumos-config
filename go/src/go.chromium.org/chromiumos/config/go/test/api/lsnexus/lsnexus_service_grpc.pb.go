@@ -29,6 +29,12 @@ type LSNexusServiceClient interface {
 	// CallServod runs a servod command.
 	// Allowed methods: doc, get, set, and hwinit.
 	CallServod(ctx context.Context, in *CallServodRequest, opts ...grpc.CallOption) (*CallServodResponse, error)
+	// GetFile gets a file from labstation/container.
+	GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (LSNexusService_GetFileClient, error)
+	// PutFile puts a file on labstation/container.
+	// If the directory of destination path does not exist, this service
+	// will also create the directory.
+	PutFile(ctx context.Context, opts ...grpc.CallOption) (LSNexusService_PutFileClient, error)
 	// RemoveFile removes a file on labstation/container.
 	RemoveFile(ctx context.Context, in *RemoveFileRequest, opts ...grpc.CallOption) (*RemoveFileResponse, error)
 	// MakeDir make a directory on the labstation/container.
@@ -91,6 +97,72 @@ func (c *lSNexusServiceClient) CallServod(ctx context.Context, in *CallServodReq
 	return out, nil
 }
 
+func (c *lSNexusServiceClient) GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (LSNexusService_GetFileClient, error) {
+	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[0], "/chromiumos.test.api.lsnexus.LSNexusService/GetFile", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &lSNexusServiceGetFileClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LSNexusService_GetFileClient interface {
+	Recv() (*GetFileResponse, error)
+	grpc.ClientStream
+}
+
+type lSNexusServiceGetFileClient struct {
+	grpc.ClientStream
+}
+
+func (x *lSNexusServiceGetFileClient) Recv() (*GetFileResponse, error) {
+	m := new(GetFileResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *lSNexusServiceClient) PutFile(ctx context.Context, opts ...grpc.CallOption) (LSNexusService_PutFileClient, error) {
+	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[1], "/chromiumos.test.api.lsnexus.LSNexusService/PutFile", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &lSNexusServicePutFileClient{stream}
+	return x, nil
+}
+
+type LSNexusService_PutFileClient interface {
+	Send(*PutFileRequest) error
+	CloseAndRecv() (*PutFileResponse, error)
+	grpc.ClientStream
+}
+
+type lSNexusServicePutFileClient struct {
+	grpc.ClientStream
+}
+
+func (x *lSNexusServicePutFileClient) Send(m *PutFileRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *lSNexusServicePutFileClient) CloseAndRecv() (*PutFileResponse, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(PutFileResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *lSNexusServiceClient) RemoveFile(ctx context.Context, in *RemoveFileRequest, opts ...grpc.CallOption) (*RemoveFileResponse, error) {
 	out := new(RemoveFileResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.lsnexus.LSNexusService/RemoveFile", in, out, opts...)
@@ -128,7 +200,7 @@ func (c *lSNexusServiceClient) MakeTempDir(ctx context.Context, in *MakeTempDirR
 }
 
 func (c *lSNexusServiceClient) DMesg(ctx context.Context, in *DMesgRequest, opts ...grpc.CallOption) (LSNexusService_DMesgClient, error) {
-	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[0], "/chromiumos.test.api.lsnexus.LSNexusService/DMesg", opts...)
+	stream, err := c.cc.NewStream(ctx, &LSNexusService_ServiceDesc.Streams[2], "/chromiumos.test.api.lsnexus.LSNexusService/DMesg", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -206,6 +278,12 @@ type LSNexusServiceServer interface {
 	// CallServod runs a servod command.
 	// Allowed methods: doc, get, set, and hwinit.
 	CallServod(context.Context, *CallServodRequest) (*CallServodResponse, error)
+	// GetFile gets a file from labstation/container.
+	GetFile(*GetFileRequest, LSNexusService_GetFileServer) error
+	// PutFile puts a file on labstation/container.
+	// If the directory of destination path does not exist, this service
+	// will also create the directory.
+	PutFile(LSNexusService_PutFileServer) error
 	// RemoveFile removes a file on labstation/container.
 	RemoveFile(context.Context, *RemoveFileRequest) (*RemoveFileResponse, error)
 	// MakeDir make a directory on the labstation/container.
@@ -245,6 +323,12 @@ func (UnimplementedLSNexusServiceServer) StopServod(context.Context, *StopServod
 }
 func (UnimplementedLSNexusServiceServer) CallServod(context.Context, *CallServodRequest) (*CallServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CallServod not implemented")
+}
+func (UnimplementedLSNexusServiceServer) GetFile(*GetFileRequest, LSNexusService_GetFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetFile not implemented")
+}
+func (UnimplementedLSNexusServiceServer) PutFile(LSNexusService_PutFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method PutFile not implemented")
 }
 func (UnimplementedLSNexusServiceServer) RemoveFile(context.Context, *RemoveFileRequest) (*RemoveFileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveFile not implemented")
@@ -337,6 +421,53 @@ func _LSNexusService_CallServod_Handler(srv interface{}, ctx context.Context, de
 		return srv.(LSNexusServiceServer).CallServod(ctx, req.(*CallServodRequest))
 	}
 	return interceptor(ctx, in, info, handler)
+}
+
+func _LSNexusService_GetFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetFileRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LSNexusServiceServer).GetFile(m, &lSNexusServiceGetFileServer{stream})
+}
+
+type LSNexusService_GetFileServer interface {
+	Send(*GetFileResponse) error
+	grpc.ServerStream
+}
+
+type lSNexusServiceGetFileServer struct {
+	grpc.ServerStream
+}
+
+func (x *lSNexusServiceGetFileServer) Send(m *GetFileResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _LSNexusService_PutFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LSNexusServiceServer).PutFile(&lSNexusServicePutFileServer{stream})
+}
+
+type LSNexusService_PutFileServer interface {
+	SendAndClose(*PutFileResponse) error
+	Recv() (*PutFileRequest, error)
+	grpc.ServerStream
+}
+
+type lSNexusServicePutFileServer struct {
+	grpc.ServerStream
+}
+
+func (x *lSNexusServicePutFileServer) SendAndClose(m *PutFileResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *lSNexusServicePutFileServer) Recv() (*PutFileRequest, error) {
+	m := new(PutFileRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 func _LSNexusService_RemoveFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -557,6 +688,16 @@ var LSNexusService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "GetFile",
+			Handler:       _LSNexusService_GetFile_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "PutFile",
+			Handler:       _LSNexusService_PutFile_Handler,
+			ClientStreams: true,
+		},
 		{
 			StreamName:    "DMesg",
 			Handler:       _LSNexusService_DMesg_Handler,
