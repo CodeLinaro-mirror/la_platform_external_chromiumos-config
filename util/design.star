@@ -98,6 +98,7 @@ def _append_configs(
         rma = None,
         device_tree_compatible_match = None,
         smbios_name_match_override = None,
+        unified_fw_config_val = None,
         frid = None,
         launched = False):
     """Creates and appends new SW and HW configs.
@@ -219,6 +220,7 @@ def _append_configs(
     sw_config.public_replication = public_replication.create(
         public_fields = sw_config_public_fields + extra_sw_config_public_fields,
     )
+    sw_config.unified_fw_config.value = unified_fw_config_val
     sw_configs.append(sw_config)
 
 def _create_design_id(name, config_design_id_override = None, model_name_design_id_override = None):
