@@ -41510,6 +41510,23 @@
       ],
       "enumType": [
         {
+          "name": "PdAlert",
+          "value": [
+            {
+              "name": "PD_ALERT_NONE",
+              "number": 0
+            },
+            {
+              "name": "PD_ALERT_PB_PRESS",
+              "number": 1
+            },
+            {
+              "name": "PD_ALERT_PB_RELEASE",
+              "number": 2
+            }
+          ]
+        },
+        {
           "name": "Capability",
           "value": [
             {
@@ -41902,6 +41919,184 @@
         }
       ],
       "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pdAlert",
+              "label": "LABEL_OPTIONAL",
+              "name": "pd_alert",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdAlert"
+            }
+          ],
+          "name": "SendPdAlertRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SendPdAlertReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetPdStatsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "powerRoleSwapCountTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_total",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "powerRoleSwapCountAllow",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_allow",
+              "number": 4,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "powerRoleSwapCountReject",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_reject",
+              "number": 5,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "powerRoleSwapCountWait",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_wait",
+              "number": 6,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_total",
+              "number": 7,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountAllow",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_allow",
+              "number": 8,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountReject",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_reject",
+              "number": 9,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountWait",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_wait",
+              "number": 10,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetPdStatsReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ResetPdStatsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ResetPdStatsReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
         {
           "field": [
             {
@@ -43099,6 +43294,24 @@
               "name": "SimulateKeyPress",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.SimulateKeyPressReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SendPdAlertRequest",
+              "name": "SendPdAlert",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SendPdAlertReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetPdStatsRequest",
+              "name": "GetPdStats",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetPdStatsReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ResetPdStatsRequest",
+              "name": "ResetPdStats",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ResetPdStatsReply"
             }
           ],
           "name": "UsbTesterService"

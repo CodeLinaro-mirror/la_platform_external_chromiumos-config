@@ -59,6 +59,97 @@ service UsbTesterService {
   // Simulate a key press. ATM this will simulate the "G" key press.
   rpc SimulateKeyPress(SimulateKeyPressRequest)
       returns (SimulateKeyPressReply) {}
+
+  // Send a PD alert message to partner.
+  rpc SendPdAlert(SendPdAlertRequest) returns (SendPdAlertReply) {}
+
+  // Get statistics about the PD requests.
+  rpc GetPdStats(GetPdStatsRequest) returns (GetPdStatsReply) {}
+
+  // Reset the PD statistics.
+  rpc ResetPdStats(ResetPdStatsRequest) returns (ResetPdStatsReply) {}
+}
+
+// Enum to indicate the type of PD alert messages.
+enum PdAlert {
+  PD_ALERT_NONE = 0;
+  // Power button press.
+  PD_ALERT_PB_PRESS = 1;
+  // Power button release.
+  PD_ALERT_PB_RELEASE = 2;
+}
+
+// Request message to send a PD alert.
+message SendPdAlertRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // The type of PD alert to send.
+  PdAlert pd_alert = 2;
+}
+
+message SendPdAlertReply {
+  // Numerical error code indicating the outcome of the reset operation.
+  // A value of 0 signifies successful execution.
+  // Non-zero values indicate specific error conditions.
+  int64 err_code = 1;
+
+  // Optional human-readable message providing additional context or details
+  // in case an error occurred during the reset process. This field will
+  // typically be populated when err_code is not 0.
+  optional string error_msg = 2;
+}
+
+// Request message to get PD statistics.
+message GetPdStatsRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Reply message to with PD statistics.
+message GetPdStatsReply {
+  // Numerical error code indicating the outcome of the reset operation.
+  // A value of 0 signifies successful execution.
+  // Non-zero values indicate specific error conditions.
+  int64 err_code = 1;
+
+  // Optional human-readable message providing additional context or details
+  // in case an error occurred during the reset process. This field will
+  // typically be populated when err_code is not 0.
+  optional string error_msg = 2;
+
+  // The number of power role swaps. If negative it means there was an error for
+  // calculating that statistic.
+  int64 power_role_swap_count_total = 3;
+  int64 power_role_swap_count_allow = 4;
+  int64 power_role_swap_count_reject = 5;
+  int64 power_role_swap_count_wait = 6;
+
+  // The number of data role swaps. If negative it means there was an error for
+  // calculating that statistic.
+  int64 data_role_swap_count_total = 7;
+  int64 data_role_swap_count_allow = 8;
+  int64 data_role_swap_count_reject = 9;
+  int64 data_role_swap_count_wait = 10;
+}
+
+// Request message to reset PD counters to 0.
+message ResetPdStatsRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Reply message to reset PD counters to 0.
+message ResetPdStatsReply {
+  // Numerical error code indicating the outcome of the reset operation.
+  // A value of 0 signifies successful execution.
+  // Non-zero values indicate specific error conditions.
+  int64 err_code = 1;
+
+  // Optional human-readable message providing additional context or details
+  // in case an error occurred during the reset process. This field will
+  // typically be populated when err_code is not 0.
+  optional string error_msg = 2;
 }
 
 // Request to do hard reset.

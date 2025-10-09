@@ -89,6 +89,21 @@ class UsbTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SimulateKeyPressRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SimulateKeyPressReply.FromString,
                 )
+        self.SendPdAlert = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/SendPdAlert',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SendPdAlertRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SendPdAlertReply.FromString,
+                )
+        self.GetPdStats = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/GetPdStats',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdStatsRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdStatsReply.FromString,
+                )
+        self.ResetPdStats = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/ResetPdStats',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdStatsRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdStatsReply.FromString,
+                )
 
 
 class UsbTesterServiceServicer(object):
@@ -200,6 +215,27 @@ class UsbTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SendPdAlert(self, request, context):
+        """Send a PD alert message to partner.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetPdStats(self, request, context):
+        """Get statistics about the PD requests.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ResetPdStats(self, request, context):
+        """Reset the PD statistics.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UsbTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -277,6 +313,21 @@ def add_UsbTesterServiceServicer_to_server(servicer, server):
                     servicer.SimulateKeyPress,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SimulateKeyPressRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SimulateKeyPressReply.SerializeToString,
+            ),
+            'SendPdAlert': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendPdAlert,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SendPdAlertRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SendPdAlertReply.SerializeToString,
+            ),
+            'GetPdStats': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPdStats,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdStatsRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdStatsReply.SerializeToString,
+            ),
+            'ResetPdStats': grpc.unary_unary_rpc_method_handler(
+                    servicer.ResetPdStats,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdStatsRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdStatsReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -540,5 +591,56 @@ class UsbTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/SimulateKeyPress',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SimulateKeyPressRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SimulateKeyPressReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SendPdAlert(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/SendPdAlert',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SendPdAlertRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SendPdAlertReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetPdStats(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/GetPdStats',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdStatsRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetPdStatsReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ResetPdStats(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/ResetPdStats',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdStatsRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.ResetPdStatsReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

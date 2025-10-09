@@ -21,10 +21,41 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n9chromiumos/test/lab/api/passport/usb_tester_service.proto\x12 chromiumos.test.lab.api.passport\x1a\x1egoogle/protobuf/duration.proto\"$\n\x16HardResetTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\";\n\x14HardResetTesterReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\"\"\n\x14\x44oCableReplugRequest\x12\n\n\x02id\x18\x01 \x01(\t\"9\n\x12\x44oCableReplugReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\"\x1f\n\x11OpenTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"6\n\x0fOpenTesterReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\" \n\x12\x43loseTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"7\n\x10\x43loseTesterReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\"%\n\tUsbTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x13\n\x11GetTestersRequest\"O\n\x0fGetTestersReply\x12<\n\x07testers\x18\x01 \x03(\x0b\x32+.chromiumos.test.lab.api.passport.UsbTester\"m\n\x1dGetUsbTesterCapabilityRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12@\n\ncapability\x18\x02 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.Capability\"\x8a\x07\n\x1bGetUsbTesterCapabilityReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x01\x88\x01\x01\x12?\n\tactive_cc\x18\x03 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.ActiveCcH\x00\x12\x43\n\x08pin_mode\x18\x04 \x01(\x0e\x32/.chromiumos.test.lab.api.passport.PinAssignmentH\x00\x12\x41\n\npower_role\x18\x05 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PowerRoleH\x00\x12?\n\tdata_role\x18\x06 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.DataRoleH\x00\x12\x43\n\x0busb_channel\x18\x07 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.UsbChannelH\x00\x12\x41\n\ncable_mode\x18\x08 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.CableModeH\x00\x12\x46\n\rinit_pd_state\x18\t \x01(\x0e\x32-.chromiumos.test.lab.api.passport.InitPdStateH\x00\x12\x16\n\x0cnon_descrete\x18\n \x01(\x03H\x00\x12\x1f\n\x15\x64\x61ta_role_swap_policy\x18\r \x01(\x08H\x00\x12 \n\x16power_role_swap_policy\x18\x0e \x01(\x08H\x00\x12\x1b\n\x11vconn_swap_policy\x18\x0f \x01(\x08H\x00\x12\x1b\n\x11\x63onstrained_power\x18\x10 \x01(\x08H\x00\x12\x18\n\x0epower_delivery\x18\x11 \x01(\x08H\x00\x12\x19\n\x0f\x64isplay_port_am\x18\x12 \x01(\x08H\x00\x12=\n\x08usb_path\x18\x13 \x01(\x0e\x32).chromiumos.test.lab.api.passport.UsbPathH\x00\x12G\n\rtry_behaviour\x18\x14 \x01(\x0e\x32..chromiumos.test.lab.api.passport.TryBehaviourH\x00\x42\x07\n\x05valueB\x0c\n\n_error_msg\"\x98\x08\n\x1dSetUsbTesterCapabilityRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12-\n\x05\x64\x65lay\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x12/\n\x07timeout\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12@\n\ncapability\x18\x04 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.Capability\x12?\n\tactive_cc\x18\x05 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.ActiveCcH\x00\x12\x43\n\x08pin_mode\x18\x06 \x01(\x0e\x32/.chromiumos.test.lab.api.passport.PinAssignmentH\x00\x12\x41\n\npower_role\x18\x07 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PowerRoleH\x00\x12?\n\tdata_role\x18\x08 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.DataRoleH\x00\x12\x43\n\x0busb_channel\x18\t \x01(\x0e\x32,.chromiumos.test.lab.api.passport.UsbChannelH\x00\x12\x41\n\ncable_mode\x18\n \x01(\x0e\x32+.chromiumos.test.lab.api.passport.CableModeH\x00\x12\x46\n\rinit_pd_state\x18\x0b \x01(\x0e\x32-.chromiumos.test.lab.api.passport.InitPdStateH\x00\x12\x16\n\x0cnon_descrete\x18\x0c \x01(\x03H\x00\x12\x1f\n\x15\x64\x61ta_role_swap_policy\x18\r \x01(\x08H\x00\x12 \n\x16power_role_swap_policy\x18\x0e \x01(\x08H\x00\x12\x1b\n\x11vconn_swap_policy\x18\x0f \x01(\x08H\x00\x12\x1b\n\x11\x63onstrained_power\x18\x10 \x01(\x08H\x00\x12\x18\n\x0epower_delivery\x18\x11 \x01(\x08H\x00\x12\x19\n\x0f\x64isplay_port_am\x18\x12 \x01(\x08H\x00\x12=\n\x08usb_path\x18\x13 \x01(\x0e\x32).chromiumos.test.lab.api.passport.UsbPathH\x00\x12G\n\rtry_behaviour\x18\x14 \x01(\x0e\x32..chromiumos.test.lab.api.passport.TryBehaviourH\x00\x42\x07\n\x05valueB\x08\n\x06_delayB\n\n\x08_timeout\"U\n\x1bSetUsbTesterCapabilityReply\x12\x10\n\x08\x65rr_code\x18\x02 \x01(\x03\x12\x16\n\terror_msg\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"\x94\x01\n\x10GetDpInfoRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12-\n\x05\x64\x65lay\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12/\n\x07timeout\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x42\x08\n\x06_delayB\n\n\x08_timeout\"\x87\x05\n\x0eGetDpInfoReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x44\n\tlink_rate\x18\x03 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.DpLinkRateH\x01\x88\x01\x01\x12\x17\n\nlane_count\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x18\n\x0bpixel_clock\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x15\n\x08h_active\x18\x06 \x01(\x05H\x04\x88\x01\x01\x12\x15\n\x08v_active\x18\x07 \x01(\x05H\x05\x88\x01\x01\x12\x14\n\x07h_total\x18\x08 \x01(\x05H\x06\x88\x01\x01\x12\x14\n\x07v_total\x18\t \x01(\x05H\x07\x88\x01\x01\x12\x16\n\tframerate\x18\n \x01(\x01H\x08\x88\x01\x01\x12\x46\n\ncolor_mode\x18\x0b \x01(\x0e\x32-.chromiumos.test.lab.api.passport.DpColorModeH\t\x88\x01\x01\x12H\n\x0b\x63olor_depth\x18\x0c \x01(\x0e\x32..chromiumos.test.lab.api.passport.DpColorDepthH\n\x88\x01\x01\x12\x1e\n\x11\x61udio_sample_rate\x18\r \x01(\x05H\x0b\x88\x01\x01\x42\x0c\n\n_error_msgB\x0c\n\n_link_rateB\r\n\x0b_lane_countB\x0e\n\x0c_pixel_clockB\x0b\n\t_h_activeB\x0b\n\t_v_activeB\n\n\x08_h_totalB\n\n\x08_v_totalB\x0c\n\n_framerateB\r\n\x0b_color_modeB\x0e\n\x0c_color_depthB\x14\n\x12_audio_sample_rate\"\"\n\x14GetActivePortRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb0\x01\n\x12GetActivePortReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07port_id\x18\x03 \x01(\r\x12\x15\n\rmax_num_ports\x18\x04 \x01(\r\x12:\n\x05state\x18\x05 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PortStateB\x0c\n\n_error_msg\"o\n\x14SetActivePortRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07port_id\x18\x02 \x01(\r\x12:\n\x05state\x18\x03 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PortState\"L\n\x12SetActivePortReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"+\n\x0fLoadEdidRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\"G\n\rLoadEdidReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"*\n\x0eResetPdRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04soft\x18\x02 \x01(\x08\"F\n\x0cResetPdReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"\x1c\n\x0eGetPdosRequest\x12\n\n\x02id\x18\x01 \x01(\t\"j\n\x0cGetPdosReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x10\n\x08src_pdos\x18\x03 \x03(\x03\x12\x10\n\x08snk_pdos\x18\x04 \x03(\x03\x42\x0c\n\n_error_msg\"Z\n\x11SendVdmHpdRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x39\n\x07vdm_hpd\x18\x02 \x01(\x0e\x32(.chromiumos.test.lab.api.passport.VdmHpd\"I\n\x0fSendVdmHpdReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"%\n\x17SimulateKeyPressRequest\x12\n\n\x02id\x18\x01 \x01(\t\"O\n\x15SimulateKeyPressReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg*\xbd\x04\n\nCapability\x12\x16\n\x12\x43\x41PABILITY_NOT_SET\x10\x00\x12\x12\n\x0ePIN_ASSIGNMENT\x10\x01\x12\x0f\n\x0bUSB_CHANNEL\x10\x02\x12\x0e\n\nPOWER_ROLE\x10\x03\x12\r\n\tDATA_ROLE\x10\x04\x12\r\n\tACTIVE_CC\x10\x05\x12\x0e\n\nCABLE_MODE\x10\x06\x12\x11\n\rINIT_PD_STATE\x10\x07\x12\x10\n\x0c\x43URRENT_LOAD\x10\t\x12\x0f\n\x0bSRC_PULL_UP\x10\n\x12\x11\n\rSNK_PDO_COUNT\x10\x0b\x12\x11\n\rSRC_PDO_COUNT\x10\x0c\x12\x10\n\x0cVBUS_VOLTAGE\x10\r\x12\x10\n\x0cVBUS_CURRENT\x10\x0e\x12\x15\n\x11VBUS_CURRENT_LANE\x10\x0f\x12\x14\n\x10GND_CURRENT_LANE\x10\x10\x12\x14\n\x10VBUS_EPU_VOLTAGE\x10\x11\x12\x0c\n\x08VBUS_CC1\x10\x12\x12\x0c\n\x08VBUS_CC2\x10\x13\x12\r\n\tVBUS_SBU1\x10\x14\x12\r\n\tVBUS_SBU2\x10\x15\x12\x14\n\x10\x44\x41TA_SWAP_POLICY\x10\x16\x12\x15\n\x11POWER_SWAP_POLICY\x10\x17\x12\x15\n\x11VCONN_SWAP_POLICY\x10\x18\x12\x15\n\x11\x43ONSTRAINED_POWER\x10\x19\x12\x12\n\x0ePOWER_DELIVERY\x10\x1a\x12\x13\n\x0f\x44ISPLAY_PORT_AM\x10\x1b\x12\x0c\n\x08USB_PATH\x10\x1c\x12\x11\n\rTRY_BEHAVIOUR\x10\x1d\x12\x12\n\x0eNON_PD_CURRENT\x10\x1e*C\n\x0cTryBehaviour\x12\x19\n\x15TRY_BEHAVIOUR_NOT_SET\x10\x00\x12\x0b\n\x07TRY_SRC\x10\x01\x12\x0b\n\x07TRY_SNK\x10\x02*3\n\x08\x41\x63tiveCc\x12\x15\n\x11\x41\x43TIVE_CC_NOT_SET\x10\x00\x12\x07\n\x03\x43\x43\x31\x10\x01\x12\x07\n\x03\x43\x43\x32\x10\x02*9\n\rPinAssignment\x12\x1a\n\x16PIN_ASSIGNMENT_NOT_SET\x10\x00\x12\x05\n\x01\x43\x10\x01\x12\x05\n\x01\x44\x10\x02*5\n\tPowerRole\x12\x16\n\x12POWER_ROLE_NOT_SET\x10\x00\x12\x07\n\x03SNK\x10\x01\x12\x07\n\x03SRC\x10\x02*=\n\x08\x44\x61taRole\x12\x15\n\x11\x44\x41TA_ROLE_NOT_SET\x10\x00\x12\x0c\n\x08\x44\x41TA_UFP\x10\x01\x12\x0c\n\x08\x44\x41TA_DFP\x10\x02*G\n\nUsbChannel\x12\x17\n\x13USB_CHANNEL_NOT_SET\x10\x00\x12\x0c\n\x08USB_2_HS\x10\x01\x12\x12\n\x0eUSB_3_AND_2_HS\x10\x02*>\n\tCableMode\x12\x16\n\x12\x43\x41\x42LE_MODE_NOT_SET\x10\x00\x12\n\n\x06NORMAL\x10\x01\x12\r\n\tELEC_TEST\x10\x02*L\n\x0bInitPdState\x12\x19\n\x15INIT_PD_STATE_NOT_SET\x10\x00\x12\n\n\x06PD_UFP\x10\x01\x12\n\n\x06PD_DFP\x10\x02\x12\n\n\x06PD_DRP\x10\x03*M\n\x07UsbPath\x12\x14\n\x10USB_PATH_NOT_SET\x10\x00\x12\x15\n\x11USB_PATH_INTERNAL\x10\x01\x12\x15\n\x11USB_PATH_EXTERNAL\x10\x02*J\n\tPortState\x12\x16\n\x12PORT_STATE_NOT_SET\x10\x00\x12\x11\n\rPORT_STATE_ON\x10\x01\x12\x12\n\x0ePORT_STATE_OFF\x10\x02*.\n\x06VdmHpd\x12\x13\n\x0fVDM_HPD_NOT_SET\x10\x00\x12\x0f\n\x0bVDM_HPD_IRQ\x10\x01*L\n\nDpLinkRate\x12\x18\n\x14\x44P_LINK_RATE_NOT_SET\x10\x00\x12\x07\n\x03RBR\x10\x01\x12\x07\n\x03HBR\x10\x02\x12\x08\n\x04HBR2\x10\x03\x12\x08\n\x04HBR3\x10\x04*W\n\x0c\x44pColorDepth\x12\x12\n\x0e\x44P_COLOR_DEPTH\x10\x00\x12\x08\n\x04\x42IT6\x10\x01\x12\x08\n\x04\x42IT8\x10\x02\x12\t\n\x05\x42IT10\x10\x03\x12\t\n\x05\x42IT12\x10\x04\x12\t\n\x05\x42IT16\x10\x05*[\n\x0b\x44pColorMode\x12\x19\n\x15\x44P_COLOR_MODE_NOT_SET\x10\x00\x12\x07\n\x03RGB\x10\x01\x12\x0c\n\x08YCBCR444\x10\x02\x12\x0c\n\x08YCBCR422\x10\x03\x12\x0c\n\x08YCBCR420\x10\x04\x32\x82\x0f\n\x10UsbTesterService\x12v\n\nGetTesters\x12\x33.chromiumos.test.lab.api.passport.GetTestersRequest\x1a\x31.chromiumos.test.lab.api.passport.GetTestersReply\"\x00\x12\x97\x01\n\x13GetTesterCapability\x12?.chromiumos.test.lab.api.passport.GetUsbTesterCapabilityRequest\x1a=.chromiumos.test.lab.api.passport.GetUsbTesterCapabilityReply\"\x00\x12\x97\x01\n\x13SetTesterCapability\x12?.chromiumos.test.lab.api.passport.SetUsbTesterCapabilityRequest\x1a=.chromiumos.test.lab.api.passport.SetUsbTesterCapabilityReply\"\x00\x12s\n\tGetDpInfo\x12\x32.chromiumos.test.lab.api.passport.GetDpInfoRequest\x1a\x30.chromiumos.test.lab.api.passport.GetDpInfoReply\"\x00\x12m\n\x07GetPdos\x12\x30.chromiumos.test.lab.api.passport.GetPdosRequest\x1a..chromiumos.test.lab.api.passport.GetPdosReply\"\x00\x12}\n\x0bReplugCable\x12\x36.chromiumos.test.lab.api.passport.DoCableReplugRequest\x1a\x34.chromiumos.test.lab.api.passport.DoCableReplugReply\"\x00\x12\x85\x01\n\x0fHardResetTester\x12\x38.chromiumos.test.lab.api.passport.HardResetTesterRequest\x1a\x36.chromiumos.test.lab.api.passport.HardResetTesterReply\"\x00\x12m\n\x07ResetPd\x12\x30.chromiumos.test.lab.api.passport.ResetPdRequest\x1a..chromiumos.test.lab.api.passport.ResetPdReply\"\x00\x12v\n\nOpenTester\x12\x33.chromiumos.test.lab.api.passport.OpenTesterRequest\x1a\x31.chromiumos.test.lab.api.passport.OpenTesterReply\"\x00\x12y\n\x0b\x43loseTester\x12\x34.chromiumos.test.lab.api.passport.CloseTesterRequest\x1a\x32.chromiumos.test.lab.api.passport.CloseTesterReply\"\x00\x12\x7f\n\rGetActivePort\x12\x36.chromiumos.test.lab.api.passport.GetActivePortRequest\x1a\x34.chromiumos.test.lab.api.passport.GetActivePortReply\"\x00\x12\x7f\n\rSetActivePort\x12\x36.chromiumos.test.lab.api.passport.SetActivePortRequest\x1a\x34.chromiumos.test.lab.api.passport.SetActivePortReply\"\x00\x12p\n\x08LoadEdid\x12\x31.chromiumos.test.lab.api.passport.LoadEdidRequest\x1a/.chromiumos.test.lab.api.passport.LoadEdidReply\"\x00\x12v\n\nSendVdmHpd\x12\x33.chromiumos.test.lab.api.passport.SendVdmHpdRequest\x1a\x31.chromiumos.test.lab.api.passport.SendVdmHpdReply\"\x00\x12\x88\x01\n\x10SimulateKeyPress\x12\x39.chromiumos.test.lab.api.passport.SimulateKeyPressRequest\x1a\x37.chromiumos.test.lab.api.passport.SimulateKeyPressReply\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n9chromiumos/test/lab/api/passport/usb_tester_service.proto\x12 chromiumos.test.lab.api.passport\x1a\x1egoogle/protobuf/duration.proto\"]\n\x12SendPdAlertRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12;\n\x08pd_alert\x18\x02 \x01(\x0e\x32).chromiumos.test.lab.api.passport.PdAlert\"J\n\x10SendPdAlertReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"\x1f\n\x11GetPdStatsRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xed\x02\n\x0fGetPdStatsReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12#\n\x1bpower_role_swap_count_total\x18\x03 \x01(\x03\x12#\n\x1bpower_role_swap_count_allow\x18\x04 \x01(\x03\x12$\n\x1cpower_role_swap_count_reject\x18\x05 \x01(\x03\x12\"\n\x1apower_role_swap_count_wait\x18\x06 \x01(\x03\x12\"\n\x1a\x64\x61ta_role_swap_count_total\x18\x07 \x01(\x03\x12\"\n\x1a\x64\x61ta_role_swap_count_allow\x18\x08 \x01(\x03\x12#\n\x1b\x64\x61ta_role_swap_count_reject\x18\t \x01(\x03\x12!\n\x19\x64\x61ta_role_swap_count_wait\x18\n \x01(\x03\x42\x0c\n\n_error_msg\"!\n\x13ResetPdStatsRequest\x12\n\n\x02id\x18\x01 \x01(\t\"K\n\x11ResetPdStatsReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"$\n\x16HardResetTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\";\n\x14HardResetTesterReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\"\"\n\x14\x44oCableReplugRequest\x12\n\n\x02id\x18\x01 \x01(\t\"9\n\x12\x44oCableReplugReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\"\x1f\n\x11OpenTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"6\n\x0fOpenTesterReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\" \n\x12\x43loseTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"7\n\x10\x43loseTesterReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x11\n\terror_msg\x18\x02 \x01(\t\"%\n\tUsbTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x13\n\x11GetTestersRequest\"O\n\x0fGetTestersReply\x12<\n\x07testers\x18\x01 \x03(\x0b\x32+.chromiumos.test.lab.api.passport.UsbTester\"m\n\x1dGetUsbTesterCapabilityRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12@\n\ncapability\x18\x02 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.Capability\"\x8a\x07\n\x1bGetUsbTesterCapabilityReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x01\x88\x01\x01\x12?\n\tactive_cc\x18\x03 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.ActiveCcH\x00\x12\x43\n\x08pin_mode\x18\x04 \x01(\x0e\x32/.chromiumos.test.lab.api.passport.PinAssignmentH\x00\x12\x41\n\npower_role\x18\x05 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PowerRoleH\x00\x12?\n\tdata_role\x18\x06 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.DataRoleH\x00\x12\x43\n\x0busb_channel\x18\x07 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.UsbChannelH\x00\x12\x41\n\ncable_mode\x18\x08 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.CableModeH\x00\x12\x46\n\rinit_pd_state\x18\t \x01(\x0e\x32-.chromiumos.test.lab.api.passport.InitPdStateH\x00\x12\x16\n\x0cnon_descrete\x18\n \x01(\x03H\x00\x12\x1f\n\x15\x64\x61ta_role_swap_policy\x18\r \x01(\x08H\x00\x12 \n\x16power_role_swap_policy\x18\x0e \x01(\x08H\x00\x12\x1b\n\x11vconn_swap_policy\x18\x0f \x01(\x08H\x00\x12\x1b\n\x11\x63onstrained_power\x18\x10 \x01(\x08H\x00\x12\x18\n\x0epower_delivery\x18\x11 \x01(\x08H\x00\x12\x19\n\x0f\x64isplay_port_am\x18\x12 \x01(\x08H\x00\x12=\n\x08usb_path\x18\x13 \x01(\x0e\x32).chromiumos.test.lab.api.passport.UsbPathH\x00\x12G\n\rtry_behaviour\x18\x14 \x01(\x0e\x32..chromiumos.test.lab.api.passport.TryBehaviourH\x00\x42\x07\n\x05valueB\x0c\n\n_error_msg\"\x98\x08\n\x1dSetUsbTesterCapabilityRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12-\n\x05\x64\x65lay\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x12/\n\x07timeout\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12@\n\ncapability\x18\x04 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.Capability\x12?\n\tactive_cc\x18\x05 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.ActiveCcH\x00\x12\x43\n\x08pin_mode\x18\x06 \x01(\x0e\x32/.chromiumos.test.lab.api.passport.PinAssignmentH\x00\x12\x41\n\npower_role\x18\x07 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PowerRoleH\x00\x12?\n\tdata_role\x18\x08 \x01(\x0e\x32*.chromiumos.test.lab.api.passport.DataRoleH\x00\x12\x43\n\x0busb_channel\x18\t \x01(\x0e\x32,.chromiumos.test.lab.api.passport.UsbChannelH\x00\x12\x41\n\ncable_mode\x18\n \x01(\x0e\x32+.chromiumos.test.lab.api.passport.CableModeH\x00\x12\x46\n\rinit_pd_state\x18\x0b \x01(\x0e\x32-.chromiumos.test.lab.api.passport.InitPdStateH\x00\x12\x16\n\x0cnon_descrete\x18\x0c \x01(\x03H\x00\x12\x1f\n\x15\x64\x61ta_role_swap_policy\x18\r \x01(\x08H\x00\x12 \n\x16power_role_swap_policy\x18\x0e \x01(\x08H\x00\x12\x1b\n\x11vconn_swap_policy\x18\x0f \x01(\x08H\x00\x12\x1b\n\x11\x63onstrained_power\x18\x10 \x01(\x08H\x00\x12\x18\n\x0epower_delivery\x18\x11 \x01(\x08H\x00\x12\x19\n\x0f\x64isplay_port_am\x18\x12 \x01(\x08H\x00\x12=\n\x08usb_path\x18\x13 \x01(\x0e\x32).chromiumos.test.lab.api.passport.UsbPathH\x00\x12G\n\rtry_behaviour\x18\x14 \x01(\x0e\x32..chromiumos.test.lab.api.passport.TryBehaviourH\x00\x42\x07\n\x05valueB\x08\n\x06_delayB\n\n\x08_timeout\"U\n\x1bSetUsbTesterCapabilityReply\x12\x10\n\x08\x65rr_code\x18\x02 \x01(\x03\x12\x16\n\terror_msg\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"\x94\x01\n\x10GetDpInfoRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12-\n\x05\x64\x65lay\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationH\x00\x88\x01\x01\x12/\n\x07timeout\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationH\x01\x88\x01\x01\x42\x08\n\x06_delayB\n\n\x08_timeout\"\x87\x05\n\x0eGetDpInfoReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x44\n\tlink_rate\x18\x03 \x01(\x0e\x32,.chromiumos.test.lab.api.passport.DpLinkRateH\x01\x88\x01\x01\x12\x17\n\nlane_count\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x18\n\x0bpixel_clock\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x15\n\x08h_active\x18\x06 \x01(\x05H\x04\x88\x01\x01\x12\x15\n\x08v_active\x18\x07 \x01(\x05H\x05\x88\x01\x01\x12\x14\n\x07h_total\x18\x08 \x01(\x05H\x06\x88\x01\x01\x12\x14\n\x07v_total\x18\t \x01(\x05H\x07\x88\x01\x01\x12\x16\n\tframerate\x18\n \x01(\x01H\x08\x88\x01\x01\x12\x46\n\ncolor_mode\x18\x0b \x01(\x0e\x32-.chromiumos.test.lab.api.passport.DpColorModeH\t\x88\x01\x01\x12H\n\x0b\x63olor_depth\x18\x0c \x01(\x0e\x32..chromiumos.test.lab.api.passport.DpColorDepthH\n\x88\x01\x01\x12\x1e\n\x11\x61udio_sample_rate\x18\r \x01(\x05H\x0b\x88\x01\x01\x42\x0c\n\n_error_msgB\x0c\n\n_link_rateB\r\n\x0b_lane_countB\x0e\n\x0c_pixel_clockB\x0b\n\t_h_activeB\x0b\n\t_v_activeB\n\n\x08_h_totalB\n\n\x08_v_totalB\x0c\n\n_framerateB\r\n\x0b_color_modeB\x0e\n\x0c_color_depthB\x14\n\x12_audio_sample_rate\"\"\n\x14GetActivePortRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb0\x01\n\x12GetActivePortReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07port_id\x18\x03 \x01(\r\x12\x15\n\rmax_num_ports\x18\x04 \x01(\r\x12:\n\x05state\x18\x05 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PortStateB\x0c\n\n_error_msg\"o\n\x14SetActivePortRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07port_id\x18\x02 \x01(\r\x12:\n\x05state\x18\x03 \x01(\x0e\x32+.chromiumos.test.lab.api.passport.PortState\"L\n\x12SetActivePortReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"+\n\x0fLoadEdidRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\"G\n\rLoadEdidReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"*\n\x0eResetPdRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04soft\x18\x02 \x01(\x08\"F\n\x0cResetPdReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"\x1c\n\x0eGetPdosRequest\x12\n\n\x02id\x18\x01 \x01(\t\"j\n\x0cGetPdosReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x10\n\x08src_pdos\x18\x03 \x03(\x03\x12\x10\n\x08snk_pdos\x18\x04 \x03(\x03\x42\x0c\n\n_error_msg\"Z\n\x11SendVdmHpdRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x39\n\x07vdm_hpd\x18\x02 \x01(\x0e\x32(.chromiumos.test.lab.api.passport.VdmHpd\"I\n\x0fSendVdmHpdReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg\"%\n\x17SimulateKeyPressRequest\x12\n\n\x02id\x18\x01 \x01(\t\"O\n\x15SimulateKeyPressReply\x12\x10\n\x08\x65rr_code\x18\x01 \x01(\x03\x12\x16\n\terror_msg\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_error_msg*L\n\x07PdAlert\x12\x11\n\rPD_ALERT_NONE\x10\x00\x12\x15\n\x11PD_ALERT_PB_PRESS\x10\x01\x12\x17\n\x13PD_ALERT_PB_RELEASE\x10\x02*\xbd\x04\n\nCapability\x12\x16\n\x12\x43\x41PABILITY_NOT_SET\x10\x00\x12\x12\n\x0ePIN_ASSIGNMENT\x10\x01\x12\x0f\n\x0bUSB_CHANNEL\x10\x02\x12\x0e\n\nPOWER_ROLE\x10\x03\x12\r\n\tDATA_ROLE\x10\x04\x12\r\n\tACTIVE_CC\x10\x05\x12\x0e\n\nCABLE_MODE\x10\x06\x12\x11\n\rINIT_PD_STATE\x10\x07\x12\x10\n\x0c\x43URRENT_LOAD\x10\t\x12\x0f\n\x0bSRC_PULL_UP\x10\n\x12\x11\n\rSNK_PDO_COUNT\x10\x0b\x12\x11\n\rSRC_PDO_COUNT\x10\x0c\x12\x10\n\x0cVBUS_VOLTAGE\x10\r\x12\x10\n\x0cVBUS_CURRENT\x10\x0e\x12\x15\n\x11VBUS_CURRENT_LANE\x10\x0f\x12\x14\n\x10GND_CURRENT_LANE\x10\x10\x12\x14\n\x10VBUS_EPU_VOLTAGE\x10\x11\x12\x0c\n\x08VBUS_CC1\x10\x12\x12\x0c\n\x08VBUS_CC2\x10\x13\x12\r\n\tVBUS_SBU1\x10\x14\x12\r\n\tVBUS_SBU2\x10\x15\x12\x14\n\x10\x44\x41TA_SWAP_POLICY\x10\x16\x12\x15\n\x11POWER_SWAP_POLICY\x10\x17\x12\x15\n\x11VCONN_SWAP_POLICY\x10\x18\x12\x15\n\x11\x43ONSTRAINED_POWER\x10\x19\x12\x12\n\x0ePOWER_DELIVERY\x10\x1a\x12\x13\n\x0f\x44ISPLAY_PORT_AM\x10\x1b\x12\x0c\n\x08USB_PATH\x10\x1c\x12\x11\n\rTRY_BEHAVIOUR\x10\x1d\x12\x12\n\x0eNON_PD_CURRENT\x10\x1e*C\n\x0cTryBehaviour\x12\x19\n\x15TRY_BEHAVIOUR_NOT_SET\x10\x00\x12\x0b\n\x07TRY_SRC\x10\x01\x12\x0b\n\x07TRY_SNK\x10\x02*3\n\x08\x41\x63tiveCc\x12\x15\n\x11\x41\x43TIVE_CC_NOT_SET\x10\x00\x12\x07\n\x03\x43\x43\x31\x10\x01\x12\x07\n\x03\x43\x43\x32\x10\x02*9\n\rPinAssignment\x12\x1a\n\x16PIN_ASSIGNMENT_NOT_SET\x10\x00\x12\x05\n\x01\x43\x10\x01\x12\x05\n\x01\x44\x10\x02*5\n\tPowerRole\x12\x16\n\x12POWER_ROLE_NOT_SET\x10\x00\x12\x07\n\x03SNK\x10\x01\x12\x07\n\x03SRC\x10\x02*=\n\x08\x44\x61taRole\x12\x15\n\x11\x44\x41TA_ROLE_NOT_SET\x10\x00\x12\x0c\n\x08\x44\x41TA_UFP\x10\x01\x12\x0c\n\x08\x44\x41TA_DFP\x10\x02*G\n\nUsbChannel\x12\x17\n\x13USB_CHANNEL_NOT_SET\x10\x00\x12\x0c\n\x08USB_2_HS\x10\x01\x12\x12\n\x0eUSB_3_AND_2_HS\x10\x02*>\n\tCableMode\x12\x16\n\x12\x43\x41\x42LE_MODE_NOT_SET\x10\x00\x12\n\n\x06NORMAL\x10\x01\x12\r\n\tELEC_TEST\x10\x02*L\n\x0bInitPdState\x12\x19\n\x15INIT_PD_STATE_NOT_SET\x10\x00\x12\n\n\x06PD_UFP\x10\x01\x12\n\n\x06PD_DFP\x10\x02\x12\n\n\x06PD_DRP\x10\x03*M\n\x07UsbPath\x12\x14\n\x10USB_PATH_NOT_SET\x10\x00\x12\x15\n\x11USB_PATH_INTERNAL\x10\x01\x12\x15\n\x11USB_PATH_EXTERNAL\x10\x02*J\n\tPortState\x12\x16\n\x12PORT_STATE_NOT_SET\x10\x00\x12\x11\n\rPORT_STATE_ON\x10\x01\x12\x12\n\x0ePORT_STATE_OFF\x10\x02*.\n\x06VdmHpd\x12\x13\n\x0fVDM_HPD_NOT_SET\x10\x00\x12\x0f\n\x0bVDM_HPD_IRQ\x10\x01*L\n\nDpLinkRate\x12\x18\n\x14\x44P_LINK_RATE_NOT_SET\x10\x00\x12\x07\n\x03RBR\x10\x01\x12\x07\n\x03HBR\x10\x02\x12\x08\n\x04HBR2\x10\x03\x12\x08\n\x04HBR3\x10\x04*W\n\x0c\x44pColorDepth\x12\x12\n\x0e\x44P_COLOR_DEPTH\x10\x00\x12\x08\n\x04\x42IT6\x10\x01\x12\x08\n\x04\x42IT8\x10\x02\x12\t\n\x05\x42IT10\x10\x03\x12\t\n\x05\x42IT12\x10\x04\x12\t\n\x05\x42IT16\x10\x05*[\n\x0b\x44pColorMode\x12\x19\n\x15\x44P_COLOR_MODE_NOT_SET\x10\x00\x12\x07\n\x03RGB\x10\x01\x12\x0c\n\x08YCBCR444\x10\x02\x12\x0c\n\x08YCBCR422\x10\x03\x12\x0c\n\x08YCBCR420\x10\x04\x32\xf3\x11\n\x10UsbTesterService\x12v\n\nGetTesters\x12\x33.chromiumos.test.lab.api.passport.GetTestersRequest\x1a\x31.chromiumos.test.lab.api.passport.GetTestersReply\"\x00\x12\x97\x01\n\x13GetTesterCapability\x12?.chromiumos.test.lab.api.passport.GetUsbTesterCapabilityRequest\x1a=.chromiumos.test.lab.api.passport.GetUsbTesterCapabilityReply\"\x00\x12\x97\x01\n\x13SetTesterCapability\x12?.chromiumos.test.lab.api.passport.SetUsbTesterCapabilityRequest\x1a=.chromiumos.test.lab.api.passport.SetUsbTesterCapabilityReply\"\x00\x12s\n\tGetDpInfo\x12\x32.chromiumos.test.lab.api.passport.GetDpInfoRequest\x1a\x30.chromiumos.test.lab.api.passport.GetDpInfoReply\"\x00\x12m\n\x07GetPdos\x12\x30.chromiumos.test.lab.api.passport.GetPdosRequest\x1a..chromiumos.test.lab.api.passport.GetPdosReply\"\x00\x12}\n\x0bReplugCable\x12\x36.chromiumos.test.lab.api.passport.DoCableReplugRequest\x1a\x34.chromiumos.test.lab.api.passport.DoCableReplugReply\"\x00\x12\x85\x01\n\x0fHardResetTester\x12\x38.chromiumos.test.lab.api.passport.HardResetTesterRequest\x1a\x36.chromiumos.test.lab.api.passport.HardResetTesterReply\"\x00\x12m\n\x07ResetPd\x12\x30.chromiumos.test.lab.api.passport.ResetPdRequest\x1a..chromiumos.test.lab.api.passport.ResetPdReply\"\x00\x12v\n\nOpenTester\x12\x33.chromiumos.test.lab.api.passport.OpenTesterRequest\x1a\x31.chromiumos.test.lab.api.passport.OpenTesterReply\"\x00\x12y\n\x0b\x43loseTester\x12\x34.chromiumos.test.lab.api.passport.CloseTesterRequest\x1a\x32.chromiumos.test.lab.api.passport.CloseTesterReply\"\x00\x12\x7f\n\rGetActivePort\x12\x36.chromiumos.test.lab.api.passport.GetActivePortRequest\x1a\x34.chromiumos.test.lab.api.passport.GetActivePortReply\"\x00\x12\x7f\n\rSetActivePort\x12\x36.chromiumos.test.lab.api.passport.SetActivePortRequest\x1a\x34.chromiumos.test.lab.api.passport.SetActivePortReply\"\x00\x12p\n\x08LoadEdid\x12\x31.chromiumos.test.lab.api.passport.LoadEdidRequest\x1a/.chromiumos.test.lab.api.passport.LoadEdidReply\"\x00\x12v\n\nSendVdmHpd\x12\x33.chromiumos.test.lab.api.passport.SendVdmHpdRequest\x1a\x31.chromiumos.test.lab.api.passport.SendVdmHpdReply\"\x00\x12\x88\x01\n\x10SimulateKeyPress\x12\x39.chromiumos.test.lab.api.passport.SimulateKeyPressRequest\x1a\x37.chromiumos.test.lab.api.passport.SimulateKeyPressReply\"\x00\x12y\n\x0bSendPdAlert\x12\x34.chromiumos.test.lab.api.passport.SendPdAlertRequest\x1a\x32.chromiumos.test.lab.api.passport.SendPdAlertReply\"\x00\x12v\n\nGetPdStats\x12\x33.chromiumos.test.lab.api.passport.GetPdStatsRequest\x1a\x31.chromiumos.test.lab.api.passport.GetPdStatsReply\"\x00\x12|\n\x0cResetPdStats\x12\x35.chromiumos.test.lab.api.passport.ResetPdStatsRequest\x1a\x33.chromiumos.test.lab.api.passport.ResetPdStatsReply\"\x00\x42<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,])
 
+_PDALERT = _descriptor.EnumDescriptor(
+  name='PdAlert',
+  full_name='chromiumos.test.lab.api.passport.PdAlert',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='PD_ALERT_NONE', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='PD_ALERT_PB_PRESS', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='PD_ALERT_PB_RELEASE', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=5350,
+  serialized_end=5426,
+)
+_sym_db.RegisterEnumDescriptor(_PDALERT)
+
+PdAlert = enum_type_wrapper.EnumTypeWrapper(_PDALERT)
 _CAPABILITY = _descriptor.EnumDescriptor(
   name='Capability',
   full_name='chromiumos.test.lab.api.passport.Capability',
@@ -185,8 +216,8 @@ _CAPABILITY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4667,
-  serialized_end=5240,
+  serialized_start=5429,
+  serialized_end=6002,
 )
 _sym_db.RegisterEnumDescriptor(_CAPABILITY)
 
@@ -216,8 +247,8 @@ _TRYBEHAVIOUR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5242,
-  serialized_end=5309,
+  serialized_start=6004,
+  serialized_end=6071,
 )
 _sym_db.RegisterEnumDescriptor(_TRYBEHAVIOUR)
 
@@ -247,8 +278,8 @@ _ACTIVECC = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5311,
-  serialized_end=5362,
+  serialized_start=6073,
+  serialized_end=6124,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIVECC)
 
@@ -278,8 +309,8 @@ _PINASSIGNMENT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5364,
-  serialized_end=5421,
+  serialized_start=6126,
+  serialized_end=6183,
 )
 _sym_db.RegisterEnumDescriptor(_PINASSIGNMENT)
 
@@ -309,8 +340,8 @@ _POWERROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5423,
-  serialized_end=5476,
+  serialized_start=6185,
+  serialized_end=6238,
 )
 _sym_db.RegisterEnumDescriptor(_POWERROLE)
 
@@ -340,8 +371,8 @@ _DATAROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5478,
-  serialized_end=5539,
+  serialized_start=6240,
+  serialized_end=6301,
 )
 _sym_db.RegisterEnumDescriptor(_DATAROLE)
 
@@ -371,8 +402,8 @@ _USBCHANNEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5541,
-  serialized_end=5612,
+  serialized_start=6303,
+  serialized_end=6374,
 )
 _sym_db.RegisterEnumDescriptor(_USBCHANNEL)
 
@@ -402,8 +433,8 @@ _CABLEMODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5614,
-  serialized_end=5676,
+  serialized_start=6376,
+  serialized_end=6438,
 )
 _sym_db.RegisterEnumDescriptor(_CABLEMODE)
 
@@ -438,8 +469,8 @@ _INITPDSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5678,
-  serialized_end=5754,
+  serialized_start=6440,
+  serialized_end=6516,
 )
 _sym_db.RegisterEnumDescriptor(_INITPDSTATE)
 
@@ -469,8 +500,8 @@ _USBPATH = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5756,
-  serialized_end=5833,
+  serialized_start=6518,
+  serialized_end=6595,
 )
 _sym_db.RegisterEnumDescriptor(_USBPATH)
 
@@ -500,8 +531,8 @@ _PORTSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5835,
-  serialized_end=5909,
+  serialized_start=6597,
+  serialized_end=6671,
 )
 _sym_db.RegisterEnumDescriptor(_PORTSTATE)
 
@@ -526,8 +557,8 @@ _VDMHPD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5911,
-  serialized_end=5957,
+  serialized_start=6673,
+  serialized_end=6719,
 )
 _sym_db.RegisterEnumDescriptor(_VDMHPD)
 
@@ -567,8 +598,8 @@ _DPLINKRATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5959,
-  serialized_end=6035,
+  serialized_start=6721,
+  serialized_end=6797,
 )
 _sym_db.RegisterEnumDescriptor(_DPLINKRATE)
 
@@ -613,8 +644,8 @@ _DPCOLORDEPTH = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6037,
-  serialized_end=6124,
+  serialized_start=6799,
+  serialized_end=6886,
 )
 _sym_db.RegisterEnumDescriptor(_DPCOLORDEPTH)
 
@@ -654,12 +685,15 @@ _DPCOLORMODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6126,
-  serialized_end=6217,
+  serialized_start=6888,
+  serialized_end=6979,
 )
 _sym_db.RegisterEnumDescriptor(_DPCOLORMODE)
 
 DpColorMode = enum_type_wrapper.EnumTypeWrapper(_DPCOLORMODE)
+PD_ALERT_NONE = 0
+PD_ALERT_PB_PRESS = 1
+PD_ALERT_PB_RELEASE = 2
 CAPABILITY_NOT_SET = 0
 PIN_ASSIGNMENT = 1
 USB_CHANNEL = 2
@@ -742,6 +776,297 @@ YCBCR420 = 4
 
 
 
+_SENDPDALERTREQUEST = _descriptor.Descriptor(
+  name='SendPdAlertRequest',
+  full_name='chromiumos.test.lab.api.passport.SendPdAlertRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.SendPdAlertRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pd_alert', full_name='chromiumos.test.lab.api.passport.SendPdAlertRequest.pd_alert', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=127,
+  serialized_end=220,
+)
+
+
+_SENDPDALERTREPLY = _descriptor.Descriptor(
+  name='SendPdAlertReply',
+  full_name='chromiumos.test.lab.api.passport.SendPdAlertReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='err_code', full_name='chromiumos.test.lab.api.passport.SendPdAlertReply.err_code', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error_msg', full_name='chromiumos.test.lab.api.passport.SendPdAlertReply.error_msg', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_error_msg', full_name='chromiumos.test.lab.api.passport.SendPdAlertReply._error_msg',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=222,
+  serialized_end=296,
+)
+
+
+_GETPDSTATSREQUEST = _descriptor.Descriptor(
+  name='GetPdStatsRequest',
+  full_name='chromiumos.test.lab.api.passport.GetPdStatsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.GetPdStatsRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=298,
+  serialized_end=329,
+)
+
+
+_GETPDSTATSREPLY = _descriptor.Descriptor(
+  name='GetPdStatsReply',
+  full_name='chromiumos.test.lab.api.passport.GetPdStatsReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='err_code', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.err_code', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error_msg', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.error_msg', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='power_role_swap_count_total', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.power_role_swap_count_total', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='power_role_swap_count_allow', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.power_role_swap_count_allow', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='power_role_swap_count_reject', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.power_role_swap_count_reject', index=4,
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='power_role_swap_count_wait', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.power_role_swap_count_wait', index=5,
+      number=6, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data_role_swap_count_total', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.data_role_swap_count_total', index=6,
+      number=7, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data_role_swap_count_allow', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.data_role_swap_count_allow', index=7,
+      number=8, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data_role_swap_count_reject', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.data_role_swap_count_reject', index=8,
+      number=9, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='data_role_swap_count_wait', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply.data_role_swap_count_wait', index=9,
+      number=10, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_error_msg', full_name='chromiumos.test.lab.api.passport.GetPdStatsReply._error_msg',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=332,
+  serialized_end=697,
+)
+
+
+_RESETPDSTATSREQUEST = _descriptor.Descriptor(
+  name='ResetPdStatsRequest',
+  full_name='chromiumos.test.lab.api.passport.ResetPdStatsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.test.lab.api.passport.ResetPdStatsRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=699,
+  serialized_end=732,
+)
+
+
+_RESETPDSTATSREPLY = _descriptor.Descriptor(
+  name='ResetPdStatsReply',
+  full_name='chromiumos.test.lab.api.passport.ResetPdStatsReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='err_code', full_name='chromiumos.test.lab.api.passport.ResetPdStatsReply.err_code', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='error_msg', full_name='chromiumos.test.lab.api.passport.ResetPdStatsReply.error_msg', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_error_msg', full_name='chromiumos.test.lab.api.passport.ResetPdStatsReply._error_msg',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=734,
+  serialized_end=809,
+)
+
+
 _HARDRESETTESTERREQUEST = _descriptor.Descriptor(
   name='HardResetTesterRequest',
   full_name='chromiumos.test.lab.api.passport.HardResetTesterRequest',
@@ -769,8 +1094,8 @@ _HARDRESETTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=127,
-  serialized_end=163,
+  serialized_start=811,
+  serialized_end=847,
 )
 
 
@@ -808,8 +1133,8 @@ _HARDRESETTESTERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=165,
-  serialized_end=224,
+  serialized_start=849,
+  serialized_end=908,
 )
 
 
@@ -840,8 +1165,8 @@ _DOCABLEREPLUGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=226,
-  serialized_end=260,
+  serialized_start=910,
+  serialized_end=944,
 )
 
 
@@ -879,8 +1204,8 @@ _DOCABLEREPLUGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=262,
-  serialized_end=319,
+  serialized_start=946,
+  serialized_end=1003,
 )
 
 
@@ -911,8 +1236,8 @@ _OPENTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=321,
-  serialized_end=352,
+  serialized_start=1005,
+  serialized_end=1036,
 )
 
 
@@ -950,8 +1275,8 @@ _OPENTESTERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=354,
-  serialized_end=408,
+  serialized_start=1038,
+  serialized_end=1092,
 )
 
 
@@ -982,8 +1307,8 @@ _CLOSETESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=410,
-  serialized_end=442,
+  serialized_start=1094,
+  serialized_end=1126,
 )
 
 
@@ -1021,8 +1346,8 @@ _CLOSETESTERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=444,
-  serialized_end=499,
+  serialized_start=1128,
+  serialized_end=1183,
 )
 
 
@@ -1060,8 +1385,8 @@ _USBTESTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=501,
-  serialized_end=538,
+  serialized_start=1185,
+  serialized_end=1222,
 )
 
 
@@ -1085,8 +1410,8 @@ _GETTESTERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=540,
-  serialized_end=559,
+  serialized_start=1224,
+  serialized_end=1243,
 )
 
 
@@ -1117,8 +1442,8 @@ _GETTESTERSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=561,
-  serialized_end=640,
+  serialized_start=1245,
+  serialized_end=1324,
 )
 
 
@@ -1156,8 +1481,8 @@ _GETUSBTESTERCAPABILITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=642,
-  serialized_end=751,
+  serialized_start=1326,
+  serialized_end=1435,
 )
 
 
@@ -1317,8 +1642,8 @@ _GETUSBTESTERCAPABILITYREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=754,
-  serialized_end=1660,
+  serialized_start=1438,
+  serialized_end=2344,
 )
 
 
@@ -1497,8 +1822,8 @@ _SETUSBTESTERCAPABILITYREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1663,
-  serialized_end=2711,
+  serialized_start=2347,
+  serialized_end=3395,
 )
 
 
@@ -1541,8 +1866,8 @@ _SETUSBTESTERCAPABILITYREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2713,
-  serialized_end=2798,
+  serialized_start=3397,
+  serialized_end=3482,
 )
 
 
@@ -1597,8 +1922,8 @@ _GETDPINFOREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2801,
-  serialized_end=2949,
+  serialized_start=3485,
+  serialized_end=3633,
 )
 
 
@@ -1773,8 +2098,8 @@ _GETDPINFOREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2952,
-  serialized_end=3599,
+  serialized_start=3636,
+  serialized_end=4283,
 )
 
 
@@ -1805,8 +2130,8 @@ _GETACTIVEPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3601,
-  serialized_end=3635,
+  serialized_start=4285,
+  serialized_end=4319,
 )
 
 
@@ -1870,8 +2195,8 @@ _GETACTIVEPORTREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3638,
-  serialized_end=3814,
+  serialized_start=4322,
+  serialized_end=4498,
 )
 
 
@@ -1916,8 +2241,8 @@ _SETACTIVEPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3816,
-  serialized_end=3927,
+  serialized_start=4500,
+  serialized_end=4611,
 )
 
 
@@ -1960,8 +2285,8 @@ _SETACTIVEPORTREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3929,
-  serialized_end=4005,
+  serialized_start=4613,
+  serialized_end=4689,
 )
 
 
@@ -1999,8 +2324,8 @@ _LOADEDIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4007,
-  serialized_end=4050,
+  serialized_start=4691,
+  serialized_end=4734,
 )
 
 
@@ -2043,8 +2368,8 @@ _LOADEDIDREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4052,
-  serialized_end=4123,
+  serialized_start=4736,
+  serialized_end=4807,
 )
 
 
@@ -2082,8 +2407,8 @@ _RESETPDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4125,
-  serialized_end=4167,
+  serialized_start=4809,
+  serialized_end=4851,
 )
 
 
@@ -2126,8 +2451,8 @@ _RESETPDREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4169,
-  serialized_end=4239,
+  serialized_start=4853,
+  serialized_end=4923,
 )
 
 
@@ -2158,8 +2483,8 @@ _GETPDOSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4241,
-  serialized_end=4269,
+  serialized_start=4925,
+  serialized_end=4953,
 )
 
 
@@ -2216,8 +2541,8 @@ _GETPDOSREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4271,
-  serialized_end=4377,
+  serialized_start=4955,
+  serialized_end=5061,
 )
 
 
@@ -2255,8 +2580,8 @@ _SENDVDMHPDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4379,
-  serialized_end=4469,
+  serialized_start=5063,
+  serialized_end=5153,
 )
 
 
@@ -2299,8 +2624,8 @@ _SENDVDMHPDREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4471,
-  serialized_end=4544,
+  serialized_start=5155,
+  serialized_end=5228,
 )
 
 
@@ -2331,8 +2656,8 @@ _SIMULATEKEYPRESSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4546,
-  serialized_end=4583,
+  serialized_start=5230,
+  serialized_end=5267,
 )
 
 
@@ -2375,10 +2700,20 @@ _SIMULATEKEYPRESSREPLY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4585,
-  serialized_end=4664,
+  serialized_start=5269,
+  serialized_end=5348,
 )
 
+_SENDPDALERTREQUEST.fields_by_name['pd_alert'].enum_type = _PDALERT
+_SENDPDALERTREPLY.oneofs_by_name['_error_msg'].fields.append(
+  _SENDPDALERTREPLY.fields_by_name['error_msg'])
+_SENDPDALERTREPLY.fields_by_name['error_msg'].containing_oneof = _SENDPDALERTREPLY.oneofs_by_name['_error_msg']
+_GETPDSTATSREPLY.oneofs_by_name['_error_msg'].fields.append(
+  _GETPDSTATSREPLY.fields_by_name['error_msg'])
+_GETPDSTATSREPLY.fields_by_name['error_msg'].containing_oneof = _GETPDSTATSREPLY.oneofs_by_name['_error_msg']
+_RESETPDSTATSREPLY.oneofs_by_name['_error_msg'].fields.append(
+  _RESETPDSTATSREPLY.fields_by_name['error_msg'])
+_RESETPDSTATSREPLY.fields_by_name['error_msg'].containing_oneof = _RESETPDSTATSREPLY.oneofs_by_name['_error_msg']
 _GETTESTERSREPLY.fields_by_name['testers'].message_type = _USBTESTER
 _GETUSBTESTERCAPABILITYREQUEST.fields_by_name['capability'].enum_type = _CAPABILITY
 _GETUSBTESTERCAPABILITYREPLY.fields_by_name['active_cc'].enum_type = _ACTIVECC
@@ -2581,6 +2916,12 @@ _SENDVDMHPDREPLY.fields_by_name['error_msg'].containing_oneof = _SENDVDMHPDREPLY
 _SIMULATEKEYPRESSREPLY.oneofs_by_name['_error_msg'].fields.append(
   _SIMULATEKEYPRESSREPLY.fields_by_name['error_msg'])
 _SIMULATEKEYPRESSREPLY.fields_by_name['error_msg'].containing_oneof = _SIMULATEKEYPRESSREPLY.oneofs_by_name['_error_msg']
+DESCRIPTOR.message_types_by_name['SendPdAlertRequest'] = _SENDPDALERTREQUEST
+DESCRIPTOR.message_types_by_name['SendPdAlertReply'] = _SENDPDALERTREPLY
+DESCRIPTOR.message_types_by_name['GetPdStatsRequest'] = _GETPDSTATSREQUEST
+DESCRIPTOR.message_types_by_name['GetPdStatsReply'] = _GETPDSTATSREPLY
+DESCRIPTOR.message_types_by_name['ResetPdStatsRequest'] = _RESETPDSTATSREQUEST
+DESCRIPTOR.message_types_by_name['ResetPdStatsReply'] = _RESETPDSTATSREPLY
 DESCRIPTOR.message_types_by_name['HardResetTesterRequest'] = _HARDRESETTESTERREQUEST
 DESCRIPTOR.message_types_by_name['HardResetTesterReply'] = _HARDRESETTESTERREPLY
 DESCRIPTOR.message_types_by_name['DoCableReplugRequest'] = _DOCABLEREPLUGREQUEST
@@ -2612,6 +2953,7 @@ DESCRIPTOR.message_types_by_name['SendVdmHpdRequest'] = _SENDVDMHPDREQUEST
 DESCRIPTOR.message_types_by_name['SendVdmHpdReply'] = _SENDVDMHPDREPLY
 DESCRIPTOR.message_types_by_name['SimulateKeyPressRequest'] = _SIMULATEKEYPRESSREQUEST
 DESCRIPTOR.message_types_by_name['SimulateKeyPressReply'] = _SIMULATEKEYPRESSREPLY
+DESCRIPTOR.enum_types_by_name['PdAlert'] = _PDALERT
 DESCRIPTOR.enum_types_by_name['Capability'] = _CAPABILITY
 DESCRIPTOR.enum_types_by_name['TryBehaviour'] = _TRYBEHAVIOUR
 DESCRIPTOR.enum_types_by_name['ActiveCc'] = _ACTIVECC
@@ -2628,6 +2970,48 @@ DESCRIPTOR.enum_types_by_name['DpLinkRate'] = _DPLINKRATE
 DESCRIPTOR.enum_types_by_name['DpColorDepth'] = _DPCOLORDEPTH
 DESCRIPTOR.enum_types_by_name['DpColorMode'] = _DPCOLORMODE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+SendPdAlertRequest = _reflection.GeneratedProtocolMessageType('SendPdAlertRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SENDPDALERTREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.usb_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.SendPdAlertRequest)
+  })
+_sym_db.RegisterMessage(SendPdAlertRequest)
+
+SendPdAlertReply = _reflection.GeneratedProtocolMessageType('SendPdAlertReply', (_message.Message,), {
+  'DESCRIPTOR' : _SENDPDALERTREPLY,
+  '__module__' : 'chromiumos.test.lab.api.passport.usb_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.SendPdAlertReply)
+  })
+_sym_db.RegisterMessage(SendPdAlertReply)
+
+GetPdStatsRequest = _reflection.GeneratedProtocolMessageType('GetPdStatsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETPDSTATSREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.usb_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.GetPdStatsRequest)
+  })
+_sym_db.RegisterMessage(GetPdStatsRequest)
+
+GetPdStatsReply = _reflection.GeneratedProtocolMessageType('GetPdStatsReply', (_message.Message,), {
+  'DESCRIPTOR' : _GETPDSTATSREPLY,
+  '__module__' : 'chromiumos.test.lab.api.passport.usb_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.GetPdStatsReply)
+  })
+_sym_db.RegisterMessage(GetPdStatsReply)
+
+ResetPdStatsRequest = _reflection.GeneratedProtocolMessageType('ResetPdStatsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _RESETPDSTATSREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.passport.usb_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.ResetPdStatsRequest)
+  })
+_sym_db.RegisterMessage(ResetPdStatsRequest)
+
+ResetPdStatsReply = _reflection.GeneratedProtocolMessageType('ResetPdStatsReply', (_message.Message,), {
+  'DESCRIPTOR' : _RESETPDSTATSREPLY,
+  '__module__' : 'chromiumos.test.lab.api.passport.usb_tester_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.passport.ResetPdStatsReply)
+  })
+_sym_db.RegisterMessage(ResetPdStatsReply)
 
 HardResetTesterRequest = _reflection.GeneratedProtocolMessageType('HardResetTesterRequest', (_message.Message,), {
   'DESCRIPTOR' : _HARDRESETTESTERREQUEST,
@@ -2856,8 +3240,8 @@ _USBTESTERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=6220,
-  serialized_end=8142,
+  serialized_start=6982,
+  serialized_end=9273,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetTesters',
@@ -3006,6 +3390,36 @@ _USBTESTERSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_SIMULATEKEYPRESSREQUEST,
     output_type=_SIMULATEKEYPRESSREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SendPdAlert',
+    full_name='chromiumos.test.lab.api.passport.UsbTesterService.SendPdAlert',
+    index=15,
+    containing_service=None,
+    input_type=_SENDPDALERTREQUEST,
+    output_type=_SENDPDALERTREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetPdStats',
+    full_name='chromiumos.test.lab.api.passport.UsbTesterService.GetPdStats',
+    index=16,
+    containing_service=None,
+    input_type=_GETPDSTATSREQUEST,
+    output_type=_GETPDSTATSREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ResetPdStats',
+    full_name='chromiumos.test.lab.api.passport.UsbTesterService.ResetPdStats',
+    index=17,
+    containing_service=None,
+    input_type=_RESETPDSTATSREQUEST,
+    output_type=_RESETPDSTATSREPLY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
