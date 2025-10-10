@@ -37822,6 +37822,13 @@
               "name": "enable_al_apfe_archiver",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "suite",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite",
+              "number": 9,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "XtsArchiverMetadata"
