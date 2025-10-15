@@ -21602,9 +21602,36 @@
               "number": 2,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            },
+            {
+              "jsonName": "besBoards",
+              "label": "LABEL_REPEATED",
+              "name": "bes_boards",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.BesBoard"
             }
           ],
           "name": "BluetoothPeer"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serialPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial_port",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "btAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "bt_address",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BesBoard"
         },
         {
           "field": [
