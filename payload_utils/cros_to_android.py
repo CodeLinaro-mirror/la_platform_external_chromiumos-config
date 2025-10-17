@@ -27,6 +27,7 @@ and feature XML files.
 import argparse
 import logging
 import pathlib
+import struct
 import sys
 from typing import Optional
 
@@ -463,6 +464,31 @@ def _add_fingerprint_entry(
     etree.SubElement(fp_config_elem, "sensor-location").text = location_enum_str
 
 
+def _get_ufsc_hex_value(
+    sw_config: software_config_pb2.SoftwareConfig,
+) -> Optional[str]:
+    """Packs the Unified Firmware Signing Configuration into a hex string.
+
+    The value is a list of up to 4 dwords, which are padded with zeros,
+    packed as little-endian unsigned integers, and concatenated into a hex string.
+
+    Args:
+        sw_config: The software config containing the UFSC value.
+
+    Returns:
+        The packed hex string, or None if no value is present.
+    """
+    if not sw_config.unified_fw_config.value:
+        return None
+
+    source_dwords = list(sw_config.unified_fw_config.value)
+    dwords_to_process = (source_dwords + [0, 0, 0, 0])[:4]
+    ufsc_hex_values = [
+        struct.pack("<I", int(dword)).hex() for dword in dwords_to_process
+    ]
+    return "".join(ufsc_hex_values)
+
+
 def _add_firmware_entry(
     hal_config: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -476,29 +502,32 @@ def _add_firmware_entry(
         sw_config: software_config_pb2.SoftwareConfig specific to a design
         config.
     """
+    firmware_config_elem = etree.SubElement(hal_config, "FirmwareConfiguration")
     fw_main_ro = sw_config.firmware.main_ro_payload
     if fw_main_ro and fw_main_ro.firmware_image_name:
         image_name = fw_main_ro.firmware_image_name.lower()
         customization_id = _get_fw_customization_id(design_config)
         if customization_id:
             image_name += f"_{customization_id}"
+        fw_image_name_elem = etree.SubElement(
+            firmware_config_elem, "firmware-manifest-key"
+        )
+        fw_image_name_elem.text = image_name
     else:
         logging.warning(
             "Firmware image name not found for Design.Config ID '%s'."
-            "Skipping FirmwareConfiguration.",
+            "Skipping firmware-manifest-key",
             design_config.id.value,
         )
-        return
-
-    firmware_config_elem = etree.SubElement(hal_config, "FirmwareConfiguration")
-    fw_image_name_elem = etree.SubElement(
-        firmware_config_elem, "firmware-manifest-key"
-    )
-    fw_image_name_elem.text = image_name
 
     boot_config = str(design_config.hardware_features.fw_config.value)
     boot_config_elem = etree.SubElement(firmware_config_elem, "firmware-config")
     boot_config_elem.text = boot_config
+
+    ufsc_cbi_value = _get_ufsc_hex_value(sw_config)
+    if ufsc_cbi_value:
+        ufsc_elem = etree.SubElement(firmware_config_elem, "ufsc")
+        ufsc_elem.text = ufsc_cbi_value
 
 
 def _add_audio_entry(

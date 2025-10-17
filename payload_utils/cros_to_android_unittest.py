@@ -256,6 +256,7 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.design_config.hardware_features.fw_config.coreboot_customizations.extend(
             ["cust1", "cust2"]
         )
+        self.sw_config.unified_fw_config.value.extend([1, 2, 3, 4])
         self.design_config.hardware_features.fw_config.value = 12345
         cros_to_android._add_firmware_entry(
             self.root_element, self.design_config, self.sw_config
@@ -266,12 +267,17 @@ class HalEntryHelpersTest(unittest.TestCase):
             fw_elem.find("firmware-manifest-key").text, "test_image_cust1_cust2"
         )
         self.assertEqual(fw_elem.find("firmware-config").text, "12345")
+        self.assertEqual(
+            fw_elem.find("ufsc").text,
+            "01000000020000000300000004000000",
+        )
 
     def test_add_firmware_entry_without_customizations(self):
         """Test firmware entry without coreboot customizations data."""
         self.sw_config.firmware.main_ro_payload.firmware_image_name = (
             "test_image"
         )
+        self.sw_config.unified_fw_config.value.extend([1, 2, 3, 4])
         self.design_config.hardware_features.fw_config.value = 12345
 
         cros_to_android._add_firmware_entry(
@@ -283,14 +289,22 @@ class HalEntryHelpersTest(unittest.TestCase):
             fw_elem.find("firmware-manifest-key").text, "test_image"
         )
         self.assertEqual(fw_elem.find("firmware-config").text, "12345")
+        self.assertEqual(
+            fw_elem.find("ufsc").text,
+            "01000000020000000300000004000000",
+        )
 
     def test_add_firmware_entry_no_image_name(self):
         """Test firmware entry when image name is missing."""
-        # sw_config.firmware.main_ro_payload.firmware_image_name is not set
+        self.design_config.hardware_features.fw_config.value = 12345
         cros_to_android._add_firmware_entry(
             self.root_element, self.design_config, self.sw_config
         )
-        self.assertIsNone(self.root_element.find("FirmwareConfiguration"))
+        fw_elem = self.root_element.find("FirmwareConfiguration")
+        self.assertIsNotNone(fw_elem)
+        self.assertIsNone(fw_elem.find("firmware-manifest-key"))
+        # Verify other elements are still created
+        self.assertEqual(fw_elem.find("firmware-config").text, "12345")
 
     def test_add_audio_entry_valid(self):
         """Test audio entry with valid data (soundcard only)."""
