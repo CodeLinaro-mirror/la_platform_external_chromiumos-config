@@ -16,6 +16,9 @@ import "google/protobuf/timestamp.proto";
 // This is not an exhaustive list of features supported by these test WiFi
 // routers. The intent is to only track features that may differ between the
 // different types of WiFi router devices in our labs.
+// After making changes to this enum, you must also update the device.proto
+// file infra/go/src/infra/libs/skylab/inventory/device.proto WiFiRouterFeature
+// enum to make swarming correctly parse json data with the new enum values.
 enum WifiRouterFeature {
   // Features are not known.
   WIFI_ROUTER_FEATURE_UNKNOWN = 0;
@@ -55,6 +58,10 @@ enum WifiRouterFeature {
 
   // SAE-EXT-KEY support for AKM-24/25.
   WIFI_ROUTER_FEATURE_SAE_EXT_KEY = 12;
+
+  // temp feature for ignoring the U6+ router in tests
+  // TODO(astrouski): Remove this feature once the U6+ router is fixed. (b/389945993)
+  WIFI_ROUTER_FEATURE_NOT_U6PLUS_ROUTER = 13;
 }
 
 // The type of Wifi AP device a WiFi AP peripheral is, functionally speaking.

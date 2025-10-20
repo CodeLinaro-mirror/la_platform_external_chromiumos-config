@@ -37,6 +37,7 @@ from lxml import etree  # pylint: disable=import-error
 # TODO(b/402027869): Figure out a better way to distribute this proto with the
 # script.
 try:
+    from chromiumos.config.api import component_pb2
     from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
     from chromiumos.config.api import topology_pb2
@@ -495,6 +496,10 @@ def _add_firmware_entry(
     )
     fw_image_name_elem.text = image_name
 
+    boot_config = str(design_config.hardware_features.fw_config.value)
+    boot_config_elem = etree.SubElement(firmware_config_elem, "firmware-config")
+    boot_config_elem.text = boot_config
+
 
 def _add_audio_entry(
     hal_config: etree._Element,
@@ -631,7 +636,9 @@ def _add_hardware_features_entry(
     }
 
     if form_factor in form_factor_names:
-        hw_feature_elem = etree.SubElement(hal_config, "HardwareFeatures")
+        hw_feature_elem = etree.SubElement(
+            hal_config, "HardwareFeaturesConfiguration"
+        )
         etree.SubElement(hw_feature_elem, "form-factor").text = (
             form_factor_names[form_factor]
         )
@@ -807,6 +814,123 @@ def _add_wifi_entry(
             logging.warning("unknown wifi_config: %s", config_field)
 
 
+def _add_storage_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Storage Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("storage"):
+        logging.debug(
+            "[%s] No storage found. Skipping StorageConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    storage_type = hw_features.storage.storage_type
+
+    storage_type_names = {
+        component_pb2.Component.Storage.StorageType.EMMC: "EMMC",
+        component_pb2.Component.Storage.StorageType.NVME: "NVME",
+        component_pb2.Component.Storage.StorageType.SATA: "SATA",
+        component_pb2.Component.Storage.StorageType.UFS: "UFS",
+        component_pb2.Component.Storage.StorageType.BRIDGED_EMMC: (
+            "BRIDGED_EMMC"
+        ),
+    }
+
+    if storage_type in storage_type_names:
+        storage_elem = etree.SubElement(hal_config, "StorageConfiguration")
+        etree.SubElement(storage_elem, "storage-type").text = (
+            storage_type_names[storage_type]
+        )
+    else:
+        logging.warning(
+            "[%s] Unknown storage_type value: %s. Skipping StorageConfiguration.",
+            design_config.id.value,
+            storage_type,
+        )
+
+
+def _add_keyboard_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Keyboard Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("keyboard"):
+        logging.debug(
+            "[%s] No keyboard found. Skipping KeyboardConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    keyboard = hw_features.keyboard
+    backlight_support = "false"
+    if keyboard.backlight == topology_pb2.HardwareFeatures.PRESENT:
+        backlight_support = "true"
+
+    kb_elem = etree.SubElement(hal_config, "KeyboardConfiguration")
+    etree.SubElement(kb_elem, "backlight-support").text = backlight_support
+    if keyboard.no_als_brightness:
+        etree.SubElement(kb_elem, "kb-default-brightness").text = (
+            f"{keyboard.no_als_brightness}"
+        )
+    if keyboard.backlight_user_steps:
+        etree.SubElement(kb_elem, "kb-backlight-steps").text = (
+            f"{keyboard.backlight_user_steps}"
+        )
+
+
+def _add_stylus_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Stylus Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("stylus"):
+        logging.debug(
+            "[%s] No stylus found. Skipping StylusConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    stylus_type = hw_features.stylus.stylus
+
+    stylus_type_names = {
+        topology_pb2.HardwareFeatures.Stylus.NONE: "NONE",
+        topology_pb2.HardwareFeatures.Stylus.INTERNAL: "GARAGED",
+        topology_pb2.HardwareFeatures.Stylus.EXTERNAL: "NON_GARAGED",
+    }
+
+    if stylus_type in stylus_type_names:
+        storage_elem = etree.SubElement(hal_config, "StylusConfiguration")
+        etree.SubElement(storage_elem, "stylus-type").text = stylus_type_names[
+            stylus_type
+        ]
+    else:
+        logging.warning(
+            "[%s] Unknown stylus_type value: %s. Skipping SylusConfiguration.",
+            design_config.id.value,
+            stylus_type,
+        )
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -834,6 +958,9 @@ def _add_hal_config_entry(
     sku_elem.text = sku
     model_elem = etree.SubElement(identity_elem, "model")
     model_elem.text = model.lower()
+    frid = sw_config.id_scan_config.frid.removeprefix("Google_")
+    frid_elem = etree.SubElement(identity_elem, "frid")
+    frid_elem.text = frid.lower()
 
     _add_cellular_entry(hal_config_elem, design_config)
     _add_fingerprint_entry(hal_config_elem, design_config)
@@ -849,6 +976,9 @@ def _add_hal_config_entry(
     )
     _add_hardware_features_entry(hal_config_elem, design_config)
     _add_wifi_entry(hal_config_elem, design_config, sw_config)
+    _add_storage_entry(hal_config_elem, design_config)
+    _add_keyboard_entry(hal_config_elem, design_config)
+    _add_stylus_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(
@@ -1020,11 +1150,6 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                     permissions_elem, "android.hardware.sensor.compass"
                 )
 
-            if hw_features.accelerometer.lid_accelerometer == present_enum:
-                _add_feature_element(
-                    permissions_elem, "android.sensor.device_orientation"
-                )
-
             if present_enum in (
                 hw_features.gyroscope.base_gyroscope,
                 hw_features.gyroscope.lid_gyroscope,
@@ -1060,6 +1185,22 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                 for prox_conf in hw_features.proximity.configs
             ):
                 _add_feature_element(permissions_elem, "com.google.sensor.sar")
+
+            if hw_features.screen.touch_support == present_enum:
+                _add_feature_element(
+                    permissions_elem, "android.hardware.touchscreen"
+                )
+                _add_feature_element(
+                    permissions_elem, "android.hardware.touchscreen.multitouch"
+                )
+                _add_feature_element(
+                    permissions_elem,
+                    "android.hardware.touchscreen.multitouch.distinct",
+                )
+                _add_feature_element(
+                    permissions_elem,
+                    "android.hardware.touchscreen.multitouch.jazzhand",
+                )
 
             _add_camera_features(permissions_elem, hw_features.camera)
 

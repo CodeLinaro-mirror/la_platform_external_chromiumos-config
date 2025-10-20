@@ -99,7 +99,12 @@ service BolsService {
   rpc GetServoTopology(GetServoTopologyRequest)
       returns (GetServoTopologyResponse);
 
-  // UpdateServoFirmware update the firmware of a servo device.
+  // UpdateServoFirmware updates the firmware of servo devices connected to the
+  // same hub as the servo with the given serial. It can update specific servo
+  // types or all qualified servo types. The firmware channel (stable, dev,
+  // etc.) and whether to force the update can be specified. Note: The servod
+  // process must be stopped before calling this API, as the update will fail if
+  // servod is running.
   rpc UpdateServoFirmware(UpdateServoFirmwareRequest)
       returns (UpdateServoFirmwareResponse) {}
 
@@ -111,6 +116,21 @@ service BolsService {
   // RunFlashEC run EC firmware flashing from the servo.
   // In most of implementation, it runs flash_ec tool on labstation.
   rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
+
+  // RunGSCTool run gsctool on labstation.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  rpc RunGSCTool(RunGSCToolRequest) returns (RunGSCToolResponse) {}
+
+  // RunUARTStressTester runs uart_stress_tester.py on labstation.
+  // uart_stress_tester.py repeats sending a uart console command
+  // to each UART device for a given time, and check if output
+  // has any missing characters.
+  // Example:
+  //  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+  rpc RunUARTStressTester(RunUARTStressTesterRequest)
+      returns (RunUARTStressTesterResponse) {}
 
   ///////// Dolos API /////////
 
@@ -354,6 +374,11 @@ message RunUMountResponse {}
 
 ////// Servod API Messages ////////
 
+// ServodValueArray is a helper message to allow for an array of ServodValue.
+message ServodValueArray {
+  repeated ServodValue values = 1;
+}
+
 // ServodValue represent a single value which can be set or get from
 // servod control.
 message ServodValue {
@@ -362,6 +387,7 @@ message ServodValue {
     int32 int_value = 2;
     float float_value = 3 [deprecated = true];
     double double_value = 4;
+    ServodValueArray array_value = 5;
   }
 }
 
@@ -528,6 +554,16 @@ message UpdateServoFirmwareRequest {
   }
   repeated Target targets = 2;
   bool force = 3;
+
+  // Firmware channel.
+  enum FirmwareChannel {
+    FIRMWARE_CHANNEL_UNSPECIFIED = 0;
+    FIRMWARE_CHANNEL_PREV = 1;
+    FIRMWARE_CHANNEL_DEV = 2;
+    FIRMWARE_CHANNEL_ALPHA = 3;
+    FIRMWARE_CHANNEL_STABLE = 4;
+  }
+  FirmwareChannel channel = 4;
 }
 
 message UpdateServoFirmwareResponse {
@@ -575,6 +611,35 @@ message RunFlashECRequest {
 }
 
 message RunFlashECResponse {
+  OutputStream output = 1;
+}
+
+message RunGSCToolRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // List of parameters used at execution.
+  // Example:
+  //  gsctool -n 1002D052-9066B226 -f
+  //  Params: ["-n", "1002D052-9066B226", "-f" ]
+  repeated string params = 2;
+}
+
+message RunGSCToolResponse {
+  OutputStream output = 1;
+}
+
+message RunUARTStressTesterRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // List of parameters used at execution.
+  // Example:
+  //  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+  //  Params: ["/dev/ttyUSB2", "--time", "3600"]
+  repeated string params = 2;
+}
+
+message RunUARTStressTesterResponse {
   OutputStream output = 1;
 }
 

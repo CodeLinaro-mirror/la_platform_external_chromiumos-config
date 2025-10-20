@@ -25,10 +25,32 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="StorageTypeEn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EMMC"/>
+      <xs:enumeration value="NVME"/>
+      <xs:enumeration value="SATA"/>
+      <xs:enumeration value="UFS"/>
+      <xs:enumeration value="BRIDGED_EMMC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="StylusTypeEn">
+    <xs:annotation>
+      <xs:documentation>Stylus present and garaged type or not.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="GARAGED"/>
+      <xs:enumeration value="NON_GARAGED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="IdentityType">
     <xs:sequence>
       <xs:element type="xs:string" name="sku-id"/>
       <xs:element type="xs:string" name="model"/>
+      <xs:element type="xs:string" name="frid"/>
       <xs:element type="xs:string" name="custom-label-tag" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
@@ -76,7 +98,12 @@
           <xs:documentation>The key is used by the firmware updater to select the AP/EC firmware bundle.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      </xs:sequence>
+      <xs:element type="xs:string" name="firmware-config" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Firmware config(FW_CONFIG) value. This is used by AP and EC firmware for SKU specific configuration during boot</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="AudioConfigurationType">
@@ -192,6 +219,42 @@
   </xs:complexType>
   <!-- End of WiFi related section -->
 
+  <xs:complexType name="StorageConfigurationType">
+    <xs:sequence>
+      <xs:element type="StorageTypeEn" name="storage-type" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Non-volatile storage type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="KeyboardConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:boolean" name="backlight-support" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Keyboard backlight present.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="kb-default-brightness" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Keyboard backlight default brightness.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="kb-backlight-steps" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>User-selectable backlight steps in increasing order.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StylusConfigurationType">
+    <xs:sequence>
+      <xs:element type="StylusTypeEn" name="stylus-type" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -201,8 +264,11 @@
       <xs:element name="AudioConfiguration" type="AudioConfigurationType" minOccurs="0"/>
       <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
       <xs:element name="CameraConfiguration" type="CameraConfigurationType" minOccurs="0"/>
-      <xs:element name="HardwareFeatures" type="HardwareFeaturesType" minOccurs="0"/>
+      <xs:element name="HardwareFeaturesConfiguration" type="HardwareFeaturesType" minOccurs="0"/>
       <xs:element name="WiFiSarConfiguration" type="SarConfigType" minOccurs="0"/>
+      <xs:element name="StorageConfiguration" type="StorageConfigurationType" minOccurs="0"/>
+      <xs:element name="KeyboardConfiguration" type="KeyboardConfigurationType" minOccurs="0"/>
+      <xs:element name="StylusConfiguration" type="StylusConfigurationType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

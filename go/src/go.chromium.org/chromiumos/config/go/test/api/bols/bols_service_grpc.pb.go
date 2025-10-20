@@ -77,13 +77,30 @@ type BolsServiceClient interface {
 	EchoServod(ctx context.Context, in *EchoServodRequest, opts ...grpc.CallOption) (*EchoServodResponse, error)
 	// GetServoTopology gets the servo topology.
 	GetServoTopology(ctx context.Context, in *GetServoTopologyRequest, opts ...grpc.CallOption) (*GetServoTopologyResponse, error)
-	// UpdateServoFirmware update the firmware of a servo device.
+	// UpdateServoFirmware updates the firmware of servo devices connected to the
+	// same hub as the servo with the given serial. It can update specific servo
+	// types or all qualified servo types. The firmware channel (stable, dev,
+	// etc.) and whether to force the update can be specified. Note: The servod
+	// process must be stopped before calling this API, as the update will fail if
+	// servod is running.
 	UpdateServoFirmware(ctx context.Context, in *UpdateServoFirmwareRequest, opts ...grpc.CallOption) (*UpdateServoFirmwareResponse, error)
 	// RunFutility run futility tool on labstation.
 	RunFutility(ctx context.Context, in *RunFutilityRequest, opts ...grpc.CallOption) (*RunFutilityResponse, error)
 	// RunFlashEC run EC firmware flashing from the servo.
 	// In most of implementation, it runs flash_ec tool on labstation.
 	RunFlashEC(ctx context.Context, in *RunFlashECRequest, opts ...grpc.CallOption) (*RunFlashECResponse, error)
+	// RunGSCTool run gsctool on labstation.
+	// Example:
+	//  gsctool -n 1002D052-9066B226 -f
+	//  Params: ["-n", "1002D052-9066B226", "-f" ]
+	RunGSCTool(ctx context.Context, in *RunGSCToolRequest, opts ...grpc.CallOption) (*RunGSCToolResponse, error)
+	// RunUARTStressTester runs uart_stress_tester.py on labstation.
+	// uart_stress_tester.py repeats sending a uart console command
+	// to each UART device for a given time, and check if output
+	// has any missing characters.
+	// Example:
+	//  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+	RunUARTStressTester(ctx context.Context, in *RunUARTStressTesterRequest, opts ...grpc.CallOption) (*RunUARTStressTesterResponse, error)
 	GetDolosVersion(ctx context.Context, in *GetDolosVersionRequest, opts ...grpc.CallOption) (*GetDolosVersionResponse, error)
 	// UpdateDolosVersion will update the Dolos version if version does
 	// not match expected one.
@@ -464,6 +481,24 @@ func (c *bolsServiceClient) RunFlashEC(ctx context.Context, in *RunFlashECReques
 	return out, nil
 }
 
+func (c *bolsServiceClient) RunGSCTool(ctx context.Context, in *RunGSCToolRequest, opts ...grpc.CallOption) (*RunGSCToolResponse, error) {
+	out := new(RunGSCToolResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/RunGSCTool", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bolsServiceClient) RunUARTStressTester(ctx context.Context, in *RunUARTStressTesterRequest, opts ...grpc.CallOption) (*RunUARTStressTesterResponse, error) {
+	out := new(RunUARTStressTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/RunUARTStressTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bolsServiceClient) GetDolosVersion(ctx context.Context, in *GetDolosVersionRequest, opts ...grpc.CallOption) (*GetDolosVersionResponse, error) {
 	out := new(GetDolosVersionResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/GetDolosVersion", in, out, opts...)
@@ -559,13 +594,30 @@ type BolsServiceServer interface {
 	EchoServod(context.Context, *EchoServodRequest) (*EchoServodResponse, error)
 	// GetServoTopology gets the servo topology.
 	GetServoTopology(context.Context, *GetServoTopologyRequest) (*GetServoTopologyResponse, error)
-	// UpdateServoFirmware update the firmware of a servo device.
+	// UpdateServoFirmware updates the firmware of servo devices connected to the
+	// same hub as the servo with the given serial. It can update specific servo
+	// types or all qualified servo types. The firmware channel (stable, dev,
+	// etc.) and whether to force the update can be specified. Note: The servod
+	// process must be stopped before calling this API, as the update will fail if
+	// servod is running.
 	UpdateServoFirmware(context.Context, *UpdateServoFirmwareRequest) (*UpdateServoFirmwareResponse, error)
 	// RunFutility run futility tool on labstation.
 	RunFutility(context.Context, *RunFutilityRequest) (*RunFutilityResponse, error)
 	// RunFlashEC run EC firmware flashing from the servo.
 	// In most of implementation, it runs flash_ec tool on labstation.
 	RunFlashEC(context.Context, *RunFlashECRequest) (*RunFlashECResponse, error)
+	// RunGSCTool run gsctool on labstation.
+	// Example:
+	//  gsctool -n 1002D052-9066B226 -f
+	//  Params: ["-n", "1002D052-9066B226", "-f" ]
+	RunGSCTool(context.Context, *RunGSCToolRequest) (*RunGSCToolResponse, error)
+	// RunUARTStressTester runs uart_stress_tester.py on labstation.
+	// uart_stress_tester.py repeats sending a uart console command
+	// to each UART device for a given time, and check if output
+	// has any missing characters.
+	// Example:
+	//  uart_stress_tester.py /dev/ttyUSB2 --time 3600
+	RunUARTStressTester(context.Context, *RunUARTStressTesterRequest) (*RunUARTStressTesterResponse, error)
 	GetDolosVersion(context.Context, *GetDolosVersionRequest) (*GetDolosVersionResponse, error)
 	// UpdateDolosVersion will update the Dolos version if version does
 	// not match expected one.
@@ -660,6 +712,12 @@ func (UnimplementedBolsServiceServer) RunFutility(context.Context, *RunFutilityR
 }
 func (UnimplementedBolsServiceServer) RunFlashEC(context.Context, *RunFlashECRequest) (*RunFlashECResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunFlashEC not implemented")
+}
+func (UnimplementedBolsServiceServer) RunGSCTool(context.Context, *RunGSCToolRequest) (*RunGSCToolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunGSCTool not implemented")
+}
+func (UnimplementedBolsServiceServer) RunUARTStressTester(context.Context, *RunUARTStressTesterRequest) (*RunUARTStressTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunUARTStressTester not implemented")
 }
 func (UnimplementedBolsServiceServer) GetDolosVersion(context.Context, *GetDolosVersionRequest) (*GetDolosVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDolosVersion not implemented")
@@ -1196,6 +1254,42 @@ func _BolsService_RunFlashEC_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BolsService_RunGSCTool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunGSCToolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BolsServiceServer).RunGSCTool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.bols.BolsService/RunGSCTool",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BolsServiceServer).RunGSCTool(ctx, req.(*RunGSCToolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BolsService_RunUARTStressTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunUARTStressTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BolsServiceServer).RunUARTStressTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.bols.BolsService/RunUARTStressTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BolsServiceServer).RunUARTStressTester(ctx, req.(*RunUARTStressTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BolsService_GetDolosVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetDolosVersionRequest)
 	if err := dec(in); err != nil {
@@ -1362,6 +1456,14 @@ var BolsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RunFlashEC",
 			Handler:    _BolsService_RunFlashEC_Handler,
+		},
+		{
+			MethodName: "RunGSCTool",
+			Handler:    _BolsService_RunGSCTool_Handler,
+		},
+		{
+			MethodName: "RunUARTStressTester",
+			Handler:    _BolsService_RunUARTStressTester_Handler,
 		},
 		{
 			MethodName: "GetDolosVersion",

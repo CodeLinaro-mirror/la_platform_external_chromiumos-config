@@ -33,8 +33,15 @@
               "present": true,
               "roVersion": "123"
             },
-            "formFactor": {
+            "fwConfig": {
+              "mask": 3221226495,
+              "value": 123
+            },
+           "formFactor": {
               "formFactor": "CLAMSHELL"
+            },
+            "screen": {
+              "touchSupport": "PRESENT"
             }
           }
         },
@@ -53,6 +60,10 @@
               "board": "testfpboard",
               "present": true,
               "roVersion": "123"
+            },
+            "fwConfig": {
+              "mask": 3221226495,
+              "value": 456
             },
             "formFactor": {
               "formFactor": "CONVERTIBLE"

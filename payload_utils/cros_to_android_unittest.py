@@ -95,6 +95,10 @@ class CrosConfigConverterMainTest(unittest.TestCase):
             self.assertEqual(
                 content,
                 b"<permissions>\n  "
+                b'<feature name="android.hardware.touchscreen"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch.distinct"/>\n  '
+                b'<feature name="android.hardware.touchscreen.multitouch.jazzhand"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
                 b'<feature name="android.hardware.camera.front"/>\n'
                 b"</permissions>\n",
@@ -252,7 +256,7 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.design_config.hardware_features.fw_config.coreboot_customizations.extend(
             ["cust1", "cust2"]
         )
-
+        self.design_config.hardware_features.fw_config.value = 12345
         cros_to_android._add_firmware_entry(
             self.root_element, self.design_config, self.sw_config
         )
@@ -261,12 +265,14 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.assertEqual(
             fw_elem.find("firmware-manifest-key").text, "test_image_cust1_cust2"
         )
+        self.assertEqual(fw_elem.find("firmware-config").text, "12345")
 
     def test_add_firmware_entry_without_customizations(self):
         """Test firmware entry without coreboot customizations data."""
         self.sw_config.firmware.main_ro_payload.firmware_image_name = (
             "test_image"
         )
+        self.design_config.hardware_features.fw_config.value = 12345
 
         cros_to_android._add_firmware_entry(
             self.root_element, self.design_config, self.sw_config
@@ -276,6 +282,7 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.assertEqual(
             fw_elem.find("firmware-manifest-key").text, "test_image"
         )
+        self.assertEqual(fw_elem.find("firmware-config").text, "12345")
 
     def test_add_firmware_entry_no_image_name(self):
         """Test firmware entry when image name is missing."""
@@ -352,7 +359,9 @@ class HalEntryHelpersTest(unittest.TestCase):
         cros_to_android._add_hardware_features_entry(
             self.root_element, self.design_config
         )
-        hw_features_elem = self.root_element.find("HardwareFeatures")
+        hw_features_elem = self.root_element.find(
+            "HardwareFeaturesConfiguration"
+        )
         self.assertIsNotNone(hw_features_elem)
         self.assertEqual(hw_features_elem.find("form-factor").text, "CLAMSHELL")
 
@@ -365,7 +374,9 @@ class HalEntryHelpersTest(unittest.TestCase):
         cros_to_android._add_hardware_features_entry(
             self.root_element, self.design_config
         )
-        self.assertIsNone(self.root_element.find("HardwareFeatures"))
+        self.assertIsNone(
+            self.root_element.find("HardwareFeaturesConfiguration")
+        )
 
     def test_add_camera_entry_generated(self):
         """Camera entry generated if sw config enables it."""
@@ -510,6 +521,42 @@ class HalEntryHelpersTest(unittest.TestCase):
             power_elem.find("PowerConfig.5g").find("PowerOffset").text, "5"
         )
 
+    def test_add_keyboard_entry_present_valid(self):
+        """Test keyboard entry with a valid hw_features.keyboard."""
+        this_keyboard = self.design_config.hardware_features.keyboard
+        this_keyboard.backlight = topology_pb2.HardwareFeatures.NOT_PRESENT
+
+        cros_to_android._add_keyboard_entry(
+            self.root_element, self.design_config
+        )
+
+        kb_elem = self.root_element.find("KeyboardConfiguration")
+        self.assertIsNotNone(kb_elem)
+        self.assertEqual(kb_elem.find("backlight-support").text, "false")
+
+    def test_add_keyboard_entry_not_present(self):
+        """Test keyboard entry when hw_features.keyboard is not present."""
+        cros_to_android._add_keyboard_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("KeyboardConfiguration"))
+
+    def test_add_stylus_entry_present_valid(self):
+        """Test stylus entry with a valid hw_features.stylus."""
+        this_stylus = self.design_config.hardware_features.stylus
+        this_stylus.stylus = topology_pb2.HardwareFeatures.Stylus.NONE
+
+        cros_to_android._add_stylus_entry(self.root_element, self.design_config)
+
+        sty_elem = self.root_element.find("StylusConfiguration")
+        self.assertIsNotNone(sty_elem)
+        self.assertEqual(sty_elem.find("stylus-type").text, "NONE")
+
+    def test_add_stylus_entry_not_present(self):
+        """Test stylus entry when hw_features.stylus is not present."""
+        cros_to_android._add_stylus_entry(self.root_element, self.design_config)
+        self.assertIsNone(self.root_element.find("StylusConfiguration"))
+
 
 class FeatureXmlGenerationTest(unittest.TestCase):
     """Tests for feature XML generation functions."""
@@ -618,19 +665,6 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         self._create_bundle_and_run_feature_generation()
         self._assert_feature_xml(
             ["android.hardware.sensor.proximity", "com.google.sensor.sar"]
-        )
-
-    def test_generate_device_orientation_feature(self):
-        """Test android.sensor.device_orientation feature XML."""
-        self.config.hardware_features.accelerometer.lid_accelerometer = (
-            topology_pb2.HardwareFeatures.PRESENT
-        )
-        self._create_bundle_and_run_feature_generation()
-        self._assert_feature_xml(
-            [
-                "android.hardware.sensor.accelerometer",
-                "android.sensor.device_orientation",
-            ]
         )
 
     def test_generate_camera_any_feature(self):
