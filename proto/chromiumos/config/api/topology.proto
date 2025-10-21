@@ -730,6 +730,9 @@ message HardwareFeatures {
       LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
       // On power button at the top right key of the keyboard.
       POWER_BUTTON_TOP_RIGHT_KEY = 10;
+      // On power button, on the left edge at the top (detachable device,
+      // landscape orientation).
+      POWER_BUTTON_LEFT_EDGE_TOP = 11;
     }
 
     message FingerprintDiag {
