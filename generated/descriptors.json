@@ -7502,6 +7502,10 @@
                     {
                       "name": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
                       "number": 9
+                    },
+                    {
+                      "name": "POWER_BUTTON_TOP_RIGHT_KEY",
+                      "number": 10
                     }
                   ]
                 }

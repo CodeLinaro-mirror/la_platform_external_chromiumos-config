@@ -728,6 +728,8 @@ message HardwareFeatures {
       reserved 8;  // Not to conflict with PRESENT
       // Left of power button at top right corner (of the keyboard)
       LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
+      // On power button at the top right key of the keyboard.
+      POWER_BUTTON_TOP_RIGHT_KEY = 10;
     }
 
     message FingerprintDiag {

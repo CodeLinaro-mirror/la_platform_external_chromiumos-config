@@ -101,6 +101,7 @@ _LOCATION = struct(
     SIDE_RIGHT = _HW_FEAT.Fingerprint.RIGHT_SIDE,
     SIDE_LEFT = _HW_FEAT.Fingerprint.LEFT_SIDE,
     LEFT_OF_POWER_BUTTON_TOP_RIGHT = _HW_FEAT.Fingerprint.LEFT_OF_POWER_BUTTON_TOP_RIGHT,
+    POWER_BUTTON_TOP_RIGHT_KEY = _HW_FEAT.Fingerprint.POWER_BUTTON_TOP_RIGHT_KEY,
 )
 
 def _create_fingerprint(
