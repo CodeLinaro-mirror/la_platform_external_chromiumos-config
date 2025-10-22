@@ -23301,6 +23301,36 @@
         {
           "field": [
             {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "imageUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_url",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "usbDevicePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_device_path",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadImageToUSBRequest"
+        },
+        {
+          "name": "DownloadImageToUSBResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "values",
               "label": "LABEL_REPEATED",
               "name": "values",
@@ -24256,6 +24286,12 @@
               "name": "RunUMount",
               "options": {},
               "outputType": ".chromiumos.test.api.bols.RunUMountResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.DownloadImageToUSBRequest",
+              "name": "DownloadImageToUSB",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.DownloadImageToUSBResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.StartServodRequest",

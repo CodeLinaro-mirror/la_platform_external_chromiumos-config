@@ -65,6 +65,10 @@ service BolsService {
   // RunUMount runs the "umount" command on the labstation.
   rpc RunUMount(RunUMountRequest) returns (RunUMountResponse) {}
 
+  // DownloadImageToUSB downloads an image and writes it to a USB drive.
+  rpc DownloadImageToUSB(DownloadImageToUSBRequest)
+      returns (DownloadImageToUSBResponse) {}
+
   /////////  Servod API /////////
 
   // StartServod runs a servod daemon.
@@ -381,6 +385,17 @@ message RunUMountRequest {
 }
 
 message RunUMountResponse {}
+
+message DownloadImageToUSBRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The URL of the image to download.
+  string image_url = 2;
+  // The path to the USB device to write the image to.
+  string usb_device_path = 3;
+}
+
+message DownloadImageToUSBResponse {}
 
 ////// Servod API Messages ////////
 

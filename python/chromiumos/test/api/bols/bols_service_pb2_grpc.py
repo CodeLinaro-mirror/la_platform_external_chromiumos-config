@@ -87,6 +87,11 @@ class BolsServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountResponse.FromString,
                 )
+        self.DownloadImageToUSB = channel.unary_unary(
+                '/chromiumos.test.api.bols.BolsService/DownloadImageToUSB',
+                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBResponse.FromString,
+                )
         self.StartServod = channel.unary_unary(
                 '/chromiumos.test.api.bols.BolsService/StartServod',
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartServodRequest.SerializeToString,
@@ -295,6 +300,13 @@ class BolsServiceServicer(object):
 
     def RunUMount(self, request, context):
         """RunUMount runs the "umount" command on the labstation.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DownloadImageToUSB(self, request, context):
+        """DownloadImageToUSB downloads an image and writes it to a USB drive.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -538,6 +550,11 @@ def add_BolsServiceServicer_to_server(servicer, server):
                     servicer.RunUMount,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountResponse.SerializeToString,
+            ),
+            'DownloadImageToUSB': grpc.unary_unary_rpc_method_handler(
+                    servicer.DownloadImageToUSB,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBResponse.SerializeToString,
             ),
             'StartServod': grpc.unary_unary_rpc_method_handler(
                     servicer.StartServod,
@@ -887,6 +904,23 @@ class BolsService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/RunUMount',
             chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DownloadImageToUSB(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/DownloadImageToUSB',
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
