@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/api/software',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n6chromiumos/config/api/software/unified_fw_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x94\x07\n\x0e\x46irmwareConfig\x12\x13\n\x0b\x61udio_codec\x18\x01 \x01(\r\x12\x17\n\x0f\x61udio_amplifier\x18\x02 \x01(\r\x12\x16\n\x0e\x61udio_bus_type\x18\x03 \x01(\r\x12\x17\n\x0f\x63\x61mera_ufc_type\x18\x04 \x01(\r\x12\x17\n\x0f\x63\x61mera_ufc_name\x18\x05 \x01(\r\x12\x17\n\x0f\x63\x61mera_wfc_type\x18\x06 \x01(\r\x12\x17\n\x0f\x63\x61mera_wfc_name\x18\x07 \x01(\r\x12\x14\n\x0cstorage_type\x18\x08 \x01(\r\x12\x1a\n\x12sd_card_controller\x18\t \x01(\r\x12\x13\n\x0btouchscreen\x18\n \x01(\r\x12\x1e\n\x16touchscreen_probe_type\x18\x0b \x01(\r\x12!\n\x19touchscreen_soc_interface\x18\x0c \x01(\r\x12\x1a\n\x12sensor_hub_present\x18\r \x01(\x08\x12\x1b\n\x13\x66ingerprint_present\x18\x0e \x01(\x08\x12\x16\n\x0ewifi_interface\x18\x0f \x01(\r\x12\x10\n\x08trackpad\x18\x10 \x01(\r\x12\x1b\n\x13trackpad_probe_type\x18\x11 \x01(\r\x12\x1e\n\x16trackpad_soc_interface\x18\x12 \x01(\r\x12\x1a\n\x12\x63\x65llular_interface\x18\x13 \x01(\r\x12\x13\n\x0b\x66orm_factor\x18\x14 \x01(\r\x12\x1f\n\x17keyboard_component_name\x18\x15 \x01(\r\x12\x10\n\x08panel_id\x18\x16 \x01(\r\x12\x16\n\x0estylus_present\x18\x17 \x01(\x08\x12\x1c\n\x14kb_backlight_present\x18\x18 \x01(\x08\x12\x1a\n\x12kb_num_pad_present\x18\x19 \x01(\x08\x12\x13\n\x0b\x66\x61n_present\x18\x1a \x01(\x08\x12\x12\n\nlid_sensor\x18\x1b \x01(\r\x12\x13\n\x0b\x62\x61se_sensor\x18\x1c \x01(\r\x12$\n\x1ctablet_mode_base_orientation\x18\x1d \x01(\x08\x12\x14\n\x0c\x63harger_chip\x18\x1e \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_0\x18\x1f \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_1\x18  \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_2\x18! \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_3\x18\" \x01(\r\"&\n\x15UnifiedFirmwareConfig\x12\r\n\x05value\x18\x01 \x03(\rB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3'
+  serialized_pb=b'\n6chromiumos/config/api/software/unified_fw_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x94\x07\n\x0e\x46irmwareConfig\x12\x13\n\x0b\x61udio_codec\x18\x01 \x01(\r\x12\x17\n\x0f\x61udio_amplifier\x18\x02 \x01(\r\x12\x16\n\x0e\x61udio_bus_type\x18\x03 \x01(\r\x12\x17\n\x0f\x63\x61mera_ufc_type\x18\x04 \x01(\r\x12\x17\n\x0f\x63\x61mera_ufc_name\x18\x05 \x01(\r\x12\x17\n\x0f\x63\x61mera_wfc_type\x18\x06 \x01(\r\x12\x17\n\x0f\x63\x61mera_wfc_name\x18\x07 \x01(\r\x12\x14\n\x0cstorage_type\x18\x08 \x01(\r\x12\x1a\n\x12sd_card_controller\x18\t \x01(\r\x12\x13\n\x0btouchscreen\x18\n \x01(\r\x12\x1e\n\x16touchscreen_probe_type\x18\x0b \x01(\r\x12!\n\x19touchscreen_soc_interface\x18\x0c \x01(\r\x12\x1a\n\x12sensor_hub_present\x18\r \x01(\r\x12\x1b\n\x13\x66ingerprint_present\x18\x0e \x01(\r\x12\x16\n\x0ewifi_interface\x18\x0f \x01(\r\x12\x10\n\x08trackpad\x18\x10 \x01(\r\x12\x1b\n\x13trackpad_probe_type\x18\x11 \x01(\r\x12\x1e\n\x16trackpad_soc_interface\x18\x12 \x01(\r\x12\x1a\n\x12\x63\x65llular_interface\x18\x13 \x01(\r\x12\x13\n\x0b\x66orm_factor\x18\x14 \x01(\r\x12\x1f\n\x17keyboard_component_name\x18\x15 \x01(\r\x12\x10\n\x08panel_id\x18\x16 \x01(\r\x12\x16\n\x0estylus_present\x18\x17 \x01(\r\x12\x1c\n\x14kb_backlight_present\x18\x18 \x01(\r\x12\x1a\n\x12kb_num_pad_present\x18\x19 \x01(\r\x12\x13\n\x0b\x66\x61n_present\x18\x1a \x01(\r\x12\x12\n\nlid_sensor\x18\x1b \x01(\r\x12\x13\n\x0b\x62\x61se_sensor\x18\x1c \x01(\r\x12$\n\x1ctablet_mode_base_orientation\x18\x1d \x01(\r\x12\x14\n\x0c\x63harger_chip\x18\x1e \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_0\x18\x1f \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_1\x18  \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_2\x18! \x01(\r\x12\x1e\n\x16pdc_chip_vendor_port_3\x18\" \x01(\r\"&\n\x15UnifiedFirmwareConfig\x12\r\n\x05value\x18\x01 \x03(\rB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3'
 )
 
 
@@ -119,15 +119,15 @@ _FIRMWARECONFIG = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='sensor_hub_present', full_name='chromiumos.config.api.software.FirmwareConfig.sensor_hub_present', index=12,
-      number=13, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=13, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='fingerprint_present', full_name='chromiumos.config.api.software.FirmwareConfig.fingerprint_present', index=13,
-      number=14, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=14, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -189,29 +189,29 @@ _FIRMWARECONFIG = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='stylus_present', full_name='chromiumos.config.api.software.FirmwareConfig.stylus_present', index=22,
-      number=23, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=23, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='kb_backlight_present', full_name='chromiumos.config.api.software.FirmwareConfig.kb_backlight_present', index=23,
-      number=24, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=24, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='kb_num_pad_present', full_name='chromiumos.config.api.software.FirmwareConfig.kb_num_pad_present', index=24,
-      number=25, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=25, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='fan_present', full_name='chromiumos.config.api.software.FirmwareConfig.fan_present', index=25,
-      number=26, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=26, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -231,8 +231,8 @@ _FIRMWARECONFIG = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='tablet_mode_base_orientation', full_name='chromiumos.config.api.software.FirmwareConfig.tablet_mode_base_orientation', index=28,
-      number=29, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      number=29, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),

@@ -12889,14 +12889,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "sensor_hub_present",
               "number": 13,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "fingerprintPresent",
               "label": "LABEL_OPTIONAL",
               "name": "fingerprint_present",
               "number": 14,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "wifiInterface",
@@ -12959,28 +12959,28 @@
               "label": "LABEL_OPTIONAL",
               "name": "stylus_present",
               "number": 23,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "kbBacklightPresent",
               "label": "LABEL_OPTIONAL",
               "name": "kb_backlight_present",
               "number": 24,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "kbNumPadPresent",
               "label": "LABEL_OPTIONAL",
               "name": "kb_num_pad_present",
               "number": 25,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "fanPresent",
               "label": "LABEL_OPTIONAL",
               "name": "fan_present",
               "number": 26,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "lidSensor",
@@ -13001,7 +13001,7 @@
               "label": "LABEL_OPTIONAL",
               "name": "tablet_mode_base_orientation",
               "number": 29,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_UINT32"
             },
             {
               "jsonName": "chargerChip",
