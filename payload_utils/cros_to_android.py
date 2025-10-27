@@ -419,13 +419,8 @@ def _add_fingerprint_entry(
     if not fp_features.present:
         return
 
-    if not fp_features.board:
-        logging.warning(
-            "Fingerprint config missing mandatory 'board' field for "
-            "Design.Config '%s'. Skipping FingerprintConfiguration.",
-            design_config.id.value,
-        )
-        return
+    # TODO (b/453601065) add back fp_features.board checking when 'board'
+    # value for USB FPMCU is ready
 
     location_enum_str = topology_pb2.HardwareFeatures.Fingerprint.Location.Name(
         fp_features.location
@@ -453,7 +448,8 @@ def _add_fingerprint_entry(
     )
 
     fp_config_elem = etree.SubElement(hal_config, "FingerprintConfiguration")
-    etree.SubElement(fp_config_elem, "board").text = fp_features.board
+    if fp_features.board:
+        etree.SubElement(fp_config_elem, "board").text = fp_features.board
     etree.SubElement(fp_config_elem, "fingerprint-sensor-type").text = (
         sensor_type_xsd_str
     )

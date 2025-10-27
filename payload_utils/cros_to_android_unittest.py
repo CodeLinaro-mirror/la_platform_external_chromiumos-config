@@ -223,17 +223,8 @@ class HalEntryHelpersTest(unittest.TestCase):
         )
         self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
 
-    def test_add_fingerprint_entry_missing_board(self):
-        """Test fingerprint entry present but board missing."""
-        fp_features = self.design_config.hardware_features.fingerprint
-        fp_features.present = True
-        fp_features.location = (
-            topology_pb2.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT
-        )
-        cros_to_android._add_fingerprint_entry(
-            self.root_element, self.design_config
-        )
-        self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
+    # TODO (b/453601065) add back def test_add_fingerprint_entry_missing_board:
+    # when 'board' value for USB FPMCU is ready
 
     def test_add_fingerprint_entry_location_unknown(self):
         """Test fingerprint entry present but location unknown."""

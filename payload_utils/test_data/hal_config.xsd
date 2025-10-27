@@ -68,7 +68,7 @@
 
   <xs:complexType name="FingerprintConfigurationType">
     <xs:sequence>
-      <xs:element type="xs:string" name="board" minOccurs="1">
+      <xs:element type="xs:string" name="board" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Specifies the fingerprint board in use.</xs:documentation>
         </xs:annotation>
