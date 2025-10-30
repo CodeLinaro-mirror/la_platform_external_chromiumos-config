@@ -15,12 +15,18 @@ load(
     "@proto//chromiumos/config/api/software/unified_fw_config.proto",
     fw_config_pb = "chromiumos.config.api.software",
 )
-load("./unified_fw_config_schema.star", "UNIFIED_FW_CONFIG_SCHEMA")
+
+_schema_dict = json.decode(io.read_file("unified_fw_config_schema.json"))
+UNIFIED_FW_CONFIG_SCHEMA = struct(**{
+    field_name: struct(**field_props)
+    for field_name, field_props in _schema_dict.items()
+    if not field_name.startswith("_")  # skip metadata
+})
 
 def _set_bits(dword, value, start_bit, end_bit):
     """Sets a value into a bit range within a DWORD."""
     if value == None:
-        value = 0  # Treat None or False as 0
+        value = 0
 
     size = end_bit - start_bit + 1
     if size <= 0:
@@ -35,17 +41,17 @@ def _set_bits(dword, value, start_bit, end_bit):
 
 def _add_field(dwords, schema_entry, proto_value):
     """Helper to add a single field's value to the correct dword list slot."""
-    if schema_entry.DWORD >= len(dwords):
+    if schema_entry.dword >= len(dwords):
         fail("Schema entry %s specifies DWORD %d, which is out of range." % (
             schema_entry,
-            schema_entry.DWORD,
+            schema_entry.dword,
         ))
 
-    dwords[schema_entry.DWORD] = _set_bits(
-        dwords[schema_entry.DWORD],
+    dwords[schema_entry.dword] = _set_bits(
+        dwords[schema_entry.dword],
         proto_value,
-        schema_entry.START,
-        schema_entry.END,
+        schema_entry.start_bit,
+        schema_entry.end_bit,
     )
 
 def _encode_to_dwords(fw_config_proto):
