@@ -12029,7 +12029,7 @@
               "label": "LABEL_OPTIONAL",
               "name": "id",
               "number": 1,
-              "type": "TYPE_UINT32"
+              "type": "TYPE_STRING"
             },
             {
               "jsonName": "board",

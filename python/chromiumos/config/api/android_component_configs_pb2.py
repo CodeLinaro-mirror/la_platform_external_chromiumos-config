@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n5chromiumos/config/api/android_component_configs.proto\x12\x15\x63hromiumos.config.api\"7\n\x16\x41udioConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tsoundcard\x18\x02 \x01(\t\"U\n\x19\x43\x65llularConfigurationType\x12\n\n\x02id\x18\x01 \x01(\r\x12\x12\n\nmodem_type\x18\x02 \x01(\t\x12\x18\n\x10\x66irmware_variant\x18\x03 \x01(\t\"\x9b\x01\n\x1c\x46ingerprintConfigurationType\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12\x1f\n\x17\x66ingerprint_sensor_type\x18\x03 \x01(\t\x12\x17\n\x0fsensor_location\x18\x04 \x01(\t\x12\x17\n\nro_version\x18\x05 \x01(\tH\x00\x88\x01\x01\x42\r\n\x0b_ro_version\"\xed\x01\n\x10HalConfiguration\x12\x41\n\naudio_list\x18\x01 \x03(\x0b\x32-.chromiumos.config.api.AudioConfigurationType\x12M\n\x10\x66ingerprint_list\x18\x02 \x03(\x0b\x32\x33.chromiumos.config.api.FingerprintConfigurationType\x12G\n\rcellular_list\x18\x03 \x03(\x0b\x32\x30.chromiumos.config.api.CellularConfigurationTypeB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n5chromiumos/config/api/android_component_configs.proto\x12\x15\x63hromiumos.config.api\"7\n\x16\x41udioConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tsoundcard\x18\x02 \x01(\t\"U\n\x19\x43\x65llularConfigurationType\x12\n\n\x02id\x18\x01 \x01(\r\x12\x12\n\nmodem_type\x18\x02 \x01(\t\x12\x18\n\x10\x66irmware_variant\x18\x03 \x01(\t\"\x9b\x01\n\x1c\x46ingerprintConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12\x1f\n\x17\x66ingerprint_sensor_type\x18\x03 \x01(\t\x12\x17\n\x0fsensor_location\x18\x04 \x01(\t\x12\x17\n\nro_version\x18\x05 \x01(\tH\x00\x88\x01\x01\x42\r\n\x0b_ro_version\"\xed\x01\n\x10HalConfiguration\x12\x41\n\naudio_list\x18\x01 \x03(\x0b\x32-.chromiumos.config.api.AudioConfigurationType\x12M\n\x10\x66ingerprint_list\x18\x02 \x03(\x0b\x32\x33.chromiumos.config.api.FingerprintConfigurationType\x12G\n\rcellular_list\x18\x03 \x03(\x0b\x32\x30.chromiumos.config.api.CellularConfigurationTypeB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -120,8 +120,8 @@ _FINGERPRINTCONFIGURATIONTYPE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='chromiumos.config.api.FingerprintConfigurationType.id', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),

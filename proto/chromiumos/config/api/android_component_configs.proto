@@ -56,7 +56,7 @@ message CellularConfigurationType {
 //   FPMCU is used.
 // sensor_location: Specifies the location of the fingerprint sensor.
 message FingerprintConfigurationType {
-  uint32 id = 1;
+  string id = 1;
   string board = 2;
   string fingerprint_sensor_type = 3;
   string sensor_location = 4;
