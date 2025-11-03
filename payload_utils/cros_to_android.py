@@ -31,6 +31,7 @@ import struct
 import sys
 from typing import Optional
 
+from cros_to_android_subcommands import generate_component_xmls
 from google.protobuf import json_format  # pylint: disable=import-error
 from lxml import etree  # pylint: disable=import-error
 
@@ -1113,6 +1114,16 @@ def run_generate_hal_xml(opts: argparse.Namespace) -> None:
     logging.info("XML written to %s.", opts.output_xml)
 
 
+def run_generate_component_xmls(opts: argparse.Namespace) -> None:
+    """Handles the 'generate-component-xmls' sub-command logic."""
+    logging.info("Running generate-component-xmls command...")
+    config_bundle = _load_config_bundle(opts.jsonproto_file)
+    generate_component_xmls.generate(config_bundle, opts.output_dir)
+    logging.info(
+        "Component XML generation complete. Files are in %s.", opts.output_dir
+    )
+
+
 def _add_feature_element(
     permissions_element: etree._Element,
     feature_name: str,
@@ -1379,6 +1390,25 @@ def _get_parser() -> argparse.ArgumentParser:
         "If not provided, validation is skipped.",
     )
     parser_media_profiles.set_defaults(func=run_generate_media_profiles)
+
+    parser_component_xmls = subparsers.add_parser(
+        "generate-component-xmls",
+        help="Generate individual component XML files for HAL components.",
+    )
+    parser_component_xmls.add_argument(
+        "jsonproto_file",
+        metavar="JSONPROTO_FILE",
+        type=pathlib.Path,
+        help="Path to the input JSON file representing a ConfigBundle message.",
+    )
+    parser_component_xmls.add_argument(
+        "-o",
+        "--output-dir",
+        required=True,
+        type=pathlib.Path,
+        help="Path to the directory where component XML files will be created.",
+    )
+    parser_component_xmls.set_defaults(func=run_generate_component_xmls)
 
     return parser
 
