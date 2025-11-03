@@ -13176,6 +13176,62 @@
               "name": "pdc_chip_vendor_port_3",
               "number": 34,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem3bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_3bit_field0",
+              "number": 35,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem2bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_2bit_field0",
+              "number": 36,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem2bitField1",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_2bit_field1",
+              "number": 37,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem1bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_1bit_field0",
+              "number": 38,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem3bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_3bit_field0",
+              "number": 39,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem2bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_2bit_field0",
+              "number": 40,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem2bitField1",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_2bit_field1",
+              "number": 41,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem1bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_1bit_field0",
+              "number": 42,
+              "type": "TYPE_UINT32"
             }
           ],
           "name": "FirmwareConfig"

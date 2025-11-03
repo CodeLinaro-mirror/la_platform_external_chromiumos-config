@@ -113,7 +113,15 @@ def _create_firmware_config(
         pdc_chip_vendor_port_0 = None,
         pdc_chip_vendor_port_1 = None,
         pdc_chip_vendor_port_2 = None,
-        pdc_chip_vendor_port_3 = None):
+        pdc_chip_vendor_port_3 = None,
+        ap_oem_3bit_field0 = None,
+        ap_oem_2bit_field0 = None,
+        ap_oem_2bit_field1 = None,
+        ap_oem_1bit_field0 = None,
+        ec_oem_3bit_field0 = None,
+        ec_oem_2bit_field0 = None,
+        ec_oem_2bit_field1 = None,
+        ec_oem_1bit_field0 = None):
     """Builds a FirmwareConfig proto."""
 
     return fw_config_pb.FirmwareConfig(
@@ -153,6 +161,14 @@ def _create_firmware_config(
         pdc_chip_vendor_port_1 = pdc_chip_vendor_port_1,
         pdc_chip_vendor_port_2 = pdc_chip_vendor_port_2,
         pdc_chip_vendor_port_3 = pdc_chip_vendor_port_3,
+        ap_oem_3bit_field0 = ap_oem_3bit_field0,
+        ap_oem_2bit_field0 = ap_oem_2bit_field0,
+        ap_oem_2bit_field1 = ap_oem_2bit_field1,
+        ap_oem_1bit_field0 = ap_oem_1bit_field0,
+        ec_oem_3bit_field0 = ec_oem_3bit_field0,
+        ec_oem_2bit_field0 = ec_oem_2bit_field0,
+        ec_oem_2bit_field1 = ec_oem_2bit_field1,
+        ec_oem_1bit_field0 = ec_oem_1bit_field0,
     )
 
 unified_fw_config = struct(

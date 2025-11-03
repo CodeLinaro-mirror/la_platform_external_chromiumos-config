@@ -11,9 +11,8 @@
     "   Example: `pdc_chip_vendor_port_0 = None`"
   ],
   "_SCHEMA_GUIDE": {
-    "__note__": "This key explains the structure of all other top-level keys in this file. It is for human-readability and is ignored by the script.",
     "field_name": "The top-level key is the field name (e.g., 'AUDIO_CODEC').",
-    "dword": "The 32-bit word (DWORD) index for this field (e.g., 0, 1, 2).",
+    "dword": "The 32-bit word (DWORD) index for this field (e.g., 0, 1, 2, 3).",
     "start_bit": "The starting bit position within the DWORD (inclusive, 0-31).",
     "end_bit": "The ending bit position within the DWORD (inclusive, 0-31).",
     "used_by": "The consumer: 'AP' (Application Processor), 'EC' (Embedded Controller), or 'BOTH'.",
@@ -173,6 +172,34 @@
     "end_bit": 15,
     "used_by": "BOTH"
   },
+  "AP_OEM_3BIT_FIELD0": {
+    "description": "AP OEM Customization Field (3 bits).",
+    "dword": 1,
+    "start_bit": 24,
+    "end_bit": 26,
+    "used_by": "AP"
+  },
+  "AP_OEM_2BIT_FIELD0": {
+    "description": "AP OEM Customization Field (2 bits).",
+    "dword": 1,
+    "start_bit": 27,
+    "end_bit": 28,
+    "used_by": "AP"
+  },
+  "AP_OEM_2BIT_FIELD1": {
+    "description": "AP OEM Customization Field (2 bits).",
+    "dword": 1,
+    "start_bit": 29,
+    "end_bit": 30,
+    "used_by": "AP"
+  },
+  "AP_OEM_1BIT_FIELD0": {
+    "description": "AP OEM Customization Field (1 bit).",
+    "dword": 1,
+    "start_bit": 31,
+    "end_bit": 31,
+    "used_by": "AP"
+  },
   "FAN_PRESENT": {
     "description": "Thermal fan present or absent.",
     "dword": 2,
@@ -234,6 +261,34 @@
     "dword": 2,
     "start_bit": 17,
     "end_bit": 18,
+    "used_by": "EC"
+  },
+  "EC_OEM_3BIT_FIELD0": {
+    "description": "EC OEM Customization Field (3 bits).",
+    "dword": 3,
+    "start_bit": 24,
+    "end_bit": 26,
+    "used_by": "EC"
+  },
+  "EC_OEM_2BIT_FIELD0": {
+    "description": "EC OEM Customization Field (2 bits).",
+    "dword": 3,
+    "start_bit": 27,
+    "end_bit": 28,
+    "used_by": "EC"
+  },
+  "EC_OEM_2BIT_FIELD1": {
+    "description": "EC OEM Customization Field (2 bits).",
+    "dword": 3,
+    "start_bit": 29,
+    "end_bit": 30,
+    "used_by": "EC"
+  },
+  "EC_OEM_1BIT_FIELD0": {
+    "description": "EC OEM Customization Field (1 bit).",
+    "dword": 3,
+    "start_bit": 31,
+    "end_bit": 31,
     "used_by": "EC"
   }
 }
