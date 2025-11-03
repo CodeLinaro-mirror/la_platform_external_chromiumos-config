@@ -13080,9 +13080,9 @@
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "keyboardComponentName",
+              "jsonName": "keyboardLayout",
               "label": "LABEL_OPTIONAL",
-              "name": "keyboard_component_name",
+              "name": "keyboard_layout",
               "number": 21,
               "type": "TYPE_UINT32"
             },

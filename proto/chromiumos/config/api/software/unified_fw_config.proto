@@ -32,7 +32,7 @@ message FirmwareConfig {
   uint32 trackpad_soc_interface = 18;
   uint32 cellular_interface = 19;
   uint32 form_factor = 20;
-  uint32 keyboard_component_name = 21;
+  uint32 keyboard_layout = 21;
   uint32 panel_id = 22;
   uint32 stylus_present = 23;
   uint32 kb_backlight_present = 24;

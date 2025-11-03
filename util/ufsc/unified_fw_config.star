@@ -71,8 +71,13 @@ def _encode_to_dwords(fw_config_proto):
     for schema_key in dir(UNIFIED_FW_CONFIG_SCHEMA):
         schema_entry = getattr(UNIFIED_FW_CONFIG_SCHEMA, schema_key)
         proto_field_name = schema_key.lower()
-        proto_value = getattr(fw_config_proto, proto_field_name, None)
-        _add_field(dwords, schema_entry, proto_value)
+        proto_field = getattr(fw_config_proto, proto_field_name, None)
+        if proto_field == None:
+            fail("Error: Field '%s' (derived from schema key '%s') was not found in the fw_config_proto." % (
+                proto_field_name,
+                schema_key,
+            ))
+        _add_field(dwords, schema_entry, proto_field)
 
     return dwords
 
@@ -99,7 +104,7 @@ def _create_firmware_config(
         trackpad_soc_interface = None,
         cellular_interface = None,
         form_factor = None,
-        keyboard_component_name = None,
+        keyboard_layout = None,
         panel_id = None,
         stylus_present = None,
         # EC Fields
@@ -146,7 +151,7 @@ def _create_firmware_config(
         trackpad_soc_interface = trackpad_soc_interface,
         cellular_interface = cellular_interface,
         form_factor = form_factor,
-        keyboard_component_name = keyboard_component_name,
+        keyboard_layout = keyboard_layout,
         panel_id = panel_id,
         stylus_present = stylus_present,
         # EC Fields
