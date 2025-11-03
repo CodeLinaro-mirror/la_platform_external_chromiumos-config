@@ -38,7 +38,7 @@ message AudioConfigurationType {
 // firmware_variant: The modem firmware file to flash onto the modem.
 // modem_type: One of ModemTypeEn
 message CellularConfigurationType {
-  uint32 id = 1;
+  string id = 1;
   string modem_type = 2;
   string firmware_variant = 3;
 }
