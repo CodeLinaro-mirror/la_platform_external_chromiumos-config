@@ -45816,6 +45816,13 @@
               "name": "end_time",
               "number": 6,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "networkZone",
+              "label": "LABEL_OPTIONAL",
+              "name": "network_zone",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TaskWithState"
