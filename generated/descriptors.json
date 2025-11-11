@@ -13031,9 +13031,9 @@
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "fingerprintPresent",
+              "jsonName": "fingerprintInterface",
               "label": "LABEL_OPTIONAL",
-              "name": "fingerprint_present",
+              "name": "fingerprint_interface",
               "number": 14,
               "type": "TYPE_UINT32"
             },

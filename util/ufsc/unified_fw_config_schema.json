@@ -88,40 +88,33 @@
     "end_bit": 23,
     "used_by": "BOTH"
   },
-  "FINGERPRINT_PRESENT": {
-    "description": "Fingerprint sensor present or absent.",
+  "FINGERPRINT_INTERFACE": {
+    "description": "Fingerprint sensor interface to SoC.",
     "dword": 0,
     "start_bit": 24,
-    "end_bit": 24,
+    "end_bit": 25,
     "used_by": "AP"
   },
   "WIFI_INTERFACE": {
     "description": "WiFi module interface to SoC (e.g., PCIE, CNVI).",
     "dword": 0,
-    "start_bit": 25,
-    "end_bit": 26,
+    "start_bit": 26,
+    "end_bit": 27,
     "used_by": "AP"
   },
   "CELLULAR_INTERFACE": {
     "description": "Cellular module interface to SoC (e.g., USB, PCIE).",
     "dword": 0,
-    "start_bit": 27,
-    "end_bit": 28,
+    "start_bit": 28,
+    "end_bit": 29,
     "used_by": "AP"
   },
   "FORM_FACTOR": {
     "description": "Device form factor, defined per device. Can be: UNKNOWN, CLAMSHELL, CONVERTIBLE, DETACHABLE.",
     "dword": 0,
-    "start_bit": 29,
-    "end_bit": 30,
-    "used_by": "BOTH"
-  },
-  "STYLUS_PRESENT": {
-    "description": "Stylus present or absent.",
-    "dword": 0,
-    "start_bit": 31,
+    "start_bit": 30,
     "end_bit": 31,
-    "used_by": "AP"
+    "used_by": "BOTH"
   },
   "TRACKPAD": {
     "description": "Trackpad component name.",
@@ -172,6 +165,13 @@
     "end_bit": 15,
     "used_by": "BOTH"
   },
+  "STYLUS_PRESENT": {
+    "description": "Stylus present or absent.",
+    "dword": 1,
+    "start_bit": 16,
+    "end_bit": 16,
+    "used_by": "AP"
+  },
   "AP_OEM_3BIT_FIELD0": {
     "description": "AP OEM Customization Field (3 bits).",
     "dword": 1,
@@ -207,59 +207,59 @@
     "end_bit": 0,
     "used_by": "EC"
   },
-  "LID_SENSOR": {
-    "description": "Accelerometer sensor name on lid.",
-    "dword": 2,
-    "start_bit": 1,
-    "end_bit": 3,
-    "used_by": "EC"
-  },
-  "BASE_SENSOR": {
-    "description": "Accelerometer sensor name on base.",
-    "dword": 2,
-    "start_bit": 4,
-    "end_bit": 6,
-    "used_by": "EC"
-  },
   "TABLET_MODE_BASE_ORIENTATION": {
     "description": "Tablet mode base orientation.",
     "dword": 2,
-    "start_bit": 7,
-    "end_bit": 7,
+    "start_bit": 1,
+    "end_bit": 1,
     "used_by": "EC"
   },
   "CHARGER_CHIP": {
     "description": "Charger chip component name.",
     "dword": 2,
-    "start_bit": 8,
-    "end_bit": 10,
+    "start_bit": 2,
+    "end_bit": 4,
     "used_by": "EC"
   },
   "PDC_CHIP_VENDOR_PORT_0": {
     "description": "PDC chip vendor on port 0.",
     "dword": 2,
-    "start_bit": 11,
-    "end_bit": 12,
+    "start_bit": 5,
+    "end_bit": 6,
     "used_by": "EC"
   },
   "PDC_CHIP_VENDOR_PORT_1": {
     "description": "PDC chip vendor on port 1.",
     "dword": 2,
-    "start_bit": 13,
-    "end_bit": 14,
+    "start_bit": 7,
+    "end_bit": 8,
     "used_by": "EC"
   },
   "PDC_CHIP_VENDOR_PORT_2": {
     "description": "PDC chip vendor on port 2.",
     "dword": 2,
-    "start_bit": 15,
-    "end_bit": 16,
+    "start_bit": 9,
+    "end_bit": 10,
     "used_by": "EC"
   },
   "PDC_CHIP_VENDOR_PORT_3": {
     "description": "PDC chip vendor on port 3.",
     "dword": 2,
-    "start_bit": 17,
+    "start_bit": 11,
+    "end_bit": 12,
+    "used_by": "EC"
+  },
+  "LID_SENSOR": {
+    "description": "Accelerometer sensor name on lid.",
+    "dword": 2,
+    "start_bit": 13,
+    "end_bit": 15,
+    "used_by": "EC"
+  },
+  "BASE_SENSOR": {
+    "description": "Accelerometer sensor name on base.",
+    "dword": 2,
+    "start_bit": 16,
     "end_bit": 18,
     "used_by": "EC"
   },
