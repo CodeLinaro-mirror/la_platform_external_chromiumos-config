@@ -23386,6 +23386,15 @@
           "name": "DownloadImageToUSBRequest"
         },
         {
+          "field": [
+            {
+              "jsonName": "responseMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "response_msg",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
           "name": "DownloadImageToUSBResponse"
         },
         {

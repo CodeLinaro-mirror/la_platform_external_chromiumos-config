@@ -395,7 +395,9 @@ message DownloadImageToUSBRequest {
   string usb_device_path = 3;
 }
 
-message DownloadImageToUSBResponse {}
+message DownloadImageToUSBResponse {
+  string response_msg = 1;
+}
 
 ////// Servod API Messages ////////
 
