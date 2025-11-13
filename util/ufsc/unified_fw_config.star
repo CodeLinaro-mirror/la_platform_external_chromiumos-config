@@ -23,6 +23,60 @@ UNIFIED_FW_CONFIG_SCHEMA = struct(**{
     if not field_name.startswith("_")  # skip metadata
 })
 
+def _validate_ufsc_schema():
+    """
+    Check for UFSC schema validity
+
+    Checks the loaded schema for:
+    1. Invalid ranges (start_bit > end_bit)
+    2. Bit overlaps between fields within the same DWORD.
+
+    """
+    dword_map = {}
+
+    for field_name in dir(UNIFIED_FW_CONFIG_SCHEMA):
+        entry = getattr(UNIFIED_FW_CONFIG_SCHEMA, field_name)
+
+        if entry.start_bit > entry.end_bit:
+            fail("Schema field Error: Field '%s' has start_bit (%d) > end_bit (%d)." % (
+                field_name,
+                entry.start_bit,
+                entry.end_bit,
+            ))
+
+        if entry.dword not in dword_map:
+            dword_map[entry.dword] = []
+
+        dword_map[entry.dword].append((entry.start_bit, entry.end_bit, field_name))
+
+    for dword_idx, intervals in dword_map.items():
+        sorted_intervals = sorted(intervals)
+
+        for i in range(len(sorted_intervals) - 1):
+            current_field = sorted_intervals[i]
+            next_field = sorted_intervals[i + 1]
+
+            c_start, c_end, c_name = current_field
+            n_start, n_end, n_name = next_field
+
+            # Check overlap
+            if n_start <= c_end:
+                fail((
+                    "Schema Field Overlap Error: Bit Overlap detected in DWORD {dword}.\n" +
+                    "  Field '{name1}' range [{s1}:{e1}]\n" +
+                    "  Field '{name2}' range [{s2}:{e2}]\n"
+                ).format(
+                    dword = dword_idx,
+                    name1 = c_name,
+                    s1 = c_start,
+                    e1 = c_end,
+                    name2 = n_name,
+                    s2 = n_start,
+                    e2 = n_end,
+                ))
+
+_validate_ufsc_schema()
+
 def _set_bits(dword, value, start_bit, end_bit):
     """Sets a value into a bit range within a DWORD."""
     if value == None:
