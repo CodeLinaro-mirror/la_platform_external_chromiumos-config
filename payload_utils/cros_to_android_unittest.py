@@ -100,7 +100,8 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 b'<feature name="android.hardware.touchscreen.multitouch.distinct"/>\n  '
                 b'<feature name="android.hardware.touchscreen.multitouch.jazzhand"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
-                b'<feature name="android.hardware.camera.front"/>\n'
+                b'<feature name="android.hardware.camera.front"/>\n  '
+                b'<feature name="android.hardware.camera.level.full"/>\n'
                 b"</permissions>\n",
                 f"Got unexpected content from file {f.name}: {content}",
             )
@@ -735,6 +736,19 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             ]
         )
 
+    def test_generate_camera_full_level_feature(self):
+        """Test full level feature presence."""
+        cam_dev = self.config.hardware_features.camera.devices.add()
+        cam_dev.interface = topology_pb2.HardwareFeatures.Camera.INTERFACE_MIPI
+        cam_dev.detachable = False
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(
+            [
+                "android.hardware.camera.any",
+                "android.hardware.camera.level.full",
+            ]
+        )
+
     def test_generate_camera_all_features(self):
         """Test all camera features present."""
         # Front camera
@@ -748,6 +762,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         back_cam.flags = (
             topology_pb2.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS
         )
+        back_cam.interface = topology_pb2.HardwareFeatures.Camera.INTERFACE_MIPI
 
         self._create_bundle_and_run_feature_generation()
         self._assert_feature_xml(
@@ -756,6 +771,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
                 "android.hardware.camera",
                 "android.hardware.camera.front",
                 "android.hardware.camera.autofocus",
+                "android.hardware.camera.level.full",
             ]
         )
 

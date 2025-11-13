@@ -1180,6 +1180,17 @@ def _add_camera_features(
             permissions_elem, "android.hardware.camera.autofocus"
         )
 
+    # Assumes MIPI cameras support FULL-level.(b/440489318)
+    has_level_full_camera = any(
+        d.interface == topology_pb2.HardwareFeatures.Camera.INTERFACE_MIPI
+        for d in camera_features.devices
+    )
+
+    if has_level_full_camera:
+        _add_feature_element(
+            permissions_elem, "android.hardware.camera.level.full"
+        )
+
 
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     """Handles the 'generate-feature-xml' sub-command logic."""
