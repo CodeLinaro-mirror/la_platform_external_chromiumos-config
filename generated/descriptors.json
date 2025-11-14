@@ -25230,6 +25230,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness.Tradefed"
+            },
+            {
+              "jsonName": "dtc",
+              "label": "LABEL_OPTIONAL",
+              "name": "dtc",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.DTC"
             }
           ],
           "name": "TestHarness",
@@ -25263,6 +25272,9 @@
             },
             {
               "name": "Tradefed"
+            },
+            {
+              "name": "DTC"
             }
           ],
           "oneofDecl": [
