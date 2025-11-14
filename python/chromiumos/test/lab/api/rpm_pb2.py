@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n!chromiumos/test/lab/api/rpm.proto\x12\x17\x63hromiumos.test.lab.api\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\x9f\x02\n\x03RPM\x12\x0f\n\x07present\x18\x01 \x01(\x08\x12=\n\x10\x66rontend_address\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12@\n\x13power_unit_hostname\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x19\n\x11power_unit_outlet\x18\x04 \x01(\t\x12;\n\x0ehydra_hostname\x18\x05 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12.\n\x04type\x18\x06 \x01(\x0e\x32 .chromiumos.test.lab.api.RPMType*I\n\x07RPMType\x12\x14\n\x10RPM_TYPE_UNKNOWN\x10\x00\x12\x13\n\x0fRPM_TYPE_SENTRY\x10\x01\x12\x13\n\x0fRPM_TYPE_IP9850\x10\x02\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n!chromiumos/test/lab/api/rpm.proto\x12\x17\x63hromiumos.test.lab.api\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\x9f\x02\n\x03RPM\x12\x0f\n\x07present\x18\x01 \x01(\x08\x12=\n\x10\x66rontend_address\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12@\n\x13power_unit_hostname\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x19\n\x11power_unit_outlet\x18\x04 \x01(\t\x12;\n\x0ehydra_hostname\x18\x05 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12.\n\x04type\x18\x06 \x01(\x0e\x32 .chromiumos.test.lab.api.RPMType*[\n\x07RPMType\x12\x14\n\x10RPM_TYPE_UNKNOWN\x10\x00\x12\x13\n\x0fRPM_TYPE_SENTRY\x10\x01\x12\x13\n\x0fRPM_TYPE_IP9850\x10\x02\x12\x10\n\x0cRPM_TYPE_CPI\x10\x03\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -47,11 +47,16 @@ _RPMTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='RPM_TYPE_CPI', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=395,
-  serialized_end=468,
+  serialized_end=486,
 )
 _sym_db.RegisterEnumDescriptor(_RPMTYPE)
 
@@ -59,6 +64,7 @@ RPMType = enum_type_wrapper.EnumTypeWrapper(_RPMTYPE)
 RPM_TYPE_UNKNOWN = 0
 RPM_TYPE_SENTRY = 1
 RPM_TYPE_IP9850 = 2
+RPM_TYPE_CPI = 3
 
 
 

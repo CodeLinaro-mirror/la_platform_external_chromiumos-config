@@ -19609,6 +19609,10 @@
             {
               "name": "RPM_TYPE_IP9850",
               "number": 2
+            },
+            {
+              "name": "RPM_TYPE_CPI",
+              "number": 3
             }
           ]
         }
@@ -40980,6 +40984,113 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
       "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/lab/api/rpm.proto"
+      ],
+      "enumType": [
+        {
+          "name": "RpmPowerState",
+          "value": [
+            {
+              "name": "RPM_POWER_STATE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "RPM_POWER_STATE_ON",
+              "number": 1
+            },
+            {
+              "name": "RPM_POWER_STATE_OFF",
+              "number": 2
+            },
+            {
+              "name": "RPM_POWER_STATE_CYCLE",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "powerunitHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "powerunit_hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "powerunitOutlet",
+              "label": "LABEL_OPTIONAL",
+              "name": "powerunit_outlet",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RpmPowerState"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RPMType"
+            },
+            {
+              "jsonName": "dutName",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_name",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SetRpmPowerStateRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RpmPowerState"
+            }
+          ],
+          "name": "SetRpmPowerStateResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/dut_action_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.SetRpmPowerStateRequest",
+              "name": "SetRpmPowerState",
+              "outputType": ".chromiumos.test.lab.api.SetRpmPowerStateResponse"
+            }
+          ],
+          "name": "DutActionService"
+        }
+      ],
       "syntax": "proto3"
     },
     {
