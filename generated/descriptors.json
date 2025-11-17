@@ -6538,7 +6538,7 @@
                       "number": 20
                     },
                     {
-                      "name": "CS42L43",
+                      "name": "AUDIO_CODEC_CS42L43",
                       "number": 21
                     },
                     {
@@ -6663,6 +6663,10 @@
                     {
                       "name": "CS35L56",
                       "number": 27
+                    },
+                    {
+                      "name": "AMPLIFIER_CS42L43",
+                      "number": 28
                     }
                   ]
                 },
