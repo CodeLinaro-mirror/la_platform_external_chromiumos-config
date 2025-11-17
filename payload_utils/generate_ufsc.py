@@ -78,6 +78,17 @@ class ProjectContext:
     defs_path: Path
 
 
+@dataclasses.dataclass(frozen=True)
+class BitField:
+    """Holds parsed and calculated bit information for a field."""
+
+    start_bit: int
+    end_bit: int
+    size: int
+    dword: int
+    start_bit_in_dword: int
+
+
 def _parse_starlark_file(file_path: Path) -> dict[str, Any]:
     """Parses a .star file by executing it in a sandbox.
 
@@ -209,30 +220,38 @@ def load_defs_data(defs_path: Path) -> dict[str, Any]:
 
 def _get_field_bits(
     field_data: dict[str, Any], key_name: str
-) -> tuple[Optional[int], Optional[int]]:
-    """Safely extracts and calculates start/end bits for a schema field."""
-    try:
-        dword = field_data["dword"]
-        start = field_data["start_bit"]
-        end = field_data["end_bit"]
-    except KeyError:
-        logging.warning(
-            "Skipping key %s due to missing dword/start_bit/end_bit in schema.",
-            key_name,
-        )
-        return None, None
+) -> Optional[BitField]:
+    """Parses schema data and calculates all bit position information.
 
+    Args:
+        field_data: The dictionary for a specific schema key.
+        key_name: The name of the key (for logging).
+
+    Returns:
+        A BitField object with calculated values, or None if data is invalid.
+    """
     try:
-        start_bit = (int(dword) * 32) + int(start)
-        end_bit = (int(dword) * 32) + int(end)
-        return start_bit, end_bit
-    except (ValueError, TypeError):
+        dword = int(field_data["dword"])
+        start_bit_in_dword = int(field_data["start_bit"])
+        end_bit_in_dword = int(field_data["end_bit"])
+    except (KeyError, ValueError, TypeError):
         logging.warning(
-            "Skipping key %s due to non-integer dword/start_bit/end_bit in "
-            "schema.",
+            "Skipping key %s: missing or invalid dword/start_bit/end_bit.",
             key_name,
         )
-        return None, None
+        return None
+
+    start_bit = (dword * 32) + start_bit_in_dword
+    end_bit = (dword * 32) + end_bit_in_dword
+    size = end_bit - start_bit + 1
+
+    return BitField(
+        start_bit=start_bit,
+        end_bit=end_bit,
+        size=size,
+        dword=dword,
+        start_bit_in_dword=start_bit_in_dword,
+    )
 
 
 def _get_sorted_options(options: Any, key_name: str) -> list[tuple[str, Any]]:
@@ -296,14 +315,16 @@ def _collect_ap_fields(
                 def_key,
             )
             continue
-        start_bit, end_bit = _get_field_bits(field_data, def_key)
-        if start_bit is None or end_bit is None:
+
+        bit_field = _get_field_bits(field_data, def_key)
+        if not bit_field:
             continue
+
         ret.append(
             {
                 "key": def_key,
-                "start_bit": start_bit,
-                "end_bit": end_bit,
+                "start_bit": bit_field.start_bit,
+                "end_bit": bit_field.end_bit,
                 "options": project_defs.get(def_key),
             }
         )
@@ -411,6 +432,94 @@ def generate_ec_config(
     logging.info("Successfully generated EC config: %s", output_path)
 
 
+def _generate_std_schema_dtsi_node_lines(field: dict[str, Any]) -> list[str]:
+    """Generates the lines for a single field in the standard schema DTSI file."""
+    key_upper = field["key"]
+    bf: BitField = field["bit_field"]
+
+    key_lower = key_upper.lower()
+    node_name = key_lower.replace("_", "-")
+    label = f"ufsc_{key_lower}"
+    return [
+        f"\t\t{label}: {node_name} {{",
+        f'\t\t\tenum-name = "UFSC_{key_upper}";',
+        f"\t\t\tstart = <UFSC_BIT({bf.dword}, {bf.start_bit_in_dword})>;",
+        f"\t\t\tsize = <{bf.size}>;",
+        "\t\t};",
+    ]
+
+
+def generate_ec_schema_file(
+    schema: dict[str, Any],
+    ec_schema_keys: list[str],
+    output_path: Path,
+):
+    """Generates the EC UFSC standard schema definition file (.dtsi format).
+
+    This generates a file defining the bit layout for all fields relevant to
+    the EC (used_by="EC" or "BOTH"), using the standard schema definition.
+
+    Args:
+        schema: The full schema dictionary.
+        ec_schema_keys: List of keys filtered for EC usage.
+        output_path: Path to write the output file.
+
+    Raises:
+        FileError: If writing the output file fails.
+    """
+    lines = [
+        "/* Copyright 2025 The ChromiumOS Authors",
+        " * Use of this source code is governed by a BSD-style license that can be",
+        " * found in the LICENSE file.",
+        " */",
+        "",
+        "#define UFSC_BIT(dword, bit) ((dword) * 32 + (bit))",
+        "",
+        "/ {",
+        "\tcbi_ufsc: cbi-ufsc {",
+        '\t\tcompatible = "cros-ec,cbi-ufsc";',
+        "",
+    ]
+
+    ec_fields = []
+    for key in ec_schema_keys:
+        data = schema.get(key)
+        if not isinstance(data, dict):
+            logging.warning("Skipping invalid schema entry %s", key)
+            continue
+
+        # Skip OEM customization bits.
+        if "EC_OEM" in key:
+            continue
+
+        bit_field = _get_field_bits(data, key)
+        if not bit_field:
+            continue
+
+        ec_fields.append(
+            {
+                "key": key,
+                "bit_field": bit_field,
+                "ufsc_start_bit": bit_field.start_bit,
+            }
+        )
+
+    ec_fields.sort(key=lambda x: x["ufsc_start_bit"])
+
+    for field in ec_fields:
+        lines.extend(_generate_std_schema_dtsi_node_lines(field))
+
+    lines.extend(["\t};", "};"])
+
+    try:
+        with output_path.open(mode="w", encoding="utf-8") as f:
+            f.writelines(f"{x}\n" for x in lines)
+    except IOError as e:
+        raise FileError(f"Error writing EC schema to {output_path}") from e
+
+    logging.info("Successfully generated EC schema: %s", output_path)
+
+
 def infer_project_context() -> ProjectContext:
     """Infers project context (name, paths) from the current working directory.
 
@@ -514,12 +623,18 @@ def run_generation(
     if generate_ec:
         logging.info("Generating EC config...")
         ec_output_path = project_dir / f"{project_name}_ec_ufsc.dtsi"
+        ec_schema_output_path = project_dir / "cbi_ufsc_std_schema.dtsi"
         try:
             generate_ec_config(
                 config_data.schema,
                 config_data.ec_schema_keys,
                 config_data.project_defs,
                 ec_output_path,
+            )
+            generate_ec_schema_file(
+                config_data.schema,
+                config_data.ec_schema_keys,
+                ec_schema_output_path,
             )
         except FileError as e:
             logging.error(e)
