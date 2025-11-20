@@ -13028,9 +13028,9 @@
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "sensorHubPresent",
+              "jsonName": "sensorHub",
               "label": "LABEL_OPTIONAL",
-              "name": "sensor_hub_present",
+              "name": "sensor_hub",
               "number": 13,
               "type": "TYPE_UINT32"
             },
@@ -13098,30 +13098,30 @@
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "stylusPresent",
+              "jsonName": "stylus",
               "label": "LABEL_OPTIONAL",
-              "name": "stylus_present",
+              "name": "stylus",
               "number": 23,
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "kbBacklightPresent",
+              "jsonName": "kbBacklight",
               "label": "LABEL_OPTIONAL",
-              "name": "kb_backlight_present",
+              "name": "kb_backlight",
               "number": 24,
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "kbNumPadPresent",
+              "jsonName": "kbNumPad",
               "label": "LABEL_OPTIONAL",
-              "name": "kb_num_pad_present",
+              "name": "kb_num_pad",
               "number": 25,
               "type": "TYPE_UINT32"
             },
             {
-              "jsonName": "fanPresent",
+              "jsonName": "thermalFan",
               "label": "LABEL_OPTIONAL",
-              "name": "fan_present",
+              "name": "thermal_fan",
               "number": 26,
               "type": "TYPE_UINT32"
             },

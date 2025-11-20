@@ -81,7 +81,7 @@
     "end_bit": 22,
     "used_by": "AP"
   },
-  "SENSOR_HUB_PRESENT": {
+  "SENSOR_HUB": {
     "description": "Sensor hub type, ISH from Intel, QSH from QualComm.",
     "dword": 0,
     "start_bit": 23,
@@ -144,14 +144,14 @@
     "end_bit": 10,
     "used_by": "AP"
   },
-  "KB_BACKLIGHT_PRESENT": {
+  "KB_BACKLIGHT": {
     "description": "Keyboard backlight present or absent.",
     "dword": 1,
     "start_bit": 11,
     "end_bit": 11,
     "used_by": "BOTH"
   },
-  "KB_NUM_PAD_PRESENT": {
+  "KB_NUM_PAD": {
     "description": "Keyboard number pad present or absent.",
     "dword": 1,
     "start_bit": 12,
@@ -165,7 +165,7 @@
     "end_bit": 15,
     "used_by": "BOTH"
   },
-  "STYLUS_PRESENT": {
+  "STYLUS": {
     "description": "Stylus present or absent.",
     "dword": 1,
     "start_bit": 16,
@@ -200,7 +200,7 @@
     "end_bit": 31,
     "used_by": "AP"
   },
-  "FAN_PRESENT": {
+  "THERMAL_FAN": {
     "description": "Thermal fan present or absent.",
     "dword": 2,
     "start_bit": 0,
