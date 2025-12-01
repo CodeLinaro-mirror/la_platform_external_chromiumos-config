@@ -37720,6 +37720,27 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.PublishKey"
+            },
+            {
+              "jsonName": "rootInvocationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "root_invocation_id",
+              "number": 11,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rootWorkUnitId",
+              "label": "LABEL_OPTIONAL",
+              "name": "root_work_unit_id",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rootWorkUnitUpdateToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "root_work_unit_update_token",
+              "number": 13,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "PublishRdbMetadata",

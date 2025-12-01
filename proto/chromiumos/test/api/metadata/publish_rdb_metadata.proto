@@ -13,7 +13,7 @@ import "chromiumos/test/api/ctp2.proto";
 import "chromiumos/test/api/firmware_provision.proto";
 import "chromiumos/test/api/post_test_service.proto";
 
-// NEXT TAG: 11
+// NEXT TAG: 14
 message PublishRdbMetadata {
   // Current invocation id
   string current_invocation_id = 1;
@@ -71,4 +71,13 @@ message PublishRdbMetadata {
 
   // Captures the publish keys in the scheduling unit options, e.g. 3D subject.
   repeated chromiumos.test.api.PublishKey publish_keys = 10;
+
+  // Root invocation id
+  string root_invocation_id = 11;
+
+  // Root work unit id
+  string root_work_unit_id = 12;
+
+  // Root work unit update token
+  string root_work_unit_update_token = 13;
 }
