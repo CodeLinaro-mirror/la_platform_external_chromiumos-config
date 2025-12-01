@@ -42152,6 +42152,10 @@
             {
               "name": "D",
               "number": 2
+            },
+            {
+              "name": "E",
+              "number": 3
             }
           ]
         },
@@ -42288,6 +42292,27 @@
             {
               "name": "VDM_HPD_IRQ",
               "number": 1
+            }
+          ]
+        },
+        {
+          "name": "PdSwapPolicy",
+          "value": [
+            {
+              "name": "PD_SWAP_POLICY_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PD_SWAP_POLICY_ALLOW",
+              "number": 1
+            },
+            {
+              "name": "PD_SWAP_POLICY_REJECT",
+              "number": 2
+            },
+            {
+              "name": "PD_SWAP_POLICY_WAIT",
+              "number": 3
             }
           ]
         },
@@ -42819,30 +42844,6 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "dataRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "data_role_swap_policy",
-              "number": 13,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "powerRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_role_swap_policy",
-              "number": 14,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "vconnSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "vconn_swap_policy",
-              "number": 15,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
               "jsonName": "constrainedPower",
               "label": "LABEL_OPTIONAL",
               "name": "constrained_power",
@@ -42883,6 +42884,33 @@
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.TryBehaviour"
+            },
+            {
+              "jsonName": "dataRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_policy",
+              "number": 21,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "powerRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_policy",
+              "number": 22,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "vconnSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "vconn_swap_policy",
+              "number": 23,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
             }
           ],
           "name": "GetUsbTesterCapabilityReply",
@@ -43004,30 +43032,6 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "dataRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "data_role_swap_policy",
-              "number": 13,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "powerRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_role_swap_policy",
-              "number": 14,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "vconnSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "vconn_swap_policy",
-              "number": 15,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
               "jsonName": "constrainedPower",
               "label": "LABEL_OPTIONAL",
               "name": "constrained_power",
@@ -43068,6 +43072,33 @@
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.TryBehaviour"
+            },
+            {
+              "jsonName": "dataRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_policy",
+              "number": 21,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "powerRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_policy",
+              "number": 22,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "vconnSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "vconn_swap_policy",
+              "number": 23,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
             }
           ],
           "name": "SetUsbTesterCapabilityRequest",

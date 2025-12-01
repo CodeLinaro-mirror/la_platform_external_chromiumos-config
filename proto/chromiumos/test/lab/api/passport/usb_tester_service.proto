@@ -284,6 +284,7 @@ enum PinAssignment {
   PIN_ASSIGNMENT_NOT_SET = 0;
   C = 1;
   D = 2;
+  E = 3;
 }
 
 enum PowerRole {
@@ -334,6 +335,13 @@ enum VdmHpd {
   VDM_HPD_IRQ = 1;
 }
 
+enum PdSwapPolicy {
+  PD_SWAP_POLICY_NOT_SET = 0;
+  PD_SWAP_POLICY_ALLOW = 1;
+  PD_SWAP_POLICY_REJECT = 2;
+  PD_SWAP_POLICY_WAIT = 3;
+}
+
 // Request to get the value of a capability.
 message GetUsbTesterCapabilityRequest {
   // Id (or serial) of the usb tester for which the request is intended.
@@ -366,14 +374,14 @@ message GetUsbTesterCapabilityReply {
     CableMode cable_mode = 8;
     InitPdState init_pd_state = 9;
     int64 non_descrete = 10;
-    bool data_role_swap_policy = 13;
-    bool power_role_swap_policy = 14;
-    bool vconn_swap_policy = 15;
     bool constrained_power = 16;
     bool power_delivery = 17;
     bool display_port_am = 18;
     UsbPath usb_path = 19;
     TryBehaviour try_behaviour = 20;
+    PdSwapPolicy data_role_swap_policy = 21;
+    PdSwapPolicy power_role_swap_policy = 22;
+    PdSwapPolicy vconn_swap_policy = 23;
   }
 }
 
@@ -404,14 +412,14 @@ message SetUsbTesterCapabilityRequest {
     CableMode cable_mode = 10;
     InitPdState init_pd_state = 11;
     int64 non_descrete = 12;
-    bool data_role_swap_policy = 13;
-    bool power_role_swap_policy = 14;
-    bool vconn_swap_policy = 15;
     bool constrained_power = 16;
     bool power_delivery = 17;
     bool display_port_am = 18;
     UsbPath usb_path = 19;
     TryBehaviour try_behaviour = 20;
+    PdSwapPolicy data_role_swap_policy = 21;
+    PdSwapPolicy power_role_swap_policy = 22;
+    PdSwapPolicy vconn_swap_policy = 23;
   }
 }
 
