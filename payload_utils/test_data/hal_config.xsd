@@ -229,6 +229,59 @@
   </xs:complexType>
   <!-- End of WiFi related section -->
 
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="modifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProximityLocationType">
+    <xs:sequence>
+      <xs:element name="radio-type-wifi" type="LocationType" minOccurs="0"/>
+      <xs:element name="radio-type-cellular" type="LocationType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SemtechChannelType">
+    <xs:sequence>
+      <xs:element name="channel" type="xs:string" minOccurs="1"/>
+      <xs:element name="hardwaregain" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-falling" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-falling-hysteresis" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-rising" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-rising-hysteresis" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SemtechSensorConfigurationType">
+    <xs:sequence>
+      <xs:element name="channel0" type="SemtechChannelType" minOccurs="1"/>
+      <xs:element name="channel1" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel2" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel3" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel4" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel5" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel6" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel7" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="sampling-frequency" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-falling-period" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-rising-period" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SemtechProximityConfigurationType">
+    <xs:sequence>
+      <xs:element name="location" type="ProximityLocationType" minOccurs="1"/>
+      <xs:element name="semtech-config" type="SemtechSensorConfigurationType" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProximityConfigurationType">
+    <xs:sequence>
+      <xs:element name="semtech-proximity" type="SemtechProximityConfigurationType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="StorageConfigurationType">
     <xs:sequence>
       <xs:element type="StorageTypeEn" name="storage-type" minOccurs="1">
@@ -290,6 +343,7 @@
       <xs:element name="KeyboardConfiguration" type="KeyboardConfigurationType" minOccurs="0"/>
       <xs:element name="StylusConfiguration" type="StylusConfigurationType" minOccurs="0"/>
       <xs:element name="ScreenConfiguration" type="ScreenConfigurationType" minOccurs="0"/>
+      <xs:element name="ProximityConfiguration" type="ProximityConfigurationType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

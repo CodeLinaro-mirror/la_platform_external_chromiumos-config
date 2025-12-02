@@ -13,6 +13,7 @@ import unittest
 # pylint: disable=too-many-public-methods
 # pylint: disable=import-error
 from chromiumos.config.api import design_pb2
+from chromiumos.config.api import proximity_config_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.api.software import camera_config_pb2
 from chromiumos.config.api.software import software_config_pb2
@@ -582,6 +583,45 @@ class HalEntryHelpersTest(unittest.TestCase):
         """Test touchscreen entry when screen is not present."""
         cros_to_android._add_screen_entry(self.root_element, self.design_config)
         self.assertIsNone(self.root_element.find("ScreenConfiguration"))
+
+    def test_add_proximity_entry_present_valid(self):
+        """Test proximity entry with sensor config is PRESENT."""
+        this_prox = proximity_config_pb2.ProximityConfig(
+            location=[
+                proximity_config_pb2.ProximityConfig.Location(
+                    radio_type=proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI
+                )
+            ],
+            semtech_config=proximity_config_pb2.ProximityConfig.SemtechProximityConfig(
+                channel_config=[
+                    proximity_config_pb2.ProximityConfig.SemtechProximityConfig.ChannelConfig(
+                        channel="0"
+                    )
+                ]
+            ),
+        )
+        self.design_config.hardware_features.proximity.configs.append(this_prox)
+
+        cros_to_android._add_proximity_entry(
+            self.root_element, self.design_config
+        )
+        prox_elem = self.root_element.find("ProximityConfiguration")
+        self.assertIsNotNone(prox_elem)
+        semtec_elem = prox_elem.find("semtech-proximity")
+        self.assertIsNotNone(semtec_elem)
+        loc = semtec_elem.find("location")
+        self.assertIsNotNone(loc.find("radio-type-wifi"))
+        sem = semtec_elem.find("semtech-config")
+        self.assertIsNotNone(sem)
+        ch = sem.find("channel0")
+        self.assertEqual(ch.find("channel").text, "0")
+
+    def test_add_proximity_entry_not_present(self):
+        """Test proximity entry when hw_features.proximity is not present."""
+        cros_to_android._add_proximity_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("ProximityConfiguration"))
 
 
 class FeatureXmlGenerationTest(unittest.TestCase):

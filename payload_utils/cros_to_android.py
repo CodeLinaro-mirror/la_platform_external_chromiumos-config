@@ -42,6 +42,7 @@ try:
     from chromiumos.config.api import component_pb2
     from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
+    from chromiumos.config.api import proximity_config_pb2
     from chromiumos.config.api import topology_pb2
     from chromiumos.config.api.software import camera_config_pb2
     from chromiumos.config.api.software import software_config_pb2
@@ -691,7 +692,7 @@ def _add_hardware_features_entry(
         touch_support = "true"
 
     hw_feature_elem = hal_config.find("HardwareFeaturesConfiguration")
-    if hw_feature_elem:
+    if hw_feature_elem is not None:
         etree.SubElement(hw_feature_elem, "touchscreen-support").text = (
             touch_support
         )
@@ -1002,6 +1003,92 @@ def _add_screen_entry(
     etree.SubElement(screen_elem, "screen-size").text = value_text
 
 
+def _add_proximity_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds ProximitySensor Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    # pylint: disable=too-many-branches
+
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("proximity"):
+        logging.debug(
+            "[%s] No proximity found. Skipping ProximityConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    proxm_elem = etree.SubElement(hal_config, "ProximityConfiguration")
+    for proximity_config in hw_features.proximity.configs:
+        if proximity_config.HasField("semtech_config"):
+            semtech_top_elem = etree.SubElement(proxm_elem, "semtech-proximity")
+            loc_elem = etree.SubElement(semtech_top_elem, "location")
+            for loc in proximity_config.location:
+                if (
+                    loc.radio_type
+                    == proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI
+                ):
+                    locitem_elem = etree.SubElement(loc_elem, "radio-type-wifi")
+                    if loc.modifier:
+                        etree.SubElement(locitem_elem, "modifier").text = (
+                            loc.modifier
+                        )
+                if (
+                    loc.radio_type
+                    == proximity_config_pb2.ProximityConfig.Location.RadioType.CELLULAR
+                ):
+                    locitem_elem = etree.SubElement(
+                        loc_elem, "radio-type-cellular"
+                    )
+                    if loc.modifier:
+                        etree.SubElement(locitem_elem, "modifier").text = (
+                            loc.modifier
+                        )
+
+            semtech_config = proximity_config.semtech_config
+            semtech_elem = etree.SubElement(semtech_top_elem, "semtech-config")
+            for i, ch in enumerate(semtech_config.channel_config):
+                ch_elem = etree.SubElement(semtech_elem, f"channel{i}")
+                etree.SubElement(ch_elem, "channel").text = ch.channel
+                if ch.hardwaregain:
+                    etree.SubElement(ch_elem, "hardwaregain").text = str(
+                        ch.hardwaregain
+                    )
+                if ch.thresh_falling:
+                    etree.SubElement(ch_elem, "thresh-falling").text = str(
+                        ch.thresh_falling
+                    )
+                if ch.thresh_falling_hysteresis:
+                    etree.SubElement(
+                        ch_elem, "thresh-falling-hysteresis"
+                    ).text = str(ch.thresh_falling_hysteresis)
+                if ch.thresh_rising:
+                    etree.SubElement(ch_elem, "thresh-rising").text = str(
+                        ch.thresh_rising
+                    )
+                if ch.thresh_rising_hysteresis:
+                    etree.SubElement(
+                        ch_elem, "thresh-rising-hysteresis"
+                    ).text = str(ch.thresh_rising_hysteresis)
+            if semtech_config.sampling_frequency:
+                etree.SubElement(semtech_elem, "sampling-frequency").text = str(
+                    semtech_config.sampling_frequency
+                )
+            if semtech_config.thresh_falling_period:
+                etree.SubElement(semtech_elem, "thresh-falling-period").text = (
+                    str(semtech_config.thresh_falling_period)
+                )
+            if semtech_config.thresh_rising_period:
+                etree.SubElement(semtech_elem, "sthresh-rising-period").text = (
+                    str(semtech_config.thresh_rising_period)
+                )
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -1051,6 +1138,7 @@ def _add_hal_config_entry(
     _add_keyboard_entry(hal_config_elem, design_config)
     _add_stylus_entry(hal_config_elem, design_config)
     _add_screen_entry(hal_config_elem, design_config)
+    _add_proximity_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(
