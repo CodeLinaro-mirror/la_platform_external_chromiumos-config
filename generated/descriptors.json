@@ -45212,6 +45212,148 @@
             }
           ],
           "name": "RunComplianceTestResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hpdEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "hpd_events",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "auxEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "aux_events",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "sdpEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "sdp_events",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "linkPatternEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "link_pattern_events",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "vbIdEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "vb_id_events",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "msaEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "msa_events",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "auxBwEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "aux_bw_events",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DpRxEventCaptureConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hpdEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "hpd_events",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "auxEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "aux_events",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DpTxEventCaptureConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dprxConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "dprx_config",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.DpRxEventCaptureConfig"
+            },
+            {
+              "jsonName": "dptxConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "dptx_config",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.DpTxEventCaptureConfig"
+            }
+          ],
+          "name": "StartEventCaptureRequest"
+        },
+        {
+          "name": "StartEventCaptureResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "generateReports",
+              "label": "LABEL_OPTIONAL",
+              "name": "generate_reports",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "StopEventCaptureRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dptxCaptureHtml",
+              "label": "LABEL_OPTIONAL",
+              "name": "dptx_capture_html",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "dprxCaptureHtml",
+              "label": "LABEL_OPTIONAL",
+              "name": "dprx_capture_html",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "StopEventCaptureResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
@@ -45286,6 +45428,16 @@
               "inputType": ".chromiumos.test.lab.api.passport.RunComplianceTestRequest",
               "name": "RunComplianceTest",
               "outputType": ".chromiumos.test.lab.api.passport.RunComplianceTestResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.StartEventCaptureRequest",
+              "name": "StartEventCapture",
+              "outputType": ".chromiumos.test.lab.api.passport.StartEventCaptureResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.StopEventCaptureRequest",
+              "name": "StopEventCapture",
+              "outputType": ".chromiumos.test.lab.api.passport.StopEventCaptureResponse"
             }
           ],
           "name": "VideoTesterService"

@@ -426,9 +426,11 @@ message RunComplianceTestRequest {
   repeated ComplianceTestVideoTester tests =
       2;  // The list of compliance tests to run.
 
-  // Platform representing the DUT platform. If left empty then a default will be used.
+  // Platform representing the DUT platform. If left empty then a default will
+  // be used.
   string platform = 3;
-  // Platform representing the DUT model. If left empty then a default will be used.
+  // Platform representing the DUT model. If left empty then a default will be
+  // used.
   string model = 4;
 }
 
@@ -437,6 +439,53 @@ message RunComplianceTestResponse {
   repeated ComplianceTestResultVideoTester results =
       1;                   // Results of the executed test(s).
   bytes results_html = 2;  // Results HTML from the test(s).
+}
+
+// Event capture config message for DpRx. To enable one type of events
+// set the appropriate member to true.
+message DpRxEventCaptureConfig {
+  bool hpd_events = 1;
+  bool aux_events = 2;
+  bool sdp_events = 3;
+  bool link_pattern_events = 4;
+  bool vb_id_events = 5;
+  bool msa_events = 6;
+  bool aux_bw_events = 7;
+}
+
+// Event capture config message for DpTx.
+message DpTxEventCaptureConfig {
+  bool hpd_events = 1;
+  bool aux_events = 2;
+}
+
+// Request to start and config the event capture.
+message StartEventCaptureRequest {
+  // Id of the tester
+  string id = 1;
+  // Config to the DpRx capture. By default all events are disabled.
+  DpRxEventCaptureConfig dprx_config = 2;
+  // Config to the DpTx capture. By default all events are disabled.
+  DpTxEventCaptureConfig dptx_config = 3;
+}
+
+// Response to StartEventCaptureRequest
+message StartEventCaptureResponse {}
+
+// Request to stop the event capture.
+message StopEventCaptureRequest {
+  // Id of the tester.
+  string id = 1;
+  // Specify if you want to generate the reports or just stop the capture.
+  bool generate_reports = 2;
+}
+
+// Response to the StopEventCaptureRequest.
+message StopEventCaptureResponse {
+  // DpTx event report.
+  bytes dptx_capture_html = 1;
+  // DpRx event report.
+  bytes dprx_capture_html = 2;
 }
 
 // Service definition for interacting with video tester devices.
@@ -485,4 +534,12 @@ service VideoTesterService {
   // Runs compliance test(s) on a video tester.
   rpc RunComplianceTest(RunComplianceTestRequest)
       returns (RunComplianceTestResponse);
+
+  // Start the event capture with the specified filters
+  rpc StartEventCapture(StartEventCaptureRequest)
+      returns (StartEventCaptureResponse);
+
+  // Stop the event capture and optionally get the capture files.
+  rpc StopEventCapture(StopEventCaptureRequest)
+      returns (StopEventCaptureResponse);
 }

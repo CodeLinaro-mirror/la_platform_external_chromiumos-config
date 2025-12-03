@@ -48,6 +48,10 @@ type VideoTesterServiceClient interface {
 	HpdPulseVideoTester(ctx context.Context, in *HpdPulseVideoTesterRequest, opts ...grpc.CallOption) (*HpdPulseVideoTesterResponse, error)
 	// Runs compliance test(s) on a video tester.
 	RunComplianceTest(ctx context.Context, in *RunComplianceTestRequest, opts ...grpc.CallOption) (*RunComplianceTestResponse, error)
+	// Start the event capture with the specified filters
+	StartEventCapture(ctx context.Context, in *StartEventCaptureRequest, opts ...grpc.CallOption) (*StartEventCaptureResponse, error)
+	// Stop the event capture and optionally get the capture files.
+	StopEventCapture(ctx context.Context, in *StopEventCaptureRequest, opts ...grpc.CallOption) (*StopEventCaptureResponse, error)
 }
 
 type videoTesterServiceClient struct {
@@ -175,6 +179,24 @@ func (c *videoTesterServiceClient) RunComplianceTest(ctx context.Context, in *Ru
 	return out, nil
 }
 
+func (c *videoTesterServiceClient) StartEventCapture(ctx context.Context, in *StartEventCaptureRequest, opts ...grpc.CallOption) (*StartEventCaptureResponse, error) {
+	out := new(StartEventCaptureResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/StartEventCapture", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *videoTesterServiceClient) StopEventCapture(ctx context.Context, in *StopEventCaptureRequest, opts ...grpc.CallOption) (*StopEventCaptureResponse, error) {
+	out := new(StopEventCaptureResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/StopEventCapture", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VideoTesterServiceServer is the server API for VideoTesterService service.
 // All implementations should embed UnimplementedVideoTesterServiceServer
 // for forward compatibility
@@ -205,6 +227,10 @@ type VideoTesterServiceServer interface {
 	HpdPulseVideoTester(context.Context, *HpdPulseVideoTesterRequest) (*HpdPulseVideoTesterResponse, error)
 	// Runs compliance test(s) on a video tester.
 	RunComplianceTest(context.Context, *RunComplianceTestRequest) (*RunComplianceTestResponse, error)
+	// Start the event capture with the specified filters
+	StartEventCapture(context.Context, *StartEventCaptureRequest) (*StartEventCaptureResponse, error)
+	// Stop the event capture and optionally get the capture files.
+	StopEventCapture(context.Context, *StopEventCaptureRequest) (*StopEventCaptureResponse, error)
 }
 
 // UnimplementedVideoTesterServiceServer should be embedded to have forward compatible implementations.
@@ -249,6 +275,12 @@ func (UnimplementedVideoTesterServiceServer) HpdPulseVideoTester(context.Context
 }
 func (UnimplementedVideoTesterServiceServer) RunComplianceTest(context.Context, *RunComplianceTestRequest) (*RunComplianceTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunComplianceTest not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) StartEventCapture(context.Context, *StartEventCaptureRequest) (*StartEventCaptureResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartEventCapture not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) StopEventCapture(context.Context, *StopEventCaptureRequest) (*StopEventCaptureResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopEventCapture not implemented")
 }
 
 // UnsafeVideoTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -496,6 +528,42 @@ func _VideoTesterService_RunComplianceTest_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VideoTesterService_StartEventCapture_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartEventCaptureRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).StartEventCapture(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/StartEventCapture",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).StartEventCapture(ctx, req.(*StartEventCaptureRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VideoTesterService_StopEventCapture_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopEventCaptureRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).StopEventCapture(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/StopEventCapture",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).StopEventCapture(ctx, req.(*StopEventCaptureRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VideoTesterService_ServiceDesc is the grpc.ServiceDesc for VideoTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -554,6 +622,14 @@ var VideoTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RunComplianceTest",
 			Handler:    _VideoTesterService_RunComplianceTest_Handler,
+		},
+		{
+			MethodName: "StartEventCapture",
+			Handler:    _VideoTesterService_StartEventCapture_Handler,
+		},
+		{
+			MethodName: "StopEventCapture",
+			Handler:    _VideoTesterService_StopEventCapture_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

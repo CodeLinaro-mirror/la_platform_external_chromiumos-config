@@ -80,6 +80,16 @@ class VideoTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestResponse.FromString,
                 )
+        self.StartEventCapture = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/StartEventCapture',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StartEventCaptureRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StartEventCaptureResponse.FromString,
+                )
+        self.StopEventCapture = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/StopEventCapture',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureResponse.FromString,
+                )
 
 
 class VideoTesterServiceServicer(object):
@@ -177,6 +187,20 @@ class VideoTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def StartEventCapture(self, request, context):
+        """Start the event capture with the specified filters
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StopEventCapture(self, request, context):
+        """Stop the event capture and optionally get the capture files.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_VideoTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -244,6 +268,16 @@ def add_VideoTesterServiceServicer_to_server(servicer, server):
                     servicer.RunComplianceTest,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestResponse.SerializeToString,
+            ),
+            'StartEventCapture': grpc.unary_unary_rpc_method_handler(
+                    servicer.StartEventCapture,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StartEventCaptureRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StartEventCaptureResponse.SerializeToString,
+            ),
+            'StopEventCapture': grpc.unary_unary_rpc_method_handler(
+                    servicer.StopEventCapture,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -474,5 +508,39 @@ class VideoTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/RunComplianceTest',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.RunComplianceTestResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StartEventCapture(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/StartEventCapture',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StartEventCaptureRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StartEventCaptureResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StopEventCapture(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/StopEventCapture',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
