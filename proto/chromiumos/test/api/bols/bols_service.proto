@@ -9,6 +9,8 @@ package chromiumos.test.api.bols;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/bols";
 option java_outer_classname = "BolsServiceOuterClass";
 
+import "google/protobuf/timestamp.proto";
+
 // Provides the ability to interact with a labstation/container and
 // its peripherals such as servo and dolos.
 service BolsService {
@@ -203,6 +205,8 @@ message FileStat {
   bool is_dir = 4;
   // Whether the file is an symbolic link.
   bool is_symlink = 5;
+  // The modification time of the file.
+  google.protobuf.Timestamp mod_time = 6;
 }
 
 message DirectoryInfo {

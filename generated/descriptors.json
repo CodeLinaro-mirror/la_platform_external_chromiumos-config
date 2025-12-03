@@ -22635,6 +22635,9 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
       "enumType": [
         {
           "name": "ServodStatus",
@@ -22784,6 +22787,14 @@
               "name": "is_symlink",
               "number": 5,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "modTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "mod_time",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
             }
           ],
           "name": "FileStat"
