@@ -36,6 +36,7 @@ message TestCaseInfo {
   LifeCycleStage life_cycle_stage = 6;
   DDDVariantCategory variant_category = 7;
   map<string, string> extra_info = 8;
+  repeated Parameter parameters = 9;
 }
 
 // Contact information of individuals or teams.
@@ -63,6 +64,11 @@ message Criteria {
 // Specifies if a test can be run on VM or not.
 message HwAgnostic {
   bool value = 1;
+}
+
+// Message to store a list of parameters.
+message Parameter {
+  string value = 1;
 }
 
 // LifeCycleStage denotes the overall usage of the test.

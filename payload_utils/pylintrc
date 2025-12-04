@@ -16,6 +16,10 @@ jobs=0
 
 extension-pkg-whitelist=lxml
 
+source-roots=
+    payload_utils,
+    .
+
 [BASIC]
 
 good-names=

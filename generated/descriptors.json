@@ -6538,6 +6538,10 @@
                       "number": 20
                     },
                     {
+                      "name": "CS42L43",
+                      "number": 21
+                    },
+                    {
                       "name": "AUDIO_CODEC_ALC722",
                       "number": 22
                     },
@@ -6655,6 +6659,10 @@
                     {
                       "name": "RT9123",
                       "number": 26
+                    },
+                    {
+                      "name": "CS35L56",
+                      "number": 27
                     }
                   ]
                 },
@@ -22836,6 +22844,19 @@
         {
           "field": [
             {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValue"
+            }
+          ],
+          "name": "ServodValueArray"
+        },
+        {
+          "field": [
+            {
               "jsonName": "stringValue",
               "label": "LABEL_OPTIONAL",
               "name": "string_value",
@@ -22869,6 +22890,15 @@
               "number": 4,
               "oneofIndex": 0,
               "type": "TYPE_DOUBLE"
+            },
+            {
+              "jsonName": "arrayValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "array_value",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.ServodValueArray"
             }
           ],
           "name": "ServodValue",
@@ -24764,6 +24794,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseInfo.ExtraInfoEntry"
+            },
+            {
+              "jsonName": "parameters",
+              "label": "LABEL_REPEATED",
+              "name": "parameters",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Parameter"
             }
           ],
           "name": "TestCaseInfo",
@@ -24851,6 +24889,18 @@
             }
           ],
           "name": "HwAgnostic"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Parameter"
         },
         {
           "enumType": [
@@ -33671,6 +33721,13 @@
               "number": 2,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem"
+            },
+            {
+              "jsonName": "forceFlashSameVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "force_flash_same_version",
+              "number": 3,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FirmwareProvisionInstallMetadata"
@@ -44056,6 +44113,20 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.passport.ComplianceTestVideoTester"
+            },
+            {
+              "jsonName": "platform",
+              "label": "LABEL_OPTIONAL",
+              "name": "platform",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "RunComplianceTestRequest"
