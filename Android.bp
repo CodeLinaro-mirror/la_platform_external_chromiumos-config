@@ -43,6 +43,7 @@ SERVO_PROTO_CMD = "mkdir -p $(genDir)/gen && " +
     "--grpc-java_out=lite:$(genDir)/gen " +
     "--java_out=lite:$(genDir)/gen " +
     "-I external/chromiumos-config/proto " +
+    "-I external/protobuf/src " +
     "$(in) && " +
     "$(location soong_zip) -o $(out) -C $(genDir)/gen -D $(genDir)/gen"
 
