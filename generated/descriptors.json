@@ -35472,6 +35472,13 @@
               "name": "params",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "skipServoPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_servo_port",
+              "number": 2,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "RunFutilityRequest"
@@ -35497,6 +35504,13 @@
               "name": "params",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "skipServoPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_servo_port",
+              "number": 2,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "RunFlashECRequest"
