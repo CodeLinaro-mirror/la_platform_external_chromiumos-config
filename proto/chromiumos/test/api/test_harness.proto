@@ -21,6 +21,7 @@ message TestHarness {
     Mobly mobly = 5;
     Crosier crosier = 6;
     Tradefed tradefed = 7;
+    DTC dtc = 8;
   }
 
   message Manual {}
@@ -33,5 +34,6 @@ message TestHarness {
   message Mobly {}
   message Crosier {}
   message Tradefed {}
+  message DTC {}
 }
 // LINT.ThenChange(//chromium/infra/infra_superproject/main/infra/go/src/infra/tools/result_adapter/util.go)

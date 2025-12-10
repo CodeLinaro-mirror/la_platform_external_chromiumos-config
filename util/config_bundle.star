@@ -18,7 +18,8 @@ def _create(
         partners = None,
         programs = None,
         software_configs = None,
-        brand_configs = None):
+        brand_configs = None,
+        android_hal_config = None):
     """Builds a ConfigBundle proto."""
     return config_bundle_pb.ConfigBundle(
         components = components,
@@ -28,6 +29,7 @@ def _create(
         program_list = programs,
         software_configs = software_configs,
         brand_configs = brand_configs,
+        android_hal_config = android_hal_config,
     )
 
 config_bundle = struct(

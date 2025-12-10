@@ -27,9 +27,11 @@ and feature XML files.
 import argparse
 import logging
 import pathlib
+import struct
 import sys
 from typing import Optional
 
+from cros_to_android_subcommands import generate_component_xmls
 from google.protobuf import json_format  # pylint: disable=import-error
 from lxml import etree  # pylint: disable=import-error
 
@@ -40,6 +42,7 @@ try:
     from chromiumos.config.api import component_pb2
     from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
+    from chromiumos.config.api import proximity_config_pb2
     from chromiumos.config.api import topology_pb2
     from chromiumos.config.api.software import camera_config_pb2
     from chromiumos.config.api.software import software_config_pb2
@@ -418,13 +421,8 @@ def _add_fingerprint_entry(
     if not fp_features.present:
         return
 
-    if not fp_features.board:
-        logging.warning(
-            "Fingerprint config missing mandatory 'board' field for "
-            "Design.Config '%s'. Skipping FingerprintConfiguration.",
-            design_config.id.value,
-        )
-        return
+    # TODO (b/453601065) add back fp_features.board checking when 'board'
+    # value for USB FPMCU is ready
 
     location_enum_str = topology_pb2.HardwareFeatures.Fingerprint.Location.Name(
         fp_features.location
@@ -452,7 +450,8 @@ def _add_fingerprint_entry(
     )
 
     fp_config_elem = etree.SubElement(hal_config, "FingerprintConfiguration")
-    etree.SubElement(fp_config_elem, "board").text = fp_features.board
+    if fp_features.board:
+        etree.SubElement(fp_config_elem, "board").text = fp_features.board
     etree.SubElement(fp_config_elem, "fingerprint-sensor-type").text = (
         sensor_type_xsd_str
     )
@@ -461,6 +460,31 @@ def _add_fingerprint_entry(
             fp_features.ro_version
         )
     etree.SubElement(fp_config_elem, "sensor-location").text = location_enum_str
+
+
+def _get_ufsc_hex_value(
+    sw_config: software_config_pb2.SoftwareConfig,
+) -> Optional[str]:
+    """Packs the Unified Firmware Signing Configuration into a hex string.
+
+    The value is a list of up to 4 dwords, which are padded with zeros,
+    packed as little-endian unsigned integers, and concatenated into a hex string.
+
+    Args:
+        sw_config: The software config containing the UFSC value.
+
+    Returns:
+        The packed hex string, or None if no value is present.
+    """
+    if not sw_config.unified_fw_config.value:
+        return None
+
+    source_dwords = list(sw_config.unified_fw_config.value)
+    dwords_to_process = (source_dwords + [0, 0, 0, 0])[:4]
+    ufsc_hex_values = [
+        struct.pack("<I", int(dword)).hex() for dword in dwords_to_process
+    ]
+    return "".join(ufsc_hex_values)
 
 
 def _add_firmware_entry(
@@ -476,29 +500,32 @@ def _add_firmware_entry(
         sw_config: software_config_pb2.SoftwareConfig specific to a design
         config.
     """
+    firmware_config_elem = etree.SubElement(hal_config, "FirmwareConfiguration")
     fw_main_ro = sw_config.firmware.main_ro_payload
     if fw_main_ro and fw_main_ro.firmware_image_name:
         image_name = fw_main_ro.firmware_image_name.lower()
         customization_id = _get_fw_customization_id(design_config)
         if customization_id:
             image_name += f"_{customization_id}"
+        fw_image_name_elem = etree.SubElement(
+            firmware_config_elem, "firmware-manifest-key"
+        )
+        fw_image_name_elem.text = image_name
     else:
         logging.warning(
             "Firmware image name not found for Design.Config ID '%s'."
-            "Skipping FirmwareConfiguration.",
+            "Skipping firmware-manifest-key",
             design_config.id.value,
         )
-        return
-
-    firmware_config_elem = etree.SubElement(hal_config, "FirmwareConfiguration")
-    fw_image_name_elem = etree.SubElement(
-        firmware_config_elem, "firmware-manifest-key"
-    )
-    fw_image_name_elem.text = image_name
 
     boot_config = str(design_config.hardware_features.fw_config.value)
     boot_config_elem = etree.SubElement(firmware_config_elem, "firmware-config")
     boot_config_elem.text = boot_config
+
+    ufsc_cbi_value = _get_ufsc_hex_value(sw_config)
+    if ufsc_cbi_value:
+        ufsc_elem = etree.SubElement(firmware_config_elem, "ufsc")
+        ufsc_elem.text = ufsc_cbi_value
 
 
 def _add_audio_entry(
@@ -647,6 +674,27 @@ def _add_hardware_features_entry(
             "[%s] Unknown form_factor value: %s. Skipping HardwareFeature.",
             design_config.id.value,
             form_factor,
+        )
+        return
+
+    if not hw_features.HasField("screen"):
+        logging.debug(
+            "[%s] No screen found. Skipping HardwareFeatures.Screen.",
+            design_config.id.value,
+        )
+        return
+
+    touch_support = "false"
+    if (
+        hw_features.screen.touch_support
+        == topology_pb2.HardwareFeatures.PRESENT
+    ):
+        touch_support = "true"
+
+    hw_feature_elem = hal_config.find("HardwareFeaturesConfiguration")
+    if hw_feature_elem is not None:
+        etree.SubElement(hw_feature_elem, "touchscreen-support").text = (
+            touch_support
         )
 
 
@@ -931,6 +979,116 @@ def _add_stylus_entry(
         )
 
 
+def _add_screen_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds Screen Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("screen"):
+        logging.debug(
+            "[%s] No screen found. Skipping ScreenConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    panel_prop = hw_features.screen.panel_properties
+    screen_elem = etree.SubElement(hal_config, "ScreenConfiguration")
+    value_text = f"{panel_prop.diagonal_milliinch} diagonal_milliinch"
+    etree.SubElement(screen_elem, "screen-size").text = value_text
+
+
+def _add_proximity_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds ProximitySensor Configuration to the XML tree for a Design.Config.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    # pylint: disable=too-many-branches
+
+    hw_features = design_config.hardware_features
+    if not hw_features.HasField("proximity"):
+        logging.debug(
+            "[%s] No proximity found. Skipping ProximityConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    proxm_elem = etree.SubElement(hal_config, "ProximityConfiguration")
+    for proximity_config in hw_features.proximity.configs:
+        if proximity_config.HasField("semtech_config"):
+            semtech_top_elem = etree.SubElement(proxm_elem, "semtech-proximity")
+            loc_elem = etree.SubElement(semtech_top_elem, "location")
+            for loc in proximity_config.location:
+                if (
+                    loc.radio_type
+                    == proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI
+                ):
+                    locitem_elem = etree.SubElement(loc_elem, "radio-type-wifi")
+                    if loc.modifier:
+                        etree.SubElement(locitem_elem, "modifier").text = (
+                            loc.modifier
+                        )
+                if (
+                    loc.radio_type
+                    == proximity_config_pb2.ProximityConfig.Location.RadioType.CELLULAR
+                ):
+                    locitem_elem = etree.SubElement(
+                        loc_elem, "radio-type-cellular"
+                    )
+                    if loc.modifier:
+                        etree.SubElement(locitem_elem, "modifier").text = (
+                            loc.modifier
+                        )
+
+            semtech_config = proximity_config.semtech_config
+            semtech_elem = etree.SubElement(semtech_top_elem, "semtech-config")
+            for i, ch in enumerate(semtech_config.channel_config):
+                ch_elem = etree.SubElement(semtech_elem, f"channel{i}")
+                etree.SubElement(ch_elem, "channel").text = ch.channel
+                if ch.hardwaregain:
+                    etree.SubElement(ch_elem, "hardwaregain").text = str(
+                        ch.hardwaregain
+                    )
+                if ch.thresh_falling:
+                    etree.SubElement(ch_elem, "thresh-falling").text = str(
+                        ch.thresh_falling
+                    )
+                if ch.thresh_falling_hysteresis:
+                    etree.SubElement(
+                        ch_elem, "thresh-falling-hysteresis"
+                    ).text = str(ch.thresh_falling_hysteresis)
+                if ch.thresh_rising:
+                    etree.SubElement(ch_elem, "thresh-rising").text = str(
+                        ch.thresh_rising
+                    )
+                if ch.thresh_rising_hysteresis:
+                    etree.SubElement(
+                        ch_elem, "thresh-rising-hysteresis"
+                    ).text = str(ch.thresh_rising_hysteresis)
+            if semtech_config.sampling_frequency:
+                etree.SubElement(semtech_elem, "sampling-frequency").text = str(
+                    semtech_config.sampling_frequency
+                )
+            if semtech_config.thresh_falling_period:
+                etree.SubElement(semtech_elem, "thresh-falling-period").text = (
+                    str(semtech_config.thresh_falling_period)
+                )
+            if semtech_config.thresh_rising_period:
+                etree.SubElement(semtech_elem, "sthresh-rising-period").text = (
+                    str(semtech_config.thresh_rising_period)
+                )
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -979,6 +1137,8 @@ def _add_hal_config_entry(
     _add_storage_entry(hal_config_elem, design_config)
     _add_keyboard_entry(hal_config_elem, design_config)
     _add_stylus_entry(hal_config_elem, design_config)
+    _add_screen_entry(hal_config_elem, design_config)
+    _add_proximity_entry(hal_config_elem, design_config)
 
 
 def _convert_to_hal_xml(
@@ -1042,6 +1202,16 @@ def run_generate_hal_xml(opts: argparse.Namespace) -> None:
     logging.info("XML written to %s.", opts.output_xml)
 
 
+def run_generate_component_xmls(opts: argparse.Namespace) -> None:
+    """Handles the 'generate-component-xmls' sub-command logic."""
+    logging.info("Running generate-component-xmls command...")
+    config_bundle = _load_config_bundle(opts.jsonproto_file)
+    generate_component_xmls.generate(config_bundle, opts.output_dir)
+    logging.info(
+        "Component XML generation complete. Files are in %s.", opts.output_dir
+    )
+
+
 def _add_feature_element(
     permissions_element: etree._Element,
     feature_name: str,
@@ -1096,6 +1266,17 @@ def _add_camera_features(
     if has_autofocus_back_camera:
         _add_feature_element(
             permissions_elem, "android.hardware.camera.autofocus"
+        )
+
+    # Assumes MIPI cameras support FULL-level.(b/440489318)
+    has_level_full_camera = any(
+        d.interface == topology_pb2.HardwareFeatures.Camera.INTERFACE_MIPI
+        for d in camera_features.devices
+    )
+
+    if has_level_full_camera:
+        _add_feature_element(
+            permissions_elem, "android.hardware.camera.level.full"
         )
 
 
@@ -1308,6 +1489,25 @@ def _get_parser() -> argparse.ArgumentParser:
         "If not provided, validation is skipped.",
     )
     parser_media_profiles.set_defaults(func=run_generate_media_profiles)
+
+    parser_component_xmls = subparsers.add_parser(
+        "generate-component-xmls",
+        help="Generate individual component XML files for HAL components.",
+    )
+    parser_component_xmls.add_argument(
+        "jsonproto_file",
+        metavar="JSONPROTO_FILE",
+        type=pathlib.Path,
+        help="Path to the input JSON file representing a ConfigBundle message.",
+    )
+    parser_component_xmls.add_argument(
+        "-o",
+        "--output-dir",
+        required=True,
+        type=pathlib.Path,
+        help="Path to the directory where component XML files will be created.",
+    )
+    parser_component_xmls.set_defaults(func=run_generate_component_xmls)
 
     return parser
 

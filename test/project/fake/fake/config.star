@@ -250,7 +250,7 @@ _SOC = hw_topo.create_soc(
 
 _BL_KEYBOARD = hw_topo.create_keyboard(
     backlight = True,
-    pwr_btn_present = True,
+    pwr_btn_present = False,
     kb_type = hw_topo.kb_type.INTERNAL,
     numpad_present = True,
     backlight_user_steps = [0, 10, 20, 40, 60, 100],
@@ -264,7 +264,7 @@ _BL_KEYBOARD = hw_topo.create_keyboard(
 
 _KEYBOARD_WITH_LAYOUT = hw_topo.create_keyboard(
     backlight = True,
-    pwr_btn_present = True,
+    pwr_btn_present = False,
     kb_type = hw_topo.kb_type.INTERNAL,
     numpad_present = True,
     bottom_left_layout = hw_topo.kb_bottom_left_layout.BOTTOM_LEFT_3_KEYS,

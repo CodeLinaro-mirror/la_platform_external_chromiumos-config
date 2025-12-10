@@ -821,7 +821,7 @@
               "mcuType": "KEYBOARD_MCU_PRISM",
               "noAlsBrightness": 40.0,
               "numericPad": "PRESENT",
-              "powerButton": "PRESENT"
+              "powerButton": "NOT_PRESENT"
             },
             "powerButton": {
               "edge": "LEFT",
@@ -997,7 +997,7 @@
               "mcuType": "KEYBOARD_MCU_PRISM",
               "noAlsBrightness": 40.0,
               "numericPad": "PRESENT",
-              "powerButton": "PRESENT"
+              "powerButton": "NOT_PRESENT"
             },
             "powerButton": {
               "edge": "LEFT",

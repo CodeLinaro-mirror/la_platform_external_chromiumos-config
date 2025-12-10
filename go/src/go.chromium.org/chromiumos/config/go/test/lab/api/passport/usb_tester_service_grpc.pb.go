@@ -53,6 +53,12 @@ type UsbTesterServiceClient interface {
 	SendVdmHpd(ctx context.Context, in *SendVdmHpdRequest, opts ...grpc.CallOption) (*SendVdmHpdReply, error)
 	// Simulate a key press. ATM this will simulate the "G" key press.
 	SimulateKeyPress(ctx context.Context, in *SimulateKeyPressRequest, opts ...grpc.CallOption) (*SimulateKeyPressReply, error)
+	// Send a PD alert message to partner.
+	SendPdAlert(ctx context.Context, in *SendPdAlertRequest, opts ...grpc.CallOption) (*SendPdAlertReply, error)
+	// Get statistics about the PD requests.
+	GetPdStats(ctx context.Context, in *GetPdStatsRequest, opts ...grpc.CallOption) (*GetPdStatsReply, error)
+	// Reset the PD statistics.
+	ResetPdStats(ctx context.Context, in *ResetPdStatsRequest, opts ...grpc.CallOption) (*ResetPdStatsReply, error)
 }
 
 type usbTesterServiceClient struct {
@@ -198,6 +204,33 @@ func (c *usbTesterServiceClient) SimulateKeyPress(ctx context.Context, in *Simul
 	return out, nil
 }
 
+func (c *usbTesterServiceClient) SendPdAlert(ctx context.Context, in *SendPdAlertRequest, opts ...grpc.CallOption) (*SendPdAlertReply, error) {
+	out := new(SendPdAlertReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/SendPdAlert", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usbTesterServiceClient) GetPdStats(ctx context.Context, in *GetPdStatsRequest, opts ...grpc.CallOption) (*GetPdStatsReply, error) {
+	out := new(GetPdStatsReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/GetPdStats", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usbTesterServiceClient) ResetPdStats(ctx context.Context, in *ResetPdStatsRequest, opts ...grpc.CallOption) (*ResetPdStatsReply, error) {
+	out := new(ResetPdStatsReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/ResetPdStats", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsbTesterServiceServer is the server API for UsbTesterService service.
 // All implementations should embed UnimplementedUsbTesterServiceServer
 // for forward compatibility
@@ -233,6 +266,12 @@ type UsbTesterServiceServer interface {
 	SendVdmHpd(context.Context, *SendVdmHpdRequest) (*SendVdmHpdReply, error)
 	// Simulate a key press. ATM this will simulate the "G" key press.
 	SimulateKeyPress(context.Context, *SimulateKeyPressRequest) (*SimulateKeyPressReply, error)
+	// Send a PD alert message to partner.
+	SendPdAlert(context.Context, *SendPdAlertRequest) (*SendPdAlertReply, error)
+	// Get statistics about the PD requests.
+	GetPdStats(context.Context, *GetPdStatsRequest) (*GetPdStatsReply, error)
+	// Reset the PD statistics.
+	ResetPdStats(context.Context, *ResetPdStatsRequest) (*ResetPdStatsReply, error)
 }
 
 // UnimplementedUsbTesterServiceServer should be embedded to have forward compatible implementations.
@@ -283,6 +322,15 @@ func (UnimplementedUsbTesterServiceServer) SendVdmHpd(context.Context, *SendVdmH
 }
 func (UnimplementedUsbTesterServiceServer) SimulateKeyPress(context.Context, *SimulateKeyPressRequest) (*SimulateKeyPressReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SimulateKeyPress not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) SendPdAlert(context.Context, *SendPdAlertRequest) (*SendPdAlertReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendPdAlert not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) GetPdStats(context.Context, *GetPdStatsRequest) (*GetPdStatsReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPdStats not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) ResetPdStats(context.Context, *ResetPdStatsRequest) (*ResetPdStatsReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetPdStats not implemented")
 }
 
 // UnsafeUsbTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -566,6 +614,60 @@ func _UsbTesterService_SimulateKeyPress_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsbTesterService_SendPdAlert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendPdAlertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).SendPdAlert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/SendPdAlert",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).SendPdAlert(ctx, req.(*SendPdAlertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsbTesterService_GetPdStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPdStatsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).GetPdStats(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/GetPdStats",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).GetPdStats(ctx, req.(*GetPdStatsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsbTesterService_ResetPdStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetPdStatsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).ResetPdStats(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/ResetPdStats",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).ResetPdStats(ctx, req.(*ResetPdStatsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsbTesterService_ServiceDesc is the grpc.ServiceDesc for UsbTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -632,6 +734,18 @@ var UsbTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SimulateKeyPress",
 			Handler:    _UsbTesterService_SimulateKeyPress_Handler,
+		},
+		{
+			MethodName: "SendPdAlert",
+			Handler:    _UsbTesterService_SendPdAlert_Handler,
+		},
+		{
+			MethodName: "GetPdStats",
+			Handler:    _UsbTesterService_GetPdStats_Handler,
+		},
+		{
+			MethodName: "ResetPdStats",
+			Handler:    _UsbTesterService_ResetPdStats_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

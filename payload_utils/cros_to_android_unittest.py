@@ -13,6 +13,7 @@ import unittest
 # pylint: disable=too-many-public-methods
 # pylint: disable=import-error
 from chromiumos.config.api import design_pb2
+from chromiumos.config.api import proximity_config_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.api.software import camera_config_pb2
 from chromiumos.config.api.software import software_config_pb2
@@ -100,7 +101,8 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 b'<feature name="android.hardware.touchscreen.multitouch.distinct"/>\n  '
                 b'<feature name="android.hardware.touchscreen.multitouch.jazzhand"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
-                b'<feature name="android.hardware.camera.front"/>\n'
+                b'<feature name="android.hardware.camera.front"/>\n  '
+                b'<feature name="android.hardware.camera.level.full"/>\n'
                 b"</permissions>\n",
                 f"Got unexpected content from file {f.name}: {content}",
             )
@@ -223,17 +225,8 @@ class HalEntryHelpersTest(unittest.TestCase):
         )
         self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
 
-    def test_add_fingerprint_entry_missing_board(self):
-        """Test fingerprint entry present but board missing."""
-        fp_features = self.design_config.hardware_features.fingerprint
-        fp_features.present = True
-        fp_features.location = (
-            topology_pb2.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT
-        )
-        cros_to_android._add_fingerprint_entry(
-            self.root_element, self.design_config
-        )
-        self.assertIsNone(self.root_element.find("FingerprintConfiguration"))
+    # TODO (b/453601065) add back def test_add_fingerprint_entry_missing_board:
+    # when 'board' value for USB FPMCU is ready
 
     def test_add_fingerprint_entry_location_unknown(self):
         """Test fingerprint entry present but location unknown."""
@@ -256,6 +249,7 @@ class HalEntryHelpersTest(unittest.TestCase):
         self.design_config.hardware_features.fw_config.coreboot_customizations.extend(
             ["cust1", "cust2"]
         )
+        self.sw_config.unified_fw_config.value.extend([1, 2, 3, 4])
         self.design_config.hardware_features.fw_config.value = 12345
         cros_to_android._add_firmware_entry(
             self.root_element, self.design_config, self.sw_config
@@ -266,12 +260,17 @@ class HalEntryHelpersTest(unittest.TestCase):
             fw_elem.find("firmware-manifest-key").text, "test_image_cust1_cust2"
         )
         self.assertEqual(fw_elem.find("firmware-config").text, "12345")
+        self.assertEqual(
+            fw_elem.find("ufsc").text,
+            "01000000020000000300000004000000",
+        )
 
     def test_add_firmware_entry_without_customizations(self):
         """Test firmware entry without coreboot customizations data."""
         self.sw_config.firmware.main_ro_payload.firmware_image_name = (
             "test_image"
         )
+        self.sw_config.unified_fw_config.value.extend([1, 2, 3, 4])
         self.design_config.hardware_features.fw_config.value = 12345
 
         cros_to_android._add_firmware_entry(
@@ -283,14 +282,22 @@ class HalEntryHelpersTest(unittest.TestCase):
             fw_elem.find("firmware-manifest-key").text, "test_image"
         )
         self.assertEqual(fw_elem.find("firmware-config").text, "12345")
+        self.assertEqual(
+            fw_elem.find("ufsc").text,
+            "01000000020000000300000004000000",
+        )
 
     def test_add_firmware_entry_no_image_name(self):
         """Test firmware entry when image name is missing."""
-        # sw_config.firmware.main_ro_payload.firmware_image_name is not set
+        self.design_config.hardware_features.fw_config.value = 12345
         cros_to_android._add_firmware_entry(
             self.root_element, self.design_config, self.sw_config
         )
-        self.assertIsNone(self.root_element.find("FirmwareConfiguration"))
+        fw_elem = self.root_element.find("FirmwareConfiguration")
+        self.assertIsNotNone(fw_elem)
+        self.assertIsNone(fw_elem.find("firmware-manifest-key"))
+        # Verify other elements are still created
+        self.assertEqual(fw_elem.find("firmware-config").text, "12345")
 
     def test_add_audio_entry_valid(self):
         """Test audio entry with valid data (soundcard only)."""
@@ -557,6 +564,65 @@ class HalEntryHelpersTest(unittest.TestCase):
         cros_to_android._add_stylus_entry(self.root_element, self.design_config)
         self.assertIsNone(self.root_element.find("StylusConfiguration"))
 
+    def test_add_touchscreen_entry_present_valid(self):
+        """Test touchscreen entry with screen.touch_support is PRESENT."""
+        this_screen = self.design_config.hardware_features.screen
+        this_screen.touch_support = (
+            topology_pb2.HardwareFeatures.Present.PRESENT
+        )
+        this_screen.panel_properties.diagonal_milliinch = 14000
+
+        cros_to_android._add_screen_entry(self.root_element, self.design_config)
+        screen_elem = self.root_element.find("ScreenConfiguration")
+        self.assertIsNotNone(screen_elem)
+        self.assertEqual(
+            screen_elem.find("screen-size").text, "14000 diagonal_milliinch"
+        )
+
+    def test_add_touchscreen_entry_not_present(self):
+        """Test touchscreen entry when screen is not present."""
+        cros_to_android._add_screen_entry(self.root_element, self.design_config)
+        self.assertIsNone(self.root_element.find("ScreenConfiguration"))
+
+    def test_add_proximity_entry_present_valid(self):
+        """Test proximity entry with sensor config is PRESENT."""
+        this_prox = proximity_config_pb2.ProximityConfig(
+            location=[
+                proximity_config_pb2.ProximityConfig.Location(
+                    radio_type=proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI
+                )
+            ],
+            semtech_config=proximity_config_pb2.ProximityConfig.SemtechProximityConfig(
+                channel_config=[
+                    proximity_config_pb2.ProximityConfig.SemtechProximityConfig.ChannelConfig(
+                        channel="0"
+                    )
+                ]
+            ),
+        )
+        self.design_config.hardware_features.proximity.configs.append(this_prox)
+
+        cros_to_android._add_proximity_entry(
+            self.root_element, self.design_config
+        )
+        prox_elem = self.root_element.find("ProximityConfiguration")
+        self.assertIsNotNone(prox_elem)
+        semtec_elem = prox_elem.find("semtech-proximity")
+        self.assertIsNotNone(semtec_elem)
+        loc = semtec_elem.find("location")
+        self.assertIsNotNone(loc.find("radio-type-wifi"))
+        sem = semtec_elem.find("semtech-config")
+        self.assertIsNotNone(sem)
+        ch = sem.find("channel0")
+        self.assertEqual(ch.find("channel").text, "0")
+
+    def test_add_proximity_entry_not_present(self):
+        """Test proximity entry when hw_features.proximity is not present."""
+        cros_to_android._add_proximity_entry(
+            self.root_element, self.design_config
+        )
+        self.assertIsNone(self.root_element.find("ProximityConfiguration"))
+
 
 class FeatureXmlGenerationTest(unittest.TestCase):
     """Tests for feature XML generation functions."""
@@ -710,6 +776,19 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             ]
         )
 
+    def test_generate_camera_full_level_feature(self):
+        """Test full level feature presence."""
+        cam_dev = self.config.hardware_features.camera.devices.add()
+        cam_dev.interface = topology_pb2.HardwareFeatures.Camera.INTERFACE_MIPI
+        cam_dev.detachable = False
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(
+            [
+                "android.hardware.camera.any",
+                "android.hardware.camera.level.full",
+            ]
+        )
+
     def test_generate_camera_all_features(self):
         """Test all camera features present."""
         # Front camera
@@ -723,6 +802,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         back_cam.flags = (
             topology_pb2.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS
         )
+        back_cam.interface = topology_pb2.HardwareFeatures.Camera.INTERFACE_MIPI
 
         self._create_bundle_and_run_feature_generation()
         self._assert_feature_xml(
@@ -731,6 +811,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
                 "android.hardware.camera",
                 "android.hardware.camera.front",
                 "android.hardware.camera.autofocus",
+                "android.hardware.camera.level.full",
             ]
         )
 

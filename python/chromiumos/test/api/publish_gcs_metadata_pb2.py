@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.chromiumos/test/api/publish_gcs_metadata.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\"\xe0\x01\n\x13XtsArchiverMetadata\x12\x0e\n\x06\x61l_run\x18\x01 \x01(\x08\x12\x0f\n\x07product\x18\x02 \x01(\t\x12\r\n\x05\x62uild\x18\x03 \x01(\t\x12\x1f\n\x17parent_swarming_task_id\x18\x04 \x01(\t\x12\x1a\n\x12results_gcs_prefix\x18\x05 \x01(\t\x12\x17\n\x0f\x61pfe_gcs_prefix\x18\x06 \x01(\t\x12\"\n\x1a\x65nable_al_results_archiver\x18\x07 \x01(\x08\x12\x1f\n\x17\x65nable_al_apfe_archiver\x18\x08 \x01(\x08\"\xe7\x01\n\x12PublishGcsMetadata\x12)\n\x08gcs_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12@\n\x1fservice_account_creds_file_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12G\n\x15xts_archiver_metadata\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.XtsArchiverMetadata\x12\x1b\n\x13\x65nable_xts_archiver\x18\x04 \x01(\x08\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n.chromiumos/test/api/publish_gcs_metadata.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\"\xef\x01\n\x13XtsArchiverMetadata\x12\x0e\n\x06\x61l_run\x18\x01 \x01(\x08\x12\x0f\n\x07product\x18\x02 \x01(\t\x12\r\n\x05\x62uild\x18\x03 \x01(\t\x12\x1f\n\x17parent_swarming_task_id\x18\x04 \x01(\t\x12\x1a\n\x12results_gcs_prefix\x18\x05 \x01(\t\x12\x17\n\x0f\x61pfe_gcs_prefix\x18\x06 \x01(\t\x12\"\n\x1a\x65nable_al_results_archiver\x18\x07 \x01(\x08\x12\x1f\n\x17\x65nable_al_apfe_archiver\x18\x08 \x01(\x08\x12\r\n\x05suite\x18\t \x01(\t\"\xe7\x01\n\x12PublishGcsMetadata\x12)\n\x08gcs_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12@\n\x1fservice_account_creds_file_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12G\n\x15xts_archiver_metadata\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.XtsArchiverMetadata\x12\x1b\n\x13\x65nable_xts_archiver\x18\x04 \x01(\x08\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_storage__path__pb2.DESCRIPTOR,])
 
@@ -91,6 +91,13 @@ _XTSARCHIVERMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='suite', full_name='chromiumos.test.api.XtsArchiverMetadata.suite', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -104,7 +111,7 @@ _XTSARCHIVERMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=103,
-  serialized_end=327,
+  serialized_end=342,
 )
 
 
@@ -156,8 +163,8 @@ _PUBLISHGCSMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=330,
-  serialized_end=561,
+  serialized_start=345,
+  serialized_end=576,
 )
 
 _PUBLISHGCSMETADATA.fields_by_name['gcs_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\007./proto',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/test/scheduling/task_state.proto\x12\x1a\x63hromiumos.test.scheduling\"\x92\x01\n\x18\x43reateTaskStatesResponse\x12J\n\x03ids\x18\x01 \x03(\x0b\x32=.chromiumos.test.scheduling.CreateTaskStatesResponse.IdsEntry\x1a*\n\x08IdsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"R\n\x16ReadTaskStatesResponse\x12\x38\n\x05tasks\x18\x01 \x03(\x0b\x32).chromiumos.test.scheduling.TaskWithState\"\xa3\x01\n\rTaskWithState\x12\x15\n\rtask_state_id\x18\x01 \x01(\x03\x12\x34\n\x05state\x18\x02 \x01(\x0e\x32%.chromiumos.test.scheduling.TaskState\x12\x0c\n\x04\x62\x62id\x18\x03 \x01(\x03\x12\x10\n\x08lease_id\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x05 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x06 \x01(\x03*u\n\tTaskState\x12\r\n\tREQUESTED\x10\x00\x12\x0b\n\x07PENDING\x10\x01\x12\x0c\n\x08LAUNCHED\x10\x02\x12\r\n\tCOMPLETED\x10\x03\x12\x0b\n\x07\x45XPIRED\x10\x04\x12\x0c\n\x08\x43\x41NCELED\x10\x05\x12\x14\n\x10\x46\x41ILED_TO_LAUNCH\x10\x06\x42\tZ\x07./protob\x06proto3'
+  serialized_pb=b'\n+chromiumos/test/scheduling/task_state.proto\x12\x1a\x63hromiumos.test.scheduling\"\x92\x01\n\x18\x43reateTaskStatesResponse\x12J\n\x03ids\x18\x01 \x03(\x0b\x32=.chromiumos.test.scheduling.CreateTaskStatesResponse.IdsEntry\x1a*\n\x08IdsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"R\n\x16ReadTaskStatesResponse\x12\x38\n\x05tasks\x18\x01 \x03(\x0b\x32).chromiumos.test.scheduling.TaskWithState\"\xb9\x01\n\rTaskWithState\x12\x15\n\rtask_state_id\x18\x01 \x01(\x03\x12\x34\n\x05state\x18\x02 \x01(\x0e\x32%.chromiumos.test.scheduling.TaskState\x12\x0c\n\x04\x62\x62id\x18\x03 \x01(\x03\x12\x10\n\x08lease_id\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x05 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x06 \x01(\x03\x12\x14\n\x0cnetwork_zone\x18\x07 \x01(\t*u\n\tTaskState\x12\r\n\tREQUESTED\x10\x00\x12\x0b\n\x07PENDING\x10\x01\x12\x0c\n\x08LAUNCHED\x10\x02\x12\r\n\tCOMPLETED\x10\x03\x12\x0b\n\x07\x45XPIRED\x10\x04\x12\x0c\n\x08\x43\x41NCELED\x10\x05\x12\x14\n\x10\x46\x41ILED_TO_LAUNCH\x10\x06\x42\tZ\x07./protob\x06proto3'
 )
 
 _TASKSTATE = _descriptor.EnumDescriptor(
@@ -68,8 +68,8 @@ _TASKSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=474,
-  serialized_end=591,
+  serialized_start=496,
+  serialized_end=613,
 )
 _sym_db.RegisterEnumDescriptor(_TASKSTATE)
 
@@ -236,6 +236,13 @@ _TASKWITHSTATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='network_zone', full_name='chromiumos.test.scheduling.TaskWithState.network_zone', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -249,7 +256,7 @@ _TASKWITHSTATE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=309,
-  serialized_end=472,
+  serialized_end=494,
 )
 
 _CREATETASKSTATESRESPONSE_IDSENTRY.containing_type = _CREATETASKSTATESRESPONSE
