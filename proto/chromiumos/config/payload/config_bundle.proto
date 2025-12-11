@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.payload;
 
+import "chromiumos/config/api/android_component_configs.proto";
 import "chromiumos/config/api/component.proto";
 import "chromiumos/config/api/design.proto";
 import "chromiumos/config/api/device_brand.proto";
@@ -33,6 +34,11 @@ message ConfigBundle {
   repeated api.software.BrandConfig brand_configs = 10;
 
   reserved 2, 6, 7, 8, 16, 17;
+
+  // Android HAL Component Config - adding payload in supporting the Android
+  // dynamic device configuration that is based on device hardware descriptor
+  // and its generated hw_mapping_table per device build.
+  api.HalConfiguration android_hal_config = 18;
 }
 
 // List to hold multiple ConfigBundles

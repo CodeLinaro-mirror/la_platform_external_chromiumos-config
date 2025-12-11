@@ -68,7 +68,7 @@
 
   <xs:complexType name="FingerprintConfigurationType">
     <xs:sequence>
-      <xs:element type="xs:string" name="board" minOccurs="1">
+      <xs:element type="xs:string" name="board" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Specifies the fingerprint board in use.</xs:documentation>
         </xs:annotation>
@@ -93,7 +93,7 @@
 
   <xs:complexType name="FirmwareConfigurationType">
     <xs:sequence>
-      <xs:element type="xs:string" name="firmware-manifest-key" minOccurs="1">
+      <xs:element type="xs:string" name="firmware-manifest-key" minOccurs="0">
         <xs:annotation>
           <xs:documentation>The key is used by the firmware updater to select the AP/EC firmware bundle.</xs:documentation>
         </xs:annotation>
@@ -101,6 +101,11 @@
       <xs:element type="xs:string" name="firmware-config" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Firmware config(FW_CONFIG) value. This is used by AP and EC firmware for SKU specific configuration during boot</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="ufsc" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Unified Firmware and second source config value. This is used by AP and EC firmware for SKU specific configuration during boot</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -146,6 +151,11 @@
       <xs:element type="FormFactorTypeEn" name="form-factor" minOccurs="1">
         <xs:annotation>
           <xs:documentation>The form factor of the device (e.g., CLAMSHELL, CONVERTIBLE).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:boolean" name="touchscreen-support" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Screen touch support present.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -219,6 +229,59 @@
   </xs:complexType>
   <!-- End of WiFi related section -->
 
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="modifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProximityLocationType">
+    <xs:sequence>
+      <xs:element name="radio-type-wifi" type="LocationType" minOccurs="0"/>
+      <xs:element name="radio-type-cellular" type="LocationType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SemtechChannelType">
+    <xs:sequence>
+      <xs:element name="channel" type="xs:string" minOccurs="1"/>
+      <xs:element name="hardwaregain" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-falling" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-falling-hysteresis" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-rising" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-rising-hysteresis" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SemtechSensorConfigurationType">
+    <xs:sequence>
+      <xs:element name="channel0" type="SemtechChannelType" minOccurs="1"/>
+      <xs:element name="channel1" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel2" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel3" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel4" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel5" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel6" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="channel7" type="SemtechChannelType" minOccurs="0"/>
+      <xs:element name="sampling-frequency" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-falling-period" type="xs:string" minOccurs="0"/>
+      <xs:element name="thresh-rising-period" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SemtechProximityConfigurationType">
+    <xs:sequence>
+      <xs:element name="location" type="ProximityLocationType" minOccurs="1"/>
+      <xs:element name="semtech-config" type="SemtechSensorConfigurationType" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProximityConfigurationType">
+    <xs:sequence>
+      <xs:element name="semtech-proximity" type="SemtechProximityConfigurationType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="StorageConfigurationType">
     <xs:sequence>
       <xs:element type="StorageTypeEn" name="storage-type" minOccurs="1">
@@ -255,6 +318,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="ScreenConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="screen-size" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Touch screen size in diagonal length in milliinch.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="HalConfigType">
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
@@ -269,6 +342,8 @@
       <xs:element name="StorageConfiguration" type="StorageConfigurationType" minOccurs="0"/>
       <xs:element name="KeyboardConfiguration" type="KeyboardConfigurationType" minOccurs="0"/>
       <xs:element name="StylusConfiguration" type="StylusConfigurationType" minOccurs="0"/>
+      <xs:element name="ScreenConfiguration" type="ScreenConfigurationType" minOccurs="0"/>
+      <xs:element name="ProximityConfiguration" type="ProximityConfigurationType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

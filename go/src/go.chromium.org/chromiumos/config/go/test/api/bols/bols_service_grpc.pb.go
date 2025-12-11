@@ -57,10 +57,20 @@ type BolsServiceClient interface {
 	RunMount(ctx context.Context, in *RunMountRequest, opts ...grpc.CallOption) (*RunMountResponse, error)
 	// RunUMount runs the "umount" command on the labstation.
 	RunUMount(ctx context.Context, in *RunUMountRequest, opts ...grpc.CallOption) (*RunUMountResponse, error)
+	// DownloadImageToUSB downloads an image and writes it to a USB drive.
+	DownloadImageToUSB(ctx context.Context, in *DownloadImageToUSBRequest, opts ...grpc.CallOption) (*DownloadImageToUSBResponse, error)
 	// StartServod runs a servod daemon.
 	StartServod(ctx context.Context, in *StartServodRequest, opts ...grpc.CallOption) (*StartServodResponse, error)
 	// StopServod stops the servod daemon.
 	StopServod(ctx context.Context, in *StopServodRequest, opts ...grpc.CallOption) (*StopServodResponse, error)
+	// StartEmptyContainer starts a servod container without running a servod
+	// process. For BOLS services that run servod in a container, this is
+	// useful for maintenance or debugging, such as when updating servo
+	// firmware. If the BOLS service does not use a container, this RPC will do
+	// nothing.
+	// When work in the empty container is complete, users should call StopServod
+	// to clean up and remove the container.
+	StartEmptyContainer(ctx context.Context, in *StartEmptyContainerRequest, opts ...grpc.CallOption) (*StartEmptyContainerResponse, error)
 	// GetServodStatus gets the current status of servod.
 	GetServodStatus(ctx context.Context, in *GetServodStatusRequest, opts ...grpc.CallOption) (*GetServodStatusResponse, error)
 	// HWInitServod calls hwinit of servod.
@@ -364,6 +374,15 @@ func (c *bolsServiceClient) RunUMount(ctx context.Context, in *RunUMountRequest,
 	return out, nil
 }
 
+func (c *bolsServiceClient) DownloadImageToUSB(ctx context.Context, in *DownloadImageToUSBRequest, opts ...grpc.CallOption) (*DownloadImageToUSBResponse, error) {
+	out := new(DownloadImageToUSBResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/DownloadImageToUSB", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *bolsServiceClient) StartServod(ctx context.Context, in *StartServodRequest, opts ...grpc.CallOption) (*StartServodResponse, error) {
 	out := new(StartServodResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/StartServod", in, out, opts...)
@@ -376,6 +395,15 @@ func (c *bolsServiceClient) StartServod(ctx context.Context, in *StartServodRequ
 func (c *bolsServiceClient) StopServod(ctx context.Context, in *StopServodRequest, opts ...grpc.CallOption) (*StopServodResponse, error) {
 	out := new(StopServodResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/StopServod", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bolsServiceClient) StartEmptyContainer(ctx context.Context, in *StartEmptyContainerRequest, opts ...grpc.CallOption) (*StartEmptyContainerResponse, error) {
+	out := new(StartEmptyContainerResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.bols.BolsService/StartEmptyContainer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -574,10 +602,20 @@ type BolsServiceServer interface {
 	RunMount(context.Context, *RunMountRequest) (*RunMountResponse, error)
 	// RunUMount runs the "umount" command on the labstation.
 	RunUMount(context.Context, *RunUMountRequest) (*RunUMountResponse, error)
+	// DownloadImageToUSB downloads an image and writes it to a USB drive.
+	DownloadImageToUSB(context.Context, *DownloadImageToUSBRequest) (*DownloadImageToUSBResponse, error)
 	// StartServod runs a servod daemon.
 	StartServod(context.Context, *StartServodRequest) (*StartServodResponse, error)
 	// StopServod stops the servod daemon.
 	StopServod(context.Context, *StopServodRequest) (*StopServodResponse, error)
+	// StartEmptyContainer starts a servod container without running a servod
+	// process. For BOLS services that run servod in a container, this is
+	// useful for maintenance or debugging, such as when updating servo
+	// firmware. If the BOLS service does not use a container, this RPC will do
+	// nothing.
+	// When work in the empty container is complete, users should call StopServod
+	// to clean up and remove the container.
+	StartEmptyContainer(context.Context, *StartEmptyContainerRequest) (*StartEmptyContainerResponse, error)
 	// GetServodStatus gets the current status of servod.
 	GetServodStatus(context.Context, *GetServodStatusRequest) (*GetServodStatusResponse, error)
 	// HWInitServod calls hwinit of servod.
@@ -674,11 +712,17 @@ func (UnimplementedBolsServiceServer) RunMount(context.Context, *RunMountRequest
 func (UnimplementedBolsServiceServer) RunUMount(context.Context, *RunUMountRequest) (*RunUMountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunUMount not implemented")
 }
+func (UnimplementedBolsServiceServer) DownloadImageToUSB(context.Context, *DownloadImageToUSBRequest) (*DownloadImageToUSBResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DownloadImageToUSB not implemented")
+}
 func (UnimplementedBolsServiceServer) StartServod(context.Context, *StartServodRequest) (*StartServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartServod not implemented")
 }
 func (UnimplementedBolsServiceServer) StopServod(context.Context, *StopServodRequest) (*StopServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopServod not implemented")
+}
+func (UnimplementedBolsServiceServer) StartEmptyContainer(context.Context, *StartEmptyContainerRequest) (*StartEmptyContainerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartEmptyContainer not implemented")
 }
 func (UnimplementedBolsServiceServer) GetServodStatus(context.Context, *GetServodStatusRequest) (*GetServodStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetServodStatus not implemented")
@@ -1020,6 +1064,24 @@ func _BolsService_RunUMount_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BolsService_DownloadImageToUSB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DownloadImageToUSBRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BolsServiceServer).DownloadImageToUSB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.bols.BolsService/DownloadImageToUSB",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BolsServiceServer).DownloadImageToUSB(ctx, req.(*DownloadImageToUSBRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BolsService_StartServod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StartServodRequest)
 	if err := dec(in); err != nil {
@@ -1052,6 +1114,24 @@ func _BolsService_StopServod_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BolsServiceServer).StopServod(ctx, req.(*StopServodRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BolsService_StartEmptyContainer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartEmptyContainerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BolsServiceServer).StartEmptyContainer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.bols.BolsService/StartEmptyContainer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BolsServiceServer).StartEmptyContainer(ctx, req.(*StartEmptyContainerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1406,12 +1486,20 @@ var BolsService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _BolsService_RunUMount_Handler,
 		},
 		{
+			MethodName: "DownloadImageToUSB",
+			Handler:    _BolsService_DownloadImageToUSB_Handler,
+		},
+		{
 			MethodName: "StartServod",
 			Handler:    _BolsService_StartServod_Handler,
 		},
 		{
 			MethodName: "StopServod",
 			Handler:    _BolsService_StopServod_Handler,
+		},
+		{
+			MethodName: "StartEmptyContainer",
+			Handler:    _BolsService_StartEmptyContainer_Handler,
 		},
 		{
 			MethodName: "GetServodStatus",

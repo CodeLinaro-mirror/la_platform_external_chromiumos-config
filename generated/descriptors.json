@@ -6538,7 +6538,7 @@
                       "number": 20
                     },
                     {
-                      "name": "CS42L43",
+                      "name": "AUDIO_CODEC_CS42L43",
                       "number": 21
                     },
                     {
@@ -6663,6 +6663,10 @@
                     {
                       "name": "CS35L56",
                       "number": 27
+                    },
+                    {
+                      "name": "AMPLIFIER_CS42L43",
+                      "number": 28
                     }
                   ]
                 },
@@ -7502,6 +7506,14 @@
                     {
                       "name": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
                       "number": 9
+                    },
+                    {
+                      "name": "POWER_BUTTON_TOP_RIGHT_KEY",
+                      "number": 10
+                    },
+                    {
+                      "name": "POWER_BUTTON_LEFT_EDGE_TOP",
+                      "number": 11
                     }
                   ]
                 }
@@ -11968,6 +11980,141 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "soundcard",
+              "label": "LABEL_OPTIONAL",
+              "name": "soundcard",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AudioConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "modemType",
+              "label": "LABEL_OPTIONAL",
+              "name": "modem_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareVariant",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_variant",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CellularConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fingerprintSensorType",
+              "label": "LABEL_OPTIONAL",
+              "name": "fingerprint_sensor_type",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "sensorLocation",
+              "label": "LABEL_OPTIONAL",
+              "name": "sensor_location",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "roVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "ro_version",
+              "number": 5,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FingerprintConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_ro_version"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "audioList",
+              "label": "LABEL_REPEATED",
+              "name": "audio_list",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.AudioConfigurationType"
+            },
+            {
+              "jsonName": "fingerprintList",
+              "label": "LABEL_REPEATED",
+              "name": "fingerprint_list",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.FingerprintConfigurationType"
+            },
+            {
+              "jsonName": "cellularList",
+              "label": "LABEL_REPEATED",
+              "name": "cellular_list",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.CellularConfigurationType"
+            }
+          ],
+          "name": "HalConfiguration"
+        }
+      ],
+      "name": "chromiumos/config/api/android_component_configs.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/partner.proto",
@@ -12797,6 +12944,331 @@
         {
           "field": [
             {
+              "jsonName": "audioCodec",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_codec",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "audioAmplifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_amplifier",
+              "number": 2,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "audioBusType",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_bus_type",
+              "number": 3,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraUfcType",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_ufc_type",
+              "number": 4,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraUfcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_ufc_name",
+              "number": 5,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraWfcType",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_wfc_type",
+              "number": 6,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cameraWfcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera_wfc_name",
+              "number": 7,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "storageType",
+              "label": "LABEL_OPTIONAL",
+              "name": "storage_type",
+              "number": 8,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "sdCardController",
+              "label": "LABEL_OPTIONAL",
+              "name": "sd_card_controller",
+              "number": 9,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "touchscreen",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen",
+              "number": 10,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "touchscreenProbeType",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen_probe_type",
+              "number": 11,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "touchscreenSocInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen_soc_interface",
+              "number": 12,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "sensorHub",
+              "label": "LABEL_OPTIONAL",
+              "name": "sensor_hub",
+              "number": 13,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "fingerprintInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "fingerprint_interface",
+              "number": 14,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "wifiInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "wifi_interface",
+              "number": 15,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "trackpad",
+              "label": "LABEL_OPTIONAL",
+              "name": "trackpad",
+              "number": 16,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "trackpadProbeType",
+              "label": "LABEL_OPTIONAL",
+              "name": "trackpad_probe_type",
+              "number": 17,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "trackpadSocInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "trackpad_soc_interface",
+              "number": 18,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "cellularInterface",
+              "label": "LABEL_OPTIONAL",
+              "name": "cellular_interface",
+              "number": 19,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "formFactor",
+              "label": "LABEL_OPTIONAL",
+              "name": "form_factor",
+              "number": 20,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "keyboardLayout",
+              "label": "LABEL_OPTIONAL",
+              "name": "keyboard_layout",
+              "number": 21,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "panelId",
+              "label": "LABEL_OPTIONAL",
+              "name": "panel_id",
+              "number": 22,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "stylus",
+              "label": "LABEL_OPTIONAL",
+              "name": "stylus",
+              "number": 23,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "kbBacklight",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_backlight",
+              "number": 24,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "kbNumPad",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_num_pad",
+              "number": 25,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "thermalFan",
+              "label": "LABEL_OPTIONAL",
+              "name": "thermal_fan",
+              "number": 26,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "lidSensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "lid_sensor",
+              "number": 27,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "baseSensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "base_sensor",
+              "number": 28,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "tabletModeBaseOrientation",
+              "label": "LABEL_OPTIONAL",
+              "name": "tablet_mode_base_orientation",
+              "number": 29,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "chargerChip",
+              "label": "LABEL_OPTIONAL",
+              "name": "charger_chip",
+              "number": 30,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort0",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_0",
+              "number": 31,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort1",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_1",
+              "number": 32,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort2",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_2",
+              "number": 33,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "pdcChipVendorPort3",
+              "label": "LABEL_OPTIONAL",
+              "name": "pdc_chip_vendor_port_3",
+              "number": 34,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem3bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_3bit_field0",
+              "number": 35,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem2bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_2bit_field0",
+              "number": 36,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem2bitField1",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_2bit_field1",
+              "number": 37,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "apOem1bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ap_oem_1bit_field0",
+              "number": 38,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem3bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_3bit_field0",
+              "number": 39,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem2bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_2bit_field0",
+              "number": 40,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem2bitField1",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_2bit_field1",
+              "number": 41,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "ecOem1bitField0",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_oem_1bit_field0",
+              "number": 42,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "FirmwareConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_REPEATED",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "UnifiedFirmwareConfig"
+        }
+      ],
+      "name": "chromiumos/config/api/software/unified_fw_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "typecd",
               "label": "LABEL_OPTIONAL",
               "name": "typecd",
@@ -12850,6 +13322,7 @@
         "chromiumos/config/api/software/power_config.proto",
         "chromiumos/config/api/software/rma_config.proto",
         "chromiumos/config/api/software/ui_config.proto",
+        "chromiumos/config/api/software/unified_fw_config.proto",
         "chromiumos/config/api/software/usb_config.proto",
         "chromiumos/config/api/wifi_config.proto",
         "chromiumos/config/public_replication/public_replication.proto"
@@ -13024,6 +13497,14 @@
               "number": 24,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.DiskLayout"
+            },
+            {
+              "jsonName": "unifiedFwConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "unified_fw_config",
+              "number": 25,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UnifiedFirmwareConfig"
             }
           ],
           "name": "SoftwareConfig",
@@ -17543,6 +18024,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/config/api/android_component_configs.proto",
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/device_brand.proto",
@@ -17609,6 +18091,14 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.BrandConfig"
+            },
+            {
+              "jsonName": "androidHalConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "android_hal_config",
+              "number": 18,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HalConfiguration"
             }
           ],
           "name": "ConfigBundle",
@@ -19123,6 +19613,10 @@
             {
               "name": "RPM_TYPE_IP9850",
               "number": 2
+            },
+            {
+              "name": "RPM_TYPE_CPI",
+              "number": 3
             }
           ]
         }
@@ -21324,9 +21818,36 @@
               "number": 2,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            },
+            {
+              "jsonName": "besBoards",
+              "label": "LABEL_REPEATED",
+              "name": "bes_boards",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.BesBoard"
             }
           ],
           "name": "BluetoothPeer"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serialPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial_port",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "btAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "bt_address",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BesBoard"
         },
         {
           "field": [
@@ -22114,6 +22635,9 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
       "enumType": [
         {
           "name": "ServodStatus",
@@ -22263,6 +22787,14 @@
               "name": "is_symlink",
               "number": 5,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "modTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "mod_time",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
             }
           ],
           "name": "FileStat"
@@ -22844,6 +23376,45 @@
         {
           "field": [
             {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "imageUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_url",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "usbDevicePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_device_path",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadImageToUSBRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "responseMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "response_msg",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadImageToUSBResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "values",
               "label": "LABEL_REPEATED",
               "name": "values",
@@ -22974,6 +23545,50 @@
         },
         {
           "name": "StopServodResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "station_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.bols.StationIdentifier"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "recoveryMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "recovery_mode",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "config",
+              "label": "LABEL_OPTIONAL",
+              "name": "config",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartEmptyContainerRequest"
+        },
+        {
+          "name": "StartEmptyContainerResponse"
         },
         {
           "field": [
@@ -23757,6 +24372,12 @@
               "outputType": ".chromiumos.test.api.bols.RunUMountResponse"
             },
             {
+              "inputType": ".chromiumos.test.api.bols.DownloadImageToUSBRequest",
+              "name": "DownloadImageToUSB",
+              "options": {},
+              "outputType": ".chromiumos.test.api.bols.DownloadImageToUSBResponse"
+            },
+            {
               "inputType": ".chromiumos.test.api.bols.StartServodRequest",
               "name": "StartServod",
               "outputType": ".chromiumos.test.api.bols.StartServodResponse"
@@ -23765,6 +24386,11 @@
               "inputType": ".chromiumos.test.api.bols.StopServodRequest",
               "name": "StopServod",
               "outputType": ".chromiumos.test.api.bols.StopServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.bols.StartEmptyContainerRequest",
+              "name": "StartEmptyContainer",
+              "outputType": ".chromiumos.test.api.bols.StartEmptyContainerResponse"
             },
             {
               "inputType": ".chromiumos.test.api.bols.GetServodStatusRequest",
@@ -24628,6 +25254,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness.Tradefed"
+            },
+            {
+              "jsonName": "dtc",
+              "label": "LABEL_OPTIONAL",
+              "name": "dtc",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.DTC"
             }
           ],
           "name": "TestHarness",
@@ -24661,6 +25296,9 @@
             },
             {
               "name": "Tradefed"
+            },
+            {
+              "name": "DTC"
             }
           ],
           "oneofDecl": [
@@ -28171,6 +28809,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Container.PortBinding"
+            },
+            {
+              "jsonName": "image",
+              "label": "LABEL_OPTIONAL",
+              "name": "image",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Container",
@@ -28645,7 +29290,8 @@
         "chromiumos/storage_path.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto",
-        "google/protobuf/any.proto"
+        "google/protobuf/any.proto",
+        "chromiumos/test/api/test_execution_metadata.proto"
       ],
       "messageType": [
         {
@@ -28689,6 +29335,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecutionMetadata"
             }
           ],
           "name": "ProvisionStartupRequest"
@@ -28725,6 +29379,13 @@
               "number": 1,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.ProvisionStartupResponse.Status"
+            },
+            {
+              "jsonName": "versionInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "version_info",
+              "number": 2,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ProvisionStartupResponse"
@@ -28915,6 +29576,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.KernelPrebuilts"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecutionMetadata"
             }
           ],
           "name": "InstallRequest"
@@ -34803,6 +35472,13 @@
               "name": "params",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "skipServoPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_servo_port",
+              "number": 2,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "RunFutilityRequest"
@@ -34828,6 +35504,13 @@
               "name": "params",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "skipServoPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip_servo_port",
+              "number": 2,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "RunFlashECRequest"
@@ -37062,6 +37745,27 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.PublishKey"
+            },
+            {
+              "jsonName": "rootInvocationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "root_invocation_id",
+              "number": 11,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rootWorkUnitId",
+              "label": "LABEL_OPTIONAL",
+              "name": "root_work_unit_id",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rootWorkUnitUpdateToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "root_work_unit_update_token",
+              "number": 13,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "PublishRdbMetadata",
@@ -37464,6 +38168,13 @@
               "name": "enable_al_apfe_archiver",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "suite",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite",
+              "number": 9,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "XtsArchiverMetadata"
@@ -40352,6 +41063,113 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/lab/api/rpm.proto"
+      ],
+      "enumType": [
+        {
+          "name": "RpmPowerState",
+          "value": [
+            {
+              "name": "RPM_POWER_STATE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "RPM_POWER_STATE_ON",
+              "number": 1
+            },
+            {
+              "name": "RPM_POWER_STATE_OFF",
+              "number": 2
+            },
+            {
+              "name": "RPM_POWER_STATE_CYCLE",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "powerunitHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "powerunit_hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "powerunitOutlet",
+              "label": "LABEL_OPTIONAL",
+              "name": "powerunit_outlet",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RpmPowerState"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RPMType"
+            },
+            {
+              "jsonName": "dutName",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_name",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SetRpmPowerStateRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RpmPowerState"
+            }
+          ],
+          "name": "SetRpmPowerStateResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/dut_action_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.SetRpmPowerStateRequest",
+              "name": "SetRpmPowerState",
+              "outputType": ".chromiumos.test.lab.api.SetRpmPowerStateResponse"
+            }
+          ],
+          "name": "DutActionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/test/lab/api/dut.proto"
       ],
       "messageType": [
@@ -41159,6 +41977,23 @@
       ],
       "enumType": [
         {
+          "name": "PdAlert",
+          "value": [
+            {
+              "name": "PD_ALERT_NONE",
+              "number": 0
+            },
+            {
+              "name": "PD_ALERT_PB_PRESS",
+              "number": 1
+            },
+            {
+              "name": "PD_ALERT_PB_RELEASE",
+              "number": 2
+            }
+          ]
+        },
+        {
           "name": "Capability",
           "value": [
             {
@@ -41331,6 +42166,10 @@
             {
               "name": "D",
               "number": 2
+            },
+            {
+              "name": "E",
+              "number": 3
             }
           ]
         },
@@ -41471,6 +42310,27 @@
           ]
         },
         {
+          "name": "PdSwapPolicy",
+          "value": [
+            {
+              "name": "PD_SWAP_POLICY_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PD_SWAP_POLICY_ALLOW",
+              "number": 1
+            },
+            {
+              "name": "PD_SWAP_POLICY_REJECT",
+              "number": 2
+            },
+            {
+              "name": "PD_SWAP_POLICY_WAIT",
+              "number": 3
+            }
+          ]
+        },
+        {
           "name": "DpLinkRate",
           "value": [
             {
@@ -41551,6 +42411,184 @@
         }
       ],
       "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pdAlert",
+              "label": "LABEL_OPTIONAL",
+              "name": "pd_alert",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdAlert"
+            }
+          ],
+          "name": "SendPdAlertRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SendPdAlertReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetPdStatsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "powerRoleSwapCountTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_total",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "powerRoleSwapCountAllow",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_allow",
+              "number": 4,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "powerRoleSwapCountReject",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_reject",
+              "number": 5,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "powerRoleSwapCountWait",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_count_wait",
+              "number": 6,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_total",
+              "number": 7,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountAllow",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_allow",
+              "number": 8,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountReject",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_reject",
+              "number": 9,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dataRoleSwapCountWait",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_count_wait",
+              "number": 10,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetPdStatsReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ResetPdStatsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ResetPdStatsReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
         {
           "field": [
             {
@@ -41820,30 +42858,6 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "dataRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "data_role_swap_policy",
-              "number": 13,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "powerRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_role_swap_policy",
-              "number": 14,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "vconnSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "vconn_swap_policy",
-              "number": 15,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
               "jsonName": "constrainedPower",
               "label": "LABEL_OPTIONAL",
               "name": "constrained_power",
@@ -41884,6 +42898,33 @@
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.TryBehaviour"
+            },
+            {
+              "jsonName": "dataRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_policy",
+              "number": 21,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "powerRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_policy",
+              "number": 22,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "vconnSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "vconn_swap_policy",
+              "number": 23,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
             }
           ],
           "name": "GetUsbTesterCapabilityReply",
@@ -42005,30 +43046,6 @@
               "type": "TYPE_INT64"
             },
             {
-              "jsonName": "dataRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "data_role_swap_policy",
-              "number": 13,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "powerRoleSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "power_role_swap_policy",
-              "number": 14,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "vconnSwapPolicy",
-              "label": "LABEL_OPTIONAL",
-              "name": "vconn_swap_policy",
-              "number": 15,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
               "jsonName": "constrainedPower",
               "label": "LABEL_OPTIONAL",
               "name": "constrained_power",
@@ -42069,6 +43086,33 @@
               "oneofIndex": 0,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.TryBehaviour"
+            },
+            {
+              "jsonName": "dataRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role_swap_policy",
+              "number": 21,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "powerRoleSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role_swap_policy",
+              "number": 22,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
+            },
+            {
+              "jsonName": "vconnSwapPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "vconn_swap_policy",
+              "number": 23,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PdSwapPolicy"
             }
           ],
           "name": "SetUsbTesterCapabilityRequest",
@@ -42748,6 +43792,24 @@
               "name": "SimulateKeyPress",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.SimulateKeyPressReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SendPdAlertRequest",
+              "name": "SendPdAlert",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SendPdAlertReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetPdStatsRequest",
+              "name": "GetPdStats",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetPdStatsReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ResetPdStatsRequest",
+              "name": "ResetPdStats",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ResetPdStatsReply"
             }
           ],
           "name": "UsbTesterService"
@@ -44150,6 +45212,148 @@
             }
           ],
           "name": "RunComplianceTestResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hpdEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "hpd_events",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "auxEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "aux_events",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "sdpEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "sdp_events",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "linkPatternEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "link_pattern_events",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "vbIdEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "vb_id_events",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "msaEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "msa_events",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "auxBwEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "aux_bw_events",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DpRxEventCaptureConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hpdEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "hpd_events",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "auxEvents",
+              "label": "LABEL_OPTIONAL",
+              "name": "aux_events",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DpTxEventCaptureConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dprxConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "dprx_config",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.DpRxEventCaptureConfig"
+            },
+            {
+              "jsonName": "dptxConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "dptx_config",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.DpTxEventCaptureConfig"
+            }
+          ],
+          "name": "StartEventCaptureRequest"
+        },
+        {
+          "name": "StartEventCaptureResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "generateReports",
+              "label": "LABEL_OPTIONAL",
+              "name": "generate_reports",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "StopEventCaptureRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dptxCaptureHtml",
+              "label": "LABEL_OPTIONAL",
+              "name": "dptx_capture_html",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "dprxCaptureHtml",
+              "label": "LABEL_OPTIONAL",
+              "name": "dprx_capture_html",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "StopEventCaptureResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
@@ -44224,6 +45428,16 @@
               "inputType": ".chromiumos.test.lab.api.passport.RunComplianceTestRequest",
               "name": "RunComplianceTest",
               "outputType": ".chromiumos.test.lab.api.passport.RunComplianceTestResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.StartEventCaptureRequest",
+              "name": "StartEventCapture",
+              "outputType": ".chromiumos.test.lab.api.passport.StartEventCaptureResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.StopEventCaptureRequest",
+              "name": "StopEventCapture",
+              "outputType": ".chromiumos.test.lab.api.passport.StopEventCaptureResponse"
             }
           ],
           "name": "VideoTesterService"
@@ -45023,6 +46237,13 @@
               "name": "end_time",
               "number": 6,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "networkZone",
+              "label": "LABEL_OPTIONAL",
+              "name": "network_zone",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TaskWithState"

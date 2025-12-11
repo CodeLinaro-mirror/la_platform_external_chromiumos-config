@@ -93,6 +93,8 @@ message Container {
     int32 host_port = 4;
   }
   repeated PortBinding port_bindings = 4;
+  // The digest of the docker image used by this container.
+  string image = 5;
 }
 
 message CreateNetworkRequest {
