@@ -39,3 +39,4 @@ disable=
     consider-using-f-string,
     duplicate-code,
     possibly-used-before-assignment,
+    too-many-lines,

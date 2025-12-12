@@ -34,4 +34,6 @@ message TaskWithState {
   string device_name = 5;
   // Timestamp in microseconds.
   int64 end_time = 6;
+  // Network zone containing leased DUT for scheduke/ate integration (http://go/scheduke-ate)
+  string network_zone = 7;
 }

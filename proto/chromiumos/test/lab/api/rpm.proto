@@ -10,11 +10,12 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
-// Next Tag: 3
+// Next Tag: 4
 enum RPMType {
   RPM_TYPE_UNKNOWN = 0;
   RPM_TYPE_SENTRY = 1;
   RPM_TYPE_IP9850 = 2;
+  RPM_TYPE_CPI = 3;
 }
 
 // Remote power management capability for the device.

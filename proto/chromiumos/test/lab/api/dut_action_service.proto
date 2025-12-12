@@ -1,0 +1,43 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "chromiumos/test/lab/api/rpm.proto";
+
+// Service to perform actions on DUTs and their peripherals.
+service DutActionService {
+  // Set the power state of an RPM outlet.
+  rpc SetRpmPowerState(SetRpmPowerStateRequest) returns (SetRpmPowerStateResponse);
+}
+
+// Power states for an RPM outlet.
+enum RpmPowerState {
+  RPM_POWER_STATE_UNSPECIFIED = 0;
+  RPM_POWER_STATE_ON = 1;
+  RPM_POWER_STATE_OFF = 2;
+  RPM_POWER_STATE_CYCLE = 3;
+}
+
+message SetRpmPowerStateRequest {
+  // Hostname of the RPM power unit.
+  string powerunit_hostname = 1;
+  // Outlet on the power unit.
+  string powerunit_outlet = 2;
+  // The target power state.
+  RpmPowerState state = 3;
+  // RPM Type.
+  RPMType type = 4;
+  // DUT hostname, for logging and context.
+  string dut_name = 5;
+}
+
+message SetRpmPowerStateResponse {
+  // The new power state. This is for confirmation.
+  RpmPowerState state = 1;
+}

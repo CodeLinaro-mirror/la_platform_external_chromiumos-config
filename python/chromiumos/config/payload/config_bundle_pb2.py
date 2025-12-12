@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from chromiumos.config.api import android_component_configs_pb2 as chromiumos_dot_config_dot_api_dot_android__component__configs__pb2
 from chromiumos.config.api import component_pb2 as chromiumos_dot_config_dot_api_dot_component__pb2
 from chromiumos.config.api import design_pb2 as chromiumos_dot_config_dot_api_dot_design__pb2
 from chromiumos.config.api import device_brand_pb2 as chromiumos_dot_config_dot_api_dot_device__brand__pb2
@@ -26,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z,go.chromium.org/chromiumos/config/go/payload',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n-chromiumos/config/payload/config_bundle.proto\x12\x19\x63hromiumos.config.payload\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a(chromiumos/config/api/device_brand.proto\x1a#chromiumos/config/api/partner.proto\x1a#chromiumos/config/api/program.proto\x1a\x31\x63hromiumos/config/api/software/brand_config.proto\x1a\x34\x63hromiumos/config/api/software/software_config.proto\"\xd5\x03\n\x0c\x43onfigBundle\x12\x34\n\x0cpartner_list\x18\x0b \x03(\x0b\x32\x1e.chromiumos.config.api.Partner\x12\x34\n\ncomponents\x18\x0c \x03(\x0b\x32 .chromiumos.config.api.Component\x12\x34\n\x0cprogram_list\x18\r \x03(\x0b\x32\x1e.chromiumos.config.api.Program\x12\x32\n\x0b\x64\x65sign_list\x18\x0e \x03(\x0b\x32\x1d.chromiumos.config.api.Design\x12=\n\x11\x64\x65vice_brand_list\x18\x0f \x03(\x0b\x32\".chromiumos.config.api.DeviceBrand\x12H\n\x10software_configs\x18\t \x03(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x42\n\rbrand_configs\x18\n \x03(\x0b\x32+.chromiumos.config.api.software.BrandConfigJ\x04\x08\x02\x10\x03J\x04\x08\x06\x10\x07J\x04\x08\x07\x10\x08J\x04\x08\x08\x10\tJ\x04\x08\x10\x10\x11J\x04\x08\x11\x10\x12\"K\n\x10\x43onfigBundleList\x12\x37\n\x06values\x18\x01 \x03(\x0b\x32\'.chromiumos.config.payload.ConfigBundleB.Z,go.chromium.org/chromiumos/config/go/payloadb\x06proto3'
+  serialized_pb=b'\n-chromiumos/config/payload/config_bundle.proto\x12\x19\x63hromiumos.config.payload\x1a\x35\x63hromiumos/config/api/android_component_configs.proto\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a(chromiumos/config/api/device_brand.proto\x1a#chromiumos/config/api/partner.proto\x1a#chromiumos/config/api/program.proto\x1a\x31\x63hromiumos/config/api/software/brand_config.proto\x1a\x34\x63hromiumos/config/api/software/software_config.proto\"\x9a\x04\n\x0c\x43onfigBundle\x12\x34\n\x0cpartner_list\x18\x0b \x03(\x0b\x32\x1e.chromiumos.config.api.Partner\x12\x34\n\ncomponents\x18\x0c \x03(\x0b\x32 .chromiumos.config.api.Component\x12\x34\n\x0cprogram_list\x18\r \x03(\x0b\x32\x1e.chromiumos.config.api.Program\x12\x32\n\x0b\x64\x65sign_list\x18\x0e \x03(\x0b\x32\x1d.chromiumos.config.api.Design\x12=\n\x11\x64\x65vice_brand_list\x18\x0f \x03(\x0b\x32\".chromiumos.config.api.DeviceBrand\x12H\n\x10software_configs\x18\t \x03(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x42\n\rbrand_configs\x18\n \x03(\x0b\x32+.chromiumos.config.api.software.BrandConfig\x12\x43\n\x12\x61ndroid_hal_config\x18\x12 \x01(\x0b\x32\'.chromiumos.config.api.HalConfigurationJ\x04\x08\x02\x10\x03J\x04\x08\x06\x10\x07J\x04\x08\x07\x10\x08J\x04\x08\x08\x10\tJ\x04\x08\x10\x10\x11J\x04\x08\x11\x10\x12\"K\n\x10\x43onfigBundleList\x12\x37\n\x06values\x18\x01 \x03(\x0b\x32\'.chromiumos.config.payload.ConfigBundleB.Z,go.chromium.org/chromiumos/config/go/payloadb\x06proto3'
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_component__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_android__component__configs__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_component__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2.DESCRIPTOR,])
 
 
 
@@ -90,6 +91,13 @@ _CONFIGBUNDLE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='android_hal_config', full_name='chromiumos.config.payload.ConfigBundle.android_hal_config', index=7,
+      number=18, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -102,8 +110,8 @@ _CONFIGBUNDLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=373,
-  serialized_end=842,
+  serialized_start=428,
+  serialized_end=966,
 )
 
 
@@ -134,8 +142,8 @@ _CONFIGBUNDLELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=844,
-  serialized_end=919,
+  serialized_start=968,
+  serialized_end=1043,
 )
 
 _CONFIGBUNDLE.fields_by_name['partner_list'].message_type = chromiumos_dot_config_dot_api_dot_partner__pb2._PARTNER
@@ -145,6 +153,7 @@ _CONFIGBUNDLE.fields_by_name['design_list'].message_type = chromiumos_dot_config
 _CONFIGBUNDLE.fields_by_name['device_brand_list'].message_type = chromiumos_dot_config_dot_api_dot_device__brand__pb2._DEVICEBRAND
 _CONFIGBUNDLE.fields_by_name['software_configs'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2._SOFTWARECONFIG
 _CONFIGBUNDLE.fields_by_name['brand_configs'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2._BRANDCONFIG
+_CONFIGBUNDLE.fields_by_name['android_hal_config'].message_type = chromiumos_dot_config_dot_api_dot_android__component__configs__pb2._HALCONFIGURATION
 _CONFIGBUNDLELIST.fields_by_name['values'].message_type = _CONFIGBUNDLE
 DESCRIPTOR.message_types_by_name['ConfigBundle'] = _CONFIGBUNDLE
 DESCRIPTOR.message_types_by_name['ConfigBundleList'] = _CONFIGBUNDLELIST

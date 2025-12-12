@@ -1,0 +1,294 @@
+{
+  "_FILE_DESCRIPTION": "This file is the \"Single Source of Truth\" for the firmware config bit field layout and is loaded by unified_fw_config.star.",
+  "_IMPORTANT_INSTRUCTIONS": [
+    "!! IMPORTANT !!",
+    "When adding or renaming a field in this file, you must also make corresponding changes in these two files:",
+    "1. `unified_fw_config.proto`:",
+    "   Add/rename the matching proto field. The proto field name MUST be the lowercase version of the schema key.",
+    "   Example: `PDC_CHIP_VENDOR_PORT_0` -> `pdc_chip_vendor_port_0`",
+    "2. `unified_fw_config.star` (`_create_firmware_config` function):",
+    "   Add/rename the matching function argument, which must also be the lowercase version of the schema key.",
+    "   Example: `pdc_chip_vendor_port_0 = None`"
+  ],
+  "_SCHEMA_GUIDE": {
+    "field_name": "The top-level key is the field name (e.g., 'AUDIO_CODEC').",
+    "dword": "The 32-bit word (DWORD) index for this field (e.g., 0, 1, 2, 3).",
+    "start_bit": "The starting bit position within the DWORD (inclusive, 0-31).",
+    "end_bit": "The ending bit position within the DWORD (inclusive, 0-31).",
+    "used_by": "The consumer: 'AP' (Application Processor), 'EC' (Embedded Controller), or 'BOTH'.",
+    "description": "Optional human-readable description of the field's purpose."
+  },
+  "AUDIO_CODEC": {
+    "description": "Audio codec component name",
+    "dword": 0,
+    "start_bit": 0,
+    "end_bit": 2,
+    "used_by": "AP"
+  },
+  "AUDIO_AMPLIFIER": {
+    "description": "Audio Amplifier component name",
+    "dword": 0,
+    "start_bit": 3,
+    "end_bit": 5,
+    "used_by": "AP"
+  },
+  "CAMERA_UFC_NAME": {
+    "description": "User-Facing Camera (UFC) component name.",
+    "dword": 0,
+    "start_bit": 6,
+    "end_bit": 8,
+    "used_by": "AP"
+  },
+  "CAMERA_WFC_NAME": {
+    "description": "World-Facing Camera (WFC) component name.",
+    "dword": 0,
+    "start_bit": 9,
+    "end_bit": 11,
+    "used_by": "AP"
+  },
+  "STORAGE_TYPE": {
+    "description": "Storage type component name (e.g., EMMC, NVME).",
+    "dword": 0,
+    "start_bit": 12,
+    "end_bit": 14,
+    "used_by": "AP"
+  },
+  "SD_CARD_CONTROLLER": {
+    "description": "SD card controller name (e.g., GENSYS, BAYHUB).",
+    "dword": 0,
+    "start_bit": 15,
+    "end_bit": 16,
+    "used_by": "AP"
+  },
+  "TOUCHSCREEN": {
+    "description": "Touchscreen component name.",
+    "dword": 0,
+    "start_bit": 17,
+    "end_bit": 18,
+    "used_by": "AP"
+  },
+  "TOUCHSCREEN_PROBE_TYPE": {
+    "description": "Touchscreen probe type (e.g., i2c_generic, i2c_hid).",
+    "dword": 0,
+    "start_bit": 19,
+    "end_bit": 20,
+    "used_by": "AP"
+  },
+  "TOUCHSCREEN_SOC_INTERFACE": {
+    "description": "Touchscreen interface to SoC (e.g., i2c, spi).",
+    "dword": 0,
+    "start_bit": 21,
+    "end_bit": 22,
+    "used_by": "AP"
+  },
+  "SENSOR_HUB": {
+    "description": "Sensor hub type, ISH from Intel, QSH from QualComm.",
+    "dword": 0,
+    "start_bit": 23,
+    "end_bit": 23,
+    "used_by": "BOTH"
+  },
+  "FINGERPRINT_INTERFACE": {
+    "description": "Fingerprint sensor interface to SoC.",
+    "dword": 0,
+    "start_bit": 24,
+    "end_bit": 25,
+    "used_by": "AP"
+  },
+  "WIFI_INTERFACE": {
+    "description": "WiFi module interface to SoC (e.g., PCIE, CNVI).",
+    "dword": 0,
+    "start_bit": 26,
+    "end_bit": 27,
+    "used_by": "AP"
+  },
+  "CELLULAR_INTERFACE": {
+    "description": "Cellular module interface to SoC (e.g., USB, PCIE).",
+    "dword": 0,
+    "start_bit": 28,
+    "end_bit": 29,
+    "used_by": "AP"
+  },
+  "FORM_FACTOR": {
+    "description": "Device form factor, defined per device. Can be: UNKNOWN, CLAMSHELL, CONVERTIBLE, DETACHABLE.",
+    "dword": 0,
+    "start_bit": 30,
+    "end_bit": 31,
+    "used_by": "BOTH"
+  },
+  "TRACKPAD": {
+    "description": "Trackpad component name.",
+    "dword": 1,
+    "start_bit": 0,
+    "end_bit": 2,
+    "used_by": "AP"
+  },
+  "TRACKPAD_PROBE_TYPE": {
+    "description": "Trackpad probe type (e.g., i2c_generic, i2c_hid).",
+    "dword": 1,
+    "start_bit": 3,
+    "end_bit": 4,
+    "used_by": "AP"
+  },
+  "TRACKPAD_SOC_INTERFACE": {
+    "description": "Trackpad interface to SoC (e.g., i2c, spi, usb).",
+    "dword": 1,
+    "start_bit": 5,
+    "end_bit": 6,
+    "used_by": "AP"
+  },
+  "PANEL_ID": {
+    "description": "Calculated for ARM devices in runtime.  3 bits support 8 panel variations.",
+    "dword": 1,
+    "start_bit": 7,
+    "end_bit": 10,
+    "used_by": "AP"
+  },
+  "KB_BACKLIGHT": {
+    "description": "Keyboard backlight present or absent.",
+    "dword": 1,
+    "start_bit": 11,
+    "end_bit": 11,
+    "used_by": "BOTH"
+  },
+  "KB_NUM_PAD": {
+    "description": "Keyboard number pad present or absent.",
+    "dword": 1,
+    "start_bit": 12,
+    "end_bit": 12,
+    "used_by": "BOTH"
+  },
+  "KEYBOARD_LAYOUT": {
+    "description": "Identifier for keyboard layout.",
+    "dword": 1,
+    "start_bit": 13,
+    "end_bit": 15,
+    "used_by": "BOTH"
+  },
+  "STYLUS": {
+    "description": "Stylus present or absent.",
+    "dword": 1,
+    "start_bit": 16,
+    "end_bit": 16,
+    "used_by": "AP"
+  },
+  "AP_OEM_3BIT_FIELD0": {
+    "description": "AP OEM Customization Field (3 bits).",
+    "dword": 1,
+    "start_bit": 24,
+    "end_bit": 26,
+    "used_by": "AP"
+  },
+  "AP_OEM_2BIT_FIELD0": {
+    "description": "AP OEM Customization Field (2 bits).",
+    "dword": 1,
+    "start_bit": 27,
+    "end_bit": 28,
+    "used_by": "AP"
+  },
+  "AP_OEM_2BIT_FIELD1": {
+    "description": "AP OEM Customization Field (2 bits).",
+    "dword": 1,
+    "start_bit": 29,
+    "end_bit": 30,
+    "used_by": "AP"
+  },
+  "AP_OEM_1BIT_FIELD0": {
+    "description": "AP OEM Customization Field (1 bit).",
+    "dword": 1,
+    "start_bit": 31,
+    "end_bit": 31,
+    "used_by": "AP"
+  },
+  "THERMAL_FAN": {
+    "description": "Thermal fan present or absent.",
+    "dword": 2,
+    "start_bit": 0,
+    "end_bit": 0,
+    "used_by": "EC"
+  },
+  "TABLET_MODE_BASE_ORIENTATION": {
+    "description": "Tablet mode base orientation.",
+    "dword": 2,
+    "start_bit": 1,
+    "end_bit": 1,
+    "used_by": "EC"
+  },
+  "CHARGER_CHIP": {
+    "description": "Charger chip component name.",
+    "dword": 2,
+    "start_bit": 2,
+    "end_bit": 4,
+    "used_by": "EC"
+  },
+  "PDC_CHIP_VENDOR_PORT_0": {
+    "description": "PDC chip vendor on port 0.",
+    "dword": 2,
+    "start_bit": 5,
+    "end_bit": 6,
+    "used_by": "EC"
+  },
+  "PDC_CHIP_VENDOR_PORT_1": {
+    "description": "PDC chip vendor on port 1.",
+    "dword": 2,
+    "start_bit": 7,
+    "end_bit": 8,
+    "used_by": "EC"
+  },
+  "PDC_CHIP_VENDOR_PORT_2": {
+    "description": "PDC chip vendor on port 2.",
+    "dword": 2,
+    "start_bit": 9,
+    "end_bit": 10,
+    "used_by": "EC"
+  },
+  "PDC_CHIP_VENDOR_PORT_3": {
+    "description": "PDC chip vendor on port 3.",
+    "dword": 2,
+    "start_bit": 11,
+    "end_bit": 12,
+    "used_by": "EC"
+  },
+  "LID_SENSOR": {
+    "description": "Accelerometer sensor name on lid.",
+    "dword": 2,
+    "start_bit": 13,
+    "end_bit": 15,
+    "used_by": "EC"
+  },
+  "BASE_SENSOR": {
+    "description": "Accelerometer sensor name on base.",
+    "dword": 2,
+    "start_bit": 16,
+    "end_bit": 18,
+    "used_by": "EC"
+  },
+  "EC_OEM_3BIT_FIELD0": {
+    "description": "EC OEM Customization Field (3 bits).",
+    "dword": 3,
+    "start_bit": 24,
+    "end_bit": 26,
+    "used_by": "EC"
+  },
+  "EC_OEM_2BIT_FIELD0": {
+    "description": "EC OEM Customization Field (2 bits).",
+    "dword": 3,
+    "start_bit": 27,
+    "end_bit": 28,
+    "used_by": "EC"
+  },
+  "EC_OEM_2BIT_FIELD1": {
+    "description": "EC OEM Customization Field (2 bits).",
+    "dword": 3,
+    "start_bit": 29,
+    "end_bit": 30,
+    "used_by": "EC"
+  },
+  "EC_OEM_1BIT_FIELD0": {
+    "description": "EC OEM Customization Field (1 bit).",
+    "dword": 3,
+    "start_bit": 31,
+    "end_bit": 31,
+    "used_by": "EC"
+  }
+}
