@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n!chromiumos/test/lab/api/dut.proto\x12\x17\x63hromiumos.test.lab.api\x1a,chromiumos/config/api/device_config_id.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a(chromiumos/test/lab/api/pasit_host.proto\x1a!chromiumos/test/lab/api/rpm.proto\x1a)chromiumos/test/lab/api/wifi_router.proto\"\xe7\x0e\n\x03\x44ut\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.test.lab.api.Dut.Id\x12\x39\n\x08\x63hromeos\x18\x02 \x01(\x0b\x32%.chromiumos.test.lab.api.Dut.ChromeOSH\x00\x12\x37\n\x07\x61ndroid\x18\x03 \x01(\x0b\x32$.chromiumos.test.lab.api.Dut.AndroidH\x00\x12\x39\n\x08\x64\x65vboard\x18\x05 \x01(\x0b\x32%.chromiumos.test.lab.api.Dut.DevboardH\x00\x12:\n\x0c\x63\x61\x63he_server\x18\x04 \x01(\x0b\x32$.chromiumos.test.lab.api.CacheServer\x12\x38\n\x0bwifi_secret\x18\x06 \x01(\x0b\x32#.chromiumos.test.lab.api.WifiSecret\x12\r\n\x05pools\x18\x07 \x03(\t\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x8a\x08\n\x08\x43hromeOS\x12?\n\x10\x64\x65vice_config_id\x18\x03 \x01(\x0b\x32%.chromiumos.config.api.DeviceConfigId\x12\x30\n\x03ssh\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x0c\n\x04name\x18\x0f \x01(\t\x12\x34\n\tdut_model\x18\x0e \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12-\n\x05servo\x18\x04 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Servo\x12\x35\n\tchameleon\x18\x05 \x01(\x0b\x32\".chromiumos.test.lab.api.Chameleon\x12)\n\x03rpm\x18\x06 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12\x41\n\x10\x65xternal_cameras\x18\x07 \x03(\x0b\x32\'.chromiumos.test.lab.api.ExternalCamera\x12-\n\x05\x61udio\x18\x08 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Audio\x12+\n\x04wifi\x18\t \x01(\x0b\x32\x1d.chromiumos.test.lab.api.Wifi\x12-\n\x05touch\x18\n \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Touch\x12\x35\n\tcamerabox\x18\x0b \x01(\x0b\x32\".chromiumos.test.lab.api.Camerabox\x12.\n\x06\x63\x61\x62les\x18\x0c \x03(\x0b\x32\x1e.chromiumos.test.lab.api.Cable\x12\x33\n\x08\x63\x65llular\x18\r \x01(\x0b\x32!.chromiumos.test.lab.api.Cellular\x12\x16\n\x0ehwid_component\x18\x10 \x03(\t\x12?\n\x0f\x62luetooth_peers\x18\x11 \x03(\x0b\x32&.chromiumos.test.lab.api.BluetoothPeer\x12\x0b\n\x03sku\x18\x12 \x01(\t\x12\x0c\n\x04hwid\x18\x13 \x01(\t\x12-\n\x05phase\x18\x14 \x01(\x0e\x32\x1e.chromiumos.test.lab.api.Phase\x12\x33\n\tsim_infos\x18\x15 \x03(\x0b\x32 .chromiumos.test.lab.api.SIMInfo\x12\x36\n\nmodem_info\x18\x16 \x01(\x0b\x32\".chromiumos.test.lab.api.ModemInfo\x12\x36\n\npasit_host\x18\x17 \x01(\x0b\x32\".chromiumos.test.lab.api.PasitHostJ\x04\x08\x01\x10\x02\x1a\xd5\x01\n\x07\x41ndroid\x12@\n\x13\x61ssociated_hostname\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x15\n\rserial_number\x18\x03 \x01(\t\x12\x34\n\tdut_model\x18\x04 \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12-\n\x05servo\x18\x05 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Servo\x1a\xf8\x01\n\x08\x44\x65vboard\x12\x12\n\nboard_type\x18\x01 \x01(\t\x12\x19\n\x11ultradebug_serial\x18\x02 \x01(\t\x12-\n\x05servo\x18\x03 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Servo\x12\x1d\n\x15\x66ingerprint_module_id\x18\x04 \x01(\t\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x34\n\tdut_model\x18\x06 \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12\x12\n\ngsc_serial\x18\x07 \x01(\t\x12\x17\n\x0f\x64\x65\x62ugger_serial\x18\x08 \x01(\tB\n\n\x08\x64ut_type\"4\n\x08\x44utModel\x12\x14\n\x0c\x62uild_target\x18\x01 \x01(\t\x12\x12\n\nmodel_name\x18\x02 \x01(\t\"\x8f\x01\n\x0b\x44utTopology\x12\x33\n\x02id\x18\x03 \x01(\x0b\x32\'.chromiumos.test.lab.api.DutTopology.Id\x12*\n\x04\x64uts\x18\x04 \x03(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\")\n\x05\x41udio\x12\x11\n\taudio_box\x18\x01 \x01(\x08\x12\r\n\x05\x61trus\x18\x02 \x01(\x08\"\x95\x01\n\x05\x43\x61\x62le\x12\x31\n\x04type\x18\x01 \x01(\x0e\x32#.chromiumos.test.lab.api.Cable.Type\"Y\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tAUDIOJACK\x10\x01\x12\x0c\n\x08USBAUDIO\x10\x02\x12\x0f\n\x0bUSBPRINTING\x10\x03\x12\r\n\tHDMIAUDIO\x10\x04\"C\n\x0b\x43\x61\x63heServer\x12\x34\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"}\n\tCamerabox\x12\x39\n\x06\x66\x61\x63ing\x18\x01 \x01(\x0e\x32).chromiumos.test.lab.api.Camerabox.Facing\"5\n\x06\x46\x61\x63ing\x12\x16\n\x12\x46\x41\x43ING_UNSPECIFIED\x10\x00\x12\x08\n\x04\x42\x41\x43K\x10\x01\x12\t\n\x05\x46RONT\x10\x02\"\xa3\x01\n\x08\x43\x65llular\x12=\n\toperators\x18\x01 \x03(\x0e\x32*.chromiumos.test.lab.api.Cellular.Operator\x12\x0f\n\x07\x63\x61rrier\x18\x02 \x01(\t\"G\n\x08Operator\x12\x18\n\x14OPERATOR_UNSPECIFIED\x10\x00\x12\x07\n\x03\x41TT\x10\x01\x12\x0b\n\x07VERIZON\x10\x02\x12\x0b\n\x07TMOBILE\x10\x03\"\x8e\x01\n\tModemInfo\x12\x30\n\x04type\x18\x01 \x01(\x0e\x32\".chromiumos.test.lab.api.ModemType\x12\x0c\n\x04imei\x18\x02 \x01(\t\x12\x17\n\x0fsupported_bands\x18\x03 \x01(\t\x12\x11\n\tsim_count\x18\x04 \x01(\x05\x12\x15\n\rmodel_variant\x18\x05 \x01(\t\"\xa9\x01\n\x07SIMInfo\x12\x0f\n\x07slot_id\x18\x01 \x01(\x05\x12.\n\x04type\x18\x02 \x01(\x0e\x32 .chromiumos.test.lab.api.SIMType\x12\x0b\n\x03\x65id\x18\x03 \x01(\t\x12\x11\n\ttest_esim\x18\x04 \x01(\x08\x12=\n\x0cprofile_info\x18\x05 \x03(\x0b\x32\'.chromiumos.test.lab.api.SIMProfileInfo\"\xc6\x03\n\x0eSIMProfileInfo\x12\r\n\x05iccid\x18\x01 \x01(\t\x12\x0f\n\x07sim_pin\x18\x02 \x01(\t\x12\x0f\n\x07sim_puk\x18\x03 \x01(\t\x12>\n\x0c\x63\x61rrier_name\x18\x04 \x01(\x0e\x32(.chromiumos.test.lab.api.NetworkProvider\x12\x12\n\nown_number\x18\x05 \x01(\t\x12<\n\x05state\x18\x06 \x01(\x0e\x32-.chromiumos.test.lab.api.SIMProfileInfo.State\x12\x41\n\x08\x66\x65\x61tures\x18\x07 \x03(\x0e\x32/.chromiumos.test.lab.api.SIMProfileInfo.Feature\"_\n\x05State\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\n\n\x06\x42ROKEN\x10\x01\x12\n\n\x06LOCKED\x10\x02\x12\x0e\n\nNO_NETWORK\x10\x03\x12\x0b\n\x07WORKING\x10\x04\x12\x10\n\x0cWRONG_CONFIG\x10\x05\"M\n\x07\x46\x65\x61ture\x12\x17\n\x13\x46\x45\x41TURE_UNSPECIFIED\x10\x00\x12\x18\n\x14\x46\x45\x41TURE_LIVE_NETWORK\x10\x01\x12\x0f\n\x0b\x46\x45\x41TURE_SMS\x10\x02\"\xac\x03\n\tChameleon\x12\x42\n\x0bperipherals\x18\x01 \x03(\x0e\x32-.chromiumos.test.lab.api.Chameleon.Peripheral\x12\x13\n\x0b\x61udio_board\x18\x02 \x01(\x08\x12\x37\n\x05state\x18\x03 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\x10\n\x08hostname\x18\x04 \x01(\t\x12\x36\n\x05types\x18\x05 \x03(\x0e\x32\'.chromiumos.test.lab.api.Chameleon.Type\"\x94\x01\n\nPeripheral\x12\x1a\n\x16PERIPHERAL_UNSPECIFIED\x10\x00\x12\n\n\x06\x42T_HID\x10\x01\x12\x06\n\x02\x44P\x10\x02\x12\x0b\n\x07\x44P_HDMI\x10\x03\x12\x07\n\x03VGA\x10\x04\x12\x08\n\x04HDMI\x10\x05\x12\x0e\n\nBT_BLE_HID\x10\x06\x12\x10\n\x0c\x42T_A2DP_SINK\x10\x07\x12\x0b\n\x07\x42T_PEER\x10\x08\x12\x07\n\x03RPI\x10\t\",\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\x06\n\x02V2\x10\x01\x12\x06\n\x02V3\x10\x02\"\x83\x01\n\x0e\x45xternalCamera\x12:\n\x04type\x18\x01 \x01(\x0e\x32,.chromiumos.test.lab.api.ExternalCamera.Type\"5\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\n\n\x06HUDDLY\x10\x01\x12\x0b\n\x07PTZPRO2\x10\x02\"\xb6\x01\n\x05Servo\x12\x0f\n\x07present\x18\x01 \x01(\x08\x12;\n\x0eservod_address\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x0e\n\x06serial\x18\x03 \x01(\t\x12\x37\n\x05state\x18\x04 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\x16\n\x0e\x63ontainer_name\x18\x05 \x01(\t\"\x15\n\x05Touch\x12\x0c\n\x04mimo\x18\x01 \x01(\x08\"\xa1\x02\n\x04Wifi\x12>\n\x0b\x65nvironment\x18\x01 \x01(\x0e\x32).chromiumos.test.lab.api.Wifi.Environment\x12\x35\n\x07\x61ntenna\x18\x02 \x01(\x0b\x32$.chromiumos.test.lab.api.WifiAntenna\x12\x39\n\x0cwifi_routers\x18\x03 \x03(\x0b\x32#.chromiumos.test.lab.api.WifiRouter\"g\n\x0b\x45nvironment\x12\x1b\n\x17\x45NVIRONMENT_UNSPECIFIED\x10\x00\x12\x0c\n\x08STANDARD\x10\x01\x12\r\n\tWIFI_CELL\x10\x02\x12\t\n\x05\x43HAOS\x10\x03\x12\x13\n\x0fROUTER_802_11AX\x10\x04\"\x95\x01\n\x0bWifiAntenna\x12\x43\n\nconnection\x18\x01 \x01(\x0e\x32/.chromiumos.test.lab.api.WifiAntenna.Connection\"A\n\nConnection\x12\x1a\n\x16\x43ONNECTION_UNSPECIFIED\x10\x00\x12\x0e\n\nCONDUCTIVE\x10\x01\x12\x07\n\x03OTA\x10\x02\"\x9d\x02\n\nWifiRouter\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\x37\n\x05state\x18\x02 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\r\n\x05model\x18\x03 \x01(\t\x12)\n\x03rpm\x18\x04 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12\x46\n\x12supported_features\x18\x05 \x03(\x0e\x32*.chromiumos.test.lab.api.WifiRouterFeature\x12\x42\n\x0b\x64\x65vice_type\x18\x06 \x01(\x0e\x32-.chromiumos.test.lab.api.WifiRouterDeviceType\"\x91\x01\n\rBluetoothPeer\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\x37\n\x05state\x18\x02 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\x35\n\nbes_boards\x18\x03 \x03(\x0b\x32!.chromiumos.test.lab.api.BesBoard\"3\n\x08\x42\x65sBoard\x12\x13\n\x0bserial_port\x18\x01 \x01(\t\x12\x12\n\nbt_address\x18\x02 \x01(\t\">\n\nWifiSecret\x12\x0c\n\x04ssid\x18\x01 \x01(\t\x12\x10\n\x08security\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t*\xd4\x02\n\tModemType\x12\x1a\n\x16MODEM_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n\x16MODEM_TYPE_UNSUPPORTED\x10\x08\x12\x1e\n\x1aMODEM_TYPE_QUALCOMM_SC7180\x10\x01\x12\x1e\n\x1aMODEM_TYPE_FIBOCOMM_L850GL\x10\x02\x12\x14\n\x10MODEM_TYPE_NL668\x10\x03\x12\x14\n\x10MODEM_TYPE_FM350\x10\x04\x12\x14\n\x10MODEM_TYPE_FM101\x10\x05\x12\x1e\n\x1aMODEM_TYPE_QUALCOMM_SC7280\x10\x06\x12\x14\n\x10MODEM_TYPE_EM060\x10\x07\x12\x14\n\x10MODEM_TYPE_RW101\x10\t\x12\x14\n\x10MODEM_TYPE_RW135\x10\n\x12\x15\n\x11MODEM_TYPE_LCUK54\x10\x0b\x12\x14\n\x10MODEM_TYPE_RW350\x10\x0c*\xc1\x03\n\x0fNetworkProvider\x12\x11\n\rNETWORK_OTHER\x10\x00\x12\x17\n\x13NETWORK_UNSUPPORTED\x10\x05\x12\x10\n\x0cNETWORK_TEST\x10\x01\x12\x0f\n\x0bNETWORK_ATT\x10\x02\x12\x13\n\x0fNETWORK_TMOBILE\x10\x03\x12\x13\n\x0fNETWORK_VERIZON\x10\x04\x12\x12\n\x0eNETWORK_SPRINT\x10\x06\x12\x12\n\x0eNETWORK_DOCOMO\x10\x07\x12\x14\n\x10NETWORK_SOFTBANK\x10\x08\x12\x10\n\x0cNETWORK_KDDI\x10\t\x12\x13\n\x0fNETWORK_RAKUTEN\x10\n\x12\x14\n\x10NETWORK_VODAFONE\x10\x0b\x12\x0e\n\nNETWORK_EE\x10\x0c\x12\x15\n\x11NETWORK_AMARISOFT\x10\r\x12\x11\n\rNETWORK_ROGER\x10\x0e\x12\x10\n\x0cNETWORK_BELL\x10\x0f\x12\x11\n\rNETWORK_TELUS\x10\x10\x12\x0e\n\nNETWORK_FI\x10\x11\x12\x10\n\x0cNETWORK_CBRS\x10\x12\x12\x12\n\x0eNETWORK_LINEMO\x10\x13\x12\x10\n\x0cNETWORK_POVO\x10\x14\x12\x13\n\x0fNETWORK_HANSHIN\x10\x15*=\n\x07SIMType\x12\x0f\n\x0bSIM_UNKNOWN\x10\x00\x12\x10\n\x0cSIM_PHYSICAL\x10\x01\x12\x0f\n\x0bSIM_DIGITAL\x10\x02*`\n\x0fPeripheralState\x12 \n\x1cPERIPHERAL_STATE_UNSPECIFIED\x10\x00\x12\x0b\n\x07WORKING\x10\x01\x12\n\n\x06\x42ROKEN\x10\x02\x12\x12\n\x0eNOT_APPLICABLE\x10\x03*\xfb\x03\n\x05Phase\x12\x15\n\x11PHASE_UNSPECIFIED\x10\x00\x12\x07\n\x03\x44VT\x10\x01\x12\t\n\x05\x44VT_2\x10\x02\x12\x11\n\rDVT_2_MPS_LTE\x10\x03\x12\x0f\n\x0b\x44VT_BIPSHIP\x10\x04\x12\x0e\n\nDVT_BOOKEM\x10\x05\x12\x0f\n\x0b\x44VT_ELECTRO\x10\x06\x12\r\n\tDVT_LOCKE\x10\x07\x12\x0e\n\nDVT_OSCINO\x10\x08\x12\x0e\n\nDVT_REKS14\x10\t\x12\x14\n\x10\x44VT_REKS14_TOUCH\x10\n\x12\r\n\tDVT_TOUCH\x10\x0b\x12\x07\n\x03\x45VT\x10\x0c\x12\x11\n\rEVT_FLEEX_LTE\x10\r\x12\n\n\x06\x45VT_HQ\x10\x0e\x12\x0b\n\x07\x45VT_LTE\x10\x0f\x12\r\n\tEVT_MAPLE\x10\x10\x12\r\n\tEVT_PUJJO\x10\x11\x12\t\n\x05PROTO\x10\x12\x12\n\n\x06PROTO1\x10\x13\x12\x07\n\x03PVT\x10\x14\x12\x0e\n\nPVT_TERRA3\x10\x15\x12\n\n\x06PVT_US\x10\x16\x12\t\n\x05PVT_2\x10\x17\x12\x0e\n\nPVT_BOOKEM\x10\x18\x12\x0f\n\x0bPVT_ELECTRO\x10\x19\x12\x0e\n\nPVT_GIK360\x10\x1a\x12\x0c\n\x08PVT_LILI\x10\x1b\x12\x0b\n\x07PVT_LTE\x10\x1c\x12\x0f\n\x0bPVT_NEW_CPU\x10\x1d\x12\x0c\n\x08PVT_SAND\x10\x1e\x12\x11\n\rPVT_TUNE_BITS\x10\x1f\x12\x0e\n\nPVT_TELESU\x10 \x12\x06\n\x02SR\x10!B3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n!chromiumos/test/lab/api/dut.proto\x12\x17\x63hromiumos.test.lab.api\x1a,chromiumos/config/api/device_config_id.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a(chromiumos/test/lab/api/pasit_host.proto\x1a!chromiumos/test/lab/api/rpm.proto\x1a)chromiumos/test/lab/api/wifi_router.proto\"\x9f\x0f\n\x03\x44ut\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.test.lab.api.Dut.Id\x12\x39\n\x08\x63hromeos\x18\x02 \x01(\x0b\x32%.chromiumos.test.lab.api.Dut.ChromeOSH\x00\x12\x37\n\x07\x61ndroid\x18\x03 \x01(\x0b\x32$.chromiumos.test.lab.api.Dut.AndroidH\x00\x12\x39\n\x08\x64\x65vboard\x18\x05 \x01(\x0b\x32%.chromiumos.test.lab.api.Dut.DevboardH\x00\x12:\n\x0c\x63\x61\x63he_server\x18\x04 \x01(\x0b\x32$.chromiumos.test.lab.api.CacheServer\x12\x38\n\x0bwifi_secret\x18\x06 \x01(\x0b\x32#.chromiumos.test.lab.api.WifiSecret\x12\r\n\x05pools\x18\x07 \x03(\t\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\xc2\x08\n\x08\x43hromeOS\x12?\n\x10\x64\x65vice_config_id\x18\x03 \x01(\x0b\x32%.chromiumos.config.api.DeviceConfigId\x12\x30\n\x03ssh\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x0c\n\x04name\x18\x0f \x01(\t\x12\x34\n\tdut_model\x18\x0e \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12-\n\x05servo\x18\x04 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Servo\x12\x35\n\tchameleon\x18\x05 \x01(\x0b\x32\".chromiumos.test.lab.api.Chameleon\x12)\n\x03rpm\x18\x06 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12\x41\n\x10\x65xternal_cameras\x18\x07 \x03(\x0b\x32\'.chromiumos.test.lab.api.ExternalCamera\x12-\n\x05\x61udio\x18\x08 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Audio\x12+\n\x04wifi\x18\t \x01(\x0b\x32\x1d.chromiumos.test.lab.api.Wifi\x12-\n\x05touch\x18\n \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Touch\x12\x35\n\tcamerabox\x18\x0b \x01(\x0b\x32\".chromiumos.test.lab.api.Camerabox\x12.\n\x06\x63\x61\x62les\x18\x0c \x03(\x0b\x32\x1e.chromiumos.test.lab.api.Cable\x12\x33\n\x08\x63\x65llular\x18\r \x01(\x0b\x32!.chromiumos.test.lab.api.Cellular\x12\x16\n\x0ehwid_component\x18\x10 \x03(\t\x12?\n\x0f\x62luetooth_peers\x18\x11 \x03(\x0b\x32&.chromiumos.test.lab.api.BluetoothPeer\x12\x0b\n\x03sku\x18\x12 \x01(\t\x12\x0c\n\x04hwid\x18\x13 \x01(\t\x12-\n\x05phase\x18\x14 \x01(\x0e\x32\x1e.chromiumos.test.lab.api.Phase\x12\x33\n\tsim_infos\x18\x15 \x03(\x0b\x32 .chromiumos.test.lab.api.SIMInfo\x12\x36\n\nmodem_info\x18\x16 \x01(\x0b\x32\".chromiumos.test.lab.api.ModemInfo\x12\x36\n\npasit_host\x18\x17 \x01(\x0b\x32\".chromiumos.test.lab.api.PasitHost\x12\x36\n\x03hmr\x18\x18 \x01(\x0b\x32).chromiumos.test.lab.api.HumanMotionRobotJ\x04\x08\x01\x10\x02\x1a\xd5\x01\n\x07\x41ndroid\x12@\n\x13\x61ssociated_hostname\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x15\n\rserial_number\x18\x03 \x01(\t\x12\x34\n\tdut_model\x18\x04 \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12-\n\x05servo\x18\x05 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Servo\x1a\xf8\x01\n\x08\x44\x65vboard\x12\x12\n\nboard_type\x18\x01 \x01(\t\x12\x19\n\x11ultradebug_serial\x18\x02 \x01(\t\x12-\n\x05servo\x18\x03 \x01(\x0b\x32\x1e.chromiumos.test.lab.api.Servo\x12\x1d\n\x15\x66ingerprint_module_id\x18\x04 \x01(\t\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x34\n\tdut_model\x18\x06 \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12\x12\n\ngsc_serial\x18\x07 \x01(\t\x12\x17\n\x0f\x64\x65\x62ugger_serial\x18\x08 \x01(\tB\n\n\x08\x64ut_type\"4\n\x08\x44utModel\x12\x14\n\x0c\x62uild_target\x18\x01 \x01(\t\x12\x12\n\nmodel_name\x18\x02 \x01(\t\"\x8f\x01\n\x0b\x44utTopology\x12\x33\n\x02id\x18\x03 \x01(\x0b\x32\'.chromiumos.test.lab.api.DutTopology.Id\x12*\n\x04\x64uts\x18\x04 \x03(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\")\n\x05\x41udio\x12\x11\n\taudio_box\x18\x01 \x01(\x08\x12\r\n\x05\x61trus\x18\x02 \x01(\x08\"\x95\x01\n\x05\x43\x61\x62le\x12\x31\n\x04type\x18\x01 \x01(\x0e\x32#.chromiumos.test.lab.api.Cable.Type\"Y\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tAUDIOJACK\x10\x01\x12\x0c\n\x08USBAUDIO\x10\x02\x12\x0f\n\x0bUSBPRINTING\x10\x03\x12\r\n\tHDMIAUDIO\x10\x04\"C\n\x0b\x43\x61\x63heServer\x12\x34\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"}\n\tCamerabox\x12\x39\n\x06\x66\x61\x63ing\x18\x01 \x01(\x0e\x32).chromiumos.test.lab.api.Camerabox.Facing\"5\n\x06\x46\x61\x63ing\x12\x16\n\x12\x46\x41\x43ING_UNSPECIFIED\x10\x00\x12\x08\n\x04\x42\x41\x43K\x10\x01\x12\t\n\x05\x46RONT\x10\x02\"\xa3\x01\n\x08\x43\x65llular\x12=\n\toperators\x18\x01 \x03(\x0e\x32*.chromiumos.test.lab.api.Cellular.Operator\x12\x0f\n\x07\x63\x61rrier\x18\x02 \x01(\t\"G\n\x08Operator\x12\x18\n\x14OPERATOR_UNSPECIFIED\x10\x00\x12\x07\n\x03\x41TT\x10\x01\x12\x0b\n\x07VERIZON\x10\x02\x12\x0b\n\x07TMOBILE\x10\x03\"\xbf\x03\n\x10HumanMotionRobot\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\x11\n\thmr_model\x18\x02 \x01(\t\x12\x18\n\x10gateway_hostname\x18\x03 \x01(\t\x12)\n\x03rpm\x18\x04 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12\x10\n\x08hmr_walt\x18\x05 \x01(\x08\x12L\n\rhmr_tool_type\x18\x06 \x01(\x0e\x32\x35.chromiumos.test.lab.api.HumanMotionRobot.HMRToolType\x12\x41\n\x07hmr_gen\x18\x07 \x01(\x0e\x32\x30.chromiumos.test.lab.api.HumanMotionRobot.HMRGen\"a\n\x0bHMRToolType\x12\x19\n\x15HMR_TOOL_TYPE_UNKNOWN\x10\x00\x12\x18\n\x14HMR_TOOL_TYPE_STYLUS\x10\x01\x12\x1d\n\x19HMR_TOOL_TYPE_FAKE_FINGER\x10\x02\";\n\x06HMRGen\x12\x13\n\x0fHMR_GEN_UNKNOWN\x10\x00\x12\r\n\tHMR_GEN_1\x10\x01\x12\r\n\tHMR_GEN_2\x10\x02\"\x8e\x01\n\tModemInfo\x12\x30\n\x04type\x18\x01 \x01(\x0e\x32\".chromiumos.test.lab.api.ModemType\x12\x0c\n\x04imei\x18\x02 \x01(\t\x12\x17\n\x0fsupported_bands\x18\x03 \x01(\t\x12\x11\n\tsim_count\x18\x04 \x01(\x05\x12\x15\n\rmodel_variant\x18\x05 \x01(\t\"\xa9\x01\n\x07SIMInfo\x12\x0f\n\x07slot_id\x18\x01 \x01(\x05\x12.\n\x04type\x18\x02 \x01(\x0e\x32 .chromiumos.test.lab.api.SIMType\x12\x0b\n\x03\x65id\x18\x03 \x01(\t\x12\x11\n\ttest_esim\x18\x04 \x01(\x08\x12=\n\x0cprofile_info\x18\x05 \x03(\x0b\x32\'.chromiumos.test.lab.api.SIMProfileInfo\"\xc6\x03\n\x0eSIMProfileInfo\x12\r\n\x05iccid\x18\x01 \x01(\t\x12\x0f\n\x07sim_pin\x18\x02 \x01(\t\x12\x0f\n\x07sim_puk\x18\x03 \x01(\t\x12>\n\x0c\x63\x61rrier_name\x18\x04 \x01(\x0e\x32(.chromiumos.test.lab.api.NetworkProvider\x12\x12\n\nown_number\x18\x05 \x01(\t\x12<\n\x05state\x18\x06 \x01(\x0e\x32-.chromiumos.test.lab.api.SIMProfileInfo.State\x12\x41\n\x08\x66\x65\x61tures\x18\x07 \x03(\x0e\x32/.chromiumos.test.lab.api.SIMProfileInfo.Feature\"_\n\x05State\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\n\n\x06\x42ROKEN\x10\x01\x12\n\n\x06LOCKED\x10\x02\x12\x0e\n\nNO_NETWORK\x10\x03\x12\x0b\n\x07WORKING\x10\x04\x12\x10\n\x0cWRONG_CONFIG\x10\x05\"M\n\x07\x46\x65\x61ture\x12\x17\n\x13\x46\x45\x41TURE_UNSPECIFIED\x10\x00\x12\x18\n\x14\x46\x45\x41TURE_LIVE_NETWORK\x10\x01\x12\x0f\n\x0b\x46\x45\x41TURE_SMS\x10\x02\"\xac\x03\n\tChameleon\x12\x42\n\x0bperipherals\x18\x01 \x03(\x0e\x32-.chromiumos.test.lab.api.Chameleon.Peripheral\x12\x13\n\x0b\x61udio_board\x18\x02 \x01(\x08\x12\x37\n\x05state\x18\x03 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\x10\n\x08hostname\x18\x04 \x01(\t\x12\x36\n\x05types\x18\x05 \x03(\x0e\x32\'.chromiumos.test.lab.api.Chameleon.Type\"\x94\x01\n\nPeripheral\x12\x1a\n\x16PERIPHERAL_UNSPECIFIED\x10\x00\x12\n\n\x06\x42T_HID\x10\x01\x12\x06\n\x02\x44P\x10\x02\x12\x0b\n\x07\x44P_HDMI\x10\x03\x12\x07\n\x03VGA\x10\x04\x12\x08\n\x04HDMI\x10\x05\x12\x0e\n\nBT_BLE_HID\x10\x06\x12\x10\n\x0c\x42T_A2DP_SINK\x10\x07\x12\x0b\n\x07\x42T_PEER\x10\x08\x12\x07\n\x03RPI\x10\t\",\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\x06\n\x02V2\x10\x01\x12\x06\n\x02V3\x10\x02\"\x83\x01\n\x0e\x45xternalCamera\x12:\n\x04type\x18\x01 \x01(\x0e\x32,.chromiumos.test.lab.api.ExternalCamera.Type\"5\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\n\n\x06HUDDLY\x10\x01\x12\x0b\n\x07PTZPRO2\x10\x02\"\xb6\x01\n\x05Servo\x12\x0f\n\x07present\x18\x01 \x01(\x08\x12;\n\x0eservod_address\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x0e\n\x06serial\x18\x03 \x01(\t\x12\x37\n\x05state\x18\x04 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\x16\n\x0e\x63ontainer_name\x18\x05 \x01(\t\"\x15\n\x05Touch\x12\x0c\n\x04mimo\x18\x01 \x01(\x08\"\xa1\x02\n\x04Wifi\x12>\n\x0b\x65nvironment\x18\x01 \x01(\x0e\x32).chromiumos.test.lab.api.Wifi.Environment\x12\x35\n\x07\x61ntenna\x18\x02 \x01(\x0b\x32$.chromiumos.test.lab.api.WifiAntenna\x12\x39\n\x0cwifi_routers\x18\x03 \x03(\x0b\x32#.chromiumos.test.lab.api.WifiRouter\"g\n\x0b\x45nvironment\x12\x1b\n\x17\x45NVIRONMENT_UNSPECIFIED\x10\x00\x12\x0c\n\x08STANDARD\x10\x01\x12\r\n\tWIFI_CELL\x10\x02\x12\t\n\x05\x43HAOS\x10\x03\x12\x13\n\x0fROUTER_802_11AX\x10\x04\"\x95\x01\n\x0bWifiAntenna\x12\x43\n\nconnection\x18\x01 \x01(\x0e\x32/.chromiumos.test.lab.api.WifiAntenna.Connection\"A\n\nConnection\x12\x1a\n\x16\x43ONNECTION_UNSPECIFIED\x10\x00\x12\x0e\n\nCONDUCTIVE\x10\x01\x12\x07\n\x03OTA\x10\x02\"\x9d\x02\n\nWifiRouter\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\x37\n\x05state\x18\x02 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\r\n\x05model\x18\x03 \x01(\t\x12)\n\x03rpm\x18\x04 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12\x46\n\x12supported_features\x18\x05 \x03(\x0e\x32*.chromiumos.test.lab.api.WifiRouterFeature\x12\x42\n\x0b\x64\x65vice_type\x18\x06 \x01(\x0e\x32-.chromiumos.test.lab.api.WifiRouterDeviceType\"\x91\x01\n\rBluetoothPeer\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\x37\n\x05state\x18\x02 \x01(\x0e\x32(.chromiumos.test.lab.api.PeripheralState\x12\x35\n\nbes_boards\x18\x03 \x03(\x0b\x32!.chromiumos.test.lab.api.BesBoard\"3\n\x08\x42\x65sBoard\x12\x13\n\x0bserial_port\x18\x01 \x01(\t\x12\x12\n\nbt_address\x18\x02 \x01(\t\">\n\nWifiSecret\x12\x0c\n\x04ssid\x18\x01 \x01(\t\x12\x10\n\x08security\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t*\xd4\x02\n\tModemType\x12\x1a\n\x16MODEM_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n\x16MODEM_TYPE_UNSUPPORTED\x10\x08\x12\x1e\n\x1aMODEM_TYPE_QUALCOMM_SC7180\x10\x01\x12\x1e\n\x1aMODEM_TYPE_FIBOCOMM_L850GL\x10\x02\x12\x14\n\x10MODEM_TYPE_NL668\x10\x03\x12\x14\n\x10MODEM_TYPE_FM350\x10\x04\x12\x14\n\x10MODEM_TYPE_FM101\x10\x05\x12\x1e\n\x1aMODEM_TYPE_QUALCOMM_SC7280\x10\x06\x12\x14\n\x10MODEM_TYPE_EM060\x10\x07\x12\x14\n\x10MODEM_TYPE_RW101\x10\t\x12\x14\n\x10MODEM_TYPE_RW135\x10\n\x12\x15\n\x11MODEM_TYPE_LCUK54\x10\x0b\x12\x14\n\x10MODEM_TYPE_RW350\x10\x0c*\xc1\x03\n\x0fNetworkProvider\x12\x11\n\rNETWORK_OTHER\x10\x00\x12\x17\n\x13NETWORK_UNSUPPORTED\x10\x05\x12\x10\n\x0cNETWORK_TEST\x10\x01\x12\x0f\n\x0bNETWORK_ATT\x10\x02\x12\x13\n\x0fNETWORK_TMOBILE\x10\x03\x12\x13\n\x0fNETWORK_VERIZON\x10\x04\x12\x12\n\x0eNETWORK_SPRINT\x10\x06\x12\x12\n\x0eNETWORK_DOCOMO\x10\x07\x12\x14\n\x10NETWORK_SOFTBANK\x10\x08\x12\x10\n\x0cNETWORK_KDDI\x10\t\x12\x13\n\x0fNETWORK_RAKUTEN\x10\n\x12\x14\n\x10NETWORK_VODAFONE\x10\x0b\x12\x0e\n\nNETWORK_EE\x10\x0c\x12\x15\n\x11NETWORK_AMARISOFT\x10\r\x12\x11\n\rNETWORK_ROGER\x10\x0e\x12\x10\n\x0cNETWORK_BELL\x10\x0f\x12\x11\n\rNETWORK_TELUS\x10\x10\x12\x0e\n\nNETWORK_FI\x10\x11\x12\x10\n\x0cNETWORK_CBRS\x10\x12\x12\x12\n\x0eNETWORK_LINEMO\x10\x13\x12\x10\n\x0cNETWORK_POVO\x10\x14\x12\x13\n\x0fNETWORK_HANSHIN\x10\x15*=\n\x07SIMType\x12\x0f\n\x0bSIM_UNKNOWN\x10\x00\x12\x10\n\x0cSIM_PHYSICAL\x10\x01\x12\x0f\n\x0bSIM_DIGITAL\x10\x02*`\n\x0fPeripheralState\x12 \n\x1cPERIPHERAL_STATE_UNSPECIFIED\x10\x00\x12\x0b\n\x07WORKING\x10\x01\x12\n\n\x06\x42ROKEN\x10\x02\x12\x12\n\x0eNOT_APPLICABLE\x10\x03*\xfb\x03\n\x05Phase\x12\x15\n\x11PHASE_UNSPECIFIED\x10\x00\x12\x07\n\x03\x44VT\x10\x01\x12\t\n\x05\x44VT_2\x10\x02\x12\x11\n\rDVT_2_MPS_LTE\x10\x03\x12\x0f\n\x0b\x44VT_BIPSHIP\x10\x04\x12\x0e\n\nDVT_BOOKEM\x10\x05\x12\x0f\n\x0b\x44VT_ELECTRO\x10\x06\x12\r\n\tDVT_LOCKE\x10\x07\x12\x0e\n\nDVT_OSCINO\x10\x08\x12\x0e\n\nDVT_REKS14\x10\t\x12\x14\n\x10\x44VT_REKS14_TOUCH\x10\n\x12\r\n\tDVT_TOUCH\x10\x0b\x12\x07\n\x03\x45VT\x10\x0c\x12\x11\n\rEVT_FLEEX_LTE\x10\r\x12\n\n\x06\x45VT_HQ\x10\x0e\x12\x0b\n\x07\x45VT_LTE\x10\x0f\x12\r\n\tEVT_MAPLE\x10\x10\x12\r\n\tEVT_PUJJO\x10\x11\x12\t\n\x05PROTO\x10\x12\x12\n\n\x06PROTO1\x10\x13\x12\x07\n\x03PVT\x10\x14\x12\x0e\n\nPVT_TERRA3\x10\x15\x12\n\n\x06PVT_US\x10\x16\x12\t\n\x05PVT_2\x10\x17\x12\x0e\n\nPVT_BOOKEM\x10\x18\x12\x0f\n\x0bPVT_ELECTRO\x10\x19\x12\x0e\n\nPVT_GIK360\x10\x1a\x12\x0c\n\x08PVT_LILI\x10\x1b\x12\x0b\n\x07PVT_LTE\x10\x1c\x12\x0f\n\x0bPVT_NEW_CPU\x10\x1d\x12\x0c\n\x08PVT_SAND\x10\x1e\x12\x11\n\rPVT_TUNE_BITS\x10\x1f\x12\x0e\n\nPVT_TELESU\x10 \x12\x06\n\x02SR\x10!B3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_device__config__id__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_pasit__host__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_rpm__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_wifi__router__pb2.DESCRIPTOR,])
 
@@ -104,8 +104,8 @@ _MODEMTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5471,
-  serialized_end=5811,
+  serialized_start=5977,
+  serialized_end=6317,
 )
 _sym_db.RegisterEnumDescriptor(_MODEMTYPE)
 
@@ -230,8 +230,8 @@ _NETWORKPROVIDER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5814,
-  serialized_end=6263,
+  serialized_start=6320,
+  serialized_end=6769,
 )
 _sym_db.RegisterEnumDescriptor(_NETWORKPROVIDER)
 
@@ -261,8 +261,8 @@ _SIMTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6265,
-  serialized_end=6326,
+  serialized_start=6771,
+  serialized_end=6832,
 )
 _sym_db.RegisterEnumDescriptor(_SIMTYPE)
 
@@ -297,8 +297,8 @@ _PERIPHERALSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6328,
-  serialized_end=6424,
+  serialized_start=6834,
+  serialized_end=6930,
 )
 _sym_db.RegisterEnumDescriptor(_PERIPHERALSTATE)
 
@@ -483,8 +483,8 @@ _PHASE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6427,
-  serialized_end=6934,
+  serialized_start=6933,
+  serialized_end=7440,
 )
 _sym_db.RegisterEnumDescriptor(_PHASE)
 
@@ -602,8 +602,8 @@ _CABLE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2473,
-  serialized_end=2562,
+  serialized_start=2529,
+  serialized_end=2618,
 )
 _sym_db.RegisterEnumDescriptor(_CABLE_TYPE)
 
@@ -632,8 +632,8 @@ _CAMERABOX_FACING = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2705,
-  serialized_end=2758,
+  serialized_start=2761,
+  serialized_end=2814,
 )
 _sym_db.RegisterEnumDescriptor(_CAMERABOX_FACING)
 
@@ -667,10 +667,70 @@ _CELLULAR_OPERATOR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2853,
-  serialized_end=2924,
+  serialized_start=2909,
+  serialized_end=2980,
 )
 _sym_db.RegisterEnumDescriptor(_CELLULAR_OPERATOR)
+
+_HUMANMOTIONROBOT_HMRTOOLTYPE = _descriptor.EnumDescriptor(
+  name='HMRToolType',
+  full_name='chromiumos.test.lab.api.HumanMotionRobot.HMRToolType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='HMR_TOOL_TYPE_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='HMR_TOOL_TYPE_STYLUS', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='HMR_TOOL_TYPE_FAKE_FINGER', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3272,
+  serialized_end=3369,
+)
+_sym_db.RegisterEnumDescriptor(_HUMANMOTIONROBOT_HMRTOOLTYPE)
+
+_HUMANMOTIONROBOT_HMRGEN = _descriptor.EnumDescriptor(
+  name='HMRGen',
+  full_name='chromiumos.test.lab.api.HumanMotionRobot.HMRGen',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='HMR_GEN_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='HMR_GEN_1', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='HMR_GEN_2', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3371,
+  serialized_end=3430,
+)
+_sym_db.RegisterEnumDescriptor(_HUMANMOTIONROBOT_HMRGEN)
 
 _SIMPROFILEINFO_STATE = _descriptor.EnumDescriptor(
   name='State',
@@ -712,8 +772,8 @@ _SIMPROFILEINFO_STATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3524,
-  serialized_end=3619,
+  serialized_start=4030,
+  serialized_end=4125,
 )
 _sym_db.RegisterEnumDescriptor(_SIMPROFILEINFO_STATE)
 
@@ -742,8 +802,8 @@ _SIMPROFILEINFO_FEATURE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3621,
-  serialized_end=3698,
+  serialized_start=4127,
+  serialized_end=4204,
 )
 _sym_db.RegisterEnumDescriptor(_SIMPROFILEINFO_FEATURE)
 
@@ -807,8 +867,8 @@ _CHAMELEON_PERIPHERAL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3935,
-  serialized_end=4083,
+  serialized_start=4441,
+  serialized_end=4589,
 )
 _sym_db.RegisterEnumDescriptor(_CHAMELEON_PERIPHERAL)
 
@@ -837,8 +897,8 @@ _CHAMELEON_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4085,
-  serialized_end=4129,
+  serialized_start=4591,
+  serialized_end=4635,
 )
 _sym_db.RegisterEnumDescriptor(_CHAMELEON_TYPE)
 
@@ -867,8 +927,8 @@ _EXTERNALCAMERA_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4210,
-  serialized_end=4263,
+  serialized_start=4716,
+  serialized_end=4769,
 )
 _sym_db.RegisterEnumDescriptor(_EXTERNALCAMERA_TYPE)
 
@@ -907,8 +967,8 @@ _WIFI_ENVIRONMENT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4660,
-  serialized_end=4763,
+  serialized_start=5166,
+  serialized_end=5269,
 )
 _sym_db.RegisterEnumDescriptor(_WIFI_ENVIRONMENT)
 
@@ -937,8 +997,8 @@ _WIFIANTENNA_CONNECTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4850,
-  serialized_end=4915,
+  serialized_start=5356,
+  serialized_end=5421,
 )
 _sym_db.RegisterEnumDescriptor(_WIFIANTENNA_CONNECTION)
 
@@ -1136,6 +1196,13 @@ _DUT_CHROMEOS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hmr', full_name='chromiumos.test.lab.api.Dut.ChromeOS.hmr', index=22,
+      number=24, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1149,7 +1216,7 @@ _DUT_CHROMEOS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=654,
-  serialized_end=1688,
+  serialized_end=1744,
 )
 
 _DUT_ANDROID = _descriptor.Descriptor(
@@ -1207,8 +1274,8 @@ _DUT_ANDROID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1691,
-  serialized_end=1904,
+  serialized_start=1747,
+  serialized_end=1960,
 )
 
 _DUT_DEVBOARD = _descriptor.Descriptor(
@@ -1287,8 +1354,8 @@ _DUT_DEVBOARD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1907,
-  serialized_end=2155,
+  serialized_start=1963,
+  serialized_end=2211,
 )
 
 _DUT = _descriptor.Descriptor(
@@ -1366,7 +1433,7 @@ _DUT = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=272,
-  serialized_end=2167,
+  serialized_end=2223,
 )
 
 
@@ -1404,8 +1471,8 @@ _DUTMODEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2169,
-  serialized_end=2221,
+  serialized_start=2225,
+  serialized_end=2277,
 )
 
 
@@ -1474,8 +1541,8 @@ _DUTTOPOLOGY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2224,
-  serialized_end=2367,
+  serialized_start=2280,
+  serialized_end=2423,
 )
 
 
@@ -1513,8 +1580,8 @@ _AUDIO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2369,
-  serialized_end=2410,
+  serialized_start=2425,
+  serialized_end=2466,
 )
 
 
@@ -1546,8 +1613,8 @@ _CABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2413,
-  serialized_end=2562,
+  serialized_start=2469,
+  serialized_end=2618,
 )
 
 
@@ -1578,8 +1645,8 @@ _CACHESERVER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2564,
-  serialized_end=2631,
+  serialized_start=2620,
+  serialized_end=2687,
 )
 
 
@@ -1611,8 +1678,8 @@ _CAMERABOX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2633,
-  serialized_end=2758,
+  serialized_start=2689,
+  serialized_end=2814,
 )
 
 
@@ -1651,8 +1718,84 @@ _CELLULAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2761,
-  serialized_end=2924,
+  serialized_start=2817,
+  serialized_end=2980,
+)
+
+
+_HUMANMOTIONROBOT = _descriptor.Descriptor(
+  name='HumanMotionRobot',
+  full_name='chromiumos.test.lab.api.HumanMotionRobot',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='hostname', full_name='chromiumos.test.lab.api.HumanMotionRobot.hostname', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hmr_model', full_name='chromiumos.test.lab.api.HumanMotionRobot.hmr_model', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='gateway_hostname', full_name='chromiumos.test.lab.api.HumanMotionRobot.gateway_hostname', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='rpm', full_name='chromiumos.test.lab.api.HumanMotionRobot.rpm', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hmr_walt', full_name='chromiumos.test.lab.api.HumanMotionRobot.hmr_walt', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hmr_tool_type', full_name='chromiumos.test.lab.api.HumanMotionRobot.hmr_tool_type', index=5,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hmr_gen', full_name='chromiumos.test.lab.api.HumanMotionRobot.hmr_gen', index=6,
+      number=7, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _HUMANMOTIONROBOT_HMRTOOLTYPE,
+    _HUMANMOTIONROBOT_HMRGEN,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2983,
+  serialized_end=3430,
 )
 
 
@@ -1711,8 +1854,8 @@ _MODEMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2927,
-  serialized_end=3069,
+  serialized_start=3433,
+  serialized_end=3575,
 )
 
 
@@ -1771,8 +1914,8 @@ _SIMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3072,
-  serialized_end=3241,
+  serialized_start=3578,
+  serialized_end=3747,
 )
 
 
@@ -1847,8 +1990,8 @@ _SIMPROFILEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3244,
-  serialized_end=3698,
+  serialized_start=3750,
+  serialized_end=4204,
 )
 
 
@@ -1909,8 +2052,8 @@ _CHAMELEON = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3701,
-  serialized_end=4129,
+  serialized_start=4207,
+  serialized_end=4635,
 )
 
 
@@ -1942,8 +2085,8 @@ _EXTERNALCAMERA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4132,
-  serialized_end=4263,
+  serialized_start=4638,
+  serialized_end=4769,
 )
 
 
@@ -2002,8 +2145,8 @@ _SERVO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4266,
-  serialized_end=4448,
+  serialized_start=4772,
+  serialized_end=4954,
 )
 
 
@@ -2034,8 +2177,8 @@ _TOUCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4450,
-  serialized_end=4471,
+  serialized_start=4956,
+  serialized_end=4977,
 )
 
 
@@ -2081,8 +2224,8 @@ _WIFI = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4474,
-  serialized_end=4763,
+  serialized_start=4980,
+  serialized_end=5269,
 )
 
 
@@ -2114,8 +2257,8 @@ _WIFIANTENNA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4766,
-  serialized_end=4915,
+  serialized_start=5272,
+  serialized_end=5421,
 )
 
 
@@ -2181,8 +2324,8 @@ _WIFIROUTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4918,
-  serialized_end=5203,
+  serialized_start=5424,
+  serialized_end=5709,
 )
 
 
@@ -2227,8 +2370,8 @@ _BLUETOOTHPEER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5206,
-  serialized_end=5351,
+  serialized_start=5712,
+  serialized_end=5857,
 )
 
 
@@ -2266,8 +2409,8 @@ _BESBOARD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5353,
-  serialized_end=5404,
+  serialized_start=5859,
+  serialized_end=5910,
 )
 
 
@@ -2312,8 +2455,8 @@ _WIFISECRET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5406,
-  serialized_end=5468,
+  serialized_start=5912,
+  serialized_end=5974,
 )
 
 _DUT_ID.containing_type = _DUT
@@ -2335,6 +2478,7 @@ _DUT_CHROMEOS.fields_by_name['phase'].enum_type = _PHASE
 _DUT_CHROMEOS.fields_by_name['sim_infos'].message_type = _SIMINFO
 _DUT_CHROMEOS.fields_by_name['modem_info'].message_type = _MODEMINFO
 _DUT_CHROMEOS.fields_by_name['pasit_host'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_pasit__host__pb2._PASITHOST
+_DUT_CHROMEOS.fields_by_name['hmr'].message_type = _HUMANMOTIONROBOT
 _DUT_CHROMEOS.containing_type = _DUT
 _DUT_ANDROID.fields_by_name['associated_hostname'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _DUT_ANDROID.fields_by_name['dut_model'].message_type = _DUTMODEL
@@ -2368,6 +2512,11 @@ _CAMERABOX.fields_by_name['facing'].enum_type = _CAMERABOX_FACING
 _CAMERABOX_FACING.containing_type = _CAMERABOX
 _CELLULAR.fields_by_name['operators'].enum_type = _CELLULAR_OPERATOR
 _CELLULAR_OPERATOR.containing_type = _CELLULAR
+_HUMANMOTIONROBOT.fields_by_name['rpm'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_rpm__pb2._RPM
+_HUMANMOTIONROBOT.fields_by_name['hmr_tool_type'].enum_type = _HUMANMOTIONROBOT_HMRTOOLTYPE
+_HUMANMOTIONROBOT.fields_by_name['hmr_gen'].enum_type = _HUMANMOTIONROBOT_HMRGEN
+_HUMANMOTIONROBOT_HMRTOOLTYPE.containing_type = _HUMANMOTIONROBOT
+_HUMANMOTIONROBOT_HMRGEN.containing_type = _HUMANMOTIONROBOT
 _MODEMINFO.fields_by_name['type'].enum_type = _MODEMTYPE
 _SIMINFO.fields_by_name['type'].enum_type = _SIMTYPE
 _SIMINFO.fields_by_name['profile_info'].message_type = _SIMPROFILEINFO
@@ -2405,6 +2554,7 @@ DESCRIPTOR.message_types_by_name['Cable'] = _CABLE
 DESCRIPTOR.message_types_by_name['CacheServer'] = _CACHESERVER
 DESCRIPTOR.message_types_by_name['Camerabox'] = _CAMERABOX
 DESCRIPTOR.message_types_by_name['Cellular'] = _CELLULAR
+DESCRIPTOR.message_types_by_name['HumanMotionRobot'] = _HUMANMOTIONROBOT
 DESCRIPTOR.message_types_by_name['ModemInfo'] = _MODEMINFO
 DESCRIPTOR.message_types_by_name['SIMInfo'] = _SIMINFO
 DESCRIPTOR.message_types_by_name['SIMProfileInfo'] = _SIMPROFILEINFO
@@ -2520,6 +2670,13 @@ Cellular = _reflection.GeneratedProtocolMessageType('Cellular', (_message.Messag
   # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.Cellular)
   })
 _sym_db.RegisterMessage(Cellular)
+
+HumanMotionRobot = _reflection.GeneratedProtocolMessageType('HumanMotionRobot', (_message.Message,), {
+  'DESCRIPTOR' : _HUMANMOTIONROBOT,
+  '__module__' : 'chromiumos.test.lab.api.dut_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.HumanMotionRobot)
+  })
+_sym_db.RegisterMessage(HumanMotionRobot)
 
 ModemInfo = _reflection.GeneratedProtocolMessageType('ModemInfo', (_message.Message,), {
   'DESCRIPTOR' : _MODEMINFO,

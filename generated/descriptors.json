@@ -20948,6 +20948,14 @@
                   "number": 23,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.PasitHost"
+                },
+                {
+                  "jsonName": "hmr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hmr",
+                  "number": 24,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.HumanMotionRobot"
                 }
               ],
               "name": "ChromeOS",
@@ -21281,6 +21289,99 @@
             }
           ],
           "name": "Cellular"
+        },
+        {
+          "enumType": [
+            {
+              "name": "HMRToolType",
+              "value": [
+                {
+                  "name": "HMR_TOOL_TYPE_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "HMR_TOOL_TYPE_STYLUS",
+                  "number": 1
+                },
+                {
+                  "name": "HMR_TOOL_TYPE_FAKE_FINGER",
+                  "number": 2
+                }
+              ]
+            },
+            {
+              "name": "HMRGen",
+              "value": [
+                {
+                  "name": "HMR_GEN_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "HMR_GEN_1",
+                  "number": 1
+                },
+                {
+                  "name": "HMR_GEN_2",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hmrModel",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_model",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gatewayHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "gateway_hostname",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rpm",
+              "label": "LABEL_OPTIONAL",
+              "name": "rpm",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RPM"
+            },
+            {
+              "jsonName": "hmrWalt",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_walt",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "hmrToolType",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_tool_type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.HumanMotionRobot.HMRToolType"
+            },
+            {
+              "jsonName": "hmrGen",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_gen",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.HumanMotionRobot.HMRGen"
+            }
+          ],
+          "name": "HumanMotionRobot"
         },
         {
           "field": [
