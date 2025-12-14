@@ -9,6 +9,8 @@ package chromiumos.test.api.bols;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/bols";
 option java_outer_classname = "BolsServiceOuterClass";
 
+import "google/protobuf/timestamp.proto";
+
 // Provides the ability to interact with a labstation/container and
 // its peripherals such as servo and dolos.
 service BolsService {
@@ -65,6 +67,10 @@ service BolsService {
   // RunUMount runs the "umount" command on the labstation.
   rpc RunUMount(RunUMountRequest) returns (RunUMountResponse) {}
 
+  // DownloadImageToUSB downloads an image and writes it to a USB drive.
+  rpc DownloadImageToUSB(DownloadImageToUSBRequest)
+      returns (DownloadImageToUSBResponse) {}
+
   /////////  Servod API /////////
 
   // StartServod runs a servod daemon.
@@ -72,6 +78,16 @@ service BolsService {
 
   // StopServod stops the servod daemon.
   rpc StopServod(StopServodRequest) returns (StopServodResponse);
+
+  // StartEmptyContainer starts a servod container without running a servod
+  // process. For BOLS services that run servod in a container, this is
+  // useful for maintenance or debugging, such as when updating servo
+  // firmware. If the BOLS service does not use a container, this RPC will do
+  // nothing.
+  // When work in the empty container is complete, users should call StopServod
+  // to clean up and remove the container.
+  rpc StartEmptyContainer(StartEmptyContainerRequest)
+      returns (StartEmptyContainerResponse);
 
   // GetServodStatus gets the current status of servod.
   rpc GetServodStatus(GetServodStatusRequest) returns (GetServodStatusResponse);
@@ -189,6 +205,8 @@ message FileStat {
   bool is_dir = 4;
   // Whether the file is an symbolic link.
   bool is_symlink = 5;
+  // The modification time of the file.
+  google.protobuf.Timestamp mod_time = 6;
 }
 
 message DirectoryInfo {
@@ -372,6 +390,19 @@ message RunUMountRequest {
 
 message RunUMountResponse {}
 
+message DownloadImageToUSBRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The URL of the image to download.
+  string image_url = 2;
+  // The path to the USB device to write the image to.
+  string usb_device_path = 3;
+}
+
+message DownloadImageToUSBResponse {
+  string response_msg = 1;
+}
+
 ////// Servod API Messages ////////
 
 // ServodValueArray is a helper message to allow for an array of ServodValue.
@@ -424,6 +455,30 @@ message StopServodRequest {
 }
 
 message StopServodResponse {}
+
+message StartEmptyContainerRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // The board name of the device managed by servod.
+  // Used to load target controls and configs for servod.
+  string board = 2;
+
+  // The model name of the device managed by servod.
+  // Used to load target controls and configs for servod.
+  string model = 3;
+
+  // Specify if servod need to start in recovery_mode.
+  // This is a special startup for servod, please do not confuse with
+  // the boot mode of the connected device.
+  bool recovery_mode = 4;
+
+  // Special configuration param used at servod start.
+  // The parameter specified by --CONFIG.
+  string config = 5;
+}
+
+message StartEmptyContainerResponse {}
 
 message GetServodStatusRequest {
   // The station identifier.

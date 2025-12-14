@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n<chromiumos/test/api/cros_tool_runner_container_service.proto\x12\x13\x63hromiumos.test.api\x1aGchromiumos/test/api/cros_tool_runner_container_service_extensions.proto\x1a\x46\x63hromiumos/test/api/cros_tool_runner_container_service_templates.proto\"2\n\x07Network\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05owned\x18\x03 \x01(\x08\"\xd4\x01\n\tContainer\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05owned\x18\x03 \x01(\x08\x12\x41\n\rport_bindings\x18\x04 \x03(\x0b\x32*.chromiumos.test.api.Container.PortBinding\x1a[\n\x0bPortBinding\x12\x16\n\x0e\x63ontainer_port\x18\x01 \x01(\x05\x12\x10\n\x08protocol\x18\x02 \x01(\t\x12\x0f\n\x07host_ip\x18\x03 \x01(\t\x12\x11\n\thost_port\x18\x04 \x01(\x05\"$\n\x14\x43reateNetworkRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"F\n\x15\x43reateNetworkResponse\x12-\n\x07network\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Network\"!\n\x11GetNetworkRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"C\n\x12GetNetworkResponse\x12-\n\x07network\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Network\"\x11\n\x0fShutdownRequest\"\x12\n\x10ShutdownResponse\"\x8e\x01\n\x14LoginRegistryRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x10\n\x08registry\x18\x03 \x01(\t\x12@\n\nextensions\x18\x04 \x01(\x0b\x32,.chromiumos.test.api.LoginRegistryExtensions\"C\n\x15LoginRegistryResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11\x65xtensions_output\x18\x02 \x03(\t\"\xee\x01\n\x15StartContainerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0f\x63ontainer_image\x18\x02 \x01(\t\x12N\n\x12\x61\x64\x64itional_options\x18\x03 \x01(\x0b\x32\x32.chromiumos.test.api.StartContainerRequest.Options\x12\x15\n\rstart_command\x18\x04 \x03(\t\x1aG\n\x07Options\x12\x0e\n\x06\x65xpose\x18\x01 \x03(\t\x12\x0e\n\x06volume\x18\x02 \x03(\t\x12\x0f\n\x07network\x18\x03 \x01(\t\x12\x0b\n\x03\x65nv\x18\x04 \x03(\t\"K\n\x16StartContainerResponse\x12\x31\n\tcontainer\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.Container\"\x9f\x01\n\x1eStartTemplatedContainerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0f\x63ontainer_image\x18\x02 \x01(\t\x12/\n\x08template\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.Template\x12\x0f\n\x07network\x18\x04 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x05 \x01(\t\"\xa1\x03\n\x14StackCommandsRequest\x12\x45\n\x08requests\x18\x01 \x03(\x0b\x32\x33.chromiumos.test.api.StackCommandsRequest.Stackable\x1a\xc1\x02\n\tStackable\x12\x45\n\x0fstart_container\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.StartContainerRequestH\x00\x12X\n\x19start_templated_container\x18\x02 \x01(\x0b\x32\x33.chromiumos.test.api.StartTemplatedContainerRequestH\x00\x12\x43\n\x0e\x63reate_network\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CreateNetworkRequestH\x00\x12\x43\n\x0elogin_registry\x18\x04 \x01(\x0b\x32).chromiumos.test.api.LoginRegistryRequestH\x00\x42\t\n\x07\x63ommand\"\xcc\x02\n\x15StackCommandsResponse\x12G\n\tresponses\x18\x01 \x03(\x0b\x32\x34.chromiumos.test.api.StackCommandsResponse.Stackable\x1a\xe9\x01\n\tStackable\x12\x46\n\x0fstart_container\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.StartContainerResponseH\x00\x12\x44\n\x0e\x63reate_network\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CreateNetworkResponseH\x00\x12\x44\n\x0elogin_registry\x18\x03 \x01(\x0b\x32*.chromiumos.test.api.LoginRegistryResponseH\x00\x42\x08\n\x06output\"#\n\x13GetContainerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"I\n\x14GetContainerResponse\x12\x31\n\tcontainer\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.Container2\xdd\x06\n\x1e\x43rosToolRunnerContainerService\x12\x66\n\rCreateNetwork\x12).chromiumos.test.api.CreateNetworkRequest\x1a*.chromiumos.test.api.CreateNetworkResponse\x12]\n\nGetNetwork\x12&.chromiumos.test.api.GetNetworkRequest\x1a\'.chromiumos.test.api.GetNetworkResponse\x12W\n\x08Shutdown\x12$.chromiumos.test.api.ShutdownRequest\x1a%.chromiumos.test.api.ShutdownResponse\x12\x66\n\rLoginRegistry\x12).chromiumos.test.api.LoginRegistryRequest\x1a*.chromiumos.test.api.LoginRegistryResponse\x12i\n\x0eStartContainer\x12*.chromiumos.test.api.StartContainerRequest\x1a+.chromiumos.test.api.StartContainerResponse\x12{\n\x17StartTemplatedContainer\x12\x33.chromiumos.test.api.StartTemplatedContainerRequest\x1a+.chromiumos.test.api.StartContainerResponse\x12\x66\n\rStackCommands\x12).chromiumos.test.api.StackCommandsRequest\x1a*.chromiumos.test.api.StackCommandsResponse\x12\x63\n\x0cGetContainer\x12(.chromiumos.test.api.GetContainerRequest\x1a).chromiumos.test.api.GetContainerResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n<chromiumos/test/api/cros_tool_runner_container_service.proto\x12\x13\x63hromiumos.test.api\x1aGchromiumos/test/api/cros_tool_runner_container_service_extensions.proto\x1a\x46\x63hromiumos/test/api/cros_tool_runner_container_service_templates.proto\"2\n\x07Network\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05owned\x18\x03 \x01(\x08\"\xe3\x01\n\tContainer\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05owned\x18\x03 \x01(\x08\x12\x41\n\rport_bindings\x18\x04 \x03(\x0b\x32*.chromiumos.test.api.Container.PortBinding\x12\r\n\x05image\x18\x05 \x01(\t\x1a[\n\x0bPortBinding\x12\x16\n\x0e\x63ontainer_port\x18\x01 \x01(\x05\x12\x10\n\x08protocol\x18\x02 \x01(\t\x12\x0f\n\x07host_ip\x18\x03 \x01(\t\x12\x11\n\thost_port\x18\x04 \x01(\x05\"$\n\x14\x43reateNetworkRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"F\n\x15\x43reateNetworkResponse\x12-\n\x07network\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Network\"!\n\x11GetNetworkRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"C\n\x12GetNetworkResponse\x12-\n\x07network\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Network\"\x11\n\x0fShutdownRequest\"\x12\n\x10ShutdownResponse\"\x8e\x01\n\x14LoginRegistryRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x10\n\x08registry\x18\x03 \x01(\t\x12@\n\nextensions\x18\x04 \x01(\x0b\x32,.chromiumos.test.api.LoginRegistryExtensions\"C\n\x15LoginRegistryResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11\x65xtensions_output\x18\x02 \x03(\t\"\xee\x01\n\x15StartContainerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0f\x63ontainer_image\x18\x02 \x01(\t\x12N\n\x12\x61\x64\x64itional_options\x18\x03 \x01(\x0b\x32\x32.chromiumos.test.api.StartContainerRequest.Options\x12\x15\n\rstart_command\x18\x04 \x03(\t\x1aG\n\x07Options\x12\x0e\n\x06\x65xpose\x18\x01 \x03(\t\x12\x0e\n\x06volume\x18\x02 \x03(\t\x12\x0f\n\x07network\x18\x03 \x01(\t\x12\x0b\n\x03\x65nv\x18\x04 \x03(\t\"K\n\x16StartContainerResponse\x12\x31\n\tcontainer\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.Container\"\x9f\x01\n\x1eStartTemplatedContainerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0f\x63ontainer_image\x18\x02 \x01(\t\x12/\n\x08template\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.Template\x12\x0f\n\x07network\x18\x04 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x05 \x01(\t\"\xa1\x03\n\x14StackCommandsRequest\x12\x45\n\x08requests\x18\x01 \x03(\x0b\x32\x33.chromiumos.test.api.StackCommandsRequest.Stackable\x1a\xc1\x02\n\tStackable\x12\x45\n\x0fstart_container\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.StartContainerRequestH\x00\x12X\n\x19start_templated_container\x18\x02 \x01(\x0b\x32\x33.chromiumos.test.api.StartTemplatedContainerRequestH\x00\x12\x43\n\x0e\x63reate_network\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CreateNetworkRequestH\x00\x12\x43\n\x0elogin_registry\x18\x04 \x01(\x0b\x32).chromiumos.test.api.LoginRegistryRequestH\x00\x42\t\n\x07\x63ommand\"\xcc\x02\n\x15StackCommandsResponse\x12G\n\tresponses\x18\x01 \x03(\x0b\x32\x34.chromiumos.test.api.StackCommandsResponse.Stackable\x1a\xe9\x01\n\tStackable\x12\x46\n\x0fstart_container\x18\x01 \x01(\x0b\x32+.chromiumos.test.api.StartContainerResponseH\x00\x12\x44\n\x0e\x63reate_network\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CreateNetworkResponseH\x00\x12\x44\n\x0elogin_registry\x18\x03 \x01(\x0b\x32*.chromiumos.test.api.LoginRegistryResponseH\x00\x42\x08\n\x06output\"#\n\x13GetContainerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"I\n\x14GetContainerResponse\x12\x31\n\tcontainer\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.Container2\xdd\x06\n\x1e\x43rosToolRunnerContainerService\x12\x66\n\rCreateNetwork\x12).chromiumos.test.api.CreateNetworkRequest\x1a*.chromiumos.test.api.CreateNetworkResponse\x12]\n\nGetNetwork\x12&.chromiumos.test.api.GetNetworkRequest\x1a\'.chromiumos.test.api.GetNetworkResponse\x12W\n\x08Shutdown\x12$.chromiumos.test.api.ShutdownRequest\x1a%.chromiumos.test.api.ShutdownResponse\x12\x66\n\rLoginRegistry\x12).chromiumos.test.api.LoginRegistryRequest\x1a*.chromiumos.test.api.LoginRegistryResponse\x12i\n\x0eStartContainer\x12*.chromiumos.test.api.StartContainerRequest\x1a+.chromiumos.test.api.StartContainerResponse\x12{\n\x17StartTemplatedContainer\x12\x33.chromiumos.test.api.StartTemplatedContainerRequest\x1a+.chromiumos.test.api.StartContainerResponse\x12\x66\n\rStackCommands\x12).chromiumos.test.api.StackCommandsRequest\x1a*.chromiumos.test.api.StackCommandsResponse\x12\x63\n\x0cGetContainer\x12(.chromiumos.test.api.GetContainerRequest\x1a).chromiumos.test.api.GetContainerResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_cros__tool__runner__container__service__extensions__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__tool__runner__container__service__templates__pb2.DESCRIPTOR,])
 
@@ -122,8 +122,8 @@ _CONTAINER_PORTBINDING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=404,
-  serialized_end=495,
+  serialized_start=419,
+  serialized_end=510,
 )
 
 _CONTAINER = _descriptor.Descriptor(
@@ -162,6 +162,13 @@ _CONTAINER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='image', full_name='chromiumos.test.api.Container.image', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -175,7 +182,7 @@ _CONTAINER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=283,
-  serialized_end=495,
+  serialized_end=510,
 )
 
 
@@ -206,8 +213,8 @@ _CREATENETWORKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=497,
-  serialized_end=533,
+  serialized_start=512,
+  serialized_end=548,
 )
 
 
@@ -238,8 +245,8 @@ _CREATENETWORKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=535,
-  serialized_end=605,
+  serialized_start=550,
+  serialized_end=620,
 )
 
 
@@ -270,8 +277,8 @@ _GETNETWORKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=607,
-  serialized_end=640,
+  serialized_start=622,
+  serialized_end=655,
 )
 
 
@@ -302,8 +309,8 @@ _GETNETWORKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=642,
-  serialized_end=709,
+  serialized_start=657,
+  serialized_end=724,
 )
 
 
@@ -327,8 +334,8 @@ _SHUTDOWNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=711,
-  serialized_end=728,
+  serialized_start=726,
+  serialized_end=743,
 )
 
 
@@ -352,8 +359,8 @@ _SHUTDOWNRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=730,
-  serialized_end=748,
+  serialized_start=745,
+  serialized_end=763,
 )
 
 
@@ -405,8 +412,8 @@ _LOGINREGISTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=751,
-  serialized_end=893,
+  serialized_start=766,
+  serialized_end=908,
 )
 
 
@@ -444,8 +451,8 @@ _LOGINREGISTRYRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=895,
-  serialized_end=962,
+  serialized_start=910,
+  serialized_end=977,
 )
 
 
@@ -497,8 +504,8 @@ _STARTCONTAINERREQUEST_OPTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1132,
-  serialized_end=1203,
+  serialized_start=1147,
+  serialized_end=1218,
 )
 
 _STARTCONTAINERREQUEST = _descriptor.Descriptor(
@@ -549,8 +556,8 @@ _STARTCONTAINERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=965,
-  serialized_end=1203,
+  serialized_start=980,
+  serialized_end=1218,
 )
 
 
@@ -581,8 +588,8 @@ _STARTCONTAINERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1205,
-  serialized_end=1280,
+  serialized_start=1220,
+  serialized_end=1295,
 )
 
 
@@ -641,8 +648,8 @@ _STARTTEMPLATEDCONTAINERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1283,
-  serialized_end=1442,
+  serialized_start=1298,
+  serialized_end=1457,
 )
 
 
@@ -699,8 +706,8 @@ _STACKCOMMANDSREQUEST_STACKABLE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1541,
-  serialized_end=1862,
+  serialized_start=1556,
+  serialized_end=1877,
 )
 
 _STACKCOMMANDSREQUEST = _descriptor.Descriptor(
@@ -730,8 +737,8 @@ _STACKCOMMANDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1445,
-  serialized_end=1862,
+  serialized_start=1460,
+  serialized_end=1877,
 )
 
 
@@ -781,8 +788,8 @@ _STACKCOMMANDSRESPONSE_STACKABLE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1964,
-  serialized_end=2197,
+  serialized_start=1979,
+  serialized_end=2212,
 )
 
 _STACKCOMMANDSRESPONSE = _descriptor.Descriptor(
@@ -812,8 +819,8 @@ _STACKCOMMANDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1865,
-  serialized_end=2197,
+  serialized_start=1880,
+  serialized_end=2212,
 )
 
 
@@ -844,8 +851,8 @@ _GETCONTAINERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2199,
-  serialized_end=2234,
+  serialized_start=2214,
+  serialized_end=2249,
 )
 
 
@@ -876,8 +883,8 @@ _GETCONTAINERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2236,
-  serialized_end=2309,
+  serialized_start=2251,
+  serialized_end=2324,
 )
 
 _CONTAINER_PORTBINDING.containing_type = _CONTAINER
@@ -1102,8 +1109,8 @@ _CROSTOOLRUNNERCONTAINERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2312,
-  serialized_end=3173,
+  serialized_start=2327,
+  serialized_end=3188,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateNetwork',

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HalConfigs>
+  <HalConfig>
+    <Identity>
+      <sku-id>1</sku-id>
+    </Identity>
+    <AudioConfiguration>
+      <audio-config-dir>config1</audio-config-dir>
+      <param1>value1</param1>
+    </AudioConfiguration>
+    <FingerprintConfiguration>
+      <board>board_a</board>
+      <sensor>sensor_x</sensor>
+    </FingerprintConfiguration>
+  </HalConfig>
+  <HalConfig>
+    <Identity>
+      <sku-id>2</sku-id>
+    </Identity>
+    <AudioConfiguration>
+      <audio-config-dir>config2</audio-config-dir>
+      <param1>value2</param1>
+    </AudioConfiguration>
+  </HalConfig>
+  <HalConfig>
+    <Identity>
+      <sku-id>3</sku-id>
+    </Identity>
+    <AudioConfiguration>
+      <audio-config-dir>config1</audio-config-dir>
+      <param1>value1</param1>
+    </AudioConfiguration>
+  </HalConfig>
+</HalConfigs>
