@@ -59,6 +59,10 @@ load(
     "@proto//chromiumos/config/api/wifi_config.proto",
     wf_pb = "chromiumos.config.api",
 )
+load(
+    "@proto//chromiumos/storage_path.proto",
+    storage_pb = "chromiumos",
+)
 
 # Needed to load from @proto. Add @unused to silence lint.
 load("//config/util/bindings/proto.star", "protos")
@@ -193,9 +197,13 @@ def _create_fw_payloads_by_names(
         pd_fw_name = None,
         ish_fw_name = None,
         ap_ro_version = None,
+        ap_ro_path = None,
         ap_rw_version = None,
+        ap_rw_path = None,
         ec_ro_version = None,
+        ec_ro_path = None,
         ec_rw_version = None,
+        ec_rw_path = None,
         ec_version = None,
         pd_version = None,
         ish_version = None,
@@ -208,31 +216,55 @@ def _create_fw_payloads_by_names(
     `ec_rw_version`.
     """
     sc_fw_config = fw_pb.FirmwareConfig()
-    if ap_fw_name:
+    if ap_ro_path:
+        sc_fw_config.main_ro_payload = fw_pb.FirmwarePayload(
+            firmware_image_path = storage_pb.StoragePath(path = ap_ro_path),
+            type = _FW_TYPE.MAIN,
+            version = ap_ro_version,
+        )
+    elif ap_fw_name:
         sc_fw_config.main_ro_payload = fw_pb.FirmwarePayload(
             firmware_image_name = ap_fw_name,
             type = _FW_TYPE.MAIN,
             version = ap_ro_version,
         )
-        if ap_rw_version:
-            sc_fw_config.main_rw_payload = fw_pb.FirmwarePayload(
-                firmware_image_name = ap_fw_name,
-                type = _FW_TYPE.MAIN,
-                version = ap_rw_version,
-            )
-    if ec_fw_name or ap_fw_name:
+    if ap_rw_path:
+        sc_fw_config.main_rw_payload = fw_pb.FirmwarePayload(
+            firmware_image_path = storage_pb.StoragePath(path = ap_rw_path),
+            type = _FW_TYPE.MAIN,
+            version = ap_rw_version,
+        )
+    elif ap_fw_name and ap_rw_version:
+        sc_fw_config.main_rw_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = ap_fw_name,
+            type = _FW_TYPE.MAIN,
+            version = ap_rw_version,
+        )
+    if ec_ro_path:
+        sc_fw_config.ec_ro_payload = fw_pb.FirmwarePayload(
+            firmware_image_path = storage_pb.StoragePath(path = ec_ro_path),
+            type = _FW_TYPE.EC,
+            version = ec_ro_version or ec_version,
+        )
+    elif ec_fw_name or ap_fw_name:
         ec_fw_name = ec_fw_name or "%s_EC" % ap_fw_name
         sc_fw_config.ec_ro_payload = fw_pb.FirmwarePayload(
             firmware_image_name = ec_fw_name,
             type = _FW_TYPE.EC,
             version = ec_ro_version or ec_version,
         )
-        if ec_rw_version:
-            sc_fw_config.ec_rw_payload = fw_pb.FirmwarePayload(
-                firmware_image_name = ec_fw_name,
-                type = _FW_TYPE.EC,
-                version = ec_rw_version,
-            )
+    if ec_rw_path:
+        sc_fw_config.ec_rw_payload = fw_pb.FirmwarePayload(
+            firmware_image_path = storage_pb.StoragePath(path = ec_rw_path),
+            type = _FW_TYPE.EC,
+            version = ec_rw_version,
+        )
+    elif (ec_fw_name or ap_fw_name) and ec_rw_version:
+        sc_fw_config.ec_rw_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = ec_fw_name,
+            type = _FW_TYPE.EC,
+            version = ec_rw_version,
+        )
     if pd_fw_name:
         sc_fw_config.pd_ro_payload = fw_pb.FirmwarePayload(
             firmware_image_name = pd_fw_name,
@@ -254,7 +286,7 @@ def _create_fw_payloads_by_names(
 
     sc_fw_config.has_ec_component_manifest = has_ec_component_manifest
 
-    return sc_fw_config if ap_fw_name else None
+    return sc_fw_config if ap_fw_name or ap_ro_path else None
 
 def _create_audio(
         card_name,
