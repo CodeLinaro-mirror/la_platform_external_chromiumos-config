@@ -29675,6 +29675,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "kernel_prebuilts",
               "number": 6,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.KernelPrebuilts"
             },
@@ -29685,6 +29688,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ExecutionMetadata"
+            },
+            {
+              "jsonName": "kernelMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_metadata",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelProvisionRequest"
             }
           ],
           "name": "InstallRequest"
@@ -29707,6 +29718,33 @@
             }
           ],
           "name": "PartnerMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "kernelPrebuilts",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_prebuilts",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelPrebuilts"
+            },
+            {
+              "jsonName": "enableKernelSerialLogs",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_kernel_serial_logs",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "consoleCommandLineValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "console_command_line_value",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "KernelProvisionRequest"
         },
         {
           "field": [
