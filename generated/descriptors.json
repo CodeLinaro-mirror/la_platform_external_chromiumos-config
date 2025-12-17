@@ -35838,6 +35838,13 @@
               },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.EqcInfo"
+            },
+            {
+              "jsonName": "isTrcRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_trc_run",
+              "number": 14,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "TestInvocation",
