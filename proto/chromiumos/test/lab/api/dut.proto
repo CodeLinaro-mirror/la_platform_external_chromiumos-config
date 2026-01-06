@@ -501,7 +501,7 @@ enum PeripheralState {
   NOT_APPLICABLE = 3;
 }
 
-// Next Tag: 34
+// Next Tag: 45
 enum Phase {
   PHASE_UNSPECIFIED = 0;
   DVT = 1;
@@ -537,6 +537,17 @@ enum Phase {
   PVT_TUNE_BITS = 31;
   PVT_TELESU = 32;
   SR = 33;
+  DVT_1 = 34;
+  DVT_3 = 35;
+  DVT_4 = 36;
+  EVT_1  = 37;
+  EVT_2 = 38;
+  EVT_3 = 39;
+  MP = 40;
+  PVT_1 = 41;
+  PVT_3 = 42;
+  PVT_4 = 43;
+  PRE_DVT = 44;
 }
 
 // Next Tag: 4
