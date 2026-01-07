@@ -44268,6 +44268,27 @@
           ]
         },
         {
+          "name": "Dp128Bitrate",
+          "value": [
+            {
+              "name": "DP_128_BITRATE_NONE",
+              "number": 0
+            },
+            {
+              "name": "DP_128_BITRATE_10_0",
+              "number": 1
+            },
+            {
+              "name": "DP_128_BITRATE_13_5",
+              "number": 2
+            },
+            {
+              "name": "DP_128_BITRATE_20_0",
+              "number": 3
+            }
+          ]
+        },
+        {
           "name": "ComplianceTestGroup",
           "value": [
             {
@@ -44912,6 +44933,14 @@
               "oneofIndex": 15,
               "proto3Optional": true,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dp128Bitrates",
+              "label": "LABEL_REPEATED",
+              "name": "dp_128_bitrates",
+              "number": 22,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Dp128Bitrate"
             }
           ],
           "name": "SetLinkVideoTesterRequest",
@@ -45197,6 +45226,14 @@
               "oneofIndex": 17,
               "proto3Optional": true,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dp128Bitrates",
+              "label": "LABEL_REPEATED",
+              "name": "dp_128_bitrates",
+              "number": 21,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Dp128Bitrate"
             }
           ],
           "name": "GetLinkVideoTesterResponse",
