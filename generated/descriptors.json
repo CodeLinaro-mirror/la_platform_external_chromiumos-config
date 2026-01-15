@@ -32947,6 +32947,23 @@
               "number": 2
             }
           ]
+        },
+        {
+          "name": "DutState",
+          "value": [
+            {
+              "name": "DUT_STATE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "DUT_STATE_NORMAL",
+              "number": 1
+            },
+            {
+              "name": "DUT_STATE_NEEDS_REPAIR",
+              "number": 2
+            }
+          ]
         }
       ],
       "messageType": [
@@ -33121,6 +33138,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry"
+            },
+            {
+              "jsonName": "onExpirationDutState",
+              "label": "LABEL_OPTIONAL",
+              "name": "on_expiration_dut_state",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DutState"
             }
           ],
           "name": "ExtendLeaseRequest",
@@ -33538,6 +33563,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry"
+            },
+            {
+              "jsonName": "onExpirationDutState",
+              "label": "LABEL_OPTIONAL",
+              "name": "on_expiration_dut_state",
+              "number": 8,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DutState"
             }
           ],
           "name": "LeaseDeviceRequest",
@@ -33643,6 +33676,14 @@
               "name": "lease_id",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dutAfterLeaseState",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_after_lease_state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DutState"
             }
           ],
           "name": "ReleaseDeviceRequest"

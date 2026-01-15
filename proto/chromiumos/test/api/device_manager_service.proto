@@ -156,6 +156,9 @@ message LeaseDeviceRequest {
   // user_payload string-based key-value pairs.
   // This map provides relevant information may interested to users.
   map<string, string> user_payload = 7;
+
+  // The state of the DUT should be set to if the lease expires.
+  DutState on_expiration_dut_state = 8;
 }
 
 message LeaseDeviceResponse {
@@ -201,6 +204,9 @@ enum BulkLeaseDevicesResponseErrorType {
 
 message ReleaseDeviceRequest {
   string lease_id = 1;
+
+  // The state of the DUT should be set to after the lease is released.
+  DutState dut_after_lease_state = 2;
 }
 
 message ReleaseDeviceResponse {
