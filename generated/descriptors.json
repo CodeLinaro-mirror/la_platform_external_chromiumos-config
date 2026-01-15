@@ -12076,6 +12076,113 @@
         {
           "field": [
             {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mediaProfileSuffix",
+              "label": "LABEL_OPTIONAL",
+              "name": "media_profile_suffix",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CameraConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "storageType",
+              "label": "LABEL_OPTIONAL",
+              "name": "storage_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StorageConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "backlightSupport",
+              "label": "LABEL_OPTIONAL",
+              "name": "backlight_support",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "kbDefaultBrightness",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_default_brightness",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "kbBacklightSteps",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_backlight_steps",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "KeyboardConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_backlight_support"
+            },
+            {
+              "name": "_kb_default_brightness"
+            },
+            {
+              "name": "_kb_backlight_steps"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "stylusType",
+              "label": "LABEL_OPTIONAL",
+              "name": "stylus_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StylusConfigurationType"
+        },
+        {
+          "field": [
+            {
               "jsonName": "audioList",
               "label": "LABEL_REPEATED",
               "name": "audio_list",
@@ -12098,6 +12205,38 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.CellularConfigurationType"
+            },
+            {
+              "jsonName": "cameraList",
+              "label": "LABEL_REPEATED",
+              "name": "camera_list",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.CameraConfigurationType"
+            },
+            {
+              "jsonName": "storageList",
+              "label": "LABEL_REPEATED",
+              "name": "storage_list",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.StorageConfigurationType"
+            },
+            {
+              "jsonName": "keyboardList",
+              "label": "LABEL_REPEATED",
+              "name": "keyboard_list",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.KeyboardConfigurationType"
+            },
+            {
+              "jsonName": "stylusList",
+              "label": "LABEL_REPEATED",
+              "name": "stylus_list",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.StylusConfigurationType"
             }
           ],
           "name": "HalConfiguration"
