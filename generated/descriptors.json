@@ -20006,6 +20006,15 @@
                   "number": 5,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.RPM"
+                },
+                {
+                  "jsonName": "switchFixtureDetails",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "switch_fixture_details",
+                  "number": 6,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.PasitHost.Device.SwitchFixtureDetails"
                 }
               ],
               "name": "Device",
@@ -20035,6 +20044,30 @@
                     }
                   ],
                   "name": "PowerSupply"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "initialStateEnabled",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "initial_state_enabled",
+                      "number": 1,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "initialPort",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "initial_port",
+                      "number": 2,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "SwitchFixtureDetails"
+                }
+              ],
+              "oneofDecl": [
+                {
+                  "name": "device_details"
                 }
               ]
             }
