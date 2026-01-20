@@ -46433,6 +46433,13 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "actualUser",
+              "label": "LABEL_OPTIONAL",
+              "name": "actual_user",
+              "number": 18,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "experiments",
               "label": "LABEL_REPEATED",
               "name": "experiments",
