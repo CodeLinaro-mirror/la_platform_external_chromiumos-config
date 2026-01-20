@@ -19960,6 +19960,10 @@
                     {
                       "name": "USB_TESTER",
                       "number": 12
+                    },
+                    {
+                      "name": "VIDEO_TESTER",
+                      "number": 13
                     }
                   ]
                 }

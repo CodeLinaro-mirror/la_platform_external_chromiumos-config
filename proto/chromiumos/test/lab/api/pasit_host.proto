@@ -75,6 +75,7 @@ message PasitHost {
       SPEAKER = 10;
       IP_POWER = 11;
       USB_TESTER = 12;
+      VIDEO_TESTER = 13;
     }
 
     // Information on the power capabilities of the device.
