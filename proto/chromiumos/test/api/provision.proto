@@ -13,6 +13,7 @@ import "chromiumos/storage_path.proto";
 import "chromiumos/test/lab/api/dut.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 import "google/protobuf/any.proto";
+import "chromiumos/test/api/test_execution_metadata.proto";
 
 // Generic provisioning interface for CFT. Intended to be interchangeable across
 // services
@@ -46,6 +47,9 @@ message ProvisionStartupRequest {
   chromiumos.test.lab.api.IpEndpoint servo_nexus_addr = 4;
   // Address where lsNexus cft service can be reached.
   chromiumos.test.lab.api.IpEndpoint ls_nexus_addr = 5;
+  // K:Vs to be passed to the harness. Mostly will be used for args; but
+  // technically can go for others.
+  ExecutionMetadata execution_metadata = 6;
 }
 
 // ProvisionStartupResponse provides a status message to signal
@@ -61,6 +65,7 @@ message ProvisionStartupResponse {
     STATUS_STARTUP_FAILED = 3;
   }
   Status status = 1;
+  string version_info = 2;
 }
 
 message InstallResponse {
@@ -145,6 +150,9 @@ message InstallRequest {
   PartnerMetadata partner_metadata = 5;
   // Provides kernel prebuilts to replace the OS image's kernel.
   KernelPrebuilts kernel_prebuilts = 6;
+  // K:Vs to be passed to the harness. Mostly will be used for args; but
+  // technically can go for others.
+  ExecutionMetadata execution_metadata = 7;
 }
 
 // PartnerMetadata determines any configuration around Partner settings.

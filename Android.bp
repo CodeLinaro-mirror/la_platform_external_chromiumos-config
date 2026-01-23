@@ -37,12 +37,26 @@ PROTO_TOOLS = [
     "soong_zip",
 ]
 
+// 1. Define your sources in a filegroup
+filegroup {
+    name: "chromiumos-config-grpc-srcs",
+    srcs: [
+        "proto/chromiumos/test/api/bols/bols_service.proto",
+        "proto/chromiumos/test/api/lsnexus/lsnexus_service.proto",
+    ],
+}
+
+// 2. Updated Command:
+//    - Keeps "-I external/protobuf/src" to resolve imports.
+//    - Uses "$(in)" so that it compiles EVERYTHING in srcs (including timestamp.proto).
+//      This ensures com.google.protobuf.Timestamp.java is generated and added to your jar.
 SERVO_PROTO_CMD = "mkdir -p $(genDir)/gen && " +
     "$(location aprotoc) --java_opt=annotate_code=false " +
     "--plugin=protoc-gen-grpc-java=$(location protoc-gen-grpc-java-plugin) " +
     "--grpc-java_out=lite:$(genDir)/gen " +
     "--java_out=lite:$(genDir)/gen " +
     "-I external/chromiumos-config/proto " +
+    "-I external/protobuf/src " +
     "$(in) && " +
     "$(location soong_zip) -o $(out) -C $(genDir)/gen -D $(genDir)/gen"
 
@@ -55,8 +69,9 @@ genrule {
     ],
     cmd: SERVO_PROTO_CMD,
     srcs: [
-        "proto/chromiumos/test/api/bols/bols_service.proto",
-        "proto/chromiumos/test/api/lsnexus/lsnexus_service.proto",
+        // 3. Include your files AND the standard protobuf definitions
+        ":chromiumos-config-grpc-srcs",
+        ":libprotobuf-internal-protos",
     ],
     out: [
         "chromiumos_config_protos.srcjar",

@@ -436,6 +436,13 @@ message WifiRouter {
 message BluetoothPeer {
   string hostname = 1;
   PeripheralState state = 2;
+  repeated BesBoard bes_boards = 3;
+}
+
+// BES Board attached to the Bluetooth Peer.
+message BesBoard {
+  string serial_port = 1;
+  string bt_address = 2;
 }
 
 // Next Tag: 3

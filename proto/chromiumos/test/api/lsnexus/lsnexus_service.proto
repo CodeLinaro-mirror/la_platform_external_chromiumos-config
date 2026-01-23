@@ -246,6 +246,9 @@ message RunFutilityRequest {
   // Example:  "futility gbb --servo_port=9999 --set --flash --flags=0x18".
   // Params ["gbb", "--set",  "--servo_port=9999", "--flash", "--flags=0x18"]
   repeated string params = 1;
+  // If true, the service will not automatically append the --servo_port
+  // argument.
+  bool skip_servo_port = 2;
 }
 
 message RunFutilityResponse {
@@ -262,6 +265,8 @@ message RunFlashECRequest {
   //  Params: ["--chip=chip1", "--image:/tmp/ec.bin", "--port=9999", "--verify",
   //  "--verbose"]
   repeated string params = 1;
+  // If true, the service will not automatically append the --port argument.
+  bool skip_servo_port = 2;
 }
 
 message RunFlashECResponse {

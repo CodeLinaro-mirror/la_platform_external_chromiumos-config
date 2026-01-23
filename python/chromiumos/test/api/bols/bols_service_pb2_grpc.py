@@ -87,6 +87,11 @@ class BolsServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountResponse.FromString,
                 )
+        self.DownloadImageToUSB = channel.unary_unary(
+                '/chromiumos.test.api.bols.BolsService/DownloadImageToUSB',
+                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBResponse.FromString,
+                )
         self.StartServod = channel.unary_unary(
                 '/chromiumos.test.api.bols.BolsService/StartServod',
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartServodRequest.SerializeToString,
@@ -96,6 +101,11 @@ class BolsServiceStub(object):
                 '/chromiumos.test.api.bols.BolsService/StopServod',
                 request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StopServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StopServodResponse.FromString,
+                )
+        self.StartEmptyContainer = channel.unary_unary(
+                '/chromiumos.test.api.bols.BolsService/StartEmptyContainer',
+                request_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartEmptyContainerRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartEmptyContainerResponse.FromString,
                 )
         self.GetServodStatus = channel.unary_unary(
                 '/chromiumos.test.api.bols.BolsService/GetServodStatus',
@@ -295,6 +305,13 @@ class BolsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def DownloadImageToUSB(self, request, context):
+        """DownloadImageToUSB downloads an image and writes it to a USB drive.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def StartServod(self, request, context):
         """///////  Servod API /////////
 
@@ -306,6 +323,19 @@ class BolsServiceServicer(object):
 
     def StopServod(self, request, context):
         """StopServod stops the servod daemon.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StartEmptyContainer(self, request, context):
+        """StartEmptyContainer starts a servod container without running a servod
+        process. For BOLS services that run servod in a container, this is
+        useful for maintenance or debugging, such as when updating servo
+        firmware. If the BOLS service does not use a container, this RPC will do
+        nothing.
+        When work in the empty container is complete, users should call StopServod
+        to clean up and remove the container.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -521,6 +551,11 @@ def add_BolsServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.RunUMountResponse.SerializeToString,
             ),
+            'DownloadImageToUSB': grpc.unary_unary_rpc_method_handler(
+                    servicer.DownloadImageToUSB,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBResponse.SerializeToString,
+            ),
             'StartServod': grpc.unary_unary_rpc_method_handler(
                     servicer.StartServod,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartServodRequest.FromString,
@@ -530,6 +565,11 @@ def add_BolsServiceServicer_to_server(servicer, server):
                     servicer.StopServod,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StopServodRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StopServodResponse.SerializeToString,
+            ),
+            'StartEmptyContainer': grpc.unary_unary_rpc_method_handler(
+                    servicer.StartEmptyContainer,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartEmptyContainerRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartEmptyContainerResponse.SerializeToString,
             ),
             'GetServodStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetServodStatus,
@@ -868,6 +908,23 @@ class BolsService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def DownloadImageToUSB(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/DownloadImageToUSB',
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.DownloadImageToUSBResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def StartServod(request,
             target,
             options=(),
@@ -898,6 +955,23 @@ class BolsService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/StopServod',
             chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StopServodRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StopServodResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StartEmptyContainer(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.bols.BolsService/StartEmptyContainer',
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartEmptyContainerRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_bols_dot_bols__service__pb2.StartEmptyContainerResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
