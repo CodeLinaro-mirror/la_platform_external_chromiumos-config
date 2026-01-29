@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n5chromiumos/config/api/android_component_configs.proto\x12\x15\x63hromiumos.config.api\"7\n\x16\x41udioConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tsoundcard\x18\x02 \x01(\t\"U\n\x19\x43\x65llularConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nmodem_type\x18\x02 \x01(\t\x12\x18\n\x10\x66irmware_variant\x18\x03 \x01(\t\"\x9b\x01\n\x1c\x46ingerprintConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12\x1f\n\x17\x66ingerprint_sensor_type\x18\x03 \x01(\t\x12\x17\n\x0fsensor_location\x18\x04 \x01(\t\x12\x17\n\nro_version\x18\x05 \x01(\tH\x00\x88\x01\x01\x42\r\n\x0b_ro_version\"C\n\x17\x43\x61meraConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1c\n\x14media_profile_suffix\x18\x02 \x01(\t\"<\n\x18StorageConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cstorage_type\x18\x02 \x01(\t\"\xd3\x01\n\x19KeyboardConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11\x62\x61\x63klight_support\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\"\n\x15kb_default_brightness\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1f\n\x12kb_backlight_steps\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x14\n\x12_backlight_supportB\x18\n\x16_kb_default_brightnessB\x15\n\x13_kb_backlight_steps\":\n\x17StylusConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0bstylus_type\x18\x02 \x01(\t\"\x87\x04\n\x10HalConfiguration\x12\x41\n\naudio_list\x18\x01 \x03(\x0b\x32-.chromiumos.config.api.AudioConfigurationType\x12M\n\x10\x66ingerprint_list\x18\x02 \x03(\x0b\x32\x33.chromiumos.config.api.FingerprintConfigurationType\x12G\n\rcellular_list\x18\x03 \x03(\x0b\x32\x30.chromiumos.config.api.CellularConfigurationType\x12\x43\n\x0b\x63\x61mera_list\x18\x04 \x03(\x0b\x32..chromiumos.config.api.CameraConfigurationType\x12\x45\n\x0cstorage_list\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.StorageConfigurationType\x12G\n\rkeyboard_list\x18\x06 \x03(\x0b\x32\x30.chromiumos.config.api.KeyboardConfigurationType\x12\x43\n\x0bstylus_list\x18\x07 \x03(\x0b\x32..chromiumos.config.api.StylusConfigurationTypeB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n5chromiumos/config/api/android_component_configs.proto\x12\x15\x63hromiumos.config.api\"J\n\x16\x41udioConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x16\n\tsoundcard\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_soundcard\"\x83\x01\n\x19\x43\x65llularConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\nmodem_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1d\n\x10\x66irmware_variant\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\r\n\x0b_modem_typeB\x13\n\x11_firmware_variant\"\xd5\x01\n\x1c\x46ingerprintConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12$\n\x17\x66ingerprint_sensor_type\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x1c\n\x0fsensor_location\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x17\n\nro_version\x18\x05 \x01(\tH\x02\x88\x01\x01\x42\x1a\n\x18_fingerprint_sensor_typeB\x12\n\x10_sensor_locationB\r\n\x0b_ro_version\"\xf1\x01\n\x17\x43\x61meraConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12!\n\x14media_profile_suffix\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1a\n\rfeature_front\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x19\n\x0c\x66\x65\x61ture_back\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x1e\n\x11\x66\x65\x61ture_autofocus\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x17\n\x15_media_profile_suffixB\x10\n\x0e_feature_frontB\x0f\n\r_feature_backB\x14\n\x12_feature_autofocus\"R\n\x18StorageConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x19\n\x0cstorage_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0f\n\r_storage_type\"\xd3\x01\n\x19KeyboardConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11\x62\x61\x63klight_support\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\"\n\x15kb_default_brightness\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1f\n\x12kb_backlight_steps\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x14\n\x12_backlight_supportB\x18\n\x16_kb_default_brightnessB\x15\n\x13_kb_backlight_steps\"O\n\x17StylusConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0bstylus_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0e\n\x0c_stylus_type\"\xb3\x01\n\x19\x46irmwareConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\"\n\x15\x66irmware_manifest_key\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1c\n\x0f\x66irmware_config\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04ufsc\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x18\n\x16_firmware_manifest_keyB\x12\n\x10_firmware_configB\x07\n\x05_ufsc\"T\n\x1cTouchscreenConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0bscreen_size\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0e\n\x0c_screen_size\"\'\n\x19TouchpadConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\"\\\n\x16VideoConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1f\n\x12video_codec_suffix\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x15\n\x13_video_codec_suffix\"\x92\x01\n HardwareFeatureConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0b\x66orm_factor\x18\x02 \x01(\tH\x00\x88\x01\x01\x12 \n\x13touchscreen_support\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x0e\n\x0c_form_factorB\x16\n\x14_touchscreen_support\"\xff\x03\n\x17SensorConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\'\n\x1a\x66\x65\x61ture_base_accelerometer\x18\x02 \x01(\tH\x00\x88\x01\x01\x12&\n\x19\x66\x65\x61ture_lid_accelerometer\x18\x03 \x01(\tH\x01\x88\x01\x01\x12#\n\x16\x66\x65\x61ture_base_gyroscope\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\"\n\x15\x66\x65\x61ture_lid_gyroscope\x18\x05 \x01(\tH\x03\x88\x01\x01\x12\'\n\x1a\x66\x65\x61ture_camera_lightsensor\x18\x06 \x01(\tH\x04\x88\x01\x01\x12$\n\x17\x66\x65\x61ture_lid_lightsensor\x18\x07 \x01(\tH\x05\x88\x01\x01\x12%\n\x18\x66\x65\x61ture_base_lightsensor\x18\x08 \x01(\tH\x06\x88\x01\x01\x42\x1d\n\x1b_feature_base_accelerometerB\x1c\n\x1a_feature_lid_accelerometerB\x19\n\x17_feature_base_gyroscopeB\x18\n\x16_feature_lid_gyroscopeB\x1d\n\x1b_feature_camera_lightsensorB\x1a\n\x18_feature_lid_lightsensorB\x1b\n\x19_feature_base_lightsensor\"\xc1\x07\n\x10HalConfiguration\x12\x41\n\naudio_list\x18\x01 \x03(\x0b\x32-.chromiumos.config.api.AudioConfigurationType\x12M\n\x10\x66ingerprint_list\x18\x02 \x03(\x0b\x32\x33.chromiumos.config.api.FingerprintConfigurationType\x12G\n\rcellular_list\x18\x03 \x03(\x0b\x32\x30.chromiumos.config.api.CellularConfigurationType\x12\x43\n\x0b\x63\x61mera_list\x18\x04 \x03(\x0b\x32..chromiumos.config.api.CameraConfigurationType\x12\x45\n\x0cstorage_list\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.StorageConfigurationType\x12G\n\rkeyboard_list\x18\x06 \x03(\x0b\x32\x30.chromiumos.config.api.KeyboardConfigurationType\x12\x43\n\x0bstylus_list\x18\x07 \x03(\x0b\x32..chromiumos.config.api.StylusConfigurationType\x12G\n\rfirmware_list\x18\x08 \x03(\x0b\x32\x30.chromiumos.config.api.FirmwareConfigurationType\x12M\n\x10touchscreen_list\x18\t \x03(\x0b\x32\x33.chromiumos.config.api.TouchscreenConfigurationType\x12G\n\rtouchpad_list\x18\n \x03(\x0b\x32\x30.chromiumos.config.api.TouchpadConfigurationType\x12\x41\n\nvideo_list\x18\x0b \x03(\x0b\x32-.chromiumos.config.api.VideoConfigurationType\x12O\n\x0ehwfeature_list\x18\x0c \x03(\x0b\x32\x37.chromiumos.config.api.HardwareFeatureConfigurationType\x12\x43\n\x0bsensor_list\x18\r \x03(\x0b\x32..chromiumos.config.api.SensorConfigurationTypeB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -58,9 +58,14 @@ _AUDIOCONFIGURATIONTYPE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_soundcard', full_name='chromiumos.config.api.AudioConfigurationType._soundcard',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=80,
-  serialized_end=135,
+  serialized_end=154,
 )
 
 
@@ -104,9 +109,19 @@ _CELLULARCONFIGURATIONTYPE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_modem_type', full_name='chromiumos.config.api.CellularConfigurationType._modem_type',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_firmware_variant', full_name='chromiumos.config.api.CellularConfigurationType._firmware_variant',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=137,
-  serialized_end=222,
+  serialized_start=157,
+  serialized_end=288,
 )
 
 
@@ -165,13 +180,23 @@ _FINGERPRINTCONFIGURATIONTYPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='_ro_version', full_name='chromiumos.config.api.FingerprintConfigurationType._ro_version',
+      name='_fingerprint_sensor_type', full_name='chromiumos.config.api.FingerprintConfigurationType._fingerprint_sensor_type',
       index=0, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_sensor_location', full_name='chromiumos.config.api.FingerprintConfigurationType._sensor_location',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_ro_version', full_name='chromiumos.config.api.FingerprintConfigurationType._ro_version',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=225,
-  serialized_end=380,
+  serialized_start=291,
+  serialized_end=504,
 )
 
 
@@ -197,6 +222,27 @@ _CAMERACONFIGURATIONTYPE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_front', full_name='chromiumos.config.api.CameraConfigurationType.feature_front', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_back', full_name='chromiumos.config.api.CameraConfigurationType.feature_back', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_autofocus', full_name='chromiumos.config.api.CameraConfigurationType.feature_autofocus', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -208,9 +254,29 @@ _CAMERACONFIGURATIONTYPE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_media_profile_suffix', full_name='chromiumos.config.api.CameraConfigurationType._media_profile_suffix',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_front', full_name='chromiumos.config.api.CameraConfigurationType._feature_front',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_back', full_name='chromiumos.config.api.CameraConfigurationType._feature_back',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_autofocus', full_name='chromiumos.config.api.CameraConfigurationType._feature_autofocus',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=382,
-  serialized_end=449,
+  serialized_start=507,
+  serialized_end=748,
 )
 
 
@@ -247,9 +313,14 @@ _STORAGECONFIGURATIONTYPE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_storage_type', full_name='chromiumos.config.api.StorageConfigurationType._storage_type',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=451,
-  serialized_end=511,
+  serialized_start=750,
+  serialized_end=832,
 )
 
 
@@ -316,8 +387,8 @@ _KEYBOARDCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=514,
-  serialized_end=725,
+  serialized_start=835,
+  serialized_end=1046,
 )
 
 
@@ -354,9 +425,374 @@ _STYLUSCONFIGURATIONTYPE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_stylus_type', full_name='chromiumos.config.api.StylusConfigurationType._stylus_type',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=727,
-  serialized_end=785,
+  serialized_start=1048,
+  serialized_end=1127,
+)
+
+
+_FIRMWARECONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='FirmwareConfigurationType',
+  full_name='chromiumos.config.api.FirmwareConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.FirmwareConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_manifest_key', full_name='chromiumos.config.api.FirmwareConfigurationType.firmware_manifest_key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_config', full_name='chromiumos.config.api.FirmwareConfigurationType.firmware_config', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ufsc', full_name='chromiumos.config.api.FirmwareConfigurationType.ufsc', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_firmware_manifest_key', full_name='chromiumos.config.api.FirmwareConfigurationType._firmware_manifest_key',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_firmware_config', full_name='chromiumos.config.api.FirmwareConfigurationType._firmware_config',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_ufsc', full_name='chromiumos.config.api.FirmwareConfigurationType._ufsc',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1130,
+  serialized_end=1309,
+)
+
+
+_TOUCHSCREENCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='TouchscreenConfigurationType',
+  full_name='chromiumos.config.api.TouchscreenConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.TouchscreenConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='screen_size', full_name='chromiumos.config.api.TouchscreenConfigurationType.screen_size', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_screen_size', full_name='chromiumos.config.api.TouchscreenConfigurationType._screen_size',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1311,
+  serialized_end=1395,
+)
+
+
+_TOUCHPADCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='TouchpadConfigurationType',
+  full_name='chromiumos.config.api.TouchpadConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.TouchpadConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1397,
+  serialized_end=1436,
+)
+
+
+_VIDEOCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='VideoConfigurationType',
+  full_name='chromiumos.config.api.VideoConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.VideoConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='video_codec_suffix', full_name='chromiumos.config.api.VideoConfigurationType.video_codec_suffix', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_video_codec_suffix', full_name='chromiumos.config.api.VideoConfigurationType._video_codec_suffix',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1438,
+  serialized_end=1530,
+)
+
+
+_HARDWAREFEATURECONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='HardwareFeatureConfigurationType',
+  full_name='chromiumos.config.api.HardwareFeatureConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.HardwareFeatureConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='form_factor', full_name='chromiumos.config.api.HardwareFeatureConfigurationType.form_factor', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='touchscreen_support', full_name='chromiumos.config.api.HardwareFeatureConfigurationType.touchscreen_support', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_form_factor', full_name='chromiumos.config.api.HardwareFeatureConfigurationType._form_factor',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_touchscreen_support', full_name='chromiumos.config.api.HardwareFeatureConfigurationType._touchscreen_support',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1533,
+  serialized_end=1679,
+)
+
+
+_SENSORCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='SensorConfigurationType',
+  full_name='chromiumos.config.api.SensorConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.SensorConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_base_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType.feature_base_accelerometer', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_lid_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType.feature_lid_accelerometer', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_base_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType.feature_base_gyroscope', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_lid_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType.feature_lid_gyroscope', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_camera_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType.feature_camera_lightsensor', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_lid_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType.feature_lid_lightsensor', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_base_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType.feature_base_lightsensor', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_feature_base_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType._feature_base_accelerometer',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_lid_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType._feature_lid_accelerometer',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_base_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType._feature_base_gyroscope',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_lid_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType._feature_lid_gyroscope',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_camera_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType._feature_camera_lightsensor',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_lid_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType._feature_lid_lightsensor',
+      index=5, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_base_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType._feature_base_lightsensor',
+      index=6, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1682,
+  serialized_end=2193,
 )
 
 
@@ -417,6 +853,48 @@ _HALCONFIGURATION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_list', full_name='chromiumos.config.api.HalConfiguration.firmware_list', index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='touchscreen_list', full_name='chromiumos.config.api.HalConfiguration.touchscreen_list', index=8,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='touchpad_list', full_name='chromiumos.config.api.HalConfiguration.touchpad_list', index=9,
+      number=10, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='video_list', full_name='chromiumos.config.api.HalConfiguration.video_list', index=10,
+      number=11, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hwfeature_list', full_name='chromiumos.config.api.HalConfiguration.hwfeature_list', index=11,
+      number=12, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='sensor_list', full_name='chromiumos.config.api.HalConfiguration.sensor_list', index=12,
+      number=13, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -429,13 +907,43 @@ _HALCONFIGURATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=788,
-  serialized_end=1307,
+  serialized_start=2196,
+  serialized_end=3157,
 )
 
+_AUDIOCONFIGURATIONTYPE.oneofs_by_name['_soundcard'].fields.append(
+  _AUDIOCONFIGURATIONTYPE.fields_by_name['soundcard'])
+_AUDIOCONFIGURATIONTYPE.fields_by_name['soundcard'].containing_oneof = _AUDIOCONFIGURATIONTYPE.oneofs_by_name['_soundcard']
+_CELLULARCONFIGURATIONTYPE.oneofs_by_name['_modem_type'].fields.append(
+  _CELLULARCONFIGURATIONTYPE.fields_by_name['modem_type'])
+_CELLULARCONFIGURATIONTYPE.fields_by_name['modem_type'].containing_oneof = _CELLULARCONFIGURATIONTYPE.oneofs_by_name['_modem_type']
+_CELLULARCONFIGURATIONTYPE.oneofs_by_name['_firmware_variant'].fields.append(
+  _CELLULARCONFIGURATIONTYPE.fields_by_name['firmware_variant'])
+_CELLULARCONFIGURATIONTYPE.fields_by_name['firmware_variant'].containing_oneof = _CELLULARCONFIGURATIONTYPE.oneofs_by_name['_firmware_variant']
+_FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_fingerprint_sensor_type'].fields.append(
+  _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['fingerprint_sensor_type'])
+_FINGERPRINTCONFIGURATIONTYPE.fields_by_name['fingerprint_sensor_type'].containing_oneof = _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_fingerprint_sensor_type']
+_FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_sensor_location'].fields.append(
+  _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['sensor_location'])
+_FINGERPRINTCONFIGURATIONTYPE.fields_by_name['sensor_location'].containing_oneof = _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_sensor_location']
 _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_ro_version'].fields.append(
   _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['ro_version'])
 _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['ro_version'].containing_oneof = _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_ro_version']
+_CAMERACONFIGURATIONTYPE.oneofs_by_name['_media_profile_suffix'].fields.append(
+  _CAMERACONFIGURATIONTYPE.fields_by_name['media_profile_suffix'])
+_CAMERACONFIGURATIONTYPE.fields_by_name['media_profile_suffix'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_media_profile_suffix']
+_CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_front'].fields.append(
+  _CAMERACONFIGURATIONTYPE.fields_by_name['feature_front'])
+_CAMERACONFIGURATIONTYPE.fields_by_name['feature_front'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_front']
+_CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_back'].fields.append(
+  _CAMERACONFIGURATIONTYPE.fields_by_name['feature_back'])
+_CAMERACONFIGURATIONTYPE.fields_by_name['feature_back'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_back']
+_CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_autofocus'].fields.append(
+  _CAMERACONFIGURATIONTYPE.fields_by_name['feature_autofocus'])
+_CAMERACONFIGURATIONTYPE.fields_by_name['feature_autofocus'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_autofocus']
+_STORAGECONFIGURATIONTYPE.oneofs_by_name['_storage_type'].fields.append(
+  _STORAGECONFIGURATIONTYPE.fields_by_name['storage_type'])
+_STORAGECONFIGURATIONTYPE.fields_by_name['storage_type'].containing_oneof = _STORAGECONFIGURATIONTYPE.oneofs_by_name['_storage_type']
 _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_backlight_support'].fields.append(
   _KEYBOARDCONFIGURATIONTYPE.fields_by_name['backlight_support'])
 _KEYBOARDCONFIGURATIONTYPE.fields_by_name['backlight_support'].containing_oneof = _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_backlight_support']
@@ -445,6 +953,51 @@ _KEYBOARDCONFIGURATIONTYPE.fields_by_name['kb_default_brightness'].containing_on
 _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_kb_backlight_steps'].fields.append(
   _KEYBOARDCONFIGURATIONTYPE.fields_by_name['kb_backlight_steps'])
 _KEYBOARDCONFIGURATIONTYPE.fields_by_name['kb_backlight_steps'].containing_oneof = _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_kb_backlight_steps']
+_STYLUSCONFIGURATIONTYPE.oneofs_by_name['_stylus_type'].fields.append(
+  _STYLUSCONFIGURATIONTYPE.fields_by_name['stylus_type'])
+_STYLUSCONFIGURATIONTYPE.fields_by_name['stylus_type'].containing_oneof = _STYLUSCONFIGURATIONTYPE.oneofs_by_name['_stylus_type']
+_FIRMWARECONFIGURATIONTYPE.oneofs_by_name['_firmware_manifest_key'].fields.append(
+  _FIRMWARECONFIGURATIONTYPE.fields_by_name['firmware_manifest_key'])
+_FIRMWARECONFIGURATIONTYPE.fields_by_name['firmware_manifest_key'].containing_oneof = _FIRMWARECONFIGURATIONTYPE.oneofs_by_name['_firmware_manifest_key']
+_FIRMWARECONFIGURATIONTYPE.oneofs_by_name['_firmware_config'].fields.append(
+  _FIRMWARECONFIGURATIONTYPE.fields_by_name['firmware_config'])
+_FIRMWARECONFIGURATIONTYPE.fields_by_name['firmware_config'].containing_oneof = _FIRMWARECONFIGURATIONTYPE.oneofs_by_name['_firmware_config']
+_FIRMWARECONFIGURATIONTYPE.oneofs_by_name['_ufsc'].fields.append(
+  _FIRMWARECONFIGURATIONTYPE.fields_by_name['ufsc'])
+_FIRMWARECONFIGURATIONTYPE.fields_by_name['ufsc'].containing_oneof = _FIRMWARECONFIGURATIONTYPE.oneofs_by_name['_ufsc']
+_TOUCHSCREENCONFIGURATIONTYPE.oneofs_by_name['_screen_size'].fields.append(
+  _TOUCHSCREENCONFIGURATIONTYPE.fields_by_name['screen_size'])
+_TOUCHSCREENCONFIGURATIONTYPE.fields_by_name['screen_size'].containing_oneof = _TOUCHSCREENCONFIGURATIONTYPE.oneofs_by_name['_screen_size']
+_VIDEOCONFIGURATIONTYPE.oneofs_by_name['_video_codec_suffix'].fields.append(
+  _VIDEOCONFIGURATIONTYPE.fields_by_name['video_codec_suffix'])
+_VIDEOCONFIGURATIONTYPE.fields_by_name['video_codec_suffix'].containing_oneof = _VIDEOCONFIGURATIONTYPE.oneofs_by_name['_video_codec_suffix']
+_HARDWAREFEATURECONFIGURATIONTYPE.oneofs_by_name['_form_factor'].fields.append(
+  _HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['form_factor'])
+_HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['form_factor'].containing_oneof = _HARDWAREFEATURECONFIGURATIONTYPE.oneofs_by_name['_form_factor']
+_HARDWAREFEATURECONFIGURATIONTYPE.oneofs_by_name['_touchscreen_support'].fields.append(
+  _HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['touchscreen_support'])
+_HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['touchscreen_support'].containing_oneof = _HARDWAREFEATURECONFIGURATIONTYPE.oneofs_by_name['_touchscreen_support']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_accelerometer'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_accelerometer'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_accelerometer'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_accelerometer']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_accelerometer'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_accelerometer'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_accelerometer'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_accelerometer']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_gyroscope'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_gyroscope'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_gyroscope'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_gyroscope']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_gyroscope'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_gyroscope'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_gyroscope'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_gyroscope']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_camera_lightsensor'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_camera_lightsensor'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_camera_lightsensor'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_camera_lightsensor']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_lightsensor'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_lightsensor'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_lightsensor'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_lightsensor']
+_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_lightsensor'].fields.append(
+  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_lightsensor'])
+_SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_lightsensor'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_lightsensor']
 _HALCONFIGURATION.fields_by_name['audio_list'].message_type = _AUDIOCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['fingerprint_list'].message_type = _FINGERPRINTCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['cellular_list'].message_type = _CELLULARCONFIGURATIONTYPE
@@ -452,6 +1005,12 @@ _HALCONFIGURATION.fields_by_name['camera_list'].message_type = _CAMERACONFIGURAT
 _HALCONFIGURATION.fields_by_name['storage_list'].message_type = _STORAGECONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['keyboard_list'].message_type = _KEYBOARDCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['stylus_list'].message_type = _STYLUSCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['firmware_list'].message_type = _FIRMWARECONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['touchscreen_list'].message_type = _TOUCHSCREENCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['touchpad_list'].message_type = _TOUCHPADCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['video_list'].message_type = _VIDEOCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['hwfeature_list'].message_type = _HARDWAREFEATURECONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['sensor_list'].message_type = _SENSORCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['AudioConfigurationType'] = _AUDIOCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['CellularConfigurationType'] = _CELLULARCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['FingerprintConfigurationType'] = _FINGERPRINTCONFIGURATIONTYPE
@@ -459,6 +1018,12 @@ DESCRIPTOR.message_types_by_name['CameraConfigurationType'] = _CAMERACONFIGURATI
 DESCRIPTOR.message_types_by_name['StorageConfigurationType'] = _STORAGECONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['KeyboardConfigurationType'] = _KEYBOARDCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['StylusConfigurationType'] = _STYLUSCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['FirmwareConfigurationType'] = _FIRMWARECONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['TouchscreenConfigurationType'] = _TOUCHSCREENCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['TouchpadConfigurationType'] = _TOUCHPADCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['VideoConfigurationType'] = _VIDEOCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['HardwareFeatureConfigurationType'] = _HARDWAREFEATURECONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['SensorConfigurationType'] = _SENSORCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['HalConfiguration'] = _HALCONFIGURATION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -510,6 +1075,48 @@ StylusConfigurationType = _reflection.GeneratedProtocolMessageType('StylusConfig
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.StylusConfigurationType)
   })
 _sym_db.RegisterMessage(StylusConfigurationType)
+
+FirmwareConfigurationType = _reflection.GeneratedProtocolMessageType('FirmwareConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _FIRMWARECONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.FirmwareConfigurationType)
+  })
+_sym_db.RegisterMessage(FirmwareConfigurationType)
+
+TouchscreenConfigurationType = _reflection.GeneratedProtocolMessageType('TouchscreenConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _TOUCHSCREENCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.TouchscreenConfigurationType)
+  })
+_sym_db.RegisterMessage(TouchscreenConfigurationType)
+
+TouchpadConfigurationType = _reflection.GeneratedProtocolMessageType('TouchpadConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _TOUCHPADCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.TouchpadConfigurationType)
+  })
+_sym_db.RegisterMessage(TouchpadConfigurationType)
+
+VideoConfigurationType = _reflection.GeneratedProtocolMessageType('VideoConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _VIDEOCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.VideoConfigurationType)
+  })
+_sym_db.RegisterMessage(VideoConfigurationType)
+
+HardwareFeatureConfigurationType = _reflection.GeneratedProtocolMessageType('HardwareFeatureConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _HARDWAREFEATURECONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.HardwareFeatureConfigurationType)
+  })
+_sym_db.RegisterMessage(HardwareFeatureConfigurationType)
+
+SensorConfigurationType = _reflection.GeneratedProtocolMessageType('SensorConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _SENSORCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.SensorConfigurationType)
+  })
+_sym_db.RegisterMessage(SensorConfigurationType)
 
 HalConfiguration = _reflection.GeneratedProtocolMessageType('HalConfiguration', (_message.Message,), {
   'DESCRIPTOR' : _HALCONFIGURATION,

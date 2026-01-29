@@ -11995,10 +11995,17 @@
               "label": "LABEL_OPTIONAL",
               "name": "soundcard",
               "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "AudioConfigurationType"
+          "name": "AudioConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_soundcard"
+            }
+          ]
         },
         {
           "field": [
@@ -12014,6 +12021,8 @@
               "label": "LABEL_OPTIONAL",
               "name": "modem_type",
               "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             },
             {
@@ -12021,10 +12030,20 @@
               "label": "LABEL_OPTIONAL",
               "name": "firmware_variant",
               "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "CellularConfigurationType"
+          "name": "CellularConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_modem_type"
+            },
+            {
+              "name": "_firmware_variant"
+            }
+          ]
         },
         {
           "field": [
@@ -12047,6 +12066,8 @@
               "label": "LABEL_OPTIONAL",
               "name": "fingerprint_sensor_type",
               "number": 3,
+              "oneofIndex": 0,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             },
             {
@@ -12054,6 +12075,8 @@
               "label": "LABEL_OPTIONAL",
               "name": "sensor_location",
               "number": 4,
+              "oneofIndex": 1,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             },
             {
@@ -12061,13 +12084,19 @@
               "label": "LABEL_OPTIONAL",
               "name": "ro_version",
               "number": 5,
-              "oneofIndex": 0,
+              "oneofIndex": 2,
               "proto3Optional": true,
               "type": "TYPE_STRING"
             }
           ],
           "name": "FingerprintConfigurationType",
           "oneofDecl": [
+            {
+              "name": "_fingerprint_sensor_type"
+            },
+            {
+              "name": "_sensor_location"
+            },
             {
               "name": "_ro_version"
             }
@@ -12087,10 +12116,53 @@
               "label": "LABEL_OPTIONAL",
               "name": "media_profile_suffix",
               "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureFront",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_front",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureBack",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_back",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureAutofocus",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_autofocus",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "CameraConfigurationType"
+          "name": "CameraConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_media_profile_suffix"
+            },
+            {
+              "name": "_feature_front"
+            },
+            {
+              "name": "_feature_back"
+            },
+            {
+              "name": "_feature_autofocus"
+            }
+          ]
         },
         {
           "field": [
@@ -12106,10 +12178,17 @@
               "label": "LABEL_OPTIONAL",
               "name": "storage_type",
               "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "StorageConfigurationType"
+          "name": "StorageConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_storage_type"
+            }
+          ]
         },
         {
           "field": [
@@ -12175,10 +12254,267 @@
               "label": "LABEL_OPTIONAL",
               "name": "stylus_type",
               "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "StylusConfigurationType"
+          "name": "StylusConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_stylus_type"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareManifestKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_manifest_key",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ufsc",
+              "label": "LABEL_OPTIONAL",
+              "name": "ufsc",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FirmwareConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_firmware_manifest_key"
+            },
+            {
+              "name": "_firmware_config"
+            },
+            {
+              "name": "_ufsc"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "screenSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "screen_size",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "TouchscreenConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_screen_size"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "TouchpadConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "videoCodecSuffix",
+              "label": "LABEL_OPTIONAL",
+              "name": "video_codec_suffix",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "VideoConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_video_codec_suffix"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "formFactor",
+              "label": "LABEL_OPTIONAL",
+              "name": "form_factor",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "touchscreenSupport",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen_support",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HardwareFeatureConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_form_factor"
+            },
+            {
+              "name": "_touchscreen_support"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureBaseAccelerometer",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_base_accelerometer",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureLidAccelerometer",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_lid_accelerometer",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureBaseGyroscope",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_base_gyroscope",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureLidGyroscope",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_lid_gyroscope",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureCameraLightsensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_camera_lightsensor",
+              "number": 6,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureLidLightsensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_lid_lightsensor",
+              "number": 7,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureBaseLightsensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_base_lightsensor",
+              "number": 8,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SensorConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_feature_base_accelerometer"
+            },
+            {
+              "name": "_feature_lid_accelerometer"
+            },
+            {
+              "name": "_feature_base_gyroscope"
+            },
+            {
+              "name": "_feature_lid_gyroscope"
+            },
+            {
+              "name": "_feature_camera_lightsensor"
+            },
+            {
+              "name": "_feature_lid_lightsensor"
+            },
+            {
+              "name": "_feature_base_lightsensor"
+            }
+          ]
         },
         {
           "field": [
@@ -12237,6 +12573,54 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.StylusConfigurationType"
+            },
+            {
+              "jsonName": "firmwareList",
+              "label": "LABEL_REPEATED",
+              "name": "firmware_list",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.FirmwareConfigurationType"
+            },
+            {
+              "jsonName": "touchscreenList",
+              "label": "LABEL_REPEATED",
+              "name": "touchscreen_list",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.TouchscreenConfigurationType"
+            },
+            {
+              "jsonName": "touchpadList",
+              "label": "LABEL_REPEATED",
+              "name": "touchpad_list",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.TouchpadConfigurationType"
+            },
+            {
+              "jsonName": "videoList",
+              "label": "LABEL_REPEATED",
+              "name": "video_list",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.VideoConfigurationType"
+            },
+            {
+              "jsonName": "hwfeatureList",
+              "label": "LABEL_REPEATED",
+              "name": "hwfeature_list",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatureConfigurationType"
+            },
+            {
+              "jsonName": "sensorList",
+              "label": "LABEL_REPEATED",
+              "name": "sensor_list",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.SensorConfigurationType"
             }
           ],
           "name": "HalConfiguration"
