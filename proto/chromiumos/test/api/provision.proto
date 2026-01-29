@@ -149,10 +149,12 @@ message InstallRequest {
   // Provides partner specific metadata for install request.
   PartnerMetadata partner_metadata = 5;
   // Provides kernel prebuilts to replace the OS image's kernel.
-  KernelPrebuilts kernel_prebuilts = 6;
+  KernelPrebuilts kernel_prebuilts = 6 [deprecated = true];
   // K:Vs to be passed to the harness. Mostly will be used for args; but
   // technically can go for others.
   ExecutionMetadata execution_metadata = 7;
+  // Provides kernel provisioning metadata.
+  KernelProvisionRequest kernel_metadata = 8;
 }
 
 // PartnerMetadata determines any configuration around Partner settings.
@@ -161,6 +163,24 @@ message PartnerMetadata {
   int64 account_id = 1;
   // The bucket with the partner images and artifacts
   string partner_gcs_bucket = 2;
+}
+
+// KernelProvisionRequest provides instructions for kernel-provisioning.
+message KernelProvisionRequest {
+  // Provides kernel prebuilts to replace the OS image's kernel.
+  KernelPrebuilts kernel_prebuilts = 1;
+
+  // If true, the kernel command line specified in the `vendor_boot` partition
+  // will have the following modifications performed on it:
+  // - console=<console_command_line_value>
+  // - printk.devkmsg=on
+  // - DEBUG=2
+  // - initcall_debug
+  bool enable_kernel_serial_logs = 2;
+
+  // The console= value to set when `enable_kernel_serial_logs` is true.
+  // Defaults to `ttyS0,115200` which should work on most x86 boards.
+  string console_command_line_value = 3;
 }
 
 // KernelPrebuilts contains paths to kernel artifacts to provision, replacing
