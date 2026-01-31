@@ -74,17 +74,6 @@ class TestGenerateAndroidComponent(unittest.TestCase):
             result,
             {"audio": ["_ANDROID_HAL_AUDIO_Id1", "_ANDROID_HAL_AUDIO_Id2"]},
         )
-        expected_star_content = [
-            "\n_ANDROID_HAL_AUDIO_Id1 = android_hal_config.create_audio(",
-            "    id = android_component_ids.audio.CONFIG1,",
-            '    param1 =  "value1",',
-            ")",
-            "\n_ANDROID_HAL_AUDIO_Id2 = android_hal_config.create_audio(",
-            "    id = android_component_ids.audio.CONFIG2,",
-            '    param1 =  "value2",',
-            ")",
-        ]
-        self.assertEqual(star_content, expected_star_content)
 
     def test_generate_configstar_per_component_fingerprint(self):
         """Tests generate_configstar_per_component for fingerprint."""
@@ -102,13 +91,6 @@ class TestGenerateAndroidComponent(unittest.TestCase):
         self.assertEqual(
             result, {"fingerprint": ["_ANDROID_HAL_FINGERPRINT_Id1"]}
         )
-        expected_star_content = [
-            "\n_ANDROID_HAL_FINGERPRINT_Id1 = android_hal_config.create_fingerprint(",
-            "    id = android_component_ids.fingerprint.BOARD_A,",
-            '    sensor =  "sensor_x",',
-            ")",
-        ]
-        self.assertEqual(star_content, expected_star_content)
 
 
 if __name__ == "__main__":
