@@ -11998,16 +11998,83 @@
               "oneofIndex": 0,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dmicsCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "dmics_count",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
             }
           ],
           "name": "AudioConfigurationType",
           "oneofDecl": [
             {
               "name": "_soundcard"
+            },
+            {
+              "name": "_dmics_count"
             }
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "ModemType",
+              "value": [
+                {
+                  "name": "MODEM_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "MODEM_L850",
+                  "number": 1
+                },
+                {
+                  "name": "MODEM_NL668",
+                  "number": 2
+                },
+                {
+                  "name": "MODEM_FM101",
+                  "number": 3
+                },
+                {
+                  "name": "MODEM_FM350",
+                  "number": 4
+                },
+                {
+                  "name": "MODEM_SC7180",
+                  "number": 5
+                },
+                {
+                  "name": "MODEM_SC7280",
+                  "number": 6
+                },
+                {
+                  "name": "MODEM_EM060",
+                  "number": 7
+                },
+                {
+                  "name": "MODEM_RW101",
+                  "number": 8
+                },
+                {
+                  "name": "MODEM_RW135",
+                  "number": 9
+                },
+                {
+                  "name": "MODEM_LCUK54",
+                  "number": 10
+                },
+                {
+                  "name": "MODEM_RW350",
+                  "number": 11
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "id",
@@ -12023,7 +12090,8 @@
               "number": 2,
               "oneofIndex": 0,
               "proto3Optional": true,
-              "type": "TYPE_STRING"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.CellularConfigurationType.ModemType"
             },
             {
               "jsonName": "firmwareVariant",
@@ -12046,6 +12114,63 @@
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "Location",
+              "reservedRange": [
+                {
+                  "end": 5,
+                  "start": 5
+                },
+                {
+                  "end": 8,
+                  "start": 8
+                }
+              ],
+              "value": [
+                {
+                  "name": "LOCATION_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "POWER_BUTTON_TOP_LEFT",
+                  "number": 1
+                },
+                {
+                  "name": "KEYBOARD_BOTTOM_LEFT",
+                  "number": 2
+                },
+                {
+                  "name": "KEYBOARD_BOTTOM_RIGHT",
+                  "number": 3
+                },
+                {
+                  "name": "KEYBOARD_TOP_RIGHT",
+                  "number": 4
+                },
+                {
+                  "name": "RIGHT_SIDE",
+                  "number": 6
+                },
+                {
+                  "name": "LEFT_SIDE",
+                  "number": 7
+                },
+                {
+                  "name": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
+                  "number": 9
+                },
+                {
+                  "name": "POWER_BUTTON_TOP_RIGHT_KEY",
+                  "number": 10
+                },
+                {
+                  "name": "POWER_BUTTON_LEFT_EDGE_TOP",
+                  "number": 11
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "id",
@@ -12077,7 +12202,8 @@
               "number": 4,
               "oneofIndex": 1,
               "proto3Optional": true,
-              "type": "TYPE_STRING"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.FingerprintConfigurationType.Location"
             },
             {
               "jsonName": "roVersion",
@@ -12103,6 +12229,25 @@
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "Facing",
+              "value": [
+                {
+                  "name": "FACING_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "FACING_FRONT",
+                  "number": 1
+                },
+                {
+                  "name": "FACING_BACK",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "id",
@@ -12121,46 +12266,77 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "featureFront",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_front",
+              "jsonName": "cameras",
+              "label": "LABEL_REPEATED",
+              "name": "cameras",
               "number": 3,
-              "oneofIndex": 1,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureBack",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_back",
-              "number": 4,
-              "oneofIndex": 2,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureAutofocus",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_autofocus",
-              "number": 5,
-              "oneofIndex": 3,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.CameraConfigurationType.CameraHWConfig"
             }
           ],
           "name": "CameraConfigurationType",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "position",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "position",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "proto3Optional": true,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.CameraConfigurationType.Facing"
+                },
+                {
+                  "jsonName": "autofocusSupport",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "autofocus_support",
+                  "number": 2,
+                  "oneofIndex": 1,
+                  "proto3Optional": true,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+                },
+                {
+                  "jsonName": "resolutionx",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "resolutionx",
+                  "number": 3,
+                  "oneofIndex": 2,
+                  "proto3Optional": true,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "resolutiony",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "resolutiony",
+                  "number": 4,
+                  "oneofIndex": 3,
+                  "proto3Optional": true,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "CameraHWConfig",
+              "oneofDecl": [
+                {
+                  "name": "_position"
+                },
+                {
+                  "name": "_autofocus_support"
+                },
+                {
+                  "name": "_resolutionx"
+                },
+                {
+                  "name": "_resolutiony"
+                }
+              ]
+            }
+          ],
           "oneofDecl": [
             {
               "name": "_media_profile_suffix"
-            },
-            {
-              "name": "_feature_front"
-            },
-            {
-              "name": "_feature_back"
-            },
-            {
-              "name": "_feature_autofocus"
             }
           ]
         },
@@ -12206,7 +12382,8 @@
               "number": 2,
               "oneofIndex": 0,
               "proto3Optional": true,
-              "type": "TYPE_STRING"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.HalConfiguration.Present"
             },
             {
               "jsonName": "kbDefaultBrightness",
@@ -12241,6 +12418,29 @@
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "StylusType",
+              "value": [
+                {
+                  "name": "STYLUS_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "NONE",
+                  "number": 1
+                },
+                {
+                  "name": "INTERNAL",
+                  "number": 2
+                },
+                {
+                  "name": "EXTERNAL",
+                  "number": 3
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "id",
@@ -12256,7 +12456,8 @@
               "number": 2,
               "oneofIndex": 0,
               "proto3Optional": true,
-              "type": "TYPE_STRING"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.StylusConfigurationType.StylusType"
             }
           ],
           "name": "StylusConfigurationType",
@@ -12428,95 +12629,97 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "featureBaseAccelerometer",
+              "jsonName": "featureGyroscope",
               "label": "LABEL_OPTIONAL",
-              "name": "feature_base_accelerometer",
+              "name": "feature_gyroscope",
               "number": 2,
               "oneofIndex": 0,
               "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureLidAccelerometer",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_lid_accelerometer",
-              "number": 3,
-              "oneofIndex": 1,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureBaseGyroscope",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_base_gyroscope",
-              "number": 4,
-              "oneofIndex": 2,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureLidGyroscope",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_lid_gyroscope",
-              "number": 5,
-              "oneofIndex": 3,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureCameraLightsensor",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_camera_lightsensor",
-              "number": 6,
-              "oneofIndex": 4,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureLidLightsensor",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_lid_lightsensor",
-              "number": 7,
-              "oneofIndex": 5,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "featureBaseLightsensor",
-              "label": "LABEL_OPTIONAL",
-              "name": "feature_base_lightsensor",
-              "number": 8,
-              "oneofIndex": 6,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.HalConfiguration.Present"
             }
           ],
-          "name": "SensorConfigurationType",
+          "name": "GyroscopeConfigurationType",
           "oneofDecl": [
             {
-              "name": "_feature_base_accelerometer"
-            },
-            {
-              "name": "_feature_lid_accelerometer"
-            },
-            {
-              "name": "_feature_base_gyroscope"
-            },
-            {
-              "name": "_feature_lid_gyroscope"
-            },
-            {
-              "name": "_feature_camera_lightsensor"
-            },
-            {
-              "name": "_feature_lid_lightsensor"
-            },
-            {
-              "name": "_feature_base_lightsensor"
+              "name": "_feature_gyroscope"
             }
           ]
         },
         {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureAccelerometer",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_accelerometer",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            }
+          ],
+          "name": "AccelerometerConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_feature_accelerometer"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "featureLightsensor",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_lightsensor",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            }
+          ],
+          "name": "LightSensorConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_feature_lightsensor"
+            }
+          ]
+        },
+        {
+          "enumType": [
+            {
+              "name": "Present",
+              "value": [
+                {
+                  "name": "PRESENT_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "PRESENT",
+                  "number": 1
+                },
+                {
+                  "name": "NOT_PRESENT",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "audioList",
@@ -12615,12 +12818,28 @@
               "typeName": ".chromiumos.config.api.HardwareFeatureConfigurationType"
             },
             {
-              "jsonName": "sensorList",
+              "jsonName": "gyroscopeList",
               "label": "LABEL_REPEATED",
-              "name": "sensor_list",
+              "name": "gyroscope_list",
               "number": 13,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.SensorConfigurationType"
+              "typeName": ".chromiumos.config.api.GyroscopeConfigurationType"
+            },
+            {
+              "jsonName": "accelerometerList",
+              "label": "LABEL_REPEATED",
+              "name": "accelerometer_list",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.AccelerometerConfigurationType"
+            },
+            {
+              "jsonName": "lightsensorList",
+              "label": "LABEL_REPEATED",
+              "name": "lightsensor_list",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.LightSensorConfigurationType"
             }
           ],
           "name": "HalConfiguration"

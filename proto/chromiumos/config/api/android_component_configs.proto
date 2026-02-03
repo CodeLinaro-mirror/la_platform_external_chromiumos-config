@@ -28,6 +28,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 message AudioConfigurationType {
   string id = 1;
   optional string soundcard = 2;
+  optional int32 dmics_count = 3;
 }
 
 // Cellular component configuration. Annotation to the fields:
@@ -39,7 +40,22 @@ message AudioConfigurationType {
 // modem_type: One of ModemTypeEn
 message CellularConfigurationType {
   string id = 1;
-  optional string modem_type = 2;
+  optional ModemType modem_type = 2;
+  enum ModemType {
+    MODEM_UNKNOWN = 0;
+    MODEM_L850 = 1;
+    MODEM_NL668 = 2;
+    MODEM_FM101 = 3;
+    MODEM_FM350 = 4;
+    MODEM_SC7180 = 5;
+    MODEM_SC7280 = 6;
+    MODEM_EM060 = 7;
+    MODEM_RW101 = 8;
+    MODEM_RW135 = 9;
+    MODEM_LCUK54 = 10;
+    MODEM_RW350 = 11;
+  }
+
   optional string firmware_variant = 3;
 }
 
@@ -59,7 +75,32 @@ message FingerprintConfigurationType {
   string id = 1;
   string board = 2;
   optional string fingerprint_sensor_type = 3;
-  optional string sensor_location = 4;
+  optional Location sensor_location = 4;
+  enum Location {
+    LOCATION_UNKNOWN = 0;
+    // Top of the screen (e.g. Pixel Slate) at the left
+    POWER_BUTTON_TOP_LEFT = 1;
+    // Bottom of keyboard at the left
+    KEYBOARD_BOTTOM_LEFT = 2;
+    // Bottom of keyboard at the right
+    KEYBOARD_BOTTOM_RIGHT = 3;
+    // Top of keyboard at the right (e.g. Galaxy Chromebook)
+    KEYBOARD_TOP_RIGHT = 4;
+    reserved 5;  // Not to conflict with NOT_PRESENT
+    // At the right side
+    RIGHT_SIDE = 6;
+    // At the left side
+    LEFT_SIDE = 7;
+    reserved 8;  // Not to conflict with PRESENT
+    // Left of power button at top right corner (of the keyboard)
+    LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
+    // On power button at the top right key of the keyboard.
+    POWER_BUTTON_TOP_RIGHT_KEY = 10;
+    // On power button, on the left edge at the top (detachable device,
+    // landscape orientation).
+    POWER_BUTTON_LEFT_EDGE_TOP = 11;
+  }
+
   optional string ro_version = 5;
 }
 
@@ -73,9 +114,18 @@ message FingerprintConfigurationType {
 message CameraConfigurationType {
   string id = 1;
   optional string media_profile_suffix = 2;
-  optional string feature_front = 3;
-  optional string feature_back = 4;
-  optional string feature_autofocus = 5;
+  enum Facing {
+    FACING_UNKNOWN = 0;
+    FACING_FRONT = 1;
+    FACING_BACK = 2;
+  }
+  message CameraHWConfig {
+    optional Facing position = 1;
+    optional HalConfiguration.Present autofocus_support = 2;
+    optional int32 resolutionx = 3;
+    optional int32 resolutiony = 4;
+  }
+  repeated CameraHWConfig cameras = 3;
 }
 
 // Storage component configuration. Annotation to the fields:
@@ -99,7 +149,7 @@ message StorageConfigurationType {
 // kb_backlight_steps: Backlight steps in increasing order.
 message KeyboardConfigurationType {
   string id = 1;
-  optional string backlight_support = 2;
+  optional HalConfiguration.Present backlight_support = 2;
   optional string kb_default_brightness = 3;
   optional string kb_backlight_steps = 4;
 }
@@ -112,7 +162,13 @@ message KeyboardConfigurationType {
 // stylus_type: Stylus present and garaged type or not.
 message StylusConfigurationType {
   string id = 1;
-  optional string stylus_type = 2;
+  optional StylusType stylus_type = 2;
+  enum StylusType {
+    STYLUS_UNKNOWN = 0;
+    NONE = 1;
+    INTERNAL = 2;  // Garaged stylus
+    EXTERNAL = 3;  // Non-garaged stylus
+  }
 }
 
 // Firmware component configuration. Annotation to the fields:
@@ -152,20 +208,34 @@ message HardwareFeatureConfigurationType {
   optional string touchscreen_support = 3;
 }
 
-// Sensor component configuration. Annotation to the fields:
+// Gyroscope component configuration. Annotation to the fields:
 // id: The identity field among the enumeration of possible variants on this HW
-message SensorConfigurationType {
+message GyroscopeConfigurationType {
   string id = 1;
-  optional string feature_base_accelerometer = 2;
-  optional string feature_lid_accelerometer = 3;
-  optional string feature_base_gyroscope = 4;
-  optional string feature_lid_gyroscope = 5;
-  optional string feature_camera_lightsensor = 6;
-  optional string feature_lid_lightsensor = 7;
-  optional string feature_base_lightsensor = 8;
+  optional HalConfiguration.Present feature_gyroscope = 2;
+}
+
+// Accelerometer component configuration. Annotation to the fields:
+// id: The identity field among the enumeration of possible variants on this HW
+message AccelerometerConfigurationType {
+  string id = 1;
+  optional HalConfiguration.Present feature_accelerometer = 2;
+}
+
+// LightSensor component configuration. Annotation to the fields:
+// id: The identity field among the enumeration of possible variants on this HW
+message LightSensorConfigurationType {
+  string id = 1;
+  optional HalConfiguration.Present feature_lightsensor = 2;
 }
 
 message HalConfiguration {
+  enum Present {
+    PRESENT_UNKNOWN = 0;
+    PRESENT = 1;
+    NOT_PRESENT = 2;
+  }
+
   repeated AudioConfigurationType audio_list = 1;
   repeated FingerprintConfigurationType fingerprint_list = 2;
   repeated CellularConfigurationType cellular_list = 3;
@@ -178,5 +248,7 @@ message HalConfiguration {
   repeated TouchpadConfigurationType touchpad_list = 10;
   repeated VideoConfigurationType video_list = 11;
   repeated HardwareFeatureConfigurationType hwfeature_list = 12;
-  repeated SensorConfigurationType sensor_list = 13;
+  repeated GyroscopeConfigurationType gyroscope_list = 13;
+  repeated AccelerometerConfigurationType accelerometer_list = 14;
+  repeated LightSensorConfigurationType lightsensor_list = 15;
 }

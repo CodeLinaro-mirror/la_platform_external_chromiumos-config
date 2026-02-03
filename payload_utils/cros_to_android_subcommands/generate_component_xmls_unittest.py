@@ -36,21 +36,21 @@ class ComponentXmlGenerationTest(unittest.TestCase):
 
         cellular = hal_config.cellular_list.add()
         cellular.id = "cellular_config_1"
-        cellular.modem_type = "FM101"
+        cellular.modem_type = 3
         cellular.firmware_variant = "TestFirmware"
 
         fp1 = hal_config.fingerprint_list.add()
         fp1.id = "fingerprint_config_1"
         fp1.board = "TestBoard1"
         fp1.fingerprint_sensor_type = "POWER_BUTTON"
-        fp1.sensor_location = "POWER_BUTTON_TOP_LEFT"
+        fp1.sensor_location = 1
         fp1.ro_version = "v1.2.3"
 
         fp2 = hal_config.fingerprint_list.add()
         fp2.id = "fingerprint_config_2"
         fp2.board = "TestBoard2"
         fp2.fingerprint_sensor_type = "STAND_ALONE"
-        fp2.sensor_location = "KEYBOARD_BOTTOM_RIGHT"
+        fp2.sensor_location = 3
 
         generate_component_xmls.generate(bundle, self.temp_dir)
 
@@ -64,7 +64,7 @@ class ComponentXmlGenerationTest(unittest.TestCase):
         self.assertTrue(cellular_file.is_file())
         cellular_root = etree.parse(cellular_file).getroot()
         self.assertEqual(cellular_root.tag, "CellularConfiguration")
-        self.assertEqual(cellular_root.find("modem-type").text, "FM101")
+        self.assertEqual(cellular_root.find("modem-type").text, "MODEM_FM101")
         self.assertEqual(
             cellular_root.find("firmware-variant").text, "TestFirmware"
         )
