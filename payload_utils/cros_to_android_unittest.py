@@ -652,6 +652,7 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         opts = argparse.Namespace(
             jsonproto_file=temp_json_path,
             output_dir=self.temp_dir,
+            from_hal_config=False,
         )
         cros_to_android.run_generate_feature_xml(opts)
 

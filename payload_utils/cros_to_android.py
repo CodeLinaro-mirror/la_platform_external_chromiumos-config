@@ -32,6 +32,7 @@ import sys
 from typing import Optional
 
 from cros_to_android_subcommands import generate_component_xmls
+from cros_to_android_subcommands import generate_feature_xml
 from google.protobuf import json_format  # pylint: disable=import-error
 from lxml import etree  # pylint: disable=import-error
 
@@ -1287,6 +1288,16 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     logging.info("Running generate-feature-xml command...")
     config_bundle = _load_config_bundle(opts.jsonproto_file)
 
+    if opts.from_hal_config:
+        generate_feature_xml.generate_from_hal_config(
+            config_bundle.android_hal_config, opts.output_dir
+        )
+        logging.info(
+            "Write feature XMLs to %s.",
+            opts.output_dir,
+        )
+        return
+
     for design in config_bundle.design_list:
         for design_config in design.configs:
             if not design_config.id.value:
@@ -1456,8 +1467,15 @@ def _get_parser() -> argparse.ArgumentParser:
         "--output-dir",
         required=True,
         type=pathlib.Path,
-        help="Path to the base directory where <Model>_<SkuID> subdirectories "
-        "containing feature XML files will be created.",
+        help="Path to the base directory for output.",
+    )
+    parser_feature_xml.add_argument(
+        "--from-hal-config",
+        action="store_true",
+        help=(
+            "Generate feature XMLs from the HalConfiguration (per-component) "
+            "instead of Design.Config (per-device)."
+        ),
     )
     parser_feature_xml.set_defaults(func=run_generate_feature_xml)
 

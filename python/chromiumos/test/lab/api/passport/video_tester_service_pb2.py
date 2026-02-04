@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z:go.chromium.org/chromiumos/config/go/test/lab/api/passport',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n;chromiumos/test/lab/api/passport/video_tester_service.proto\x12 chromiumos.test.lab.api.passport\"\'\n\x0bVideoTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x18\n\x16GetVideoTestersRequest\"Y\n\x17GetVideoTestersResponse\x12>\n\x07testers\x18\x01 \x03(\x0b\x32-.chromiumos.test.lab.api.passport.VideoTester\"$\n\x16OpenVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x17OpenVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"%\n\x17\x43loseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"+\n\x18\x43loseVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1d\n\x0fGetRolesRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x10GetRolesResponse\x12\x35\n\x05roles\x18\x01 \x03(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"R\n\x0eSetRoleRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x34\n\x04role\x18\x02 \x01(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"\"\n\x0fSetRoleResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"I\n\x1aLoadEdidVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\x12\x11\n\tid_stream\x18\x03 \x01(\x03\".\n\x1bLoadEdidVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"-\n\x1fGetStreamInfoVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x9c\x05\n\x15StreamInfoVideoTester\x12\x17\n\nframe_rate\x18\x01 \x01(\x01H\x00\x88\x01\x01\x12\x14\n\x07hactive\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x14\n\x07vactive\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x13\n\x06htotal\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12\x13\n\x06vtotal\x18\x05 \x01(\x03H\x04\x88\x01\x01\x12\x13\n\x06hstart\x18\x06 \x01(\x03H\x05\x88\x01\x01\x12\x13\n\x06vstart\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x14\n\x07hswidth\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x14\n\x07vswidth\x18\t \x01(\x03H\x08\x88\x01\x01\x12\x10\n\x03\x62pp\x18\n \x01(\x03H\t\x88\x01\x01\x12R\n\x0c\x63olor_format\x18\x0b \x01(\x0e\x32\x37.chromiumos.test.lab.api.passport.StreamInfoColorFormatH\n\x88\x01\x01\x12P\n\ncolormetry\x18\x0c \x01(\x0e\x32\x37.chromiumos.test.lab.api.passport.StreamInfoColorimetryH\x0b\x88\x01\x01\x12T\n\rdynamic_range\x18\r \x01(\x0e\x32\x38.chromiumos.test.lab.api.passport.StreamInfoDynamicRangeH\x0c\x88\x01\x01\x12\x0b\n\x03\x63rc\x18\x0e \x03(\x03\x42\r\n\x0b_frame_rateB\n\n\x08_hactiveB\n\n\x08_vactiveB\t\n\x07_htotalB\t\n\x07_vtotalB\t\n\x07_hstartB\t\n\x07_vstartB\n\n\x08_hswidthB\n\n\x08_vswidthB\x06\n\x04_bppB\x0f\n\r_color_formatB\r\n\x0b_colormetryB\x10\n\x0e_dynamic_range\"l\n GetStreamInfoVideoTesterResponse\x12H\n\x07streams\x18\x01 \x03(\x0b\x32\x37.chromiumos.test.lab.api.passport.StreamInfoVideoTester\"=\n\x1cScreenshotVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tid_stream\x18\x02 \x01(\x03\"3\n\x1dScreenshotVideoTesterResponse\x12\x12\n\nscreenshot\x18\x01 \x01(\x0c\"\xca\x05\n\x19SetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x03mst\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x1b\n\x0escrambler_seed\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x05 \x01(\x03H\x03\x88\x01\x01\x12@\n\x08\x66rl_mode\x18\t \x01(\x0e\x32).chromiumos.test.lab.api.passport.FrlModeH\x04\x88\x01\x01\x12\x16\n\tfrl_start\x18\x0b \x01(\x08H\x05\x88\x01\x01\x12\x16\n\tfrl_ready\x18\x0c \x01(\x08H\x06\x88\x01\x01\x12\x14\n\x07\x66rl_max\x18\r \x01(\x08H\x07\x88\x01\x01\x12\x1b\n\x0e\x66rl_no_timeout\x18\x0e \x01(\x08H\x08\x88\x01\x01\x12\x1a\n\rfrl_check_ltp\x18\x0f \x01(\x08H\t\x88\x01\x01\x12M\n\nvideo_spec\x18\x10 \x01(\x0e\x32\x34.chromiumos.test.lab.api.passport.VideoSpecificationH\n\x88\x01\x01\x12\x13\n\x06ss_sbm\x18\x11 \x01(\x08H\x0b\x88\x01\x01\x12\x10\n\x03\x66\x65\x63\x18\x12 \x01(\x08H\x0c\x88\x01\x01\x12\x11\n\x04tps4\x18\x13 \x01(\x08H\r\x88\x01\x01\x12\x11\n\x04tps3\x18\x14 \x01(\x08H\x0e\x88\x01\x01\x12\x10\n\x03\x64sc\x18\x15 \x01(\x08H\x0f\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x11\n\x0f_scrambler_seedB\x0b\n\t_max_laneB\x0b\n\t_frl_modeB\x0c\n\n_frl_startB\x0c\n\n_frl_readyB\n\n\x08_frl_maxB\x11\n\x0f_frl_no_timeoutB\x10\n\x0e_frl_check_ltpB\r\n\x0b_video_specB\t\n\x07_ss_sbmB\x06\n\x04_fecB\x07\n\x05_tps4B\x07\n\x05_tps3B\x06\n\x04_dsc\"\x1c\n\x1aSetLinkVideoTesterResponse\"\'\n\x19GetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x7f\n\tVideoLane\x12\x17\n\nlane_speed\x18\x01 \x01(\x03H\x00\x88\x01\x01\x12\x16\n\terror_cnt\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x16\n\tlane_lock\x18\x03 \x01(\x03H\x02\x88\x01\x01\x42\r\n\x0b_lane_speedB\x0c\n\n_error_cntB\x0c\n\n_lane_lock\"\xe3\x06\n\x1aGetLinkVideoTesterResponse\x12\x10\n\x03mst\x18\x01 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x1b\n\x0escrambler_seed\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12@\n\x08\x66rl_mode\x18\x06 \x01(\x0e\x32).chromiumos.test.lab.api.passport.FrlModeH\x04\x88\x01\x01\x12\x16\n\tfrl_start\x18\x07 \x01(\x08H\x05\x88\x01\x01\x12\x16\n\tfrl_ready\x18\x08 \x01(\x08H\x06\x88\x01\x01\x12\x14\n\x07\x66rl_max\x18\t \x01(\x08H\x07\x88\x01\x01\x12\x1b\n\x0e\x66rl_no_timeout\x18\n \x01(\x08H\x08\x88\x01\x01\x12\x1a\n\rfrl_check_ltp\x18\x0b \x01(\x08H\t\x88\x01\x01\x12\x1c\n\x0ftdms_clock_rate\x18\x0c \x01(\x03H\n\x88\x01\x01\x12\x1e\n\x11tdms_report_locks\x18\r \x01(\x03H\x0b\x88\x01\x01\x12M\n\nvideo_spec\x18\x0e \x01(\x0e\x32\x34.chromiumos.test.lab.api.passport.VideoSpecificationH\x0c\x88\x01\x01\x12:\n\x05lanes\x18\x0f \x03(\x0b\x32+.chromiumos.test.lab.api.passport.VideoLane\x12\x13\n\x06ss_sbm\x18\x10 \x01(\x08H\r\x88\x01\x01\x12\x10\n\x03\x66\x65\x63\x18\x11 \x01(\x08H\x0e\x88\x01\x01\x12\x11\n\x04tps4\x18\x12 \x01(\x08H\x0f\x88\x01\x01\x12\x11\n\x04tps3\x18\x13 \x01(\x08H\x10\x88\x01\x01\x12\x10\n\x03\x64sc\x18\x14 \x01(\x08H\x11\x88\x01\x01\x42\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x11\n\x0f_scrambler_seedB\x0b\n\t_max_laneB\x0b\n\t_frl_modeB\x0c\n\n_frl_startB\x0c\n\n_frl_readyB\n\n\x08_frl_maxB\x11\n\x0f_frl_no_timeoutB\x10\n\x0e_frl_check_ltpB\x12\n\x10_tdms_clock_rateB\x14\n\x12_tdms_report_locksB\r\n\x0b_video_specB\t\n\x07_ss_sbmB\x06\n\x04_fecB\x07\n\x05_tps4B\x07\n\x05_tps3B\x06\n\x04_dsc\"6\n\x18\x41ttachVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61ttach\x18\x02 \x01(\x08\"\x1b\n\x19\x41ttachVideoTesterResponse\"^\n\x1aHpdPulseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11pulse_duration_ms\x18\x02 \x01(\x03H\x00\x88\x01\x01\x42\x14\n\x12_pulse_duration_ms\"\x1d\n\x1bHpdPulseVideoTesterResponse\"u\n\x19\x43omplianceTestVideoTester\x12G\n\x08group_id\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.lab.api.passport.ComplianceTestGroup\x12\x0f\n\x07test_id\x18\x02 \x01(\x03\"\xb4\x01\n\x1f\x43omplianceTestResultVideoTester\x12I\n\x04test\x18\x01 \x01(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x46\n\x06status\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.lab.api.passport.ComplianceTestStatus\"\x93\x01\n\x18RunComplianceTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12J\n\x05tests\x18\x02 \x03(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\r\n\x05model\x18\x04 \x01(\t\"\x85\x01\n\x19RunComplianceTestResponse\x12R\n\x07results\x18\x01 \x03(\x0b\x32\x41.chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester\x12\x14\n\x0cresults_html\x18\x02 \x01(\x0c\"\xb2\x01\n\x16\x44pRxEventCaptureConfig\x12\x12\n\nhpd_events\x18\x01 \x01(\x08\x12\x12\n\naux_events\x18\x02 \x01(\x08\x12\x12\n\nsdp_events\x18\x03 \x01(\x08\x12\x1b\n\x13link_pattern_events\x18\x04 \x01(\x08\x12\x14\n\x0cvb_id_events\x18\x05 \x01(\x08\x12\x12\n\nmsa_events\x18\x06 \x01(\x08\x12\x15\n\raux_bw_events\x18\x07 \x01(\x08\"@\n\x16\x44pTxEventCaptureConfig\x12\x12\n\nhpd_events\x18\x01 \x01(\x08\x12\x12\n\naux_events\x18\x02 \x01(\x08\"\xc4\x01\n\x18StartEventCaptureRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12M\n\x0b\x64prx_config\x18\x02 \x01(\x0b\x32\x38.chromiumos.test.lab.api.passport.DpRxEventCaptureConfig\x12M\n\x0b\x64ptx_config\x18\x03 \x01(\x0b\x32\x38.chromiumos.test.lab.api.passport.DpTxEventCaptureConfig\"\x1b\n\x19StartEventCaptureResponse\"?\n\x17StopEventCaptureRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x10generate_reports\x18\x02 \x01(\x08\"P\n\x18StopEventCaptureResponse\x12\x19\n\x11\x64ptx_capture_html\x18\x01 \x01(\x0c\x12\x19\n\x11\x64prx_capture_html\x18\x02 \x01(\x0c*\xaa\x01\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x1a\n\x16ROLE_DPSOURCE_USBCSINK\x10\x01\x12\x18\n\x14ROLE_DPSOURCE_DPSINK\x10\x02\x12\x1c\n\x18ROLE_USBCSOURCE_USBCSINK\x10\x03\x12\x1a\n\x16ROLE_USBCSOURCE_DPSINK\x10\x04\x12\x1c\n\x18ROLE_HDMISOURCE_HDMISINK\x10\x05*\xa9\x02\n\x15StreamInfoColorFormat\x12\x17\n\x13STREAM_INFO_CF_NONE\x10\x00\x12\x1a\n\x16STREAM_INFO_CF_UNKNOWN\x10\x01\x12\x16\n\x12STREAM_INFO_CF_RGB\x10\x02\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_422\x10\x03\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_444\x10\x04\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_420\x10\x05\x12\x1e\n\x1aSTREAM_INFO_CF_IDO_DEFINED\x10\x06\x12\x19\n\x15STREAM_INFO_CF_Y_ONLY\x10\x07\x12\x16\n\x12STREAM_INFO_CF_RAW\x10\x08\x12\x16\n\x12STREAM_INFO_CF_DSC\x10\t*e\n\x16StreamInfoDynamicRange\x12\x1a\n\x16STREAM_INFO_DR_UNKNOWN\x10\x00\x12\x17\n\x13STREAM_INFO_DR_VESA\x10\x01\x12\x16\n\x12STREAM_INFO_DR_CTA\x10\x02*\xbb\x05\n\x15StreamInfoColorimetry\x12\x17\n\x13STREAM_INFO_CM_NONE\x10\x00\x12\x1b\n\x17STREAM_INFO_CM_RESERVED\x10\x01\x12\x17\n\x13STREAM_INFO_CM_SRGB\x10\x02\x12\x1d\n\x19STREAM_INFO_CM_SMPTE_170M\x10\x03\x12\x1d\n\x19STREAM_INFO_CM_ITUR_BT601\x10\x04\x12\x1d\n\x19STREAM_INFO_CM_ITUR_BT709\x10\x05\x12\x1b\n\x17STREAM_INFO_CM_XVYCC601\x10\x06\x12\x1b\n\x17STREAM_INFO_CM_XVYCC709\x10\x07\x12\x1a\n\x16STREAM_INFO_CM_SYCC601\x10\x08\x12\x1e\n\x1aSTREAM_INFO_CM_ADOBEYCC601\x10\t\x12\x1b\n\x17STREAM_INFO_CM_ADOBERGB\x10\n\x12\'\n#STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC\x10\x0b\x12$\n STREAM_INFO_CM_ITUR_BT2020_YCBCR\x10\x0c\x12\"\n\x1eSTREAM_INFO_CM_ITUR_BT2020_RGB\x10\r\x12%\n!STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX\x10\x0e\x12%\n!STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT\x10\x0f\x12\x19\n\x15STREAM_INFO_CM_DCI_P3\x10\x10\x12\'\n#STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE\x10\x11\x12\'\n#STREAM_INFO_CM_CUSTOM_COLOR_PROFILE\x10\x12\x12\x1b\n\x17STREAM_INFO_CM_OPYCC601\x10\x13\x12\x18\n\x14STREAM_INFO_CM_OPRGB\x10\x14*\x9a\x02\n\x12VideoSpecification\x12\x1e\n\x1aVIDEO_SPECIFICATION_UNKOWN\x10\x00\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_1_3\x10\x01\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_1_4\x10\x02\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_2_0\x10\x03\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_2_1\x10\x04\x12 \n\x1cVIDEO_SPECIFICATION_HDMI_1_4\x10\x05\x12 \n\x1cVIDEO_SPECIFICATION_HDMI_2_0\x10\x06\x12 \n\x1cVIDEO_SPECIFICATION_HDMI_2_1\x10\x07*\xd9\x01\n\x07\x46rlMode\x12\x14\n\x10\x46RL_MODE_UNKNOWN\x10\x00\x12\x14\n\x10\x46RL_MODE_DISABLE\x10\x01\x12\x19\n\x15\x46RL_MODE_3LANES_3GBPS\x10\x02\x12\x19\n\x15\x46RL_MODE_3LANES_6GBPS\x10\x03\x12\x19\n\x15\x46RL_MODE_4LANES_6GBPS\x10\x04\x12\x19\n\x15\x46RL_MODE_4LANES_8GBPS\x10\x05\x12\x1a\n\x16\x46RL_MODE_4LANES_10GBPS\x10\x06\x12\x1a\n\x16\x46RL_MODE_4LANES_12GBPS\x10\x07*\x80\x04\n\x13\x43omplianceTestGroup\x12\x14\n\x10GROUP_AUDIO_TEST\x10\x00\x12 \n\x1cGROUP_PIXEL_LEVEL_VIDEO_TEST\x10\x01\x12\x1e\n\x1aGROUP_CRC_BASED_VIDEO_TEST\x10\x02\x12\x13\n\x0fGROUP_LINK_TEST\x10\x03\x12(\n$GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS\x10\x04\x12,\n(GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS\x10\x05\x12\x33\n/GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST\x10\x06\x12\x33\n/GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS\x10\x07\x12,\n(GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT\x10\x08\x12\x33\n/GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST\x10\t\x12\x1a\n\x16GROUP_HDMI_RX_CRC_TEST\x10\n\x12\x1a\n\x16GROUP_HDMI_RX_VRR_TEST\x10\x0b\x12\x1f\n\x1bGROUP_HD_TX_CONTINUITY_TEST\x10\x0c*\xab\x01\n\x14\x43omplianceTestStatus\x12!\n\x1d\x43OMPLIANCE_TEST_STATUS_UNKOWN\x10\x00\x12\x1a\n\x16\x43OMPLIANCE_TEST_PASSED\x10\x01\x12\x1b\n\x17\x43OMPLIANCE_TEST_SKIPPED\x10\x02\x12\x1a\n\x16\x43OMPLIANCE_TEST_FAILED\x10\x03\x12\x1b\n\x17\x43OMPLIANCE_TEST_ABORTED\x10\x04\x32\xf1\x10\n\x12VideoTesterService\x12\x86\x01\n\x0fGetVideoTesters\x12\x38.chromiumos.test.lab.api.passport.GetVideoTestersRequest\x1a\x39.chromiumos.test.lab.api.passport.GetVideoTestersResponse\x12\x86\x01\n\x0fOpenVideoTester\x12\x38.chromiumos.test.lab.api.passport.OpenVideoTesterRequest\x1a\x39.chromiumos.test.lab.api.passport.OpenVideoTesterResponse\x12\x89\x01\n\x10\x43loseVideoTester\x12\x39.chromiumos.test.lab.api.passport.CloseVideoTesterRequest\x1a:.chromiumos.test.lab.api.passport.CloseVideoTesterResponse\x12|\n\x13GetRolesVideoTester\x12\x31.chromiumos.test.lab.api.passport.GetRolesRequest\x1a\x32.chromiumos.test.lab.api.passport.GetRolesResponse\x12y\n\x12SetRoleVideoTester\x12\x30.chromiumos.test.lab.api.passport.SetRoleRequest\x1a\x31.chromiumos.test.lab.api.passport.SetRoleResponse\x12\x92\x01\n\x13LoadEdidVideoTester\x12<.chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse\x12\xa1\x01\n\x18GetStreamInfoVideoTester\x12\x41.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest\x1a\x42.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse\x12\x98\x01\n\x15ScreenshotVideoTester\x12>.chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest\x1a?.chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse\x12\x8f\x01\n\x12SetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse\x12\x8f\x01\n\x12GetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse\x12\x8c\x01\n\x11\x41ttachVideoTester\x12:.chromiumos.test.lab.api.passport.AttachVideoTesterRequest\x1a;.chromiumos.test.lab.api.passport.AttachVideoTesterResponse\x12\x92\x01\n\x13HpdPulseVideoTester\x12<.chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse\x12\x8c\x01\n\x11RunComplianceTest\x12:.chromiumos.test.lab.api.passport.RunComplianceTestRequest\x1a;.chromiumos.test.lab.api.passport.RunComplianceTestResponse\x12\x8c\x01\n\x11StartEventCapture\x12:.chromiumos.test.lab.api.passport.StartEventCaptureRequest\x1a;.chromiumos.test.lab.api.passport.StartEventCaptureResponse\x12\x89\x01\n\x10StopEventCapture\x12\x39.chromiumos.test.lab.api.passport.StopEventCaptureRequest\x1a:.chromiumos.test.lab.api.passport.StopEventCaptureResponseB<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
+  serialized_pb=b'\n;chromiumos/test/lab/api/passport/video_tester_service.proto\x12 chromiumos.test.lab.api.passport\"\'\n\x0bVideoTester\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x18\n\x16GetVideoTestersRequest\"Y\n\x17GetVideoTestersResponse\x12>\n\x07testers\x18\x01 \x03(\x0b\x32-.chromiumos.test.lab.api.passport.VideoTester\"$\n\x16OpenVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x17OpenVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"%\n\x17\x43loseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"+\n\x18\x43loseVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1d\n\x0fGetRolesRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x10GetRolesResponse\x12\x35\n\x05roles\x18\x01 \x03(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"R\n\x0eSetRoleRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x34\n\x04role\x18\x02 \x01(\x0e\x32&.chromiumos.test.lab.api.passport.Role\"\"\n\x0fSetRoleResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"I\n\x1aLoadEdidVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x65\x64id\x18\x02 \x01(\x0c\x12\x11\n\tid_stream\x18\x03 \x01(\x03\".\n\x1bLoadEdidVideoTesterResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"-\n\x1fGetStreamInfoVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x9c\x05\n\x15StreamInfoVideoTester\x12\x17\n\nframe_rate\x18\x01 \x01(\x01H\x00\x88\x01\x01\x12\x14\n\x07hactive\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x14\n\x07vactive\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x13\n\x06htotal\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12\x13\n\x06vtotal\x18\x05 \x01(\x03H\x04\x88\x01\x01\x12\x13\n\x06hstart\x18\x06 \x01(\x03H\x05\x88\x01\x01\x12\x13\n\x06vstart\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x14\n\x07hswidth\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x14\n\x07vswidth\x18\t \x01(\x03H\x08\x88\x01\x01\x12\x10\n\x03\x62pp\x18\n \x01(\x03H\t\x88\x01\x01\x12R\n\x0c\x63olor_format\x18\x0b \x01(\x0e\x32\x37.chromiumos.test.lab.api.passport.StreamInfoColorFormatH\n\x88\x01\x01\x12P\n\ncolormetry\x18\x0c \x01(\x0e\x32\x37.chromiumos.test.lab.api.passport.StreamInfoColorimetryH\x0b\x88\x01\x01\x12T\n\rdynamic_range\x18\r \x01(\x0e\x32\x38.chromiumos.test.lab.api.passport.StreamInfoDynamicRangeH\x0c\x88\x01\x01\x12\x0b\n\x03\x63rc\x18\x0e \x03(\x03\x42\r\n\x0b_frame_rateB\n\n\x08_hactiveB\n\n\x08_vactiveB\t\n\x07_htotalB\t\n\x07_vtotalB\t\n\x07_hstartB\t\n\x07_vstartB\n\n\x08_hswidthB\n\n\x08_vswidthB\x06\n\x04_bppB\x0f\n\r_color_formatB\r\n\x0b_colormetryB\x10\n\x0e_dynamic_range\"l\n GetStreamInfoVideoTesterResponse\x12H\n\x07streams\x18\x01 \x03(\x0b\x32\x37.chromiumos.test.lab.api.passport.StreamInfoVideoTester\"=\n\x1cScreenshotVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tid_stream\x18\x02 \x01(\x03\"3\n\x1dScreenshotVideoTesterResponse\x12\x12\n\nscreenshot\x18\x01 \x01(\x0c\"\x93\x06\n\x19SetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x03mst\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x1b\n\x0escrambler_seed\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x05 \x01(\x03H\x03\x88\x01\x01\x12@\n\x08\x66rl_mode\x18\t \x01(\x0e\x32).chromiumos.test.lab.api.passport.FrlModeH\x04\x88\x01\x01\x12\x16\n\tfrl_start\x18\x0b \x01(\x08H\x05\x88\x01\x01\x12\x16\n\tfrl_ready\x18\x0c \x01(\x08H\x06\x88\x01\x01\x12\x14\n\x07\x66rl_max\x18\r \x01(\x08H\x07\x88\x01\x01\x12\x1b\n\x0e\x66rl_no_timeout\x18\x0e \x01(\x08H\x08\x88\x01\x01\x12\x1a\n\rfrl_check_ltp\x18\x0f \x01(\x08H\t\x88\x01\x01\x12M\n\nvideo_spec\x18\x10 \x01(\x0e\x32\x34.chromiumos.test.lab.api.passport.VideoSpecificationH\n\x88\x01\x01\x12\x13\n\x06ss_sbm\x18\x11 \x01(\x08H\x0b\x88\x01\x01\x12\x10\n\x03\x66\x65\x63\x18\x12 \x01(\x08H\x0c\x88\x01\x01\x12\x11\n\x04tps4\x18\x13 \x01(\x08H\r\x88\x01\x01\x12\x11\n\x04tps3\x18\x14 \x01(\x08H\x0e\x88\x01\x01\x12\x10\n\x03\x64sc\x18\x15 \x01(\x08H\x0f\x88\x01\x01\x12G\n\x0f\x64p_128_bitrates\x18\x16 \x03(\x0e\x32..chromiumos.test.lab.api.passport.Dp128BitrateB\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x11\n\x0f_scrambler_seedB\x0b\n\t_max_laneB\x0b\n\t_frl_modeB\x0c\n\n_frl_startB\x0c\n\n_frl_readyB\n\n\x08_frl_maxB\x11\n\x0f_frl_no_timeoutB\x10\n\x0e_frl_check_ltpB\r\n\x0b_video_specB\t\n\x07_ss_sbmB\x06\n\x04_fecB\x07\n\x05_tps4B\x07\n\x05_tps3B\x06\n\x04_dsc\"\x1c\n\x1aSetLinkVideoTesterResponse\"\'\n\x19GetLinkVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x7f\n\tVideoLane\x12\x17\n\nlane_speed\x18\x01 \x01(\x03H\x00\x88\x01\x01\x12\x16\n\terror_cnt\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x16\n\tlane_lock\x18\x03 \x01(\x03H\x02\x88\x01\x01\x42\r\n\x0b_lane_speedB\x0c\n\n_error_cntB\x0c\n\n_lane_lock\"\xac\x07\n\x1aGetLinkVideoTesterResponse\x12\x10\n\x03mst\x18\x01 \x01(\x08H\x00\x88\x01\x01\x12\x1b\n\x0emst_sink_count\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x1b\n\x0escrambler_seed\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08max_lane\x18\x04 \x01(\x03H\x03\x88\x01\x01\x12@\n\x08\x66rl_mode\x18\x06 \x01(\x0e\x32).chromiumos.test.lab.api.passport.FrlModeH\x04\x88\x01\x01\x12\x16\n\tfrl_start\x18\x07 \x01(\x08H\x05\x88\x01\x01\x12\x16\n\tfrl_ready\x18\x08 \x01(\x08H\x06\x88\x01\x01\x12\x14\n\x07\x66rl_max\x18\t \x01(\x08H\x07\x88\x01\x01\x12\x1b\n\x0e\x66rl_no_timeout\x18\n \x01(\x08H\x08\x88\x01\x01\x12\x1a\n\rfrl_check_ltp\x18\x0b \x01(\x08H\t\x88\x01\x01\x12\x1c\n\x0ftdms_clock_rate\x18\x0c \x01(\x03H\n\x88\x01\x01\x12\x1e\n\x11tdms_report_locks\x18\r \x01(\x03H\x0b\x88\x01\x01\x12M\n\nvideo_spec\x18\x0e \x01(\x0e\x32\x34.chromiumos.test.lab.api.passport.VideoSpecificationH\x0c\x88\x01\x01\x12:\n\x05lanes\x18\x0f \x03(\x0b\x32+.chromiumos.test.lab.api.passport.VideoLane\x12\x13\n\x06ss_sbm\x18\x10 \x01(\x08H\r\x88\x01\x01\x12\x10\n\x03\x66\x65\x63\x18\x11 \x01(\x08H\x0e\x88\x01\x01\x12\x11\n\x04tps4\x18\x12 \x01(\x08H\x0f\x88\x01\x01\x12\x11\n\x04tps3\x18\x13 \x01(\x08H\x10\x88\x01\x01\x12\x10\n\x03\x64sc\x18\x14 \x01(\x08H\x11\x88\x01\x01\x12G\n\x0f\x64p_128_bitrates\x18\x15 \x03(\x0e\x32..chromiumos.test.lab.api.passport.Dp128BitrateB\x06\n\x04_mstB\x11\n\x0f_mst_sink_countB\x11\n\x0f_scrambler_seedB\x0b\n\t_max_laneB\x0b\n\t_frl_modeB\x0c\n\n_frl_startB\x0c\n\n_frl_readyB\n\n\x08_frl_maxB\x11\n\x0f_frl_no_timeoutB\x10\n\x0e_frl_check_ltpB\x12\n\x10_tdms_clock_rateB\x14\n\x12_tdms_report_locksB\r\n\x0b_video_specB\t\n\x07_ss_sbmB\x06\n\x04_fecB\x07\n\x05_tps4B\x07\n\x05_tps3B\x06\n\x04_dsc\"6\n\x18\x41ttachVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x61ttach\x18\x02 \x01(\x08\"\x1b\n\x19\x41ttachVideoTesterResponse\"^\n\x1aHpdPulseVideoTesterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11pulse_duration_ms\x18\x02 \x01(\x03H\x00\x88\x01\x01\x42\x14\n\x12_pulse_duration_ms\"\x1d\n\x1bHpdPulseVideoTesterResponse\"u\n\x19\x43omplianceTestVideoTester\x12G\n\x08group_id\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.lab.api.passport.ComplianceTestGroup\x12\x0f\n\x07test_id\x18\x02 \x01(\x03\"\xb4\x01\n\x1f\x43omplianceTestResultVideoTester\x12I\n\x04test\x18\x01 \x01(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x46\n\x06status\x18\x02 \x01(\x0e\x32\x36.chromiumos.test.lab.api.passport.ComplianceTestStatus\"\x93\x01\n\x18RunComplianceTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12J\n\x05tests\x18\x02 \x03(\x0b\x32;.chromiumos.test.lab.api.passport.ComplianceTestVideoTester\x12\x10\n\x08platform\x18\x03 \x01(\t\x12\r\n\x05model\x18\x04 \x01(\t\"\x85\x01\n\x19RunComplianceTestResponse\x12R\n\x07results\x18\x01 \x03(\x0b\x32\x41.chromiumos.test.lab.api.passport.ComplianceTestResultVideoTester\x12\x14\n\x0cresults_html\x18\x02 \x01(\x0c\"\xb2\x01\n\x16\x44pRxEventCaptureConfig\x12\x12\n\nhpd_events\x18\x01 \x01(\x08\x12\x12\n\naux_events\x18\x02 \x01(\x08\x12\x12\n\nsdp_events\x18\x03 \x01(\x08\x12\x1b\n\x13link_pattern_events\x18\x04 \x01(\x08\x12\x14\n\x0cvb_id_events\x18\x05 \x01(\x08\x12\x12\n\nmsa_events\x18\x06 \x01(\x08\x12\x15\n\raux_bw_events\x18\x07 \x01(\x08\"@\n\x16\x44pTxEventCaptureConfig\x12\x12\n\nhpd_events\x18\x01 \x01(\x08\x12\x12\n\naux_events\x18\x02 \x01(\x08\"\xc4\x01\n\x18StartEventCaptureRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12M\n\x0b\x64prx_config\x18\x02 \x01(\x0b\x32\x38.chromiumos.test.lab.api.passport.DpRxEventCaptureConfig\x12M\n\x0b\x64ptx_config\x18\x03 \x01(\x0b\x32\x38.chromiumos.test.lab.api.passport.DpTxEventCaptureConfig\"\x1b\n\x19StartEventCaptureResponse\"?\n\x17StopEventCaptureRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x10generate_reports\x18\x02 \x01(\x08\"P\n\x18StopEventCaptureResponse\x12\x19\n\x11\x64ptx_capture_html\x18\x01 \x01(\x0c\x12\x19\n\x11\x64prx_capture_html\x18\x02 \x01(\x0c*\xaa\x01\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x1a\n\x16ROLE_DPSOURCE_USBCSINK\x10\x01\x12\x18\n\x14ROLE_DPSOURCE_DPSINK\x10\x02\x12\x1c\n\x18ROLE_USBCSOURCE_USBCSINK\x10\x03\x12\x1a\n\x16ROLE_USBCSOURCE_DPSINK\x10\x04\x12\x1c\n\x18ROLE_HDMISOURCE_HDMISINK\x10\x05*\xa9\x02\n\x15StreamInfoColorFormat\x12\x17\n\x13STREAM_INFO_CF_NONE\x10\x00\x12\x1a\n\x16STREAM_INFO_CF_UNKNOWN\x10\x01\x12\x16\n\x12STREAM_INFO_CF_RGB\x10\x02\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_422\x10\x03\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_444\x10\x04\x12\x1c\n\x18STREAM_INFO_CF_YCBCR_420\x10\x05\x12\x1e\n\x1aSTREAM_INFO_CF_IDO_DEFINED\x10\x06\x12\x19\n\x15STREAM_INFO_CF_Y_ONLY\x10\x07\x12\x16\n\x12STREAM_INFO_CF_RAW\x10\x08\x12\x16\n\x12STREAM_INFO_CF_DSC\x10\t*e\n\x16StreamInfoDynamicRange\x12\x1a\n\x16STREAM_INFO_DR_UNKNOWN\x10\x00\x12\x17\n\x13STREAM_INFO_DR_VESA\x10\x01\x12\x16\n\x12STREAM_INFO_DR_CTA\x10\x02*\xbb\x05\n\x15StreamInfoColorimetry\x12\x17\n\x13STREAM_INFO_CM_NONE\x10\x00\x12\x1b\n\x17STREAM_INFO_CM_RESERVED\x10\x01\x12\x17\n\x13STREAM_INFO_CM_SRGB\x10\x02\x12\x1d\n\x19STREAM_INFO_CM_SMPTE_170M\x10\x03\x12\x1d\n\x19STREAM_INFO_CM_ITUR_BT601\x10\x04\x12\x1d\n\x19STREAM_INFO_CM_ITUR_BT709\x10\x05\x12\x1b\n\x17STREAM_INFO_CM_XVYCC601\x10\x06\x12\x1b\n\x17STREAM_INFO_CM_XVYCC709\x10\x07\x12\x1a\n\x16STREAM_INFO_CM_SYCC601\x10\x08\x12\x1e\n\x1aSTREAM_INFO_CM_ADOBEYCC601\x10\t\x12\x1b\n\x17STREAM_INFO_CM_ADOBERGB\x10\n\x12\'\n#STREAM_INFO_CM_ITUR_BT2020_YCCBCCRC\x10\x0b\x12$\n STREAM_INFO_CM_ITUR_BT2020_YCBCR\x10\x0c\x12\"\n\x1eSTREAM_INFO_CM_ITUR_BT2020_RGB\x10\r\x12%\n!STREAM_INFO_CM_RGB_WIDE_GAMUT_FIX\x10\x0e\x12%\n!STREAM_INFO_CM_RGB_WIDE_GAMUT_FLT\x10\x0f\x12\x19\n\x15STREAM_INFO_CM_DCI_P3\x10\x10\x12\'\n#STREAM_INFO_CM_DICOM_1_4_GRAY_SCALE\x10\x11\x12\'\n#STREAM_INFO_CM_CUSTOM_COLOR_PROFILE\x10\x12\x12\x1b\n\x17STREAM_INFO_CM_OPYCC601\x10\x13\x12\x18\n\x14STREAM_INFO_CM_OPRGB\x10\x14*\x9a\x02\n\x12VideoSpecification\x12\x1e\n\x1aVIDEO_SPECIFICATION_UNKOWN\x10\x00\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_1_3\x10\x01\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_1_4\x10\x02\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_2_0\x10\x03\x12\x1e\n\x1aVIDEO_SPECIFICATION_DP_2_1\x10\x04\x12 \n\x1cVIDEO_SPECIFICATION_HDMI_1_4\x10\x05\x12 \n\x1cVIDEO_SPECIFICATION_HDMI_2_0\x10\x06\x12 \n\x1cVIDEO_SPECIFICATION_HDMI_2_1\x10\x07*\xd9\x01\n\x07\x46rlMode\x12\x14\n\x10\x46RL_MODE_UNKNOWN\x10\x00\x12\x14\n\x10\x46RL_MODE_DISABLE\x10\x01\x12\x19\n\x15\x46RL_MODE_3LANES_3GBPS\x10\x02\x12\x19\n\x15\x46RL_MODE_3LANES_6GBPS\x10\x03\x12\x19\n\x15\x46RL_MODE_4LANES_6GBPS\x10\x04\x12\x19\n\x15\x46RL_MODE_4LANES_8GBPS\x10\x05\x12\x1a\n\x16\x46RL_MODE_4LANES_10GBPS\x10\x06\x12\x1a\n\x16\x46RL_MODE_4LANES_12GBPS\x10\x07*r\n\x0c\x44p128Bitrate\x12\x17\n\x13\x44P_128_BITRATE_NONE\x10\x00\x12\x17\n\x13\x44P_128_BITRATE_10_0\x10\x01\x12\x17\n\x13\x44P_128_BITRATE_13_5\x10\x02\x12\x17\n\x13\x44P_128_BITRATE_20_0\x10\x03*\x80\x04\n\x13\x43omplianceTestGroup\x12\x14\n\x10GROUP_AUDIO_TEST\x10\x00\x12 \n\x1cGROUP_PIXEL_LEVEL_VIDEO_TEST\x10\x01\x12\x1e\n\x1aGROUP_CRC_BASED_VIDEO_TEST\x10\x02\x12\x13\n\x0fGROUP_LINK_TEST\x10\x03\x12(\n$GROUP_DISPLAYPORT_1_4_LINK_LAYER_CTS\x10\x04\x12,\n(GROUP_DISPLAYPORT_1_4_DSC_LINK_LAYER_CTS\x10\x05\x12\x33\n/GROUP_DISPLAYPORT_1_4_DISPLAYID_CTS_SOURCE_TEST\x10\x06\x12\x33\n/GROUP_DISPLAYPORT_2_1_LINK_LAYER_SOURCE_DUT_CTS\x10\x07\x12,\n(GROUP_DISPLAYPORT_2_1_DSC_CTS_SOURCE_DUT\x10\x08\x12\x33\n/GROUP_DISPLAYPORT_2_1_DISPLAYID_CTS_SOURCE_TEST\x10\t\x12\x1a\n\x16GROUP_HDMI_RX_CRC_TEST\x10\n\x12\x1a\n\x16GROUP_HDMI_RX_VRR_TEST\x10\x0b\x12\x1f\n\x1bGROUP_HD_TX_CONTINUITY_TEST\x10\x0c*\xab\x01\n\x14\x43omplianceTestStatus\x12!\n\x1d\x43OMPLIANCE_TEST_STATUS_UNKOWN\x10\x00\x12\x1a\n\x16\x43OMPLIANCE_TEST_PASSED\x10\x01\x12\x1b\n\x17\x43OMPLIANCE_TEST_SKIPPED\x10\x02\x12\x1a\n\x16\x43OMPLIANCE_TEST_FAILED\x10\x03\x12\x1b\n\x17\x43OMPLIANCE_TEST_ABORTED\x10\x04\x32\xf1\x10\n\x12VideoTesterService\x12\x86\x01\n\x0fGetVideoTesters\x12\x38.chromiumos.test.lab.api.passport.GetVideoTestersRequest\x1a\x39.chromiumos.test.lab.api.passport.GetVideoTestersResponse\x12\x86\x01\n\x0fOpenVideoTester\x12\x38.chromiumos.test.lab.api.passport.OpenVideoTesterRequest\x1a\x39.chromiumos.test.lab.api.passport.OpenVideoTesterResponse\x12\x89\x01\n\x10\x43loseVideoTester\x12\x39.chromiumos.test.lab.api.passport.CloseVideoTesterRequest\x1a:.chromiumos.test.lab.api.passport.CloseVideoTesterResponse\x12|\n\x13GetRolesVideoTester\x12\x31.chromiumos.test.lab.api.passport.GetRolesRequest\x1a\x32.chromiumos.test.lab.api.passport.GetRolesResponse\x12y\n\x12SetRoleVideoTester\x12\x30.chromiumos.test.lab.api.passport.SetRoleRequest\x1a\x31.chromiumos.test.lab.api.passport.SetRoleResponse\x12\x92\x01\n\x13LoadEdidVideoTester\x12<.chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse\x12\xa1\x01\n\x18GetStreamInfoVideoTester\x12\x41.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest\x1a\x42.chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse\x12\x98\x01\n\x15ScreenshotVideoTester\x12>.chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest\x1a?.chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse\x12\x8f\x01\n\x12SetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse\x12\x8f\x01\n\x12GetLinkVideoTester\x12;.chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest\x1a<.chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse\x12\x8c\x01\n\x11\x41ttachVideoTester\x12:.chromiumos.test.lab.api.passport.AttachVideoTesterRequest\x1a;.chromiumos.test.lab.api.passport.AttachVideoTesterResponse\x12\x92\x01\n\x13HpdPulseVideoTester\x12<.chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest\x1a=.chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse\x12\x8c\x01\n\x11RunComplianceTest\x12:.chromiumos.test.lab.api.passport.RunComplianceTestRequest\x1a;.chromiumos.test.lab.api.passport.RunComplianceTestResponse\x12\x8c\x01\n\x11StartEventCapture\x12:.chromiumos.test.lab.api.passport.StartEventCaptureRequest\x1a;.chromiumos.test.lab.api.passport.StartEventCaptureResponse\x12\x89\x01\n\x10StopEventCapture\x12\x39.chromiumos.test.lab.api.passport.StopEventCaptureRequest\x1a:.chromiumos.test.lab.api.passport.StopEventCaptureResponseB<Z:go.chromium.org/chromiumos/config/go/test/lab/api/passportb\x06proto3'
 )
 
 _ROLE = _descriptor.EnumDescriptor(
@@ -63,8 +63,8 @@ _ROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4924,
-  serialized_end=5094,
+  serialized_start=5070,
+  serialized_end=5240,
 )
 _sym_db.RegisterEnumDescriptor(_ROLE)
 
@@ -129,8 +129,8 @@ _STREAMINFOCOLORFORMAT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5097,
-  serialized_end=5394,
+  serialized_start=5243,
+  serialized_end=5540,
 )
 _sym_db.RegisterEnumDescriptor(_STREAMINFOCOLORFORMAT)
 
@@ -160,8 +160,8 @@ _STREAMINFODYNAMICRANGE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5396,
-  serialized_end=5497,
+  serialized_start=5542,
+  serialized_end=5643,
 )
 _sym_db.RegisterEnumDescriptor(_STREAMINFODYNAMICRANGE)
 
@@ -281,8 +281,8 @@ _STREAMINFOCOLORIMETRY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5500,
-  serialized_end=6199,
+  serialized_start=5646,
+  serialized_end=6345,
 )
 _sym_db.RegisterEnumDescriptor(_STREAMINFOCOLORIMETRY)
 
@@ -337,8 +337,8 @@ _VIDEOSPECIFICATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6202,
-  serialized_end=6484,
+  serialized_start=6348,
+  serialized_end=6630,
 )
 _sym_db.RegisterEnumDescriptor(_VIDEOSPECIFICATION)
 
@@ -393,12 +393,48 @@ _FRLMODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6487,
-  serialized_end=6704,
+  serialized_start=6633,
+  serialized_end=6850,
 )
 _sym_db.RegisterEnumDescriptor(_FRLMODE)
 
 FrlMode = enum_type_wrapper.EnumTypeWrapper(_FRLMODE)
+_DP128BITRATE = _descriptor.EnumDescriptor(
+  name='Dp128Bitrate',
+  full_name='chromiumos.test.lab.api.passport.Dp128Bitrate',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='DP_128_BITRATE_NONE', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DP_128_BITRATE_10_0', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DP_128_BITRATE_13_5', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DP_128_BITRATE_20_0', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=6852,
+  serialized_end=6966,
+)
+_sym_db.RegisterEnumDescriptor(_DP128BITRATE)
+
+Dp128Bitrate = enum_type_wrapper.EnumTypeWrapper(_DP128BITRATE)
 _COMPLIANCETESTGROUP = _descriptor.EnumDescriptor(
   name='ComplianceTestGroup',
   full_name='chromiumos.test.lab.api.passport.ComplianceTestGroup',
@@ -474,8 +510,8 @@ _COMPLIANCETESTGROUP = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6707,
-  serialized_end=7219,
+  serialized_start=6969,
+  serialized_end=7481,
 )
 _sym_db.RegisterEnumDescriptor(_COMPLIANCETESTGROUP)
 
@@ -515,8 +551,8 @@ _COMPLIANCETESTSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7222,
-  serialized_end=7393,
+  serialized_start=7484,
+  serialized_end=7655,
 )
 _sym_db.RegisterEnumDescriptor(_COMPLIANCETESTSTATUS)
 
@@ -577,6 +613,10 @@ FRL_MODE_4LANES_6GBPS = 4
 FRL_MODE_4LANES_8GBPS = 5
 FRL_MODE_4LANES_10GBPS = 6
 FRL_MODE_4LANES_12GBPS = 7
+DP_128_BITRATE_NONE = 0
+DP_128_BITRATE_10_0 = 1
+DP_128_BITRATE_13_5 = 2
+DP_128_BITRATE_20_0 = 3
 GROUP_AUDIO_TEST = 0
 GROUP_PIXEL_LEVEL_VIDEO_TEST = 1
 GROUP_CRC_BASED_VIDEO_TEST = 2
@@ -1485,6 +1525,13 @@ _SETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dp_128_bitrates', full_name='chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest.dp_128_bitrates', index=17,
+      number=22, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1578,7 +1625,7 @@ _SETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=1715,
-  serialized_end=2429,
+  serialized_end=2502,
 )
 
 
@@ -1602,8 +1649,8 @@ _SETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2431,
-  serialized_end=2459,
+  serialized_start=2504,
+  serialized_end=2532,
 )
 
 
@@ -1634,8 +1681,8 @@ _GETLINKVIDEOTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2461,
-  serialized_end=2500,
+  serialized_start=2534,
+  serialized_end=2573,
 )
 
 
@@ -1695,8 +1742,8 @@ _VIDEOLANE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2502,
-  serialized_end=2629,
+  serialized_start=2575,
+  serialized_end=2702,
 )
 
 
@@ -1841,6 +1888,13 @@ _GETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dp_128_bitrates', full_name='chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse.dp_128_bitrates', index=19,
+      number=21, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1943,8 +1997,8 @@ _GETLINKVIDEOTESTERRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2632,
-  serialized_end=3499,
+  serialized_start=2705,
+  serialized_end=3645,
 )
 
 
@@ -1982,8 +2036,8 @@ _ATTACHVIDEOTESTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3501,
-  serialized_end=3555,
+  serialized_start=3647,
+  serialized_end=3701,
 )
 
 
@@ -2007,8 +2061,8 @@ _ATTACHVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3557,
-  serialized_end=3584,
+  serialized_start=3703,
+  serialized_end=3730,
 )
 
 
@@ -2051,8 +2105,8 @@ _HPDPULSEVIDEOTESTERREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=3586,
-  serialized_end=3680,
+  serialized_start=3732,
+  serialized_end=3826,
 )
 
 
@@ -2076,8 +2130,8 @@ _HPDPULSEVIDEOTESTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3682,
-  serialized_end=3711,
+  serialized_start=3828,
+  serialized_end=3857,
 )
 
 
@@ -2115,8 +2169,8 @@ _COMPLIANCETESTVIDEOTESTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3713,
-  serialized_end=3830,
+  serialized_start=3859,
+  serialized_end=3976,
 )
 
 
@@ -2154,8 +2208,8 @@ _COMPLIANCETESTRESULTVIDEOTESTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3833,
-  serialized_end=4013,
+  serialized_start=3979,
+  serialized_end=4159,
 )
 
 
@@ -2207,8 +2261,8 @@ _RUNCOMPLIANCETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4016,
-  serialized_end=4163,
+  serialized_start=4162,
+  serialized_end=4309,
 )
 
 
@@ -2246,8 +2300,8 @@ _RUNCOMPLIANCETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4166,
-  serialized_end=4299,
+  serialized_start=4312,
+  serialized_end=4445,
 )
 
 
@@ -2320,8 +2374,8 @@ _DPRXEVENTCAPTURECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4302,
-  serialized_end=4480,
+  serialized_start=4448,
+  serialized_end=4626,
 )
 
 
@@ -2359,8 +2413,8 @@ _DPTXEVENTCAPTURECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4482,
-  serialized_end=4546,
+  serialized_start=4628,
+  serialized_end=4692,
 )
 
 
@@ -2405,8 +2459,8 @@ _STARTEVENTCAPTUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4549,
-  serialized_end=4745,
+  serialized_start=4695,
+  serialized_end=4891,
 )
 
 
@@ -2430,8 +2484,8 @@ _STARTEVENTCAPTURERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4747,
-  serialized_end=4774,
+  serialized_start=4893,
+  serialized_end=4920,
 )
 
 
@@ -2469,8 +2523,8 @@ _STOPEVENTCAPTUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4776,
-  serialized_end=4839,
+  serialized_start=4922,
+  serialized_end=4985,
 )
 
 
@@ -2508,8 +2562,8 @@ _STOPEVENTCAPTURERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4841,
-  serialized_end=4921,
+  serialized_start=4987,
+  serialized_end=5067,
 )
 
 _GETVIDEOTESTERSRESPONSE.fields_by_name['testers'].message_type = _VIDEOTESTER
@@ -2560,6 +2614,7 @@ _STREAMINFOVIDEOTESTER.fields_by_name['dynamic_range'].containing_oneof = _STREA
 _GETSTREAMINFOVIDEOTESTERRESPONSE.fields_by_name['streams'].message_type = _STREAMINFOVIDEOTESTER
 _SETLINKVIDEOTESTERREQUEST.fields_by_name['frl_mode'].enum_type = _FRLMODE
 _SETLINKVIDEOTESTERREQUEST.fields_by_name['video_spec'].enum_type = _VIDEOSPECIFICATION
+_SETLINKVIDEOTESTERREQUEST.fields_by_name['dp_128_bitrates'].enum_type = _DP128BITRATE
 _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst'].fields.append(
   _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst'])
 _SETLINKVIDEOTESTERREQUEST.fields_by_name['mst'].containing_oneof = _SETLINKVIDEOTESTERREQUEST.oneofs_by_name['_mst']
@@ -2620,6 +2675,7 @@ _VIDEOLANE.fields_by_name['lane_lock'].containing_oneof = _VIDEOLANE.oneofs_by_n
 _GETLINKVIDEOTESTERRESPONSE.fields_by_name['frl_mode'].enum_type = _FRLMODE
 _GETLINKVIDEOTESTERRESPONSE.fields_by_name['video_spec'].enum_type = _VIDEOSPECIFICATION
 _GETLINKVIDEOTESTERRESPONSE.fields_by_name['lanes'].message_type = _VIDEOLANE
+_GETLINKVIDEOTESTERRESPONSE.fields_by_name['dp_128_bitrates'].enum_type = _DP128BITRATE
 _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst'].fields.append(
   _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst'])
 _GETLINKVIDEOTESTERRESPONSE.fields_by_name['mst'].containing_oneof = _GETLINKVIDEOTESTERRESPONSE.oneofs_by_name['_mst']
@@ -2727,6 +2783,7 @@ DESCRIPTOR.enum_types_by_name['StreamInfoDynamicRange'] = _STREAMINFODYNAMICRANG
 DESCRIPTOR.enum_types_by_name['StreamInfoColorimetry'] = _STREAMINFOCOLORIMETRY
 DESCRIPTOR.enum_types_by_name['VideoSpecification'] = _VIDEOSPECIFICATION
 DESCRIPTOR.enum_types_by_name['FrlMode'] = _FRLMODE
+DESCRIPTOR.enum_types_by_name['Dp128Bitrate'] = _DP128BITRATE
 DESCRIPTOR.enum_types_by_name['ComplianceTestGroup'] = _COMPLIANCETESTGROUP
 DESCRIPTOR.enum_types_by_name['ComplianceTestStatus'] = _COMPLIANCETESTSTATUS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -3000,8 +3057,8 @@ _VIDEOTESTERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=7396,
-  serialized_end=9557,
+  serialized_start=7658,
+  serialized_end=9819,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVideoTesters',

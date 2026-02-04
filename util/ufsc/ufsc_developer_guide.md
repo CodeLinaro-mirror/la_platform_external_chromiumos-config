@@ -11,6 +11,7 @@ This guide explains the process for developers to add or modify fields within th
 * **Project-Specific Values:** Each project defines the specific integer values for the options relevant to its hardware.
 * **Generation Script:** A Python script (`generate_ufsc.py`) uses the schema and project definitions to generate firmware-consumable configuration files.
 * **Structure:** The configuration is encoded into multiple 32-bit DWORDs stored in the EC's CBI (CrOS Board Info). The current implementation uses 4 DWORDs for standardized fields. OEM customization fields are provided to define device specific non-standardized firmware configuration.
+* **OEM Customization Bits:** These are dedicated, reserved fields within the standardized firmware schema (for AP and EC) that allow OEMs/ODMs to define specific firmware configurations for a particular board. This mechanism provides essential flexibility for board-specific settings. Example: WiFi SAR ID is not part of standardized fields and needs to be managed through OEM customization bits.
 * **Consumers:** Fields are explicitly marked for use by "AP", "EC", or "BOTH".
 
 # Overview of Key Files
@@ -246,9 +247,21 @@ end
 * Use **`<project>_ec_ufsc.dtsi`** in project.overlay
 * Please refer to [https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/docs/zephyr/zephyr\_ufsc.md](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/docs/zephyr/zephyr_ufsc.md) for more information.
 
-# Important Notes
 
-* **Consistency :** Strictly follow the naming convention: Schema Key (UPPER\_CASE) \-\> Proto Field (lower\_case) \-\> `_create_firmware_config` argument (lower\_case). The final key in `fw_config_defs` must match the Schema Key (UPPER\_CASE).
-* **Regenerate Proto Bindings:** Always remember this step after modifying the `.proto` file. Run [generate.sh](http://generate.sh) in src/config
-* **Run `generate_ufsc.py`:** Always run the script after modifying schema or project definitions to update the generated `.cb` and `.dtsi` files.
-* **Use Generated Files:** The generated `.cb` and `.dtsi` files should be copied over to the coreboot and EC board specific code.
+# Tooling
+
+Please refer to tooling details in zephyr UFSC [documentation](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/docs/zephyr/zephyr_ufsc.md#testing-and-debugging)
+
+ # Important Notes
+
+ * **Consistency :** Strictly follow the naming convention: Schema Key (UPPER\_CASE) \-\> Proto Field (lower\_case) \-\> `_create_firmware_config` argument (lower\_case). The final key in `fw_config_defs` must match the Schema Key (UPPER\_CASE).
+ * **Regenerate Proto Bindings:** Always remember this step after modifying the `.proto` file. Run [generate.sh](http://generate.sh) in src/config
+ * **Run `generate_ufsc.py`:** Always run the script after modifying schema or project definitions to update the generated `.cb` and `.dtsi` files.
+ * **Use Generated Files:** The generated `.cb` and `.dtsi` files should be copied over to the coreboot and EC board specific code.
+
+# Revision  History
+
+| Revision | Changelist |
+| :---- | :---- |
+| Revision 1.0 | First draft |
+| Revision 1.1 | Add information on OEM customization fields. Add section for UFSC tooling |

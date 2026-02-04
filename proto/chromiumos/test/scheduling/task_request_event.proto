@@ -28,7 +28,14 @@ message TaskRequestEvent {
   bool asap = 12;
   int64 task_state_id = 13;
   string device_name = 14;
+  // Invoking service or process that generated this request (i.e. ctpv2, ate,
+  // etc). This may still be an LDAP if the request is coming from a
+  // workstation.
   string user = 15;
+  // End user associated with this request, this is typically an LDAP (i.e.
+  // during an ad-hoc run triggered by a human), or a group (if triggered from
+  // a config).
+  string actual_user = 18;
   repeated string experiments = 16;
   OsType os_type = 17;
 }

@@ -39,6 +39,15 @@ enum VMType {
   VM_TYPE_DRONE = 2;
 }
 
+// The state of the DUT in UFS.
+enum DutState {
+  DUT_STATE_UNSPECIFIED = 0;
+  // Device is in good shape and ready for testing.
+  DUT_STATE_NORMAL = 1;
+  // Device is broken and needs repair.
+  DUT_STATE_NEEDS_REPAIR = 2;
+}
+
 message HardwareRequirements {
   message LabelValues {
     repeated string values = 1;
@@ -64,6 +73,9 @@ message ExtendLeaseRequest {
 
   // New user payload to update.
   map<string, string> user_payload = 4;
+
+  // The state of the DUT should be set to if the lease expires.
+  DutState on_expiration_dut_state = 5;
 }
 
 message ExtendLeaseResponse {
