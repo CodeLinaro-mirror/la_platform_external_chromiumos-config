@@ -42,7 +42,13 @@ def _generate_xml_for_component(component_config, output_dir: pathlib.Path):
 
         element_name = field.name.replace("_", "-")
         elem = etree.SubElement(root, element_name)
-        elem.text = str(getattr(component_config, field.name))
+        # TODO(b/449551444): Add a unit test for enums once there are actually
+        # enums in the input proto schema.
+        value = getattr(component_config, field.name)
+        if field.type == field.TYPE_ENUM:
+            elem.text = field.enum_type.values_by_number[value].name
+        else:
+            elem.text = str(value)
 
     if not component_id:
         logging.warning(
