@@ -12076,6 +12076,113 @@
         {
           "field": [
             {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mediaProfileSuffix",
+              "label": "LABEL_OPTIONAL",
+              "name": "media_profile_suffix",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CameraConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "storageType",
+              "label": "LABEL_OPTIONAL",
+              "name": "storage_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StorageConfigurationType"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "backlightSupport",
+              "label": "LABEL_OPTIONAL",
+              "name": "backlight_support",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "kbDefaultBrightness",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_default_brightness",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "kbBacklightSteps",
+              "label": "LABEL_OPTIONAL",
+              "name": "kb_backlight_steps",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "KeyboardConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_backlight_support"
+            },
+            {
+              "name": "_kb_default_brightness"
+            },
+            {
+              "name": "_kb_backlight_steps"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "stylusType",
+              "label": "LABEL_OPTIONAL",
+              "name": "stylus_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StylusConfigurationType"
+        },
+        {
+          "field": [
+            {
               "jsonName": "audioList",
               "label": "LABEL_REPEATED",
               "name": "audio_list",
@@ -12098,6 +12205,38 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.CellularConfigurationType"
+            },
+            {
+              "jsonName": "cameraList",
+              "label": "LABEL_REPEATED",
+              "name": "camera_list",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.CameraConfigurationType"
+            },
+            {
+              "jsonName": "storageList",
+              "label": "LABEL_REPEATED",
+              "name": "storage_list",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.StorageConfigurationType"
+            },
+            {
+              "jsonName": "keyboardList",
+              "label": "LABEL_REPEATED",
+              "name": "keyboard_list",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.KeyboardConfigurationType"
+            },
+            {
+              "jsonName": "stylusList",
+              "label": "LABEL_REPEATED",
+              "name": "stylus_list",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.StylusConfigurationType"
             }
           ],
           "name": "HalConfiguration"
@@ -19821,6 +19960,10 @@
                     {
                       "name": "USB_TESTER",
                       "number": 12
+                    },
+                    {
+                      "name": "VIDEO_TESTER",
+                      "number": 13
                     }
                   ]
                 }
@@ -19863,6 +20006,15 @@
                   "number": 5,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.RPM"
+                },
+                {
+                  "jsonName": "switchFixtureDetails",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "switch_fixture_details",
+                  "number": 6,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.PasitHost.Device.SwitchFixtureDetails"
                 }
               ],
               "name": "Device",
@@ -19892,6 +20044,30 @@
                     }
                   ],
                   "name": "PowerSupply"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "initialStateEnabled",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "initial_state_enabled",
+                      "number": 1,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "initialPort",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "initial_port",
+                      "number": 2,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "SwitchFixtureDetails"
+                }
+              ],
+              "oneofDecl": [
+                {
+                  "name": "device_details"
                 }
               ]
             }
@@ -20695,6 +20871,50 @@
             {
               "name": "SR",
               "number": 33
+            },
+            {
+              "name": "DVT_1",
+              "number": 34
+            },
+            {
+              "name": "DVT_3",
+              "number": 35
+            },
+            {
+              "name": "DVT_4",
+              "number": 36
+            },
+            {
+              "name": "EVT_1",
+              "number": 37
+            },
+            {
+              "name": "EVT_2",
+              "number": 38
+            },
+            {
+              "name": "EVT_3",
+              "number": 39
+            },
+            {
+              "name": "MP",
+              "number": 40
+            },
+            {
+              "name": "PVT_1",
+              "number": 41
+            },
+            {
+              "name": "PVT_3",
+              "number": 42
+            },
+            {
+              "name": "PVT_4",
+              "number": 43
+            },
+            {
+              "name": "PRE_DVT",
+              "number": 44
             }
           ]
         }
@@ -20948,6 +21168,14 @@
                   "number": 23,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.PasitHost"
+                },
+                {
+                  "jsonName": "hmr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hmr",
+                  "number": 24,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.HumanMotionRobot"
                 }
               ],
               "name": "ChromeOS",
@@ -21281,6 +21509,99 @@
             }
           ],
           "name": "Cellular"
+        },
+        {
+          "enumType": [
+            {
+              "name": "HMRToolType",
+              "value": [
+                {
+                  "name": "HMR_TOOL_TYPE_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "HMR_TOOL_TYPE_STYLUS",
+                  "number": 1
+                },
+                {
+                  "name": "HMR_TOOL_TYPE_FAKE_FINGER",
+                  "number": 2
+                }
+              ]
+            },
+            {
+              "name": "HMRGen",
+              "value": [
+                {
+                  "name": "HMR_GEN_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "HMR_GEN_1",
+                  "number": 1
+                },
+                {
+                  "name": "HMR_GEN_2",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hmrModel",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_model",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gatewayHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "gateway_hostname",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rpm",
+              "label": "LABEL_OPTIONAL",
+              "name": "rpm",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RPM"
+            },
+            {
+              "jsonName": "hmrWalt",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_walt",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "hmrToolType",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_tool_type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.HumanMotionRobot.HMRToolType"
+            },
+            {
+              "jsonName": "hmrGen",
+              "label": "LABEL_OPTIONAL",
+              "name": "hmr_gen",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.HumanMotionRobot.HMRGen"
+            }
+          ],
+          "name": "HumanMotionRobot"
         },
         {
           "field": [
@@ -29574,6 +29895,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "kernel_prebuilts",
               "number": 6,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.KernelPrebuilts"
             },
@@ -29584,6 +29908,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ExecutionMetadata"
+            },
+            {
+              "jsonName": "kernelMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_metadata",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelProvisionRequest"
             }
           ],
           "name": "InstallRequest"
@@ -29606,6 +29938,33 @@
             }
           ],
           "name": "PartnerMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "kernelPrebuilts",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_prebuilts",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelPrebuilts"
+            },
+            {
+              "jsonName": "enableKernelSerialLogs",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_kernel_serial_logs",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "consoleCommandLineValue",
+              "label": "LABEL_OPTIONAL",
+              "name": "console_command_line_value",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "KernelProvisionRequest"
         },
         {
           "field": [
@@ -32625,6 +32984,23 @@
               "number": 2
             }
           ]
+        },
+        {
+          "name": "DutState",
+          "value": [
+            {
+              "name": "DUT_STATE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "DUT_STATE_NORMAL",
+              "number": 1
+            },
+            {
+              "name": "DUT_STATE_NEEDS_REPAIR",
+              "number": 2
+            }
+          ]
         }
       ],
       "messageType": [
@@ -32799,6 +33175,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry"
+            },
+            {
+              "jsonName": "onExpirationDutState",
+              "label": "LABEL_OPTIONAL",
+              "name": "on_expiration_dut_state",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DutState"
             }
           ],
           "name": "ExtendLeaseRequest",
@@ -33216,6 +33600,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.LeaseDeviceRequest.UserPayloadEntry"
+            },
+            {
+              "jsonName": "onExpirationDutState",
+              "label": "LABEL_OPTIONAL",
+              "name": "on_expiration_dut_state",
+              "number": 8,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DutState"
             }
           ],
           "name": "LeaseDeviceRequest",
@@ -33321,6 +33713,14 @@
               "name": "lease_id",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dutAfterLeaseState",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_after_lease_state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DutState"
             }
           ],
           "name": "ReleaseDeviceRequest"
@@ -35838,6 +36238,13 @@
               },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.EqcInfo"
+            },
+            {
+              "jsonName": "isTrcRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_trc_run",
+              "number": 14,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "TestInvocation",
@@ -44078,6 +44485,27 @@
           ]
         },
         {
+          "name": "Dp128Bitrate",
+          "value": [
+            {
+              "name": "DP_128_BITRATE_NONE",
+              "number": 0
+            },
+            {
+              "name": "DP_128_BITRATE_10_0",
+              "number": 1
+            },
+            {
+              "name": "DP_128_BITRATE_13_5",
+              "number": 2
+            },
+            {
+              "name": "DP_128_BITRATE_20_0",
+              "number": 3
+            }
+          ]
+        },
+        {
           "name": "ComplianceTestGroup",
           "value": [
             {
@@ -44722,6 +45150,14 @@
               "oneofIndex": 15,
               "proto3Optional": true,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dp128Bitrates",
+              "label": "LABEL_REPEATED",
+              "name": "dp_128_bitrates",
+              "number": 22,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Dp128Bitrate"
             }
           ],
           "name": "SetLinkVideoTesterRequest",
@@ -45007,6 +45443,14 @@
               "oneofIndex": 17,
               "proto3Optional": true,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "dp128Bitrates",
+              "label": "LABEL_REPEATED",
+              "name": "dp_128_bitrates",
+              "number": 21,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Dp128Bitrate"
             }
           ],
           "name": "GetLinkVideoTesterResponse",
@@ -46023,6 +46467,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "user",
               "number": 15,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "actualUser",
+              "label": "LABEL_OPTIONAL",
+              "name": "actual_user",
+              "number": 18,
               "type": "TYPE_STRING"
             },
             {
