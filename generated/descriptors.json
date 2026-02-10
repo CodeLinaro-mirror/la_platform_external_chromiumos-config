@@ -38973,6 +38973,140 @@
         {
           "field": [
             {
+              "jsonName": "moduleName",
+              "label": "LABEL_OPTIONAL",
+              "name": "module_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "moduleScheme",
+              "label": "LABEL_OPTIONAL",
+              "name": "module_scheme",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "moduleVariant",
+              "label": "LABEL_REPEATED",
+              "name": "module_variant",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestIdentifier.ModuleVariantEntry"
+            },
+            {
+              "jsonName": "coarseName",
+              "label": "LABEL_OPTIONAL",
+              "name": "coarse_name",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fineName",
+              "label": "LABEL_OPTIONAL",
+              "name": "fine_name",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "caseName",
+              "label": "LABEL_OPTIONAL",
+              "name": "case_name",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "TestIdentifier",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ModuleVariantEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "size",
+              "label": "LABEL_OPTIONAL",
+              "name": "size",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "parentWorkunit",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_workunit",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactId",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_id",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "updateToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_token",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_identifier",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestIdentifier"
+            },
+            {
+              "jsonName": "contentType",
+              "label": "LABEL_OPTIONAL",
+              "name": "content_type",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactType",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_type",
+              "number": 8,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RdbArtifact"
+        },
+        {
+          "field": [
+            {
               "jsonName": "gcsPath",
               "label": "LABEL_OPTIONAL",
               "name": "gcs_path",
@@ -39002,6 +39136,14 @@
               "name": "enable_xts_archiver",
               "number": 4,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "skippedArtifacts",
+              "label": "LABEL_REPEATED",
+              "name": "skipped_artifacts",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RdbArtifact"
             }
           ],
           "name": "PublishGcsMetadata"
