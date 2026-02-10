@@ -11,6 +11,56 @@ from chromiumos.config.payload import config_bundle_pb2
 from lxml import etree  # pylint: disable=import-error
 
 
+def _populate_element_from_message(
+    parent_element: etree.Element, message, skip_id: bool = False
+):
+    """Recursively populates an XML element from a protobuf message.
+
+    Args:
+        parent_element: The XML element to attach fields to.
+        message: The protobuf message to process.
+        skip_id: If True, skips the 'id' field (used for the root component).
+    """
+    for field in message.DESCRIPTOR.fields:
+        if skip_id and field.name == "id":
+            continue
+
+        value = getattr(message, field.name)
+
+        # Skip default or empty fields.
+        if field.label == field.LABEL_REPEATED:
+            if not value:
+                logging.debug(
+                    "Repeated field %s is empty, skipping.", field.name
+                )
+                continue
+        elif field.type == field.TYPE_MESSAGE:
+            if not message.HasField(field.name):
+                logging.debug(
+                    "Message field %s is not set, skipping.", field.name
+                )
+                continue
+        elif value == field.default_value:
+            logging.debug("Field %s is default, skipping.", field.name)
+            continue
+
+        element_name = field.name.replace("_", "-")
+        # TODO(b/449551444): Add a unit test for repeated fields once there are
+        # actually repeated fields in the input proto schema.
+        items = value if field.label == field.LABEL_REPEATED else [value]
+
+        for item_value in items:
+            elem = etree.SubElement(parent_element, element_name)
+            if field.type == field.TYPE_MESSAGE:
+                _populate_element_from_message(elem, item_value, skip_id=False)
+            elif field.type == field.TYPE_ENUM:
+                # TODO(b/449551444): Add a unit test for enums once there are actually
+                # enums in the input proto schema.
+                elem.text = field.enum_type.values_by_number[item_value].name
+            else:
+                elem.text = str(item_value)
+
+
 def _generate_xml_for_component(component_config, output_dir: pathlib.Path):
     """Generates an XML file for a single component configuration.
 
@@ -25,47 +75,14 @@ def _generate_xml_for_component(component_config, output_dir: pathlib.Path):
     root = etree.Element(root_element_name)
 
     component_id = component_config.id
-    for field in descriptor.fields:
-        # The 'id' field is used for the filename and isn't part of the XML
-        # content.
-        if field.name == "id":
-            continue
-
-        value = getattr(component_config, field.name)
-
-        # Skip default or empty fields.
-        if field.label == field.LABEL_REPEATED:
-            if not value:
-                logging.debug(
-                    "Repeated field %s is empty, skipping.", field.name
-                )
-                continue
-        elif field.type == field.TYPE_MESSAGE:
-            if not component_config.HasField(field.name):
-                logging.debug(
-                    "Message field %s is not set, skipping.", field.name
-                )
-                continue
-        elif value == field.default_value:
-            logging.debug("Field %s is default, skipping.", field.name)
-            continue
-
-        element_name = field.name.replace("_", "-")
-        elem = etree.SubElement(root, element_name)
-        # TODO(b/449551444): Add a unit test for enums once there are actually
-        # enums in the input proto schema.
-        value = getattr(component_config, field.name)
-        if field.type == field.TYPE_ENUM:
-            elem.text = field.enum_type.values_by_number[value].name
-        else:
-            elem.text = str(value)
-
     if not component_id:
         logging.warning(
             "Component config is missing an 'id' field, skipping: %s",
             component_config,
         )
         return
+
+    _populate_element_from_message(root, component_config, skip_id=True)
 
     output_file = output_dir / f"{component_id}.xml"
 
