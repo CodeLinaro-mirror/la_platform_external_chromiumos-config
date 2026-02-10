@@ -108,6 +108,23 @@ class ComponentXmlGenerationTest(unittest.TestCase):
         output_files = list(self.temp_dir.glob("*.xml"))
         self.assertEqual(len(output_files), 0)
 
+    def test_generate_component_xml_repeated_field(self):
+        """Test skipping empty repeated fields and keeping populated ones."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+        camera = hal_config.camera_list.add()
+        camera.id = "camera_config_1"
+        camera.media_profile_suffix = "TestPrefix"
+
+        generate_component_xmls.generate(bundle, self.temp_dir)
+        xml_file = self.temp_dir / "camera_config_1.xml"
+        self.assertTrue(xml_file.is_file())
+
+        root = etree.parse(xml_file).getroot()
+        self.assertEqual(root.tag, "CameraConfiguration")
+        self.assertEqual(root.find("media-profile-suffix").text, "TestPrefix")
+        self.assertIsNone(root.find("cameras"))
+
 
 if __name__ == "__main__":
     unittest.main(module=__name__)

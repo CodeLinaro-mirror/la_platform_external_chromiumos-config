@@ -31,13 +31,23 @@ def _generate_xml_for_component(component_config, output_dir: pathlib.Path):
         if field.name == "id":
             continue
 
-        # If the field is the default value, skip it.
-        if getattr(component_config, field.name) == field.default_value:
-            logging.debug(
-                "Field %s is the default value, skipping for component config: %s",
-                field.name,
-                component_config,
-            )
+        value = getattr(component_config, field.name)
+
+        # Skip default or empty fields.
+        if field.label == field.LABEL_REPEATED:
+            if not value:
+                logging.debug(
+                    "Repeated field %s is empty, skipping.", field.name
+                )
+                continue
+        elif field.type == field.TYPE_MESSAGE:
+            if not component_config.HasField(field.name):
+                logging.debug(
+                    "Message field %s is not set, skipping.", field.name
+                )
+                continue
+        elif value == field.default_value:
+            logging.debug("Field %s is default, skipping.", field.name)
             continue
 
         element_name = field.name.replace("_", "-")
