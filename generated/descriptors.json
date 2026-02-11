@@ -28381,9 +28381,38 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "links",
+              "label": "LABEL_REPEATED",
+              "name": "links",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishResponse.Link"
             }
           ],
-          "name": "PublishResponse"
+          "name": "PublishResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "url",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "url",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Link"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/cros_publish_service.proto",
