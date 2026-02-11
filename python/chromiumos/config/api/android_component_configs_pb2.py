@@ -19,10 +19,315 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n5chromiumos/config/api/android_component_configs.proto\x12\x15\x63hromiumos.config.api\"J\n\x16\x41udioConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x16\n\tsoundcard\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0c\n\n_soundcard\"\x83\x01\n\x19\x43\x65llularConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x17\n\nmodem_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1d\n\x10\x66irmware_variant\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\r\n\x0b_modem_typeB\x13\n\x11_firmware_variant\"\xd5\x01\n\x1c\x46ingerprintConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12$\n\x17\x66ingerprint_sensor_type\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x1c\n\x0fsensor_location\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\x17\n\nro_version\x18\x05 \x01(\tH\x02\x88\x01\x01\x42\x1a\n\x18_fingerprint_sensor_typeB\x12\n\x10_sensor_locationB\r\n\x0b_ro_version\"\xf1\x01\n\x17\x43\x61meraConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12!\n\x14media_profile_suffix\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1a\n\rfeature_front\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x19\n\x0c\x66\x65\x61ture_back\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x1e\n\x11\x66\x65\x61ture_autofocus\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x17\n\x15_media_profile_suffixB\x10\n\x0e_feature_frontB\x0f\n\r_feature_backB\x14\n\x12_feature_autofocus\"R\n\x18StorageConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x19\n\x0cstorage_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0f\n\r_storage_type\"\xd3\x01\n\x19KeyboardConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x11\x62\x61\x63klight_support\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\"\n\x15kb_default_brightness\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1f\n\x12kb_backlight_steps\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x14\n\x12_backlight_supportB\x18\n\x16_kb_default_brightnessB\x15\n\x13_kb_backlight_steps\"O\n\x17StylusConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0bstylus_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0e\n\x0c_stylus_type\"\xb3\x01\n\x19\x46irmwareConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\"\n\x15\x66irmware_manifest_key\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1c\n\x0f\x66irmware_config\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04ufsc\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x18\n\x16_firmware_manifest_keyB\x12\n\x10_firmware_configB\x07\n\x05_ufsc\"T\n\x1cTouchscreenConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0bscreen_size\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0e\n\x0c_screen_size\"\'\n\x19TouchpadConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\"\\\n\x16VideoConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1f\n\x12video_codec_suffix\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x15\n\x13_video_codec_suffix\"\x92\x01\n HardwareFeatureConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0b\x66orm_factor\x18\x02 \x01(\tH\x00\x88\x01\x01\x12 \n\x13touchscreen_support\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x0e\n\x0c_form_factorB\x16\n\x14_touchscreen_support\"\xff\x03\n\x17SensorConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\'\n\x1a\x66\x65\x61ture_base_accelerometer\x18\x02 \x01(\tH\x00\x88\x01\x01\x12&\n\x19\x66\x65\x61ture_lid_accelerometer\x18\x03 \x01(\tH\x01\x88\x01\x01\x12#\n\x16\x66\x65\x61ture_base_gyroscope\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\"\n\x15\x66\x65\x61ture_lid_gyroscope\x18\x05 \x01(\tH\x03\x88\x01\x01\x12\'\n\x1a\x66\x65\x61ture_camera_lightsensor\x18\x06 \x01(\tH\x04\x88\x01\x01\x12$\n\x17\x66\x65\x61ture_lid_lightsensor\x18\x07 \x01(\tH\x05\x88\x01\x01\x12%\n\x18\x66\x65\x61ture_base_lightsensor\x18\x08 \x01(\tH\x06\x88\x01\x01\x42\x1d\n\x1b_feature_base_accelerometerB\x1c\n\x1a_feature_lid_accelerometerB\x19\n\x17_feature_base_gyroscopeB\x18\n\x16_feature_lid_gyroscopeB\x1d\n\x1b_feature_camera_lightsensorB\x1a\n\x18_feature_lid_lightsensorB\x1b\n\x19_feature_base_lightsensor\"\xc1\x07\n\x10HalConfiguration\x12\x41\n\naudio_list\x18\x01 \x03(\x0b\x32-.chromiumos.config.api.AudioConfigurationType\x12M\n\x10\x66ingerprint_list\x18\x02 \x03(\x0b\x32\x33.chromiumos.config.api.FingerprintConfigurationType\x12G\n\rcellular_list\x18\x03 \x03(\x0b\x32\x30.chromiumos.config.api.CellularConfigurationType\x12\x43\n\x0b\x63\x61mera_list\x18\x04 \x03(\x0b\x32..chromiumos.config.api.CameraConfigurationType\x12\x45\n\x0cstorage_list\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.StorageConfigurationType\x12G\n\rkeyboard_list\x18\x06 \x03(\x0b\x32\x30.chromiumos.config.api.KeyboardConfigurationType\x12\x43\n\x0bstylus_list\x18\x07 \x03(\x0b\x32..chromiumos.config.api.StylusConfigurationType\x12G\n\rfirmware_list\x18\x08 \x03(\x0b\x32\x30.chromiumos.config.api.FirmwareConfigurationType\x12M\n\x10touchscreen_list\x18\t \x03(\x0b\x32\x33.chromiumos.config.api.TouchscreenConfigurationType\x12G\n\rtouchpad_list\x18\n \x03(\x0b\x32\x30.chromiumos.config.api.TouchpadConfigurationType\x12\x41\n\nvideo_list\x18\x0b \x03(\x0b\x32-.chromiumos.config.api.VideoConfigurationType\x12O\n\x0ehwfeature_list\x18\x0c \x03(\x0b\x32\x37.chromiumos.config.api.HardwareFeatureConfigurationType\x12\x43\n\x0bsensor_list\x18\r \x03(\x0b\x32..chromiumos.config.api.SensorConfigurationTypeB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n5chromiumos/config/api/android_component_configs.proto\x12\x15\x63hromiumos.config.api\"t\n\x16\x41udioConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x16\n\tsoundcard\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x18\n\x0b\x64mics_count\x18\x03 \x01(\x05H\x01\x88\x01\x01\x42\x0c\n\n_soundcardB\x0e\n\x0c_dmics_count\"\x9d\x03\n\x19\x43\x65llularConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12S\n\nmodem_type\x18\x02 \x01(\x0e\x32:.chromiumos.config.api.CellularConfigurationType.ModemTypeH\x00\x88\x01\x01\x12\x1d\n\x10\x66irmware_variant\x18\x03 \x01(\tH\x01\x88\x01\x01\"\xdb\x01\n\tModemType\x12\x11\n\rMODEM_UNKNOWN\x10\x00\x12\x0e\n\nMODEM_L850\x10\x01\x12\x0f\n\x0bMODEM_NL668\x10\x02\x12\x0f\n\x0bMODEM_FM101\x10\x03\x12\x0f\n\x0bMODEM_FM350\x10\x04\x12\x10\n\x0cMODEM_SC7180\x10\x05\x12\x10\n\x0cMODEM_SC7280\x10\x06\x12\x0f\n\x0bMODEM_EM060\x10\x07\x12\x0f\n\x0bMODEM_RW101\x10\x08\x12\x0f\n\x0bMODEM_RW135\x10\t\x12\x10\n\x0cMODEM_LCUK54\x10\n\x12\x0f\n\x0bMODEM_RW350\x10\x0b\x42\r\n\x0b_modem_typeB\x13\n\x11_firmware_variant\"\xad\x04\n\x1c\x46ingerprintConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x01(\t\x12$\n\x17\x66ingerprint_sensor_type\x18\x03 \x01(\tH\x00\x88\x01\x01\x12Z\n\x0fsensor_location\x18\x04 \x01(\x0e\x32<.chromiumos.config.api.FingerprintConfigurationType.LocationH\x01\x88\x01\x01\x12\x17\n\nro_version\x18\x05 \x01(\tH\x02\x88\x01\x01\"\x97\x02\n\x08Location\x12\x14\n\x10LOCATION_UNKNOWN\x10\x00\x12\x19\n\x15POWER_BUTTON_TOP_LEFT\x10\x01\x12\x18\n\x14KEYBOARD_BOTTOM_LEFT\x10\x02\x12\x19\n\x15KEYBOARD_BOTTOM_RIGHT\x10\x03\x12\x16\n\x12KEYBOARD_TOP_RIGHT\x10\x04\x12\x0e\n\nRIGHT_SIDE\x10\x06\x12\r\n\tLEFT_SIDE\x10\x07\x12\"\n\x1eLEFT_OF_POWER_BUTTON_TOP_RIGHT\x10\t\x12\x1e\n\x1aPOWER_BUTTON_TOP_RIGHT_KEY\x10\n\x12\x1e\n\x1aPOWER_BUTTON_LEFT_EDGE_TOP\x10\x0b\"\x04\x08\x05\x10\x05\"\x04\x08\x08\x10\x08\x42\x1a\n\x18_fingerprint_sensor_typeB\x12\n\x10_sensor_locationB\r\n\x0b_ro_version\"\xc6\x05\n\x17\x43\x61meraConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12!\n\x14media_profile_suffix\x18\x02 \x01(\tH\x00\x88\x01\x01\x12N\n\x07\x63\x61meras\x18\x03 \x03(\x0b\x32=.chromiumos.config.api.CameraConfigurationType.CameraHWConfig\x1a\x86\x03\n\x0e\x43\x61meraHWConfig\x12P\n\tinterface\x18\x01 \x01(\x0e\x32\x38.chromiumos.config.api.CameraConfigurationType.InterfaceH\x00\x88\x01\x01\x12L\n\x08position\x18\x02 \x01(\x0e\x32\x35.chromiumos.config.api.CameraConfigurationType.FacingH\x01\x88\x01\x01\x12O\n\x11\x61utofocus_support\x18\x03 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x02\x88\x01\x01\x12\x18\n\x0bresolutionx\x18\x04 \x01(\x05H\x03\x88\x01\x01\x12\x18\n\x0bresolutiony\x18\x05 \x01(\x05H\x04\x88\x01\x01\x42\x0c\n\n_interfaceB\x0b\n\t_positionB\x14\n\x12_autofocus_supportB\x0e\n\x0c_resolutionxB\x0e\n\x0c_resolutiony\"I\n\tInterface\x12\x15\n\x11INTERFACE_UNKNOWN\x10\x00\x12\x11\n\rINTERFACE_USB\x10\x01\x12\x12\n\x0eINTERFACE_MIPI\x10\x02\"?\n\x06\x46\x61\x63ing\x12\x12\n\x0e\x46\x41\x43ING_UNKNOWN\x10\x00\x12\x10\n\x0c\x46\x41\x43ING_FRONT\x10\x01\x12\x0f\n\x0b\x46\x41\x43ING_BACK\x10\x02\x42\x17\n\x15_media_profile_suffix\"R\n\x18StorageConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x19\n\x0cstorage_type\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0f\n\r_storage_type\"\x84\x02\n\x19KeyboardConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12O\n\x11\x62\x61\x63klight_support\x18\x02 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x00\x88\x01\x01\x12\"\n\x15kb_default_brightness\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1f\n\x12kb_backlight_steps\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x14\n\x12_backlight_supportB\x18\n\x16_kb_default_brightnessB\x15\n\x13_kb_backlight_steps\"\xd2\x01\n\x17StylusConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12S\n\x0bstylus_type\x18\x02 \x01(\x0e\x32\x39.chromiumos.config.api.StylusConfigurationType.StylusTypeH\x00\x88\x01\x01\"F\n\nStylusType\x12\x12\n\x0eSTYLUS_UNKNOWN\x10\x00\x12\x08\n\x04NONE\x10\x01\x12\x0c\n\x08INTERNAL\x10\x02\x12\x0c\n\x08\x45XTERNAL\x10\x03\x42\x0e\n\x0c_stylus_type\"\xb3\x01\n\x19\x46irmwareConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\"\n\x15\x66irmware_manifest_key\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1c\n\x0f\x66irmware_config\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04ufsc\x18\x04 \x01(\tH\x02\x88\x01\x01\x42\x18\n\x16_firmware_manifest_keyB\x12\n\x10_firmware_configB\x07\n\x05_ufsc\"T\n\x1cTouchscreenConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0bscreen_size\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0e\n\x0c_screen_size\"\'\n\x19TouchpadConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\"\\\n\x16VideoConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1f\n\x12video_codec_suffix\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x15\n\x13_video_codec_suffix\"\x92\x01\n HardwareFeatureConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x0b\x66orm_factor\x18\x02 \x01(\tH\x00\x88\x01\x01\x12 \n\x13touchscreen_support\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x0e\n\x0c_form_factorB\x16\n\x14_touchscreen_support\"\x8f\x01\n\x1aGyroscopeConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12O\n\x11\x66\x65\x61ture_gyroscope\x18\x02 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x00\x88\x01\x01\x42\x14\n\x12_feature_gyroscope\"\x9b\x01\n\x1e\x41\x63\x63\x65lerometerConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12S\n\x15\x66\x65\x61ture_accelerometer\x18\x02 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x00\x88\x01\x01\x42\x18\n\x16_feature_accelerometer\"\x95\x01\n\x1cLightSensorConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12Q\n\x13\x66\x65\x61ture_lightsensor\x18\x02 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x00\x88\x01\x01\x42\x16\n\x14_feature_lightsensor\"\x98\x01\n\x1dMagnetometerConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12R\n\x14\x66\x65\x61ture_magnetometer\x18\x02 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x00\x88\x01\x01\x42\x17\n\x15_feature_magnetometer\"\xc7\x19\n\x15WifiConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12\x43\n\x04\x63hip\x18\x02 \x01(\x0e\x32\x35.chromiumos.config.api.WifiConfigurationType.WifiChip\x12P\n\tmtkconfig\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfigurationType.SarSpecTypeH\x00\x88\x01\x01\x12P\n\trtwconfig\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfigurationType.SarSpecTypeH\x01\x88\x01\x01\x12K\n\rfeature_aware\x18\x05 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x02\x88\x01\x01\x12L\n\x0e\x66\x65\x61ture_direct\x18\x06 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x03\x88\x01\x01\x12N\n\x10\x66\x65\x61ture_passport\x18\x07 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x04\x88\x01\x01\x12I\n\x0b\x66\x65\x61ture_rtt\x18\x08 \x01(\x0e\x32/.chromiumos.config.api.HalConfiguration.PresentH\x05\x88\x01\x01\x1a\xdc\x13\n\x0bSarSpecType\x12\x62\n\rregdomain_fcc\x18\x01 \x01(\x0b\x32\x46.chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainTypeH\x00\x88\x01\x01\x12\x61\n\x0cregdomain_eu\x18\x02 \x01(\x0b\x32\x46.chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainTypeH\x01\x88\x01\x01\x12\x64\n\x0fregdomain_other\x18\x03 \x01(\x0b\x32\x46.chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainTypeH\x02\x88\x01\x01\x12g\n\x11powertable_tablet\x18\x04 \x01(\x0b\x32G.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableTypeH\x03\x88\x01\x01\x12j\n\x14powertable_clamshell\x18\x05 \x01(\x0b\x32G.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableTypeH\x04\x88\x01\x01\x1a:\n\x0fPowerConfigType\x12\x12\n\npowerlimit\x18\x01 \x01(\x05\x12\x13\n\x0bpoweroffset\x18\x02 \x01(\x05\x1a\xcd\x02\n\rRegDomainType\x12`\n\x0epowerconfig_2g\x18\x01 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType\x12`\n\x0epowerconfig_5g\x18\x02 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType\x12\x65\n\x0epowerconfig_6g\x18\x03 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x00\x88\x01\x01\x42\x11\n\x0f_powerconfig_6g\x1a\xd8\x0b\n\x0ePowerTableType\x12`\n\x0epowerconfig_2g\x18\x01 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType\x12\x65\n\x0epowerconfig_5g\x18\x02 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x00\x88\x01\x01\x12g\n\x10powerconfig_5g_1\x18\x03 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x01\x88\x01\x01\x12g\n\x10powerconfig_5g_2\x18\x04 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x02\x88\x01\x01\x12g\n\x10powerconfig_5g_3\x18\x05 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x03\x88\x01\x01\x12g\n\x10powerconfig_5g_4\x18\x06 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x04\x88\x01\x01\x12g\n\x10powerconfig_6g_1\x18\x07 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x05\x88\x01\x01\x12g\n\x10powerconfig_6g_2\x18\x08 \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x06\x88\x01\x01\x12g\n\x10powerconfig_6g_3\x18\t \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x07\x88\x01\x01\x12g\n\x10powerconfig_6g_4\x18\n \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\x08\x88\x01\x01\x12g\n\x10powerconfig_6g_5\x18\x0b \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\t\x88\x01\x01\x12g\n\x10powerconfig_6g_6\x18\x0c \x01(\x0b\x32H.chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigTypeH\n\x88\x01\x01\x42\x11\n\x0f_powerconfig_5gB\x13\n\x11_powerconfig_5g_1B\x13\n\x11_powerconfig_5g_2B\x13\n\x11_powerconfig_5g_3B\x13\n\x11_powerconfig_5g_4B\x13\n\x11_powerconfig_6g_1B\x13\n\x11_powerconfig_6g_2B\x13\n\x11_powerconfig_6g_3B\x13\n\x11_powerconfig_6g_4B\x13\n\x11_powerconfig_6g_5B\x13\n\x11_powerconfig_6g_6B\x10\n\x0e_regdomain_fccB\x0f\n\r_regdomain_euB\x12\n\x10_regdomain_otherB\x14\n\x12_powertable_tabletB\x17\n\x15_powertable_clamshell\">\n\x08WifiChip\x12\x0b\n\x07UNKNOWN\x10\x00\x12\t\n\x05INTEL\x10\x01\x12\x07\n\x03MTK\x10\x02\x12\x07\n\x03RTW\x10\x03\x12\x08\n\x04QCOM\x10\x04\x42\x0c\n\n_mtkconfigB\x0c\n\n_rtwconfigB\x10\n\x0e_feature_awareB\x11\n\x0f_feature_directB\x13\n\x11_feature_passportB\x0e\n\x0c_feature_rtt\"\xfb\n\n\x1aProximityConfigurationType\x12\n\n\x02id\x18\x01 \x01(\t\x12s\n\x11semtech_proximity\x18\x02 \x01(\x0b\x32S.chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationTypeH\x00\x88\x01\x01\x1a\x32\n\x0cLocationType\x12\x15\n\x08modifier\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\x0b\n\t_modifier\x1a\x83\x02\n\x15ProximityLocationType\x12\\\n\x0fradio_type_wifi\x18\x01 \x01(\x0b\x32>.chromiumos.config.api.ProximityConfigurationType.LocationTypeH\x00\x88\x01\x01\x12`\n\x13radio_type_cellular\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.ProximityConfigurationType.LocationTypeH\x01\x88\x01\x01\x42\x12\n\x10_radio_type_wifiB\x16\n\x14_radio_type_cellular\x1a\xca\x02\n\x12SemtechChannelType\x12\x14\n\x07\x63hannel\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x19\n\x0chardwaregain\x18\x02 \x01(\rH\x01\x88\x01\x01\x12\x1b\n\x0ethresh_falling\x18\x03 \x01(\rH\x02\x88\x01\x01\x12&\n\x19thresh_falling_hysteresis\x18\x04 \x01(\rH\x03\x88\x01\x01\x12\x1a\n\rthresh_rising\x18\x05 \x01(\rH\x04\x88\x01\x01\x12%\n\x18thresh_rising_hysteresis\x18\x06 \x01(\rH\x05\x88\x01\x01\x42\n\n\x08_channelB\x0f\n\r_hardwaregainB\x11\n\x0f_thresh_fallingB\x1c\n\x1a_thresh_falling_hysteresisB\x10\n\x0e_thresh_risingB\x1b\n\x19_thresh_rising_hysteresis\x1a\xa9\x02\n\x1eSemtechSensorConfigurationType\x12U\n\x07\x63hannel\x18\x01 \x03(\x0b\x32\x44.chromiumos.config.api.ProximityConfigurationType.SemtechChannelType\x12\x1f\n\x12sampling_frequency\x18\x02 \x01(\x02H\x00\x88\x01\x01\x12\"\n\x15thresh_falling_period\x18\x03 \x01(\rH\x01\x88\x01\x01\x12!\n\x14thresh_rising_period\x18\x04 \x01(\rH\x02\x88\x01\x01\x42\x15\n\x13_sampling_frequencyB\x18\n\x16_thresh_falling_periodB\x17\n\x15_thresh_rising_period\x1a\x92\x02\n!SemtechProximityConfigurationType\x12^\n\x08location\x18\x01 \x01(\x0b\x32G.chromiumos.config.api.ProximityConfigurationType.ProximityLocationTypeH\x00\x88\x01\x01\x12m\n\x0esemtech_config\x18\x02 \x01(\x0b\x32P.chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationTypeH\x01\x88\x01\x01\x42\x0b\n\t_locationB\x11\n\x0f_semtech_configB\x14\n\x12_semtech_proximity\"\x84\x0b\n\x10HalConfiguration\x12\x41\n\naudio_list\x18\x01 \x03(\x0b\x32-.chromiumos.config.api.AudioConfigurationType\x12M\n\x10\x66ingerprint_list\x18\x02 \x03(\x0b\x32\x33.chromiumos.config.api.FingerprintConfigurationType\x12G\n\rcellular_list\x18\x03 \x03(\x0b\x32\x30.chromiumos.config.api.CellularConfigurationType\x12\x43\n\x0b\x63\x61mera_list\x18\x04 \x03(\x0b\x32..chromiumos.config.api.CameraConfigurationType\x12\x45\n\x0cstorage_list\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.StorageConfigurationType\x12G\n\rkeyboard_list\x18\x06 \x03(\x0b\x32\x30.chromiumos.config.api.KeyboardConfigurationType\x12\x43\n\x0bstylus_list\x18\x07 \x03(\x0b\x32..chromiumos.config.api.StylusConfigurationType\x12G\n\rfirmware_list\x18\x08 \x03(\x0b\x32\x30.chromiumos.config.api.FirmwareConfigurationType\x12M\n\x10touchscreen_list\x18\t \x03(\x0b\x32\x33.chromiumos.config.api.TouchscreenConfigurationType\x12G\n\rtouchpad_list\x18\n \x03(\x0b\x32\x30.chromiumos.config.api.TouchpadConfigurationType\x12\x41\n\nvideo_list\x18\x0b \x03(\x0b\x32-.chromiumos.config.api.VideoConfigurationType\x12O\n\x0ehwfeature_list\x18\x0c \x03(\x0b\x32\x37.chromiumos.config.api.HardwareFeatureConfigurationType\x12I\n\x0egyroscope_list\x18\r \x03(\x0b\x32\x31.chromiumos.config.api.GyroscopeConfigurationType\x12Q\n\x12\x61\x63\x63\x65lerometer_list\x18\x0e \x03(\x0b\x32\x35.chromiumos.config.api.AccelerometerConfigurationType\x12M\n\x10lightsensor_list\x18\x0f \x03(\x0b\x32\x33.chromiumos.config.api.LightSensorConfigurationType\x12O\n\x11magnetometer_list\x18\x10 \x03(\x0b\x32\x34.chromiumos.config.api.MagnetometerConfigurationType\x12?\n\twifi_list\x18\x11 \x03(\x0b\x32,.chromiumos.config.api.WifiConfigurationType\x12I\n\x0eproximity_list\x18\x12 \x03(\x0b\x32\x31.chromiumos.config.api.ProximityConfigurationType\"<\n\x07Present\x12\x13\n\x0fPRESENT_UNKNOWN\x10\x00\x12\x0b\n\x07PRESENT\x10\x01\x12\x0f\n\x0bNOT_PRESENT\x10\x02\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
+
+_CELLULARCONFIGURATIONTYPE_MODEMTYPE = _descriptor.EnumDescriptor(
+  name='ModemType',
+  full_name='chromiumos.config.api.CellularConfigurationType.ModemType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_L850', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_NL668', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_FM101', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_FM350', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_SC7180', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_SC7280', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_EM060', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_RW101', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_RW135', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_LCUK54', index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MODEM_RW350', index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=357,
+  serialized_end=576,
+)
+_sym_db.RegisterEnumDescriptor(_CELLULARCONFIGURATIONTYPE_MODEMTYPE)
+
+_FINGERPRINTCONFIGURATIONTYPE_LOCATION = _descriptor.EnumDescriptor(
+  name='Location',
+  full_name='chromiumos.config.api.FingerprintConfigurationType.Location',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='LOCATION_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='POWER_BUTTON_TOP_LEFT', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='KEYBOARD_BOTTOM_LEFT', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='KEYBOARD_BOTTOM_RIGHT', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='KEYBOARD_TOP_RIGHT', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='RIGHT_SIDE', index=5, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LEFT_SIDE', index=6, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LEFT_OF_POWER_BUTTON_TOP_RIGHT', index=7, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='POWER_BUTTON_TOP_RIGHT_KEY', index=8, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='POWER_BUTTON_LEFT_EDGE_TOP', index=9, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=830,
+  serialized_end=1109,
+)
+_sym_db.RegisterEnumDescriptor(_FINGERPRINTCONFIGURATIONTYPE_LOCATION)
+
+_CAMERACONFIGURATIONTYPE_INTERFACE = _descriptor.EnumDescriptor(
+  name='Interface',
+  full_name='chromiumos.config.api.CameraConfigurationType.Interface',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='INTERFACE_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='INTERFACE_USB', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='INTERFACE_MIPI', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1722,
+  serialized_end=1795,
+)
+_sym_db.RegisterEnumDescriptor(_CAMERACONFIGURATIONTYPE_INTERFACE)
+
+_CAMERACONFIGURATIONTYPE_FACING = _descriptor.EnumDescriptor(
+  name='Facing',
+  full_name='chromiumos.config.api.CameraConfigurationType.Facing',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='FACING_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='FACING_FRONT', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='FACING_BACK', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1797,
+  serialized_end=1860,
+)
+_sym_db.RegisterEnumDescriptor(_CAMERACONFIGURATIONTYPE_FACING)
+
+_STYLUSCONFIGURATIONTYPE_STYLUSTYPE = _descriptor.EnumDescriptor(
+  name='StylusType',
+  full_name='chromiumos.config.api.StylusConfigurationType.StylusType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='STYLUS_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='NONE', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='INTERNAL', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='EXTERNAL', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2359,
+  serialized_end=2429,
+)
+_sym_db.RegisterEnumDescriptor(_STYLUSCONFIGURATIONTYPE_STYLUSTYPE)
+
+_WIFICONFIGURATIONTYPE_WIFICHIP = _descriptor.EnumDescriptor(
+  name='WifiChip',
+  full_name='chromiumos.config.api.WifiConfigurationType.WifiChip',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='INTEL', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='MTK', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='RTW', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='QCOM', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=6718,
+  serialized_end=6780,
+)
+_sym_db.RegisterEnumDescriptor(_WIFICONFIGURATIONTYPE_WIFICHIP)
+
+_HALCONFIGURATION_PRESENT = _descriptor.EnumDescriptor(
+  name='Present',
+  full_name='chromiumos.config.api.HalConfiguration.Present',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='PRESENT_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='PRESENT', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='NOT_PRESENT', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=9643,
+  serialized_end=9703,
+)
+_sym_db.RegisterEnumDescriptor(_HALCONFIGURATION_PRESENT)
 
 
 _AUDIOCONFIGURATIONTYPE = _descriptor.Descriptor(
@@ -47,6 +352,13 @@ _AUDIOCONFIGURATIONTYPE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dmics_count', full_name='chromiumos.config.api.AudioConfigurationType.dmics_count', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -63,9 +375,14 @@ _AUDIOCONFIGURATIONTYPE = _descriptor.Descriptor(
       index=0, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_dmics_count', full_name='chromiumos.config.api.AudioConfigurationType._dmics_count',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=80,
-  serialized_end=154,
+  serialized_end=196,
 )
 
 
@@ -86,8 +403,8 @@ _CELLULARCONFIGURATIONTYPE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='modem_type', full_name='chromiumos.config.api.CellularConfigurationType.modem_type', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -103,6 +420,7 @@ _CELLULARCONFIGURATIONTYPE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _CELLULARCONFIGURATIONTYPE_MODEMTYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -120,8 +438,8 @@ _CELLULARCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=157,
-  serialized_end=288,
+  serialized_start=199,
+  serialized_end=612,
 )
 
 
@@ -156,8 +474,8 @@ _FINGERPRINTCONFIGURATIONTYPE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='sensor_location', full_name='chromiumos.config.api.FingerprintConfigurationType.sensor_location', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=4, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -173,6 +491,7 @@ _FINGERPRINTCONFIGURATIONTYPE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _FINGERPRINTCONFIGURATIONTYPE_LOCATION,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -195,10 +514,94 @@ _FINGERPRINTCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=291,
-  serialized_end=504,
+  serialized_start=615,
+  serialized_end=1172,
 )
 
+
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG = _descriptor.Descriptor(
+  name='CameraHWConfig',
+  full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='interface', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig.interface', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='position', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig.position', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='autofocus_support', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig.autofocus_support', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='resolutionx', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig.resolutionx', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='resolutiony', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig.resolutiony', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_interface', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig._interface',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_position', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig._position',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_autofocus_support', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig._autofocus_support',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_resolutionx', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig._resolutionx',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_resolutiony', full_name='chromiumos.config.api.CameraConfigurationType.CameraHWConfig._resolutiony',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1330,
+  serialized_end=1720,
+)
 
 _CAMERACONFIGURATIONTYPE = _descriptor.Descriptor(
   name='CameraConfigurationType',
@@ -223,31 +626,19 @@ _CAMERACONFIGURATIONTYPE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_front', full_name='chromiumos.config.api.CameraConfigurationType.feature_front', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='feature_back', full_name='chromiumos.config.api.CameraConfigurationType.feature_back', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='feature_autofocus', full_name='chromiumos.config.api.CameraConfigurationType.feature_autofocus', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='cameras', full_name='chromiumos.config.api.CameraConfigurationType.cameras', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG, ],
   enum_types=[
+    _CAMERACONFIGURATIONTYPE_INTERFACE,
+    _CAMERACONFIGURATIONTYPE_FACING,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -259,24 +650,9 @@ _CAMERACONFIGURATIONTYPE = _descriptor.Descriptor(
       index=0, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
-    _descriptor.OneofDescriptor(
-      name='_feature_front', full_name='chromiumos.config.api.CameraConfigurationType._feature_front',
-      index=1, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-    _descriptor.OneofDescriptor(
-      name='_feature_back', full_name='chromiumos.config.api.CameraConfigurationType._feature_back',
-      index=2, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-    _descriptor.OneofDescriptor(
-      name='_feature_autofocus', full_name='chromiumos.config.api.CameraConfigurationType._feature_autofocus',
-      index=3, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
   ],
-  serialized_start=507,
-  serialized_end=748,
+  serialized_start=1175,
+  serialized_end=1885,
 )
 
 
@@ -319,8 +695,8 @@ _STORAGECONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=750,
-  serialized_end=832,
+  serialized_start=1887,
+  serialized_end=1969,
 )
 
 
@@ -341,8 +717,8 @@ _KEYBOARDCONFIGURATIONTYPE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='backlight_support', full_name='chromiumos.config.api.KeyboardConfigurationType.backlight_support', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -387,8 +763,8 @@ _KEYBOARDCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=835,
-  serialized_end=1046,
+  serialized_start=1972,
+  serialized_end=2232,
 )
 
 
@@ -409,8 +785,8 @@ _STYLUSCONFIGURATIONTYPE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='stylus_type', full_name='chromiumos.config.api.StylusConfigurationType.stylus_type', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -419,6 +795,7 @@ _STYLUSCONFIGURATIONTYPE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _STYLUSCONFIGURATIONTYPE_STYLUSTYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -431,8 +808,8 @@ _STYLUSCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1048,
-  serialized_end=1127,
+  serialized_start=2235,
+  serialized_end=2445,
 )
 
 
@@ -499,8 +876,8 @@ _FIRMWARECONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1130,
-  serialized_end=1309,
+  serialized_start=2448,
+  serialized_end=2627,
 )
 
 
@@ -543,8 +920,8 @@ _TOUCHSCREENCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1311,
-  serialized_end=1395,
+  serialized_start=2629,
+  serialized_end=2713,
 )
 
 
@@ -575,8 +952,8 @@ _TOUCHPADCONFIGURATIONTYPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1397,
-  serialized_end=1436,
+  serialized_start=2715,
+  serialized_end=2754,
 )
 
 
@@ -619,8 +996,8 @@ _VIDEOCONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1438,
-  serialized_end=1530,
+  serialized_start=2756,
+  serialized_end=2848,
 )
 
 
@@ -675,71 +1052,645 @@ _HARDWAREFEATURECONFIGURATIONTYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1533,
-  serialized_end=1679,
+  serialized_start=2851,
+  serialized_end=2997,
 )
 
 
-_SENSORCONFIGURATIONTYPE = _descriptor.Descriptor(
-  name='SensorConfigurationType',
-  full_name='chromiumos.config.api.SensorConfigurationType',
+_GYROSCOPECONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='GyroscopeConfigurationType',
+  full_name='chromiumos.config.api.GyroscopeConfigurationType',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='chromiumos.config.api.SensorConfigurationType.id', index=0,
+      name='id', full_name='chromiumos.config.api.GyroscopeConfigurationType.id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_base_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType.feature_base_accelerometer', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='feature_gyroscope', full_name='chromiumos.config.api.GyroscopeConfigurationType.feature_gyroscope', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_feature_gyroscope', full_name='chromiumos.config.api.GyroscopeConfigurationType._feature_gyroscope',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=3000,
+  serialized_end=3143,
+)
+
+
+_ACCELEROMETERCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='AccelerometerConfigurationType',
+  full_name='chromiumos.config.api.AccelerometerConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.AccelerometerConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_lid_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType.feature_lid_accelerometer', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='feature_accelerometer', full_name='chromiumos.config.api.AccelerometerConfigurationType.feature_accelerometer', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_feature_accelerometer', full_name='chromiumos.config.api.AccelerometerConfigurationType._feature_accelerometer',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=3146,
+  serialized_end=3301,
+)
+
+
+_LIGHTSENSORCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='LightSensorConfigurationType',
+  full_name='chromiumos.config.api.LightSensorConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.LightSensorConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_base_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType.feature_base_gyroscope', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='feature_lightsensor', full_name='chromiumos.config.api.LightSensorConfigurationType.feature_lightsensor', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_feature_lightsensor', full_name='chromiumos.config.api.LightSensorConfigurationType._feature_lightsensor',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=3304,
+  serialized_end=3453,
+)
+
+
+_MAGNETOMETERCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='MagnetometerConfigurationType',
+  full_name='chromiumos.config.api.MagnetometerConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.MagnetometerConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_lid_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType.feature_lid_gyroscope', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='feature_magnetometer', full_name='chromiumos.config.api.MagnetometerConfigurationType.feature_magnetometer', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_feature_magnetometer', full_name='chromiumos.config.api.MagnetometerConfigurationType._feature_magnetometer',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=3456,
+  serialized_end=3608,
+)
+
+
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE = _descriptor.Descriptor(
+  name='PowerConfigType',
+  full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='powerlimit', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType.powerlimit', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='poweroffset', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType.poweroffset', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=4721,
+  serialized_end=4779,
+)
+
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE = _descriptor.Descriptor(
+  name='RegDomainType',
+  full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='powerconfig_2g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType.powerconfig_2g', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_5g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType.powerconfig_5g', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType.powerconfig_6g', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType._powerconfig_6g',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=4782,
+  serialized_end=5115,
+)
+
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE = _descriptor.Descriptor(
+  name='PowerTableType',
+  full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='powerconfig_2g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_2g', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_5g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_5g', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_5g_1', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_5g_1', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_5g_2', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_5g_2', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_5g_3', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_5g_3', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_5g_4', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_5g_4', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g_1', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_6g_1', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g_2', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_6g_2', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g_3', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_6g_3', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g_4', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_6g_4', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g_5', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_6g_5', index=10,
+      number=11, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powerconfig_6g_6', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType.powerconfig_6g_6', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_5g', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_5g',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_5g_1', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_5g_1',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_5g_2', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_5g_2',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_5g_3', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_5g_3',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_5g_4', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_5g_4',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g_1', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_6g_1',
+      index=5, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g_2', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_6g_2',
+      index=6, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g_3', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_6g_3',
+      index=7, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g_4', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_6g_4',
+      index=8, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g_5', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_6g_5',
+      index=9, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powerconfig_6g_6', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType._powerconfig_6g_6',
+      index=10, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=5118,
+  serialized_end=6614,
+)
+
+_WIFICONFIGURATIONTYPE_SARSPECTYPE = _descriptor.Descriptor(
+  name='SarSpecType',
+  full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='regdomain_fcc', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.regdomain_fcc', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='regdomain_eu', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.regdomain_eu', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='regdomain_other', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.regdomain_other', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powertable_tablet', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.powertable_tablet', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='powertable_clamshell', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType.powertable_clamshell', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE, _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE, _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_regdomain_fcc', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType._regdomain_fcc',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_regdomain_eu', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType._regdomain_eu',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_regdomain_other', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType._regdomain_other',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powertable_tablet', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType._powertable_tablet',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_powertable_clamshell', full_name='chromiumos.config.api.WifiConfigurationType.SarSpecType._powertable_clamshell',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=4192,
+  serialized_end=6716,
+)
+
+_WIFICONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='WifiConfigurationType',
+  full_name='chromiumos.config.api.WifiConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.WifiConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_camera_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType.feature_camera_lightsensor', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='chip', full_name='chromiumos.config.api.WifiConfigurationType.chip', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_lid_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType.feature_lid_lightsensor', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='mtkconfig', full_name='chromiumos.config.api.WifiConfigurationType.mtkconfig', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='feature_base_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType.feature_base_lightsensor', index=7,
-      number=8, type=9, cpp_type=9, label=1,
+      name='rtwconfig', full_name='chromiumos.config.api.WifiConfigurationType.rtwconfig', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_aware', full_name='chromiumos.config.api.WifiConfigurationType.feature_aware', index=4,
+      number=5, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_direct', full_name='chromiumos.config.api.WifiConfigurationType.feature_direct', index=5,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_passport', full_name='chromiumos.config.api.WifiConfigurationType.feature_passport', index=6,
+      number=7, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='feature_rtt', full_name='chromiumos.config.api.WifiConfigurationType.feature_rtt', index=7,
+      number=8, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_WIFICONFIGURATIONTYPE_SARSPECTYPE, ],
+  enum_types=[
+    _WIFICONFIGURATIONTYPE_WIFICHIP,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_mtkconfig', full_name='chromiumos.config.api.WifiConfigurationType._mtkconfig',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_rtwconfig', full_name='chromiumos.config.api.WifiConfigurationType._rtwconfig',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_aware', full_name='chromiumos.config.api.WifiConfigurationType._feature_aware',
+      index=2, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_direct', full_name='chromiumos.config.api.WifiConfigurationType._feature_direct',
+      index=3, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_passport', full_name='chromiumos.config.api.WifiConfigurationType._feature_passport',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_feature_rtt', full_name='chromiumos.config.api.WifiConfigurationType._feature_rtt',
+      index=5, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=3611,
+  serialized_end=6882,
+)
+
+
+_PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE = _descriptor.Descriptor(
+  name='LocationType',
+  full_name='chromiumos.config.api.ProximityConfigurationType.LocationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='modifier', full_name='chromiumos.config.api.ProximityConfigurationType.LocationType.modifier', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -756,43 +1707,315 @@ _SENSORCONFIGURATIONTYPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='_feature_base_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType._feature_base_accelerometer',
+      name='_modifier', full_name='chromiumos.config.api.ProximityConfigurationType.LocationType._modifier',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=7044,
+  serialized_end=7094,
+)
+
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE = _descriptor.Descriptor(
+  name='ProximityLocationType',
+  full_name='chromiumos.config.api.ProximityConfigurationType.ProximityLocationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='radio_type_wifi', full_name='chromiumos.config.api.ProximityConfigurationType.ProximityLocationType.radio_type_wifi', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='radio_type_cellular', full_name='chromiumos.config.api.ProximityConfigurationType.ProximityLocationType.radio_type_cellular', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_radio_type_wifi', full_name='chromiumos.config.api.ProximityConfigurationType.ProximityLocationType._radio_type_wifi',
       index=0, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_feature_lid_accelerometer', full_name='chromiumos.config.api.SensorConfigurationType._feature_lid_accelerometer',
+      name='_radio_type_cellular', full_name='chromiumos.config.api.ProximityConfigurationType.ProximityLocationType._radio_type_cellular',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=7097,
+  serialized_end=7356,
+)
+
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE = _descriptor.Descriptor(
+  name='SemtechChannelType',
+  full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='channel', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType.channel', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hardwaregain', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType.hardwaregain', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thresh_falling', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType.thresh_falling', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thresh_falling_hysteresis', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType.thresh_falling_hysteresis', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thresh_rising', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType.thresh_rising', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thresh_rising_hysteresis', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType.thresh_rising_hysteresis', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_channel', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType._channel',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_hardwaregain', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType._hardwaregain',
       index=1, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_feature_base_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType._feature_base_gyroscope',
+      name='_thresh_falling', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType._thresh_falling',
       index=2, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_feature_lid_gyroscope', full_name='chromiumos.config.api.SensorConfigurationType._feature_lid_gyroscope',
+      name='_thresh_falling_hysteresis', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType._thresh_falling_hysteresis',
       index=3, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_feature_camera_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType._feature_camera_lightsensor',
+      name='_thresh_rising', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType._thresh_rising',
       index=4, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_feature_lid_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType._feature_lid_lightsensor',
+      name='_thresh_rising_hysteresis', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechChannelType._thresh_rising_hysteresis',
       index=5, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+  ],
+  serialized_start=7359,
+  serialized_end=7689,
+)
+
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='SemtechSensorConfigurationType',
+  full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='channel', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType.channel', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='sampling_frequency', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType.sampling_frequency', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thresh_falling_period', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType.thresh_falling_period', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thresh_rising_period', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType.thresh_rising_period', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
     _descriptor.OneofDescriptor(
-      name='_feature_base_lightsensor', full_name='chromiumos.config.api.SensorConfigurationType._feature_base_lightsensor',
-      index=6, containing_type=None,
+      name='_sampling_frequency', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType._sampling_frequency',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_thresh_falling_period', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType._thresh_falling_period',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_thresh_rising_period', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType._thresh_rising_period',
+      index=2, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1682,
-  serialized_end=2193,
+  serialized_start=7692,
+  serialized_end=7989,
+)
+
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='SemtechProximityConfigurationType',
+  full_name='chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='location', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType.location', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='semtech_config', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType.semtech_config', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_location', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType._location',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_semtech_config', full_name='chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType._semtech_config',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=7992,
+  serialized_end=8266,
+)
+
+_PROXIMITYCONFIGURATIONTYPE = _descriptor.Descriptor(
+  name='ProximityConfigurationType',
+  full_name='chromiumos.config.api.ProximityConfigurationType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.ProximityConfigurationType.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='semtech_proximity', full_name='chromiumos.config.api.ProximityConfigurationType.semtech_proximity', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE, _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE, _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE, _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE, _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_semtech_proximity', full_name='chromiumos.config.api.ProximityConfigurationType._semtech_proximity',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=6885,
+  serialized_end=8288,
 )
 
 
@@ -889,8 +2112,43 @@ _HALCONFIGURATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='sensor_list', full_name='chromiumos.config.api.HalConfiguration.sensor_list', index=12,
+      name='gyroscope_list', full_name='chromiumos.config.api.HalConfiguration.gyroscope_list', index=12,
       number=13, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='accelerometer_list', full_name='chromiumos.config.api.HalConfiguration.accelerometer_list', index=13,
+      number=14, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='lightsensor_list', full_name='chromiumos.config.api.HalConfiguration.lightsensor_list', index=14,
+      number=15, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='magnetometer_list', full_name='chromiumos.config.api.HalConfiguration.magnetometer_list', index=15,
+      number=16, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='wifi_list', full_name='chromiumos.config.api.HalConfiguration.wifi_list', index=16,
+      number=17, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='proximity_list', full_name='chromiumos.config.api.HalConfiguration.proximity_list', index=17,
+      number=18, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -900,6 +2158,7 @@ _HALCONFIGURATION = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _HALCONFIGURATION_PRESENT,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -907,19 +2166,26 @@ _HALCONFIGURATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2196,
-  serialized_end=3157,
+  serialized_start=8291,
+  serialized_end=9703,
 )
 
 _AUDIOCONFIGURATIONTYPE.oneofs_by_name['_soundcard'].fields.append(
   _AUDIOCONFIGURATIONTYPE.fields_by_name['soundcard'])
 _AUDIOCONFIGURATIONTYPE.fields_by_name['soundcard'].containing_oneof = _AUDIOCONFIGURATIONTYPE.oneofs_by_name['_soundcard']
+_AUDIOCONFIGURATIONTYPE.oneofs_by_name['_dmics_count'].fields.append(
+  _AUDIOCONFIGURATIONTYPE.fields_by_name['dmics_count'])
+_AUDIOCONFIGURATIONTYPE.fields_by_name['dmics_count'].containing_oneof = _AUDIOCONFIGURATIONTYPE.oneofs_by_name['_dmics_count']
+_CELLULARCONFIGURATIONTYPE.fields_by_name['modem_type'].enum_type = _CELLULARCONFIGURATIONTYPE_MODEMTYPE
+_CELLULARCONFIGURATIONTYPE_MODEMTYPE.containing_type = _CELLULARCONFIGURATIONTYPE
 _CELLULARCONFIGURATIONTYPE.oneofs_by_name['_modem_type'].fields.append(
   _CELLULARCONFIGURATIONTYPE.fields_by_name['modem_type'])
 _CELLULARCONFIGURATIONTYPE.fields_by_name['modem_type'].containing_oneof = _CELLULARCONFIGURATIONTYPE.oneofs_by_name['_modem_type']
 _CELLULARCONFIGURATIONTYPE.oneofs_by_name['_firmware_variant'].fields.append(
   _CELLULARCONFIGURATIONTYPE.fields_by_name['firmware_variant'])
 _CELLULARCONFIGURATIONTYPE.fields_by_name['firmware_variant'].containing_oneof = _CELLULARCONFIGURATIONTYPE.oneofs_by_name['_firmware_variant']
+_FINGERPRINTCONFIGURATIONTYPE.fields_by_name['sensor_location'].enum_type = _FINGERPRINTCONFIGURATIONTYPE_LOCATION
+_FINGERPRINTCONFIGURATIONTYPE_LOCATION.containing_type = _FINGERPRINTCONFIGURATIONTYPE
 _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_fingerprint_sensor_type'].fields.append(
   _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['fingerprint_sensor_type'])
 _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['fingerprint_sensor_type'].containing_oneof = _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_fingerprint_sensor_type']
@@ -929,21 +2195,35 @@ _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['sensor_location'].containing_oneof
 _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_ro_version'].fields.append(
   _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['ro_version'])
 _FINGERPRINTCONFIGURATIONTYPE.fields_by_name['ro_version'].containing_oneof = _FINGERPRINTCONFIGURATIONTYPE.oneofs_by_name['_ro_version']
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['interface'].enum_type = _CAMERACONFIGURATIONTYPE_INTERFACE
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['position'].enum_type = _CAMERACONFIGURATIONTYPE_FACING
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['autofocus_support'].enum_type = _HALCONFIGURATION_PRESENT
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.containing_type = _CAMERACONFIGURATIONTYPE
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_interface'].fields.append(
+  _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['interface'])
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['interface'].containing_oneof = _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_interface']
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_position'].fields.append(
+  _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['position'])
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['position'].containing_oneof = _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_position']
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_autofocus_support'].fields.append(
+  _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['autofocus_support'])
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['autofocus_support'].containing_oneof = _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_autofocus_support']
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_resolutionx'].fields.append(
+  _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['resolutionx'])
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['resolutionx'].containing_oneof = _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_resolutionx']
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_resolutiony'].fields.append(
+  _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['resolutiony'])
+_CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.fields_by_name['resolutiony'].containing_oneof = _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG.oneofs_by_name['_resolutiony']
+_CAMERACONFIGURATIONTYPE.fields_by_name['cameras'].message_type = _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG
+_CAMERACONFIGURATIONTYPE_INTERFACE.containing_type = _CAMERACONFIGURATIONTYPE
+_CAMERACONFIGURATIONTYPE_FACING.containing_type = _CAMERACONFIGURATIONTYPE
 _CAMERACONFIGURATIONTYPE.oneofs_by_name['_media_profile_suffix'].fields.append(
   _CAMERACONFIGURATIONTYPE.fields_by_name['media_profile_suffix'])
 _CAMERACONFIGURATIONTYPE.fields_by_name['media_profile_suffix'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_media_profile_suffix']
-_CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_front'].fields.append(
-  _CAMERACONFIGURATIONTYPE.fields_by_name['feature_front'])
-_CAMERACONFIGURATIONTYPE.fields_by_name['feature_front'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_front']
-_CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_back'].fields.append(
-  _CAMERACONFIGURATIONTYPE.fields_by_name['feature_back'])
-_CAMERACONFIGURATIONTYPE.fields_by_name['feature_back'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_back']
-_CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_autofocus'].fields.append(
-  _CAMERACONFIGURATIONTYPE.fields_by_name['feature_autofocus'])
-_CAMERACONFIGURATIONTYPE.fields_by_name['feature_autofocus'].containing_oneof = _CAMERACONFIGURATIONTYPE.oneofs_by_name['_feature_autofocus']
 _STORAGECONFIGURATIONTYPE.oneofs_by_name['_storage_type'].fields.append(
   _STORAGECONFIGURATIONTYPE.fields_by_name['storage_type'])
 _STORAGECONFIGURATIONTYPE.fields_by_name['storage_type'].containing_oneof = _STORAGECONFIGURATIONTYPE.oneofs_by_name['_storage_type']
+_KEYBOARDCONFIGURATIONTYPE.fields_by_name['backlight_support'].enum_type = _HALCONFIGURATION_PRESENT
 _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_backlight_support'].fields.append(
   _KEYBOARDCONFIGURATIONTYPE.fields_by_name['backlight_support'])
 _KEYBOARDCONFIGURATIONTYPE.fields_by_name['backlight_support'].containing_oneof = _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_backlight_support']
@@ -953,6 +2233,8 @@ _KEYBOARDCONFIGURATIONTYPE.fields_by_name['kb_default_brightness'].containing_on
 _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_kb_backlight_steps'].fields.append(
   _KEYBOARDCONFIGURATIONTYPE.fields_by_name['kb_backlight_steps'])
 _KEYBOARDCONFIGURATIONTYPE.fields_by_name['kb_backlight_steps'].containing_oneof = _KEYBOARDCONFIGURATIONTYPE.oneofs_by_name['_kb_backlight_steps']
+_STYLUSCONFIGURATIONTYPE.fields_by_name['stylus_type'].enum_type = _STYLUSCONFIGURATIONTYPE_STYLUSTYPE
+_STYLUSCONFIGURATIONTYPE_STYLUSTYPE.containing_type = _STYLUSCONFIGURATIONTYPE
 _STYLUSCONFIGURATIONTYPE.oneofs_by_name['_stylus_type'].fields.append(
   _STYLUSCONFIGURATIONTYPE.fields_by_name['stylus_type'])
 _STYLUSCONFIGURATIONTYPE.fields_by_name['stylus_type'].containing_oneof = _STYLUSCONFIGURATIONTYPE.oneofs_by_name['_stylus_type']
@@ -977,27 +2259,179 @@ _HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['form_factor'].containing_oneof
 _HARDWAREFEATURECONFIGURATIONTYPE.oneofs_by_name['_touchscreen_support'].fields.append(
   _HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['touchscreen_support'])
 _HARDWAREFEATURECONFIGURATIONTYPE.fields_by_name['touchscreen_support'].containing_oneof = _HARDWAREFEATURECONFIGURATIONTYPE.oneofs_by_name['_touchscreen_support']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_accelerometer'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_accelerometer'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_accelerometer'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_accelerometer']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_accelerometer'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_accelerometer'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_accelerometer'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_accelerometer']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_gyroscope'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_gyroscope'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_gyroscope'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_gyroscope']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_gyroscope'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_gyroscope'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_gyroscope'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_gyroscope']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_camera_lightsensor'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_camera_lightsensor'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_camera_lightsensor'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_camera_lightsensor']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_lightsensor'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_lightsensor'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_lid_lightsensor'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lid_lightsensor']
-_SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_lightsensor'].fields.append(
-  _SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_lightsensor'])
-_SENSORCONFIGURATIONTYPE.fields_by_name['feature_base_lightsensor'].containing_oneof = _SENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_base_lightsensor']
+_GYROSCOPECONFIGURATIONTYPE.fields_by_name['feature_gyroscope'].enum_type = _HALCONFIGURATION_PRESENT
+_GYROSCOPECONFIGURATIONTYPE.oneofs_by_name['_feature_gyroscope'].fields.append(
+  _GYROSCOPECONFIGURATIONTYPE.fields_by_name['feature_gyroscope'])
+_GYROSCOPECONFIGURATIONTYPE.fields_by_name['feature_gyroscope'].containing_oneof = _GYROSCOPECONFIGURATIONTYPE.oneofs_by_name['_feature_gyroscope']
+_ACCELEROMETERCONFIGURATIONTYPE.fields_by_name['feature_accelerometer'].enum_type = _HALCONFIGURATION_PRESENT
+_ACCELEROMETERCONFIGURATIONTYPE.oneofs_by_name['_feature_accelerometer'].fields.append(
+  _ACCELEROMETERCONFIGURATIONTYPE.fields_by_name['feature_accelerometer'])
+_ACCELEROMETERCONFIGURATIONTYPE.fields_by_name['feature_accelerometer'].containing_oneof = _ACCELEROMETERCONFIGURATIONTYPE.oneofs_by_name['_feature_accelerometer']
+_LIGHTSENSORCONFIGURATIONTYPE.fields_by_name['feature_lightsensor'].enum_type = _HALCONFIGURATION_PRESENT
+_LIGHTSENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lightsensor'].fields.append(
+  _LIGHTSENSORCONFIGURATIONTYPE.fields_by_name['feature_lightsensor'])
+_LIGHTSENSORCONFIGURATIONTYPE.fields_by_name['feature_lightsensor'].containing_oneof = _LIGHTSENSORCONFIGURATIONTYPE.oneofs_by_name['_feature_lightsensor']
+_MAGNETOMETERCONFIGURATIONTYPE.fields_by_name['feature_magnetometer'].enum_type = _HALCONFIGURATION_PRESENT
+_MAGNETOMETERCONFIGURATIONTYPE.oneofs_by_name['_feature_magnetometer'].fields.append(
+  _MAGNETOMETERCONFIGURATIONTYPE.fields_by_name['feature_magnetometer'])
+_MAGNETOMETERCONFIGURATIONTYPE.fields_by_name['feature_magnetometer'].containing_oneof = _MAGNETOMETERCONFIGURATIONTYPE.oneofs_by_name['_feature_magnetometer']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE.containing_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.fields_by_name['powerconfig_2g'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.fields_by_name['powerconfig_5g'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.fields_by_name['powerconfig_6g'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.containing_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.oneofs_by_name['_powerconfig_6g'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.fields_by_name['powerconfig_6g'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.fields_by_name['powerconfig_6g'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE.oneofs_by_name['_powerconfig_6g']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_2g'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_1'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_2'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_3'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_4'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_1'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_2'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_3'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_4'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_5'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_6'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.containing_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_1'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_1'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_1'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_1']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_2'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_2'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_2'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_2']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_3'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_3'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_3'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_3']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_4'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_4'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_5g_4'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_5g_4']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_1'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_1'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_1'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_1']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_2'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_2'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_2'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_2']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_3'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_3'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_3'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_3']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_4'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_4'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_4'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_4']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_5'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_5'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_5'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_5']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_6'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_6'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.fields_by_name['powerconfig_6g_6'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE.oneofs_by_name['_powerconfig_6g_6']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_fcc'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_eu'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_other'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['powertable_tablet'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['powertable_clamshell'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.containing_type = _WIFICONFIGURATIONTYPE
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_regdomain_fcc'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_fcc'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_fcc'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_regdomain_fcc']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_regdomain_eu'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_eu'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_eu'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_regdomain_eu']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_regdomain_other'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_other'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['regdomain_other'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_regdomain_other']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_powertable_tablet'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['powertable_tablet'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['powertable_tablet'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_powertable_tablet']
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_powertable_clamshell'].fields.append(
+  _WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['powertable_clamshell'])
+_WIFICONFIGURATIONTYPE_SARSPECTYPE.fields_by_name['powertable_clamshell'].containing_oneof = _WIFICONFIGURATIONTYPE_SARSPECTYPE.oneofs_by_name['_powertable_clamshell']
+_WIFICONFIGURATIONTYPE.fields_by_name['chip'].enum_type = _WIFICONFIGURATIONTYPE_WIFICHIP
+_WIFICONFIGURATIONTYPE.fields_by_name['mtkconfig'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE
+_WIFICONFIGURATIONTYPE.fields_by_name['rtwconfig'].message_type = _WIFICONFIGURATIONTYPE_SARSPECTYPE
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_aware'].enum_type = _HALCONFIGURATION_PRESENT
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_direct'].enum_type = _HALCONFIGURATION_PRESENT
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_passport'].enum_type = _HALCONFIGURATION_PRESENT
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_rtt'].enum_type = _HALCONFIGURATION_PRESENT
+_WIFICONFIGURATIONTYPE_WIFICHIP.containing_type = _WIFICONFIGURATIONTYPE
+_WIFICONFIGURATIONTYPE.oneofs_by_name['_mtkconfig'].fields.append(
+  _WIFICONFIGURATIONTYPE.fields_by_name['mtkconfig'])
+_WIFICONFIGURATIONTYPE.fields_by_name['mtkconfig'].containing_oneof = _WIFICONFIGURATIONTYPE.oneofs_by_name['_mtkconfig']
+_WIFICONFIGURATIONTYPE.oneofs_by_name['_rtwconfig'].fields.append(
+  _WIFICONFIGURATIONTYPE.fields_by_name['rtwconfig'])
+_WIFICONFIGURATIONTYPE.fields_by_name['rtwconfig'].containing_oneof = _WIFICONFIGURATIONTYPE.oneofs_by_name['_rtwconfig']
+_WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_aware'].fields.append(
+  _WIFICONFIGURATIONTYPE.fields_by_name['feature_aware'])
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_aware'].containing_oneof = _WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_aware']
+_WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_direct'].fields.append(
+  _WIFICONFIGURATIONTYPE.fields_by_name['feature_direct'])
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_direct'].containing_oneof = _WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_direct']
+_WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_passport'].fields.append(
+  _WIFICONFIGURATIONTYPE.fields_by_name['feature_passport'])
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_passport'].containing_oneof = _WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_passport']
+_WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_rtt'].fields.append(
+  _WIFICONFIGURATIONTYPE.fields_by_name['feature_rtt'])
+_WIFICONFIGURATIONTYPE.fields_by_name['feature_rtt'].containing_oneof = _WIFICONFIGURATIONTYPE.oneofs_by_name['_feature_rtt']
+_PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE.containing_type = _PROXIMITYCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE.oneofs_by_name['_modifier'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE.fields_by_name['modifier'])
+_PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE.fields_by_name['modifier'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE.oneofs_by_name['_modifier']
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.fields_by_name['radio_type_wifi'].message_type = _PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.fields_by_name['radio_type_cellular'].message_type = _PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.containing_type = _PROXIMITYCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.oneofs_by_name['_radio_type_wifi'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.fields_by_name['radio_type_wifi'])
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.fields_by_name['radio_type_wifi'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.oneofs_by_name['_radio_type_wifi']
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.oneofs_by_name['_radio_type_cellular'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.fields_by_name['radio_type_cellular'])
+_PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.fields_by_name['radio_type_cellular'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE.oneofs_by_name['_radio_type_cellular']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.containing_type = _PROXIMITYCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_channel'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['channel'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['channel'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_channel']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_hardwaregain'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['hardwaregain'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['hardwaregain'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_hardwaregain']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_falling'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_falling'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_falling'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_falling']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_falling_hysteresis'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_falling_hysteresis'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_falling_hysteresis'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_falling_hysteresis']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_rising'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_rising'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_rising'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_rising']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_rising_hysteresis'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_rising_hysteresis'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.fields_by_name['thresh_rising_hysteresis'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE.oneofs_by_name['_thresh_rising_hysteresis']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['channel'].message_type = _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.containing_type = _PROXIMITYCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.oneofs_by_name['_sampling_frequency'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['sampling_frequency'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['sampling_frequency'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.oneofs_by_name['_sampling_frequency']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.oneofs_by_name['_thresh_falling_period'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['thresh_falling_period'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['thresh_falling_period'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.oneofs_by_name['_thresh_falling_period']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.oneofs_by_name['_thresh_rising_period'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['thresh_rising_period'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.fields_by_name['thresh_rising_period'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE.oneofs_by_name['_thresh_rising_period']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.fields_by_name['location'].message_type = _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.fields_by_name['semtech_config'].message_type = _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.containing_type = _PROXIMITYCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.oneofs_by_name['_location'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.fields_by_name['location'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.fields_by_name['location'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.oneofs_by_name['_location']
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.oneofs_by_name['_semtech_config'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.fields_by_name['semtech_config'])
+_PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.fields_by_name['semtech_config'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE.oneofs_by_name['_semtech_config']
+_PROXIMITYCONFIGURATIONTYPE.fields_by_name['semtech_proximity'].message_type = _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE
+_PROXIMITYCONFIGURATIONTYPE.oneofs_by_name['_semtech_proximity'].fields.append(
+  _PROXIMITYCONFIGURATIONTYPE.fields_by_name['semtech_proximity'])
+_PROXIMITYCONFIGURATIONTYPE.fields_by_name['semtech_proximity'].containing_oneof = _PROXIMITYCONFIGURATIONTYPE.oneofs_by_name['_semtech_proximity']
 _HALCONFIGURATION.fields_by_name['audio_list'].message_type = _AUDIOCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['fingerprint_list'].message_type = _FINGERPRINTCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['cellular_list'].message_type = _CELLULARCONFIGURATIONTYPE
@@ -1010,7 +2444,13 @@ _HALCONFIGURATION.fields_by_name['touchscreen_list'].message_type = _TOUCHSCREEN
 _HALCONFIGURATION.fields_by_name['touchpad_list'].message_type = _TOUCHPADCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['video_list'].message_type = _VIDEOCONFIGURATIONTYPE
 _HALCONFIGURATION.fields_by_name['hwfeature_list'].message_type = _HARDWAREFEATURECONFIGURATIONTYPE
-_HALCONFIGURATION.fields_by_name['sensor_list'].message_type = _SENSORCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['gyroscope_list'].message_type = _GYROSCOPECONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['accelerometer_list'].message_type = _ACCELEROMETERCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['lightsensor_list'].message_type = _LIGHTSENSORCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['magnetometer_list'].message_type = _MAGNETOMETERCONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['wifi_list'].message_type = _WIFICONFIGURATIONTYPE
+_HALCONFIGURATION.fields_by_name['proximity_list'].message_type = _PROXIMITYCONFIGURATIONTYPE
+_HALCONFIGURATION_PRESENT.containing_type = _HALCONFIGURATION
 DESCRIPTOR.message_types_by_name['AudioConfigurationType'] = _AUDIOCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['CellularConfigurationType'] = _CELLULARCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['FingerprintConfigurationType'] = _FINGERPRINTCONFIGURATIONTYPE
@@ -1023,7 +2463,12 @@ DESCRIPTOR.message_types_by_name['TouchscreenConfigurationType'] = _TOUCHSCREENC
 DESCRIPTOR.message_types_by_name['TouchpadConfigurationType'] = _TOUCHPADCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['VideoConfigurationType'] = _VIDEOCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['HardwareFeatureConfigurationType'] = _HARDWAREFEATURECONFIGURATIONTYPE
-DESCRIPTOR.message_types_by_name['SensorConfigurationType'] = _SENSORCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['GyroscopeConfigurationType'] = _GYROSCOPECONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['AccelerometerConfigurationType'] = _ACCELEROMETERCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['LightSensorConfigurationType'] = _LIGHTSENSORCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['MagnetometerConfigurationType'] = _MAGNETOMETERCONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['WifiConfigurationType'] = _WIFICONFIGURATIONTYPE
+DESCRIPTOR.message_types_by_name['ProximityConfigurationType'] = _PROXIMITYCONFIGURATIONTYPE
 DESCRIPTOR.message_types_by_name['HalConfiguration'] = _HALCONFIGURATION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -1049,11 +2494,19 @@ FingerprintConfigurationType = _reflection.GeneratedProtocolMessageType('Fingerp
 _sym_db.RegisterMessage(FingerprintConfigurationType)
 
 CameraConfigurationType = _reflection.GeneratedProtocolMessageType('CameraConfigurationType', (_message.Message,), {
+
+  'CameraHWConfig' : _reflection.GeneratedProtocolMessageType('CameraHWConfig', (_message.Message,), {
+    'DESCRIPTOR' : _CAMERACONFIGURATIONTYPE_CAMERAHWCONFIG,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.CameraConfigurationType.CameraHWConfig)
+    })
+  ,
   'DESCRIPTOR' : _CAMERACONFIGURATIONTYPE,
   '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.CameraConfigurationType)
   })
 _sym_db.RegisterMessage(CameraConfigurationType)
+_sym_db.RegisterMessage(CameraConfigurationType.CameraHWConfig)
 
 StorageConfigurationType = _reflection.GeneratedProtocolMessageType('StorageConfigurationType', (_message.Message,), {
   'DESCRIPTOR' : _STORAGECONFIGURATIONTYPE,
@@ -1111,12 +2564,119 @@ HardwareFeatureConfigurationType = _reflection.GeneratedProtocolMessageType('Har
   })
 _sym_db.RegisterMessage(HardwareFeatureConfigurationType)
 
-SensorConfigurationType = _reflection.GeneratedProtocolMessageType('SensorConfigurationType', (_message.Message,), {
-  'DESCRIPTOR' : _SENSORCONFIGURATIONTYPE,
+GyroscopeConfigurationType = _reflection.GeneratedProtocolMessageType('GyroscopeConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _GYROSCOPECONFIGURATIONTYPE,
   '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.SensorConfigurationType)
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.GyroscopeConfigurationType)
   })
-_sym_db.RegisterMessage(SensorConfigurationType)
+_sym_db.RegisterMessage(GyroscopeConfigurationType)
+
+AccelerometerConfigurationType = _reflection.GeneratedProtocolMessageType('AccelerometerConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _ACCELEROMETERCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.AccelerometerConfigurationType)
+  })
+_sym_db.RegisterMessage(AccelerometerConfigurationType)
+
+LightSensorConfigurationType = _reflection.GeneratedProtocolMessageType('LightSensorConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _LIGHTSENSORCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.LightSensorConfigurationType)
+  })
+_sym_db.RegisterMessage(LightSensorConfigurationType)
+
+MagnetometerConfigurationType = _reflection.GeneratedProtocolMessageType('MagnetometerConfigurationType', (_message.Message,), {
+  'DESCRIPTOR' : _MAGNETOMETERCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.MagnetometerConfigurationType)
+  })
+_sym_db.RegisterMessage(MagnetometerConfigurationType)
+
+WifiConfigurationType = _reflection.GeneratedProtocolMessageType('WifiConfigurationType', (_message.Message,), {
+
+  'SarSpecType' : _reflection.GeneratedProtocolMessageType('SarSpecType', (_message.Message,), {
+
+    'PowerConfigType' : _reflection.GeneratedProtocolMessageType('PowerConfigType', (_message.Message,), {
+      'DESCRIPTOR' : _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERCONFIGTYPE,
+      '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType)
+      })
+    ,
+
+    'RegDomainType' : _reflection.GeneratedProtocolMessageType('RegDomainType', (_message.Message,), {
+      'DESCRIPTOR' : _WIFICONFIGURATIONTYPE_SARSPECTYPE_REGDOMAINTYPE,
+      '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType)
+      })
+    ,
+
+    'PowerTableType' : _reflection.GeneratedProtocolMessageType('PowerTableType', (_message.Message,), {
+      'DESCRIPTOR' : _WIFICONFIGURATIONTYPE_SARSPECTYPE_POWERTABLETYPE,
+      '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType)
+      })
+    ,
+    'DESCRIPTOR' : _WIFICONFIGURATIONTYPE_SARSPECTYPE,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfigurationType.SarSpecType)
+    })
+  ,
+  'DESCRIPTOR' : _WIFICONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfigurationType)
+  })
+_sym_db.RegisterMessage(WifiConfigurationType)
+_sym_db.RegisterMessage(WifiConfigurationType.SarSpecType)
+_sym_db.RegisterMessage(WifiConfigurationType.SarSpecType.PowerConfigType)
+_sym_db.RegisterMessage(WifiConfigurationType.SarSpecType.RegDomainType)
+_sym_db.RegisterMessage(WifiConfigurationType.SarSpecType.PowerTableType)
+
+ProximityConfigurationType = _reflection.GeneratedProtocolMessageType('ProximityConfigurationType', (_message.Message,), {
+
+  'LocationType' : _reflection.GeneratedProtocolMessageType('LocationType', (_message.Message,), {
+    'DESCRIPTOR' : _PROXIMITYCONFIGURATIONTYPE_LOCATIONTYPE,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.ProximityConfigurationType.LocationType)
+    })
+  ,
+
+  'ProximityLocationType' : _reflection.GeneratedProtocolMessageType('ProximityLocationType', (_message.Message,), {
+    'DESCRIPTOR' : _PROXIMITYCONFIGURATIONTYPE_PROXIMITYLOCATIONTYPE,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.ProximityConfigurationType.ProximityLocationType)
+    })
+  ,
+
+  'SemtechChannelType' : _reflection.GeneratedProtocolMessageType('SemtechChannelType', (_message.Message,), {
+    'DESCRIPTOR' : _PROXIMITYCONFIGURATIONTYPE_SEMTECHCHANNELTYPE,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.ProximityConfigurationType.SemtechChannelType)
+    })
+  ,
+
+  'SemtechSensorConfigurationType' : _reflection.GeneratedProtocolMessageType('SemtechSensorConfigurationType', (_message.Message,), {
+    'DESCRIPTOR' : _PROXIMITYCONFIGURATIONTYPE_SEMTECHSENSORCONFIGURATIONTYPE,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.ProximityConfigurationType.SemtechSensorConfigurationType)
+    })
+  ,
+
+  'SemtechProximityConfigurationType' : _reflection.GeneratedProtocolMessageType('SemtechProximityConfigurationType', (_message.Message,), {
+    'DESCRIPTOR' : _PROXIMITYCONFIGURATIONTYPE_SEMTECHPROXIMITYCONFIGURATIONTYPE,
+    '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType)
+    })
+  ,
+  'DESCRIPTOR' : _PROXIMITYCONFIGURATIONTYPE,
+  '__module__' : 'chromiumos.config.api.android_component_configs_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.ProximityConfigurationType)
+  })
+_sym_db.RegisterMessage(ProximityConfigurationType)
+_sym_db.RegisterMessage(ProximityConfigurationType.LocationType)
+_sym_db.RegisterMessage(ProximityConfigurationType.ProximityLocationType)
+_sym_db.RegisterMessage(ProximityConfigurationType.SemtechChannelType)
+_sym_db.RegisterMessage(ProximityConfigurationType.SemtechSensorConfigurationType)
+_sym_db.RegisterMessage(ProximityConfigurationType.SemtechProximityConfigurationType)
 
 HalConfiguration = _reflection.GeneratedProtocolMessageType('HalConfiguration', (_message.Message,), {
   'DESCRIPTOR' : _HALCONFIGURATION,

@@ -18,15 +18,36 @@ load(
 load("//config/util/bindings/proto.star", "protos")
 load("//config/util/generate.star", "generate")
 
+_PRESENT = struct(
+    UNKNOWN = android_component_pb.HalConfiguration.PRESENT_UNKNOWN,
+    PRESENT = android_component_pb.HalConfiguration.PRESENT,
+    NOT_PRESENT = android_component_pb.HalConfiguration.NOT_PRESENT,
+)
+
 def _create_audio(
         id,
-        soundcard = None):
+        soundcard = None,
+        dmics_count = None):
     """Builds android_hal_config proto for an audio component."""
 
     return android_component_pb.AudioConfigurationType(
         id = id,
         soundcard = soundcard,
+        dmics_count = dmics_count,
     )
+
+_FP_LOC = struct(
+    UNKNOWN = android_component_pb.FingerprintConfigurationType.LOCATION_UNKNOWN,
+    POWER_BUTTON_TOP_LEFT = android_component_pb.FingerprintConfigurationType.POWER_BUTTON_TOP_LEFT,
+    KEYBOARD_BOTTOM_LEFT = android_component_pb.FingerprintConfigurationType.KEYBOARD_BOTTOM_LEFT,
+    KEYBOARD_BOTTOM_RIGHT = android_component_pb.FingerprintConfigurationType.KEYBOARD_BOTTOM_RIGHT,
+    KEYBOARD_TOP_RIGHT = android_component_pb.FingerprintConfigurationType.KEYBOARD_TOP_RIGHT,
+    RIGHT_SIDE = android_component_pb.FingerprintConfigurationType.RIGHT_SIDE,
+    LEFT_SIDE = android_component_pb.FingerprintConfigurationType.LEFT_SIDE,
+    LEFT_OF_POWER_BUTTON_TOP_RIGHT = android_component_pb.FingerprintConfigurationType.LEFT_OF_POWER_BUTTON_TOP_RIGHT,
+    POWER_BUTTON_TOP_RIGHT_KEY = android_component_pb.FingerprintConfigurationType.POWER_BUTTON_TOP_RIGHT_KEY,
+    POWER_BUTTON_LEFT_EDGE_TOP = android_component_pb.FingerprintConfigurationType.POWER_BUTTON_LEFT_EDGE_TOP,
+)
 
 def _create_fingerprint(
         id,
@@ -44,6 +65,21 @@ def _create_fingerprint(
         ro_version = ro_version,
     )
 
+_MODEM = struct(
+    MODEM_UNKNOWN = android_component_pb.CellularConfigurationType.MODEM_UNKNOWN,
+    MODEM_L850 = android_component_pb.CellularConfigurationType.MODEM_L850,
+    MODEM_NL668 = android_component_pb.CellularConfigurationType.MODEM_NL668,
+    MODEM_FM101 = android_component_pb.CellularConfigurationType.MODEM_FM101,
+    MODEM_FM350 = android_component_pb.CellularConfigurationType.MODEM_FM350,
+    MODEM_SC7180 = android_component_pb.CellularConfigurationType.MODEM_SC7180,
+    MODEM_SC7280 = android_component_pb.CellularConfigurationType.MODEM_SC7280,
+    MODEM_EM060 = android_component_pb.CellularConfigurationType.MODEM_EM060,
+    MODEM_RW101 = android_component_pb.CellularConfigurationType.MODEM_RW101,
+    MODEM_RW135 = android_component_pb.CellularConfigurationType.MODEM_RW135,
+    MODEM_LCUK54 = android_component_pb.CellularConfigurationType.MODEM_LCUK54,
+    MODEM_RW350 = android_component_pb.CellularConfigurationType.MODEM_RW350,
+)
+
 def _create_cellular(
         id,
         modem_type = None,
@@ -56,20 +92,43 @@ def _create_cellular(
         firmware_variant = firmware_variant,
     )
 
+_CAM_INTERFACE = struct(
+    INTERFACE_UNKNOWN = android_component_pb.CameraConfigurationType.FACING_UNKNOWN,
+    INTERFACE_USB = android_component_pb.CameraConfigurationType.INTERFACE_USB,
+    INTERFACE_MIPI = android_component_pb.CameraConfigurationType.INTERFACE_MIPI,
+)
+_CAM_FACING = struct(
+    FACING_UNKNOWN = android_component_pb.CameraConfigurationType.FACING_UNKNOWN,
+    FACING_FRONT = android_component_pb.CameraConfigurationType.FACING_FRONT,
+    FACING_BACK = android_component_pb.CameraConfigurationType.FACING_BACK,
+)
+
+def _create_camerahwconfig(
+        interface = None,
+        position = None,
+        autofocus_support = None,
+        resolutionx = None,
+        resolutiony = None):
+    """Builds android_hal_config proto for a camerahwconfig."""
+
+    return android_component_pb.CameraConfigurationType.CameraHWConfig(
+        interface = interface,
+        position = position,
+        autofocus_support = autofocus_support,
+        resolutionx = resolutionx,
+        resolutiony = resolutiony,
+    )
+
 def _create_camera(
         id,
         media_profile_suffix = None,
-        feature_front = None,
-        feature_back = None,
-        feature_autofocus = None):
+        cameras = []):
     """Builds android_hal_config proto for a camera."""
 
     return android_component_pb.CameraConfigurationType(
         id = id,
         media_profile_suffix = media_profile_suffix,
-        feature_front = feature_front,
-        feature_back = feature_back,
-        feature_autofocus = feature_autofocus,
+        cameras = cameras,
     )
 
 def _create_storage(
@@ -95,6 +154,13 @@ def _create_keyboard(
         kb_default_brightness = kb_default_brightness,
         kb_backlight_steps = kb_backlight_steps,
     )
+
+_STYLUS = struct(
+    UNKNOWN = android_component_pb.StylusConfigurationType.STYLUS_UNKNOWN,
+    NONE = android_component_pb.StylusConfigurationType.NONE,
+    INTERNAL = android_component_pb.StylusConfigurationType.INTERNAL,
+    EXTERNAL = android_component_pb.StylusConfigurationType.EXTERNAL,
+)
 
 def _create_stylus(
         id,
@@ -159,26 +225,212 @@ def _create_hwfeature(
         touchscreen_support = touchscreen_support,
     )
 
-def _create_sensor(
+def _create_gyroscope(
         id,
-        feature_base_accelerometer = None,
-        feature_lid_accelerometer = None,
-        feature_base_gyroscope = None,
-        feature_lid_gyroscope = None,
-        feature_camera_lightsensor = None,
-        feature_lid_lightsensor = None,
-        feature_base_lightsensor = None):
-    """Builds android_hal_config proto for sensor configuration."""
+        feature_gyroscope = None):
+    """Builds android_hal_config proto for gyroscope configuration."""
 
-    return android_component_pb.SensorConfigurationType(
+    return android_component_pb.GyroscopeConfigurationType(
         id = id,
-        feature_base_accelerometer = feature_base_accelerometer,
-        feature_lid_accelerometer = feature_lid_accelerometer,
-        feature_base_gyroscope = feature_base_gyroscope,
-        feature_lid_gyroscope = feature_lid_gyroscope,
-        feature_camera_lightsensor = feature_camera_lightsensor,
-        feature_lid_lightsensor = feature_lid_lightsensor,
-        feature_base_lightsensor = feature_base_lightsensor,
+        feature_gyroscope = feature_gyroscope,
+    )
+
+def _create_accelerometer(
+        id,
+        feature_accelerometer = None):
+    """Builds android_hal_config proto for accelerometer configuration."""
+
+    return android_component_pb.AccelerometerConfigurationType(
+        id = id,
+        feature_accelerometer = feature_accelerometer,
+    )
+
+def _create_lightsensor(
+        id,
+        feature_lightsensor = None):
+    """Builds android_hal_config proto for light sensor configuration."""
+
+    return android_component_pb.LightSensorConfigurationType(
+        id = id,
+        feature_lightsensor = feature_lightsensor,
+    )
+
+def _create_magnetometer(
+        id,
+        feature_magnetometer = None):
+    """Builds android_hal_config proto for magnetometer configuration."""
+
+    return android_component_pb.MagnetometerConfigurationType(
+        id = id,
+        feature_magnetometer = feature_magnetometer,
+    )
+
+_WIFI_CHIP = struct(
+    UNKNOWN = android_component_pb.WifiConfigurationType.UNKNOWN,
+    INTEL = android_component_pb.WifiConfigurationType.INTEL,
+    MTK = android_component_pb.WifiConfigurationType.MTK,
+    RTW = android_component_pb.WifiConfigurationType.RTW,
+    QCOM = android_component_pb.WifiConfigurationType.QCOM,
+)
+
+def _create_powerconfig(
+        powerlimit = None,
+        poweroffset = None):
+    """Builds android_hal_config proto for power configuration."""
+
+    return android_component_pb.WifiConfigurationType.SarSpecType.PowerConfigType(
+        powerlimit = powerlimit,
+        poweroffset = poweroffset,
+    )
+
+def _create_regdomain(
+        powerconfig_2g = None,
+        powerconfig_5g = None,
+        powerconfig_6g = None):
+    """Builds android_hal_config proto for RegDomainType configuration."""
+
+    return android_component_pb.WifiConfigurationType.SarSpecType.RegDomainType(
+        powerconfig_2g = powerconfig_2g,
+        powerconfig_5g = powerconfig_5g,
+        powerconfig_6g = powerconfig_6g,
+    )
+
+def _create_powertable(
+        powerconfig_2g = None,
+        powerconfig_5g = None,
+        powerconfig_5g_1 = None,
+        powerconfig_5g_2 = None,
+        powerconfig_5g_3 = None,
+        powerconfig_5g_4 = None,
+        powerconfig_6g_1 = None,
+        powerconfig_6g_2 = None,
+        powerconfig_6g_3 = None,
+        powerconfig_6g_4 = None,
+        powerconfig_6g_5 = None,
+        powerconfig_6g_6 = None):
+    """Builds android_hal_config proto for PowerTableType configuration."""
+
+    return android_component_pb.WifiConfigurationType.SarSpecType.PowerTableType(
+        powerconfig_2g = powerconfig_2g,
+        powerconfig_5g = powerconfig_5g,
+        powerconfig_5g_1 = powerconfig_5g_1,
+        powerconfig_5g_2 = powerconfig_5g_2,
+        powerconfig_5g_3 = powerconfig_5g_3,
+        powerconfig_5g_4 = powerconfig_5g_4,
+        powerconfig_6g_1 = powerconfig_6g_1,
+        powerconfig_6g_2 = powerconfig_6g_2,
+        powerconfig_6g_3 = powerconfig_6g_3,
+        powerconfig_6g_4 = powerconfig_6g_4,
+        powerconfig_6g_5 = powerconfig_6g_5,
+        powerconfig_6g_6 = powerconfig_6g_6,
+    )
+
+def _create_sarspec(
+        regdomain_fcc = None,
+        regdomain_eu = None,
+        regdomain_other = None,
+        powertable_tablet = None,
+        powertable_clamshell = None):
+    """Builds android_hal_config proto for SarSpecType configuration."""
+
+    return android_component_pb.WifiConfigurationType.SarSpecType(
+        regdomain_fcc = regdomain_fcc,
+        regdomain_eu = regdomain_eu,
+        regdomain_other = regdomain_other,
+        powertable_tablet = powertable_tablet,
+        powertable_clamshell = powertable_clamshell,
+    )
+
+def _create_wificonfig(
+        id,
+        chip = None,
+        mtkconfig = None,
+        rtwconfig = None,
+        feature_aware = None,
+        feature_direct = None,
+        feature_passport = None,
+        feature_rtt = None):
+    """Builds android_hal_config proto for WifiConfigurationType configuration."""
+
+    return android_component_pb.WifiConfigurationType(
+        id = id,
+        chip = chip,
+        mtkconfig = mtkconfig,
+        rtwconfig = rtwconfig,
+        feature_aware = feature_aware,
+        feature_direct = feature_direct,
+        feature_passport = feature_passport,
+        feature_rtt = feature_rtt,
+    )
+
+def _create_location(
+        modifier = None):
+    """Builds android_hal_config proto for Proximity sensor location configuration."""
+
+    return android_component_pb.ProximityConfigurationType.LocationType(
+        modifier = modifier,
+    )
+
+def _create_proximitylocation(
+        radio_type_wifi = None,
+        radio_type_cellular = None):
+    """Builds android_hal_config proto for Proximity sensor location configuration."""
+
+    return android_component_pb.ProximityConfigurationType.ProximityLocationType(
+        radio_type_wifi = radio_type_wifi,
+        radio_type_cellular = radio_type_cellular,
+    )
+
+def _create_semtech_channel(
+        channel = None,
+        hardwaregain = None,
+        thresh_falling = None,
+        thresh_falling_hysteresis = None,
+        thresh_rising = None,
+        thresh_rising_hysteresis = None):
+    """Builds android_hal_config proto for SemtechChannelType configuration."""
+
+    return android_component_pb.ProximityConfigurationType.SemtechChannelType(
+        channel = channel,
+        hardwaregain = hardwaregain,
+        thresh_falling = thresh_falling,
+        thresh_falling_hysteresis = thresh_falling_hysteresis,
+        thresh_rising = thresh_rising,
+        thresh_rising_hysteresis = thresh_rising_hysteresis,
+    )
+
+def _create_semtech_sensorconfig(
+        channel = [],
+        sampling_frequency = None,
+        thresh_falling_period = None,
+        thresh_rising_period = None):
+    """Builds android_hal_config proto for SemtechSensorConfigurationType configuration."""
+
+    return android_component_pb.ProximityConfigurationType.SemtechSensorConfigurationType(
+        channel = channel,
+        sampling_frequency = sampling_frequency,
+        thresh_falling_period = thresh_falling_period,
+        thresh_rising_period = thresh_rising_period,
+    )
+
+def _create_semtech_proximity(
+        location = None,
+        semtech_config = None):
+    """Builds android_hal_config proto for SemtechProximityConfigurationType configuration."""
+
+    return android_component_pb.ProximityConfigurationType.SemtechProximityConfigurationType(
+        location = location,
+        semtech_config = semtech_config,
+    )
+
+def _create_proximity(
+        id,
+        semtech_proximity = None):
+    """Builds android_hal_config proto for ProximityConfigurationType configuration."""
+
+    return android_component_pb.ProximityConfigurationType(
+        id = id,
+        semtech_proximity = semtech_proximity,
     )
 
 def _create_hal_config(
@@ -194,7 +446,12 @@ def _create_hal_config(
         touchpad_configurations = None,
         video_configurations = None,
         hwfeature_configurations = None,
-        sensor_configurations = None):
+        gyroscope_configurations = None,
+        accelerometer_configurations = None,
+        lightsensor_configurations = None,
+        magnetometer_configurations = None,
+        wifi_configurations = None,
+        proximity_configurations = None):
     """Builds a HalConfiguration proto."""
 
     return android_component_pb.HalConfiguration(
@@ -210,13 +467,19 @@ def _create_hal_config(
         touchpad_list = touchpad_configurations,
         video_list = video_configurations,
         hwfeature_list = hwfeature_configurations,
-        sensor_list = sensor_configurations,
+        gyroscope_list = gyroscope_configurations,
+        accelerometer_list = accelerometer_configurations,
+        lightsensor_list = lightsensor_configurations,
+        magnetometer_list = magnetometer_configurations,
+        wifi_list = wifi_configurations,
+        proximity_list = proximity_configurations,
     )
 
 android_hal_config = struct(
     create_audio = _create_audio,
     create_fingerprint = _create_fingerprint,
     create_cellular = _create_cellular,
+    create_camerahwconfig = _create_camerahwconfig,
     create_camera = _create_camera,
     create_storage = _create_storage,
     create_keyboard = _create_keyboard,
@@ -226,8 +489,29 @@ android_hal_config = struct(
     create_touchpad = _create_touchpad,
     create_video = _create_video,
     create_hwfeature = _create_hwfeature,
-    create_sensor = _create_sensor,
+    create_gyroscope = _create_gyroscope,
+    create_accelerometer = _create_accelerometer,
+    create_lightsensor = _create_lightsensor,
+    create_magnetometer = _create_magnetometer,
+    create_powerconfig = _create_powerconfig,
+    create_regdomain = _create_regdomain,
+    create_powertable = _create_powertable,
+    create_sarspec = _create_sarspec,
+    create_wificonfig = _create_wificonfig,
+    create_location = _create_location,
+    create_proximitylocation = _create_proximitylocation,
+    create_semtech_channel = _create_semtech_channel,
+    create_semtech_sensorconfig = _create_semtech_sensorconfig,
+    create_semtech_proximity = _create_semtech_proximity,
+    create_proximity = _create_proximity,
     create_hal_config = _create_hal_config,
     gen_file = generate.gen_file,
     generate = generate.generate,
+    present = _PRESENT,
+    fp_loc = _FP_LOC,
+    modem = _MODEM,
+    cam_pos = _CAM_FACING,
+    cam_intf = _CAM_INTERFACE,
+    stylus = _STYLUS,
+    wifichip = _WIFI_CHIP,
 )
