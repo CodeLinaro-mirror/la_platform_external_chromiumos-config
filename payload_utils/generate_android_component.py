@@ -47,6 +47,26 @@ HAL_COMPONENT_ID_FIELD_MAP = {
         "id_field": "board",
         "comp_name_star": "fingerprint",
     },
+    "CellularConfiguration": {
+        "id_field": "modem-type",
+        "comp_name_star": "cellular",
+    },
+    "CameraConfiguration": {
+        "id_field": "media-profile-suffix",
+        "comp_name_star": "camera",
+    },
+    "StorageConfiguration": {
+        "id_field": "storage-type",
+        "comp_name_star": "storage",
+    },
+    "KeyboardConfiguration": {
+        "id_field": "backlight-support",
+        "comp_name_star": "keyboard",
+    },
+    "StylusConfiguration": {
+        "id_field": "stylus-type",
+        "comp_name_star": "stylus",
+    },
 }
 
 
@@ -219,7 +239,8 @@ def generate_configstar_per_component(
             if child.tag == id_field_name:
                 name = child.text.upper()
                 star_content.append(
-                    f"    id = android_component_ids.{comp_name}.{name},"
+                    f"    id = android_component_ids.{comp_name}.{name},\n"
+                    f'    {child.tag} =  "{child.text}",'
                 )
             else:
                 star_content.append(f'    {child.tag} =  "{child.text}",')

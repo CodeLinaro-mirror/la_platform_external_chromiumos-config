@@ -35,7 +35,7 @@ message Dut {
   // Chrome OS specific DUT details
   // Populated by and should be kept in sync with UFS adapter in:
   // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/cros/cmd/labservice/internal/ufs/ufs.go
-  // NEXT TAG: 24
+  // NEXT TAG: 25
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -67,6 +67,7 @@ message Dut {
     ModemInfo modem_info = 22;
     // The host and topology used in peripheral interop test beds.
     PasitHost pasit_host = 23;
+    HumanMotionRobot hmr = 24;
 
     reserved 1;
   }
@@ -202,6 +203,53 @@ message Cellular {
   // Carrier is the DUTs carrier name/type from:
   // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/peripherals.proto;l=31
   string carrier = 2;
+}
+
+// HumanMotionRobot models the whole HMR system
+// including touchhost, Pi, HMR fixture, etc.
+// HumanMotionRobot is adapted from ufs and should be kept in sync with:
+// https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/peripherals.proto
+// Next Tag: 8
+message HumanMotionRobot {
+  // hostname for HMR pi
+  string hostname = 1;
+
+  // model of the HMR
+  string hmr_model = 2;
+
+  // hostname for touch-host pi
+  string gateway_hostname = 3;
+
+  // Remote Power Management for HMR device.
+  // This uses a different RPM than what is in UFS.
+  RPM rpm = 4;
+
+  // Indicate the presence of a WALT device for latency testing.
+  // The walt device will be connected to the bottom usb-A port of the servo.
+  // Set to true if the HMR has a walt unit attached to it else False.
+  bool hmr_walt = 5;
+
+  // HMRToolType describe the enum of types of tool on HMR.
+  // Next Tag: 3
+  enum HMRToolType {
+    HMR_TOOL_TYPE_UNKNOWN = 0;
+    HMR_TOOL_TYPE_STYLUS = 1;
+    HMR_TOOL_TYPE_FAKE_FINGER = 2;
+  }
+  // Indicate the tool type currently attached to the HMR.
+  HMRToolType hmr_tool_type = 6;
+
+  // HMRGen describe the enum of generation of the HMR.
+  // Next Tag: 3
+  enum HMRGen {
+    HMR_GEN_UNKNOWN = 0;
+    HMR_GEN_1 = 1;
+    HMR_GEN_2 = 2;
+  }
+  // Indicate the generation of the HMR.
+  // The type of generation can be identified by the serial number behind the
+  // HMR.
+  HMRGen hmr_gen = 7;
 }
 
 // ModemInfo is adapted from ufs and should be kept in sync with:
@@ -453,7 +501,7 @@ enum PeripheralState {
   NOT_APPLICABLE = 3;
 }
 
-// Next Tag: 34
+// Next Tag: 45
 enum Phase {
   PHASE_UNSPECIFIED = 0;
   DVT = 1;
@@ -489,6 +537,17 @@ enum Phase {
   PVT_TUNE_BITS = 31;
   PVT_TELESU = 32;
   SR = 33;
+  DVT_1 = 34;
+  DVT_3 = 35;
+  DVT_4 = 36;
+  EVT_1  = 37;
+  EVT_2 = 38;
+  EVT_3 = 39;
+  MP = 40;
+  PVT_1 = 41;
+  PVT_3 = 42;
+  PVT_4 = 43;
+  PRE_DVT = 44;
 }
 
 // Next Tag: 4
