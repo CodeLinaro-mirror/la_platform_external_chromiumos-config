@@ -40,6 +40,7 @@ from lxml import etree  # pylint: disable=import-error
 # TODO(b/402027869): Figure out a better way to distribute this proto with the
 # script.
 try:
+    from chromiumos.config.api import android_component_configs_pb2
     from chromiumos.config.api import component_pb2
     from chromiumos.config.api import design_config_id_pb2
     from chromiumos.config.api import design_pb2
@@ -117,6 +118,113 @@ def _load_config_bundle(
     return bundle
 
 
+def _gen_camcorder_profiles(camera_id, resolutions):
+    elem = etree.Element(
+        "CamcorderProfiles", attrib={"cameraId": str(camera_id)}
+    )
+    for resolution in resolutions:
+        elem.extend(
+            [
+                _gen_encoder_profile(resolution, False),
+                _gen_encoder_profile(resolution, True),
+            ]
+        )
+    elem.extend(
+        [
+            etree.Element("ImageEncoding", attrib={"quality": "90"}),
+            etree.Element("ImageEncoding", attrib={"quality": "80"}),
+            etree.Element("ImageEncoding", attrib={"quality": "70"}),
+            etree.Element("ImageDecoding", attrib={"memCap": "20000000"}),
+        ]
+    )
+    return elem
+
+
+def _gen_encoder_profile(resolution, timelapse):
+    # Default bitrates based on resolution
+    default_bitrates = {
+        (640, 480): 3000000,  # 3 Mbps for 480p
+        (1280, 720): 8000000,  # 8 Mbps for 720p
+        (1920, 1080): 12000000,  # 12 Mbps for 1080p
+    }
+    width = resolution.width
+    height = resolution.height
+    bitrate = (
+        resolution.bitrate
+        if resolution.bitrate
+        else default_bitrates.get((width, height), 8000000)
+    )
+
+    elem = etree.Element(
+        "EncoderProfile",
+        attrib={
+            "quality": ("timelapse" if timelapse else "") + str(height) + "p",
+            "fileFormat": "mp4",
+            "duration": "60",
+        },
+    )
+    elem.append(
+        etree.Element(
+            "Video",
+            attrib={
+                "codec": "h264",
+                "bitRate": str(bitrate),
+                "width": str(width),
+                "height": str(height),
+                "frameRate": "30",
+            },
+        )
+    )
+    elem.append(
+        etree.Element(
+            "Audio",
+            attrib={
+                "codec": "aac",
+                "bitRate": "96000",
+                "sampleRate": "44100",
+                "channels": "1",
+            },
+        )
+    )
+    return elem
+
+
+def _gen_video_encoder_cap(name, min_bit_rate, max_bit_rate):
+    return etree.Element(
+        "VideoEncoderCap",
+        attrib={
+            "name": name,
+            "enabled": "true",
+            "minBitRate": str(min_bit_rate),
+            "maxBitRate": str(max_bit_rate),
+            "minFrameWidth": "320",
+            "maxFrameWidth": "1920",
+            "minFrameHeight": "240",
+            "maxFrameHeight": "1080",
+            "minFrameRate": "15",
+            "maxFrameRate": "30",
+        },
+    )
+
+
+def _gen_audio_encoder_cap(
+    name, min_bit_rate, max_bit_rate, min_sample_rate, max_sample_rate
+):
+    return etree.Element(
+        "AudioEncoderCap",
+        attrib={
+            "name": name,
+            "enabled": "true",
+            "minBitRate": str(min_bit_rate),
+            "maxBitRate": str(max_bit_rate),
+            "minSampleRate": str(min_sample_rate),
+            "maxSampleRate": str(max_sample_rate),
+            "minChannels": "1",
+            "maxChannels": "1",
+        },
+    )
+
+
 def _generate_media_profiles_xml_string(
     hw_features: topology_pb2.HardwareFeatures,
     sw_config: software_config_pb2.SoftwareConfig,
@@ -137,113 +245,6 @@ def _generate_media_profiles_xml_string(
         Bytes of the media_profiles.xml content, or None if generation is
         disabled or no camera devices are present.
     """
-    # pylint: disable=too-many-locals
-
-    def _gen_camcorder_profiles(camera_id, resolutions):
-        elem = etree.Element(
-            "CamcorderProfiles", attrib={"cameraId": str(camera_id)}
-        )
-        for resolution in resolutions:
-            elem.extend(
-                [
-                    _gen_encoder_profile(resolution, False),
-                    _gen_encoder_profile(resolution, True),
-                ]
-            )
-        elem.extend(
-            [
-                etree.Element("ImageEncoding", attrib={"quality": "90"}),
-                etree.Element("ImageEncoding", attrib={"quality": "80"}),
-                etree.Element("ImageEncoding", attrib={"quality": "70"}),
-                etree.Element("ImageDecoding", attrib={"memCap": "20000000"}),
-            ]
-        )
-        return elem
-
-    def _gen_encoder_profile(resolution, timelapse):
-        # Default bitrates based on resolution
-        default_bitrates = {
-            (640, 480): 3000000,  # 3 Mbps for 480p
-            (1280, 720): 8000000,  # 8 Mbps for 720p
-            (1920, 1080): 12000000,  # 12 Mbps for 1080p
-        }
-        width = resolution.width
-        height = resolution.height
-        bitrate = (
-            resolution.bitrate
-            if resolution.bitrate
-            else default_bitrates.get((width, height), 8000000)
-        )
-
-        elem = etree.Element(
-            "EncoderProfile",
-            attrib={
-                "quality": ("timelapse" if timelapse else "")
-                + str(height)
-                + "p",
-                "fileFormat": "mp4",
-                "duration": "60",
-            },
-        )
-        elem.append(
-            etree.Element(
-                "Video",
-                attrib={
-                    "codec": "h264",
-                    "bitRate": str(bitrate),
-                    "width": str(width),
-                    "height": str(height),
-                    "frameRate": "30",
-                },
-            )
-        )
-        elem.append(
-            etree.Element(
-                "Audio",
-                attrib={
-                    "codec": "aac",
-                    "bitRate": "96000",
-                    "sampleRate": "44100",
-                    "channels": "1",
-                },
-            )
-        )
-        return elem
-
-    def _gen_video_encoder_cap(name, min_bit_rate, max_bit_rate):
-        return etree.Element(
-            "VideoEncoderCap",
-            attrib={
-                "name": name,
-                "enabled": "true",
-                "minBitRate": str(min_bit_rate),
-                "maxBitRate": str(max_bit_rate),
-                "minFrameWidth": "320",
-                "maxFrameWidth": "1920",
-                "minFrameHeight": "240",
-                "maxFrameHeight": "1080",
-                "minFrameRate": "15",
-                "maxFrameRate": "30",
-            },
-        )
-
-    def _gen_audio_encoder_cap(
-        name, min_bit_rate, max_bit_rate, min_sample_rate, max_sample_rate
-    ):
-        return etree.Element(
-            "AudioEncoderCap",
-            attrib={
-                "name": name,
-                "enabled": "true",
-                "minBitRate": str(min_bit_rate),
-                "maxBitRate": str(max_bit_rate),
-                "minSampleRate": str(min_sample_rate),
-                "maxSampleRate": str(max_sample_rate),
-                "minChannels": "1",
-                "maxChannels": "1",
-            },
-        )
-
     camera_config = sw_config.camera_config
     if not camera_config.generate_media_profiles:
         return None
@@ -317,10 +318,144 @@ def _generate_media_profiles_xml_string(
     return xml_content
 
 
+def _generate_media_profiles_from_camera_config(
+    camera_config: android_component_configs_pb2.CameraConfigurationType,
+    dtd_path: Optional[pathlib.Path],
+) -> Optional[bytes]:
+    """Generates media profiles XML from a CameraConfigurationType.
+
+    Args:
+        camera_config: The CameraConfigurationType protobuf object.
+        dtd_path: Path to the media_profiles.dtd file for validation.
+
+    Returns:
+        Bytes of the media_profiles.xml content, or None if generation is
+        unable to proceed (e.g. no cameras).
+    """
+    root = etree.Element("MediaSettings")
+    camera_id = 0
+
+    # Order by position, front then back.
+    position_to_camera = {cam.position: cam for cam in camera_config.cameras}
+    for position in [
+        android_component_configs_pb2.CameraConfigurationType.FACING_FRONT,
+        android_component_configs_pb2.CameraConfigurationType.FACING_BACK,
+    ]:
+        cam = position_to_camera.get(position)
+        if not cam:
+            continue
+
+        # Convert to a camera_config_pb2.Resolution for compatibility with
+        # _gen_camcorder_profiles. If neither resolution is set, fallback to
+        # 1280x720. If only one is set, raise an error.
+        resolution = camera_config_pb2.Resolution()
+        if not (cam.resolutionx or cam.resolutiony):
+            logging.info(
+                "Camera %s has no resolution, defaulting to 1280x720", cam
+            )
+            resolution.width = 1280
+            resolution.height = 720
+        elif cam.resolutionx and cam.resolutiony:
+            resolution.width = cam.resolutionx
+            resolution.height = cam.resolutiony
+        else:
+            raise ValueError(
+                f"Camera {cam} has invalid resolution. "
+                "Either both must be set or neither."
+            )
+        resolutions = [resolution]
+
+        root.append(_gen_camcorder_profiles(camera_id, resolutions))
+        camera_id += 1
+
+    if camera_id == 0:
+        return None
+
+    root.extend(
+        [
+            etree.Element("EncoderOutputFileFormat", attrib={"name": "3gp"}),
+            etree.Element("EncoderOutputFileFormat", attrib={"name": "mp4"}),
+            _gen_video_encoder_cap("h264", 64000, 17000000),
+            _gen_video_encoder_cap("h263", 64000, 1000000),
+            _gen_video_encoder_cap("m4v", 64000, 2000000),
+            _gen_audio_encoder_cap("aac", 758, 288000, 8000, 48000),
+            _gen_audio_encoder_cap("heaac", 8000, 64000, 16000, 48000),
+            _gen_audio_encoder_cap("aaceld", 16000, 192000, 16000, 48000),
+            _gen_audio_encoder_cap("amrwb", 6600, 23050, 16000, 16000),
+            _gen_audio_encoder_cap("amrnb", 5525, 12200, 8000, 8000),
+            etree.Element(
+                "VideoDecoderCap", attrib={"name": "wmv", "enabled": "false"}
+            ),
+            etree.Element(
+                "AudioDecoderCap", attrib={"name": "wma", "enabled": "false"}
+            ),
+        ]
+    )
+
+    xml_content = etree.tostring(root, pretty_print=True)
+
+    # Validate against DTD if dtd_path is provided
+    if dtd_path:
+        dtd = etree.DTD(str(dtd_path))
+        if not dtd.validate(root):
+            raise etree.DTDValidateError(
+                f"Invalid media_profiles.xml generated:\n{dtd.error_log}"
+            )
+        logging.info("Media profile XML DTD validation successful.")
+    else:
+        logging.info("DTD schema not provided, skipping validation.")
+
+    return xml_content
+
+
+def _generate_media_profiles_from_hal_config(
+    hal_config: android_component_configs_pb2.HalConfiguration,
+    output_dir: pathlib.Path,
+    dtd_path: Optional[pathlib.Path],
+) -> None:
+    """Generates media profiles from HalConfiguration.
+
+    Args:
+        hal_config: The HalConfiguration protobuf object.
+        output_dir: The directory to write the XML files to.
+        dtd_path: Path to the media_profiles.dtd file for validation.
+    """
+    logging.info(
+        "Generating Android media profile XML files from HAL config..."
+    )
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    for camera_config in hal_config.camera_list:
+        xml_content = _generate_media_profiles_from_camera_config(
+            camera_config, dtd_path
+        )
+        if not xml_content:
+            logging.info(
+                "Skipping media profile for camera config %s",
+                camera_config.id,
+            )
+            continue
+
+        output_file = output_dir / f"media_profiles_{camera_config.id}.xml"
+        with open(output_file, "wb") as f:
+            f.write(xml_content)
+        logging.info(
+            "Wrote media profile XML to %s",
+            output_file,
+        )
+
+
 def run_generate_media_profiles(opts: argparse.Namespace) -> None:
     """Handles the 'generate-media-profiles' sub-command logic."""
     logging.info("Running generate-media-profiles command...")
     config_bundle = _load_config_bundle(opts.jsonproto_file)
+
+    if opts.from_hal_config:
+        _generate_media_profiles_from_hal_config(
+            config_bundle.android_hal_config, opts.output_dir, opts.dtd_schema
+        )
+        return
+
     for design in config_bundle.design_list:
         for design_config in design.configs:
             model, sku = design_config.id.value.split(":")
@@ -1496,6 +1631,14 @@ def _get_parser() -> argparse.ArgumentParser:
         type=pathlib.Path,
         help="Path to the base directory where <Model>_<SkuID> subdirectories "
         "containing media profile XML files will be created.",
+    )
+    parser_media_profiles.add_argument(
+        "--from-hal-config",
+        action="store_true",
+        help=(
+            "Generate feature XMLs from the HalConfiguration (per-component) "
+            "instead of Design.Config (per-device)."
+        ),
     )
     parser_media_profiles.add_argument(
         "-d",

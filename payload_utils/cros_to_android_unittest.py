@@ -12,6 +12,7 @@ import unittest
 
 # pylint: disable=too-many-public-methods
 # pylint: disable=import-error
+from chromiumos.config.api import android_component_configs_pb2
 from chromiumos.config.api import design_pb2
 from chromiumos.config.api import proximity_config_pb2
 from chromiumos.config.api import topology_pb2
@@ -862,6 +863,7 @@ class MediaProfileGenerationTest(unittest.TestCase):
             jsonproto_file=temp_json_path,
             output_dir=self.temp_dir,
             dtd_schema=None if no_dtd_file else self.dtd_file,
+            from_hal_config=False,
         )
         cros_to_android.run_generate_media_profiles(opts)
 
@@ -1001,6 +1003,151 @@ class MediaProfileGenerationTest(unittest.TestCase):
 
         self.assertTrue(output_file_123.exists())
         self.assertFalse(output_file_456.exists())
+
+
+class HalMediaProfilesGenerationTest(unittest.TestCase):
+    """Tests for media profiles generation from HalConfiguration."""
+
+    def setUp(self):
+        """Create a temporary directory for test outputs."""
+        self.temp_dir_obj = (
+            tempfile.TemporaryDirectory()  # pylint: disable=consider-using-with
+        )
+        self.temp_dir = pathlib.Path(self.temp_dir_obj.name)
+        self.output_dir = self.temp_dir / "media_profiles"
+        self.dtd_file = THIS_DIR / "media_profiles.dtd"
+
+    def tearDown(self):
+        """Clean up the temporary directory."""
+        self.temp_dir_obj.cleanup()
+
+    def _create_bundle_and_run_media_profile_generation(
+        self,
+        camera_config: android_component_configs_pb2.CameraConfigurationType,
+        no_dtd_file=False,
+    ):
+        """Helper to run media profile generation from HAL config."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+        hal_config.camera_list.add().CopyFrom(camera_config)
+
+        temp_json_path = self.temp_dir / "test_input_media_profiles.jsonproto"
+        with open(temp_json_path, "w", encoding="utf-8") as f:
+            f.write(json_format.MessageToJson(bundle))
+
+        opts = argparse.Namespace(
+            jsonproto_file=temp_json_path,
+            output_dir=self.output_dir,
+            dtd_schema=None if no_dtd_file else self.dtd_file,
+            from_hal_config=True,
+        )
+        cros_to_android.run_generate_media_profiles(opts)
+
+    def test_hal_generate_media_profile_success_without_validation(self):
+        """Test successful media profile generation without DTD validation."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_cam_config"
+
+        # Add Front Camera
+        cam_front = camera_config.cameras.add()
+        cam_front.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_FRONT
+        )
+        cam_front.resolutionx = 1920
+        cam_front.resolutiony = 1080
+
+        # Add Back Camera
+        cam_back = camera_config.cameras.add()
+        cam_back.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_BACK
+        )
+        cam_back.resolutionx = 1280
+        cam_back.resolutiony = 720
+
+        self._create_bundle_and_run_media_profile_generation(
+            camera_config, no_dtd_file=True
+        )
+
+        output_file = self.output_dir / "media_profiles_test_cam_config.xml"
+        self.assertTrue(output_file.is_file())
+        with open(output_file, "rb") as f:
+            xml_content = f.read()
+
+        root = etree.fromstring(xml_content)
+        self.assertEqual(root.tag, "MediaSettings")
+
+        # Check CamcorderProfiles (should have 2, one for each camera)
+        profiles = root.findall("CamcorderProfiles")
+        self.assertEqual(len(profiles), 2)
+
+        # Check IDs
+        ids = sorted([p.attrib["cameraId"] for p in profiles])
+        self.assertEqual(ids, ["0", "1"])
+
+    def test_hal_generate_media_profile_success_with_validation(self):
+        """Test successful media profile generation with DTD validation."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_cam_config"
+
+        cam_front = camera_config.cameras.add()
+        cam_front.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_FRONT
+        )
+        cam_front.resolutionx = 1920
+        cam_front.resolutiony = 1080
+
+        self._create_bundle_and_run_media_profile_generation(camera_config)
+
+        output_file = self.output_dir / "media_profiles_test_cam_config.xml"
+        self.assertTrue(output_file.is_file())
+        with open(output_file, "rb") as f:
+            xml_content = f.read()
+
+        root = etree.fromstring(xml_content)
+        self.assertEqual(root.tag, "MediaSettings")
+
+    def test_hal_generate_media_profile_no_camera_devices(self):
+        """Test media profile generation with no camera devices."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_cam_config"
+        # No cameras added
+
+        self._create_bundle_and_run_media_profile_generation(camera_config)
+        output_file = self.output_dir / "media_profiles_test_cam_config.xml"
+        self.assertFalse(output_file.exists())
+
+    def test_hal_generate_media_profile_default_resolution(self):
+        """Test media profile generation defaults to 1280x720 when no resolution set."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_default_res"
+        cam = camera_config.cameras.add()
+        cam.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_BACK
+        )
+        # No resolution set
+
+        self._create_bundle_and_run_media_profile_generation(camera_config)
+
+        output_file = self.output_dir / "media_profiles_test_default_res.xml"
+        self.assertTrue(output_file.is_file())
+        with open(output_file, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn('width="1280"', content)
+            self.assertIn('height="720"', content)
+
+    def test_hal_generate_media_profile_invalid_resolution(self):
+        """Test media profile generation raises error for invalid resolution."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_invalid_res"
+        cam = camera_config.cameras.add()
+        cam.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_BACK
+        )
+        cam.resolutionx = 1920
+        # resolutiony not set
+
+        with self.assertRaisesRegex(ValueError, "invalid resolution"):
+            self._create_bundle_and_run_media_profile_generation(camera_config)
 
 
 if __name__ == "__main__":
