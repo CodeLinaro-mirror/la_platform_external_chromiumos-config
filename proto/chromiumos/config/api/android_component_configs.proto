@@ -29,6 +29,7 @@ message AudioConfigurationType {
   string id = 1;
   optional string soundcard = 2;
   optional int32 dmics_count = 3;
+  optional string audio_config_dir = 4;
 }
 
 // Cellular component configuration. Annotation to the fields:
@@ -122,12 +123,18 @@ message CameraConfigurationType {
     FACING_FRONT = 1;
     FACING_BACK = 2;
   }
+  message Resolution {
+    int32 resolutionx = 1;
+    int32 resolutiony = 2;
+  }
   message CameraHWConfig {
     optional Interface interface = 1;
     optional Facing position = 2;
     optional HalConfiguration.Present autofocus_support = 3;
     optional int32 resolutionx = 4;
     optional int32 resolutiony = 5;
+    optional HalConfiguration.Present p1080_support = 6;
+    repeated Resolution resolutions = 7;
   }
   repeated CameraHWConfig cameras = 3;
 }

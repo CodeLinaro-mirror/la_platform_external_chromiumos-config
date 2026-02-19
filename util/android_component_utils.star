@@ -27,13 +27,15 @@ _PRESENT = struct(
 def _create_audio(
         id,
         soundcard = None,
-        dmics_count = None):
+        dmics_count = None,
+        audio_config_dir = None):
     """Builds android_hal_config proto for an audio component."""
 
     return android_component_pb.AudioConfigurationType(
         id = id,
         soundcard = soundcard,
         dmics_count = dmics_count,
+        audio_config_dir = audio_config_dir,
     )
 
 _FP_LOC = struct(
@@ -103,12 +105,24 @@ _CAM_FACING = struct(
     FACING_BACK = android_component_pb.CameraConfigurationType.FACING_BACK,
 )
 
+def _create_resolution(
+        resolutionx = None,
+        resolutiony = None):
+    """Builds android_hal_config proto for a resolution."""
+
+    return android_component_pb.CameraConfigurationType.Resolution(
+        resolutionx = resolutionx,
+        resolutiony = resolutiony,
+    )
+
 def _create_camerahwconfig(
         interface = None,
         position = None,
         autofocus_support = None,
         resolutionx = None,
-        resolutiony = None):
+        resolutiony = None,
+        p1080_support = None,
+        resolutions = []):
     """Builds android_hal_config proto for a camerahwconfig."""
 
     return android_component_pb.CameraConfigurationType.CameraHWConfig(
@@ -117,6 +131,8 @@ def _create_camerahwconfig(
         autofocus_support = autofocus_support,
         resolutionx = resolutionx,
         resolutiony = resolutiony,
+        p1080_support = p1080_support,
+        resolutions = resolutions,
     )
 
 def _create_camera(
@@ -479,6 +495,7 @@ android_hal_config = struct(
     create_audio = _create_audio,
     create_fingerprint = _create_fingerprint,
     create_cellular = _create_cellular,
+    create_resolution = _create_resolution,
     create_camerahwconfig = _create_camerahwconfig,
     create_camera = _create_camera,
     create_storage = _create_storage,

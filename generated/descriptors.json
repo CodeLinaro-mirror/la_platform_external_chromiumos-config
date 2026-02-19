@@ -12007,6 +12007,15 @@
               "oneofIndex": 1,
               "proto3Optional": true,
               "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "audioConfigDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_config_dir",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "AudioConfigurationType",
@@ -12016,6 +12025,9 @@
             },
             {
               "name": "_dmics_count"
+            },
+            {
+              "name": "_audio_config_dir"
             }
           ]
         },
@@ -12296,6 +12308,25 @@
             {
               "field": [
                 {
+                  "jsonName": "resolutionx",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "resolutionx",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "resolutiony",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "resolutiony",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "Resolution"
+            },
+            {
+              "field": [
+                {
                   "jsonName": "interface",
                   "label": "LABEL_OPTIONAL",
                   "name": "interface",
@@ -12342,6 +12373,24 @@
                   "oneofIndex": 4,
                   "proto3Optional": true,
                   "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "p1080Support",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "p1080_support",
+                  "number": 6,
+                  "oneofIndex": 5,
+                  "proto3Optional": true,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+                },
+                {
+                  "jsonName": "resolutions",
+                  "label": "LABEL_REPEATED",
+                  "name": "resolutions",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.CameraConfigurationType.Resolution"
                 }
               ],
               "name": "CameraHWConfig",
@@ -12360,6 +12409,9 @@
                 },
                 {
                   "name": "_resolutiony"
+                },
+                {
+                  "name": "_p1080_support"
                 }
               ]
             }
