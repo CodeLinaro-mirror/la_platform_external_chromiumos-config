@@ -12357,29 +12357,11 @@
                   "typeName": ".chromiumos.config.api.HalConfiguration.Present"
                 },
                 {
-                  "jsonName": "resolutionx",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "resolutionx",
-                  "number": 4,
-                  "oneofIndex": 3,
-                  "proto3Optional": true,
-                  "type": "TYPE_INT32"
-                },
-                {
-                  "jsonName": "resolutiony",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "resolutiony",
-                  "number": 5,
-                  "oneofIndex": 4,
-                  "proto3Optional": true,
-                  "type": "TYPE_INT32"
-                },
-                {
                   "jsonName": "p1080Support",
                   "label": "LABEL_OPTIONAL",
                   "name": "p1080_support",
                   "number": 6,
-                  "oneofIndex": 5,
+                  "oneofIndex": 3,
                   "proto3Optional": true,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HalConfiguration.Present"
@@ -12405,13 +12387,21 @@
                   "name": "_autofocus_support"
                 },
                 {
-                  "name": "_resolutionx"
-                },
-                {
-                  "name": "_resolutiony"
-                },
-                {
                   "name": "_p1080_support"
+                }
+              ],
+              "reservedName": [
+                "resolutionx",
+                "resolutiony"
+              ],
+              "reservedRange": [
+                {
+                  "end": 5,
+                  "start": 4
+                },
+                {
+                  "end": 6,
+                  "start": 5
                 }
               ]
             }

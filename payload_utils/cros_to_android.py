@@ -345,25 +345,41 @@ def _generate_media_profiles_from_camera_config(
         if not cam:
             continue
 
-        # Convert to a camera_config_pb2.Resolution for compatibility with
-        # _gen_camcorder_profiles. If neither resolution is set, fallback to
-        # 1280x720. If only one is set, raise an error.
-        resolution = camera_config_pb2.Resolution()
-        if not (cam.resolutionx or cam.resolutiony):
+        if cam.resolutions:
+            resolutions = []
+            for res in cam.resolutions:
+                if not (res.resolutionx and res.resolutiony):
+                    raise ValueError(
+                        f"Camera {cam} has invalid resolution in 'resolutions' "
+                        "list. Both resolutionx and resolutiony must be set."
+                    )
+                resolution = camera_config_pb2.Resolution()
+                resolution.width = res.resolutionx
+                resolution.height = res.resolutiony
+                resolutions.append(resolution)
+        else:
             logging.info(
-                "Camera %s has no resolution, defaulting to 1280x720", cam
+                "Camera %s has no resolutions in 'resolutions' list. "
+                "Defaulting to 1280x720.",
+                cam,
             )
+            resolution = camera_config_pb2.Resolution()
             resolution.width = 1280
             resolution.height = 720
-        elif cam.resolutionx and cam.resolutiony:
-            resolution.width = cam.resolutionx
-            resolution.height = cam.resolutiony
-        else:
-            raise ValueError(
-                f"Camera {cam} has invalid resolution. "
-                "Either both must be set or neither."
-            )
-        resolutions = [resolution]
+            resolutions = [resolution]
+
+            if (
+                cam.p1080_support
+                == android_component_configs_pb2.HalConfiguration.PRESENT
+            ):
+                logging.info(
+                    "Camera %s has 1080p support, adding 1920x1080 resolution.",
+                    cam,
+                )
+                resolution_1080p = camera_config_pb2.Resolution()
+                resolution_1080p.width = 1920
+                resolution_1080p.height = 1080
+                resolutions.append(resolution_1080p)
 
         root.append(_gen_camcorder_profiles(camera_id, resolutions))
         camera_id += 1

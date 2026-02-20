@@ -1053,16 +1053,18 @@ class HalMediaProfilesGenerationTest(unittest.TestCase):
         cam_front.position = (
             android_component_configs_pb2.CameraConfigurationType.FACING_FRONT
         )
-        cam_front.resolutionx = 1920
-        cam_front.resolutiony = 1080
+        res = cam_front.resolutions.add()
+        res.resolutionx = 1920
+        res.resolutiony = 1080
 
         # Add Back Camera
         cam_back = camera_config.cameras.add()
         cam_back.position = (
             android_component_configs_pb2.CameraConfigurationType.FACING_BACK
         )
-        cam_back.resolutionx = 1280
-        cam_back.resolutiony = 720
+        res = cam_back.resolutions.add()
+        res.resolutionx = 1280
+        res.resolutiony = 720
 
         self._create_bundle_and_run_media_profile_generation(
             camera_config, no_dtd_file=True
@@ -1093,8 +1095,9 @@ class HalMediaProfilesGenerationTest(unittest.TestCase):
         cam_front.position = (
             android_component_configs_pb2.CameraConfigurationType.FACING_FRONT
         )
-        cam_front.resolutionx = 1920
-        cam_front.resolutiony = 1080
+        res = cam_front.resolutions.add()
+        res.resolutionx = 1920
+        res.resolutiony = 1080
 
         self._create_bundle_and_run_media_profile_generation(camera_config)
 
@@ -1143,11 +1146,67 @@ class HalMediaProfilesGenerationTest(unittest.TestCase):
         cam.position = (
             android_component_configs_pb2.CameraConfigurationType.FACING_BACK
         )
-        cam.resolutionx = 1920
-        # resolutiony not set
 
-        with self.assertRaisesRegex(ValueError, "invalid resolution"):
+        res = cam.resolutions.add()
+        res.resolutionx = 1920
+
+        with self.assertRaisesRegex(
+            ValueError, "invalid resolution in 'resolutions' list"
+        ):
             self._create_bundle_and_run_media_profile_generation(camera_config)
+
+    def test_hal_generate_media_profile_multi_resolution(self):
+        """Test media profile generation with multiple resolutions."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_multi_res"
+        cam = camera_config.cameras.add()
+        cam.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_BACK
+        )
+
+        res720 = cam.resolutions.add()
+        res720.resolutionx = 1280
+        res720.resolutiony = 720
+
+        res1080 = cam.resolutions.add()
+        res1080.resolutionx = 1920
+        res1080.resolutiony = 1080
+
+        self._create_bundle_and_run_media_profile_generation(camera_config)
+
+        output_file = self.output_dir / "media_profiles_test_multi_res.xml"
+        self.assertTrue(output_file.is_file())
+        with open(output_file, "r", encoding="utf-8") as f:
+            content = f.read()
+            self.assertIn('width="1280"', content)
+            self.assertIn('height="720"', content)
+            self.assertIn('width="1920"', content)
+            self.assertIn('height="1080"', content)
+
+    def test_hal_generate_media_profile_p1080p_support(self):
+        """Test media profile generation with p1080_support flag."""
+        camera_config = android_component_configs_pb2.CameraConfigurationType()
+        camera_config.id = "test_p1080p"
+        cam = camera_config.cameras.add()
+        cam.position = (
+            android_component_configs_pb2.CameraConfigurationType.FACING_BACK
+        )
+        cam.p1080_support = (
+            android_component_configs_pb2.HalConfiguration.PRESENT
+        )
+
+        self._create_bundle_and_run_media_profile_generation(camera_config)
+
+        output_file = self.output_dir / "media_profiles_test_p1080p.xml"
+        self.assertTrue(output_file.is_file())
+        with open(output_file, "r", encoding="utf-8") as f:
+            content = f.read()
+            # Should have the default 720p
+            self.assertIn('width="1280"', content)
+            self.assertIn('height="720"', content)
+            # And the 1080p added by the flag
+            self.assertIn('width="1920"', content)
+            self.assertIn('height="1080"', content)
 
 
 if __name__ == "__main__":
