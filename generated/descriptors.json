@@ -41375,6 +41375,129 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "command",
+              "label": "LABEL_OPTIONAL",
+              "name": "command",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ADBRunRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "exitCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "exit_code",
+              "number": 3,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "ADBRunResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "command",
+              "label": "LABEL_OPTIONAL",
+              "name": "command",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_REPEATED",
+              "name": "params",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FastbootRunRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "exitCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "exit_code",
+              "number": 3,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "FastbootRunResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/tools_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.ADBRunRequest",
+              "name": "ADBRun",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ADBRunResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.FastbootRunRequest",
+              "name": "FastbootRun",
+              "options": {},
+              "outputType": ".chromiumos.test.api.FastbootRunResponse"
+            }
+          ],
+          "name": "ToolsService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
