@@ -30,6 +30,8 @@ type CameraServiceClient interface {
 	// Analyzes an image and returns the percentage of pixels that fall within
 	// the specified HSV masks.
 	AnalyzeImageHSV(ctx context.Context, in *AnalyzeHSVRequest, opts ...grpc.CallOption) (*AnalyzeHSVResponse, error)
+	// CaptureVideo captures a video of user defined length.
+	CaptureVideo(ctx context.Context, in *CaptureVideoRequest, opts ...grpc.CallOption) (CameraService_CaptureVideoClient, error)
 }
 
 type cameraServiceClient struct {
@@ -67,6 +69,38 @@ func (c *cameraServiceClient) AnalyzeImageHSV(ctx context.Context, in *AnalyzeHS
 	return out, nil
 }
 
+func (c *cameraServiceClient) CaptureVideo(ctx context.Context, in *CaptureVideoRequest, opts ...grpc.CallOption) (CameraService_CaptureVideoClient, error) {
+	stream, err := c.cc.NewStream(ctx, &CameraService_ServiceDesc.Streams[0], "/chromiumos.test.lab.api.passport.CameraService/CaptureVideo", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &cameraServiceCaptureVideoClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type CameraService_CaptureVideoClient interface {
+	Recv() (*CaptureVideoResponse, error)
+	grpc.ClientStream
+}
+
+type cameraServiceCaptureVideoClient struct {
+	grpc.ClientStream
+}
+
+func (x *cameraServiceCaptureVideoClient) Recv() (*CaptureVideoResponse, error) {
+	m := new(CaptureVideoResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // CameraServiceServer is the server API for CameraService service.
 // All implementations should embed UnimplementedCameraServiceServer
 // for forward compatibility
@@ -79,6 +113,8 @@ type CameraServiceServer interface {
 	// Analyzes an image and returns the percentage of pixels that fall within
 	// the specified HSV masks.
 	AnalyzeImageHSV(context.Context, *AnalyzeHSVRequest) (*AnalyzeHSVResponse, error)
+	// CaptureVideo captures a video of user defined length.
+	CaptureVideo(*CaptureVideoRequest, CameraService_CaptureVideoServer) error
 }
 
 // UnimplementedCameraServiceServer should be embedded to have forward compatible implementations.
@@ -93,6 +129,9 @@ func (UnimplementedCameraServiceServer) GetAveragePixel(context.Context, *GetAve
 }
 func (UnimplementedCameraServiceServer) AnalyzeImageHSV(context.Context, *AnalyzeHSVRequest) (*AnalyzeHSVResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeImageHSV not implemented")
+}
+func (UnimplementedCameraServiceServer) CaptureVideo(*CaptureVideoRequest, CameraService_CaptureVideoServer) error {
+	return status.Errorf(codes.Unimplemented, "method CaptureVideo not implemented")
 }
 
 // UnsafeCameraServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -160,6 +199,27 @@ func _CameraService_AnalyzeImageHSV_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CameraService_CaptureVideo_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(CaptureVideoRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(CameraServiceServer).CaptureVideo(m, &cameraServiceCaptureVideoServer{stream})
+}
+
+type CameraService_CaptureVideoServer interface {
+	Send(*CaptureVideoResponse) error
+	grpc.ServerStream
+}
+
+type cameraServiceCaptureVideoServer struct {
+	grpc.ServerStream
+}
+
+func (x *cameraServiceCaptureVideoServer) Send(m *CaptureVideoResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // CameraService_ServiceDesc is the grpc.ServiceDesc for CameraService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -180,6 +240,12 @@ var CameraService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CameraService_AnalyzeImageHSV_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "CaptureVideo",
+			Handler:       _CameraService_CaptureVideo_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "chromiumos/test/lab/api/passport/camera_service.proto",
 }

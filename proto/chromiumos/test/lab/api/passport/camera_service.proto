@@ -22,6 +22,8 @@ service CameraService {
   // Analyzes an image and returns the percentage of pixels that fall within
   // the specified HSV masks.
   rpc AnalyzeImageHSV(AnalyzeHSVRequest) returns (AnalyzeHSVResponse) {};
+  // CaptureVideo captures a video of user defined length.
+  rpc CaptureVideo(CaptureVideoRequest) returns (stream CaptureVideoResponse) {};
 }
 
 message GetCamerasRequest {}
@@ -122,4 +124,21 @@ message AnalyzeHSVResponse {
 
   // The frame used to generate the image (.jpeg)
   bytes frame = 2;
+}
+
+message CaptureVideoRequest {
+  // The unique IDs of the cameras to record.
+  // If multiple IDs are provided, the service may returned a tiled video.
+  repeated string device_ids = 1;
+
+  // The duration of the video to capture in seconds.
+  int32 duration_seconds = 2;
+}
+
+message CaptureVideoResponse {
+  // The captured video data.
+  bytes video = 1;
+
+  // The file extension for the captured video (e.g., "avi", "mjpeg").
+  string file_extension = 2;
 }

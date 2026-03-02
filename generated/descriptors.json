@@ -43693,6 +43693,44 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceIds",
+              "label": "LABEL_REPEATED",
+              "name": "device_ids",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "durationSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "duration_seconds",
+              "number": 2,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "CaptureVideoRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "video",
+              "label": "LABEL_OPTIONAL",
+              "name": "video",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "fileExtension",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_extension",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CaptureVideoResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/camera_service.proto",
@@ -43720,6 +43758,13 @@
               "name": "AnalyzeImageHSV",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.AnalyzeHSVResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CaptureVideoRequest",
+              "name": "CaptureVideo",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.CaptureVideoResponse",
+              "serverStreaming": true
             }
           ],
           "name": "CameraService"
