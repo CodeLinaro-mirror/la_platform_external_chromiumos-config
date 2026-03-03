@@ -7,13 +7,14 @@
 import logging
 import pathlib
 
+from chromiumos.config.api import android_component_configs_pb2
 from chromiumos.config.payload import config_bundle_pb2
 from lxml import etree  # pylint: disable=import-error
 
 
 def _populate_element_from_message(
     parent_element: etree.Element, message, skip_id: bool = False
-):
+):  # pylint: disable=too-many-branches
     """Recursively populates an XML element from a protobuf message.
 
     Args:
@@ -44,7 +45,16 @@ def _populate_element_from_message(
             logging.debug("Field %s is default, skipping.", field.name)
             continue
 
-        element_name = field.name.replace("_", "-")
+        field_options = field.GetOptions()
+        if field_options.HasExtension(
+            android_component_configs_pb2.name_override
+        ):
+            element_name = field_options.Extensions[
+                android_component_configs_pb2.name_override
+            ]
+        else:
+            element_name = field.name.replace("_", "-")
+
         # TODO(b/449551444): Add a unit test for repeated fields once there are
         # actually repeated fields in the input proto schema.
         items = value if field.label == field.LABEL_REPEATED else [value]

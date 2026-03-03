@@ -8,6 +8,7 @@ import pathlib
 import tempfile
 import unittest
 
+from chromiumos.config.api import android_component_configs_pb2
 from chromiumos.config.payload import config_bundle_pb2
 from cros_to_android import generate_component_xmls
 from lxml import etree  # pylint: disable=import-error
@@ -124,6 +125,43 @@ class ComponentXmlGenerationTest(unittest.TestCase):
         self.assertEqual(root.tag, "CameraConfiguration")
         self.assertEqual(root.find("media-profile-suffix").text, "TestPrefix")
         self.assertIsNone(root.find("cameras"))
+
+    def test_generate_component_xml_wifi_node_overrides(self):
+        """Test wifi component generation node name conversions."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+        wifi = hal_config.wifi_list.add()
+        wifi.id = "wifi_config_1"
+        wifi.chip = android_component_configs_pb2.WifiConfigurationType.MTK
+
+        wifi.mtkconfig.powertable_tablet.powerconfig_2g.powerlimit = 20
+        wifi.mtkconfig.powertable_tablet.powerconfig_2g.poweroffset = 5
+        wifi.mtkconfig.regdomain_fcc.powerconfig_5g.powerlimit = 15
+
+        generate_component_xmls.generate(bundle, self.temp_dir)
+        xml_file = self.temp_dir / "wifi_config_1.xml"
+        self.assertTrue(xml_file.is_file())
+
+        root = etree.parse(xml_file).getroot()
+        self.assertEqual(root.tag, "WifiConfiguration")
+
+        # Test node overrides
+        self.assertEqual(root.find("Chip").text, "MTK")
+        mtk_config = root.find("MTKConfig")
+        self.assertIsNotNone(mtk_config)
+
+        powertable_tablet = mtk_config.find("PowerTable.tablet")
+        self.assertIsNotNone(powertable_tablet)
+        powerconfig_2g = powertable_tablet.find("PowerConfig.2g")
+        self.assertIsNotNone(powerconfig_2g)
+        self.assertEqual(powerconfig_2g.find("PowerLimit").text, "20")
+        self.assertEqual(powerconfig_2g.find("PowerOffset").text, "5")
+
+        regdomain_fcc = mtk_config.find("RegDomain.fcc")
+        self.assertIsNotNone(regdomain_fcc)
+        self.assertEqual(
+            regdomain_fcc.find("PowerConfig.5g").find("PowerLimit").text, "15"
+        )
 
 
 if __name__ == "__main__":

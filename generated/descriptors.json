@@ -11980,6 +11980,20 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/descriptor.proto"
+      ],
+      "extension": [
+        {
+          "extendee": ".google.protobuf.FieldOptions",
+          "jsonName": "nameOverride",
+          "label": "LABEL_OPTIONAL",
+          "name": "name_override",
+          "number": 50000,
+          "proto3Optional": true,
+          "type": "TYPE_STRING"
+        }
+      ],
       "messageType": [
         {
           "field": [
@@ -12840,6 +12854,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "chip",
               "number": 2,
+              "options": {
+                "[chromiumos.config.api.name_override]": "Chip"
+              },
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.WifiConfigurationType.WifiChip"
             },
@@ -12849,6 +12866,9 @@
               "name": "mtkconfig",
               "number": 3,
               "oneofIndex": 0,
+              "options": {
+                "[chromiumos.config.api.name_override]": "MTKConfig"
+              },
               "proto3Optional": true,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType"
@@ -12859,6 +12879,9 @@
               "name": "rtwconfig",
               "number": 4,
               "oneofIndex": 1,
+              "options": {
+                "[chromiumos.config.api.name_override]": "RTWConfig"
+              },
               "proto3Optional": true,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType"
@@ -12914,6 +12937,9 @@
                   "name": "regdomain_fcc",
                   "number": 1,
                   "oneofIndex": 0,
+                  "options": {
+                    "[chromiumos.config.api.name_override]": "RegDomain.fcc"
+                  },
                   "proto3Optional": true,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType"
@@ -12924,6 +12950,9 @@
                   "name": "regdomain_eu",
                   "number": 2,
                   "oneofIndex": 1,
+                  "options": {
+                    "[chromiumos.config.api.name_override]": "RegDomain.eu"
+                  },
                   "proto3Optional": true,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType"
@@ -12934,6 +12963,9 @@
                   "name": "regdomain_other",
                   "number": 3,
                   "oneofIndex": 2,
+                  "options": {
+                    "[chromiumos.config.api.name_override]": "RegDomain.other"
+                  },
                   "proto3Optional": true,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.RegDomainType"
@@ -12944,6 +12976,9 @@
                   "name": "powertable_tablet",
                   "number": 4,
                   "oneofIndex": 3,
+                  "options": {
+                    "[chromiumos.config.api.name_override]": "PowerTable.tablet"
+                  },
                   "proto3Optional": true,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType"
@@ -12954,6 +12989,9 @@
                   "name": "powertable_clamshell",
                   "number": 5,
                   "oneofIndex": 4,
+                  "options": {
+                    "[chromiumos.config.api.name_override]": "PowerTable.clamshell"
+                  },
                   "proto3Optional": true,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerTableType"
@@ -12968,6 +13006,9 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "powerlimit",
                       "number": 1,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerLimit"
+                      },
                       "type": "TYPE_INT32"
                     },
                     {
@@ -12975,6 +13016,9 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "poweroffset",
                       "number": 2,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerOffset"
+                      },
                       "type": "TYPE_INT32"
                     }
                   ],
@@ -12987,6 +13031,9 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "powerconfig_2g",
                       "number": 1,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.2g"
+                      },
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
                     },
@@ -12995,6 +13042,9 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "powerconfig_5g",
                       "number": 2,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.5g"
+                      },
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
                     },
@@ -13004,6 +13054,9 @@
                       "name": "powerconfig_6g",
                       "number": 3,
                       "oneofIndex": 0,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13023,6 +13076,9 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "powerconfig_2g",
                       "number": 1,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.2g"
+                      },
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
                     },
@@ -13032,6 +13088,9 @@
                       "name": "powerconfig_5g",
                       "number": 2,
                       "oneofIndex": 0,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.5g"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13042,6 +13101,9 @@
                       "name": "powerconfig_5g_1",
                       "number": 3,
                       "oneofIndex": 1,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.5g_1"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13052,6 +13114,9 @@
                       "name": "powerconfig_5g_2",
                       "number": 4,
                       "oneofIndex": 2,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.5g_2"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13062,6 +13127,9 @@
                       "name": "powerconfig_5g_3",
                       "number": 5,
                       "oneofIndex": 3,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.5g_3"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13072,6 +13140,9 @@
                       "name": "powerconfig_5g_4",
                       "number": 6,
                       "oneofIndex": 4,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.5g_4"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13082,6 +13153,9 @@
                       "name": "powerconfig_6g_1",
                       "number": 7,
                       "oneofIndex": 5,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g_1"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13092,6 +13166,9 @@
                       "name": "powerconfig_6g_2",
                       "number": 8,
                       "oneofIndex": 6,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g_2"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13102,6 +13179,9 @@
                       "name": "powerconfig_6g_3",
                       "number": 9,
                       "oneofIndex": 7,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g_3"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13112,6 +13192,9 @@
                       "name": "powerconfig_6g_4",
                       "number": 10,
                       "oneofIndex": 8,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g_4"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13122,6 +13205,9 @@
                       "name": "powerconfig_6g_5",
                       "number": 11,
                       "oneofIndex": 9,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g_5"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
@@ -13132,6 +13218,9 @@
                       "name": "powerconfig_6g_6",
                       "number": 12,
                       "oneofIndex": 10,
+                      "options": {
+                        "[chromiumos.config.api.name_override]": "PowerConfig.6g_6"
+                      },
                       "proto3Optional": true,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfigurationType.SarSpecType.PowerConfigType"
