@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 14
+// NEXT TAG: 15
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -93,6 +93,9 @@ message TestInvocation {
   // Deprecated. Use the EqcInfo in the TestRun proto instead.
   // 3D equivalence classes (EqC) info associated with the test run.
   EqcInfo eqc_info = 13 [deprecated = true];
+
+  // Flag to indicate whether tests are uploaded to TRC RDB.
+  bool is_trc_run = 14;
 }
 
 // Captures the test environment that produced the test invocation,

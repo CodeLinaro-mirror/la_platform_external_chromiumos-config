@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\007./proto',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n3chromiumos/test/scheduling/task_request_event.proto\x12\x1a\x63hromiumos.test.scheduling\x1a(chromiumos/test/scheduling/os_type.proto\x1a\x34\x63hromiumos/test/scheduling/swarming_dimensions.proto\"\xd0\x03\n\x10TaskRequestEvent\x12\x12\n\nevent_time\x18\x01 \x01(\x03\x12\x10\n\x08\x64\x65\x61\x64line\x18\x02 \x01(\x03\x12\x10\n\x08periodic\x18\x03 \x01(\x08\x12\x10\n\x08priority\x18\x04 \x01(\x03\x12L\n\x14requested_dimensions\x18\x05 \x01(\x0b\x32..chromiumos.test.scheduling.SwarmingDimensions\x12\x1e\n\x16real_execution_minutes\x18\x06 \x01(\x03\x12\x1d\n\x15max_execution_minutes\x18\x07 \x01(\x03\x12#\n\x1bschedule_build_request_json\x18\x08 \x01(\t\x12\x12\n\nqs_account\x18\t \x01(\t\x12\x0c\n\x04pool\x18\n \x01(\t\x12\x0c\n\x04\x62\x62id\x18\x0b \x01(\x03\x12\x0c\n\x04\x61sap\x18\x0c \x01(\x08\x12\x15\n\rtask_state_id\x18\r \x01(\x03\x12\x13\n\x0b\x64\x65vice_name\x18\x0e \x01(\t\x12\x0c\n\x04user\x18\x0f \x01(\t\x12\x13\n\x0b\x65xperiments\x18\x10 \x03(\t\x12\x33\n\x07os_type\x18\x11 \x01(\x0e\x32\".chromiumos.test.scheduling.OsType\"Q\n\x11TaskRequestEvents\x12<\n\x06\x65vents\x18\x01 \x03(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEvent\"\xc5\x01\n\x16KeyedTaskRequestEvents\x12N\n\x06\x65vents\x18\x01 \x03(\x0b\x32>.chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry\x1a[\n\x0b\x45ventsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12;\n\x05value\x18\x02 \x01(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEvent:\x02\x38\x01\x42\tZ\x07./protob\x06proto3'
+  serialized_pb=b'\n3chromiumos/test/scheduling/task_request_event.proto\x12\x1a\x63hromiumos.test.scheduling\x1a(chromiumos/test/scheduling/os_type.proto\x1a\x34\x63hromiumos/test/scheduling/swarming_dimensions.proto\"\xe5\x03\n\x10TaskRequestEvent\x12\x12\n\nevent_time\x18\x01 \x01(\x03\x12\x10\n\x08\x64\x65\x61\x64line\x18\x02 \x01(\x03\x12\x10\n\x08periodic\x18\x03 \x01(\x08\x12\x10\n\x08priority\x18\x04 \x01(\x03\x12L\n\x14requested_dimensions\x18\x05 \x01(\x0b\x32..chromiumos.test.scheduling.SwarmingDimensions\x12\x1e\n\x16real_execution_minutes\x18\x06 \x01(\x03\x12\x1d\n\x15max_execution_minutes\x18\x07 \x01(\x03\x12#\n\x1bschedule_build_request_json\x18\x08 \x01(\t\x12\x12\n\nqs_account\x18\t \x01(\t\x12\x0c\n\x04pool\x18\n \x01(\t\x12\x0c\n\x04\x62\x62id\x18\x0b \x01(\x03\x12\x0c\n\x04\x61sap\x18\x0c \x01(\x08\x12\x15\n\rtask_state_id\x18\r \x01(\x03\x12\x13\n\x0b\x64\x65vice_name\x18\x0e \x01(\t\x12\x0c\n\x04user\x18\x0f \x01(\t\x12\x13\n\x0b\x61\x63tual_user\x18\x12 \x01(\t\x12\x13\n\x0b\x65xperiments\x18\x10 \x03(\t\x12\x33\n\x07os_type\x18\x11 \x01(\x0e\x32\".chromiumos.test.scheduling.OsType\"Q\n\x11TaskRequestEvents\x12<\n\x06\x65vents\x18\x01 \x03(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEvent\"\xc5\x01\n\x16KeyedTaskRequestEvents\x12N\n\x06\x65vents\x18\x01 \x03(\x0b\x32>.chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry\x1a[\n\x0b\x45ventsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12;\n\x05value\x18\x02 \x01(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEvent:\x02\x38\x01\x42\tZ\x07./protob\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_scheduling_dot_os__type__pb2.DESCRIPTOR,chromiumos_dot_test_dot_scheduling_dot_swarming__dimensions__pb2.DESCRIPTOR,])
 
@@ -142,14 +142,21 @@ _TASKREQUESTEVENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='experiments', full_name='chromiumos.test.scheduling.TaskRequestEvent.experiments', index=15,
+      name='actual_user', full_name='chromiumos.test.scheduling.TaskRequestEvent.actual_user', index=15,
+      number=18, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='experiments', full_name='chromiumos.test.scheduling.TaskRequestEvent.experiments', index=16,
       number=16, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='os_type', full_name='chromiumos.test.scheduling.TaskRequestEvent.os_type', index=16,
+      name='os_type', full_name='chromiumos.test.scheduling.TaskRequestEvent.os_type', index=17,
       number=17, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -168,7 +175,7 @@ _TASKREQUESTEVENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=180,
-  serialized_end=644,
+  serialized_end=665,
 )
 
 
@@ -199,8 +206,8 @@ _TASKREQUESTEVENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=646,
-  serialized_end=727,
+  serialized_start=667,
+  serialized_end=748,
 )
 
 
@@ -238,8 +245,8 @@ _KEYEDTASKREQUESTEVENTS_EVENTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=836,
-  serialized_end=927,
+  serialized_start=857,
+  serialized_end=948,
 )
 
 _KEYEDTASKREQUESTEVENTS = _descriptor.Descriptor(
@@ -269,8 +276,8 @@ _KEYEDTASKREQUESTEVENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=730,
-  serialized_end=927,
+  serialized_start=751,
+  serialized_end=948,
 )
 
 _TASKREQUESTEVENT.fields_by_name['requested_dimensions'].message_type = chromiumos_dot_test_dot_scheduling_dot_swarming__dimensions__pb2._SWARMINGDIMENSIONS

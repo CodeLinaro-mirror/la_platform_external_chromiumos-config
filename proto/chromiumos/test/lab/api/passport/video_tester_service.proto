@@ -254,6 +254,13 @@ enum FrlMode {
   FRL_MODE_4LANES_12GBPS = 7;
 }
 
+enum Dp128Bitrate {
+  DP_128_BITRATE_NONE = 0;
+  DP_128_BITRATE_10_0 = 1;
+  DP_128_BITRATE_13_5 = 2;
+  DP_128_BITRATE_20_0 = 3;
+}
+
 // Request message for setting advanced link parameters for a video tester.
 message SetLinkVideoTesterRequest {
   string id = 1;  // ID of the video tester to set the link parameters for.
@@ -281,6 +288,12 @@ message SetLinkVideoTesterRequest {
       20;  // Indicate support for Link Training Pattern Sequence 3.
   optional bool dsc = 21;  // Select to enable Display Stream Compression (DSC)
                            // feature when 8b/10b link coding is enabled.
+
+  // Bitrates to use when in dp 2+, empty otherwise. By default setting the
+  // video spec will enable all bitrates, use this to set the subset of desired
+  // bitrates. This must be used in conjunction with video_spec in the same
+  // request.
+  repeated Dp128Bitrate dp_128_bitrates = 22;
 }
 
 // Response message indicating the success of setting link parameters for a
@@ -334,6 +347,9 @@ message GetLinkVideoTesterResponse {
       19;  // Indicate support for Link Training Pattern Sequence 3.
   optional bool dsc = 20;  // Select to enable Display Stream Compression (DSC)
                            // feature when 8b/10b link coding is enabled.
+
+  // Bitrates to use when in dp 2+, empty otherwise
+  repeated Dp128Bitrate dp_128_bitrates = 21;
 }
 
 // Request message for simulating attaching or detaching a display/sink.

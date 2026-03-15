@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(chromiumos/test/api/device_leasing.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x02\n\x0eVMRequirements\x12\x11\n\tgce_image\x18\x01 \x01(\t\x12\x12\n\ngce_region\x18\x02 \x01(\t\x12\x13\n\x0bgce_project\x18\x03 \x01(\t\x12\x13\n\x0bgce_network\x18\x04 \x01(\t\x12\x12\n\ngce_subnet\x18\x05 \x01(\t\x12#\n\x1bsubnet_mode_network_enabled\x18\x0b \x01(\x08\x12\x18\n\x10gce_machine_type\x18\x06 \x01(\t\x12\x11\n\tgce_scope\x18\x07 \x01(\t\x12\x16\n\x0egce_ip_address\x18\x08 \x01(\t\x12\x15\n\rgce_disk_size\x18\n \x01(\x03\x12\x1c\n\x14gce_min_cpu_platform\x18\x0c \x01(\t\x12)\n\x04type\x18\t \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\"\x84\x02\n\x14HardwareRequirements\x12\\\n\x12schedulable_labels\x18\x01 \x03(\x0b\x32@.chromiumos.test.api.HardwareRequirements.SchedulableLabelsEntry\x1a\x1d\n\x0bLabelValues\x12\x0e\n\x06values\x18\x01 \x03(\t\x1ao\n\x16SchedulableLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x44\n\x05value\x18\x02 \x01(\x0b\x32\x35.chromiumos.test.api.HardwareRequirements.LabelValues:\x02\x38\x01\"\xf7\x01\n\x12\x45xtendLeaseRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x32\n\x0f\x65xtend_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x17\n\x0fidempotency_key\x18\x03 \x01(\t\x12N\n\x0cuser_payload\x18\x04 \x03(\x0b\x32\x38.chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry\x1a\x32\n\x10UserPayloadEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\\\n\x13\x45xtendLeaseResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x33\n\x0f\x65xpiration_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp*E\n\x06VMType\x12\x17\n\x13VM_TYPE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bVM_TYPE_DUT\x10\x01\x12\x11\n\rVM_TYPE_DRONE\x10\x02\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n(chromiumos/test/api/device_leasing.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x02\n\x0eVMRequirements\x12\x11\n\tgce_image\x18\x01 \x01(\t\x12\x12\n\ngce_region\x18\x02 \x01(\t\x12\x13\n\x0bgce_project\x18\x03 \x01(\t\x12\x13\n\x0bgce_network\x18\x04 \x01(\t\x12\x12\n\ngce_subnet\x18\x05 \x01(\t\x12#\n\x1bsubnet_mode_network_enabled\x18\x0b \x01(\x08\x12\x18\n\x10gce_machine_type\x18\x06 \x01(\t\x12\x11\n\tgce_scope\x18\x07 \x01(\t\x12\x16\n\x0egce_ip_address\x18\x08 \x01(\t\x12\x15\n\rgce_disk_size\x18\n \x01(\x03\x12\x1c\n\x14gce_min_cpu_platform\x18\x0c \x01(\t\x12)\n\x04type\x18\t \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\"\x84\x02\n\x14HardwareRequirements\x12\\\n\x12schedulable_labels\x18\x01 \x03(\x0b\x32@.chromiumos.test.api.HardwareRequirements.SchedulableLabelsEntry\x1a\x1d\n\x0bLabelValues\x12\x0e\n\x06values\x18\x01 \x03(\t\x1ao\n\x16SchedulableLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x44\n\x05value\x18\x02 \x01(\x0b\x32\x35.chromiumos.test.api.HardwareRequirements.LabelValues:\x02\x38\x01\"\xb7\x02\n\x12\x45xtendLeaseRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x32\n\x0f\x65xtend_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x17\n\x0fidempotency_key\x18\x03 \x01(\t\x12N\n\x0cuser_payload\x18\x04 \x03(\x0b\x32\x38.chromiumos.test.api.ExtendLeaseRequest.UserPayloadEntry\x12>\n\x17on_expiration_dut_state\x18\x05 \x01(\x0e\x32\x1d.chromiumos.test.api.DutState\x1a\x32\n\x10UserPayloadEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\\\n\x13\x45xtendLeaseResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x33\n\x0f\x65xpiration_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp*E\n\x06VMType\x12\x17\n\x13VM_TYPE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bVM_TYPE_DUT\x10\x01\x12\x11\n\rVM_TYPE_DRONE\x10\x02*W\n\x08\x44utState\x12\x19\n\x15\x44UT_STATE_UNSPECIFIED\x10\x00\x12\x14\n\x10\x44UT_STATE_NORMAL\x10\x01\x12\x1a\n\x16\x44UT_STATE_NEEDS_REPAIR\x10\x02\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -51,15 +51,49 @@ _VMTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1059,
-  serialized_end=1128,
+  serialized_start=1123,
+  serialized_end=1192,
 )
 _sym_db.RegisterEnumDescriptor(_VMTYPE)
 
 VMType = enum_type_wrapper.EnumTypeWrapper(_VMTYPE)
+_DUTSTATE = _descriptor.EnumDescriptor(
+  name='DutState',
+  full_name='chromiumos.test.api.DutState',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='DUT_STATE_UNSPECIFIED', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DUT_STATE_NORMAL', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DUT_STATE_NEEDS_REPAIR', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1194,
+  serialized_end=1281,
+)
+_sym_db.RegisterEnumDescriptor(_DUTSTATE)
+
+DutState = enum_type_wrapper.EnumTypeWrapper(_DUTSTATE)
 VM_TYPE_UNSPECIFIED = 0
 VM_TYPE_DUT = 1
 VM_TYPE_DRONE = 2
+DUT_STATE_UNSPECIFIED = 0
+DUT_STATE_NORMAL = 1
+DUT_STATE_NEEDS_REPAIR = 2
 
 
 
@@ -307,8 +341,8 @@ _EXTENDLEASEREQUEST_USERPAYLOADENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=913,
-  serialized_end=963,
+  serialized_start=977,
+  serialized_end=1027,
 )
 
 _EXTENDLEASEREQUEST = _descriptor.Descriptor(
@@ -347,6 +381,13 @@ _EXTENDLEASEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='on_expiration_dut_state', full_name='chromiumos.test.api.ExtendLeaseRequest.on_expiration_dut_state', index=4,
+      number=5, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -360,7 +401,7 @@ _EXTENDLEASEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=716,
-  serialized_end=963,
+  serialized_end=1027,
 )
 
 
@@ -398,8 +439,8 @@ _EXTENDLEASERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=965,
-  serialized_end=1057,
+  serialized_start=1029,
+  serialized_end=1121,
 )
 
 _VMREQUIREMENTS.fields_by_name['type'].enum_type = _VMTYPE
@@ -410,12 +451,14 @@ _HARDWAREREQUIREMENTS.fields_by_name['schedulable_labels'].message_type = _HARDW
 _EXTENDLEASEREQUEST_USERPAYLOADENTRY.containing_type = _EXTENDLEASEREQUEST
 _EXTENDLEASEREQUEST.fields_by_name['extend_duration'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _EXTENDLEASEREQUEST.fields_by_name['user_payload'].message_type = _EXTENDLEASEREQUEST_USERPAYLOADENTRY
+_EXTENDLEASEREQUEST.fields_by_name['on_expiration_dut_state'].enum_type = _DUTSTATE
 _EXTENDLEASERESPONSE.fields_by_name['expiration_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 DESCRIPTOR.message_types_by_name['VMRequirements'] = _VMREQUIREMENTS
 DESCRIPTOR.message_types_by_name['HardwareRequirements'] = _HARDWAREREQUIREMENTS
 DESCRIPTOR.message_types_by_name['ExtendLeaseRequest'] = _EXTENDLEASEREQUEST
 DESCRIPTOR.message_types_by_name['ExtendLeaseResponse'] = _EXTENDLEASERESPONSE
 DESCRIPTOR.enum_types_by_name['VMType'] = _VMTYPE
+DESCRIPTOR.enum_types_by_name['DutState'] = _DUTSTATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 VMRequirements = _reflection.GeneratedProtocolMessageType('VMRequirements', (_message.Message,), {

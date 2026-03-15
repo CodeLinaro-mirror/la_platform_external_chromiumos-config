@@ -7,14 +7,14 @@ description: "ChromeOS GRPC proto files for ChromeOS Infra and test services."
 third_party {
   license_type: NOTICE
   last_upgrade_date {
-    year: 2025
-    month: 12
-    day: 9
+    year: 2026
+    month: 1
+    day: 29
   }
   identifier {
     type: "Git"
     value: "https://chromium.googlesource.com/chromiumos/config/"
-    version: "b76b213d821bf497c5d0f4a1fb9e5b7691849bb5"
+    version: "229704ea4a39ad1830928a537ac02daee9bb1b37"
     primary_source: true
   }
 }
