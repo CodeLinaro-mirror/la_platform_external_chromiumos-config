@@ -47612,6 +47612,21 @@
             }
           ],
           "name": "StopEventCaptureResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PowerCycleRequest"
+        },
+        {
+          "name": "PowerCycleResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
@@ -47696,6 +47711,11 @@
               "inputType": ".chromiumos.test.lab.api.passport.StopEventCaptureRequest",
               "name": "StopEventCapture",
               "outputType": ".chromiumos.test.lab.api.passport.StopEventCaptureResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.PowerCycleRequest",
+              "name": "PowerCycle",
+              "outputType": ".chromiumos.test.lab.api.passport.PowerCycleResponse"
             }
           ],
           "name": "VideoTesterService"

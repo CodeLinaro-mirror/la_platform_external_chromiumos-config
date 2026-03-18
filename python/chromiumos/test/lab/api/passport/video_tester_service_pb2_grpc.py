@@ -90,6 +90,11 @@ class VideoTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureResponse.FromString,
                 )
+        self.PowerCycle = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/PowerCycle',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.PowerCycleRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.PowerCycleResponse.FromString,
+                )
 
 
 class VideoTesterServiceServicer(object):
@@ -201,6 +206,13 @@ class VideoTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def PowerCycle(self, request, context):
+        """Power cycle the video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_VideoTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -278,6 +290,11 @@ def add_VideoTesterServiceServicer_to_server(servicer, server):
                     servicer.StopEventCapture,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureResponse.SerializeToString,
+            ),
+            'PowerCycle': grpc.unary_unary_rpc_method_handler(
+                    servicer.PowerCycle,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.PowerCycleRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.PowerCycleResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -542,5 +559,22 @@ class VideoTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/StopEventCapture',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.StopEventCaptureResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PowerCycle(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/PowerCycle',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.PowerCycleRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.PowerCycleResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

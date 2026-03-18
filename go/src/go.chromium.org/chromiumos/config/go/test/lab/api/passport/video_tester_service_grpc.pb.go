@@ -52,6 +52,8 @@ type VideoTesterServiceClient interface {
 	StartEventCapture(ctx context.Context, in *StartEventCaptureRequest, opts ...grpc.CallOption) (*StartEventCaptureResponse, error)
 	// Stop the event capture and optionally get the capture files.
 	StopEventCapture(ctx context.Context, in *StopEventCaptureRequest, opts ...grpc.CallOption) (*StopEventCaptureResponse, error)
+	// Power cycle the video tester.
+	PowerCycle(ctx context.Context, in *PowerCycleRequest, opts ...grpc.CallOption) (*PowerCycleResponse, error)
 }
 
 type videoTesterServiceClient struct {
@@ -197,6 +199,15 @@ func (c *videoTesterServiceClient) StopEventCapture(ctx context.Context, in *Sto
 	return out, nil
 }
 
+func (c *videoTesterServiceClient) PowerCycle(ctx context.Context, in *PowerCycleRequest, opts ...grpc.CallOption) (*PowerCycleResponse, error) {
+	out := new(PowerCycleResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/PowerCycle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VideoTesterServiceServer is the server API for VideoTesterService service.
 // All implementations should embed UnimplementedVideoTesterServiceServer
 // for forward compatibility
@@ -231,6 +242,8 @@ type VideoTesterServiceServer interface {
 	StartEventCapture(context.Context, *StartEventCaptureRequest) (*StartEventCaptureResponse, error)
 	// Stop the event capture and optionally get the capture files.
 	StopEventCapture(context.Context, *StopEventCaptureRequest) (*StopEventCaptureResponse, error)
+	// Power cycle the video tester.
+	PowerCycle(context.Context, *PowerCycleRequest) (*PowerCycleResponse, error)
 }
 
 // UnimplementedVideoTesterServiceServer should be embedded to have forward compatible implementations.
@@ -281,6 +294,9 @@ func (UnimplementedVideoTesterServiceServer) StartEventCapture(context.Context, 
 }
 func (UnimplementedVideoTesterServiceServer) StopEventCapture(context.Context, *StopEventCaptureRequest) (*StopEventCaptureResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopEventCapture not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) PowerCycle(context.Context, *PowerCycleRequest) (*PowerCycleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PowerCycle not implemented")
 }
 
 // UnsafeVideoTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -564,6 +580,24 @@ func _VideoTesterService_StopEventCapture_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VideoTesterService_PowerCycle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PowerCycleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).PowerCycle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/PowerCycle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).PowerCycle(ctx, req.(*PowerCycleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VideoTesterService_ServiceDesc is the grpc.ServiceDesc for VideoTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -630,6 +664,10 @@ var VideoTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "StopEventCapture",
 			Handler:    _VideoTesterService_StopEventCapture_Handler,
+		},
+		{
+			MethodName: "PowerCycle",
+			Handler:    _VideoTesterService_PowerCycle_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

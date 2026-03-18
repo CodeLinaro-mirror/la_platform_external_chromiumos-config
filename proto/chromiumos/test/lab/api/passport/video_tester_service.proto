@@ -504,6 +504,17 @@ message StopEventCaptureResponse {
   bytes dprx_capture_html = 2;
 }
 
+// Request to power cycle the video tester.
+message PowerCycleRequest {
+  // Id of the tester.
+  string id = 1;
+}
+
+// Response to the PowerCycleRequest.
+message PowerCycleResponse {
+  // Empty response indicating success.
+}
+
 // Service definition for interacting with video tester devices.
 service VideoTesterService {
   // Retrieves a list of available video testers.
@@ -558,4 +569,7 @@ service VideoTesterService {
   // Stop the event capture and optionally get the capture files.
   rpc StopEventCapture(StopEventCaptureRequest)
       returns (StopEventCaptureResponse);
+
+  // Power cycle the video tester.
+  rpc PowerCycle(PowerCycleRequest) returns (PowerCycleResponse);
 }
