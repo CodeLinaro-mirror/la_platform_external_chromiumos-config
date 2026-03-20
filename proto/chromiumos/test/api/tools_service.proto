@@ -1,0 +1,50 @@
+// Copyright 2026 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+service ToolsService {
+  // ADBRun runs a command on ADB.
+  rpc ADBRun(ADBRunRequest) returns (ADBRunResponse) {}
+  // FastbootRun runs a fastboot command.
+  rpc FastbootRun(FastbootRunRequest) returns (FastbootRunResponse) {}
+}
+
+message ADBRunRequest {
+  // command is the command of ADB to run.
+  string command = 1;
+  // args are the arguments to pass to the command. The arguments
+  // are not quoted in any way, so passing shell variables and
+  // arguments containing spaces could fail.
+  repeated string params = 2;
+}
+
+message ADBRunResponse {
+  // stdout contains the shell command's stdout output.
+  bytes stdout = 1;
+  // stderr contains the shell command's stderr output.
+  bytes stderr = 2;
+  // Exit code from shell command.
+  int32 exit_code = 3;
+}
+
+message FastbootRunRequest {
+  // command is the command of Fastboot to run.
+  string command = 1;
+  // args are the arguments to pass to the command.
+  repeated string params = 2;
+}
+
+message FastbootRunResponse {
+  // stdout contains the shell command's stdout output.
+  bytes stdout = 1;
+  // stderr contains the shell command's stderr output.
+  bytes stderr = 2;
+  // Exit code from shell command.
+  int32 exit_code = 3;
+}
