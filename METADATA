@@ -8,13 +8,13 @@ third_party {
   license_type: NOTICE
   last_upgrade_date {
     year: 2026
-    month: 1
-    day: 29
+    month: 3
+    day: 11
   }
   identifier {
     type: "Git"
     value: "https://chromium.googlesource.com/chromiumos/config/"
-    version: "229704ea4a39ad1830928a537ac02daee9bb1b37"
+    version: "077732c591419c23bdf8dddd89a76c07a5f5eb5d"
     primary_source: true
   }
 }

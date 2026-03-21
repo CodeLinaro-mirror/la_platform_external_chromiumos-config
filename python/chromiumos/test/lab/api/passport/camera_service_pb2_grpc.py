@@ -33,6 +33,11 @@ class CameraServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVResponse.FromString,
                 )
+        self.CaptureVideo = channel.unary_stream(
+                '/chromiumos.test.lab.api.passport.CameraService/CaptureVideo',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.CaptureVideoRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.CaptureVideoResponse.FromString,
+                )
 
 
 class CameraServiceServicer(object):
@@ -65,6 +70,13 @@ class CameraServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CaptureVideo(self, request, context):
+        """CaptureVideo captures a video of user defined length.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CameraServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -82,6 +94,11 @@ def add_CameraServiceServicer_to_server(servicer, server):
                     servicer.AnalyzeImageHSV,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVResponse.SerializeToString,
+            ),
+            'CaptureVideo': grpc.unary_stream_rpc_method_handler(
+                    servicer.CaptureVideo,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.CaptureVideoRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.CaptureVideoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -145,5 +162,22 @@ class CameraService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.CameraService/AnalyzeImageHSV',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.AnalyzeHSVResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CaptureVideo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.lab.api.passport.CameraService/CaptureVideo',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.CaptureVideoRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_camera__service__pb2.CaptureVideoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
