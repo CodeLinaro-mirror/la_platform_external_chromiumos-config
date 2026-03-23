@@ -1430,6 +1430,13 @@ def _add_camera_features(
         _add_feature_element(
             permissions_elem, "android.hardware.camera.level.full"
         )
+        _add_feature_element(
+            permissions_elem, "android.hardware.camera.capability.manual_sensor"
+        )
+        _add_feature_element(
+            permissions_elem,
+            "android.hardware.camera.capability.manual_post_processing",
+        )
 
 
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:

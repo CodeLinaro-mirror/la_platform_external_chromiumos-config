@@ -92,6 +92,7 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 "frid456_456/features.xml",
             ],
         )
+
         with open(output_files[0], "rb") as f:
             content = f.read()
             self.assertEqual(
@@ -103,7 +104,9 @@ class CrosConfigConverterMainTest(unittest.TestCase):
                 b'<feature name="android.hardware.touchscreen.multitouch.jazzhand"/>\n  '
                 b'<feature name="android.hardware.camera.any"/>\n  '
                 b'<feature name="android.hardware.camera.front"/>\n  '
-                b'<feature name="android.hardware.camera.level.full"/>\n'
+                b'<feature name="android.hardware.camera.level.full"/>\n  '
+                b'<feature name="android.hardware.camera.capability.manual_sensor"/>\n  '
+                b'<feature name="android.hardware.camera.capability.manual_post_processing"/>\n'
                 b"</permissions>\n",
                 f"Got unexpected content from file {f.name}: {content}",
             )
@@ -788,6 +791,8 @@ class FeatureXmlGenerationTest(unittest.TestCase):
             [
                 "android.hardware.camera.any",
                 "android.hardware.camera.level.full",
+                "android.hardware.camera.capability.manual_sensor",
+                "android.hardware.camera.capability.manual_post_processing",
             ]
         )
 
@@ -814,6 +819,8 @@ class FeatureXmlGenerationTest(unittest.TestCase):
                 "android.hardware.camera.front",
                 "android.hardware.camera.autofocus",
                 "android.hardware.camera.level.full",
+                "android.hardware.camera.capability.manual_sensor",
+                "android.hardware.camera.capability.manual_post_processing",
             ]
         )
 
