@@ -354,6 +354,7 @@ enum NetworkProvider {
   NETWORK_LINEMO = 19;
   NETWORK_POVO = 20;
   NETWORK_HANSHIN = 21;
+  NETWORK_ROAMING = 22;
 }
 
 enum SIMType {

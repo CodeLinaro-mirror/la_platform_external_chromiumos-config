@@ -22167,6 +22167,10 @@
             {
               "name": "NETWORK_HANSHIN",
               "number": 21
+            },
+            {
+              "name": "NETWORK_ROAMING",
+              "number": 22
             }
           ]
         },
