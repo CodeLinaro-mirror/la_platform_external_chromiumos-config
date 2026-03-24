@@ -163,6 +163,34 @@ class ComponentXmlGenerationTest(unittest.TestCase):
             regdomain_fcc.find("PowerConfig.5g").find("PowerLimit").text, "15"
         )
 
+    def test_generate_component_xml_default_config(self):
+        """Test generation of default component XML files when default flag is set."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+
+        fp1 = hal_config.fingerprint_list.add()
+        fp1.id = "fingerprint_config_1"
+        fp1.board = "TestBoard1"
+        fp1.default = True
+
+        generate_component_xmls.generate(bundle, self.temp_dir)
+
+        # Verify specific XML
+        fp1_file = self.temp_dir / "fingerprint_config_1.xml"
+        self.assertTrue(fp1_file.is_file())
+
+        # Verify default XML
+        default_file = self.temp_dir / "fingerprint_default.xml"
+        self.assertTrue(default_file.is_file())
+
+        # Verify content of default XML
+        root = etree.parse(default_file).getroot()
+        self.assertEqual(root.tag, "FingerprintConfiguration")
+        self.assertEqual(root.find("board").text, "TestBoard1")
+
+        # Verify that 'default' field is NOT in the XML
+        self.assertIsNone(root.find("default"))
+
 
 if __name__ == "__main__":
     unittest.main(module=__name__)

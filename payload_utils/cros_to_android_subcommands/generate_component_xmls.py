@@ -26,6 +26,11 @@ def _populate_element_from_message(
         if skip_id and field.name == "id":
             continue
 
+        if field.name == "default":
+            # The 'default' field is used as a signal for the converter and
+            # should not be included in the output XML.
+            continue
+
         value = getattr(message, field.name)
 
         # Skip default or empty fields.
@@ -71,13 +76,20 @@ def _populate_element_from_message(
                 elem.text = str(item_value)
 
 
-def _generate_xml_for_component(component_config, output_dir: pathlib.Path):
+def _generate_xml_for_component(
+    component_config, output_dir: pathlib.Path, default: bool = False
+):
     """Generates an XML file for a single component configuration.
 
     Args:
         component_config: A protobuf message for a single component in
            a HalConfiguration message (e.g., AudioConfigurationType).
         output_dir: The directory to write the XML file to.
+        default: If True, generates "<prefix>_default.xml" instead of
+           "<id>.xml", where "<prefix>" is the first part of the
+           "component_id" split by "_". For example, if the component id is
+           "Fingerprint_123", the default file will be
+           "fingerprint_default.xml".
     """
     descriptor = component_config.DESCRIPTOR
 
@@ -94,7 +106,11 @@ def _generate_xml_for_component(component_config, output_dir: pathlib.Path):
 
     _populate_element_from_message(root, component_config, skip_id=True)
 
-    output_file = output_dir / f"{component_id}.xml"
+    if default:
+        prefix = component_id.split("_")[0].lower()
+        output_file = output_dir / f"{prefix}_default.xml"
+    else:
+        output_file = output_dir / f"{component_id}.xml"
 
     with open(output_file, "wb") as f:
         f.write(etree.tostring(root, pretty_print=True, xml_declaration=False))
@@ -128,3 +144,11 @@ def generate(
     for field in hal_config.DESCRIPTOR.fields:
         for component_config in getattr(hal_config, field.name):
             _generate_xml_for_component(component_config, output_dir)
+            if getattr(component_config, "default", False):
+                # Generate a default fallback file (e.g.
+                # fingerprint_default.xml) in addition to the <id>.xml file.
+                # The runtime will fallback to this default if it doesn't find
+                # file for the specific id.
+                _generate_xml_for_component(
+                    component_config, output_dir, default=True
+                )
