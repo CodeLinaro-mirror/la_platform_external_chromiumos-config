@@ -12030,6 +12030,15 @@
               "oneofIndex": 2,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "AudioConfigurationType",
@@ -12042,6 +12051,9 @@
             },
             {
               "name": "_audio_config_dir"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12127,6 +12139,15 @@
               "oneofIndex": 1,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "CellularConfigurationType",
@@ -12136,6 +12157,9 @@
             },
             {
               "name": "_firmware_variant"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12239,6 +12263,15 @@
               "oneofIndex": 2,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 6,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FingerprintConfigurationType",
@@ -12251,6 +12284,9 @@
             },
             {
               "name": "_ro_version"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12315,6 +12351,15 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.CameraConfigurationType.CameraHWConfig"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 4,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "CameraConfigurationType",
@@ -12423,6 +12468,9 @@
           "oneofDecl": [
             {
               "name": "_media_profile_suffix"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12443,12 +12491,24 @@
               "oneofIndex": 0,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "StorageConfigurationType",
           "oneofDecl": [
             {
               "name": "_storage_type"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12488,6 +12548,15 @@
               "oneofIndex": 2,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "KeyboardConfigurationType",
@@ -12500,6 +12569,9 @@
             },
             {
               "name": "_kb_backlight_steps"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12544,12 +12616,24 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.StylusConfigurationType.StylusType"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "StylusConfigurationType",
           "oneofDecl": [
             {
               "name": "_stylus_type"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12588,6 +12672,15 @@
               "oneofIndex": 2,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FirmwareConfigurationType",
@@ -12600,6 +12693,9 @@
             },
             {
               "name": "_ufsc"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12620,12 +12716,24 @@
               "oneofIndex": 0,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "TouchscreenConfigurationType",
           "oneofDecl": [
             {
               "name": "_screen_size"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12637,9 +12745,23 @@
               "name": "id",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
-          "name": "TouchpadConfigurationType"
+          "name": "TouchpadConfigurationType",
+          "oneofDecl": [
+            {
+              "name": "_default"
+            }
+          ]
         },
         {
           "field": [
@@ -12658,12 +12780,24 @@
               "oneofIndex": 0,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "VideoConfigurationType",
           "oneofDecl": [
             {
               "name": "_video_codec_suffix"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12693,6 +12827,15 @@
               "oneofIndex": 1,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "HardwareFeatureConfigurationType",
@@ -12702,6 +12845,9 @@
             },
             {
               "name": "_touchscreen_support"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12723,12 +12869,24 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "GyroscopeConfigurationType",
           "oneofDecl": [
             {
               "name": "_feature_gyroscope"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12750,12 +12908,24 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "AccelerometerConfigurationType",
           "oneofDecl": [
             {
               "name": "_feature_accelerometer"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12777,12 +12947,24 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "LightSensorConfigurationType",
           "oneofDecl": [
             {
               "name": "_feature_lightsensor"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12804,12 +12986,24 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "MagnetometerConfigurationType",
           "oneofDecl": [
             {
               "name": "_feature_magnetometer"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -12925,6 +13119,15 @@
               "proto3Optional": true,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 9,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "WifiConfigurationType",
@@ -13301,6 +13504,9 @@
             },
             {
               "name": "_feature_rtt"
+            },
+            {
+              "name": "_default"
             }
           ]
         },
@@ -13322,6 +13528,15 @@
               "proto3Optional": true,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.ProximityConfigurationType.SemtechProximityConfigurationType"
+            },
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "ProximityConfigurationType",
@@ -13545,6 +13760,9 @@
           "oneofDecl": [
             {
               "name": "_semtech_proximity"
+            },
+            {
+              "name": "_default"
             }
           ]
         },

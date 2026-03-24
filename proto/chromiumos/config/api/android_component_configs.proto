@@ -40,6 +40,7 @@ message AudioConfigurationType {
   optional string soundcard = 2;
   optional int32 dmics_count = 3;
   optional string audio_config_dir = 4;
+  optional bool default = 5;
 }
 
 // Cellular component configuration. Annotation to the fields:
@@ -67,6 +68,7 @@ message CellularConfigurationType {
   }
   optional ModemType modem_type = 2;
   optional string firmware_variant = 3;
+  optional bool default = 4;
 }
 
 // Fingerprint component configuration. Annotation to the fields:
@@ -111,6 +113,7 @@ message FingerprintConfigurationType {
   }
   optional Location sensor_location = 4;
   optional string ro_version = 5;
+  optional bool default = 6;
 }
 
 // Camera component configuration. Annotation to the fields:
@@ -147,6 +150,7 @@ message CameraConfigurationType {
     repeated Resolution resolutions = 7;
   }
   repeated CameraHWConfig cameras = 3;
+  optional bool default = 4;
 }
 
 // Storage component configuration. Annotation to the fields:
@@ -158,6 +162,7 @@ message CameraConfigurationType {
 message StorageConfigurationType {
   string id = 1;
   optional string storage_type = 2;
+  optional bool default = 3;
 }
 
 // Keyboard component configuration. Annotation to the fields:
@@ -173,6 +178,7 @@ message KeyboardConfigurationType {
   optional HalConfiguration.Present backlight_support = 2;
   optional string kb_default_brightness = 3;
   optional string kb_backlight_steps = 4;
+  optional bool default = 5;
 }
 
 // Stylus component configuration. Annotation to the fields:
@@ -190,6 +196,7 @@ message StylusConfigurationType {
     EXTERNAL = 3;  // Non-garaged stylus
   }
   optional StylusType stylus_type = 2;
+  optional bool default = 3;
 }
 
 // Firmware component configuration. Annotation to the fields:
@@ -199,6 +206,7 @@ message FirmwareConfigurationType {
   optional string firmware_manifest_key = 2;
   optional string firmware_config = 3;
   optional string ufsc = 4;
+  optional bool default = 5;
 }
 
 // Touchscreen component configuration. Annotation to the fields:
@@ -206,12 +214,14 @@ message FirmwareConfigurationType {
 message TouchscreenConfigurationType {
   string id = 1;
   optional string screen_size = 2;
+  optional bool default = 3;
 }
 
 // Touchpad component configuration. Annotation to the fields:
 // id: The identity field among the enumeration of possible variants on this HW
 message TouchpadConfigurationType {
   string id = 1;
+  optional bool default = 2;
 }
 
 // Video component configuration. Annotation to the fields:
@@ -219,6 +229,7 @@ message TouchpadConfigurationType {
 message VideoConfigurationType {
   string id = 1;
   optional string video_codec_suffix = 2;
+  optional bool default = 3;
 }
 
 // HardwareFeature component configuration. Annotation to the fields:
@@ -227,6 +238,7 @@ message HardwareFeatureConfigurationType {
   string id = 1;
   optional string form_factor = 2;
   optional string touchscreen_support = 3;
+  optional bool default = 4;
 }
 
 // Gyroscope component configuration. Annotation to the fields:
@@ -234,6 +246,7 @@ message HardwareFeatureConfigurationType {
 message GyroscopeConfigurationType {
   string id = 1;
   optional HalConfiguration.Present feature_gyroscope = 2;
+  optional bool default = 3;
 }
 
 // Accelerometer component configuration. Annotation to the fields:
@@ -241,6 +254,7 @@ message GyroscopeConfigurationType {
 message AccelerometerConfigurationType {
   string id = 1;
   optional HalConfiguration.Present feature_accelerometer = 2;
+  optional bool default = 3;
 }
 
 // LightSensor component configuration. Annotation to the fields:
@@ -248,6 +262,7 @@ message AccelerometerConfigurationType {
 message LightSensorConfigurationType {
   string id = 1;
   optional HalConfiguration.Present feature_lightsensor = 2;
+  optional bool default = 3;
 }
 
 // Magnetometer component configuration. Annotation to the fields:
@@ -255,6 +270,7 @@ message LightSensorConfigurationType {
 message MagnetometerConfigurationType {
   string id = 1;
   optional HalConfiguration.Present feature_magnetometer = 2;
+  optional bool default = 3;
 }
 
 // Wifi component configuration. Annotation to the fields:
@@ -322,6 +338,7 @@ message WifiConfigurationType {
   optional HalConfiguration.Present feature_direct = 6;
   optional HalConfiguration.Present feature_passport = 7;
   optional HalConfiguration.Present feature_rtt = 8;
+  optional bool default = 9;
 }
 
 // ProximitySensor component configuration. Annotation to the fields:
@@ -354,6 +371,7 @@ message ProximityConfigurationType {
     optional SemtechSensorConfigurationType semtech_config = 2;
   }
   optional SemtechProximityConfigurationType semtech_proximity = 2;
+  optional bool default = 3;
 }
 
 message HalConfiguration {
