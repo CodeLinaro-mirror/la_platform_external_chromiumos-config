@@ -8,6 +8,7 @@ import pathlib
 import tempfile
 import unittest
 
+from chromiumos.config.api import android_component_configs_pb2
 from chromiumos.config.payload import config_bundle_pb2
 from cros_to_android import generate_component_xmls
 from lxml import etree  # pylint: disable=import-error
@@ -36,21 +37,21 @@ class ComponentXmlGenerationTest(unittest.TestCase):
 
         cellular = hal_config.cellular_list.add()
         cellular.id = "cellular_config_1"
-        cellular.modem_type = "FM101"
+        cellular.modem_type = 3
         cellular.firmware_variant = "TestFirmware"
 
         fp1 = hal_config.fingerprint_list.add()
         fp1.id = "fingerprint_config_1"
         fp1.board = "TestBoard1"
         fp1.fingerprint_sensor_type = "POWER_BUTTON"
-        fp1.sensor_location = "POWER_BUTTON_TOP_LEFT"
+        fp1.sensor_location = 1
         fp1.ro_version = "v1.2.3"
 
         fp2 = hal_config.fingerprint_list.add()
         fp2.id = "fingerprint_config_2"
         fp2.board = "TestBoard2"
         fp2.fingerprint_sensor_type = "STAND_ALONE"
-        fp2.sensor_location = "KEYBOARD_BOTTOM_RIGHT"
+        fp2.sensor_location = 3
 
         generate_component_xmls.generate(bundle, self.temp_dir)
 
@@ -64,7 +65,7 @@ class ComponentXmlGenerationTest(unittest.TestCase):
         self.assertTrue(cellular_file.is_file())
         cellular_root = etree.parse(cellular_file).getroot()
         self.assertEqual(cellular_root.tag, "CellularConfiguration")
-        self.assertEqual(cellular_root.find("modem-type").text, "FM101")
+        self.assertEqual(cellular_root.find("modem-type").text, "MODEM_FM101")
         self.assertEqual(
             cellular_root.find("firmware-variant").text, "TestFirmware"
         )
@@ -107,6 +108,60 @@ class ComponentXmlGenerationTest(unittest.TestCase):
         # Check that no files were created
         output_files = list(self.temp_dir.glob("*.xml"))
         self.assertEqual(len(output_files), 0)
+
+    def test_generate_component_xml_repeated_field(self):
+        """Test skipping empty repeated fields and keeping populated ones."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+        camera = hal_config.camera_list.add()
+        camera.id = "camera_config_1"
+        camera.media_profile_suffix = "TestPrefix"
+
+        generate_component_xmls.generate(bundle, self.temp_dir)
+        xml_file = self.temp_dir / "camera_config_1.xml"
+        self.assertTrue(xml_file.is_file())
+
+        root = etree.parse(xml_file).getroot()
+        self.assertEqual(root.tag, "CameraConfiguration")
+        self.assertEqual(root.find("media-profile-suffix").text, "TestPrefix")
+        self.assertIsNone(root.find("cameras"))
+
+    def test_generate_component_xml_wifi_node_overrides(self):
+        """Test wifi component generation node name conversions."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+        wifi = hal_config.wifi_list.add()
+        wifi.id = "wifi_config_1"
+        wifi.chip = android_component_configs_pb2.WifiConfigurationType.MTK
+
+        wifi.mtkconfig.powertable_tablet.powerconfig_2g.powerlimit = 20
+        wifi.mtkconfig.powertable_tablet.powerconfig_2g.poweroffset = 5
+        wifi.mtkconfig.regdomain_fcc.powerconfig_5g.powerlimit = 15
+
+        generate_component_xmls.generate(bundle, self.temp_dir)
+        xml_file = self.temp_dir / "wifi_config_1.xml"
+        self.assertTrue(xml_file.is_file())
+
+        root = etree.parse(xml_file).getroot()
+        self.assertEqual(root.tag, "WifiConfiguration")
+
+        # Test node overrides
+        self.assertEqual(root.find("Chip").text, "MTK")
+        mtk_config = root.find("MTKConfig")
+        self.assertIsNotNone(mtk_config)
+
+        powertable_tablet = mtk_config.find("PowerTable.tablet")
+        self.assertIsNotNone(powertable_tablet)
+        powerconfig_2g = powertable_tablet.find("PowerConfig.2g")
+        self.assertIsNotNone(powerconfig_2g)
+        self.assertEqual(powerconfig_2g.find("PowerLimit").text, "20")
+        self.assertEqual(powerconfig_2g.find("PowerOffset").text, "5")
+
+        regdomain_fcc = mtk_config.find("RegDomain.fcc")
+        self.assertIsNotNone(regdomain_fcc)
+        self.assertEqual(
+            regdomain_fcc.find("PowerConfig.5g").find("PowerLimit").text, "15"
+        )
 
 
 if __name__ == "__main__":

@@ -39,8 +39,156 @@ def _generate_xml_for_fingerprint(
     _add_feature_element(permissions_elem, "android.hardware.fingerprint")
 
 
+def _generate_xml_for_camera(
+    component_config: android_component_configs_pb2.CameraConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for CameraConfiguration.
+
+    Args:
+        component_config: The CameraConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    has_back_camera = False
+    has_front_camera = False
+    has_autofocus = False
+
+    for camera in component_config.cameras:
+        if (
+            camera.position
+            == android_component_configs_pb2.CameraConfigurationType.FACING_BACK
+        ):
+            has_back_camera = True
+        if (
+            camera.position
+            == android_component_configs_pb2.CameraConfigurationType.FACING_FRONT
+        ):
+            has_front_camera = True
+        if (
+            camera.autofocus_support
+            == android_component_configs_pb2.HalConfiguration.PRESENT
+        ):
+            has_autofocus = True
+
+    if has_back_camera or has_front_camera:
+        _add_feature_element(permissions_elem, "android.hardware.camera.any")
+
+    if has_back_camera:
+        _add_feature_element(permissions_elem, "android.hardware.camera")
+
+    if has_front_camera:
+        _add_feature_element(permissions_elem, "android.hardware.camera.front")
+
+    if has_autofocus:
+        _add_feature_element(
+            permissions_elem, "android.hardware.camera.autofocus"
+        )
+
+
+def _generate_xml_for_hardware_feature(
+    component_config: android_component_configs_pb2.HardwareFeatureConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for HardwareFeatureConfiguration.
+
+    Args:
+        component_config: The HardwareFeatureConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    if component_config.form_factor == "CONVERTIBLE":
+        _add_feature_element(
+            permissions_elem, "android.hardware.sensor.hinge_angle"
+        )
+
+    if component_config.touchscreen_support == "true":
+        _add_feature_element(permissions_elem, "android.hardware.touchscreen")
+        _add_feature_element(
+            permissions_elem, "android.hardware.touchscreen.multitouch"
+        )
+
+
+def _generate_xml_for_accelerometer(
+    component_config: android_component_configs_pb2.AccelerometerConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for AccelerometerConfiguration.
+
+    Args:
+        component_config: The AccelerometerConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    if (
+        component_config.feature_accelerometer
+        == android_component_configs_pb2.HalConfiguration.PRESENT
+    ):
+        _add_feature_element(
+            permissions_elem, "android.hardware.sensor.accelerometer"
+        )
+
+
+def _generate_xml_for_gyroscope(
+    component_config: android_component_configs_pb2.GyroscopeConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for GyroscopeConfiguration.
+
+    Args:
+        component_config: The GyroscopeConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    if (
+        component_config.feature_gyroscope
+        == android_component_configs_pb2.HalConfiguration.PRESENT
+    ):
+        _add_feature_element(
+            permissions_elem, "android.hardware.sensor.gyroscope"
+        )
+
+
+def _generate_xml_for_lightsensor(
+    component_config: android_component_configs_pb2.LightSensorConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for LightSensorConfiguration.
+
+    Args:
+        component_config: The LightSensorConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    if (
+        component_config.feature_lightsensor
+        == android_component_configs_pb2.HalConfiguration.PRESENT
+    ):
+        _add_feature_element(permissions_elem, "android.hardware.sensor.light")
+
+
+def _generate_xml_for_magnetometer(
+    component_config: android_component_configs_pb2.MagnetometerConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for MagnetometerConfiguration.
+
+    Args:
+        component_config: The MagnetometerConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    if (
+        component_config.feature_magnetometer
+        == android_component_configs_pb2.HalConfiguration.PRESENT
+    ):
+        _add_feature_element(
+            permissions_elem, "android.hardware.sensor.compass"
+        )
+
+
 _COMPONENT_HANDLERS = {
+    "CameraConfiguration": _generate_xml_for_camera,
     "FingerprintConfiguration": _generate_xml_for_fingerprint,
+    "HardwareFeatureConfiguration": _generate_xml_for_hardware_feature,
+    "AccelerometerConfiguration": _generate_xml_for_accelerometer,
+    "GyroscopeConfiguration": _generate_xml_for_gyroscope,
+    "LightSensorConfiguration": _generate_xml_for_lightsensor,
+    "MagnetometerConfiguration": _generate_xml_for_magnetometer,
 }
 
 
