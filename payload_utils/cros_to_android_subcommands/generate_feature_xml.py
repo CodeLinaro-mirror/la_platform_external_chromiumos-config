@@ -181,6 +181,24 @@ def _generate_xml_for_magnetometer(
         )
 
 
+def _generate_xml_for_proximity(
+    component_config: android_component_configs_pb2.ProximityConfigurationType,
+    permissions_elem: etree._Element,
+):
+    """Generates feature XML content for ProximityConfiguration.
+
+    Args:
+        component_config: The ProximityConfigurationType proto.
+        permissions_elem: The parent permissions element.
+    """
+    _add_feature_element(permissions_elem, "android.hardware.sensor.proximity")
+
+    if component_config.HasField(
+        "semtech_proximity"
+    ) and component_config.semtech_proximity.HasField("semtech_config"):
+        _add_feature_element(permissions_elem, "com.google.sensor.sar")
+
+
 _COMPONENT_HANDLERS = {
     "CameraConfiguration": _generate_xml_for_camera,
     "FingerprintConfiguration": _generate_xml_for_fingerprint,
@@ -189,6 +207,7 @@ _COMPONENT_HANDLERS = {
     "GyroscopeConfiguration": _generate_xml_for_gyroscope,
     "LightSensorConfiguration": _generate_xml_for_lightsensor,
     "MagnetometerConfiguration": _generate_xml_for_magnetometer,
+    "ProximityConfiguration": _generate_xml_for_proximity,
 }
 
 

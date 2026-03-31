@@ -137,6 +137,40 @@ class GenerateFeatureXmlTest(unittest.TestCase):
         gyro_file = self.temp_dir / "Gyroscope_Test_ID.xml"
         self.assertFalse(gyro_file.exists())
 
+    def test_generate_proximity_feature(self):
+        """Test proximity feature XML generation."""
+        prox_config = self.bundle.android_hal_config.proximity_list.add()
+        prox_config.id = "Proximity_Test_ID"
+
+        # Initially, no semtech_config is present.
+        generate_feature_xml.generate_from_hal_config(
+            self.bundle.android_hal_config, self.temp_dir
+        )
+
+        prox_file = self.temp_dir / "Proximity_Test_ID.xml"
+        self.assertTrue(prox_file.is_file())
+        with open(prox_file, "rb") as f:
+            xml_content = f.read()
+        root = etree.fromstring(xml_content)
+        features = {f.get("name") for f in root.findall("feature")}
+
+        self.assertIn("android.hardware.sensor.proximity", features)
+        self.assertNotIn("com.google.sensor.sar", features)
+
+        # Now, add semtech_config and check again.
+        prox_config.semtech_proximity.semtech_config.sampling_frequency = 10.0
+        generate_feature_xml.generate_from_hal_config(
+            self.bundle.android_hal_config, self.temp_dir
+        )
+
+        with open(prox_file, "rb") as f:
+            xml_content = f.read()
+        root = etree.fromstring(xml_content)
+        features = {f.get("name") for f in root.findall("feature")}
+
+        self.assertIn("android.hardware.sensor.proximity", features)
+        self.assertIn("com.google.sensor.sar", features)
+
     def test_generate_fingerprint_skip_no_id(self):
         """Test skipping if ID is missing."""
         self.fingerprint_config.ClearField("id")
