@@ -12432,6 +12432,16 @@
                   "number": 7,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.CameraConfigurationType.Resolution"
+                },
+                {
+                  "jsonName": "p4kSupport",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "p4k_support",
+                  "number": 8,
+                  "oneofIndex": 4,
+                  "proto3Optional": true,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HalConfiguration.Present"
                 }
               ],
               "name": "CameraHWConfig",
@@ -12447,6 +12457,9 @@
                 },
                 {
                   "name": "_p1080_support"
+                },
+                {
+                  "name": "_p4k_support"
                 }
               ],
               "reservedName": [

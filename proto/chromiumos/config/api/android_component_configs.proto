@@ -148,6 +148,7 @@ message CameraConfigurationType {
     reserved "resolutionx", "resolutiony";
     optional HalConfiguration.Present p1080_support = 6;
     repeated Resolution resolutions = 7;
+    optional HalConfiguration.Present p4k_support = 8;
   }
   repeated CameraHWConfig cameras = 3;
   optional bool default = 4;
