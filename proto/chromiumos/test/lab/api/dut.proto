@@ -354,7 +354,7 @@ enum NetworkProvider {
   NETWORK_LINEMO = 19;
   NETWORK_POVO = 20;
   NETWORK_HANSHIN = 21;
-  NETWORK_ROAMING = 22;
+  NETWORK_ROAMSIM = 22;
 }
 
 enum SIMType {
@@ -541,7 +541,7 @@ enum Phase {
   DVT_1 = 34;
   DVT_3 = 35;
   DVT_4 = 36;
-  EVT_1  = 37;
+  EVT_1 = 37;
   EVT_2 = 38;
   EVT_3 = 39;
   MP = 40;
