@@ -136,6 +136,10 @@ message RaspiosCrosBtpeerImageConfig {
 
   // All available OS image releases.
   repeated OSImage images = 4;
+
+  // Lab pools of primary testbed DUTs that signify that the next image
+  // should be used instead of the current image.
+  repeated string next_image_pools = 5;
 }
 
 // RaspiosCrosBtpeerImageBuildInfo is the format of the image build info JSON
