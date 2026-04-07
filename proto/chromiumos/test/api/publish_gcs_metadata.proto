@@ -54,7 +54,59 @@ message XtsArchiverMetadata {
   string suite = 9;
 }
 
-// NEXT TAG: 5
+// NEXT TAG: 7
+// TestIdentifier proto from
+// https://source.corp.google.com/h/chromium/infra/infra_superproject/+/main:infra/go/src/go.chromium.org/luci/resultdb/proto/v1/common.proto;l=108-280
+message TestIdentifier {
+  // The name of the test module.
+  string module_name = 1;
+
+  // The scheme of the test module.
+  string module_scheme = 2;
+
+  // Variants of the module.
+  map<string, string> module_variant = 3;
+
+  // Coarse-grained test name.
+  string coarse_name = 4;
+
+  // Fine-grained test name.
+  string fine_name = 5;
+
+  // The test case name.
+  string case_name = 6;
+}
+
+// NEXT TAG: 9
+// RdbArtifact proto is a subset of
+// https://source.corp.google.com/h/chromium/infra/infra_superproject/+/main:infra/go/src/go.chromium.org/luci/resultdb/proto/v1/artifact.proto;l=35
+message RdbArtifact {
+  // The path of the artifact.
+  string path = 1;
+
+  // The size of the artifact in bytes.
+  int64 size = 2;
+
+  // The parent workunit for the artifact.
+  string parent_workunit = 3;
+
+  // The ID for the artifact.
+  string artifact_id = 4;
+
+  // The update token for the artifact.
+  string update_token = 5;
+
+  // The identifier for the test associated with this artifact.
+  TestIdentifier test_identifier = 6;
+
+  // The content type of the artifact.
+  string content_type = 7;
+
+  // The type of the artifact.
+  string artifact_type = 8;
+}
+
+// NEXT TAG: 6
 message PublishGcsMetadata {
   // GCS location where artifacts will be uploaded.
   StoragePath gcs_path = 1;
@@ -66,4 +118,9 @@ message PublishGcsMetadata {
 
   // Whether to include the step to archive XTS results.
   bool enable_xts_archiver = 4;
+
+  // Artifacts skipped by RDB publish since they are larger than 640MB to be
+  // uploaded to GCS and then registered in RDB.
+  // TODO: b/483142100 - Upload large artifacts directly to RDB.
+  repeated RdbArtifact skipped_artifacts = 5;
 }
