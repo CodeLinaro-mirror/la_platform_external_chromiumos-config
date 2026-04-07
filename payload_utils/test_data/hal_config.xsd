@@ -278,7 +278,7 @@
 
   <xs:complexType name="ProximityConfigurationType">
     <xs:sequence>
-      <xs:element name="semtech-proximity" type="SemtechProximityConfigurationType" minOccurs="0"/>
+      <xs:element name="semtech-proximity" type="SemtechProximityConfigurationType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
