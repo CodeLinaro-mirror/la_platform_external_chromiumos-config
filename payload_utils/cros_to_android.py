@@ -146,6 +146,7 @@ def _gen_encoder_profile(resolution, timelapse):
         (640, 480): 3000000,  # 3 Mbps for 480p
         (1280, 720): 8000000,  # 8 Mbps for 720p
         (1920, 1080): 12000000,  # 12 Mbps for 1080p
+        (3840, 2160): 42000000,  # 42 Mbps for 2160p, ref b/493987913
     }
     width = resolution.width
     height = resolution.height
@@ -380,6 +381,19 @@ def _generate_media_profiles_from_camera_config(
                 resolution_1080p.width = 1920
                 resolution_1080p.height = 1080
                 resolutions.append(resolution_1080p)
+
+            if (
+                cam.p4k_support
+                == android_component_configs_pb2.HalConfiguration.PRESENT
+            ):
+                logging.info(
+                    "Camera %s has 2160p support, adding 3840x2160 resolution.",
+                    cam,
+                )
+                resolution_p4k = camera_config_pb2.Resolution()
+                resolution_p4k.width = 3840
+                resolution_p4k.height = 2160
+                resolutions.append(resolution_p4k)
 
         root.append(_gen_camcorder_profiles(camera_id, resolutions))
         camera_id += 1
