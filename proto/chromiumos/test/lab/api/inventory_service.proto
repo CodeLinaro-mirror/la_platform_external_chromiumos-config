@@ -22,12 +22,6 @@ service InventoryService {
   // the device and peer devices that are used in the test setup.
   rpc GetDutTopology(GetDutTopologyRequest)
       returns (stream GetDutTopologyResponse);
-
-  // GetStableVersion fetches the stable version for a given device.
-  // It checks for a local stable version file first (e.g., on Satlab).
-  // If no local file exists, it queries the central stable version service (e.g., crosskylabadmin).
-  // Device details from the inventory are used to determine the correct version.
-  rpc GetStableVersion(GetStableVersionRequest) returns (GetStableVersionResponse);
 }
 
 message GetDutTopologyRequest {
@@ -51,60 +45,4 @@ message GetDutTopologyResponse {
     Success success = 1;
     Failure failure = 2;
   }
-}
-
-// Request message for GetStableVersion RPC.
-message GetStableVersionRequest {
-  // The target device for which to get the stable version.
-  StableVersionTarget target = 1;
-}
-
-// Response message for GetStableVersion RPC.
-message GetStableVersionResponse {
-  // The stable version information.
-  StableVersion version = 1;
-}
-
-// NOTE: The StableVersion and StableVersionTarget messages below are COPIED from
-// go.chromium.org/chromiumos/infra/proto/src/lab_platform/stable_version.proto
-// with local modifications. Please keep them in sync with the original source where applicable.
-
-// StableVersion describe a single version record to describe target device
-// and vesrions need to be used for that.
-message StableVersion {
-  // The version of the OS.
-  // e.g. "R80-14444.333.0"
-  string os_version = 1;
-  // The path of the OS image file.
-  // Examples:
-  // 1) "board-release/R80-14444.333.0"
-  // 2) "gs://bucket/board-release/R80-14444.333.0/file_name.tar.xz"
-  string os_image_path = 2;
-  // The version of the firmware RO.
-  // e.g. "Google_Board.14444.333.0"
-  string firmware_ro_version = 3;
-  // The path of the firmware RO image file.
-  // Examples:
-  // 1) "board-firmware/R80-14444.333.0"
-  // 2) "gs://bucket/board-firmware/R80-14444.333.0/file_name.tar.xz"
-  string firmware_ro_image_path = 4;
-  // The version of the firmware RW.
-  string firmware_rw_version = 5;
-  // The path of the firmware RW image file.
-  string firmware_rw_image_path = 6;
-}
-
-// StableVersionTarget describes details of target devices.
-message StableVersionTarget {
-  // Device type like cros/android/tablet/labstation.
-  string device_type = 1;
-  // The name of the device.
-  string device_name = 2;
-  // The board of the device.
-  // For CrOS it can be represented as build-target.
-  string board = 3;
-  // The model of the device.
-  string model = 4;
-  // The pools of the device.
-  repeated string pools = 5;
 }
