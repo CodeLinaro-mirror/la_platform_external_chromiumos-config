@@ -38,6 +38,10 @@ message TaskRequestEvent {
   string actual_user = 18;
   repeated string experiments = 16;
   OsType os_type = 17;
+  // Elevated Priority is a restricted, configuration-driven priority that precedes
+  // the normal sequencing of the typical scheduling algorithm by prioritizing
+  // certain tasks before comparing deadlines (but after comparing ASAP status).
+  int64 elevated_priority = 19;
 }
 
 message TaskRequestEvents {

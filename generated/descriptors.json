@@ -48566,6 +48566,13 @@
               "number": 17,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.scheduling.OsType"
+            },
+            {
+              "jsonName": "elevatedPriority",
+              "label": "LABEL_OPTIONAL",
+              "name": "elevated_priority",
+              "number": 19,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "TaskRequestEvent"
