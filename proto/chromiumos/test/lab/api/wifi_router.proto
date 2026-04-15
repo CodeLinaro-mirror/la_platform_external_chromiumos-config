@@ -62,6 +62,9 @@ enum WifiRouterFeature {
   // temp feature for ignoring the U6+ router in tests
   // TODO(astrouski): Remove this feature once the U6+ router is fixed. (b/389945993)
   WIFI_ROUTER_FEATURE_NOT_U6PLUS_ROUTER = 13;
+
+  // Support for both U6+ and U6Lite routers.
+  WIFI_ROUTER_FEATURE_U6PLUS_OR_U6LITE = 14;
 }
 
 // The type of Wifi AP device a WiFi AP peripheral is, functionally speaking.

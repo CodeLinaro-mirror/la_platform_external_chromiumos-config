@@ -21854,6 +21854,10 @@
             {
               "name": "WIFI_ROUTER_FEATURE_NOT_U6PLUS_ROUTER",
               "number": 13
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_U6PLUS_OR_U6LITE",
+              "number": 14
             }
           ]
         },
