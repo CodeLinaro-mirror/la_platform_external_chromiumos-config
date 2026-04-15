@@ -60,12 +60,14 @@ def _populate_element_from_message(
         else:
             element_name = field.name.replace("_", "-")
 
-        # TODO(b/449551444): Add a unit test for repeated fields once there are
-        # actually repeated fields in the input proto schema.
-        items = value if field.label == field.LABEL_REPEATED else [value]
+        repeated_type = field.label == field.LABEL_REPEATED
+        items = value if repeated_type else [value]
 
-        for item_value in items:
-            elem = etree.SubElement(parent_element, element_name)
+        for index, item_value in enumerate(items):
+            per_name = (
+                element_name + str(index + 1) if repeated_type else element_name
+            )
+            elem = etree.SubElement(parent_element, per_name)
             if field.type == field.TYPE_MESSAGE:
                 _populate_element_from_message(elem, item_value, skip_id=False)
             elif field.type == field.TYPE_ENUM:

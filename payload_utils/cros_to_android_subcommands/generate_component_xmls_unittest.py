@@ -126,6 +126,40 @@ class ComponentXmlGenerationTest(unittest.TestCase):
         self.assertEqual(root.find("media-profile-suffix").text, "TestPrefix")
         self.assertIsNone(root.find("cameras"))
 
+    def test_generate_component_xml_repeated_field_multiple_entries(self):
+        """Test multiple entries of repeated field and unique field names."""
+        bundle = config_bundle_pb2.ConfigBundle()
+        hal_config = bundle.android_hal_config
+        prox = hal_config.proximity_list.add()
+        prox.id = "proximity_config_1"
+        channel1 = prox.semtech_proximity.semtech_config.channel.add()
+        channel1.channel = "1"
+        channel2 = prox.semtech_proximity.semtech_config.channel.add()
+        channel2.channel = "2"
+
+        generate_component_xmls.generate(bundle, self.temp_dir)
+        xml_file = self.temp_dir / "proximity_config_1.xml"
+        self.assertTrue(xml_file.is_file())
+
+        root = etree.parse(xml_file).getroot()
+        self.assertEqual(root.tag, "ProximityConfiguration")
+        self.assertEqual(
+            root.find("semtech-proximity")
+            .find("semtech-config")
+            .find("channel1")
+            .find("channel")
+            .text,
+            "1",
+        )
+        self.assertEqual(
+            root.find("semtech-proximity")
+            .find("semtech-config")
+            .find("channel2")
+            .find("channel")
+            .text,
+            "2",
+        )
+
     def test_generate_component_xml_wifi_node_overrides(self):
         """Test wifi component generation node name conversions."""
         bundle = config_bundle_pb2.ConfigBundle()
