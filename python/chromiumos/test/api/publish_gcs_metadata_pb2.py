@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.chromiumos/test/api/publish_gcs_metadata.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\"\xef\x01\n\x13XtsArchiverMetadata\x12\x0e\n\x06\x61l_run\x18\x01 \x01(\x08\x12\x0f\n\x07product\x18\x02 \x01(\t\x12\r\n\x05\x62uild\x18\x03 \x01(\t\x12\x1f\n\x17parent_swarming_task_id\x18\x04 \x01(\t\x12\x1a\n\x12results_gcs_prefix\x18\x05 \x01(\t\x12\x17\n\x0f\x61pfe_gcs_prefix\x18\x06 \x01(\t\x12\"\n\x1a\x65nable_al_results_archiver\x18\x07 \x01(\x08\x12\x1f\n\x17\x65nable_al_apfe_archiver\x18\x08 \x01(\x08\x12\r\n\x05suite\x18\t \x01(\t\"\xe7\x01\n\x12PublishGcsMetadata\x12)\n\x08gcs_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12@\n\x1fservice_account_creds_file_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12G\n\x15xts_archiver_metadata\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.XtsArchiverMetadata\x12\x1b\n\x13\x65nable_xts_archiver\x18\x04 \x01(\x08\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n.chromiumos/test/api/publish_gcs_metadata.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\"\xef\x01\n\x13XtsArchiverMetadata\x12\x0e\n\x06\x61l_run\x18\x01 \x01(\x08\x12\x0f\n\x07product\x18\x02 \x01(\t\x12\r\n\x05\x62uild\x18\x03 \x01(\t\x12\x1f\n\x17parent_swarming_task_id\x18\x04 \x01(\t\x12\x1a\n\x12results_gcs_prefix\x18\x05 \x01(\t\x12\x17\n\x0f\x61pfe_gcs_prefix\x18\x06 \x01(\t\x12\"\n\x1a\x65nable_al_results_archiver\x18\x07 \x01(\x08\x12\x1f\n\x17\x65nable_al_apfe_archiver\x18\x08 \x01(\x08\x12\r\n\x05suite\x18\t \x01(\t\"\xfd\x01\n\x0eTestIdentifier\x12\x13\n\x0bmodule_name\x18\x01 \x01(\t\x12\x15\n\rmodule_scheme\x18\x02 \x01(\t\x12N\n\x0emodule_variant\x18\x03 \x03(\x0b\x32\x36.chromiumos.test.api.TestIdentifier.ModuleVariantEntry\x12\x13\n\x0b\x63oarse_name\x18\x04 \x01(\t\x12\x11\n\tfine_name\x18\x05 \x01(\t\x12\x11\n\tcase_name\x18\x06 \x01(\t\x1a\x34\n\x12ModuleVariantEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xd8\x01\n\x0bRdbArtifact\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x0c\n\x04size\x18\x02 \x01(\x03\x12\x17\n\x0fparent_workunit\x18\x03 \x01(\t\x12\x13\n\x0b\x61rtifact_id\x18\x04 \x01(\t\x12\x14\n\x0cupdate_token\x18\x05 \x01(\t\x12<\n\x0ftest_identifier\x18\x06 \x01(\x0b\x32#.chromiumos.test.api.TestIdentifier\x12\x14\n\x0c\x63ontent_type\x18\x07 \x01(\t\x12\x15\n\rartifact_type\x18\x08 \x01(\t\"\xa4\x02\n\x12PublishGcsMetadata\x12)\n\x08gcs_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12@\n\x1fservice_account_creds_file_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12G\n\x15xts_archiver_metadata\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.XtsArchiverMetadata\x12\x1b\n\x13\x65nable_xts_archiver\x18\x04 \x01(\x08\x12;\n\x11skipped_artifacts\x18\x05 \x03(\x0b\x32 .chromiumos.test.api.RdbArtifactB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_storage__path__pb2.DESCRIPTOR,])
 
@@ -115,6 +115,192 @@ _XTSARCHIVERMETADATA = _descriptor.Descriptor(
 )
 
 
+_TESTIDENTIFIER_MODULEVARIANTENTRY = _descriptor.Descriptor(
+  name='ModuleVariantEntry',
+  full_name='chromiumos.test.api.TestIdentifier.ModuleVariantEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.TestIdentifier.ModuleVariantEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.TestIdentifier.ModuleVariantEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=546,
+  serialized_end=598,
+)
+
+_TESTIDENTIFIER = _descriptor.Descriptor(
+  name='TestIdentifier',
+  full_name='chromiumos.test.api.TestIdentifier',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='module_name', full_name='chromiumos.test.api.TestIdentifier.module_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='module_scheme', full_name='chromiumos.test.api.TestIdentifier.module_scheme', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='module_variant', full_name='chromiumos.test.api.TestIdentifier.module_variant', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='coarse_name', full_name='chromiumos.test.api.TestIdentifier.coarse_name', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='fine_name', full_name='chromiumos.test.api.TestIdentifier.fine_name', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='case_name', full_name='chromiumos.test.api.TestIdentifier.case_name', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_TESTIDENTIFIER_MODULEVARIANTENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=345,
+  serialized_end=598,
+)
+
+
+_RDBARTIFACT = _descriptor.Descriptor(
+  name='RdbArtifact',
+  full_name='chromiumos.test.api.RdbArtifact',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='path', full_name='chromiumos.test.api.RdbArtifact.path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='size', full_name='chromiumos.test.api.RdbArtifact.size', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='parent_workunit', full_name='chromiumos.test.api.RdbArtifact.parent_workunit', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='artifact_id', full_name='chromiumos.test.api.RdbArtifact.artifact_id', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='update_token', full_name='chromiumos.test.api.RdbArtifact.update_token', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='test_identifier', full_name='chromiumos.test.api.RdbArtifact.test_identifier', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='content_type', full_name='chromiumos.test.api.RdbArtifact.content_type', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='artifact_type', full_name='chromiumos.test.api.RdbArtifact.artifact_type', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=601,
+  serialized_end=817,
+)
+
+
 _PUBLISHGCSMETADATA = _descriptor.Descriptor(
   name='PublishGcsMetadata',
   full_name='chromiumos.test.api.PublishGcsMetadata',
@@ -151,6 +337,13 @@ _PUBLISHGCSMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='skipped_artifacts', full_name='chromiumos.test.api.PublishGcsMetadata.skipped_artifacts', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -163,14 +356,20 @@ _PUBLISHGCSMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=345,
-  serialized_end=576,
+  serialized_start=820,
+  serialized_end=1112,
 )
 
+_TESTIDENTIFIER_MODULEVARIANTENTRY.containing_type = _TESTIDENTIFIER
+_TESTIDENTIFIER.fields_by_name['module_variant'].message_type = _TESTIDENTIFIER_MODULEVARIANTENTRY
+_RDBARTIFACT.fields_by_name['test_identifier'].message_type = _TESTIDENTIFIER
 _PUBLISHGCSMETADATA.fields_by_name['gcs_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
 _PUBLISHGCSMETADATA.fields_by_name['service_account_creds_file_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
 _PUBLISHGCSMETADATA.fields_by_name['xts_archiver_metadata'].message_type = _XTSARCHIVERMETADATA
+_PUBLISHGCSMETADATA.fields_by_name['skipped_artifacts'].message_type = _RDBARTIFACT
 DESCRIPTOR.message_types_by_name['XtsArchiverMetadata'] = _XTSARCHIVERMETADATA
+DESCRIPTOR.message_types_by_name['TestIdentifier'] = _TESTIDENTIFIER
+DESCRIPTOR.message_types_by_name['RdbArtifact'] = _RDBARTIFACT
 DESCRIPTOR.message_types_by_name['PublishGcsMetadata'] = _PUBLISHGCSMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -181,6 +380,28 @@ XtsArchiverMetadata = _reflection.GeneratedProtocolMessageType('XtsArchiverMetad
   })
 _sym_db.RegisterMessage(XtsArchiverMetadata)
 
+TestIdentifier = _reflection.GeneratedProtocolMessageType('TestIdentifier', (_message.Message,), {
+
+  'ModuleVariantEntry' : _reflection.GeneratedProtocolMessageType('ModuleVariantEntry', (_message.Message,), {
+    'DESCRIPTOR' : _TESTIDENTIFIER_MODULEVARIANTENTRY,
+    '__module__' : 'chromiumos.test.api.publish_gcs_metadata_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.TestIdentifier.ModuleVariantEntry)
+    })
+  ,
+  'DESCRIPTOR' : _TESTIDENTIFIER,
+  '__module__' : 'chromiumos.test.api.publish_gcs_metadata_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.TestIdentifier)
+  })
+_sym_db.RegisterMessage(TestIdentifier)
+_sym_db.RegisterMessage(TestIdentifier.ModuleVariantEntry)
+
+RdbArtifact = _reflection.GeneratedProtocolMessageType('RdbArtifact', (_message.Message,), {
+  'DESCRIPTOR' : _RDBARTIFACT,
+  '__module__' : 'chromiumos.test.api.publish_gcs_metadata_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RdbArtifact)
+  })
+_sym_db.RegisterMessage(RdbArtifact)
+
 PublishGcsMetadata = _reflection.GeneratedProtocolMessageType('PublishGcsMetadata', (_message.Message,), {
   'DESCRIPTOR' : _PUBLISHGCSMETADATA,
   '__module__' : 'chromiumos.test.api.publish_gcs_metadata_pb2'
@@ -190,4 +411,5 @@ _sym_db.RegisterMessage(PublishGcsMetadata)
 
 
 DESCRIPTOR._options = None
+_TESTIDENTIFIER_MODULEVARIANTENTRY._options = None
 # @@protoc_insertion_point(module_scope)
