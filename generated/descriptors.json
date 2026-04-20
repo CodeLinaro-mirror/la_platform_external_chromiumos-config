@@ -43658,6 +43658,119 @@
               "name": "result"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "target",
+              "label": "LABEL_OPTIONAL",
+              "name": "target",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.StableVersionTarget"
+            }
+          ],
+          "name": "GetStableVersionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.StableVersion"
+            }
+          ],
+          "name": "GetStableVersionResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "osVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_image_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareRoVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_ro_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareRoImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_ro_image_path",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareRwVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_rw_version",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareRwImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_rw_image_path",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StableVersion"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceType",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_type",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "deviceName",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pools",
+              "label": "LABEL_REPEATED",
+              "name": "pools",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StableVersionTarget"
         }
       ],
       "name": "chromiumos/test/lab/api/inventory_service.proto",

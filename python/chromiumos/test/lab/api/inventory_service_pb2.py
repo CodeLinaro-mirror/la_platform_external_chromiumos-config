@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n/chromiumos/test/lab/api/inventory_service.proto\x12\x17\x63hromiumos.test.lab.api\x1a!chromiumos/test/lab/api/dut.proto\"L\n\x15GetDutTopologyRequest\x12\x33\n\x02id\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.DutTopology.Id\"\xa3\x02\n\x16GetDutTopologyResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.FailureH\x00\x1a\x45\n\x07Success\x12:\n\x0c\x64ut_topology\x18\x01 \x01(\x0b\x32$.chromiumos.test.lab.api.DutTopology\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result2\x87\x01\n\x10InventoryService\x12s\n\x0eGetDutTopology\x12..chromiumos.test.lab.api.GetDutTopologyRequest\x1a/.chromiumos.test.lab.api.GetDutTopologyResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n/chromiumos/test/lab/api/inventory_service.proto\x12\x17\x63hromiumos.test.lab.api\x1a!chromiumos/test/lab/api/dut.proto\"L\n\x15GetDutTopologyRequest\x12\x33\n\x02id\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.DutTopology.Id\"\xa3\x02\n\x16GetDutTopologyResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.FailureH\x00\x1a\x45\n\x07Success\x12:\n\x0c\x64ut_topology\x18\x01 \x01(\x0b\x32$.chromiumos.test.lab.api.DutTopology\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"W\n\x17GetStableVersionRequest\x12<\n\x06target\x18\x01 \x01(\x0b\x32,.chromiumos.test.lab.api.StableVersionTarget\"S\n\x18GetStableVersionResponse\x12\x37\n\x07version\x18\x01 \x01(\x0b\x32&.chromiumos.test.lab.api.StableVersion\"\xb4\x01\n\rStableVersion\x12\x12\n\nos_version\x18\x01 \x01(\t\x12\x15\n\ros_image_path\x18\x02 \x01(\t\x12\x1b\n\x13\x66irmware_ro_version\x18\x03 \x01(\t\x12\x1e\n\x16\x66irmware_ro_image_path\x18\x04 \x01(\t\x12\x1b\n\x13\x66irmware_rw_version\x18\x05 \x01(\t\x12\x1e\n\x16\x66irmware_rw_image_path\x18\x06 \x01(\t\"l\n\x13StableVersionTarget\x12\x13\n\x0b\x64\x65vice_type\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\r\n\x05\x62oard\x18\x03 \x01(\t\x12\r\n\x05model\x18\x04 \x01(\t\x12\r\n\x05pools\x18\x05 \x03(\t2\x87\x01\n\x10InventoryService\x12s\n\x0eGetDutTopology\x12..chromiumos.test.lab.api.GetDutTopologyRequest\x1a/.chromiumos.test.lab.api.GetDutTopologyResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,])
 
@@ -164,6 +164,197 @@ _GETDUTTOPOLOGYRESPONSE = _descriptor.Descriptor(
   serialized_end=481,
 )
 
+
+_GETSTABLEVERSIONREQUEST = _descriptor.Descriptor(
+  name='GetStableVersionRequest',
+  full_name='chromiumos.test.lab.api.GetStableVersionRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='target', full_name='chromiumos.test.lab.api.GetStableVersionRequest.target', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=483,
+  serialized_end=570,
+)
+
+
+_GETSTABLEVERSIONRESPONSE = _descriptor.Descriptor(
+  name='GetStableVersionResponse',
+  full_name='chromiumos.test.lab.api.GetStableVersionResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='version', full_name='chromiumos.test.lab.api.GetStableVersionResponse.version', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=572,
+  serialized_end=655,
+)
+
+
+_STABLEVERSION = _descriptor.Descriptor(
+  name='StableVersion',
+  full_name='chromiumos.test.lab.api.StableVersion',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='os_version', full_name='chromiumos.test.lab.api.StableVersion.os_version', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='os_image_path', full_name='chromiumos.test.lab.api.StableVersion.os_image_path', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_ro_version', full_name='chromiumos.test.lab.api.StableVersion.firmware_ro_version', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_ro_image_path', full_name='chromiumos.test.lab.api.StableVersion.firmware_ro_image_path', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_rw_version', full_name='chromiumos.test.lab.api.StableVersion.firmware_rw_version', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_rw_image_path', full_name='chromiumos.test.lab.api.StableVersion.firmware_rw_image_path', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=658,
+  serialized_end=838,
+)
+
+
+_STABLEVERSIONTARGET = _descriptor.Descriptor(
+  name='StableVersionTarget',
+  full_name='chromiumos.test.lab.api.StableVersionTarget',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device_type', full_name='chromiumos.test.lab.api.StableVersionTarget.device_type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='device_name', full_name='chromiumos.test.lab.api.StableVersionTarget.device_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='board', full_name='chromiumos.test.lab.api.StableVersionTarget.board', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='model', full_name='chromiumos.test.lab.api.StableVersionTarget.model', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pools', full_name='chromiumos.test.lab.api.StableVersionTarget.pools', index=4,
+      number=5, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=840,
+  serialized_end=948,
+)
+
 _GETDUTTOPOLOGYREQUEST.fields_by_name['id'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUTTOPOLOGY_ID
 _GETDUTTOPOLOGYRESPONSE_SUCCESS.fields_by_name['dut_topology'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUTTOPOLOGY
 _GETDUTTOPOLOGYRESPONSE_SUCCESS.containing_type = _GETDUTTOPOLOGYRESPONSE
@@ -176,8 +367,14 @@ _GETDUTTOPOLOGYRESPONSE.fields_by_name['success'].containing_oneof = _GETDUTTOPO
 _GETDUTTOPOLOGYRESPONSE.oneofs_by_name['result'].fields.append(
   _GETDUTTOPOLOGYRESPONSE.fields_by_name['failure'])
 _GETDUTTOPOLOGYRESPONSE.fields_by_name['failure'].containing_oneof = _GETDUTTOPOLOGYRESPONSE.oneofs_by_name['result']
+_GETSTABLEVERSIONREQUEST.fields_by_name['target'].message_type = _STABLEVERSIONTARGET
+_GETSTABLEVERSIONRESPONSE.fields_by_name['version'].message_type = _STABLEVERSION
 DESCRIPTOR.message_types_by_name['GetDutTopologyRequest'] = _GETDUTTOPOLOGYREQUEST
 DESCRIPTOR.message_types_by_name['GetDutTopologyResponse'] = _GETDUTTOPOLOGYRESPONSE
+DESCRIPTOR.message_types_by_name['GetStableVersionRequest'] = _GETSTABLEVERSIONREQUEST
+DESCRIPTOR.message_types_by_name['GetStableVersionResponse'] = _GETSTABLEVERSIONRESPONSE
+DESCRIPTOR.message_types_by_name['StableVersion'] = _STABLEVERSION
+DESCRIPTOR.message_types_by_name['StableVersionTarget'] = _STABLEVERSIONTARGET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GetDutTopologyRequest = _reflection.GeneratedProtocolMessageType('GetDutTopologyRequest', (_message.Message,), {
@@ -210,6 +407,34 @@ _sym_db.RegisterMessage(GetDutTopologyResponse)
 _sym_db.RegisterMessage(GetDutTopologyResponse.Success)
 _sym_db.RegisterMessage(GetDutTopologyResponse.Failure)
 
+GetStableVersionRequest = _reflection.GeneratedProtocolMessageType('GetStableVersionRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETSTABLEVERSIONREQUEST,
+  '__module__' : 'chromiumos.test.lab.api.inventory_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.GetStableVersionRequest)
+  })
+_sym_db.RegisterMessage(GetStableVersionRequest)
+
+GetStableVersionResponse = _reflection.GeneratedProtocolMessageType('GetStableVersionResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETSTABLEVERSIONRESPONSE,
+  '__module__' : 'chromiumos.test.lab.api.inventory_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.GetStableVersionResponse)
+  })
+_sym_db.RegisterMessage(GetStableVersionResponse)
+
+StableVersion = _reflection.GeneratedProtocolMessageType('StableVersion', (_message.Message,), {
+  'DESCRIPTOR' : _STABLEVERSION,
+  '__module__' : 'chromiumos.test.lab.api.inventory_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.StableVersion)
+  })
+_sym_db.RegisterMessage(StableVersion)
+
+StableVersionTarget = _reflection.GeneratedProtocolMessageType('StableVersionTarget', (_message.Message,), {
+  'DESCRIPTOR' : _STABLEVERSIONTARGET,
+  '__module__' : 'chromiumos.test.lab.api.inventory_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.StableVersionTarget)
+  })
+_sym_db.RegisterMessage(StableVersionTarget)
+
 
 DESCRIPTOR._options = None
 
@@ -220,8 +445,8 @@ _INVENTORYSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=484,
-  serialized_end=619,
+  serialized_start=951,
+  serialized_end=1086,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetDutTopology',

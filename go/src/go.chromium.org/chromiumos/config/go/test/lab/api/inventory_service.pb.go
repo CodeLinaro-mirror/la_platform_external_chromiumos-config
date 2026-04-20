@@ -155,6 +155,293 @@ func (*GetDutTopologyResponse_Success_) isGetDutTopologyResponse_Result() {}
 
 func (*GetDutTopologyResponse_Failure_) isGetDutTopologyResponse_Result() {}
 
+// Request message for GetStableVersion RPC.
+type GetStableVersionRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The target device for which to get the stable version.
+	Target *StableVersionTarget `protobuf:"bytes,1,opt,name=target,proto3" json:"target,omitempty"`
+}
+
+func (x *GetStableVersionRequest) Reset() {
+	*x = GetStableVersionRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStableVersionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStableVersionRequest) ProtoMessage() {}
+
+func (x *GetStableVersionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStableVersionRequest.ProtoReflect.Descriptor instead.
+func (*GetStableVersionRequest) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_lab_api_inventory_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetStableVersionRequest) GetTarget() *StableVersionTarget {
+	if x != nil {
+		return x.Target
+	}
+	return nil
+}
+
+// Response message for GetStableVersion RPC.
+type GetStableVersionResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The stable version information.
+	Version *StableVersion `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+}
+
+func (x *GetStableVersionResponse) Reset() {
+	*x = GetStableVersionResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStableVersionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStableVersionResponse) ProtoMessage() {}
+
+func (x *GetStableVersionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStableVersionResponse.ProtoReflect.Descriptor instead.
+func (*GetStableVersionResponse) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_lab_api_inventory_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetStableVersionResponse) GetVersion() *StableVersion {
+	if x != nil {
+		return x.Version
+	}
+	return nil
+}
+
+// StableVersion describe a single version record to describe target device
+// and versions need to be used for that.
+type StableVersion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The version of the OS.
+	// e.g. "R80-14444.333.0"
+	OsVersion string `protobuf:"bytes,1,opt,name=os_version,json=osVersion,proto3" json:"os_version,omitempty"`
+	// The path of the OS image file.
+	// Examples:
+	// 1) "board-release/R80-14444.333.0"
+	// 2) "gs://bucket/board-release/R80-14444.333.0/file_name.tar.xz"
+	OsImagePath string `protobuf:"bytes,2,opt,name=os_image_path,json=osImagePath,proto3" json:"os_image_path,omitempty"`
+	// The version of the firmware RO.
+	// e.g. "Google_Board.14444.333.0"
+	FirmwareRoVersion string `protobuf:"bytes,3,opt,name=firmware_ro_version,json=firmwareRoVersion,proto3" json:"firmware_ro_version,omitempty"`
+	// The path of the firmware RO image file.
+	// Examples:
+	// 1) "board-firmware/R80-14444.333.0"
+	// 2) "gs://bucket/board-firmware/R80-14444.333.0/file_name.tar.xz"
+	FirmwareRoImagePath string `protobuf:"bytes,4,opt,name=firmware_ro_image_path,json=firmwareRoImagePath,proto3" json:"firmware_ro_image_path,omitempty"`
+	// The version of the firmware RW.
+	FirmwareRwVersion string `protobuf:"bytes,5,opt,name=firmware_rw_version,json=firmwareRwVersion,proto3" json:"firmware_rw_version,omitempty"`
+	// The path of the firmware RW image file.
+	FirmwareRwImagePath string `protobuf:"bytes,6,opt,name=firmware_rw_image_path,json=firmwareRwImagePath,proto3" json:"firmware_rw_image_path,omitempty"`
+}
+
+func (x *StableVersion) Reset() {
+	*x = StableVersion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StableVersion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StableVersion) ProtoMessage() {}
+
+func (x *StableVersion) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StableVersion.ProtoReflect.Descriptor instead.
+func (*StableVersion) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_lab_api_inventory_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *StableVersion) GetOsVersion() string {
+	if x != nil {
+		return x.OsVersion
+	}
+	return ""
+}
+
+func (x *StableVersion) GetOsImagePath() string {
+	if x != nil {
+		return x.OsImagePath
+	}
+	return ""
+}
+
+func (x *StableVersion) GetFirmwareRoVersion() string {
+	if x != nil {
+		return x.FirmwareRoVersion
+	}
+	return ""
+}
+
+func (x *StableVersion) GetFirmwareRoImagePath() string {
+	if x != nil {
+		return x.FirmwareRoImagePath
+	}
+	return ""
+}
+
+func (x *StableVersion) GetFirmwareRwVersion() string {
+	if x != nil {
+		return x.FirmwareRwVersion
+	}
+	return ""
+}
+
+func (x *StableVersion) GetFirmwareRwImagePath() string {
+	if x != nil {
+		return x.FirmwareRwImagePath
+	}
+	return ""
+}
+
+// StableVersionTarget describes details of target devices.
+type StableVersionTarget struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Device type like cros/android/tablet/labstation.
+	DeviceType string `protobuf:"bytes,1,opt,name=device_type,json=deviceType,proto3" json:"device_type,omitempty"`
+	// The name of the device.
+	DeviceName string `protobuf:"bytes,2,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	// The board of the device.
+	// For CrOS it can be represented as build-target.
+	Board string `protobuf:"bytes,3,opt,name=board,proto3" json:"board,omitempty"`
+	// The model of the device.
+	Model string `protobuf:"bytes,4,opt,name=model,proto3" json:"model,omitempty"`
+	// The pools of the device.
+	Pools []string `protobuf:"bytes,5,rep,name=pools,proto3" json:"pools,omitempty"`
+}
+
+func (x *StableVersionTarget) Reset() {
+	*x = StableVersionTarget{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StableVersionTarget) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StableVersionTarget) ProtoMessage() {}
+
+func (x *StableVersionTarget) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StableVersionTarget.ProtoReflect.Descriptor instead.
+func (*StableVersionTarget) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_lab_api_inventory_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *StableVersionTarget) GetDeviceType() string {
+	if x != nil {
+		return x.DeviceType
+	}
+	return ""
+}
+
+func (x *StableVersionTarget) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *StableVersionTarget) GetBoard() string {
+	if x != nil {
+		return x.Board
+	}
+	return ""
+}
+
+func (x *StableVersionTarget) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+func (x *StableVersionTarget) GetPools() []string {
+	if x != nil {
+		return x.Pools
+	}
+	return nil
+}
+
 type GetDutTopologyResponse_Success struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -166,7 +453,7 @@ type GetDutTopologyResponse_Success struct {
 func (x *GetDutTopologyResponse_Success) Reset() {
 	*x = GetDutTopologyResponse_Success{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[2]
+		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -179,7 +466,7 @@ func (x *GetDutTopologyResponse_Success) String() string {
 func (*GetDutTopologyResponse_Success) ProtoMessage() {}
 
 func (x *GetDutTopologyResponse_Success) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[2]
+	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +501,7 @@ type GetDutTopologyResponse_Failure struct {
 func (x *GetDutTopologyResponse_Failure) Reset() {
 	*x = GetDutTopologyResponse_Failure{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[3]
+		mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -227,7 +514,7 @@ func (x *GetDutTopologyResponse_Failure) String() string {
 func (*GetDutTopologyResponse_Failure) ProtoMessage() {}
 
 func (x *GetDutTopologyResponse_Failure) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[3]
+	mi := &file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -286,19 +573,59 @@ var file_chromiumos_test_lab_api_inventory_service_proto_rawDesc = []byte{
 	0x75, 0x72, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x5f, 0x6d, 0x65, 0x73,
 	0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x65, 0x72, 0x72, 0x6f,
 	0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x42, 0x08, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75,
-	0x6c, 0x74, 0x32, 0x87, 0x01, 0x0a, 0x10, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x73, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x44, 0x75,
-	0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x12, 0x2e, 0x2e, 0x63, 0x68, 0x72, 0x6f,
-	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f,
-	0x67, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2f, 0x2e, 0x63, 0x68, 0x72, 0x6f,
-	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f,
-	0x67, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x33, 0x5a, 0x31,
-	0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f,
-	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x6c, 0x61, 0x62, 0x2f, 0x61, 0x70,
-	0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x74, 0x22, 0x5f, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x44, 0x0a,
+	0x06, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e,
+	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e,
+	0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x56, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x52, 0x06, 0x74, 0x61, 0x72,
+	0x67, 0x65, 0x74, 0x22, 0x5c, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x62, 0x6c, 0x65,
+	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x40, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x26, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
+	0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x74, 0x61, 0x62, 0x6c,
+	0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x22, 0x9c, 0x02, 0x0a, 0x0d, 0x53, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x56, 0x65, 0x72, 0x73,
+	0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x0a, 0x0a, 0x6f, 0x73, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6f, 0x73, 0x56, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0d, 0x6f, 0x73, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x5f, 0x70,
+	0x61, 0x74, 0x68, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f, 0x73, 0x49, 0x6d, 0x61,
+	0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x12, 0x2e, 0x0a, 0x13, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61,
+	0x72, 0x65, 0x5f, 0x72, 0x6f, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x11, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x52, 0x6f, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x33, 0x0a, 0x16, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61,
+	0x72, 0x65, 0x5f, 0x72, 0x6f, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x5f, 0x70, 0x61, 0x74, 0x68,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x13, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65,
+	0x52, 0x6f, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x12, 0x2e, 0x0a, 0x13, 0x66,
+	0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x5f, 0x72, 0x77, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61,
+	0x72, 0x65, 0x52, 0x77, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x33, 0x0a, 0x16, 0x66,
+	0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x5f, 0x72, 0x77, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65,
+	0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x13, 0x66, 0x69, 0x72,
+	0x6d, 0x77, 0x61, 0x72, 0x65, 0x52, 0x77, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68,
+	0x22, 0x99, 0x01, 0x0a, 0x13, 0x53, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x64, 0x65, 0x76, 0x69,
+	0x63, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x64,
+	0x65, 0x76, 0x69, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x64, 0x65, 0x76,
+	0x69, 0x63, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x62, 0x6f,
+	0x61, 0x72, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x62, 0x6f, 0x61, 0x72, 0x64,
+	0x12, 0x14, 0x0a, 0x05, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x6f, 0x6f, 0x6c, 0x73, 0x18,
+	0x05, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x70, 0x6f, 0x6f, 0x6c, 0x73, 0x32, 0x87, 0x01, 0x0a,
+	0x10, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x12, 0x73, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c,
+	0x6f, 0x67, 0x79, 0x12, 0x2e, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
+	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x47, 0x65,
+	0x74, 0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x2f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
+	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x47, 0x65,
+	0x74, 0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69,
+	0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74,
+	0x65, 0x73, 0x74, 0x2f, 0x6c, 0x61, 0x62, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -313,27 +640,33 @@ func file_chromiumos_test_lab_api_inventory_service_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_lab_api_inventory_service_proto_rawDescData
 }
 
-var file_chromiumos_test_lab_api_inventory_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_chromiumos_test_lab_api_inventory_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_chromiumos_test_lab_api_inventory_service_proto_goTypes = []interface{}{
 	(*GetDutTopologyRequest)(nil),          // 0: chromiumos.test.lab.api.GetDutTopologyRequest
 	(*GetDutTopologyResponse)(nil),         // 1: chromiumos.test.lab.api.GetDutTopologyResponse
-	(*GetDutTopologyResponse_Success)(nil), // 2: chromiumos.test.lab.api.GetDutTopologyResponse.Success
-	(*GetDutTopologyResponse_Failure)(nil), // 3: chromiumos.test.lab.api.GetDutTopologyResponse.Failure
-	(*DutTopology_Id)(nil),                 // 4: chromiumos.test.lab.api.DutTopology.Id
-	(*DutTopology)(nil),                    // 5: chromiumos.test.lab.api.DutTopology
+	(*GetStableVersionRequest)(nil),        // 2: chromiumos.test.lab.api.GetStableVersionRequest
+	(*GetStableVersionResponse)(nil),       // 3: chromiumos.test.lab.api.GetStableVersionResponse
+	(*StableVersion)(nil),                  // 4: chromiumos.test.lab.api.StableVersion
+	(*StableVersionTarget)(nil),            // 5: chromiumos.test.lab.api.StableVersionTarget
+	(*GetDutTopologyResponse_Success)(nil), // 6: chromiumos.test.lab.api.GetDutTopologyResponse.Success
+	(*GetDutTopologyResponse_Failure)(nil), // 7: chromiumos.test.lab.api.GetDutTopologyResponse.Failure
+	(*DutTopology_Id)(nil),                 // 8: chromiumos.test.lab.api.DutTopology.Id
+	(*DutTopology)(nil),                    // 9: chromiumos.test.lab.api.DutTopology
 }
 var file_chromiumos_test_lab_api_inventory_service_proto_depIdxs = []int32{
-	4, // 0: chromiumos.test.lab.api.GetDutTopologyRequest.id:type_name -> chromiumos.test.lab.api.DutTopology.Id
-	2, // 1: chromiumos.test.lab.api.GetDutTopologyResponse.success:type_name -> chromiumos.test.lab.api.GetDutTopologyResponse.Success
-	3, // 2: chromiumos.test.lab.api.GetDutTopologyResponse.failure:type_name -> chromiumos.test.lab.api.GetDutTopologyResponse.Failure
-	5, // 3: chromiumos.test.lab.api.GetDutTopologyResponse.Success.dut_topology:type_name -> chromiumos.test.lab.api.DutTopology
-	0, // 4: chromiumos.test.lab.api.InventoryService.GetDutTopology:input_type -> chromiumos.test.lab.api.GetDutTopologyRequest
-	1, // 5: chromiumos.test.lab.api.InventoryService.GetDutTopology:output_type -> chromiumos.test.lab.api.GetDutTopologyResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	8, // 0: chromiumos.test.lab.api.GetDutTopologyRequest.id:type_name -> chromiumos.test.lab.api.DutTopology.Id
+	6, // 1: chromiumos.test.lab.api.GetDutTopologyResponse.success:type_name -> chromiumos.test.lab.api.GetDutTopologyResponse.Success
+	7, // 2: chromiumos.test.lab.api.GetDutTopologyResponse.failure:type_name -> chromiumos.test.lab.api.GetDutTopologyResponse.Failure
+	5, // 3: chromiumos.test.lab.api.GetStableVersionRequest.target:type_name -> chromiumos.test.lab.api.StableVersionTarget
+	4, // 4: chromiumos.test.lab.api.GetStableVersionResponse.version:type_name -> chromiumos.test.lab.api.StableVersion
+	9, // 5: chromiumos.test.lab.api.GetDutTopologyResponse.Success.dut_topology:type_name -> chromiumos.test.lab.api.DutTopology
+	0, // 6: chromiumos.test.lab.api.InventoryService.GetDutTopology:input_type -> chromiumos.test.lab.api.GetDutTopologyRequest
+	1, // 7: chromiumos.test.lab.api.InventoryService.GetDutTopology:output_type -> chromiumos.test.lab.api.GetDutTopologyResponse
+	7, // [7:8] is the sub-list for method output_type
+	6, // [6:7] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_lab_api_inventory_service_proto_init() }
@@ -368,7 +701,7 @@ func file_chromiumos_test_lab_api_inventory_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetDutTopologyResponse_Success); i {
+			switch v := v.(*GetStableVersionRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -380,6 +713,54 @@ func file_chromiumos_test_lab_api_inventory_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetStableVersionResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StableVersion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StableVersionTarget); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetDutTopologyResponse_Success); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_lab_api_inventory_service_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetDutTopologyResponse_Failure); i {
 			case 0:
 				return &v.state
@@ -402,7 +783,7 @@ func file_chromiumos_test_lab_api_inventory_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_lab_api_inventory_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
