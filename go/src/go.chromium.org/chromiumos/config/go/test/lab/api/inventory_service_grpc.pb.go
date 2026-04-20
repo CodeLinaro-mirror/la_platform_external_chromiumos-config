@@ -25,6 +25,11 @@ type InventoryServiceClient interface {
 	// Returns the device wiring topology, including all peripherals attached to
 	// the device and peer devices that are used in the test setup.
 	GetDutTopology(ctx context.Context, in *GetDutTopologyRequest, opts ...grpc.CallOption) (InventoryService_GetDutTopologyClient, error)
+	// GetStableVersion fetches the stable version for a given device.
+	// It checks for a local stable version file first (e.g., on Satlab).
+	// If no local file exists, it queries the central stable version service (e.g., crosskylabadmin).
+	// Device details from the inventory are used to determine the correct version.
+	GetStableVersion(ctx context.Context, in *GetStableVersionRequest, opts ...grpc.CallOption) (*GetStableVersionResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -67,6 +72,15 @@ func (x *inventoryServiceGetDutTopologyClient) Recv() (*GetDutTopologyResponse, 
 	return m, nil
 }
 
+func (c *inventoryServiceClient) GetStableVersion(ctx context.Context, in *GetStableVersionRequest, opts ...grpc.CallOption) (*GetStableVersionResponse, error) {
+	out := new(GetStableVersionResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.InventoryService/GetStableVersion", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServiceServer is the server API for InventoryService service.
 // All implementations should embed UnimplementedInventoryServiceServer
 // for forward compatibility
@@ -74,6 +88,11 @@ type InventoryServiceServer interface {
 	// Returns the device wiring topology, including all peripherals attached to
 	// the device and peer devices that are used in the test setup.
 	GetDutTopology(*GetDutTopologyRequest, InventoryService_GetDutTopologyServer) error
+	// GetStableVersion fetches the stable version for a given device.
+	// It checks for a local stable version file first (e.g., on Satlab).
+	// If no local file exists, it queries the central stable version service (e.g., crosskylabadmin).
+	// Device details from the inventory are used to determine the correct version.
+	GetStableVersion(context.Context, *GetStableVersionRequest) (*GetStableVersionResponse, error)
 }
 
 // UnimplementedInventoryServiceServer should be embedded to have forward compatible implementations.
@@ -82,6 +101,9 @@ type UnimplementedInventoryServiceServer struct {
 
 func (UnimplementedInventoryServiceServer) GetDutTopology(*GetDutTopologyRequest, InventoryService_GetDutTopologyServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetDutTopology not implemented")
+}
+func (UnimplementedInventoryServiceServer) GetStableVersion(context.Context, *GetStableVersionRequest) (*GetStableVersionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStableVersion not implemented")
 }
 
 // UnsafeInventoryServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -116,13 +138,36 @@ func (x *inventoryServiceGetDutTopologyServer) Send(m *GetDutTopologyResponse) e
 	return x.ServerStream.SendMsg(m)
 }
 
+func _InventoryService_GetStableVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStableVersionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).GetStableVersion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.InventoryService/GetStableVersion",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).GetStableVersion(ctx, req.(*GetStableVersionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InventoryService_ServiceDesc is the grpc.ServiceDesc for InventoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var InventoryService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "chromiumos.test.lab.api.InventoryService",
 	HandlerType: (*InventoryServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetStableVersion",
+			Handler:    _InventoryService_GetStableVersion_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "GetDutTopology",
