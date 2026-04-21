@@ -26,11 +26,6 @@ class InventoryServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetDutTopologyRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetDutTopologyResponse.FromString,
                 )
-        self.GetStableVersion = channel.unary_unary(
-                '/chromiumos.test.lab.api.InventoryService/GetStableVersion',
-                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetStableVersionRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetStableVersionResponse.FromString,
-                )
 
 
 class InventoryServiceServicer(object):
@@ -51,16 +46,6 @@ class InventoryServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetStableVersion(self, request, context):
-        """GetStableVersion fetches the stable version for a given device.
-        It checks for a local stable version file first (e.g., on Satlab).
-        If no local file exists, it queries the central stable version service (e.g., crosskylabadmin).
-        Device details from the inventory are used to determine the correct version.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_InventoryServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -68,11 +53,6 @@ def add_InventoryServiceServicer_to_server(servicer, server):
                     servicer.GetDutTopology,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetDutTopologyRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetDutTopologyResponse.SerializeToString,
-            ),
-            'GetStableVersion': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetStableVersion,
-                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetStableVersionRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetStableVersionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -105,22 +85,5 @@ class InventoryService(object):
         return grpc.experimental.unary_stream(request, target, '/chromiumos.test.lab.api.InventoryService/GetDutTopology',
             chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetDutTopologyRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetDutTopologyResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetStableVersion(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.InventoryService/GetStableVersion',
-            chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetStableVersionRequest.SerializeToString,
-            chromiumos_dot_test_dot_lab_dot_api_dot_inventory__service__pb2.GetStableVersionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

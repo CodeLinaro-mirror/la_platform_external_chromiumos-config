@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n/chromiumos/test/lab/api/inventory_service.proto\x12\x17\x63hromiumos.test.lab.api\x1a!chromiumos/test/lab/api/dut.proto\"L\n\x15GetDutTopologyRequest\x12\x33\n\x02id\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.DutTopology.Id\"\xa3\x02\n\x16GetDutTopologyResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.FailureH\x00\x1a\x45\n\x07Success\x12:\n\x0c\x64ut_topology\x18\x01 \x01(\x0b\x32$.chromiumos.test.lab.api.DutTopology\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"W\n\x17GetStableVersionRequest\x12<\n\x06target\x18\x01 \x01(\x0b\x32,.chromiumos.test.lab.api.StableVersionTarget\"S\n\x18GetStableVersionResponse\x12\x37\n\x07version\x18\x01 \x01(\x0b\x32&.chromiumos.test.lab.api.StableVersion\"\xb4\x01\n\rStableVersion\x12\x12\n\nos_version\x18\x01 \x01(\t\x12\x15\n\ros_image_path\x18\x02 \x01(\t\x12\x1b\n\x13\x66irmware_ro_version\x18\x03 \x01(\t\x12\x1e\n\x16\x66irmware_ro_image_path\x18\x04 \x01(\t\x12\x1b\n\x13\x66irmware_rw_version\x18\x05 \x01(\t\x12\x1e\n\x16\x66irmware_rw_image_path\x18\x06 \x01(\t\"l\n\x13StableVersionTarget\x12\x13\n\x0b\x64\x65vice_type\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\r\n\x05\x62oard\x18\x03 \x01(\t\x12\r\n\x05model\x18\x04 \x01(\t\x12\r\n\x05pools\x18\x05 \x03(\t2\x80\x02\n\x10InventoryService\x12s\n\x0eGetDutTopology\x12..chromiumos.test.lab.api.GetDutTopologyRequest\x1a/.chromiumos.test.lab.api.GetDutTopologyResponse0\x01\x12w\n\x10GetStableVersion\x12\x30.chromiumos.test.lab.api.GetStableVersionRequest\x1a\x31.chromiumos.test.lab.api.GetStableVersionResponseB3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n/chromiumos/test/lab/api/inventory_service.proto\x12\x17\x63hromiumos.test.lab.api\x1a!chromiumos/test/lab/api/dut.proto\"L\n\x15GetDutTopologyRequest\x12\x33\n\x02id\x18\x01 \x01(\x0b\x32\'.chromiumos.test.lab.api.DutTopology.Id\"\xa3\x02\n\x16GetDutTopologyResponse\x12J\n\x07success\x18\x01 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.SuccessH\x00\x12J\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x37.chromiumos.test.lab.api.GetDutTopologyResponse.FailureH\x00\x1a\x45\n\x07Success\x12:\n\x0c\x64ut_topology\x18\x01 \x01(\x0b\x32$.chromiumos.test.lab.api.DutTopology\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"W\n\x17GetStableVersionRequest\x12<\n\x06target\x18\x01 \x01(\x0b\x32,.chromiumos.test.lab.api.StableVersionTarget\"S\n\x18GetStableVersionResponse\x12\x37\n\x07version\x18\x01 \x01(\x0b\x32&.chromiumos.test.lab.api.StableVersion\"\xb4\x01\n\rStableVersion\x12\x12\n\nos_version\x18\x01 \x01(\t\x12\x15\n\ros_image_path\x18\x02 \x01(\t\x12\x1b\n\x13\x66irmware_ro_version\x18\x03 \x01(\t\x12\x1e\n\x16\x66irmware_ro_image_path\x18\x04 \x01(\t\x12\x1b\n\x13\x66irmware_rw_version\x18\x05 \x01(\t\x12\x1e\n\x16\x66irmware_rw_image_path\x18\x06 \x01(\t\"l\n\x13StableVersionTarget\x12\x13\n\x0b\x64\x65vice_type\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x02 \x01(\t\x12\r\n\x05\x62oard\x18\x03 \x01(\t\x12\r\n\x05model\x18\x04 \x01(\t\x12\r\n\x05pools\x18\x05 \x03(\t2\x87\x01\n\x10InventoryService\x12s\n\x0eGetDutTopology\x12..chromiumos.test.lab.api.GetDutTopologyRequest\x1a/.chromiumos.test.lab.api.GetDutTopologyResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,])
 
@@ -446,7 +446,7 @@ _INVENTORYSERVICE = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=951,
-  serialized_end=1207,
+  serialized_end=1086,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetDutTopology',
@@ -455,16 +455,6 @@ _INVENTORYSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETDUTTOPOLOGYREQUEST,
     output_type=_GETDUTTOPOLOGYRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetStableVersion',
-    full_name='chromiumos.test.lab.api.InventoryService.GetStableVersion',
-    index=1,
-    containing_service=None,
-    input_type=_GETSTABLEVERSIONREQUEST,
-    output_type=_GETSTABLEVERSIONRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

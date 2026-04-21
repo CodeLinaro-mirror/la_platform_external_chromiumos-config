@@ -43786,11 +43786,6 @@
               "name": "GetDutTopology",
               "outputType": ".chromiumos.test.lab.api.GetDutTopologyResponse",
               "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.lab.api.GetStableVersionRequest",
-              "name": "GetStableVersion",
-              "outputType": ".chromiumos.test.lab.api.GetStableVersionResponse"
             }
           ],
           "name": "InventoryService"

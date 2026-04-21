@@ -23,11 +23,12 @@ service InventoryService {
   rpc GetDutTopology(GetDutTopologyRequest)
       returns (stream GetDutTopologyResponse);
 
+  // TODO: Enable this RPC once labservice has implemented it.
   // GetStableVersion fetches the stable version for a given device.
   // It checks for a local stable version file first (e.g., on Satlab).
   // If no local file exists, it queries the central stable version service (e.g., crosskylabadmin).
   // Device details from the inventory are used to determine the correct version.
-  rpc GetStableVersion(GetStableVersionRequest) returns (GetStableVersionResponse);
+  // rpc GetStableVersion(GetStableVersionRequest) returns (GetStableVersionResponse);
 }
 
 message GetDutTopologyRequest {
