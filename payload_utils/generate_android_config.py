@@ -7,10 +7,25 @@
 
 This script is used to test unsubmitted config changes on local Android devices.
 
-Detailed steps conducted by this script is the following:
-1) Re-generate config.jsonproto by calling gen_config.sh.
-2) Sync with latest Hal_Config.XSD from Android repo.
-3) Run cros_to_android.py with all sub-commands.
+There are three modes of operation:
+  'classic': Regenerates config.jsonproto, syncs Hal_Config.XSD, runs
+             cros_to_android.py for classic HAL, feature, and media profile
+             XMLs, and copies them to the Android device repo. This mode is for
+             devices with classic ChromeOS DesignConfigID provisioned.
+             The steps are:
+             1) Re-generate config.jsonproto by calling gen_config.sh.
+             2) Sync with latest Hal_Config.XSD from Android repo.
+             3) Run cros_to_android.py with generate-hal-xml,
+                generate-feature-xml, and generate-media-profiles subcommands.
+             4) Copy generated XMLs to the Android device repo.
+
+  'fetch-component-star': Fetches the component_ids.star artifact for the
+                          specified device from Busytown.
+
+  'generate-component-xmls': Regenerates config.jsonproto and runs
+                             cros_to_android.py to generate component-based
+                             XMLs, feature XMLs from HAL, and media profiles
+                             from HAL, copying them to the Android device repo.
 """
 
 import argparse
@@ -54,10 +69,9 @@ def util_run_command(command: list[str]) -> None:
         subprocess.CalledProcessError: An error raised while executing
             the subproccess call.
     """
+    logging.debug("Running command: %s", command)
     try:
-        result = subprocess.run(
-            command, capture_output=True, text=True, check=True
-        )
+        result = subprocess.run(command, check=True)
 
         if result.stdout:
             logging.debug("Command output (stdout):\n%s", result.stdout.strip())
@@ -66,8 +80,6 @@ def util_run_command(command: list[str]) -> None:
 
     except subprocess.CalledProcessError as e:
         logging.error("Command failed with exit code %s", e.returncode)
-        if e.stderr:
-            logging.error("Error output (stderr):\n%s", e.stderr.strip())
         raise
 
 
@@ -212,16 +224,14 @@ def run_cros_to_android_config(program: str, device: str) -> Optional[Path]:
 
 
 def copy_config_xml_to_android(
-    args: argparse.Namespace, cros_xmls_path: Path
+    device_name: str, device_repo: Path, cros_xmls_path: Path
 ) -> None:
     """Copy the generated config xmls to the Android device repo.
 
     Args:
-        args: argparse.Namespace for parsed result of command line inputs.
+        device_name: Name of the Android device project.
+        device_repo: Path to the ARSP repo for the same device.
         cros_xmls_path: Path to temp folder holding the generated xmls.
-
-    Returns:
-        A boolean with True meaning success and False meaning failure.
 
     Raises:
         shutil.Error: An error raised while executing shutil.copytree
@@ -237,9 +247,9 @@ def copy_config_xml_to_android(
         logging.debug("Copying '%s' to '%s'", src, dst)
         shutil.copy(src, dst)
 
-    device = args.device_name
-    alrepo = args.device_repo
-    al_config_path = alrepo / "device/google/desktop" / device / "configs/"
+    al_config_path = (
+        device_repo / "device/google/desktop" / device_name / "configs/"
+    )
     logging.debug("al_config_path is %s", al_config_path)
 
     try:
@@ -282,39 +292,43 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--device-repo",
         required=True,
         type=Path,
-        help="Path in Android repo for the Android device",
+        help="Path of ARSP repo for the Android device",
+    )
+    parser.add_argument(
+        "--mode",
+        default="classic",
+        choices=("classic", "fetch-component-star", "generate-component-xmls"),
+        help="Which operation mode to run. See module docstring for details.",
     )
 
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[list[str]] = None) -> int:
-    """The main function"""
+def main_classic(program: str, device_name: str, device_repo: Path) -> int:
+    """Run cros_to_android.py with subcommand generate-hal-xml.
 
-    opts = parse_args(argv)
-    logging_utils.config_logging(opts)
+    Args:
+        program: Name of device program or reference design.
+        device_name: Name of the Android device project.
+        device_repo: Path to the ARSP repo for the same device.
 
-    logging.info(
-        "program=%s\ndevice_name=%s\nal_device_repo=%s",
-        opts.program,
-        opts.device_name,
-        opts.device_repo,
-    )
-
+    Returns:
+        0 for success, or error code otherwise.
+    """
     # Step-1: Re-generate config.jsonproto.
     try:
-        regenerate_config_jsonproto(opts.program, opts.device_name)
+        regenerate_config_jsonproto(program, device_name)
     except subprocess.CalledProcessError:
         logging.error("Failure in regenerating config.jsonproto.")
         raise
 
     # Step-2: Sync with latest Hal_Config.XSD from Android repo.
-    if not sync_halconfig_xsd_with_alrepo(opts.device_repo):
+    if not sync_halconfig_xsd_with_alrepo(device_repo):
         logging.error("Failure in copying Hal_Config.XSD from Android repo.")
         return 1
 
     # Step-3: Run cros_to_antroid.py.
-    cros_xml_path = run_cros_to_android_config(opts.program, opts.device_name)
+    cros_xml_path = run_cros_to_android_config(program, device_name)
     if cros_xml_path is None:
         logging.error(
             "Failure in running cros_to_android.py with all its subcommands"
@@ -324,18 +338,192 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     # Step-4: Copy the generated config xmls to the Android device repo.
     try:
-        copy_config_xml_to_android(opts, cros_xml_path)
+        copy_config_xml_to_android(device_name, device_repo, cros_xml_path)
     except shutil.Error:
         logging.error(
             "Failure in copying the generated xmls to Android device repo"
         )
         raise
 
-    logging.info(
-        "The full script completed successfully.\n"
-        "Run git status command in the android device repo for the updates"
-        " to configuration XMLs."
+    return 0
+
+
+FETCH_ARTIFACT_CMD = "/google/data/ro/projects/android/fetch_artifact"
+
+
+def fetch_artifact_bid_target(target: str, artname: str) -> None:
+    """Run fetch_artifact to download BUILD_INFO file.
+
+    Args:
+        target: Name of build target to look for on Android Build server.
+        artname: Name of the artifact to be fetched.
+
+    Raises:
+        subprocess.CalledProcessError: An error raised while executing
+            the subproccess call.
+    """
+    command = [
+        FETCH_ARTIFACT_CMD,
+        "--latest",
+        "--branch",
+        "arsp-main",
+        "--target",
+        target,
+        artname,
+        "android_component_ids.star",
+    ]
+    util_run_command(command)
+    logging.info("successfully downloaded %s for target=%s", artname, target)
+
+
+def main_handle_fetch_component_star(device: str) -> None:
+    """Handle fetch component.star artifact.
+
+    Args:
+        device: Name of the Android device project.
+
+    Raises:
+        subprocess.CalledProcessError: An error raised while executing
+            the subproccess call.
+    """
+    target = f"{device}-trunk_staging-userdebug"
+    artifact_name = f"{device}-component_ids.star"
+    fetch_artifact_bid_target(target, artifact_name)
+
+
+def main_handle_generate_xmls(program: str, device: str, repo: Path) -> int:
+    """Generate the per component configuration xmls.
+
+    Args:
+        program: Name of device program or reference design.
+        device: Name of the Android device project.
+        repo: Path to the ARSP repo for the same device.
+
+    Returns:
+        0 for success, or error code otherwise.
+    """
+    cros_to_android_script = (
+        THIS_CONFIG_DIR / "payload_utils/cros_to_android.py"
     )
+    config_jsonproto = Path.cwd() / "generated/config.jsonproto"
+    dtd_schema_file = THIS_CONFIG_DIR / "payload_utils/media_profiles.dtd"
+
+    # Create temp folder for storing generated config xmls.
+    temp_dir = tempfile.mkdtemp()
+    config_output_root = Path(temp_dir)
+    atexit.register(util_temp_folder_cleanup, config_output_root)
+
+    # Re-generate config.jsonproto.
+    try:
+        regenerate_config_jsonproto(program, device)
+    except subprocess.CalledProcessError:
+        logging.error("Failure in regenerating config.jsonproto.")
+        raise
+
+    # Generate component based config xmls
+    # example command -
+    # ./config/payload_utils/cros_to_android.py generate-component-xmls
+    # ./generated/config.jsonproto --output-dir ./generated/
+    logging.debug("Run generate-component-xmls for %s", device)
+    command = [
+        cros_to_android_script,
+        "generate-component-xmls",
+        config_jsonproto,
+        "--output-dir",
+        config_output_root / "components",
+    ]
+    try:
+        util_run_command(command)
+    except subprocess.CalledProcessError:
+        logging.error(
+            "Failed in calling cros_to_android for generate-component-xmls"
+        )
+        raise
+
+    # Generate features config xmls
+    # example command -
+    # ./config/payload_utils/cros_to_android.py generate-feature-xml
+    # --from-hal-config --output-dir ./generated/ ./generated/config.jsonproto
+    logging.debug("Run generate-feature-xml for %s", device)
+    command = [
+        cros_to_android_script,
+        "generate-feature-xml",
+        "--from-hal-config",
+        "--output-dir",
+        config_output_root / "features_from_hal",
+        config_jsonproto,
+    ]
+    try:
+        util_run_command(command)
+    except subprocess.CalledProcessError:
+        logging.error(
+            "Failed in calling cros_to_android for generate-feature-xml"
+        )
+        raise
+
+    # Generate media profiles xmls
+    # example command -
+    # ./config/payload_utils/cros_to_android.py generate-media-profiles
+    # --from-hal-config  -o ./generated/  -d media_profiles.dtd
+    # ./generated/config.jsonproto
+    logging.debug("Run generate-media-profiles for %s", device)
+    command = [
+        cros_to_android_script,
+        "generate-media-profiles",
+        "--from-hal-config",
+        "--output-dir",
+        config_output_root / "media_profiles_from_hal",
+        "--dtd-schema",
+        dtd_schema_file,
+        config_jsonproto,
+    ]
+    try:
+        util_run_command(command)
+    except subprocess.CalledProcessError:
+        logging.error(
+            "Failed in calling cros_to_android for generate-media-profiles "
+        )
+        raise
+
+    # Copy the generated config xmls to the Android device repo.
+    try:
+        copy_config_xml_to_android(device, repo, config_output_root)
+    except shutil.Error:
+        logging.error(
+            "Failure in copying the generated xmls to Android device repo"
+        )
+        raise
+
+    logging.info("Generated new copy of device component based config XMLs.")
+    logging.info(
+        "Please run git status -c %s/device/google/desktop/%s", repo, device
+    )
+    return 0
+
+
+def main(argv: Optional[list[str]] = None) -> int:
+    """The main function"""
+
+    opts = parse_args(argv)
+    logging_utils.config_logging(opts)
+
+    logging.info(
+        "program=%s\ndevice_name=%s\nal_device_repo=%s\nmode=%s",
+        opts.program,
+        opts.device_name,
+        opts.device_repo,
+        opts.mode,
+    )
+
+    if opts.mode == "classic":
+        return main_classic(opts.program, opts.device_name, opts.device_repo)
+    if opts.mode == "fetch-component-star":
+        main_handle_fetch_component_star(opts.device_name)
+        return 0
+    if opts.mode == "generate-component-xmls":
+        return main_handle_generate_xmls(
+            opts.program, opts.device_name, opts.device_repo
+        )
     return 0
 
 
