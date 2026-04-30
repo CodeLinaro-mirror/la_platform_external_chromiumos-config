@@ -190,7 +190,13 @@ def _gen_encoder_profile(resolution, timelapse):
     return elem
 
 
-def _gen_video_encoder_cap(name, min_bit_rate, max_bit_rate):
+def _gen_video_encoder_cap(
+    name,
+    min_bit_rate,
+    max_bit_rate,
+    max_frame_width=1920,
+    max_frame_height=1080,
+):
     return etree.Element(
         "VideoEncoderCap",
         attrib={
@@ -199,9 +205,9 @@ def _gen_video_encoder_cap(name, min_bit_rate, max_bit_rate):
             "minBitRate": str(min_bit_rate),
             "maxBitRate": str(max_bit_rate),
             "minFrameWidth": "320",
-            "maxFrameWidth": "1920",
+            "maxFrameWidth": str(max_frame_width),
             "minFrameHeight": "240",
-            "maxFrameHeight": "1080",
+            "maxFrameHeight": str(max_frame_height),
             "minFrameRate": "15",
             "maxFrameRate": "30",
         },
@@ -320,6 +326,7 @@ def _generate_media_profiles_xml_string(
 
 
 def _generate_media_profiles_from_camera_config(
+    # pylint: disable=too-many-locals
     camera_config: android_component_configs_pb2.CameraConfigurationType,
     dtd_path: Optional[pathlib.Path],
 ) -> Optional[bytes]:
@@ -336,6 +343,7 @@ def _generate_media_profiles_from_camera_config(
     root = etree.Element("MediaSettings")
     camera_id = 0
 
+    has_p4k_cam = False
     # Order by position, front then back.
     position_to_camera = {cam.position: cam for cam in camera_config.cameras}
     for position in [
@@ -394,6 +402,7 @@ def _generate_media_profiles_from_camera_config(
                 resolution_p4k.width = 3840
                 resolution_p4k.height = 2160
                 resolutions.append(resolution_p4k)
+                has_p4k_cam = True
 
         root.append(_gen_camcorder_profiles(camera_id, resolutions))
         camera_id += 1
@@ -401,11 +410,17 @@ def _generate_media_profiles_from_camera_config(
     if camera_id == 0:
         return None
 
+    (max_bit_rate, max_frame_width, max_frame_height) = (
+        (100000000, 3840, 2160) if has_p4k_cam else (17000000, 1920, 1080)
+    )
+
     root.extend(
         [
             etree.Element("EncoderOutputFileFormat", attrib={"name": "3gp"}),
             etree.Element("EncoderOutputFileFormat", attrib={"name": "mp4"}),
-            _gen_video_encoder_cap("h264", 64000, 17000000),
+            _gen_video_encoder_cap(
+                "h264", 64000, max_bit_rate, max_frame_width, max_frame_height
+            ),
             _gen_video_encoder_cap("h263", 64000, 1000000),
             _gen_video_encoder_cap("m4v", 64000, 2000000),
             _gen_audio_encoder_cap("aac", 758, 288000, 8000, 48000),
