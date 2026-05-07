@@ -39787,6 +39787,13 @@
               "name": "is_tf_plugin_enabled",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "isAntsV4Enabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_ants_v4_enabled",
+              "number": 9,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "PublishAntsMetadata"

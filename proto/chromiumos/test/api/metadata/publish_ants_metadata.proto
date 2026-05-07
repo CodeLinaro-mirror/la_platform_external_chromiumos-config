@@ -10,7 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
 
 import "chromiumos/test/artifact/test_result.proto";
 
-// NEXT TAG: 9
+// NEXT TAG: 10
 message PublishAntsMetadata {
   enum ATPEnvironment {
     ENV_UNKNOWN = 0;
@@ -46,4 +46,7 @@ message PublishAntsMetadata {
   // But, uploads only CFT containers (eg. provision, servo-nexus etc)
   // generated artifacts.
   bool is_tf_plugin_enabled = 8;
+
+  // Indicate whether it should call AnTS V4.
+  bool is_ants_v4_enabled = 9;
 }
