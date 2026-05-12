@@ -21721,6 +21721,13 @@
                   "oneofIndex": 0,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.PasitHost.Device.SwitchFixtureDetails"
+                },
+                {
+                  "jsonName": "observingCamera",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "observing_camera",
+                  "number": 7,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Device",

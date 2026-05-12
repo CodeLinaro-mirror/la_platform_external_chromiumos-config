@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(chromiumos/test/lab/api/pasit_host.proto\x12\x17\x63hromiumos.test.lab.api\x1a!chromiumos/test/lab/api/rpm.proto\"\xbd\x07\n\tPasitHost\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12:\n\x07\x64\x65vices\x18\x02 \x03(\x0b\x32).chromiumos.test.lab.api.PasitHost.Device\x12\x42\n\x0b\x63onnections\x18\x03 \x03(\x0b\x32-.chromiumos.test.lab.api.PasitHost.Connection\x1aq\n\nConnection\x12\x13\n\x0bparent_port\x18\x01 \x01(\t\x12\x11\n\tparent_id\x18\x02 \x01(\t\x12\x10\n\x08\x63hild_id\x18\x03 \x01(\t\x12\r\n\x05speed\x18\x04 \x01(\x02\x12\x0c\n\x04type\x18\x05 \x01(\t\x12\x0c\n\x04tags\x18\x06 \x03(\t\x1a\xaa\x05\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05model\x18\x02 \x01(\t\x12<\n\x04type\x18\x03 \x01(\x0e\x32..chromiumos.test.lab.api.PasitHost.Device.Type\x12K\n\x0cpower_supply\x18\x04 \x01(\x0b\x32\x35.chromiumos.test.lab.api.PasitHost.Device.PowerSupply\x12)\n\x03rpm\x18\x05 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12`\n\x16switch_fixture_details\x18\x06 \x01(\x0b\x32>.chromiumos.test.lab.api.PasitHost.Device.SwitchFixtureDetailsH\x00\x1a>\n\x0bPowerSupply\x12\x0f\n\x07\x63urrent\x18\x01 \x01(\x02\x12\x0f\n\x07voltage\x18\x02 \x01(\x02\x12\r\n\x05power\x18\x03 \x01(\x02\x1aK\n\x14SwitchFixtureDetails\x12\x1d\n\x15initial_state_enabled\x18\x01 \x01(\x08\x12\x14\n\x0cinitial_port\x18\x02 \x01(\t\"\xcd\x01\n\x04Type\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x07\n\x03\x44UT\x10\x01\x12\x12\n\x0eSWITCH_FIXTURE\x10\x02\x12\x13\n\x0f\x44OCKING_STATION\x10\x03\x12\x0b\n\x07MONITOR\x10\x04\x12\n\n\x06\x43\x41MERA\x10\x05\x12\x0b\n\x07STORAGE\x10\x06\x12\x07\n\x03HID\x10\x07\x12\x0b\n\x07NETWORK\x10\x08\x12\r\n\tHEADPHONE\x10\t\x12\x0b\n\x07SPEAKER\x10\n\x12\x0c\n\x08IP_POWER\x10\x0b\x12\x0e\n\nUSB_TESTER\x10\x0c\x12\x10\n\x0cVIDEO_TESTER\x10\rB\x10\n\x0e\x64\x65vice_detailsB3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n(chromiumos/test/lab/api/pasit_host.proto\x12\x17\x63hromiumos.test.lab.api\x1a!chromiumos/test/lab/api/rpm.proto\"\xd7\x07\n\tPasitHost\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12:\n\x07\x64\x65vices\x18\x02 \x03(\x0b\x32).chromiumos.test.lab.api.PasitHost.Device\x12\x42\n\x0b\x63onnections\x18\x03 \x03(\x0b\x32-.chromiumos.test.lab.api.PasitHost.Connection\x1aq\n\nConnection\x12\x13\n\x0bparent_port\x18\x01 \x01(\t\x12\x11\n\tparent_id\x18\x02 \x01(\t\x12\x10\n\x08\x63hild_id\x18\x03 \x01(\t\x12\r\n\x05speed\x18\x04 \x01(\x02\x12\x0c\n\x04type\x18\x05 \x01(\t\x12\x0c\n\x04tags\x18\x06 \x03(\t\x1a\xc4\x05\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05model\x18\x02 \x01(\t\x12<\n\x04type\x18\x03 \x01(\x0e\x32..chromiumos.test.lab.api.PasitHost.Device.Type\x12K\n\x0cpower_supply\x18\x04 \x01(\x0b\x32\x35.chromiumos.test.lab.api.PasitHost.Device.PowerSupply\x12)\n\x03rpm\x18\x05 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.RPM\x12`\n\x16switch_fixture_details\x18\x06 \x01(\x0b\x32>.chromiumos.test.lab.api.PasitHost.Device.SwitchFixtureDetailsH\x00\x12\x18\n\x10observing_camera\x18\x07 \x01(\t\x1a>\n\x0bPowerSupply\x12\x0f\n\x07\x63urrent\x18\x01 \x01(\x02\x12\x0f\n\x07voltage\x18\x02 \x01(\x02\x12\r\n\x05power\x18\x03 \x01(\x02\x1aK\n\x14SwitchFixtureDetails\x12\x1d\n\x15initial_state_enabled\x18\x01 \x01(\x08\x12\x14\n\x0cinitial_port\x18\x02 \x01(\t\"\xcd\x01\n\x04Type\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x07\n\x03\x44UT\x10\x01\x12\x12\n\x0eSWITCH_FIXTURE\x10\x02\x12\x13\n\x0f\x44OCKING_STATION\x10\x03\x12\x0b\n\x07MONITOR\x10\x04\x12\n\n\x06\x43\x41MERA\x10\x05\x12\x0b\n\x07STORAGE\x10\x06\x12\x07\n\x03HID\x10\x07\x12\x0b\n\x07NETWORK\x10\x08\x12\r\n\tHEADPHONE\x10\t\x12\x0b\n\x07SPEAKER\x10\n\x12\x0c\n\x08IP_POWER\x10\x0b\x12\x0e\n\nUSB_TESTER\x10\x0c\x12\x10\n\x0cVIDEO_TESTER\x10\rB\x10\n\x0e\x64\x65vice_detailsB3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_rpm__pb2.DESCRIPTOR,])
 
@@ -106,8 +106,8 @@ _PASITHOST_DEVICE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=839,
-  serialized_end=1044,
+  serialized_start=865,
+  serialized_end=1070,
 )
 _sym_db.RegisterEnumDescriptor(_PASITHOST_DEVICE_TYPE)
 
@@ -219,8 +219,8 @@ _PASITHOST_DEVICE_POWERSUPPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=697,
-  serialized_end=759,
+  serialized_start=723,
+  serialized_end=785,
 )
 
 _PASITHOST_DEVICE_SWITCHFIXTUREDETAILS = _descriptor.Descriptor(
@@ -257,8 +257,8 @@ _PASITHOST_DEVICE_SWITCHFIXTUREDETAILS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=761,
-  serialized_end=836,
+  serialized_start=787,
+  serialized_end=862,
 )
 
 _PASITHOST_DEVICE = _descriptor.Descriptor(
@@ -311,6 +311,13 @@ _PASITHOST_DEVICE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='observing_camera', full_name='chromiumos.test.lab.api.PasitHost.Device.observing_camera', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -330,7 +337,7 @@ _PASITHOST_DEVICE = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=380,
-  serialized_end=1062,
+  serialized_end=1088,
 )
 
 _PASITHOST = _descriptor.Descriptor(
@@ -375,7 +382,7 @@ _PASITHOST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=105,
-  serialized_end=1062,
+  serialized_end=1088,
 )
 
 _PASITHOST_CONNECTION.containing_type = _PASITHOST

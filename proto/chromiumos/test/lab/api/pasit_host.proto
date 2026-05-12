@@ -65,6 +65,10 @@ message PasitHost {
       SwitchFixtureDetails switch_fixture_details = 6;
     }
 
+    // The camera ID that is pointed at/observing this device (e.g. if this
+    // device is a monitor).
+    string observing_camera = 7;
+
     // The type of device represented.
     enum Type {
       UNKNOWN = 0;
@@ -92,8 +96,8 @@ message PasitHost {
 
     // Extra details for Switch Fixtures.
     message SwitchFixtureDetails {
-      // Should the switch be initialized to "enabled" state, if missing then the switch will
-      // be left in the 'disabled' state.
+      // Should the switch be initialized to "enabled" state, if missing then
+      // the switch will be left in the 'disabled' state.
       bool initial_state_enabled = 1;
       // If initial_state_enabled and the switch supports multiple ports, this
       // is the port that will be configured on reset.
