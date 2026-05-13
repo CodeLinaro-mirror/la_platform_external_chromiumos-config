@@ -13,6 +13,8 @@ service ToolsService {
   rpc ADBRun(ADBRunRequest) returns (ADBRunResponse) {}
   // FastbootRun runs a fastboot command.
   rpc FastbootRun(FastbootRunRequest) returns (FastbootRunResponse) {}
+  // DownloadFile downloads a file from the given URL to the container host.
+  rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse) {}
 }
 
 message ADBRunRequest {

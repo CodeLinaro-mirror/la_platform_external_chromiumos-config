@@ -24,6 +24,11 @@ class ToolsServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.FastbootRunRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.FastbootRunResponse.FromString,
                 )
+        self.DownloadFile = channel.unary_unary(
+                '/chromiumos.test.api.ToolsService/DownloadFile',
+                request_serializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.DownloadFileRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.DownloadFileResponse.FromString,
+                )
 
 
 class ToolsServiceServicer(object):
@@ -43,6 +48,13 @@ class ToolsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def DownloadFile(self, request, context):
+        """DownloadFile downloads a file from the given URL to the container host.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ToolsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -55,6 +67,11 @@ def add_ToolsServiceServicer_to_server(servicer, server):
                     servicer.FastbootRun,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.FastbootRunRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.FastbootRunResponse.SerializeToString,
+            ),
+            'DownloadFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.DownloadFile,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.DownloadFileRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_tools__service__pb2.DownloadFileResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -97,5 +114,22 @@ class ToolsService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ToolsService/FastbootRun',
             chromiumos_dot_test_dot_api_dot_tools__service__pb2.FastbootRunRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_tools__service__pb2.FastbootRunResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DownloadFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ToolsService/DownloadFile',
+            chromiumos_dot_test_dot_api_dot_tools__service__pb2.DownloadFileRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_tools__service__pb2.DownloadFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

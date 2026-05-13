@@ -26,6 +26,8 @@ type ToolsServiceClient interface {
 	ADBRun(ctx context.Context, in *ADBRunRequest, opts ...grpc.CallOption) (*ADBRunResponse, error)
 	// FastbootRun runs a fastboot command.
 	FastbootRun(ctx context.Context, in *FastbootRunRequest, opts ...grpc.CallOption) (*FastbootRunResponse, error)
+	// DownloadFile downloads a file from the given URL to the container host.
+	DownloadFile(ctx context.Context, in *DownloadFileRequest, opts ...grpc.CallOption) (*DownloadFileResponse, error)
 }
 
 type toolsServiceClient struct {
@@ -54,6 +56,15 @@ func (c *toolsServiceClient) FastbootRun(ctx context.Context, in *FastbootRunReq
 	return out, nil
 }
 
+func (c *toolsServiceClient) DownloadFile(ctx context.Context, in *DownloadFileRequest, opts ...grpc.CallOption) (*DownloadFileResponse, error) {
+	out := new(DownloadFileResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ToolsService/DownloadFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ToolsServiceServer is the server API for ToolsService service.
 // All implementations should embed UnimplementedToolsServiceServer
 // for forward compatibility
@@ -62,6 +73,8 @@ type ToolsServiceServer interface {
 	ADBRun(context.Context, *ADBRunRequest) (*ADBRunResponse, error)
 	// FastbootRun runs a fastboot command.
 	FastbootRun(context.Context, *FastbootRunRequest) (*FastbootRunResponse, error)
+	// DownloadFile downloads a file from the given URL to the container host.
+	DownloadFile(context.Context, *DownloadFileRequest) (*DownloadFileResponse, error)
 }
 
 // UnimplementedToolsServiceServer should be embedded to have forward compatible implementations.
@@ -73,6 +86,9 @@ func (UnimplementedToolsServiceServer) ADBRun(context.Context, *ADBRunRequest) (
 }
 func (UnimplementedToolsServiceServer) FastbootRun(context.Context, *FastbootRunRequest) (*FastbootRunResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FastbootRun not implemented")
+}
+func (UnimplementedToolsServiceServer) DownloadFile(context.Context, *DownloadFileRequest) (*DownloadFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DownloadFile not implemented")
 }
 
 // UnsafeToolsServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -122,6 +138,24 @@ func _ToolsService_FastbootRun_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ToolsService_DownloadFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DownloadFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ToolsServiceServer).DownloadFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.ToolsService/DownloadFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ToolsServiceServer).DownloadFile(ctx, req.(*DownloadFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ToolsService_ServiceDesc is the grpc.ServiceDesc for ToolsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -136,6 +170,10 @@ var ToolsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FastbootRun",
 			Handler:    _ToolsService_FastbootRun_Handler,
+		},
+		{
+			MethodName: "DownloadFile",
+			Handler:    _ToolsService_DownloadFile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

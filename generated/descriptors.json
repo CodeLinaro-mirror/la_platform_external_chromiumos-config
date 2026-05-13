@@ -41891,6 +41891,12 @@
               "name": "FastbootRun",
               "options": {},
               "outputType": ".chromiumos.test.api.FastbootRunResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.DownloadFileRequest",
+              "name": "DownloadFile",
+              "options": {},
+              "outputType": ".chromiumos.test.api.DownloadFileResponse"
             }
           ],
           "name": "ToolsService"

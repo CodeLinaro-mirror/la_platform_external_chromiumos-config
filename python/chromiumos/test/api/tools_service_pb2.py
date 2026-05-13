@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'chromiumos/test/api/tools_service.proto\x12\x13\x63hromiumos.test.api\"0\n\rADBRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"C\n\x0e\x41\x44\x42RunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"5\n\x12\x46\x61stbootRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"H\n\x13\x46\x61stbootRunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"\xb4\x01\n\x13\x44ownloadFileRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x18\n\x10\x64\x65stination_path\x18\x02 \x01(\t\x12\x46\n\x07headers\x18\x03 \x03(\x0b\x32\x35.chromiumos.test.api.DownloadFileRequest.HeadersEntry\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"0\n\x14\x44ownloadFileResponse\x12\x18\n\x10\x64\x65stination_path\x18\x01 \x01(\t2\xc7\x01\n\x0cToolsService\x12S\n\x06\x41\x44\x42Run\x12\".chromiumos.test.api.ADBRunRequest\x1a#.chromiumos.test.api.ADBRunResponse\"\x00\x12\x62\n\x0b\x46\x61stbootRun\x12\'.chromiumos.test.api.FastbootRunRequest\x1a(.chromiumos.test.api.FastbootRunResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n\'chromiumos/test/api/tools_service.proto\x12\x13\x63hromiumos.test.api\"0\n\rADBRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"C\n\x0e\x41\x44\x42RunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"5\n\x12\x46\x61stbootRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"H\n\x13\x46\x61stbootRunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"\xb4\x01\n\x13\x44ownloadFileRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x18\n\x10\x64\x65stination_path\x18\x02 \x01(\t\x12\x46\n\x07headers\x18\x03 \x03(\x0b\x32\x35.chromiumos.test.api.DownloadFileRequest.HeadersEntry\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"0\n\x14\x44ownloadFileResponse\x12\x18\n\x10\x64\x65stination_path\x18\x01 \x01(\t2\xae\x02\n\x0cToolsService\x12S\n\x06\x41\x44\x42Run\x12\".chromiumos.test.api.ADBRunRequest\x1a#.chromiumos.test.api.ADBRunResponse\"\x00\x12\x62\n\x0b\x46\x61stbootRun\x12\'.chromiumos.test.api.FastbootRunRequest\x1a(.chromiumos.test.api.FastbootRunResponse\"\x00\x12\x65\n\x0c\x44ownloadFile\x12(.chromiumos.test.api.DownloadFileRequest\x1a).chromiumos.test.api.DownloadFileResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
 )
 
 
@@ -382,7 +382,7 @@ _TOOLSSERVICE = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=546,
-  serialized_end=745,
+  serialized_end=848,
   methods=[
   _descriptor.MethodDescriptor(
     name='ADBRun',
@@ -401,6 +401,16 @@ _TOOLSSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FASTBOOTRUNREQUEST,
     output_type=_FASTBOOTRUNRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DownloadFile',
+    full_name='chromiumos.test.api.ToolsService.DownloadFile',
+    index=2,
+    containing_service=None,
+    input_type=_DOWNLOADFILEREQUEST,
+    output_type=_DOWNLOADFILERESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
