@@ -48,3 +48,18 @@ message FastbootRunResponse {
   // Exit code from shell command.
   int32 exit_code = 3;
 }
+
+message DownloadFileRequest {
+  // url is the URL of the file to download.
+  string url = 1;
+  // destination_path is the optional absolute path on the host to save the file.
+  // If empty, the server will save it to a default temporary directory.
+  string destination_path = 2;
+  // headers are optional HTTP headers to include in the request.
+  map<string, string> headers = 3;
+}
+
+message DownloadFileResponse {
+  // destination_path is the absolute path where the file was saved.
+  string destination_path = 1;
+}

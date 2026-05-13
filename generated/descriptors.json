@@ -41807,6 +41807,69 @@
             }
           ],
           "name": "FastbootRunResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "url",
+              "label": "LABEL_OPTIONAL",
+              "name": "url",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "destinationPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "destination_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "headers",
+              "label": "LABEL_REPEATED",
+              "name": "headers",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DownloadFileRequest.HeadersEntry"
+            }
+          ],
+          "name": "DownloadFileRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "HeadersEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "destinationPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "destination_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DownloadFileResponse"
         }
       ],
       "name": "chromiumos/test/api/tools_service.proto",

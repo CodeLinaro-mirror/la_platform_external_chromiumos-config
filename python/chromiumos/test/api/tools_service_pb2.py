@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'chromiumos/test/api/tools_service.proto\x12\x13\x63hromiumos.test.api\"0\n\rADBRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"C\n\x0e\x41\x44\x42RunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"5\n\x12\x46\x61stbootRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"H\n\x13\x46\x61stbootRunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\x32\xc7\x01\n\x0cToolsService\x12S\n\x06\x41\x44\x42Run\x12\".chromiumos.test.api.ADBRunRequest\x1a#.chromiumos.test.api.ADBRunResponse\"\x00\x12\x62\n\x0b\x46\x61stbootRun\x12\'.chromiumos.test.api.FastbootRunRequest\x1a(.chromiumos.test.api.FastbootRunResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n\'chromiumos/test/api/tools_service.proto\x12\x13\x63hromiumos.test.api\"0\n\rADBRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"C\n\x0e\x41\x44\x42RunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"5\n\x12\x46\x61stbootRunRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0e\n\x06params\x18\x02 \x03(\t\"H\n\x13\x46\x61stbootRunResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\"\xb4\x01\n\x13\x44ownloadFileRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x18\n\x10\x64\x65stination_path\x18\x02 \x01(\t\x12\x46\n\x07headers\x18\x03 \x03(\x0b\x32\x35.chromiumos.test.api.DownloadFileRequest.HeadersEntry\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"0\n\x14\x44ownloadFileResponse\x12\x18\n\x10\x64\x65stination_path\x18\x01 \x01(\t2\xc7\x01\n\x0cToolsService\x12S\n\x06\x41\x44\x42Run\x12\".chromiumos.test.api.ADBRunRequest\x1a#.chromiumos.test.api.ADBRunResponse\"\x00\x12\x62\n\x0b\x46\x61stbootRun\x12\'.chromiumos.test.api.FastbootRunRequest\x1a(.chromiumos.test.api.FastbootRunResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
 )
 
 
@@ -194,10 +194,130 @@ _FASTBOOTRUNRESPONSE = _descriptor.Descriptor(
   serialized_end=310,
 )
 
+
+_DOWNLOADFILEREQUEST_HEADERSENTRY = _descriptor.Descriptor(
+  name='HeadersEntry',
+  full_name='chromiumos.test.api.DownloadFileRequest.HeadersEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.DownloadFileRequest.HeadersEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.DownloadFileRequest.HeadersEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=447,
+  serialized_end=493,
+)
+
+_DOWNLOADFILEREQUEST = _descriptor.Descriptor(
+  name='DownloadFileRequest',
+  full_name='chromiumos.test.api.DownloadFileRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='url', full_name='chromiumos.test.api.DownloadFileRequest.url', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='destination_path', full_name='chromiumos.test.api.DownloadFileRequest.destination_path', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='headers', full_name='chromiumos.test.api.DownloadFileRequest.headers', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_DOWNLOADFILEREQUEST_HEADERSENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=313,
+  serialized_end=493,
+)
+
+
+_DOWNLOADFILERESPONSE = _descriptor.Descriptor(
+  name='DownloadFileResponse',
+  full_name='chromiumos.test.api.DownloadFileResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='destination_path', full_name='chromiumos.test.api.DownloadFileResponse.destination_path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=495,
+  serialized_end=543,
+)
+
+_DOWNLOADFILEREQUEST_HEADERSENTRY.containing_type = _DOWNLOADFILEREQUEST
+_DOWNLOADFILEREQUEST.fields_by_name['headers'].message_type = _DOWNLOADFILEREQUEST_HEADERSENTRY
 DESCRIPTOR.message_types_by_name['ADBRunRequest'] = _ADBRUNREQUEST
 DESCRIPTOR.message_types_by_name['ADBRunResponse'] = _ADBRUNRESPONSE
 DESCRIPTOR.message_types_by_name['FastbootRunRequest'] = _FASTBOOTRUNREQUEST
 DESCRIPTOR.message_types_by_name['FastbootRunResponse'] = _FASTBOOTRUNRESPONSE
+DESCRIPTOR.message_types_by_name['DownloadFileRequest'] = _DOWNLOADFILEREQUEST
+DESCRIPTOR.message_types_by_name['DownloadFileResponse'] = _DOWNLOADFILERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ADBRunRequest = _reflection.GeneratedProtocolMessageType('ADBRunRequest', (_message.Message,), {
@@ -228,8 +348,31 @@ FastbootRunResponse = _reflection.GeneratedProtocolMessageType('FastbootRunRespo
   })
 _sym_db.RegisterMessage(FastbootRunResponse)
 
+DownloadFileRequest = _reflection.GeneratedProtocolMessageType('DownloadFileRequest', (_message.Message,), {
+
+  'HeadersEntry' : _reflection.GeneratedProtocolMessageType('HeadersEntry', (_message.Message,), {
+    'DESCRIPTOR' : _DOWNLOADFILEREQUEST_HEADERSENTRY,
+    '__module__' : 'chromiumos.test.api.tools_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.DownloadFileRequest.HeadersEntry)
+    })
+  ,
+  'DESCRIPTOR' : _DOWNLOADFILEREQUEST,
+  '__module__' : 'chromiumos.test.api.tools_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.DownloadFileRequest)
+  })
+_sym_db.RegisterMessage(DownloadFileRequest)
+_sym_db.RegisterMessage(DownloadFileRequest.HeadersEntry)
+
+DownloadFileResponse = _reflection.GeneratedProtocolMessageType('DownloadFileResponse', (_message.Message,), {
+  'DESCRIPTOR' : _DOWNLOADFILERESPONSE,
+  '__module__' : 'chromiumos.test.api.tools_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.DownloadFileResponse)
+  })
+_sym_db.RegisterMessage(DownloadFileResponse)
+
 
 DESCRIPTOR._options = None
+_DOWNLOADFILEREQUEST_HEADERSENTRY._options = None
 
 _TOOLSSERVICE = _descriptor.ServiceDescriptor(
   name='ToolsService',
@@ -238,8 +381,8 @@ _TOOLSSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=313,
-  serialized_end=512,
+  serialized_start=546,
+  serialized_end=745,
   methods=[
   _descriptor.MethodDescriptor(
     name='ADBRun',
