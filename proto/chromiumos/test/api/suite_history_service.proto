@@ -1,0 +1,49 @@
+// Copyright 2026 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// SuiteHistoryService provides historical test execution metrics.
+// This is used by the suite-history-filter to dynamically calculate
+// execution deadlines and prevent timeout-doomed tasks from being scheduled.
+service SuiteHistoryService {
+  // Returns the historical execution duration for a specific test configuration.
+  rpc GetDuration(GetDurationRequest) returns (GetDurationResponse);
+}
+
+// GetDurationRequest specifies the granularity for the historical lookup.
+message GetDurationRequest {
+  // The name of the test suite (e.g. "bvt-inline").
+  string suite = 1;
+
+  // The scheduler configuration name / analytics_name (e.g. "bvt-inline-cq").
+  string analytics_name = 2;
+
+  // The build target/board name (e.g. "brya").
+  string board = 3;
+
+  // The model name of the DUT (e.g. "redrix").
+  string model = 4;
+
+  // The shard index for this specific request (0 if unsharded).
+  int64 shard_index = 5;
+
+  // Note: include/exclude-filter arguments are intentionally omitted to avoid
+  // data starvation during auto-retries.
+}
+
+message GetDurationResponse {
+  // The historical minimum execution duration in seconds.
+  // Returns 0 if there is not enough data (e.g., < 20 successful runs) to confidently
+  // establish a baseline, which instructs the caller to Fail-Open and ignore shifting the deadline.
+  int64 min_duration_seconds = 1;
+
+  // The total number of successful runs historically found for this configuration.
+  // Useful for telemetry and debugging.
+  int64 run_count = 2;
+}
