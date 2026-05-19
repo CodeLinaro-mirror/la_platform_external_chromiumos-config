@@ -12442,6 +12442,16 @@
                   "proto3Optional": true,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+                },
+                {
+                  "jsonName": "p1440Support",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "p1440_support",
+                  "number": 9,
+                  "oneofIndex": 5,
+                  "proto3Optional": true,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HalConfiguration.Present"
                 }
               ],
               "name": "CameraHWConfig",
@@ -12460,6 +12470,9 @@
                 },
                 {
                   "name": "_p4k_support"
+                },
+                {
+                  "name": "_p1440_support"
                 }
               ],
               "reservedName": [
