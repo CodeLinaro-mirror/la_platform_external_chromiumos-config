@@ -154,13 +154,12 @@ protoc -Iproto \
 echo
 echo "== Generating OWNERS file for generated code paths"
 {
-    echo "##### AUTO-GENERATED FILE #####"
-    echo "##### See generate.sh     #####"
+  echo "##### AUTO-GENERATED FILE #####"
+  echo "##### See generate.sh     #####"
+  # Use C locale for sorting to get stability between systems.
+  find proto/* -type f -name "OWNERS*" -exec grep -h -E '^include' {} + | LC_COLLATE=C sort -u
+  find proto/* -type f -name "OWNERS*" -exec grep -h -E '^[a-z0-9]+@.+\..+' {} + | LC_COLLATE=C sort -u
 } > "${gen_owners}"
-
-find proto/* -type f -name "OWNERS*" -exec cat {} + | grep -E '^include' | sort | uniq >> "${gen_owners}"
-find proto/* -type f -name "OWNERS*" -exec cat {} + | grep -E '^[a-z0-9]+@.+\..+' | sort | uniq >> "${gen_owners}"
-
 
 if [[ $(sha256_even_empty "${gen_owners}") != "${gen_owners_sha}" ]]; then
   echo
