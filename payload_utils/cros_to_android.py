@@ -146,6 +146,7 @@ def _gen_encoder_profile(resolution, timelapse):
         (640, 480): 3000000,  # 3 Mbps for 480p
         (1280, 720): 8000000,  # 8 Mbps for 720p
         (1920, 1080): 12000000,  # 12 Mbps for 1080p
+        (2560, 1440): 24000000,  # 24 Mbps for 2160p, ref b/514199715
         (3840, 2160): 42000000,  # 42 Mbps for 2160p, ref b/493987913
     }
     width = resolution.width
@@ -156,10 +157,11 @@ def _gen_encoder_profile(resolution, timelapse):
         else default_bitrates.get((width, height), 8000000)
     )
 
+    quality = "qhd" if height == 1440 else str(height) + "p"
     elem = etree.Element(
         "EncoderProfile",
         attrib={
-            "quality": ("timelapse" if timelapse else "") + str(height) + "p",
+            "quality": ("timelapse" if timelapse else "") + quality,
             "fileFormat": "mp4",
             "duration": "60",
         },
@@ -327,6 +329,8 @@ def _generate_media_profiles_xml_string(
 
 def _generate_media_profiles_from_camera_config(
     # pylint: disable=too-many-locals
+    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-statements
     camera_config: android_component_configs_pb2.CameraConfigurationType,
     dtd_path: Optional[pathlib.Path],
 ) -> Optional[bytes]:
@@ -389,6 +393,19 @@ def _generate_media_profiles_from_camera_config(
                 resolution_1080p.width = 1920
                 resolution_1080p.height = 1080
                 resolutions.append(resolution_1080p)
+
+            if (
+                cam.p1440_support
+                == android_component_configs_pb2.HalConfiguration.PRESENT
+            ):
+                logging.info(
+                    "Camera %s has 1440p support, adding 2560x144 resolution.",
+                    cam,
+                )
+                resolution_1440p = camera_config_pb2.Resolution()
+                resolution_1440p.width = 2560
+                resolution_1440p.height = 1440
+                resolutions.append(resolution_1440p)
 
             if (
                 cam.p4k_support

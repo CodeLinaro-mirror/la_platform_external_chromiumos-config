@@ -127,6 +127,7 @@ def _create_camerahwconfig(
         autofocus_support = None,
         p1080_support = None,
         p4k_support = None,
+        p1440_support = None,
         resolutions = []):
     """Builds android_hal_config proto for a camerahwconfig."""
 
@@ -136,6 +137,7 @@ def _create_camerahwconfig(
         autofocus_support = autofocus_support,
         p1080_support = p1080_support,
         p4k_support = p4k_support,
+        p1440_support = p1440_support,
         resolutions = resolutions,
     )
 
