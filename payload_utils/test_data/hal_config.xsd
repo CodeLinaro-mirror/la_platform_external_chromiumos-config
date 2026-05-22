@@ -220,7 +220,7 @@
     </xs:all>
   </xs:complexType>
 
-  <xs:complexType name="SarConfigType">
+  <xs:complexType name="WifiConfigType">
     <xs:sequence>
       <xs:element name="Chip" type="WiFiChipType" minOccurs="1"/>
       <xs:element name="MTKConfig" type="SarSpecType" minOccurs="0" maxOccurs="1"/>
@@ -338,7 +338,7 @@
       <xs:element name="VideoConfiguration" type="VideoConfigurationType" minOccurs="0"/>
       <xs:element name="CameraConfiguration" type="CameraConfigurationType" minOccurs="0"/>
       <xs:element name="HardwareFeaturesConfiguration" type="HardwareFeaturesType" minOccurs="0"/>
-      <xs:element name="WiFiSarConfiguration" type="SarConfigType" minOccurs="0"/>
+      <xs:element name="WifiConfiguration" type="WifiConfigType" minOccurs="0"/>
       <xs:element name="StorageConfiguration" type="StorageConfigurationType" minOccurs="0"/>
       <xs:element name="KeyboardConfiguration" type="KeyboardConfigurationType" minOccurs="0"/>
       <xs:element name="StylusConfiguration" type="StylusConfigurationType" minOccurs="0"/>

@@ -960,7 +960,7 @@ def _add_camera_entry(
 
 # pylint: disable=too-many-statements
 def _build_mtk_entry(parent, mtk_config) -> None:
-    """Handle WiFiSarConfiguration for MTKConfig case.
+    """Handle WifiConfiguration for MTKConfig case.
 
     Args:
         parent: The parent <HalConfig> XML element.
@@ -1026,7 +1026,7 @@ def _add_wifi_entry(
     design_config: design_pb2.Design.Config,
     sw_config: software_config_pb2.SoftwareConfig,
 ) -> None:
-    """Adds WiFiSarConfiguration to the XML tree for a Design.Config.
+    """Adds WifiConfiguration to the XML tree for a Design.Config.
 
     Args:
         hal_config: The parent <HalConfig> XML element.
@@ -1046,7 +1046,7 @@ def _add_wifi_entry(
     if config_field is not None:
         logging.info("wifi_config is %s", config_field)
 
-        wifi_config_elem = etree.SubElement(hal_config, "WiFiSarConfiguration")
+        wifi_config_elem = etree.SubElement(hal_config, "WifiConfiguration")
         # skipping "ath10k_config" case as it is outdated,
         # will add "qcom" when chip config is ready
         if config_field in ("intel_config", "legacy_intel_config"):

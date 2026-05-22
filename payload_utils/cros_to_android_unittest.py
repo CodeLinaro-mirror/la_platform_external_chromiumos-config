@@ -10,8 +10,8 @@ import pathlib
 import tempfile
 import unittest
 
-# pylint: disable=too-many-public-methods
 # pylint: disable=import-error
+# pylint: disable=too-many-public-methods
 from chromiumos.config.api import android_component_configs_pb2
 from chromiumos.config.api import design_pb2
 from chromiumos.config.api import proximity_config_pb2
@@ -439,7 +439,7 @@ class HalEntryHelpersTest(unittest.TestCase):
             self.root_element, self.design_config, self.sw_config
         )
 
-        wifi_elem = self.root_element.find("WiFiSarConfiguration")
+        wifi_elem = self.root_element.find("WifiConfiguration")
         self.assertIsNotNone(wifi_elem)
         self.assertEqual(wifi_elem.find("Chip").text, "intel")
 
@@ -458,7 +458,7 @@ class HalEntryHelpersTest(unittest.TestCase):
             self.root_element, self.design_config, self.sw_config
         )
 
-        wifi_elem = self.root_element.find("WiFiSarConfiguration")
+        wifi_elem = self.root_element.find("WifiConfiguration")
         self.assertIsNotNone(wifi_elem)
         self.assertEqual(wifi_elem.find("Chip").text, "mtk")
         power_elem = wifi_elem.find("MTKConfig").find("PowerTable.tablet")
@@ -498,7 +498,7 @@ class HalEntryHelpersTest(unittest.TestCase):
             self.root_element, self.design_config, self.sw_config
         )
 
-        wifi_elem = self.root_element.find("WiFiSarConfiguration")
+        wifi_elem = self.root_element.find("WifiConfiguration")
         self.assertIsNotNone(wifi_elem)
         self.assertEqual(wifi_elem.find("Chip").text, "mtk")
         power_elem = wifi_elem.find("MTKConfig").find("PowerTable.tablet")
