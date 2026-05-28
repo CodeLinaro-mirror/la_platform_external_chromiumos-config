@@ -6552,6 +6552,10 @@
                     {
                       "name": "AUDIO_CODEC_ALC3204",
                       "number": 24
+                    },
+                    {
+                      "name": "AUDIO_CODEC_CS42L45",
+                      "number": 25
                     }
                   ]
                 },
@@ -6667,6 +6671,10 @@
                     {
                       "name": "AMPLIFIER_CS42L43",
                       "number": 28
+                    },
+                    {
+                      "name": "AMPLIFIER_CS35L63",
+                      "number": 29
                     }
                   ]
                 },
