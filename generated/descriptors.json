@@ -22910,6 +22910,13 @@
                   "number": 24,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.HumanMotionRobot"
+                },
+                {
+                  "jsonName": "subrailConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "subrail_config",
+                  "number": 25,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "ChromeOS",

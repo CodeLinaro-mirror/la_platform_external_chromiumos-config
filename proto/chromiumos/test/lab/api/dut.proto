@@ -35,7 +35,7 @@ message Dut {
   // Chrome OS specific DUT details
   // Populated by and should be kept in sync with UFS adapter in:
   // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/cros/cmd/labservice/internal/ufs/ufs.go
-  // NEXT TAG: 25
+  // NEXT TAG: 26
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -68,6 +68,8 @@ message Dut {
     // The host and topology used in peripheral interop test beds.
     PasitHost pasit_host = 23;
     HumanMotionRobot hmr = 24;
+    // Power subrail config file
+    string subrail_config = 25;
 
     reserved 1;
   }
