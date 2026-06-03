@@ -86,13 +86,13 @@ def _generate_xml_for_camera(
 
 
 def _generate_xml_for_hardware_feature(
-    component_config: android_component_configs_pb2.HardwareFeatureConfigurationType,
+    component_config: android_component_configs_pb2.HardwareFeaturesConfigurationType,
     permissions_elem: etree._Element,
 ):
-    """Generates feature XML content for HardwareFeatureConfiguration.
+    """Generates feature XML content for HardwareFeaturesConfiguration.
 
     Args:
-        component_config: The HardwareFeatureConfigurationType proto.
+        component_config: The HardwareFeaturesConfigurationType proto.
         permissions_elem: The parent permissions element.
     """
     if component_config.form_factor == "CONVERTIBLE":
@@ -202,7 +202,7 @@ def _generate_xml_for_proximity(
 _COMPONENT_HANDLERS = {
     "CameraConfiguration": _generate_xml_for_camera,
     "FingerprintConfiguration": _generate_xml_for_fingerprint,
-    "HardwareFeatureConfiguration": _generate_xml_for_hardware_feature,
+    "HardwareFeaturesConfiguration": _generate_xml_for_hardware_feature,
     "AccelerometerConfiguration": _generate_xml_for_accelerometer,
     "GyroscopeConfiguration": _generate_xml_for_gyroscope,
     "LightSensorConfiguration": _generate_xml_for_lightsensor,

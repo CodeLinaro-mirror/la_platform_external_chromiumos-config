@@ -12872,7 +12872,7 @@
               "type": "TYPE_BOOL"
             }
           ],
-          "name": "HardwareFeatureConfigurationType",
+          "name": "HardwareFeaturesConfigurationType",
           "oneofDecl": [
             {
               "name": "_form_factor"
@@ -13915,7 +13915,7 @@
               "name": "hwfeature_list",
               "number": 12,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.HardwareFeatureConfigurationType"
+              "typeName": ".chromiumos.config.api.HardwareFeaturesConfigurationType"
             },
             {
               "jsonName": "gyroscopeList",

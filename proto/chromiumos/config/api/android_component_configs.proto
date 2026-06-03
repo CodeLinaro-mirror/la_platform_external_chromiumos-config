@@ -234,9 +234,9 @@ message VideoConfigurationType {
   optional bool default = 3;
 }
 
-// HardwareFeature component configuration. Annotation to the fields:
+// HardwareFeatures component configuration. Annotation to the fields:
 // id: The identity field among the enumeration of possible variants on this HW
-message HardwareFeatureConfigurationType {
+message HardwareFeaturesConfigurationType {
   string id = 1;
   optional string form_factor = 2;
   optional string touchscreen_support = 3;
@@ -394,7 +394,7 @@ message HalConfiguration {
   repeated TouchscreenConfigurationType touchscreen_list = 9;
   repeated TouchpadConfigurationType touchpad_list = 10;
   repeated VideoConfigurationType video_list = 11;
-  repeated HardwareFeatureConfigurationType hwfeature_list = 12;
+  repeated HardwareFeaturesConfigurationType hwfeature_list = 12;
   repeated GyroscopeConfigurationType gyroscope_list = 13;
   repeated AccelerometerConfigurationType accelerometer_list = 14;
   repeated LightSensorConfigurationType lightsensor_list = 15;

@@ -259,7 +259,7 @@ def _create_hwfeature(
         default = False):
     """Builds android_hal_config proto for a hw_feature."""
 
-    return android_component_pb.HardwareFeatureConfigurationType(
+    return android_component_pb.HardwareFeaturesConfigurationType(
         id = id,
         form_factor = form_factor,
         touchscreen_support = touchscreen_support,
