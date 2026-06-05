@@ -191,12 +191,31 @@ def _generate_xml_for_proximity(
         component_config: The ProximityConfigurationType proto.
         permissions_elem: The parent permissions element.
     """
-    _add_feature_element(permissions_elem, "android.hardware.sensor.proximity")
+    has_sar = False
+    has_proximity = True
 
-    if component_config.HasField(
-        "semtech_proximity"
-    ) and component_config.semtech_proximity.HasField("semtech_config"):
+    if component_config.HasField("semtech_proximity"):
+        semtech = component_config.semtech_proximity
+        if semtech.HasField("location"):
+            loc = semtech.location
+            fields = [f.name for f, _ in loc.ListFields()]
+            has_radio = any(
+                f in ("radio_type_wifi", "radio_type_cellular") for f in fields
+            )
+            has_other = any(
+                f not in ("radio_type_wifi", "radio_type_cellular")
+                for f in fields
+            )
+            has_sar = has_radio
+            if has_radio and not has_other:
+                has_proximity = False
+
+    if has_sar:
         _add_feature_element(permissions_elem, "com.google.sensor.sar")
+    if has_proximity:
+        _add_feature_element(
+            permissions_elem, "android.hardware.sensor.proximity"
+        )
 
 
 _COMPONENT_HANDLERS = {

@@ -8,6 +8,7 @@
 import pathlib
 import tempfile
 import unittest
+import unittest.mock
 
 from chromiumos.config.api import android_component_configs_pb2
 from chromiumos.config.payload import config_bundle_pb2
@@ -157,17 +158,47 @@ class GenerateFeatureXmlTest(unittest.TestCase):
         self.assertIn("android.hardware.sensor.proximity", features)
         self.assertNotIn("com.google.sensor.sar", features)
 
-        # Now, add semtech_config and check again.
-        prox_config.semtech_proximity.semtech_config.sampling_frequency = 10.0
-        generate_feature_xml.generate_from_hal_config(
-            self.bundle.android_hal_config, self.temp_dir
-        )
+    def test_generate_proximity_feature_semtech(self):
+        """Test proximity feature XML generation with Semtech config."""
+        mock_radio_field = unittest.mock.MagicMock()
+        mock_radio_field.name = "radio_type_wifi"
+        mock_other_field = unittest.mock.MagicMock()
+        mock_other_field.name = "front"
 
-        with open(prox_file, "rb") as f:
-            xml_content = f.read()
-        root = etree.fromstring(xml_content)
+        # Setup base mock structure once
+        mock_config = unittest.mock.MagicMock()
+        mock_config.HasField.return_value = True  # Has semtech_proximity
+        mock_semtech = mock_config.semtech_proximity
+        mock_semtech.HasField.return_value = True  # Has location
+        mock_loc = mock_semtech.location
+
+        # Case 1: SAR only (radio location)
+        mock_loc.ListFields.return_value = [(mock_radio_field, None)]
+        root = etree.Element("permissions")
+        # pylint: disable=protected-access
+        generate_feature_xml._generate_xml_for_proximity(mock_config, root)
         features = {f.get("name") for f in root.findall("feature")}
+        self.assertNotIn("android.hardware.sensor.proximity", features)
+        self.assertIn("com.google.sensor.sar", features)
 
+        # Case 2: Proximity only (non-radio location)
+        mock_loc.ListFields.return_value = [(mock_other_field, None)]
+        root = etree.Element("permissions")
+        # pylint: disable=protected-access
+        generate_feature_xml._generate_xml_for_proximity(mock_config, root)
+        features = {f.get("name") for f in root.findall("feature")}
+        self.assertIn("android.hardware.sensor.proximity", features)
+        self.assertNotIn("com.google.sensor.sar", features)
+
+        # Case 3: Both (radio + non-radio location)
+        mock_loc.ListFields.return_value = [
+            (mock_radio_field, None),
+            (mock_other_field, None),
+        ]
+        root = etree.Element("permissions")
+        # pylint: disable=protected-access
+        generate_feature_xml._generate_xml_for_proximity(mock_config, root)
+        features = {f.get("name") for f in root.findall("feature")}
         self.assertIn("android.hardware.sensor.proximity", features)
         self.assertIn("com.google.sensor.sar", features)
 
