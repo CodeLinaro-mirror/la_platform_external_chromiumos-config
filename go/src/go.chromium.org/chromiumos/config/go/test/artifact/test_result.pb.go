@@ -238,8 +238,8 @@ type TestInvocation struct {
 	// represents the hardware specs of devices and includes a full list of
 	// available DUTs of a given schedule-able unit (e.g. swarming bot) from
 	// inventory server.
-	// Multi-dut Sarming bot example:
-	// https://chromeos-swarming.appspot.com/bot?id=crossk-chromeos15-row3-metro1-unit4
+	// Multi-dut Swarming bot example:
+	// https://ci.chromium.org/ui/fleet/p/chromeos/devices/chromeos15-row3-metro5-unit4
 	//
 	// For multi-dut testing, it's possible that only a subset of DUTs are used
 	// to run tests. In addition, only those DUT that are used for testing will
