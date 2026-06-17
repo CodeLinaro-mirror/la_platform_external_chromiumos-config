@@ -22434,6 +22434,10 @@
             {
               "name": "NETWORK_ROAMSIM",
               "number": 22
+            },
+            {
+              "name": "NETWORK_CTS",
+              "number": 23
             }
           ]
         },
