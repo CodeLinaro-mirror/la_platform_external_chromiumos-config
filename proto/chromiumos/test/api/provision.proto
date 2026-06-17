@@ -124,6 +124,8 @@ message InstallResponse {
     STATUS_DOWNLOADING_FIRMWARE_FAILED = 23;
     // The CSME is locked and cannot be unlocked
     STATUS_FIRMWARE_CSME_LOCKED = 24;
+    // The OEM lock is enabled on the device.
+    STATUS_PRE_PROVISION_OEM_LOCKED = 25;
   }
   Status status = 1;
 

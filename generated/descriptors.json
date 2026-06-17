@@ -31593,6 +31593,10 @@
                 {
                   "name": "STATUS_FIRMWARE_CSME_LOCKED",
                   "number": 24
+                },
+                {
+                  "name": "STATUS_PRE_PROVISION_OEM_LOCKED",
+                  "number": 25
                 }
               ]
             }
