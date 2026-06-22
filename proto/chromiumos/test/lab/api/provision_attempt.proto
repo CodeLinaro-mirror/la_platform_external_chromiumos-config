@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+import "google/protobuf/timestamp.proto";
+
+
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+option java_outer_classname = "ProvisionAttempt";
+
+
+// A single provisioning attempt record.
+message ProvisionAttemptRecord {
+
+
+  // Unique ID generated for each provisioning attempt.
+  string provision_id = 1;
+
+  message InfraInfo {
+    // The unique LUCI task ID for the test runner task.
+    string task_id = 1;
+    // Type of the task which will help us to locate the underlying CI task
+    string task_type = 2;
+    // E.g. cloudbots, drones, ate hosts.
+    string execution_platform = 3;
+    // The infrastructure environment (prod, staging, dev).
+    string execution_channel = 4;
+  }
+  InfraInfo infra_info = 2;
+
+  // Asset ID of the device
+  string device_id = 3;
+
+  // Timestamps
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+
+  // Total duration of the provisioning attempt in seconds.
+  int32 duration_seconds = 6;
+
+  enum ProvisionType {
+    PROVISION_TYPE_UNSPECIFIED = 0;
+    CHROMEOS = 1;
+    ANDROID_DESKTOP = 2;
+    CROSS_OVER = 3;
+  }
+  // One of CHROMEOS, ANDROID_DESKTOP, CROSS_OVER.
+  ProvisionType provision_type = 7;
+
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+    INFRA_FAILURE = 3;
+    TIMEOUT = 4;
+  }
+  // One of SUCCESS, FAILURE, INFRA_FAILURE, TIMEOUT.
+  Status status = 8;
+
+  message ErrorInfo {
+    // High-level failure grouping (e.g., NETWORK, IMAGE).
+    string category = 1;
+    // The raw error message for deep-dive debugging.
+    string message = 2;
+    // Parsed from error_message or specific properties.
+    string code = 3;
+  }
+  ErrorInfo error_info = 9;
+
+  message DutInfo {
+    string board = 1;
+    string model = 2;
+    repeated string pool = 3;
+  }
+  DutInfo dut_info = 10;
+
+  message OsInfo {
+    string type = 1;
+    string build_id = 2;
+    string build_target = 3;
+    string branch = 4;
+  }
+  // The type of OS being provisioned.
+  OsInfo target_os_info = 11;
+  // The type of OS currently on the device.
+  OsInfo original_os_info = 12;
+
+  // IP of the caching server used for downloading artifacts.
+  string caching_server_ip = 13;
+  // The timeout limit applied to the task.
+  int32 applied_timeout_limit_seconds = 14;
+}

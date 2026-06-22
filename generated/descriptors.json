@@ -48296,6 +48296,304 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "messageType": [
+        {
+          "enumType": [
+            {
+              "name": "ProvisionType",
+              "value": [
+                {
+                  "name": "PROVISION_TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "CHROMEOS",
+                  "number": 1
+                },
+                {
+                  "name": "ANDROID_DESKTOP",
+                  "number": 2
+                },
+                {
+                  "name": "CROSS_OVER",
+                  "number": 3
+                }
+              ]
+            },
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "SUCCESS",
+                  "number": 1
+                },
+                {
+                  "name": "FAILURE",
+                  "number": 2
+                },
+                {
+                  "name": "INFRA_FAILURE",
+                  "number": 3
+                },
+                {
+                  "name": "TIMEOUT",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "provisionId",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "infraInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "infra_info",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.InfraInfo"
+            },
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "startTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "start_time",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "endTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "end_time",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "durationSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "duration_seconds",
+              "number": 6,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "provisionType",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_type",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.ProvisionType"
+            },
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 8,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.Status"
+            },
+            {
+              "jsonName": "errorInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_info",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.ErrorInfo"
+            },
+            {
+              "jsonName": "dutInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_info",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.DutInfo"
+            },
+            {
+              "jsonName": "targetOsInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "target_os_info",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.OsInfo"
+            },
+            {
+              "jsonName": "originalOsInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "original_os_info",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.ProvisionAttemptRecord.OsInfo"
+            },
+            {
+              "jsonName": "cachingServerIp",
+              "label": "LABEL_OPTIONAL",
+              "name": "caching_server_ip",
+              "number": 13,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "appliedTimeoutLimitSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "applied_timeout_limit_seconds",
+              "number": 14,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "ProvisionAttemptRecord",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "taskId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "task_id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "taskType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "task_type",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "executionPlatform",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "execution_platform",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "executionChannel",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "execution_channel",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "InfraInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "category",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "category",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "message",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "message",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "code",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "code",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ErrorInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "board",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "board",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "model",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "model",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "pool",
+                  "label": "LABEL_REPEATED",
+                  "name": "pool",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DutInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "type",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "type",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_id",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildTarget",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_target",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "branch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "branch",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OsInfo"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/provision_attempt.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api",
+        "javaOuterClassname": "ProvisionAttempt"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "enumType": [
         {
           "name": "StorageType",
