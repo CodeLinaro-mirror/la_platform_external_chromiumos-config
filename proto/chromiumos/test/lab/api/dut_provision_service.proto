@@ -1,0 +1,25 @@
+// Copyright 2026 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "chromiumos/test/lab/api/provision_attempt.proto";
+
+// Service to manage provisioning-related activities.
+service DutProvisionService {
+  // Uploads provisioning attempts data to BigQuery.
+  rpc UploadProvisionMetrics(UploadProvisionMetricsRequest) returns (UploadProvisionMetricsResponse);
+}
+
+message UploadProvisionMetricsRequest {
+  // The provisioning attempts data to be uploaded.
+  repeated ProvisionAttemptRecord attempts = 1;
+}
+
+message UploadProvisionMetricsResponse {
+}

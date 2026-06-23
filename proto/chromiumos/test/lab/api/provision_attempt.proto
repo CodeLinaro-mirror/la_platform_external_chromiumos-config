@@ -4,17 +4,11 @@ package chromiumos.test.lab.api;
 
 import "google/protobuf/timestamp.proto";
 
-
-
 option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
-
 option java_outer_classname = "ProvisionAttempt";
-
 
 // A single provisioning attempt record.
 message ProvisionAttemptRecord {
-
-
   // Unique ID generated for each provisioning attempt.
   string provision_id = 1;
 
