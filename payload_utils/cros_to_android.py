@@ -1485,6 +1485,39 @@ def _add_camera_features(
         )
 
 
+def _add_proximity_features(
+    permissions_elem: etree._Element,
+    proximity: topology_pb2.HardwareFeatures.Proximity,
+) -> None:
+    """Adds proximity features to the permissions XML element."""
+    radio_types = (
+        proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI,
+        proximity_config_pb2.ProximityConfig.Location.RadioType.CELLULAR,
+    )
+    has_sar = False
+    has_proximity = False
+    for prox_conf in proximity.configs:
+        if has_sar and has_proximity:
+            break
+
+        if prox_conf.HasField("semtech_config") and prox_conf.location:
+            for loc in prox_conf.location:
+                if loc.radio_type in radio_types:
+                    has_sar = True
+                else:
+                    has_proximity = True
+        else:
+            has_proximity = True
+
+    if has_sar:
+        _add_feature_element(permissions_elem, "com.google.sensor.sar")
+
+    if has_proximity:
+        _add_feature_element(
+            permissions_elem, "android.hardware.sensor.proximity"
+        )
+
+
 def run_generate_feature_xml(opts: argparse.Namespace) -> None:
     """Handles the 'generate-feature-xml' sub-command logic."""
     # pylint: disable=too-many-branches
@@ -1571,16 +1604,7 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                     permissions_elem, "android.hardware.sensor.light"
                 )
 
-            if hw_features.proximity.configs:
-                _add_feature_element(
-                    permissions_elem, "android.hardware.sensor.proximity"
-                )
-
-            if any(
-                prox_conf.WhichOneof("config") == "semtech_config"
-                for prox_conf in hw_features.proximity.configs
-            ):
-                _add_feature_element(permissions_elem, "com.google.sensor.sar")
+            _add_proximity_features(permissions_elem, hw_features.proximity)
 
             if hw_features.screen.touch_support == present_enum:
                 _add_feature_element(

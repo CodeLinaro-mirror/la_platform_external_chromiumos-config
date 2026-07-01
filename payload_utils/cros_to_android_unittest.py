@@ -729,10 +729,47 @@ class FeatureXmlGenerationTest(unittest.TestCase):
         self._create_bundle_and_run_feature_generation()
         self._assert_feature_xml(["android.hardware.sensor.proximity"])
 
-    def test_generate_sar_feature(self):
-        """Test com.google.sensor.sar feature XML."""
+    def test_generate_sar_feature_no_location(self):
+        """Test Semtech proximity config without location defaults to standard proximity."""
         prox_config = self.config.hardware_features.proximity.configs.add()
         prox_config.semtech_config.sampling_frequency = 1
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(["android.hardware.sensor.proximity"])
+
+    def test_generate_sar_feature_radio_location(self):
+        """Test com.google.sensor.sar feature XML with radio location."""
+        prox_config = self.config.hardware_features.proximity.configs.add()
+        prox_config.semtech_config.sampling_frequency = 1
+        loc = prox_config.location.add()
+        loc.radio_type = (
+            proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(["com.google.sensor.sar"])
+
+    def test_generate_sar_feature_non_radio_location(self):
+        """Test android.hardware.sensor.proximity feature XML with non-radio location."""
+        prox_config = self.config.hardware_features.proximity.configs.add()
+        prox_config.semtech_config.sampling_frequency = 1
+        loc = prox_config.location.add()
+        loc.radio_type = (
+            proximity_config_pb2.ProximityConfig.Location.RadioType.UNKNOWN
+        )
+        self._create_bundle_and_run_feature_generation()
+        self._assert_feature_xml(["android.hardware.sensor.proximity"])
+
+    def test_generate_sar_feature_mixed_locations(self):
+        """Test both features generated with mixed radio and non-radio locations."""
+        prox_config = self.config.hardware_features.proximity.configs.add()
+        prox_config.semtech_config.sampling_frequency = 1
+        loc1 = prox_config.location.add()
+        loc1.radio_type = (
+            proximity_config_pb2.ProximityConfig.Location.RadioType.WIFI
+        )
+        loc2 = prox_config.location.add()
+        loc2.radio_type = (
+            proximity_config_pb2.ProximityConfig.Location.RadioType.UNKNOWN
+        )
         self._create_bundle_and_run_feature_generation()
         self._assert_feature_xml(
             ["android.hardware.sensor.proximity", "com.google.sensor.sar"]
