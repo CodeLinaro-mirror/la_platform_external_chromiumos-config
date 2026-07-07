@@ -36525,7 +36525,8 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/build/api/firmware_config.proto"
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/storage_path.proto"
       ],
       "messageType": [
         {
@@ -36583,9 +36584,42 @@
               "name": "force_flash_same_version",
               "number": 3,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "pdcFirmwareImages",
+              "label": "LABEL_REPEATED",
+              "name": "pdc_firmware_images",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry"
             }
           ],
-          "name": "FirmwareProvisionInstallMetadata"
+          "name": "FirmwareProvisionInstallMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                }
+              ],
+              "name": "PdcFirmwareImagesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [

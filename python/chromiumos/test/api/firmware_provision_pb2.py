@@ -12,6 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.build.api import firmware_config_pb2 as chromiumos_dot_build_dot_api_dot_firmware__config__pb2
+from chromiumos import storage_path_pb2 as chromiumos_dot_storage__path__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"\x91\x02\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12Q\n\x02os\x18\x02 \x01(\x0e\x32\x45.chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem\x12 \n\x18\x66orce_flash_same_version\x18\x03 \x01(\x08\"9\n\x0fOperatingSystem\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0c\n\x08\x43HROMEOS\x10\x01\x12\x0b\n\x07\x41NDROID\x10\x02\"\x92\x01\n\x19\x46irmwareProvisionResponse\x12\x19\n\rerror_message\x18\x01 \x01(\tB\x02\x18\x01\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a\x1d\x63hromiumos/storage_path.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"\xcf\x03\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12Q\n\x02os\x18\x02 \x01(\x0e\x32\x45.chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem\x12 \n\x18\x66orce_flash_same_version\x18\x03 \x01(\x08\x12i\n\x13pdc_firmware_images\x18\x04 \x03(\x0b\x32L.chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry\x1aQ\n\x16PdcFirmwareImagesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath:\x02\x38\x01\"9\n\x0fOperatingSystem\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0c\n\x08\x43HROMEOS\x10\x01\x12\x0b\n\x07\x41NDROID\x10\x02\"\x92\x01\n\x19\x46irmwareProvisionResponse\x12\x19\n\rerror_message\x18\x01 \x01(\tB\x02\x18\x01\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,])
 
 
 
@@ -51,8 +52,8 @@ _FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=394,
-  serialized_end=451,
+  serialized_start=615,
+  serialized_end=672,
 )
 _sym_db.RegisterEnumDescriptor(_FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM)
 
@@ -77,10 +78,48 @@ _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=113,
-  serialized_end=175,
+  serialized_start=144,
+  serialized_end=206,
 )
 
+
+_FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY = _descriptor.Descriptor(
+  name='PdcFirmwareImagesEntry',
+  full_name='chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=532,
+  serialized_end=613,
+)
 
 _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
   name='FirmwareProvisionInstallMetadata',
@@ -111,10 +150,17 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pdc_firmware_images', full_name='chromiumos.test.api.FirmwareProvisionInstallMetadata.pdc_firmware_images', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY, ],
   enum_types=[
     _FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM,
   ],
@@ -124,8 +170,8 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=178,
-  serialized_end=451,
+  serialized_start=209,
+  serialized_end=672,
 )
 
 
@@ -184,12 +230,15 @@ _FIRMWAREPROVISIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=454,
-  serialized_end=600,
+  serialized_start=675,
+  serialized_end=821,
 )
 
+_FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY.fields_by_name['value'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
+_FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY.containing_type = _FIRMWAREPROVISIONINSTALLMETADATA
 _FIRMWAREPROVISIONINSTALLMETADATA.fields_by_name['firmware_config'].message_type = chromiumos_dot_build_dot_api_dot_firmware__config__pb2._FIRMWARECONFIG
 _FIRMWAREPROVISIONINSTALLMETADATA.fields_by_name['os'].enum_type = _FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM
+_FIRMWAREPROVISIONINSTALLMETADATA.fields_by_name['pdc_firmware_images'].message_type = _FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY
 _FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM.containing_type = _FIRMWAREPROVISIONINSTALLMETADATA
 DESCRIPTOR.message_types_by_name['FirmwareProvisionStartupMetadata'] = _FIRMWAREPROVISIONSTARTUPMETADATA
 DESCRIPTOR.message_types_by_name['FirmwareProvisionInstallMetadata'] = _FIRMWAREPROVISIONINSTALLMETADATA
@@ -204,11 +253,19 @@ FirmwareProvisionStartupMetadata = _reflection.GeneratedProtocolMessageType('Fir
 _sym_db.RegisterMessage(FirmwareProvisionStartupMetadata)
 
 FirmwareProvisionInstallMetadata = _reflection.GeneratedProtocolMessageType('FirmwareProvisionInstallMetadata', (_message.Message,), {
+
+  'PdcFirmwareImagesEntry' : _reflection.GeneratedProtocolMessageType('PdcFirmwareImagesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY,
+    '__module__' : 'chromiumos.test.api.firmware_provision_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry)
+    })
+  ,
   'DESCRIPTOR' : _FIRMWAREPROVISIONINSTALLMETADATA,
   '__module__' : 'chromiumos.test.api.firmware_provision_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.FirmwareProvisionInstallMetadata)
   })
 _sym_db.RegisterMessage(FirmwareProvisionInstallMetadata)
+_sym_db.RegisterMessage(FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry)
 
 FirmwareProvisionResponse = _reflection.GeneratedProtocolMessageType('FirmwareProvisionResponse', (_message.Message,), {
   'DESCRIPTOR' : _FIRMWAREPROVISIONRESPONSE,
@@ -219,5 +276,6 @@ _sym_db.RegisterMessage(FirmwareProvisionResponse)
 
 
 DESCRIPTOR._options = None
+_FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY._options = None
 _FIRMWAREPROVISIONRESPONSE.fields_by_name['error_message']._options = None
 # @@protoc_insertion_point(module_scope)
