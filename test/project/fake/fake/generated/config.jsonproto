@@ -9384,6 +9384,7 @@
                   },
                   "dsm": {
                     "disableActiveSdrChannels": "1",
+                    "disableWifiBands": "9",
                     "enablement11ax": "6",
                     "enablement11beCountries": {},
                     "energyDetectionThreshold": {},
@@ -10056,6 +10057,7 @@
                       },
                       "dsm": {
                         "disableActiveSdrChannels": "1",
+                        "disableWifiBands": "9",
                         "enablement11ax": "6",
                         "enablement11beCountries": {},
                         "energyDetectionThreshold": {},
@@ -13324,6 +13326,7 @@
           },
           "dsm": {
             "disableActiveSdrChannels": "1",
+            "disableWifiBands": "-1",
             "enablement11ax": "6",
             "regulatoryConfigurations": "4",
             "supportIndonesia5gBand": "2",

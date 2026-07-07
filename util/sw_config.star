@@ -1011,6 +1011,7 @@ def _create_intel_dsm(
         uart_configurations = -1,
         enablement_11ax = -1,
         unii_4 = -1,
+        disable_wifi_bands = -1,
         enablement_11be_countries = None,
         rfi_mitigation = None,
         energy_detection_threshold = None):
@@ -1024,6 +1025,7 @@ def _create_intel_dsm(
         uart_configurations: M.2 UART interface configuration.
         enablement_11ax: Control enablement of 11ax on certificated modules.
         unii_4: Control enablement of UNII-4 over certificate modules.
+        disable_wifi_bands: Force disable selectively Wi-Fi bands per platform (bitmask).
         enablement_11be_countries: Control enablement of 11be on certificated modules.
         energy_detection_threshold: Control enablement of EDT optimization.
         rfi_mitigation: Control of RFI mitigation
@@ -1036,6 +1038,7 @@ def _create_intel_dsm(
         uart_configurations = uart_configurations,
         enablement_11ax = enablement_11ax,
         unii_4 = unii_4,
+        disable_wifi_bands = disable_wifi_bands,
         enablement_11be_countries = enablement_11be_countries,
         energy_detection_threshold = energy_detection_threshold,
         rfi_mitigation = rfi_mitigation,

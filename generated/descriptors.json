@@ -3922,6 +3922,13 @@
                       "type": "TYPE_INT64"
                     },
                     {
+                      "jsonName": "disableWifiBands",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "disable_wifi_bands",
+                      "number": 12,
+                      "type": "TYPE_INT64"
+                    },
+                    {
                       "jsonName": "enablement11beCountries",
                       "label": "LABEL_OPTIONAL",
                       "name": "enablement_11be_countries",

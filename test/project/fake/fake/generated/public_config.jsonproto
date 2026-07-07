@@ -1390,6 +1390,7 @@
                   },
                   "dsm": {
                     "disableActiveSdrChannels": "1",
+                    "disableWifiBands": "9",
                     "enablement11ax": "6",
                     "enablement11beCountries": {},
                     "energyDetectionThreshold": {},

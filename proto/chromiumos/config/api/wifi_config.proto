@@ -223,6 +223,9 @@ message WifiConfig {
       int64 enablement_11ax = 7;
       // Function 7.
       int64 unii_4 = 8;
+      // Function 9. Force disable selectively Wi-Fi bands per platform
+      // (bitmask: bit 0 = 2.4GHz ... bit 10 = 7.0GHz, 1 = force disable).
+      int64 disable_wifi_bands = 12;
 
       // For different regions.
       message Enablement11beCountries {
