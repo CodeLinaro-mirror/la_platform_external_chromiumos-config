@@ -46,6 +46,11 @@ message FirmwareProvisionInstallMetadata {
   map<string, chromiumos.StoragePath> pdc_firmware_images = 4;
 }
 
+message PDCFirmwareVersion {
+  string filename = 1;
+  string version = 2;
+}
+
 // FirmwareProvisionResponse records the response of the firmware provisioning.
 message FirmwareProvisionResponse {
   // If the provisioning failed, here is the detailed error message.
@@ -57,4 +62,7 @@ message FirmwareProvisionResponse {
   string ap_rw_version = 3;
   string ec_ro_version = 4;
   string ec_rw_version = 5;
+
+  // PDC firmware. A map of port to cbfs filename and version.
+  map<int32, PDCFirmwareVersion> pdc_firmware_versions = 6;
 }

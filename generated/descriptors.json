@@ -36646,6 +36646,25 @@
         {
           "field": [
             {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PDCFirmwareVersion"
+        },
+        {
+          "field": [
+            {
               "jsonName": "errorMessage",
               "label": "LABEL_OPTIONAL",
               "name": "error_message",
@@ -36682,9 +36701,42 @@
               "name": "ec_rw_version",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pdcFirmwareVersions",
+              "label": "LABEL_REPEATED",
+              "name": "pdc_firmware_versions",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FirmwareProvisionResponse.PdcFirmwareVersionsEntry"
             }
           ],
-          "name": "FirmwareProvisionResponse"
+          "name": "FirmwareProvisionResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.PDCFirmwareVersion"
+                }
+              ],
+              "name": "PdcFirmwareVersionsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/firmware_provision.proto",
