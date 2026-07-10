@@ -47203,6 +47203,14 @@
             {
               "name": "VIDEO_SPECIFICATION_HDMI_2_1",
               "number": 7
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_1_1",
+              "number": 8
+            },
+            {
+              "name": "VIDEO_SPECIFICATION_DP_1_2",
+              "number": 9
             }
           ]
         },
@@ -47261,6 +47269,35 @@
             {
               "name": "DP_128_BITRATE_20_0",
               "number": 3
+            }
+          ]
+        },
+        {
+          "name": "Dp810Bitrate",
+          "value": [
+            {
+              "name": "DP_810_BITRATE_NONE",
+              "number": 0
+            },
+            {
+              "name": "DP_810_BITRATE_1_62",
+              "number": 1
+            },
+            {
+              "name": "DP_810_BITRATE_2_7",
+              "number": 2
+            },
+            {
+              "name": "DP_810_BITRATE_5_4",
+              "number": 3
+            },
+            {
+              "name": "DP_810_BITRATE_6_75",
+              "number": 4
+            },
+            {
+              "name": "DP_810_BITRATE_8_1",
+              "number": 5
             }
           ]
         },
@@ -47917,6 +47954,14 @@
               "number": 22,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.Dp128Bitrate"
+            },
+            {
+              "jsonName": "dp810Bitrates",
+              "label": "LABEL_REPEATED",
+              "name": "dp_810_bitrates",
+              "number": 23,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Dp810Bitrate"
             }
           ],
           "name": "SetLinkVideoTesterRequest",
@@ -48210,6 +48255,14 @@
               "number": 21,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.Dp128Bitrate"
+            },
+            {
+              "jsonName": "dp810Bitrates",
+              "label": "LABEL_REPEATED",
+              "name": "dp_810_bitrates",
+              "number": 22,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Dp810Bitrate"
             }
           ],
           "name": "GetLinkVideoTesterResponse",

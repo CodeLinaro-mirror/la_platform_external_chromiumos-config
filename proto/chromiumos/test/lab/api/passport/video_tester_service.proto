@@ -241,6 +241,8 @@ enum VideoSpecification {
   VIDEO_SPECIFICATION_HDMI_1_4 = 5;  // HDMI 1.4 specification.
   VIDEO_SPECIFICATION_HDMI_2_0 = 6;  // HDMI 2.0 specification.
   VIDEO_SPECIFICATION_HDMI_2_1 = 7;  // HDMI 2.1 specification.
+  VIDEO_SPECIFICATION_DP_1_1 = 8;    // DisplayPort 1.1 specification.
+  VIDEO_SPECIFICATION_DP_1_2 = 9;    // DisplayPort 1.2 specification.
 }
 
 enum FrlMode {
@@ -259,6 +261,15 @@ enum Dp128Bitrate {
   DP_128_BITRATE_10_0 = 1;
   DP_128_BITRATE_13_5 = 2;
   DP_128_BITRATE_20_0 = 3;
+}
+
+enum Dp810Bitrate {
+  DP_810_BITRATE_NONE = 0;
+  DP_810_BITRATE_1_62 = 1;
+  DP_810_BITRATE_2_7 = 2;
+  DP_810_BITRATE_5_4 = 3;
+  DP_810_BITRATE_6_75 = 4;
+  DP_810_BITRATE_8_1 = 5;
 }
 
 // Request message for setting advanced link parameters for a video tester.
@@ -294,6 +305,9 @@ message SetLinkVideoTesterRequest {
   // bitrates. This must be used in conjunction with video_spec in the same
   // request.
   repeated Dp128Bitrate dp_128_bitrates = 22;
+
+  // Bitrates to use when in dp 1.4 or lower (8b/10b coding), empty otherwise.
+  repeated Dp810Bitrate dp_810_bitrates = 23;
 }
 
 // Response message indicating the success of setting link parameters for a
@@ -350,6 +364,9 @@ message GetLinkVideoTesterResponse {
 
   // Bitrates to use when in dp 2+, empty otherwise
   repeated Dp128Bitrate dp_128_bitrates = 21;
+
+  // Bitrates to use when in dp 1.4 or lower (8b/10b coding), empty otherwise
+  repeated Dp810Bitrate dp_810_bitrates = 22;
 }
 
 // Request message for simulating attaching or detaching a display/sink.
