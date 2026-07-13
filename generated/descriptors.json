@@ -48923,6 +48923,13 @@
                       "name": "program",
                       "number": 3,
                       "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "testArgs",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "test_args",
+                      "number": 4,
+                      "type": "TYPE_STRING"
                     }
                   ],
                   "name": "TemplateParameters"

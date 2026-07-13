@@ -81,6 +81,10 @@ message SourceTestPlan {
       // v1_compatible_vm_test_plan Starlark functions, but the Starlark file is
       // free to use the name arbitrarily.
       string program = 3;
+
+      // Custom arguments to be passed to the test suite (space-separated
+      // key=value pairs).
+      string test_args = 4;
     }
 
     TemplateParameters template_parameters = 4;

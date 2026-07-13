@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z.go.chromium.org/chromiumos/config/go/test/plan',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/test/plan/source_test_plan.proto\x12\x14\x63hromiumos.test.plan\x1a$chromiumos/test/api/test_suite.proto\"\xe4\x03\n\x0eSourceTestPlan\x12\x14\n\x0cpath_regexps\x18\x02 \x03(\t\x12\x1c\n\x14path_regexp_excludes\x18\x03 \x03(\t\x12[\n\x18test_plan_starlark_files\x18\x0f \x03(\x0b\x32\x39.chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile\x1a\xb4\x02\n\x14TestPlanStarlarkFile\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x0c\n\x04path\x18\x03 \x01(\t\x12i\n\x13template_parameters\x18\x04 \x01(\x0b\x32L.chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile.TemplateParameters\x1a\x83\x01\n\x12TemplateParameters\x12H\n\x0ctag_criteria\x18\x01 \x01(\x0b\x32\x32.chromiumos.test.api.TestSuite.TestCaseTagCriteria\x12\x12\n\nsuite_name\x18\x02 \x01(\t\x12\x0f\n\x07program\x18\x03 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x04\x10\x0f\x42\x30Z.go.chromium.org/chromiumos/config/go/test/planb\x06proto3'
+  serialized_pb=b'\n+chromiumos/test/plan/source_test_plan.proto\x12\x14\x63hromiumos.test.plan\x1a$chromiumos/test/api/test_suite.proto\"\xf7\x03\n\x0eSourceTestPlan\x12\x14\n\x0cpath_regexps\x18\x02 \x03(\t\x12\x1c\n\x14path_regexp_excludes\x18\x03 \x03(\t\x12[\n\x18test_plan_starlark_files\x18\x0f \x03(\x0b\x32\x39.chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile\x1a\xc7\x02\n\x14TestPlanStarlarkFile\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x0c\n\x04path\x18\x03 \x01(\t\x12i\n\x13template_parameters\x18\x04 \x01(\x0b\x32L.chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile.TemplateParameters\x1a\x96\x01\n\x12TemplateParameters\x12H\n\x0ctag_criteria\x18\x01 \x01(\x0b\x32\x32.chromiumos.test.api.TestSuite.TestCaseTagCriteria\x12\x12\n\nsuite_name\x18\x02 \x01(\t\x12\x0f\n\x07program\x18\x03 \x01(\t\x12\x11\n\ttest_args\x18\x04 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x04\x10\x0f\x42\x30Z.go.chromium.org/chromiumos/config/go/test/planb\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
@@ -56,6 +56,13 @@ _SOURCETESTPLAN_TESTPLANSTARLARKFILE_TEMPLATEPARAMETERS = _descriptor.Descriptor
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='test_args', full_name='chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile.TemplateParameters.test_args', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -69,7 +76,7 @@ _SOURCETESTPLAN_TESTPLANSTARLARKFILE_TEMPLATEPARAMETERS = _descriptor.Descriptor
   oneofs=[
   ],
   serialized_start=449,
-  serialized_end=580,
+  serialized_end=599,
 )
 
 _SOURCETESTPLAN_TESTPLANSTARLARKFILE = _descriptor.Descriptor(
@@ -121,7 +128,7 @@ _SOURCETESTPLAN_TESTPLANSTARLARKFILE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=272,
-  serialized_end=580,
+  serialized_end=599,
 )
 
 _SOURCETESTPLAN = _descriptor.Descriptor(
@@ -166,7 +173,7 @@ _SOURCETESTPLAN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=108,
-  serialized_end=592,
+  serialized_end=611,
 )
 
 _SOURCETESTPLAN_TESTPLANSTARLARKFILE_TEMPLATEPARAMETERS.fields_by_name['tag_criteria'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE_TESTCASETAGCRITERIA
