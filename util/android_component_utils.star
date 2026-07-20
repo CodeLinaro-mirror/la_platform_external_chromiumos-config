@@ -125,7 +125,7 @@ def _create_camerahwconfig(
         interface = None,
         position = None,
         autofocus_support = None,
-        p1080_support = None,
+        p1080_support = android_component_pb.HalConfiguration.PRESENT,
         p4k_support = None,
         p1440_support = None,
         resolutions = []):
