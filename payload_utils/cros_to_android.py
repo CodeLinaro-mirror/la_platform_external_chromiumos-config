@@ -1315,6 +1315,9 @@ def _add_hal_config_entry(
     model_elem = etree.SubElement(identity_elem, "model")
     model_elem.text = model.lower()
     frid = sw_config.id_scan_config.frid.removeprefix("Google_")
+    customization_id = _get_fw_customization_id(design_config)
+    if customization_id:
+        frid += f"_{customization_id}"
     frid_elem = etree.SubElement(identity_elem, "frid")
     frid_elem.text = frid.lower()
 
@@ -1556,6 +1559,9 @@ def run_generate_feature_xml(opts: argparse.Namespace) -> None:
                     design_config.id.value,
                 )
                 continue
+            customization_id = _get_fw_customization_id(design_config)
+            if customization_id:
+                frid += f"_{customization_id}"
 
             _, sku = design_config.id.value.split(":")
             permissions_elem = etree.Element("permissions")
