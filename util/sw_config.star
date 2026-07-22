@@ -228,6 +228,8 @@ def _create_fw_payloads_by_names(
             type = _FW_TYPE.MAIN,
             version = ap_ro_version,
         )
+    else:
+        fail("AP RO not specified")
     if ap_rw_path:
         sc_fw_config.main_rw_payload = fw_pb.FirmwarePayload(
             firmware_image_path = storage_pb.StoragePath(path = ap_rw_path),
@@ -253,6 +255,8 @@ def _create_fw_payloads_by_names(
             type = _FW_TYPE.EC,
             version = ec_ro_version or ec_version,
         )
+    else:
+        fail("EC RO not specified")
     if ec_rw_path:
         sc_fw_config.ec_rw_payload = fw_pb.FirmwarePayload(
             firmware_image_path = storage_pb.StoragePath(path = ec_rw_path),
