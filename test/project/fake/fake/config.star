@@ -1000,6 +1000,7 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
         uart_configurations = 5,
         enablement_11ax = 6,
         unii_4 = 7,
+        indoor_use_only = 8,
         disable_wifi_bands = 9,
         enablement_11be_countries = sc.create_intel_dsm_enablement_11be_countries(),
         energy_detection_threshold = sc.create_intel_dsm_energy_detection_threshold(),

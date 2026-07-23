@@ -223,6 +223,12 @@ message WifiConfig {
       int64 enablement_11ax = 7;
       // Function 7.
       int64 unii_4 = 8;
+      // Function 8. Indoor control bits per country/region (bitmask).
+      // Bit 0=EU, 1=Japan, 2=China Mainland, 3=USA, 4=WW, 5=Canada,
+      // 6=US/Canada indoor-only (UNII-4 Active mode);
+      // 0 = no override (use device settings), 1 = enable for indoors only.
+      // Bits 31:7 reserved (shall be set to zeroes).
+      int64 indoor_use_only = 13;
       // Function 9. Force disable selectively Wi-Fi bands per platform
       // (bitmask: bit 0 = 2.4GHz ... bit 10 = 7.0GHz, 1 = force disable).
       int64 disable_wifi_bands = 12;

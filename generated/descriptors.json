@@ -3922,6 +3922,13 @@
                       "type": "TYPE_INT64"
                     },
                     {
+                      "jsonName": "indoorUseOnly",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "indoor_use_only",
+                      "number": 13,
+                      "type": "TYPE_INT64"
+                    },
+                    {
                       "jsonName": "disableWifiBands",
                       "label": "LABEL_OPTIONAL",
                       "name": "disable_wifi_bands",

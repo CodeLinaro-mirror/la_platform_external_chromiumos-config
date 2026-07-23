@@ -1394,6 +1394,7 @@
                     "enablement11ax": "6",
                     "enablement11beCountries": {},
                     "energyDetectionThreshold": {},
+                    "indoorUseOnly": "8",
                     "regulatoryConfigurations": "4",
                     "supportIndonesia5gBand": "2",
                     "supportUltraHighBand": "3",
