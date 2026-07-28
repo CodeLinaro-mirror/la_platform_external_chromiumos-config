@@ -23,6 +23,8 @@ message PasitHost {
   repeated Device devices = 2;
   // The connections between devices/components in the testbed.
   repeated Connection connections = 3;
+  // Optional overall RPM for controlling power to the PASIT host / testbed.
+  RPM rpm = 4;
 
   // A single connection between two components in the topology.
   message Connection {

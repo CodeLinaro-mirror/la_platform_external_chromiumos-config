@@ -21580,6 +21580,14 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.PasitHost.Connection"
+            },
+            {
+              "jsonName": "rpm",
+              "label": "LABEL_OPTIONAL",
+              "name": "rpm",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RPM"
             }
           ],
           "name": "PasitHost",
