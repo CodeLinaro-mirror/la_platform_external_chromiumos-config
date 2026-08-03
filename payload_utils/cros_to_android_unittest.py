@@ -142,7 +142,7 @@ class HalEntryHelpersTest(unittest.TestCase):
         )
 
         cros_to_android._add_cellular_entry(
-            self.root_element, self.design_config
+            self.root_element, self.design_config, self.sw_config
         )
 
         cc_elem = self.root_element.find("CellularConfiguration")
@@ -156,7 +156,7 @@ class HalEntryHelpersTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.NOT_PRESENT
         )
         cros_to_android._add_cellular_entry(
-            self.root_element, self.design_config
+            self.root_element, self.design_config, self.sw_config
         )
         self.assertIsNone(self.root_element.find("CellularConfiguration"))
 
@@ -169,7 +169,7 @@ class HalEntryHelpersTest(unittest.TestCase):
             topology_pb2.HardwareFeatures.Cellular.MODEM_UNKNOWN
         )
         cros_to_android._add_cellular_entry(
-            self.root_element, self.design_config
+            self.root_element, self.design_config, self.sw_config
         )
         self.assertIsNone(self.root_element.find("CellularConfiguration"))
 

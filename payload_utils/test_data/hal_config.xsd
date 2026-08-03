@@ -55,6 +55,64 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="CellularRegulatoryDomainMappingType">
+    <xs:sequence>
+      <xs:element type="xs:unsignedByte" name="FCC" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:unsignedByte" name="ISED" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:unsignedByte" name="CE" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:unsignedByte" name="MIC" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:unsignedByte" name="KCC" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CellularTxPowerMappingType">
+    <xs:sequence>
+      <xs:element type="xs:unsignedByte" name="HIGH" minOccurs="1"/>
+      <xs:element type="xs:unsignedByte" name="LOW" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CellularPowerConfigurationType">
+    <xs:sequence>
+      <xs:element name="regulatory-domainMapping" type="CellularRegulatoryDomainMappingType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Mapping of regulatory domain to power offset</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tx-power-mapping" type="CellularTxPowerMappingType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Mapping of base power level to modem power index</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transmit-power-for-tablet-mode" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Control if device tablet mode on/off affects cellular SAR base power level</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transmit-power-for-proximity" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Control if proximity sensor states affects cellular SAR base power level</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transmit-power-for-activity-proximity" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="SetDefaultProximityStateHigh" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When enabled(1), it sets the default proximity state to FAR, which requires SAR HIGH base power level</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enable-dynamic-sar" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Enable/disable dynamic cellular SAR controll from the host. If cellular SAR is left to modem to control (AUTO state), this field should not be configured.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="use-regulatory-domain-for-dynamic-sar" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Control if regulatory domain offset should be applied.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="CellularConfigurationType">
     <xs:sequence>
       <xs:element type="xs:string" name="firmware-variant" minOccurs="1">
@@ -63,6 +121,7 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="modem-type" type="ModemTypeEn" minOccurs="1"/>
+      <xs:element name="power" type="CellularPowerConfigurationType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
