@@ -36614,6 +36614,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry"
+            },
+            {
+              "jsonName": "unlockCsme",
+              "label": "LABEL_OPTIONAL",
+              "name": "unlock_csme",
+              "number": 5,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FirmwareProvisionInstallMetadata",

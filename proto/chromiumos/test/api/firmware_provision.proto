@@ -44,6 +44,9 @@ message FirmwareProvisionInstallMetadata {
 
   // PDC firmware. A map of cbfs filename to gs storage path.
   map<string, chromiumos.StoragePath> pdc_firmware_images = 4;
+
+  // Leave the CSME unlocked after firmware provisioning.
+  bool unlock_csme = 5;
 }
 
 message PDCFirmwareVersion {

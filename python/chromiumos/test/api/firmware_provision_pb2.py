@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a\x1d\x63hromiumos/storage_path.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"\xcf\x03\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12Q\n\x02os\x18\x02 \x01(\x0e\x32\x45.chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem\x12 \n\x18\x66orce_flash_same_version\x18\x03 \x01(\x08\x12i\n\x13pdc_firmware_images\x18\x04 \x03(\x0b\x32L.chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry\x1aQ\n\x16PdcFirmwareImagesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath:\x02\x38\x01\"9\n\x0fOperatingSystem\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0c\n\x08\x43HROMEOS\x10\x01\x12\x0b\n\x07\x41NDROID\x10\x02\"7\n\x12PDCFirmwareVersion\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\"\xdf\x02\n\x19\x46irmwareProvisionResponse\x12\x19\n\rerror_message\x18\x01 \x01(\tB\x02\x18\x01\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\t\x12\x66\n\x15pdc_firmware_versions\x18\x06 \x03(\x0b\x32G.chromiumos.test.api.FirmwareProvisionResponse.PdcFirmwareVersionsEntry\x1a\x63\n\x18PdcFirmwareVersionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.chromiumos.test.api.PDCFirmwareVersion:\x02\x38\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a\x1d\x63hromiumos/storage_path.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"\xe4\x03\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12Q\n\x02os\x18\x02 \x01(\x0e\x32\x45.chromiumos.test.api.FirmwareProvisionInstallMetadata.OperatingSystem\x12 \n\x18\x66orce_flash_same_version\x18\x03 \x01(\x08\x12i\n\x13pdc_firmware_images\x18\x04 \x03(\x0b\x32L.chromiumos.test.api.FirmwareProvisionInstallMetadata.PdcFirmwareImagesEntry\x12\x13\n\x0bunlock_csme\x18\x05 \x01(\x08\x1aQ\n\x16PdcFirmwareImagesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath:\x02\x38\x01\"9\n\x0fOperatingSystem\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0c\n\x08\x43HROMEOS\x10\x01\x12\x0b\n\x07\x41NDROID\x10\x02\"7\n\x12PDCFirmwareVersion\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\"\xdf\x02\n\x19\x46irmwareProvisionResponse\x12\x19\n\rerror_message\x18\x01 \x01(\tB\x02\x18\x01\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\t\x12\x66\n\x15pdc_firmware_versions\x18\x06 \x03(\x0b\x32G.chromiumos.test.api.FirmwareProvisionResponse.PdcFirmwareVersionsEntry\x1a\x63\n\x18PdcFirmwareVersionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.chromiumos.test.api.PDCFirmwareVersion:\x02\x38\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,])
 
@@ -52,8 +52,8 @@ _FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=615,
-  serialized_end=672,
+  serialized_start=636,
+  serialized_end=693,
 )
 _sym_db.RegisterEnumDescriptor(_FIRMWAREPROVISIONINSTALLMETADATA_OPERATINGSYSTEM)
 
@@ -117,8 +117,8 @@ _FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY = _descriptor.Descripto
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=532,
-  serialized_end=613,
+  serialized_start=553,
+  serialized_end=634,
 )
 
 _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
@@ -157,6 +157,13 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='unlock_csme', full_name='chromiumos.test.api.FirmwareProvisionInstallMetadata.unlock_csme', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -171,7 +178,7 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=209,
-  serialized_end=672,
+  serialized_end=693,
 )
 
 
@@ -209,8 +216,8 @@ _PDCFIRMWAREVERSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=674,
-  serialized_end=729,
+  serialized_start=695,
+  serialized_end=750,
 )
 
 
@@ -248,8 +255,8 @@ _FIRMWAREPROVISIONRESPONSE_PDCFIRMWAREVERSIONSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=984,
-  serialized_end=1083,
+  serialized_start=1005,
+  serialized_end=1104,
 )
 
 _FIRMWAREPROVISIONRESPONSE = _descriptor.Descriptor(
@@ -314,8 +321,8 @@ _FIRMWAREPROVISIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=732,
-  serialized_end=1083,
+  serialized_start=753,
+  serialized_end=1104,
 )
 
 _FIRMWAREPROVISIONINSTALLMETADATA_PDCFIRMWAREIMAGESENTRY.fields_by_name['value'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
