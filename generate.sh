@@ -157,8 +157,14 @@ echo "== Generating OWNERS file for generated code paths"
   echo "##### AUTO-GENERATED FILE #####"
   echo "##### See generate.sh     #####"
   # Use C locale for sorting to get stability between systems.
-  find proto/* -type f -name "OWNERS*" -exec grep -h -E '^include' {} + | LC_COLLATE=C sort -u
-  find proto/* -type f -name "OWNERS*" -exec grep -h -E '^[a-z0-9]+@.+\..+' {} + | LC_COLLATE=C sort -u
+  {
+    find proto/ -type f -name "OWNERS*" -exec grep -h -E '^[[:space:]]*include[[:space:]]+' {} + || true
+    find proto/ -type f -name "OWNERS*" -exec sed -n -E 's/^[[:space:]]*per-file[[:space:]]+.*=file:([^#[:space:]]+).*/include \1/p' {} +
+  } | LC_COLLATE=C sort -u
+  {
+    find proto/ -type f -name "OWNERS*" -exec grep -h -E '^[[:space:]]*[-a-zA-Z0-9_.+]+@[-a-zA-Z0-9_.]+\.[a-zA-Z]+' {} + || true
+    find proto/ -type f -name "OWNERS*" -exec sed -n -E 's/^[[:space:]]*per-file[[:space:]]+.*=[[:space:]]*([-a-zA-Z0-9_.+]+@[-a-zA-Z0-9_.]+\.[a-zA-Z]+).*/\1/p' {} +
+  } | LC_COLLATE=C sort -u
 } > "${gen_owners}"
 
 if [[ $(sha256_even_empty "${gen_owners}") != "${gen_owners_sha}" ]]; then

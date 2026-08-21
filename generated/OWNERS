@@ -3,5 +3,8 @@
 include /OWNERS.platformconfig
 include chromiumos/config:/OWNERS.testplatform
 include chromiumos/config:/OWNERS.testresultsplatform
+include chromiumos/owners:v1:/infra/OWNERS.ctrp
 include chromiumos/owners:v1:/infra/OWNERS.fleetplatform
+include chromiumos/owners:v1:/infra/OWNERS.security
 include chromiumos/owners:v1:/platform/OWNERS.provision
+jbettis@chromium.org
