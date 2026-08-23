@@ -223,6 +223,12 @@ partner = struct(
             symlink_file_format = "cirque_firmware_{product_id}.hex",
             destination_file_format = "{vendor_id}_{product_id}_{fw_version}.hex",
         ),
+        LXS = _create_touch_partner(
+            name = "lxs",
+            vendor_id = "1FD2",
+            symlink_file_format = "lxs_touch_{product_id}.img",
+            destination_file_format = "LXS_TouchFW_{product_id}_{fw_version}.img",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(
