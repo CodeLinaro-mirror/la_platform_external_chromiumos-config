@@ -44070,6 +44070,48 @@
               "name": "applied_timeout_limit_seconds",
               "number": 14,
               "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "stageDownloadDurationSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "stage_download_duration_seconds",
+              "number": 15,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "stageFlashDurationSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "stage_flash_duration_seconds",
+              "number": 16,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "stageBootDurationSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "stage_boot_duration_seconds",
+              "number": 17,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "stageAuthDurationSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "stage_auth_duration_seconds",
+              "number": 18,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "provisioningSubState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provisioning_sub_state",
+              "number": 19,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "provisioningToolVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "provisioning_tool_version",
+              "number": 20,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ProvisionAttemptRecord",

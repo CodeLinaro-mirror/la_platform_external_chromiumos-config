@@ -85,4 +85,17 @@ message ProvisionAttemptRecord {
   string caching_server_ip = 13;
   // The timeout limit applied to the task.
   int32 applied_timeout_limit_seconds = 14;
+
+  // Duration in seconds for downloading OS images and artifacts.
+  int32 stage_download_duration_seconds = 15;
+  // Duration in seconds for flashing the payload to disk/partitions.
+  int32 stage_flash_duration_seconds = 16;
+  // Duration in seconds for rebooting and waiting for the DUT to boot.
+  int32 stage_boot_duration_seconds = 17;
+  // Duration in seconds for authenticating/verifying access post-boot.
+  int32 stage_auth_duration_seconds = 18;
+  // Granular sub-state name if provisioning fails or is in progress.
+  string provisioning_sub_state = 19;
+  // Version or hash of the provisioning tool binary executing the attempt.
+  string provisioning_tool_version = 20;
 }

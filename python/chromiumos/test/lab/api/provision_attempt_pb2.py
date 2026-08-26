@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'B\020ProvisionAttemptZ1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n/chromiumos/test/lab/api/provision_attempt.proto\x12\x17\x63hromiumos.test.lab.api\x1a\x1fgoogle/protobuf/timestamp.proto\"\x92\n\n\x16ProvisionAttemptRecord\x12\x14\n\x0cprovision_id\x18\x01 \x01(\t\x12M\n\ninfra_info\x18\x02 \x01(\x0b\x32\x39.chromiumos.test.lab.api.ProvisionAttemptRecord.InfraInfo\x12\x11\n\tdevice_id\x18\x03 \x01(\t\x12.\n\nstart_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x18\n\x10\x64uration_seconds\x18\x06 \x01(\x05\x12U\n\x0eprovision_type\x18\x07 \x01(\x0e\x32=.chromiumos.test.lab.api.ProvisionAttemptRecord.ProvisionType\x12\x46\n\x06status\x18\x08 \x01(\x0e\x32\x36.chromiumos.test.lab.api.ProvisionAttemptRecord.Status\x12M\n\nerror_info\x18\t \x01(\x0b\x32\x39.chromiumos.test.lab.api.ProvisionAttemptRecord.ErrorInfo\x12I\n\x08\x64ut_info\x18\n \x01(\x0b\x32\x37.chromiumos.test.lab.api.ProvisionAttemptRecord.DutInfo\x12N\n\x0etarget_os_info\x18\x0b \x01(\x0b\x32\x36.chromiumos.test.lab.api.ProvisionAttemptRecord.OsInfo\x12P\n\x10original_os_info\x18\x0c \x01(\x0b\x32\x36.chromiumos.test.lab.api.ProvisionAttemptRecord.OsInfo\x12\x19\n\x11\x63\x61\x63hing_server_ip\x18\r \x01(\t\x12%\n\x1d\x61pplied_timeout_limit_seconds\x18\x0e \x01(\x05\x1a\x66\n\tInfraInfo\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x11\n\ttask_type\x18\x02 \x01(\t\x12\x1a\n\x12\x65xecution_platform\x18\x03 \x01(\t\x12\x19\n\x11\x65xecution_channel\x18\x04 \x01(\t\x1a<\n\tErrorInfo\x12\x10\n\x08\x63\x61tegory\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\x1a\x35\n\x07\x44utInfo\x12\r\n\x05\x62oard\x18\x01 \x01(\t\x12\r\n\x05model\x18\x02 \x01(\t\x12\x0c\n\x04pool\x18\x03 \x03(\t\x1aN\n\x06OsInfo\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x10\n\x08\x62uild_id\x18\x02 \x01(\t\x12\x14\n\x0c\x62uild_target\x18\x03 \x01(\t\x12\x0e\n\x06\x62ranch\x18\x04 \x01(\t\"b\n\rProvisionType\x12\x1e\n\x1aPROVISION_TYPE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43HROMEOS\x10\x01\x12\x13\n\x0f\x41NDROID_DESKTOP\x10\x02\x12\x0e\n\nCROSS_OVER\x10\x03\"Z\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07\x46\x41ILURE\x10\x02\x12\x11\n\rINFRA_FAILURE\x10\x03\x12\x0b\n\x07TIMEOUT\x10\x04\x42\x45\x42\x10ProvisionAttemptZ1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n/chromiumos/test/lab/api/provision_attempt.proto\x12\x17\x63hromiumos.test.lab.api\x1a\x1fgoogle/protobuf/timestamp.proto\"\xee\x0b\n\x16ProvisionAttemptRecord\x12\x14\n\x0cprovision_id\x18\x01 \x01(\t\x12M\n\ninfra_info\x18\x02 \x01(\x0b\x32\x39.chromiumos.test.lab.api.ProvisionAttemptRecord.InfraInfo\x12\x11\n\tdevice_id\x18\x03 \x01(\t\x12.\n\nstart_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x18\n\x10\x64uration_seconds\x18\x06 \x01(\x05\x12U\n\x0eprovision_type\x18\x07 \x01(\x0e\x32=.chromiumos.test.lab.api.ProvisionAttemptRecord.ProvisionType\x12\x46\n\x06status\x18\x08 \x01(\x0e\x32\x36.chromiumos.test.lab.api.ProvisionAttemptRecord.Status\x12M\n\nerror_info\x18\t \x01(\x0b\x32\x39.chromiumos.test.lab.api.ProvisionAttemptRecord.ErrorInfo\x12I\n\x08\x64ut_info\x18\n \x01(\x0b\x32\x37.chromiumos.test.lab.api.ProvisionAttemptRecord.DutInfo\x12N\n\x0etarget_os_info\x18\x0b \x01(\x0b\x32\x36.chromiumos.test.lab.api.ProvisionAttemptRecord.OsInfo\x12P\n\x10original_os_info\x18\x0c \x01(\x0b\x32\x36.chromiumos.test.lab.api.ProvisionAttemptRecord.OsInfo\x12\x19\n\x11\x63\x61\x63hing_server_ip\x18\r \x01(\t\x12%\n\x1d\x61pplied_timeout_limit_seconds\x18\x0e \x01(\x05\x12\'\n\x1fstage_download_duration_seconds\x18\x0f \x01(\x05\x12$\n\x1cstage_flash_duration_seconds\x18\x10 \x01(\x05\x12#\n\x1bstage_boot_duration_seconds\x18\x11 \x01(\x05\x12#\n\x1bstage_auth_duration_seconds\x18\x12 \x01(\x05\x12\x1e\n\x16provisioning_sub_state\x18\x13 \x01(\t\x12!\n\x19provisioning_tool_version\x18\x14 \x01(\t\x1a\x66\n\tInfraInfo\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x11\n\ttask_type\x18\x02 \x01(\t\x12\x1a\n\x12\x65xecution_platform\x18\x03 \x01(\t\x12\x19\n\x11\x65xecution_channel\x18\x04 \x01(\t\x1a<\n\tErrorInfo\x12\x10\n\x08\x63\x61tegory\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\x1a\x35\n\x07\x44utInfo\x12\r\n\x05\x62oard\x18\x01 \x01(\t\x12\r\n\x05model\x18\x02 \x01(\t\x12\x0c\n\x04pool\x18\x03 \x03(\t\x1aN\n\x06OsInfo\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x10\n\x08\x62uild_id\x18\x02 \x01(\t\x12\x14\n\x0c\x62uild_target\x18\x03 \x01(\t\x12\x0e\n\x06\x62ranch\x18\x04 \x01(\t\"b\n\rProvisionType\x12\x1e\n\x1aPROVISION_TYPE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43HROMEOS\x10\x01\x12\x13\n\x0f\x41NDROID_DESKTOP\x10\x02\x12\x0e\n\nCROSS_OVER\x10\x03\"Z\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07\x46\x41ILURE\x10\x02\x12\x11\n\rINFRA_FAILURE\x10\x03\x12\x0b\n\x07TIMEOUT\x10\x04\x42\x45\x42\x10ProvisionAttemptZ1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -56,8 +56,8 @@ _PROVISIONATTEMPTRECORD_PROVISIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1218,
-  serialized_end=1316,
+  serialized_start=1438,
+  serialized_end=1536,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONATTEMPTRECORD_PROVISIONTYPE)
 
@@ -96,8 +96,8 @@ _PROVISIONATTEMPTRECORD_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1318,
-  serialized_end=1408,
+  serialized_start=1538,
+  serialized_end=1628,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONATTEMPTRECORD_STATUS)
 
@@ -150,8 +150,8 @@ _PROVISIONATTEMPTRECORD_INFRAINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=917,
-  serialized_end=1019,
+  serialized_start=1137,
+  serialized_end=1239,
 )
 
 _PROVISIONATTEMPTRECORD_ERRORINFO = _descriptor.Descriptor(
@@ -195,8 +195,8 @@ _PROVISIONATTEMPTRECORD_ERRORINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1021,
-  serialized_end=1081,
+  serialized_start=1241,
+  serialized_end=1301,
 )
 
 _PROVISIONATTEMPTRECORD_DUTINFO = _descriptor.Descriptor(
@@ -240,8 +240,8 @@ _PROVISIONATTEMPTRECORD_DUTINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1083,
-  serialized_end=1136,
+  serialized_start=1303,
+  serialized_end=1356,
 )
 
 _PROVISIONATTEMPTRECORD_OSINFO = _descriptor.Descriptor(
@@ -292,8 +292,8 @@ _PROVISIONATTEMPTRECORD_OSINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1138,
-  serialized_end=1216,
+  serialized_start=1358,
+  serialized_end=1436,
 )
 
 _PROVISIONATTEMPTRECORD = _descriptor.Descriptor(
@@ -402,6 +402,48 @@ _PROVISIONATTEMPTRECORD = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='stage_download_duration_seconds', full_name='chromiumos.test.lab.api.ProvisionAttemptRecord.stage_download_duration_seconds', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='stage_flash_duration_seconds', full_name='chromiumos.test.lab.api.ProvisionAttemptRecord.stage_flash_duration_seconds', index=15,
+      number=16, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='stage_boot_duration_seconds', full_name='chromiumos.test.lab.api.ProvisionAttemptRecord.stage_boot_duration_seconds', index=16,
+      number=17, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='stage_auth_duration_seconds', full_name='chromiumos.test.lab.api.ProvisionAttemptRecord.stage_auth_duration_seconds', index=17,
+      number=18, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='provisioning_sub_state', full_name='chromiumos.test.lab.api.ProvisionAttemptRecord.provisioning_sub_state', index=18,
+      number=19, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='provisioning_tool_version', full_name='chromiumos.test.lab.api.ProvisionAttemptRecord.provisioning_tool_version', index=19,
+      number=20, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -417,7 +459,7 @@ _PROVISIONATTEMPTRECORD = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=110,
-  serialized_end=1408,
+  serialized_end=1628,
 )
 
 _PROVISIONATTEMPTRECORD_INFRAINFO.containing_type = _PROVISIONATTEMPTRECORD
