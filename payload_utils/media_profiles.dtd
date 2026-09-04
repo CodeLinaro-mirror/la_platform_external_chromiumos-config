@@ -19,6 +19,7 @@
 <!ATTLIST Video width CDATA #REQUIRED>
 <!ATTLIST Video height CDATA #REQUIRED>
 <!ATTLIST Video frameRate CDATA #REQUIRED>
+<!ATTLIST Video profile CDATA #IMPLIED>
 <!ELEMENT Audio EMPTY>
 <!ATTLIST Audio codec (amrnb|amrwb|aac) #REQUIRED>
 <!ATTLIST Audio bitRate CDATA #REQUIRED>

@@ -12474,6 +12474,15 @@
                   "proto3Optional": true,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HalConfiguration.Present"
+                },
+                {
+                  "jsonName": "encoderProfile",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "encoder_profile",
+                  "number": 10,
+                  "oneofIndex": 6,
+                  "proto3Optional": true,
+                  "type": "TYPE_INT32"
                 }
               ],
               "name": "CameraHWConfig",
@@ -12495,6 +12504,9 @@
                 },
                 {
                   "name": "_p1440_support"
+                },
+                {
+                  "name": "_encoder_profile"
                 }
               ],
               "reservedName": [

@@ -118,15 +118,15 @@ def _load_config_bundle(
     return bundle
 
 
-def _gen_camcorder_profiles(camera_id, resolutions):
+def _gen_camcorder_profiles(camera_id, resolutions, profile=0):
     elem = etree.Element(
         "CamcorderProfiles", attrib={"cameraId": str(camera_id)}
     )
     for resolution in resolutions:
         elem.extend(
             [
-                _gen_encoder_profile(resolution, False),
-                _gen_encoder_profile(resolution, True),
+                _gen_encoder_profile(resolution, False, profile),
+                _gen_encoder_profile(resolution, True, profile),
             ]
         )
     elem.extend(
@@ -140,7 +140,7 @@ def _gen_camcorder_profiles(camera_id, resolutions):
     return elem
 
 
-def _gen_encoder_profile(resolution, timelapse):
+def _gen_encoder_profile(resolution, timelapse, profile=0):
     # Default bitrates based on resolution
     default_bitrates = {
         (640, 480): 3000000,  # 3 Mbps for 480p
@@ -166,7 +166,7 @@ def _gen_encoder_profile(resolution, timelapse):
             "duration": "60",
         },
     )
-    elem.append(
+    video_elem = (
         etree.Element(
             "Video",
             attrib={
@@ -177,7 +177,20 @@ def _gen_encoder_profile(resolution, timelapse):
                 "frameRate": "30",
             },
         )
+        if profile == 0
+        else etree.Element(
+            "Video",
+            attrib={
+                "codec": "h264",
+                "bitRate": str(bitrate),
+                "width": str(width),
+                "height": str(height),
+                "frameRate": "30",
+                "profile": str(profile),
+            },
+        )
     )
+    elem.append(video_elem)
     elem.append(
         etree.Element(
             "Audio",
@@ -421,7 +434,9 @@ def _generate_media_profiles_from_camera_config(
                 resolutions.append(resolution_p4k)
                 has_p4k_cam = True
 
-        root.append(_gen_camcorder_profiles(camera_id, resolutions))
+        root.append(
+            _gen_camcorder_profiles(camera_id, resolutions, cam.encoder_profile)
+        )
         camera_id += 1
 
     if camera_id == 0:
