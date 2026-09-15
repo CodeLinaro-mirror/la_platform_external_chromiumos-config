@@ -99,6 +99,10 @@ message BluetoothPeerChameleondConfig {
 
   // The released bundles to available for btpeers.
   repeated ChameleondBundle bundles = 4;
+
+  // Lab pools of primary testbed DUTs that signify that the next bundle
+  // should be used instead of the current bundle.
+  repeated string next_image_pools = 5;
 }
 
 // RaspiosCrosBtpeerImageConfig defines which custom ChromeOS Raspios image

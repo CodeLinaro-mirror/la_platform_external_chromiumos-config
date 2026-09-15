@@ -43310,6 +43310,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.BluetoothPeerChameleondConfig.ChameleondBundle"
+            },
+            {
+              "jsonName": "nextImagePools",
+              "label": "LABEL_REPEATED",
+              "name": "next_image_pools",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "BluetoothPeerChameleondConfig",
