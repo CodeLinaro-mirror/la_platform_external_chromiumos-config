@@ -74,7 +74,7 @@
 
   <xs:complexType name="CellularPowerConfigurationType">
     <xs:sequence>
-      <xs:element name="regulatory-domainMapping" type="CellularRegulatoryDomainMappingType" minOccurs="0" maxOccurs="1">
+      <xs:element name="regulatory-domain-mapping" type="CellularRegulatoryDomainMappingType" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Mapping of regulatory domain to power offset</xs:documentation>
         </xs:annotation>
@@ -95,7 +95,7 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="transmit-power-for-activity-proximity" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="SetDefaultProximityStateHigh" type="xs:boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="set-default-proximity-state-high" type="xs:boolean" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>When enabled(1), it sets the default proximity state to FAR, which requires SAR HIGH base power level</xs:documentation>
         </xs:annotation>

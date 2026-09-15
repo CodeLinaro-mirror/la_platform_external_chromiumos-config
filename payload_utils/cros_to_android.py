@@ -624,7 +624,7 @@ def _add_cellular_entry(
         cellpower_config_elem = etree.SubElement(cell_config_elem, "power")
         if power_pref["set-cellular-regulatory-domain-mapping"]:
             cellpower_elem = etree.SubElement(
-                cellpower_config_elem, "regulatory-domainMapping"
+                cellpower_config_elem, "regulatory-domain-mapping"
             )
             data_str = power_pref["set-cellular-regulatory-domain-mapping"]
             for key, value in (
@@ -667,7 +667,7 @@ def _add_cellular_entry(
 
         if power_pref["set-default-proximity-state-high"]:
             cellpower_elem = etree.SubElement(
-                cellpower_config_elem, "SetDefaultProximityStateHigh"
+                cellpower_config_elem, "set-default-proximity-state-high"
             )
             cellpower_elem.text = "1"
 
