@@ -6689,6 +6689,10 @@
                     {
                       "name": "AMPLIFIER_CS35L63",
                       "number": 29
+                    },
+                    {
+                      "name": "WSA8845",
+                      "number": 30
                     }
                   ]
                 },

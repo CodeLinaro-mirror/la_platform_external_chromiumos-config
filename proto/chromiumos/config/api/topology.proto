@@ -414,6 +414,7 @@ message HardwareFeatures {
       CS35L56 = 27;
       AMPLIFIER_CS42L43 = 28;
       AMPLIFIER_CS35L63 = 29;
+      WSA8845 = 30;
     }
 
     enum AudioConfigStructure {
