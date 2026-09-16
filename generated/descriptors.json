@@ -31639,6 +31639,10 @@
                 {
                   "name": "STATUS_PRE_PROVISION_OEM_LOCKED",
                   "number": 25
+                },
+                {
+                  "name": "STATUS_PRE_PROVISION_USB_NOT_DETECTED",
+                  "number": 26
                 }
               ]
             }
