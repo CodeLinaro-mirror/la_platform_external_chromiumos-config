@@ -619,72 +619,110 @@ def _add_cellular_entry(
     modem_type_elem = etree.SubElement(cell_config_elem, "modem-type")
     modem_type_elem.text = modem_type_xsd_str
 
-    power_pref = sw_config.power_config.preferences
-    if power_pref:
-        cellpower_config_elem = etree.SubElement(cell_config_elem, "power")
-        if power_pref["set-cellular-regulatory-domain-mapping"]:
+    cellpower_config_elem = etree.SubElement(cell_config_elem, "power")
+    cellfeature_power = cellular_features.dynamic_power_reduction_config
+    if cellfeature_power.ByteSize() > 0:
+        if cellfeature_power.regulatory_domain_mapping:
             cellpower_elem = etree.SubElement(
                 cellpower_config_elem, "regulatory-domain-mapping"
             )
-            data_str = power_pref["set-cellular-regulatory-domain-mapping"]
-            for key, value in (
-                line.split(maxsplit=1) for line in data_str.splitlines()
-            ):
+            for key, val in dict(
+                cellfeature_power.regulatory_domain_mapping
+            ).items():
                 cellpower_elem_sub = etree.SubElement(cellpower_elem, key)
-                cellpower_elem_sub.text = str(value)
-
-        if power_pref["set-cellular-transmit-power-level-mapping"]:
+                cellpower_elem_sub.text = str(val)
+        if cellfeature_power.power_level_mapping:
             cellpower_elem = etree.SubElement(
                 cellpower_config_elem, "tx-power-mapping"
             )
-            data_str_level = power_pref[
-                "set-cellular-transmit-power-level-mapping"
-            ]
-            for key, value in (
-                line.split(maxsplit=1) for line in data_str_level.splitlines()
-            ):
+            for key, val in dict(cellfeature_power.power_level_mapping).items():
                 cellpower_elem_sub = etree.SubElement(cellpower_elem, key)
-                cellpower_elem_sub.text = str(value)
-
-        if power_pref["set-cellular-transmit-power-for-tablet-mode"]:
-            cellpower_elem = etree.SubElement(
-                cellpower_config_elem, "transmit-power-for-tablet-mode"
-            )
-            cellpower_elem.text = "1"
-
-        if power_pref["set-cellular-transmit-power-for-proximity"]:
-            cellpower_elem = etree.SubElement(
-                cellpower_config_elem, "transmit-power-for-proximity"
-            )
-            cellpower_elem.text = "1"
-
-        if power_pref["set-cellular-transmit-power-for-activity-proximity"]:
-            cellpower_elem = etree.SubElement(
-                cellpower_config_elem,
-                "transmit-power-for-activity-proximity",
-            )
-            cellpower_elem.text = "1"
-
-        if power_pref["set-default-proximity-state-high"]:
+                cellpower_elem_sub.text = str(val)
+        if cellfeature_power.enable_default_proximity_state_far is True:
             cellpower_elem = etree.SubElement(
                 cellpower_config_elem, "set-default-proximity-state-high"
             )
             cellpower_elem.text = "1"
-
-        dynamic_sar_elem = etree.SubElement(
-            cellpower_config_elem, "enable-dynamic-sar"
-        )
-        dynamic_sar_elem.text = "0"
-
-        if power_pref["use-multi-power-level-dynamic-sar"]:
-            dynamic_sar_elem.text = "1"
-
-        if power_pref["use-regulatory-domain-for-dynamic-sar"]:
-            cellpower_elem = etree.SubElement(
-                cellpower_config_elem, "use-regulatory-domain-for-dynamic-sar"
+        if (
+            cellfeature_power.modem_manager is True
+            or cellfeature_power.power_level_mapping
+        ):
+            dynamic_sar_elem = etree.SubElement(
+                cellpower_config_elem, "enable-dynamic-sar"
             )
-            cellpower_elem.text = "1"
             dynamic_sar_elem.text = "1"
+    else:
+        power_pref = sw_config.power_config.preferences
+        if power_pref:
+            if power_pref["set-cellular-regulatory-domain-mapping"]:
+                cellpower_elem = etree.SubElement(
+                    cellpower_config_elem, "regulatory-domain-mapping"
+                )
+                data_str = power_pref["set-cellular-regulatory-domain-mapping"]
+                for key, value in (
+                    line.split(maxsplit=1) for line in data_str.splitlines()
+                ):
+                    cellpower_elem_sub = etree.SubElement(cellpower_elem, key)
+                    cellpower_elem_sub.text = str(value)
+
+            if power_pref["set-cellular-transmit-power-level-mapping"]:
+                cellpower_elem = etree.SubElement(
+                    cellpower_config_elem, "tx-power-mapping"
+                )
+                data_str_level = power_pref[
+                    "set-cellular-transmit-power-level-mapping"
+                ]
+                for key, value in (
+                    line.split(maxsplit=1)
+                    for line in data_str_level.splitlines()
+                ):
+                    cellpower_elem_sub = etree.SubElement(cellpower_elem, key)
+                    cellpower_elem_sub.text = str(value)
+
+            if power_pref["set-cellular-transmit-power-for-tablet-mode"]:
+                cellpower_elem = etree.SubElement(
+                    cellpower_config_elem, "transmit-power-for-tablet-mode"
+                )
+                cellpower_elem.text = "1"
+
+            if power_pref["set-cellular-transmit-power-for-proximity"]:
+                cellpower_elem = etree.SubElement(
+                    cellpower_config_elem, "transmit-power-for-proximity"
+                )
+                cellpower_elem.text = "1"
+
+            if power_pref["set-cellular-transmit-power-for-activity-proximity"]:
+                cellpower_elem = etree.SubElement(
+                    cellpower_config_elem,
+                    "transmit-power-for-activity-proximity",
+                )
+                cellpower_elem.text = "1"
+
+            if power_pref["set-default-proximity-state-high"]:
+                cellpower_elem = etree.SubElement(
+                    cellpower_config_elem, "set-default-proximity-state-high"
+                )
+                cellpower_elem.text = "1"
+
+            if (
+                power_pref["set-cellular-transmit-power-level-mapping"]
+                or power_pref["use-regulatory-domain-for-dynamic-sar"]
+            ):
+                dynamic_sar_elem = etree.SubElement(
+                    cellpower_config_elem, "enable-dynamic-sar"
+                )
+                dynamic_sar_elem.text = "0"
+
+                if power_pref["set-cellular-transmit-power-level-mapping"]:
+                    dynamic_sar_elem.text = "1"
+
+                if power_pref["use-regulatory-domain-for-dynamic-sar"]:
+                    cellpower_elem = etree.SubElement(
+                        cellpower_config_elem,
+                        "use-regulatory-domain-for-dynamic-sar",
+                    )
+                    cellpower_elem.text = "1"
+                    dynamic_sar_elem.text = "1"
 
 
 def _add_fingerprint_entry(
