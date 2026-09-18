@@ -25508,6 +25508,13 @@
               "name": "usb_device_path",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "verifyExistingImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "verify_existing_image",
+              "number": 4,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "DownloadImageToUSBRequest"

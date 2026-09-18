@@ -397,6 +397,9 @@ message DownloadImageToUSBRequest {
   string image_url = 2;
   // The path to the USB device to write the image to.
   string usb_device_path = 3;
+  // If true, verify whether the image is already present on the USB device
+  // before downloading and skip flashing if the image matches.
+  bool verify_existing_image = 4;
 }
 
 message DownloadImageToUSBResponse {
