@@ -56,24 +56,24 @@
   </xs:complexType>
 
   <xs:complexType name="CellularRegulatoryDomainMappingType">
-    <xs:sequence>
+    <xs:all>
       <xs:element type="xs:unsignedByte" name="FCC" minOccurs="0" maxOccurs="1"/>
       <xs:element type="xs:unsignedByte" name="ISED" minOccurs="0" maxOccurs="1"/>
       <xs:element type="xs:unsignedByte" name="CE" minOccurs="0" maxOccurs="1"/>
       <xs:element type="xs:unsignedByte" name="MIC" minOccurs="0" maxOccurs="1"/>
       <xs:element type="xs:unsignedByte" name="KCC" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="CellularTxPowerMappingType">
-    <xs:sequence>
+    <xs:all>
       <xs:element type="xs:unsignedByte" name="HIGH" minOccurs="1"/>
       <xs:element type="xs:unsignedByte" name="LOW" minOccurs="1"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="CellularPowerConfigurationType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="regulatory-domain-mapping" type="CellularRegulatoryDomainMappingType" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Mapping of regulatory domain to power offset</xs:documentation>
@@ -110,7 +110,7 @@
           <xs:documentation>Control if regulatory domain offset should be applied.</xs:documentation>
         </xs:annotation>
       </xs:element>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="CellularConfigurationType">
