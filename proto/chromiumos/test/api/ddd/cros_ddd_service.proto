@@ -1,0 +1,291 @@
+// Copyright 2026 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.ddd;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/ddd";
+option java_outer_classname = "CrosDddServiceOuterClass";
+
+// Errors (both RPCs, all-or-nothing across groups):
+//   INVALID_ARGUMENT: malformed request/group/group_id, or a group exceeded
+//     max_evaluated_combinations (or --max-evaluated-combinations) during
+//     flattening; BadRequest/ErrorInfo reports group_id, count reached, limit
+//     and subcategory-product upper bound. Do not retry unchanged.
+//   UNAVAILABLE: the inventory (BigQuery) or a Swarming count couldn't be
+//     read. Nothing partial is returned. Retry with backoff.
+//   UNIMPLEMENTED: static_devices set before Milestone 3.
+service CrosDddService {
+  // EqC partitioning only: solves one or more 3D variant-category groups and
+  // returns every resulting EqC, all matching base-image targets, and counts.
+  // Never picks a winner and never calls Swarming.
+  rpc SolveExpression(SolveExpressionRequest) returns (SolveExpressionResponse);
+
+  // Greedy middle_out target selection: solves one or more groups, keeps
+  // candidate targets, checks live Swarming availability, picks a compact set
+  // of representative (board, model, HWID) targets across groups, and composes
+  // proxied_to per covered EqC.
+  rpc SelectEqcTargets(SelectEqcTargetsRequest)
+      returns (SelectEqcTargetsResponse);
+}
+
+message SolveExpressionRequest {
+  // DUT pool (label-pool) to evaluate against ("DUT_POOL_QUOTA" if empty,
+  // unless static_devices is set without include_pool_inventory).
+  // Letters, digits, "_", "-" and "." only.
+  string pool = 1;
+  // One or more (variant_category, dependencies) groups to solve.
+  repeated ExpressionGroup groups = 2;
+  // Optional: only return these (board, model) targets of the pool above.
+  // Empty = every target in the pool.
+  repeated CandidateTarget candidate_targets = 3;
+  // Optional cap on candidate combinations tested in the flattening loop per
+  // group, including per-request memo hits and enforced on cache hits too.
+  // 0 uses the server's --max-evaluated-combinations ceiling; positive values
+  // above the server ceiling are clamped to the server ceiling (callers may
+  // tighten the budget per request, not raise it above the server limit);
+  // negative values return INVALID_ARGUMENT.
+  int64 max_evaluated_combinations = 4;
+  // If true, omit EqcClass payloads for a smaller response and return only
+  // evaluated_combination_count and matched_class_count (still solves or uses
+  // the solution cache).
+  bool counts_only = 5;
+  // Optional: caller correlation ID, written to the service logs.
+  string request_id = 6;
+  // Milestone 3 (returns UNIMPLEMENTED in M1-M2): solve against these
+  // caller-supplied devices instead of, or unioned with, the lab pool.
+  repeated StaticDevice static_devices = 7;
+  // Milestone 3: when static_devices is non-empty, true solves across the
+  // union of pool and static_devices; false uses only static_devices.
+  bool include_pool_inventory = 8;
+}
+
+message SolveExpressionResponse {
+  repeated SolvedExpressionGroup groups = 1;
+  // Milestone 3: static_devices entries skipped because the model or
+  // HWID/descriptor was not found in DLM, HWID_DB or hardware descriptor
+  // datasets.
+  repeated string unrecognized_devices = 2;
+  ResponseMetadata metadata = 3;
+}
+
+message SelectEqcTargetsRequest {
+  // DUT pool (label-pool) to evaluate against and to count live DUTs in.
+  // Same rules as SolveExpressionRequest.pool.
+  string pool = 1;
+  // One or more (variant_category, dependencies) groups to solve and cover.
+  repeated ExpressionGroup groups = 2;
+  // Optional: targets of the pool above that the caller can run on (for
+  // example, targets with a ready build). Each EqC's targets are intersected
+  // with this list. Empty = every target in the pool is a candidate.
+  repeated CandidateTarget candidate_targets = 3;
+  // Default targets to pick per EqC when ExpressionGroup.requests_per_eqc is
+  // 0 (default 1; negative values return INVALID_ARGUMENT). When > 1,
+  // distinct (board, model) targets are preferred before distinct HWIDs of
+  // the same model.
+  int32 requests_per_eqc = 4;
+  // Optional cap on candidate combinations evaluated during flattening per
+  // group (0 = server flag ceiling; positive values above the server ceiling
+  // are clamped to it; negative values return INVALID_ARGUMENT; same
+  // INVALID_ARGUMENT error details as SolveExpression).
+  int64 max_evaluated_combinations = 5;
+  // Optional: caller correlation ID, written to the service logs.
+  string request_id = 6;
+}
+
+message SelectEqcTargetsResponse {
+  // Greedy representative set of targets covering the solvable EqCs.
+  repeated SelectedTarget selected_targets = 1;
+  // EqCs with no candidate target or no DUTs, with the reason.
+  repeated SkippedEqcClass skipped_classes = 2;
+  // Per-group combination, class and cache-hit stats.
+  repeated GroupClassStats group_stats = 3;
+  ResponseMetadata metadata = 4;
+}
+
+// One (variant_category, dependencies) unit to solve, e.g. a suite, a
+// per-module override slice, or a Tast test group.
+message ExpressionGroup {
+  // Caller key echoed in the response. Either every group in a request sets a
+  // unique non-empty group_id, or all groups leave it empty (assigned "0",
+  // "1", ...); mixing set and empty group_ids returns INVALID_ARGUMENT.
+  string group_id = 1;
+  // 3D variant category, e.g. '{"name": "ExampleSocWifiCategory"}'.
+  string variant_category = 2;
+  // Optional: the test's own Swarming dependencies, each "<key>:<value>"
+  // with exactly one ":" (e.g. "wifi_chip:WIFI_CHIP_A"). As in CTPv2, keys
+  // other than "label-*", "dut_name" and "drone" get a "label-" prefix.
+  // Dependencies are part of the solved expression, so they change eqc_hash.
+  // Pass only the test's own requirements, never placement constraints such
+  // as a specific drone or DUT.
+  repeated string dependencies = 3;
+  // SelectEqcTargets only: targets to pick per EqC in this group (0 uses
+  // SelectEqcTargetsRequest.requests_per_eqc, which defaults to 1; negative
+  // values return INVALID_ARGUMENT).
+  int32 requests_per_eqc = 4;
+}
+
+// Base ChromeOS images ("<board>-release") and AL targets only; non-base
+// ChromeOS image_variant filtering (such as "-kernelnext") is not yet exposed.
+message CandidateTarget {
+  string board = 1;
+  // Empty = every model of the board, as in the 3D filter today (for
+  // example, ChromeOS suites that request only a board).
+  string model = 2;
+  // Resolved OS build target, e.g. "model_a-trunk_staging-userdebug" for a
+  // per-model target or "board_a-trunk_staging-userdebug" for a shared board
+  // target. Used to build "<device_name>.<product_name>" in proxied_to.
+  // Targets without a build_target are left out of proxied_to, as in CTPv2.
+  string build_target = 3;
+}
+
+// Milestone 3: a caller-supplied device for local / Satlab / manual-testing
+// solves without querying Swarming bot history.
+message StaticDevice {
+  // Model / google_code_name (e.g. "model_a", "model_b"). Required when hwid is
+  // a raw AL hardware descriptor; optional for classic "<PROJECT> <BOM>" HWIDs.
+  string model = 1;
+  // Classic ChromeOS HWID (e.g. "MODEL_A-TEST ...") or raw AL hardware
+  // descriptor (e.g. "0100...").
+  string hwid = 2;
+  // Optional Swarming-style labels ("<label>:<value>", e.g.
+  // "label-wifi_chip:WIFI_CHIP_A", "label-gpu_id:...", "label-phase:EVT").
+  // Needed when solving categories that reference swarming:* properties.
+  repeated string swarming_labels = 3;
+}
+
+message SolvedExpressionGroup {
+  string group_id = 1;
+  // Populated unless counts_only is true.
+  repeated EqcClass classes = 2;
+  // Candidate combinations tested in the flattening loop, including
+  // per-request memo hits (independent of batch order; cached with the
+  // solution and checked against max_evaluated_combinations on cache hits).
+  int64 evaluated_combination_count = 3;
+  // Resulting EqCs matching the inventory and candidate_targets.
+  int32 matched_class_count = 4;
+  // True if this group's solution came from the 8-hour solution cache.
+  bool solution_cache_hit = 5;
+}
+
+// One picked hardware configuration in the greedy representative set.
+// Satisfies every EqC in covered_eqcs, so a client can run tests for all of
+// them on one DUT (or split into shards according to its own shard policy).
+message SelectedTarget {
+  string board = 1;
+  string model = 2;
+  // The HWID (without model prefix) picked by middle_out.
+  string selected_hwid = 3;
+  // Union of Swarming labels and group dependencies required across all
+  // covered_eqcs; schedule the run with these labels.
+  repeated string swarming_labels = 4;
+  // True if any covered EqC has model_spans_multiple_eqcs = true. When true,
+  // a caller that schedules by model must constrain the run to selected_hwid
+  // (or the intersection of target_in_eqc.hwids across bundled EqCs).
+  bool must_pin_hwid = 5;
+  // 2-minute-cached Swarming bot counts for this target at selection time,
+  // before this request's own assignHardware-style local decrements. Lets
+  // callers distinguish a free-DUT pick (free_dut_count > 0) from the
+  // busy-lab fallback that queues on deployed fleet size (free_dut_count == 0).
+  int32 free_dut_count = 6;
+  int32 total_dut_count = 7;
+  // Every (group_id, EqC) represented by this target.
+  repeated CoveredEqc covered_eqcs = 8;
+  // OS build target of this (board, model), as in CandidateTarget.build_target
+  // (empty if the matching candidate target has none). Lets a client find the
+  // target's build, for example to rerun on the same target later.
+  string build_target = 9;
+}
+
+// One (group_id, EqC) covered by a SelectedTarget.
+message CoveredEqc {
+  string group_id = 1;
+  // Full EqC metadata for result attribution. When the request sets
+  // candidate_targets, eqc_class.targets lists only candidate targets, as in
+  // SolveExpression, so other (board, model) targets and HWIDs of the pool
+  // are never returned.
+  EqcClass eqc_class = 2;
+  // This model's EqcTarget entry within eqc_class (its hwids in this EqC and
+  // whether the model spans multiple EqCs of this group).
+  EqcTarget target_in_eqc = 3;
+  // Sorted, de-duplicated "<device_name>.<product_name>" list of the other
+  // candidate targets in this EqC, e.g. "model_a.model_a,model_b.model_b" or
+  // "board_a.model_a,board_a.model_b". Same rule as CTPv2 middle_out.
+  string proxied_to = 4;
+}
+
+enum SkipReason {
+  SKIP_REASON_UNSPECIFIED = 0;
+  SKIP_REASON_NO_CANDIDATE_TARGET = 1;  // No candidate target is in the EqC.
+  SKIP_REASON_NO_DUTS_IN_LAB = 2;  // Swarming has 0 DUTs for the candidates.
+}
+
+message SkippedEqcClass {
+  string group_id = 1;
+  // The skipped EqC. As in CoveredEqc, eqc_class.targets lists only candidate
+  // targets when the request sets candidate_targets, so it is empty for
+  // SKIP_REASON_NO_CANDIDATE_TARGET.
+  EqcClass eqc_class = 2;
+  SkipReason reason = 3;
+  string details = 4;
+}
+
+message GroupClassStats {
+  string group_id = 1;
+  int64 evaluated_combination_count = 2;
+  int32 matched_class_count = 3;
+  bool solution_cache_hit = 4;
+}
+
+message EqcClass {
+  // Decimal string of the 64-bit EqC hash (matches ResultDB eqc_hash).
+  string eqc_hash = 1;
+  // Human-readable EqC name, e.g. "SOC_A__WIFI_CHIP_A".
+  string eqc_name = 2;
+  // The group's variant_category exactly as given in ExpressionGroup
+  // (without dependencies), e.g. '{"name": "ExampleSocWifiCategory"}'.
+  // This is the string CTPv2 publishes as PublishKey "eqcCategoryExpression",
+  // from which Tradefed's eqc_class and ResultDB's eqc_info derive, so
+  // clients that publish 3D results should publish it unchanged. eqc_hash
+  // also covers the dependencies, so EqCs of groups that differ only in
+  // dependencies share this value but not eqc_hash.
+  string eqc_category_expression = 3;
+  // Dimensions defining the EqC, e.g.
+  // {"soc": "SOC_A", "wifi_chip": "WIFI_CHIP_A"}.
+  map<string, string> eqc_dimensions = 4;
+  // De-duplicated (board, model) targets in the inventory for this EqC,
+  // limited to candidate_targets when the request sets them.
+  repeated EqcTarget targets = 5;
+}
+
+// Base ChromeOS image ("<board>-release") or AL target in an EqC.
+message EqcTarget {
+  string board = 1;
+  string model = 2;
+  // Swarming labels this target needs besides its HWID, as "<label>:<value>".
+  // A client schedules with them, as CTPv2 does unless the suite sets its own.
+  repeated string swarming_labels = 3;
+  // Distinct HWIDs (without model prefix) of this (board, model) in this EqC.
+  repeated string hwids = 4;
+  // True if this (board, model) also has HWIDs in other EqCs of the same
+  // group. Tells a client that schedules by model whether it must pin the run
+  // to selected_hwid (true) or can use any DUT of the model (false).
+  bool model_spans_multiple_eqcs = 5;
+}
+
+// Which revision and data produced an answer. Use it to explain why two
+// answers for the same input differ: answers can change after an image
+// update or an inventory reload, and each instance has its own snapshot.
+message ResponseMetadata {
+  // Cloud Run revision that served the request (K_REVISION), e.g.
+  // "cros-ddd-filter-00001-abc".
+  string service_revision = 1;
+  // When this instance loaded the pool's inventory from BigQuery.
+  google.protobuf.Timestamp inventory_load_time = 2;
+  // SelectEqcTargets only: time of the oldest Swarming count used.
+  google.protobuf.Timestamp availability_time = 3;
+}

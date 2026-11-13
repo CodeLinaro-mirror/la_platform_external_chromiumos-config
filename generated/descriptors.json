@@ -34636,6 +34636,670 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "enumType": [
+        {
+          "name": "SkipReason",
+          "value": [
+            {
+              "name": "SKIP_REASON_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "SKIP_REASON_NO_CANDIDATE_TARGET",
+              "number": 1
+            },
+            {
+              "name": "SKIP_REASON_NO_DUTS_IN_LAB",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "groups",
+              "label": "LABEL_REPEATED",
+              "name": "groups",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.ExpressionGroup"
+            },
+            {
+              "jsonName": "candidateTargets",
+              "label": "LABEL_REPEATED",
+              "name": "candidate_targets",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.CandidateTarget"
+            },
+            {
+              "jsonName": "maxEvaluatedCombinations",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_evaluated_combinations",
+              "number": 4,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "countsOnly",
+              "label": "LABEL_OPTIONAL",
+              "name": "counts_only",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "requestId",
+              "label": "LABEL_OPTIONAL",
+              "name": "request_id",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "staticDevices",
+              "label": "LABEL_REPEATED",
+              "name": "static_devices",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.StaticDevice"
+            },
+            {
+              "jsonName": "includePoolInventory",
+              "label": "LABEL_OPTIONAL",
+              "name": "include_pool_inventory",
+              "number": 8,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SolveExpressionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groups",
+              "label": "LABEL_REPEATED",
+              "name": "groups",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.SolvedExpressionGroup"
+            },
+            {
+              "jsonName": "unrecognizedDevices",
+              "label": "LABEL_REPEATED",
+              "name": "unrecognized_devices",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.ResponseMetadata"
+            }
+          ],
+          "name": "SolveExpressionResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "groups",
+              "label": "LABEL_REPEATED",
+              "name": "groups",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.ExpressionGroup"
+            },
+            {
+              "jsonName": "candidateTargets",
+              "label": "LABEL_REPEATED",
+              "name": "candidate_targets",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.CandidateTarget"
+            },
+            {
+              "jsonName": "requestsPerEqc",
+              "label": "LABEL_OPTIONAL",
+              "name": "requests_per_eqc",
+              "number": 4,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "maxEvaluatedCombinations",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_evaluated_combinations",
+              "number": 5,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "requestId",
+              "label": "LABEL_OPTIONAL",
+              "name": "request_id",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SelectEqcTargetsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "selectedTargets",
+              "label": "LABEL_REPEATED",
+              "name": "selected_targets",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.SelectedTarget"
+            },
+            {
+              "jsonName": "skippedClasses",
+              "label": "LABEL_REPEATED",
+              "name": "skipped_classes",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.SkippedEqcClass"
+            },
+            {
+              "jsonName": "groupStats",
+              "label": "LABEL_REPEATED",
+              "name": "group_stats",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.GroupClassStats"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.ResponseMetadata"
+            }
+          ],
+          "name": "SelectEqcTargetsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "variantCategory",
+              "label": "LABEL_OPTIONAL",
+              "name": "variant_category",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dependencies",
+              "label": "LABEL_REPEATED",
+              "name": "dependencies",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "requestsPerEqc",
+              "label": "LABEL_OPTIONAL",
+              "name": "requests_per_eqc",
+              "number": 4,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "ExpressionGroup"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "buildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_target",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CandidateTarget"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hwid",
+              "label": "LABEL_OPTIONAL",
+              "name": "hwid",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "swarmingLabels",
+              "label": "LABEL_REPEATED",
+              "name": "swarming_labels",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StaticDevice"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "classes",
+              "label": "LABEL_REPEATED",
+              "name": "classes",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.EqcClass"
+            },
+            {
+              "jsonName": "evaluatedCombinationCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "evaluated_combination_count",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "matchedClassCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "matched_class_count",
+              "number": 4,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "solutionCacheHit",
+              "label": "LABEL_OPTIONAL",
+              "name": "solution_cache_hit",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SolvedExpressionGroup"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "selectedHwid",
+              "label": "LABEL_OPTIONAL",
+              "name": "selected_hwid",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "swarmingLabels",
+              "label": "LABEL_REPEATED",
+              "name": "swarming_labels",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mustPinHwid",
+              "label": "LABEL_OPTIONAL",
+              "name": "must_pin_hwid",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "freeDutCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "free_dut_count",
+              "number": 6,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "totalDutCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "total_dut_count",
+              "number": 7,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "coveredEqcs",
+              "label": "LABEL_REPEATED",
+              "name": "covered_eqcs",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.CoveredEqc"
+            },
+            {
+              "jsonName": "buildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_target",
+              "number": 9,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SelectedTarget"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcClass",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_class",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.EqcClass"
+            },
+            {
+              "jsonName": "targetInEqc",
+              "label": "LABEL_OPTIONAL",
+              "name": "target_in_eqc",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.EqcTarget"
+            },
+            {
+              "jsonName": "proxiedTo",
+              "label": "LABEL_OPTIONAL",
+              "name": "proxied_to",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CoveredEqc"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcClass",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_class",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.EqcClass"
+            },
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.ddd.SkipReason"
+            },
+            {
+              "jsonName": "details",
+              "label": "LABEL_OPTIONAL",
+              "name": "details",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SkippedEqcClass"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupId",
+              "label": "LABEL_OPTIONAL",
+              "name": "group_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "evaluatedCombinationCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "evaluated_combination_count",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "matchedClassCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "matched_class_count",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "solutionCacheHit",
+              "label": "LABEL_OPTIONAL",
+              "name": "solution_cache_hit",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "GroupClassStats"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "eqcHash",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_hash",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcCategoryExpression",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_category_expression",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcDimensions",
+              "label": "LABEL_REPEATED",
+              "name": "eqc_dimensions",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.EqcClass.EqcDimensionsEntry"
+            },
+            {
+              "jsonName": "targets",
+              "label": "LABEL_REPEATED",
+              "name": "targets",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ddd.EqcTarget"
+            }
+          ],
+          "name": "EqcClass",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcDimensionsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "swarmingLabels",
+              "label": "LABEL_REPEATED",
+              "name": "swarming_labels",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hwids",
+              "label": "LABEL_REPEATED",
+              "name": "hwids",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "modelSpansMultipleEqcs",
+              "label": "LABEL_OPTIONAL",
+              "name": "model_spans_multiple_eqcs",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "EqcTarget"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceRevision",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_revision",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "inventoryLoadTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "inventory_load_time",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "availabilityTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "availability_time",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            }
+          ],
+          "name": "ResponseMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/ddd/cros_ddd_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/ddd",
+        "javaOuterClassname": "CrosDddServiceOuterClass"
+      },
+      "package": "chromiumos.test.api.ddd",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.ddd.SolveExpressionRequest",
+              "name": "SolveExpression",
+              "outputType": ".chromiumos.test.api.ddd.SolveExpressionResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ddd.SelectEqcTargetsRequest",
+              "name": "SelectEqcTargets",
+              "outputType": ".chromiumos.test.api.ddd.SelectEqcTargetsResponse"
+            }
+          ],
+          "name": "CrosDddService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/longrunning/operations.proto"
       ],
       "messageType": [
